@@ -38,7 +38,7 @@
   <!--TODO-->
   <script>
     BUI.use('common/main',function(){
-      var config = [{id:'1',menu:[{text:'软文',items:[{id:'12',text:'未审核',href:'/test_ssh/chiefEditor/getAllUnreviewed'},{id:'3',text:'已审核',href:'/test_ssh/chiefEditor/getAllExamined'}]}]}];
+      var config = [{id:'1',menu:[{text:'软文',items:[{id:'12',text:'未审核',href:'/editor/getAllUnreviewed'},{id:'3',text:'已审核',href:'/editor/getAllExamined'}]}]}];
       new PageUtil.MainPage({
         modulesConfig : config
       });

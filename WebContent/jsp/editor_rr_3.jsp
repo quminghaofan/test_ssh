@@ -6,9 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>已通过</title>
-<link rel="stylesheet" type="text/css" href="../Css1/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="../Css1/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="../Css1/style.css" />
+<link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="../Css/style.css" />
     <script type="text/javascript" src="../Js/jquery.js"></script>
     <script type="text/javascript" src="../Js/jquery.sorted.js"></script>
     <script type="text/javascript" src="../Js/bootstrap.js"></script>
@@ -35,7 +35,7 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/editor/getSuccessPassByNewsName method="get">
+<form class="form-inline definewidth m20" action="index.html" method="get">
     软文名称
     <input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search">搜索</button>
@@ -69,3 +69,11 @@
 
 </body>
 </html>
+<script>
+    $(function(){
+        $('#search').click(function(){
+            window.location.href="/editing/getSuccessPassByNewsName";
+        });
+    });
+
+</script>

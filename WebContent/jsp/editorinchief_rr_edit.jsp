@@ -39,8 +39,9 @@
 </head>
 
 <body>
-<form action="/test_ssh/chiefEditor/setNews" method="post" class="definewidth m20">
+<form action="index.html" method="post" class="definewidth m20">
     <table class="table table-bordered table-hover m10">
+        <input style="display: none" value="${RR}"/>
         <tr>
             <td width="10%" class="tableleft">上架时间</td>
             <td><input name="txtDate" id="txtDate" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss'})" /></td>
@@ -48,7 +49,7 @@
         <tr>
             <td width="10%" class="tableleft">等级</td>
             <td><select name="rank" id="rank">
-                <option selected="selected" value="1">1</option>
+                <option selected="" value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
@@ -65,3 +66,13 @@
 </body>
 
 </html>
+
+<script>
+    $(function () {
+        $('#save').click(function(){
+            window.location.href="/editor/setNews";
+        });
+
+    });
+
+</script>

@@ -36,19 +36,19 @@
     </style>
 </head>
 <body>
-<form action="/test_ssh/editor/editNews" method="post" class="definewidth m20">
+<form action="index.html" method="post" class="definewidth m20">
 <table class="table table-bordered table-hover m10">
     <tr>
             <td width="10%" class="tableleft">软文标题</td>
-            <td><input type="text" name="RRname" value="${news.name}"/></td>  <!--TODO-->
+            <td><input type="text" name="RRname" value="${RR.name}"/></td>  <!--TODO-->
         </tr>
         <tr>
             <td class="tableleft">内容</td>
-            <td><input id="RRcontent" type="text" name="RRcontent" value="${news.content}"/></td>  <!--TODO-->
+            <td><input id="RRcontent" type="text" name="RRcontent" value="${RR.content}"/></td>  <!--TODO-->
         </tr>
         <tr>
             <td class="tableleft">图片</td>
-            <td><img id="image" src="${news.picUrl}"></td>
+            <td><img id="image" src="${RR.picUrl}"></td>
             <td><input id="img" name="img" type="file" accept="image/*" /></td>
         </tr>
     <tr>
@@ -75,6 +75,13 @@ $(function () {
 	$('#backid').click(function(){
 			window.location.href="/test_ssh/jsp/editor_rr_1.jsp";
 	 });
+
+});
+
+$(function () {
+    $('#btnid').click(function(){
+        window.location.href="/editing/editNews";
+    });
 
 });
 </script>

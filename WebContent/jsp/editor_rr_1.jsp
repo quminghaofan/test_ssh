@@ -37,10 +37,10 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/editor/getUnreviewedByNewsName" method="get">
+<form class="form-inline definewidth m20" action="index.html" method="get">
     软文名称
     <input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
-    <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>&nbsp;&nbsp; 
+    <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>&nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增软文</button>
 </form>
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
@@ -55,7 +55,7 @@
         <tr>
                 <td>${rr.name}</td>
                 <td><img src="${rr.picUrl}"/></td>
-                <td><a href="/test_ssh/editor/getNewsToEdit?newsId=${rr.id}">编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}'">删除</a></td>
+                <td><a href="/editing/getNews?newsId=${rr.id}">编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/editing/delNews?newsId=${rr.id}'">删除</a></td>
             </tr>
     </c:forEach>
 </c:if>
@@ -69,6 +69,12 @@
 
                 window.location.href="/test_ssh/jsp/editor_rr_add.jsp";
          });
+    });
+
+    $(function(){
+        $('#search').click(function(){
+            window.location.href="/editing/getUnreviewedByNewsName";
+        });
     });
     
 </script>

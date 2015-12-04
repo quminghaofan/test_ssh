@@ -36,7 +36,7 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/editorinchief/getExaminedByNewsName" method="get">
+<form class="form-inline definewidth m20" action="index.html" method="get">
     软文名称
     <input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search">搜索</button>&nbsp;&nbsp;
@@ -64,7 +64,7 @@
                 <td>${rr.isExamined}</td>
                 <td>${rr.onShowTime}</td>
                 <td>${rr.rank}</td>
-                <td><a href="/test_ssh/chiefEditor/getNews?newsId=${rr.id}">查看</a></td>
+                <td><a href="/editor/getNews?newsId=${rr.id}">查看</a></td>
             </tr>
     </c:forEach>
 </c:if>
@@ -72,3 +72,12 @@
 
 </body>
 </html>
+
+<script>
+    $(function(){
+        $('#search').click(function(){
+            window.location.href="/editor/getExaminedByNewsName";
+        });
+    });
+
+</script>
