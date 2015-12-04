@@ -1,5 +1,6 @@
 package cn.edu.xmu.oneonezero.service;
 
+import cn.edu.xmu.oneonezero.entity.News;
 import cn.edu.xmu.oneonezero.entity.User;
 
 public interface UserService {  
@@ -14,5 +15,7 @@ public boolean delUser(long id);  //根据id删除一个User
 public boolean updateUser(User user);  //更新user
 
 public boolean isLoginSuccessful(String userName,String psw);//验证登陆信息是否正确
+
+
 
 }  
