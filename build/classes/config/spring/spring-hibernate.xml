@@ -28,7 +28,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>cn.edu.xmu.oneonezero.entity.User</value>
-				<value>cn.edu.xmu.oneonezero.entity.RecommendRead</value>
+				<value>cn.edu.xmu.oneonezero.entity.News</value>
  			</list>
 		</property>
 	</bean>
