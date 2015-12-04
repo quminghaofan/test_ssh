@@ -38,7 +38,7 @@
     </style>
 </head>
 <body>
-<form action="index.html" method="post" class="definewidth m20">
+<form action="/test_ssh/editing/addNews" method="get" class="definewidth m20">
 <table class="table table-bordered table-hover definewidth m10">
     <tr>
         <td width="10%" class="tableleft">软文标题</td>
@@ -50,7 +50,7 @@
     </tr>
    <tr>
             <td class="tableleft">图片</td>
-            <td><img id="image" src=""></td> <!--TODO-->
+            <td><img id="image" src=""></td> <!--TODO照片怎么存-->
             <td><input id="img" type="file" accept="image/*" name="img"/></td>
         </tr>
     <tr>
@@ -66,15 +66,8 @@
 <script>
     $(function () {       
 		$('#backid').click(function(){
-				window.location.href="editor_rr_1.jsp";
+				window.location.href="/test_ssh/jsp/editor_rr_1.jsp";
 		 });
-
-    });
-
-    $(function () {
-        $('#btnid').click(function(){
-            window.location.href="/editing/addNews";
-        });
 
     });
     

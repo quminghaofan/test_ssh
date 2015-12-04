@@ -73,7 +73,7 @@ $(function(){
 
 $(function () {       
 	$('#backid').click(function(){
-			window.location.href="editor_rr_1.jsp";
+			window.location.href="/test_ssh/jsp/editor_rr_1.jsp";
 	 });
 
 });

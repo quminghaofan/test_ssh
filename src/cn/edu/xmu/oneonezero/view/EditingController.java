@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * 采编
@@ -23,14 +24,14 @@ public class EditingController {
     private RecommendReadManager recommendReadManager;
 
     @RequestMapping(value="/addNews",method = RequestMethod.GET)
-    public String addNews(HttpServletRequest request){
+    public String addNews(HttpSession httpSession,HttpServletRequest request){
     	RecommendRead recommendRead=new RecommendRead();
     	recommendRead.setName(request.getParameter("RRname"));
+//    	recommendRead.setCollector(httpSession.getAttribute("user").getName());
     	recommendRead.setContent(request.getParameter("RRcontent"));
     	recommendRead.setPicUrl(request.getParameter("img"));
-//    	recommendRead.setCollector(request.get..getClass().);//TODO 获取登录后采编名称
         recommendReadManager.insertRecommendRead(recommendRead);
-        return "成功"; //TODO
+        return "redirect:/editing/getAllUnreviewed"; 
     }
 
     @RequestMapping("/editNews")
@@ -40,36 +41,36 @@ public class EditingController {
     	recommendRead.setContent(request.getParameter("RRcontent"));
     	recommendRead.setPicUrl(request.getParameter("img"));
         recommendReadManager.updateRecommendRead(recommendRead);
-        return "成功";
+        return "redirect:/editing/getAllUnreviewed";
     }
 
     @RequestMapping("/delNews")
     public String delNews(long newsId,HttpServletRequest request){
-        recommendReadManager.delRecommendRead(newsId);//删除审核未通过和未审核
-        return "成功";
+        recommendReadManager.delRecommendRead(newsId);
+        return "redirect:/editing/getAllUnreviewed";//TODO 只能删除未审核的和审核未通过的
     }
 
     @RequestMapping("/getAllNewsPush")
-    public String getAllNewsPush(String userId,HttpServletRequest request){
-        request.setAttribute("newsList", recommendReadManager.getAllRecommendReadByCollector(userId));
-        return "登录进入首页";
+    public String getAllNewsPush(HttpServletRequest request){
+//        request.setAttribute("newsList", recommendReadManager.getAllRecommendReadByCollector(userId));
+        return "刚进入的界面";//TODO
     }
 
 
     //获取所有未审核
     @RequestMapping("/getAllUnreviewed")
-    public String getAllUnreviewed(String userName,HttpServletRequest request){
-        request.setAttribute("RRLIST",recommendReadManager.getAllUnexaminedRecommendReadByCollectorName(userName));//TODO
+    public String getAllUnreviewed(HttpServletRequest request){//userName TODO login存放两种的
+        request.setAttribute("RRLIST",recommendReadManager.getAllUnexaminedRecommendReadByCollectorName("26"));
         return "editor_rr_1";
     }
 
-    @RequestMapping("getUnreviewedByNewsName")
+    @RequestMapping("/getUnreviewedByNewsName")
     public String getUnreviewedByNewsName(String newsName,HttpServletRequest request){
         request.setAttribute("RRLIST",recommendReadManager.getAllUnexaminedRecommendReadByName(newsName));//TODO
         return  "editor_rr_1";
     }
 
-    //未通过
+    //不通过
     @RequestMapping("/getAllFailPass")
     public String getAllFailPass(String userName,HttpServletRequest request){
         request.setAttribute("RRLIST",recommendReadManager.getAllUnPassedRecommendReadByCollectorName(userName));//TODO

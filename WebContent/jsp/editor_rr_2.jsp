@@ -69,7 +69,7 @@
   $(function () {
     $('#addnew').click(function(){
 
-      window.location.href="editor_rr_add.jsp";
+      window.location.href="/test_ssh/jsp/editor_rr_add.jsp";
     });
   });
 

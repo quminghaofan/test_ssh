@@ -38,8 +38,8 @@
   <script type="text/javascript" src="../assets/js/common/main-min.js"></script>
   <script type="text/javascript" src="../assets/js/config-min.js"></script>
   <script>
-    BUI.use('common/main',function(){
-      var config = [{id:'1',menu:[{text:'软文',items:[{id:'12',text:'待审核',href:'/editing/getAllUnreviewed?username=${user.username }'},{id:'3',text:'未通过',href:'/editing/getAllFailPass?userName=${user.username }'},{id:'4',text:'已通过',href:'/editing/getAllSuccessPass?userName=${user.username }'}]}]}];
+    BUI.use('common/main',function(){ 
+      var config = [{id:'1',menu:[{text:'软文',items:[{id:'12',text:'待审核',href:'/test_ssh/editing/getAllUnreviewed'},{id:'3',text:'未通过',href:'/editing/getAllFailPass'},{id:'4',text:'已通过',href:'/editing/getAllSuccessPass'}]}]}];
       new PageUtil.MainPage({
         modulesConfig : config
       });

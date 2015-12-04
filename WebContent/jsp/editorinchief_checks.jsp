@@ -64,7 +64,7 @@
 <script>
   $(function () {
     $('#backid').click(function(){
-      window.location.href="editorinchief_rr_1.jsp";
+      window.location.href="/test_ssh/jsp/editorinchief_rr_1.jsp";
     });
 
   });
