@@ -17,14 +17,14 @@ import cn.edu.xmu.oneonezero.service.UserService;
 @RequestMapping("/user")
 public class UserController {
 
-	@Resource(name="userManager")
-	private UserService userManager;
+	@Resource(name="userService")
+	private UserService userService;
 
 	
 	@RequestMapping("/getUser")
 	public String getUser(long id,HttpServletRequest request){
 		
-		request.setAttribute("user", userManager.getUser(id));
+		request.setAttribute("user", userService.getUser(id));
 	
 		return "/editUser";
 	}
@@ -37,7 +37,7 @@ public class UserController {
 	@RequestMapping("/addUser")
 	public String addUser(User user,HttpServletRequest request){
 		
-		userManager.insertUser(user);
+		userService.insertUser(user);
 		
 		return "redirect:/user/getAllUser";
 	}
@@ -47,7 +47,7 @@ public class UserController {
 		
 		String result = "{\"result\":\"error\"}";
 		
-		if(userManager.delUser(id)){
+		if(userService.delUser(id)){
 			result = "{\"result\":\"success\"}";
 		}
 		
@@ -64,8 +64,8 @@ public class UserController {
 	@RequestMapping("/updateUser")
 	public String updateUser(User user,HttpServletRequest request){
 		
-		if(userManager.updateUser(user)){
-			user = userManager.getUser(user.getId());
+		if(userService.updateUser(user)){
+			user = userService.getUser(user.getId());
 			request.setAttribute("user", user);
 			return "redirect:/user/getAllUser";
 		}else{

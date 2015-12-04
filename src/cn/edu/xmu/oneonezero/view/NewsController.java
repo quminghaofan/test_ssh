@@ -15,13 +15,13 @@ import java.util.Date;
  */
 @Controller
 @RequestMapping("/newsPush")
-public class RecommendReadController {
-    @Resource(name = "recommendReadManager")
-    private NewsService recommendReadManager;
+public class NewsController {
+    @Resource(name = "newsService")
+    private NewsService newsService;
 
     @RequestMapping("/getNews")
     public String getNews(Date startTime,Date endTime,HttpServletRequest request){
-//        request.setAttribute("newsList",recommendReadManager.getNewsByTime(startTime,endTime));
+//        request.setAttribute("newsList",newsService.getNewsByTime(startTime,endTime));
         return "home";
     }
 
