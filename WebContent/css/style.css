@@ -1652,6 +1652,16 @@ p.m_11 {
 .login-right input[type="submit"]:hover{
 	background:#000;
 }
+
+.login-right input[type="password"]{
+border: 1px solid #DDDBDB;
+	outline-color:#fb4d01;
+	width: 96%;
+	font-size:0.8125em;
+	padding:10px;
+	-webkit-appearance: none;
+}
+
 a.forgot {
 	font-size:0.8125em;
 }
