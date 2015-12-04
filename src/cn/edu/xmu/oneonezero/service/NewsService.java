@@ -41,7 +41,7 @@ public List<News> getUnPassedNewsByNewsName(String newsName);//根据软文名�
 
 public List<News> getPassedNewsByNewsName(String newsName);//根据软文名字得到所有 审核通过 的软文
 
-
+public List<News> getNewsVagueByEditorNameAndNewsName(String editorName,String newsName);//根据采编名和软文模糊名返回相关的软文
 
 
 

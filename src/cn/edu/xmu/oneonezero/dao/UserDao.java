@@ -13,4 +13,7 @@ public boolean delUser(long id);	//根据用户id删除User对象
 
 public boolean updateUser(User user);	//更新用户
 
+public boolean isLoginSuccessful(String userName, String psw);//验证登陆信息是否正确
+
+
 }

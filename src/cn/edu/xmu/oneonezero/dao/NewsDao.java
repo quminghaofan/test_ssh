@@ -21,6 +21,9 @@ public List<News> getUnexaminedNewsByEditor(String editor);//未审核
 
 public List<News> getExaminedNewsByEditor(String editor);//已经审核
 
+public List<News> getNewsVagueByEditorNameAndNewsName(String editorName,String newsName);//根据采编名和软文模糊名返回相关的软文
+
+
 
 
 

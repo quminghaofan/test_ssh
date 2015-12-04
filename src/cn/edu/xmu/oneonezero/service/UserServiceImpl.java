@@ -33,4 +33,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.updateUser(user);
 	}
 
+
+	@Override
+	public boolean isLoginSuccessful(String userName, String psw) {
+		return userDao.isLoginSuccessful(userName, psw);
+	}
+
 }

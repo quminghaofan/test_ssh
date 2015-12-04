@@ -110,5 +110,11 @@ public class NewsServiceImpl implements NewsService {
 	public List<News> getPassedNewsByNewsName(String newsName) {
 		return newsDao.getPassedNewsByNewsName(newsName);
 	}
+
+
+	@Override
+	public List<News> getNewsVagueByEditorNameAndNewsName(String editorName, String newsName) {
+		return newsDao.getNewsVagueByEditorNameAndNewsName(editorName, newsName);
+	}
 	
 }
