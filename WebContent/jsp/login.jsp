@@ -235,12 +235,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			   <div class="col-md-6 login-left">
 			  	 <h3>新用户</h3>
 				 <p>创建一个账号，您将能够更好地进行艺术品交易，查看并跟踪您的订单。</p>
-				 <a class="acount-btn" href="register.html">创建账号</a>
+				 <a class="acount-btn" href="/test_ssh/jsp/register.jsp">创建账号</a> <!-- TODO -->
 			   </div>
 			   <div class="col-md-6 login-right">
 			  	<h3>登录</h3>
 				<p>如果已有账号，请登录。</p>
-				<form id="loginform" method="post" onsubmit="return before_login()" action="">
+				<form id="loginform" method="post" onsubmit="return before_login()" action="/test_ssh/editor/login">
 					<c:if test="${result=='fail'}">
 					<div id="result"><font color="red">用户名不存在或密码错误</font></div>
 				</c:if>

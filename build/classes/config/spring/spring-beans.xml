@@ -11,22 +11,22 @@
 	</bean>
 	
 
-	<bean id="userManagerBase" class="cn.edu.xmu.oneonezero.service.UserManagerImpl">
+	<bean id="userServiceBase" class="cn.edu.xmu.oneonezero.service.UserServiceImpl">
 		<property name="userDao" ref="userDao"></property>
 	</bean>
 	
 	<!-- 此处为代理 -->
-	<bean name="userManager" parent="transactionProxy">
-		<property name="target" ref="userManagerBase"></property>
+	<bean name="userService" parent="transactionProxy">
+		<property name="target" ref="userServiceBase"></property>
 	</bean>	
 	
-	<bean id="recommendReadDao" class="cn.edu.xmu.oneonezero.dao.RecommendReadDaoImpl">
+	<bean id="newsDao" class="cn.edu.xmu.oneonezero.dao.NewsDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
 
-	<bean id="recommendReadManager" class="cn.edu.xmu.oneonezero.service.RecommendReadManagerImpl">
-		<property name="recommendReadDao" ref="recommendReadDao"></property>
+	<bean id="newsService" class="cn.edu.xmu.oneonezero.service.NewsServiceImpl">
+		<property name="newsDao" ref="newsDao"></property>
 	</bean>
 	
 	

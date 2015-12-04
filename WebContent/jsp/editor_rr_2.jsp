@@ -7,9 +7,9 @@
 <head>
   <title>未通过</title>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
-  <link rel="stylesheet" type="text/css" href="../Css/bootstrap-responsive.css" />
-  <link rel="stylesheet" type="text/css" href="../Css/style.css" />
+  <link rel="stylesheet" type="text/css" href="../Css1/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="../Css1/bootstrap-responsive.css" />
+  <link rel="stylesheet" type="text/css" href="../Css1/style.css" />
   <script type="text/javascript" src="../Js/jquery.js"></script>
   <script type="text/javascript" src="../Js/jquery.sorted.js"></script>
   <script type="text/javascript" src="../Js/bootstrap.js"></script>
@@ -37,10 +37,10 @@
   </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="index.html" method="get">
+<form class="form-inline definewidth m20" action="/test_ssh/editor/getFailPassByNewsName" method="get">
   软文名称
   <input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
-  <button type="submit" class="btn btn-primary" id="search">搜索</button>&nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增软文</button>
+  <button type="submit" class="btn btn-primary" id="search">搜索</button>
 </form>
 <table class="table table-bordered table-hover definewidth m10">
   <thead>
@@ -57,7 +57,7 @@
         <td>${rr.name}</td>
         <td><img src="${rr.picUrl}"></td>
         <td>${rr.chiefEditor}</td>
-        <td><a href="/editing/getNews?newsId=${rr.id}">编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/editing/delNews?newsId=${rr.id}'">删除</a></td>
+        <td><a href="/test_ssh/editor/getNews?newsId=${rr.id}">编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}'">删除</a></td>
       </tr>
     </c:forEach>
   </c:if>
@@ -65,18 +65,3 @@
 
 </body>
 </html>
-<script>
-  $(function () {
-    $('#addnew').click(function(){
-
-      window.location.href="/test_ssh/jsp/editor_rr_add.jsp";
-    });
-  });
-
-  $(function(){
-    $('#search').click(function(){
-      window.location.href="/editing/getFailPassByNewsName";
-    });
-  });
-
-</script>
