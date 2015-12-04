@@ -27,8 +27,10 @@ public class ChiefEditorController {
     }
 
     @RequestMapping(value="/examineNews",method=RequestMethod.GET)
-    public String examineNews(News news,String type,HttpServletRequest request){
-        if(type.equals("1")) {
+    public String examineNews(long newsId,String type,HttpServletRequest request){
+        News news=newsService.getNews(newsId);
+    	if(type.equals("1")) {
+        	System.out.println(news.getId());
         	news.setIsExamined(true);
         	news.setIsPassed(true);
             newsService.updateNews(news);
@@ -49,28 +51,28 @@ public class ChiefEditorController {
         news.setRank(request.getParameter("rank"));
         news.setOnShowTime(request.getParameter("txtDate"));
         newsService.updateNews(news);
-        return "redirect:/chiefEditor/getAllExamined";
+        return "redirect:/chiefEditor/getUnexamined";
     }
 
-    @RequestMapping("/getAllExamined")
-    public String getAllExamined(HttpServletRequest request){
-        request.setAttribute("examineNewsList", newsService.getExaminedNews());
+    @RequestMapping("/getExamined")
+    public String getExamined(HttpServletRequest request){
+        request.setAttribute("RRLIST", newsService.getExaminedNews());
         return "chiefEditor_rr_2";
     }
     @RequestMapping("/getExaminedByNewsName")
     public String getExaminedByNewsName(HttpServletRequest request){
-        request.setAttribute("examineNewsList", newsService.getExaminedNewsByName(request.getParameter("RRname")));
+        request.setAttribute("RRLIST", newsService.getExaminedNewsByName(request.getParameter("RRname")));
         return "chiefEditor_rr_2";
     }
 
-    @RequestMapping("/getAllUnreviewed")
-    public String getAllUnreviewed(HttpServletRequest request){
+    @RequestMapping("/getUnexamined")
+    public String getUnexamined(HttpServletRequest request){
         request.setAttribute("RRLIST",newsService.getUnexaminedNews());
         return "chiefEditor_rr_1";
     }
 
-    @RequestMapping("/getUnreviewedByNewsName")
-    public String getUnreviewedByNewsName(HttpServletRequest request){
+    @RequestMapping("/getUnexaminedByNewsName")
+    public String getUnexaminedByNewsName(HttpServletRequest request){
         request.setAttribute("RRLIST",newsService.getUnexaminedNewsByName(request.getParameter("RRname")));
         return "chiefEditor_rr_1";
     }

@@ -36,17 +36,18 @@ public class EditorController {
     	news.setContent(request.getParameter("RRcontent"));
     	news.setPicUrl(request.getParameter("img"));
         newsService.insertNews(news);
-        return "redirect:/editor/getUnreviewed"; 
+        return "redirect:/editor/getUnexamined"; 
     }
 
-    @RequestMapping("/editNews")
+    @RequestMapping(value="/editNews",method=RequestMethod.POST)
     public String editNews(HttpServletRequest request){
     	News news=(News) request.getSession().getAttribute("news");
     	news.setName(request.getParameter("RRname"));
     	news.setContent(request.getParameter("RRcontent"));
     	news.setPicUrl(request.getParameter("img"));
+    	System.out.println(news.getId());
         newsService.updateNews(news);
-        return "redirect:/editor/getUnreviewed"; 
+        return "redirect:/editor/getUnexamined"; 
     }
 //    
 //    @RequestMapping("/getNewsToCheck")
@@ -69,13 +70,13 @@ public class EditorController {
         	news.setIsPassed(true);
             newsService.updateNews(news);
             request.setAttribute("RR", news);
-            return "editorinchief_rr_edit";
+            return "chiefEditor_rr_edit";
         }
         else {
             news.setIsExamined(true);
             news.setIsPassed(true);
             newsService.updateNews(news);
-            return "editorinchief_rr_2";
+            return "chiefEditor_rr_2";
         }
     }
 
@@ -85,13 +86,13 @@ public class EditorController {
         news.setRank(request.getParameter("rank"));
         news.setOnShowTime(request.getParameter("txtDate"));
         newsService.updateNews(news);
-        return "redirect:/editor/getUnreviewed";
+        return "redirect:/editor/getUnexamined";
     }
 
     @RequestMapping("/delNews")
     public String delNews(long newsId,HttpServletRequest request){
         newsService.delNews(newsId);
-        return "redirect:/editor/getUnreviewed";//TODO 只能删除未审核的和审核未通过的
+        return "redirect:/editor/getUnPassed";//TODO 只能删除未审核的和审核未通过的
     }
 
     @RequestMapping("/getNewsPush")
@@ -117,7 +118,7 @@ public class EditorController {
     }
 
     //不通过
-    @RequestMapping("/getUnPassedPass")
+    @RequestMapping("/getUnPassed")
     public String getUnPassedPass(HttpServletRequest request){
     	User user=(User)request.getSession().getAttribute("user");
         request.setAttribute("RRLIST",newsService.getUnPassedNewsByEditorName(user.getName()));

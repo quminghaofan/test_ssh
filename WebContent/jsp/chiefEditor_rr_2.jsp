@@ -36,7 +36,7 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/editorinchief/getExaminedByNewsName" method="get">
+<form class="form-inline definewidth m20" action="/test_ssh/chiefEditor/getExaminedByNewsName" method="get">
     软文名称
     <input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search">搜索</button>&nbsp;&nbsp;
@@ -47,7 +47,6 @@
         <th>软文标题</th>
         <th>图片</th>
         <th>作者</th>
-        <!-- <th>编写时间</th> TODO -->
         <th>审核状态</th>
         <th>上架时间</th>
         <th>等级</th>
@@ -59,8 +58,7 @@
         <tr>
                 <td>${rr.name}</td>
                 <td><img src="${rr.picUrl}"></td>
-                <td>${rr.collector}</td>
-                <!--<td>${rr.}</td>-->
+                <td>${rr.editor}</td>
                 <td>${rr.isExamined}</td>
                 <td>${rr.onShowTime}</td>
                 <td>${rr.rank}</td>

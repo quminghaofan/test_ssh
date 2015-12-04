@@ -37,7 +37,7 @@
 </head>
 <body>
 
-<form class="form-inline definewidth m20" action="/test_ssh/chiefEditor/getUnreviewedByNewsName" method="get">
+<form class="form-inline definewidth m20" action="/test_ssh/chiefEditor/getUnexaminedByNewsName" method="get">
     软文名称
     <input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>
@@ -56,8 +56,8 @@
         <tr>
                 <td>${rr.name}</td>
                 <td>${rr.picUrl}</td>
-                <td>${rr.collector}</td>
-                <td><a href="/test_ssh/chiefEditor/getNews?newsId=${rr.id}">查看</a>&nbsp;&nbsp;<a href="/test_ssh/chiefEditor/examineNews?newsPush=${rr}&type=1">通过</a>&nbsp;&nbsp;<a href="/test_ssh/chiefEditor/examineNews?newsPush=${rr}&type=0">不通过</a></td>
+                <td>${rr.editor}</td>
+                <td><a href="/test_ssh/chiefEditor/getNews?newsId=${rr.id}">查看</a>&nbsp;&nbsp;<a href="/test_ssh/chiefEditor/examineNews?newsId=${rr.id}&type=1">通过</a>&nbsp;&nbsp;<a href="/test_ssh/chiefEditor/examineNews?newsId=${rr.id}&type=0">不通过</a></td>
             </tr>
     </c:forEach>
 </c:if>

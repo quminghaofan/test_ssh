@@ -6,9 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>编辑</title>
-<link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="../Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="../Css/style.css" />
+<link rel="stylesheet" type="text/css" href="../Css1/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../Css1/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="../Css1/style.css" />
     <script type="text/javascript" src="../Js/jquery.js"></script>
     <script type="text/javascript" src="../Js/jquery.sorted.js"></script>
     <script type="text/javascript" src="../Js/bootstrap.js"></script>
@@ -36,7 +36,7 @@
     </style>
 </head>
 <body>
-<form action="/test_ssh/editor/editNews" method="post" class="definewidth m20">
+<form action="/test_ssh/editor/editNews" method="post" class="definewidth m10">
 <table class="table table-bordered table-hover m10">
     <tr>
             <td width="10%" class="tableleft">软文标题</td>

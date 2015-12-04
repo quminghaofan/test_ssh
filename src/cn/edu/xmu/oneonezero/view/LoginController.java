@@ -25,7 +25,7 @@ public class LoginController {
 		String psw=request.getParameter("psw");
 		user.setName(userName);
 		user.setPassword(psw);
-		request.setAttribute("user",user);
+		request.getSession().setAttribute("user",user);
 		boolean isSuccess=userService.isLoginSuccessful(userName, psw);
 		if(isSuccess)
 			return "editor_index";//TODO 根据角色进入不同的界面
