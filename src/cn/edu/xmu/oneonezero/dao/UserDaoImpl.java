@@ -67,7 +67,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public boolean isLoginSuccessful(String userName, String psw) {
-		String hql = "where User u where u.Name = ? and u.password=?";
+		String hql = "from User u where u.name = ? and u.password=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, userName);
 		query.setString(1, psw);
