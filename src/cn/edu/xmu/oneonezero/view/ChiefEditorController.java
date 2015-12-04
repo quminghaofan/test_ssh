@@ -52,13 +52,8 @@ public class ChiefEditorController {
         return "redirect:/chiefEditor/getAllExamined";
     }
 
-<<<<<<< HEAD
-    @RequestMapping("/getExamined")
-    public String getExamined(HttpServletRequest request){
-=======
     @RequestMapping("/getAllExamined")
     public String getAllExamined(HttpServletRequest request){
->>>>>>> origin/master
         request.setAttribute("examineNewsList", newsService.getExaminedNews());
         return "chiefEditor_rr_2";
     }
@@ -68,24 +63,14 @@ public class ChiefEditorController {
         return "chiefEditor_rr_2";
     }
 
-<<<<<<< HEAD
-    @RequestMapping("/getUnexamined")
-    public String getUnexamined(HttpServletRequest request){
-=======
     @RequestMapping("/getAllUnreviewed")
     public String getAllUnreviewed(HttpServletRequest request){
->>>>>>> origin/master
         request.setAttribute("RRLIST",newsService.getUnexaminedNews());
         return "chiefEditor_rr_1";
     }
 
-<<<<<<< HEAD
-    @RequestMapping("/getUnexaminedByNewsName")
-    public String getUnexaminedByNewsName(HttpServletRequest request){
-=======
     @RequestMapping("/getUnreviewedByNewsName")
     public String getUnreviewedByNewsName(HttpServletRequest request){
->>>>>>> origin/master
         request.setAttribute("RRLIST",newsService.getUnexaminedNewsByName(request.getParameter("RRname")));
         return "chiefEditor_rr_1";
     }

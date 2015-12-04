@@ -39,11 +39,7 @@
   <script type="text/javascript" src="../assets/js/config-min.js"></script>
   <script>
     BUI.use('common/main',function(){ 
-<<<<<<< HEAD
-      var config = [{id:'1',menu:[{text:'软文',items:[{id:'12',text:'待审核',href:'/test_ssh/editor/getUnexamined'},{id:'3',text:'未通过',href:'/test_ssh/editor/getUnPassed'},{id:'4',text:'已通过',href:'/test_ssh/editor/getPassed'}]}]}];
-=======
       var config = [{id:'1',menu:[{text:'软文',items:[{id:'12',text:'待审核',href:'/test_ssh/editor/getAllUnreviewed'},{id:'3',text:'未通过',href:'/test_ssh/editor/getAllFailPass'},{id:'4',text:'已通过',href:'/test_ssh/editor/getAllSuccessPass'}]}]}];
->>>>>>> origin/master
       new PageUtil.MainPage({
         modulesConfig : config
       });
