@@ -11,13 +11,14 @@ import javax.persistence.Table;
 public class User {
 	private long id;
 	private String name;
+	private String nickName;
 	private String password;
 	private String role;
 	private String mobile;
 	private String headPhoto;
 	private String address;
 	private String bankCardAccount;
-	private String ps;
+	private String description;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -69,11 +70,17 @@ public class User {
 	public void setBankCardAccount(String bankCardAccount) {
 		this.bankCardAccount = bankCardAccount;
 	}
-	public String getPs() {
-		return ps;
+	public String getDescription() {
+		return description;
 	}
-	public void setPs(String ps) {
-		this.ps = ps;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 	
 	

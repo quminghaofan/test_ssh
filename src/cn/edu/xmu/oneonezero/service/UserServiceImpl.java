@@ -3,7 +3,7 @@ package cn.edu.xmu.oneonezero.service;
 import cn.edu.xmu.oneonezero.dao.UserDao;
 import cn.edu.xmu.oneonezero.entity.User;
 
-public class UserManagerImpl implements UserManager {
+public class UserServiceImpl implements UserService {
 
 	private UserDao userDao; //创建一个UserDao实例
 

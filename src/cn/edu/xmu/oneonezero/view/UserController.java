@@ -11,14 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.edu.xmu.oneonezero.entity.User;
-import cn.edu.xmu.oneonezero.service.UserManager;
+import cn.edu.xmu.oneonezero.service.UserService;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
 	@Resource(name="userManager")
-	private UserManager userManager;
+	private UserService userManager;
 
 	
 	@RequestMapping("/getUser")

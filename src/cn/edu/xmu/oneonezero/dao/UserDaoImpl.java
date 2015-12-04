@@ -46,7 +46,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public boolean updateUser(User user) {
 		String hql = "update User u set u.address= ?,u.bankCardAccount=?,u.headPhoto=?,"
-				+ "u.mobile=?,u.name=?,u.password=?,u.ps=?,u.role=? where u.id = ?";
+				+ "u.mobile=?,u.name=?,u.password=?,u.description=?,u.role=? where u.id = ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, user.getAddress());
 		query.setString(1, user.getBankCardAccount());
@@ -54,7 +54,7 @@ public class UserDaoImpl implements UserDao {
 		query.setString(3, user.getMobile());
 		query.setString(4, user.getName());
 		query.setString(5, user.getPassword());
-		query.setString(6, user.getPs());
+		query.setString(6, user.getDescription());
 		query.setString(7, user.getRole());
 		query.setLong(8, user.getId());
 		
