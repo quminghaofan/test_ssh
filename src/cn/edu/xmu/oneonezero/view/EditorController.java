@@ -1,7 +1,7 @@
 package cn.edu.xmu.oneonezero.view;
 
-import cn.edu.xmu.oneonezero.entity.RecommendRead;
-import cn.edu.xmu.oneonezero.service.RecommendReadManager;
+import cn.edu.xmu.oneonezero.entity.News;
+import cn.edu.xmu.oneonezero.service.NewsService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/editor")
 public class EditorController {
     @Resource(name="recommendReadManager")
-    private RecommendReadManager recommendReadManager;
+    private NewsService recommendReadManager;
 
     @RequestMapping("/getNews")
     public String getNews(long newsId,HttpServletRequest request){
@@ -26,7 +26,7 @@ public class EditorController {
     }
 
     @RequestMapping("/examineNews")
-    public String examineNews(RecommendRead recommendRead,String type,HttpServletRequest request){
+    public String examineNews(News recommendRead,String type,HttpServletRequest request){
         if(type.equals("1")) {
         	recommendRead.setIsExamined(true);
         	recommendRead.setIsPassed(true);
@@ -44,7 +44,7 @@ public class EditorController {
 
     @RequestMapping("/setNews")
     public String setNews(HttpServletRequest request){
-    	RecommendRead recommendRead=(RecommendRead) request.getAttribute("RR");
+    	News recommendRead=(News) request.getAttribute("RR");
         recommendRead.setRank(request.getParameter("rank"));
         recommendRead.setOnShowTime(request.getParameter("txtDate"));
         recommendReadManager.updateRecommendRead(recommendRead);

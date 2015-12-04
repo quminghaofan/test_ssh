@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="RecommendRead")
-public class RecommendRead {
+@Table(name="News")
+public class News {
 	private long id;
 	private String name;
 	private String content;
@@ -16,7 +16,7 @@ public class RecommendRead {
 	private String onShowTime;
 	private String offShowTime;
 	private String rank;
-	private String collector;//采编
+	private String editor;//采编
 	private String chiefEditor;//主编
 	private boolean isExamined;//是否审核
 	private boolean isPassed;//是否审核通过
@@ -66,11 +66,11 @@ public class RecommendRead {
 	public void setRank(String rank) {
 		this.rank = rank;
 	}
-	public String getCollector() {
-		return collector;
+	public String getEditor() {
+		return editor;
 	}
-	public void setCollector(String collector) {
-		this.collector = collector;
+	public void setEditor(String editor) {
+		this.editor = editor;
 	}
 	public String getChiefEditor() {
 		return chiefEditor;

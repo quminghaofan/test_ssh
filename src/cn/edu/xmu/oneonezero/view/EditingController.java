@@ -1,7 +1,7 @@
 package cn.edu.xmu.oneonezero.view;
 
-import cn.edu.xmu.oneonezero.entity.RecommendRead;
-import cn.edu.xmu.oneonezero.service.RecommendReadManager;
+import cn.edu.xmu.oneonezero.entity.News;
+import cn.edu.xmu.oneonezero.service.NewsService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,11 +21,11 @@ import javax.servlet.http.HttpSession;
 public class EditingController {
 
     @Resource(name="recommendReadManager")
-    private RecommendReadManager recommendReadManager;
+    private NewsService recommendReadManager;
 
     @RequestMapping(value="/addNews",method = RequestMethod.GET)
     public String addNews(HttpSession httpSession,HttpServletRequest request){
-    	RecommendRead recommendRead=new RecommendRead();
+    	News recommendRead=new News();
     	recommendRead.setName(request.getParameter("RRname"));
 //    	recommendRead.setCollector(httpSession.getAttribute("user").getName());
     	recommendRead.setContent(request.getParameter("RRcontent"));
@@ -36,7 +36,7 @@ public class EditingController {
 
     @RequestMapping("/editNews")
     public String editNews(HttpServletRequest request){
-    	RecommendRead recommendRead=(RecommendRead) request.getAttribute("RR");
+    	News recommendRead=(News) request.getAttribute("RR");
     	recommendRead.setName(request.getParameter("RRname"));
     	recommendRead.setContent(request.getParameter("RRcontent"));
     	recommendRead.setPicUrl(request.getParameter("img"));

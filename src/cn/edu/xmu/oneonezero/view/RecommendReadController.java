@@ -3,7 +3,7 @@ package cn.edu.xmu.oneonezero.view;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import cn.edu.xmu.oneonezero.service.RecommendReadManager;
+import cn.edu.xmu.oneonezero.service.NewsService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ import java.util.Date;
 @RequestMapping("/newsPush")
 public class RecommendReadController {
     @Resource(name = "recommendReadManager")
-    private RecommendReadManager recommendReadManager;
+    private NewsService recommendReadManager;
 
     @RequestMapping("/getNews")
     public String getNews(Date startTime,Date endTime,HttpServletRequest request){
