@@ -7,7 +7,7 @@
 </head>
 <body>
 <h6><a href="/test_ssh/jsp/editor_index.jsp">采编首页</a></h6>
-<h6><a href="/test_ssh/jsp/editorinchief_index.jsp">主编首页</a></h6>
+<h6><a href="/test_ssh/jsp/chiefEditor_index.jsp">主编首页</a></h6>
 <h6><a href="/test_ssh/jsp/newsPush/getNews">软文推送首页</a></h6>
 </body>
 </html>

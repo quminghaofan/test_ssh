@@ -117,7 +117,7 @@ public class EditorController {
     }
 
     //不通过
-    @RequestMapping("/getUnPassedPass")
+    @RequestMapping("/getUnPassed")
     public String getUnPassedPass(HttpServletRequest request){
     	User user=(User)request.getSession().getAttribute("user");
         request.setAttribute("RRLIST",newsService.getUnPassedNewsByEditorName(user.getName()));
