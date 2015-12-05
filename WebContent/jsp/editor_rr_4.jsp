@@ -59,7 +59,7 @@
                 <td>${rr.onShowTime}</td>
                 <td>${rr.}</td>
                 <td>${rr.}</td>
-            <td><a href="">编辑</a>&nbsp;&nbsp;<a href="">删除</a></td>
+            <td><a href="">编辑</a>&nbsp;&nbsp;<a href="">删除</a>&nbsp;&nbsp;<a href="">发送</a></td>
             </tr>
     </c:forEach>
 </c:if>
