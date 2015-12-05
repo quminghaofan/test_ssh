@@ -1705,6 +1705,30 @@ p.cart {
 	padding: 0.5em;
 	-webkit-appearance: none;
 }
+.register-top-grid input[type="password"], .register-bottom-grid input[type="password"] {
+	border: 1px solid #EEE;
+	outline-color:#FF5B36;
+	width: 96%;
+	font-size: 1em;
+	padding: 0.5em;
+	-webkit-appearance: none;
+}
+.register-top-grid input[type="tel"], .register-bottom-grid input[type="tel"] {
+	border: 1px solid #EEE;
+	outline-color:#FF5B36;
+	width: 96%;
+	font-size: 1em;
+	padding: 0.5em;
+	-webkit-appearance: none;
+}
+.register-top-grid input[type="check"], .register-bottom-grid input[type="check"] {
+	border: 1px solid #EEE;
+	outline-color:#FF5B36;
+	width: 65%;
+	font-size: 1em;
+	padding: 0.5em;
+	-webkit-appearance: none;
+}
 .checkbox {
 	margin-bottom: 4px;
 	padding-left: 27px;
