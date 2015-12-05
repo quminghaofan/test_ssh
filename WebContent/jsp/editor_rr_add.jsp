@@ -40,7 +40,14 @@
             var editor;
             KindEditor.ready(function(K) {
                 editor = K.create('textarea[name="content"]', {
-                    allowFileManager : true
+                	 resizeType : 1,
+                     allowPreviewEmoticons: false,
+                     allowImageUpload:true,//允许上传图片
+                    allowFileManager : true,
+                    uploadJson:'../texteditor/jsp/upload_json.jsp', //上传图片的java代码，只不过放在jsp中
+                    fileManagerJson:'../texteditor/jsp/file_manager_json.jsp',
+                    afterUpload: function(){this.sync();}, //图片上传后，将上传内容同步到textarea中
+                    afterBlur: function(){this.sync();},   ////失去焦点时，将上传内容同步到textarea中
                 });
             });
                 </script>
@@ -94,10 +101,5 @@ $(function(){
 		document.getElementById("image").src=this.result;
 		});  });
 
-$(function () {       
-	$('#backid').click(function(){
-			window.location.href="/test_ssh/jsp/editor_rr_1.jsp";
-	 });
 
-});
 </script>
