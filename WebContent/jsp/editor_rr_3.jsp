@@ -47,6 +47,7 @@
         <th>图片</th>
         <th>审核人</th>
         <th>上架时间</th>
+        <th>下架时间</th>
         <th>等级</th>
         <th>操作</th>
     </tr>
@@ -58,8 +59,14 @@
                 <td>${rr.picUrl}</td>
                 <td>${rr.chiefEditor}</td>
                 <td>${rr.onShowTime}</td>
+                <td>${rr.offShowTime}</td>
                 <td>${rr.rank}</td>
-            <td><a href="软文界面">查看</a></td>
+                <c:if test="${rr.}">
+            <td><a href="软文界面">查看</a>&nbsp;&nbsp;<a href="">撤回</a></td>
+            </c:if>
+            <c:if test="${rr.}">
+            <a href="软文界面">查看</a>
+            </c:if>
             </tr>
     </c:forEach>
 </c:if>
