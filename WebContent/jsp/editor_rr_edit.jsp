@@ -31,9 +31,20 @@
                 padding-right: 5px;
             }
         }
-
-
     </style>
+    
+    <link rel="stylesheet" href="../texteditor/themes/default/default.css" />
+        <script charset="utf-8" src="../texteditor/kindeditor-min.js"></script>
+        <script charset="utf-8" src="../texteditor/lang/zh_CN.js"></script>
+        <script>
+            var editor;
+            KindEditor.ready(function(K) {
+                editor = K.create('textarea[name="content"]', {
+                    allowFileManager : true
+                });
+            });
+                </script>
+                <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
 <form action="/test_ssh/editor/editNews" method="post" class="definewidth m10">
@@ -44,17 +55,29 @@
         </tr>
         <tr>
             <td class="tableleft">内容</td>
-            <td><input id="RRcontent" type="text" name="RRcontent" value="${news.content}"/></td>  <!--TODO-->
+            <td><textarea name="content">${news.content}</textarea></td>  <!--TODO-->
         </tr>
         <tr>
             <td class="tableleft">图片</td>
-            <td><img id="image" src="${news.picUrl}"></td>
-            <td><input id="img" name="img" type="file" accept="image/*" /></td>
+            <td><span><img id="image" src="${news.picUrl}"></span>
+            <span><input id="img" name="img" type="file" accept="image/*" /></span></td>
+        </tr>
+        <tr>
+            <td width="10%" class="tableleft">上架时间</td>
+            <td><input name="txtDate time1" id="txtDate time1" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/></td>
+        </tr>
+        <tr>
+            <td width="10%" class="tableleft">下架时间</td>
+            <td><input name="txtDate time2" id="txtDate time2" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/></td>
+        </tr>
+         <tr>
+            <td width="10%" class="tableleft">价格</td>
+            <td><input type="text" name="RRname" value="${news.name}" readonly="readonly"/></td>  <!--TODO-->
         </tr>
     <tr>
             <td class="tableleft"></td>
             <td>
-                <button type="submit" class="btn btn-primary" type="button"  name="btnid" id="btnid">发送</button>				 &nbsp;&nbsp;<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
+               <button type="submit" class="btn btn-primary" type="button"  name="savebtnid" id="savebtnid">保存</button> <button type="submit" class="btn btn-primary" type="button"  name="btnid" id="btnid">发送</button>				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/jsp/editor_rr_4.jsp'" value="返回列表">
             </td>
         </tr>
 </table>
