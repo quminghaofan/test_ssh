@@ -255,7 +255,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span style="display:none" id="psw_blank"><font color="red">不能为空</font></span>
 				  </div>
 				  <a class="forgot" href="#">忘记密码?</a>
-				  <input type="submit" value="登录" onClick="laginfrom.onsubmit()">
+				  <input type="submit" value="登录" onClick="loginform.onsubmit()">
 			    </form>
 			   </div>	
 			   <div class="clearfix"> </div>
