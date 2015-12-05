@@ -35,7 +35,7 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/editor/getSuccessPassByNewsName" method="get">
+<form class="form-inline definewidth m20" action="/test_ssh/editor/getDraftByNewsName" method="get">
     软文名称
     <input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search">搜索</button>&nbsp;&nbsp; <input type="button" class="btn btn-success" id="search" onclick="window.location.href='/test_ssh/jsp/editor_rr_add.jsp'" value="新增软文"/>
@@ -58,8 +58,8 @@
                 <td><img src="${rr.picUrl}"></td>
                 <td>${rr.onShowTime}</td>
                 <td>${rr.offShowTime}</td>
-                <td>${rr.}</td>
-            <td><a href="/test_ssh/editor/getNewsToEdit?newsId=${rr.id}">编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}'">删除</a>&nbsp;&nbsp;<a href="">发送</a></td>
+                <td>${rr.price}</td>
+            <td><a href="/test_ssh/editor/getNewsToEdit?newsId=${rr.id}">编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}'">删除</a>&nbsp;&nbsp;<a href="/test_ssh/jsp/editor_rr_add.jsp">发送</a></td>
             </tr>
     </c:forEach>
 </c:if>

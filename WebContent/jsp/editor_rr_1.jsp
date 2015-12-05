@@ -63,12 +63,3 @@
 
 </body>
 </html>
-<script>
-    $(function () {
-        $('#addnew').click(function(){
-
-                window.location.href="/test_ssh/jsp/editor_rr_add.jsp";
-         });
-    });
-    
-</script>

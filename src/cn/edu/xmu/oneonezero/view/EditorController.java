@@ -113,7 +113,7 @@ public class EditorController {
     @RequestMapping("/getUnexaminedByNewsName")
     public String getUnexaminedByNewsName(HttpServletRequest request){
         User user=(User)request.getSession().getAttribute("user");
-    	request.setAttribute("RRLIST",newsService.getUnexaminedNewsByName(request.getParameter("RRname")));//TODO
+    	request.setAttribute("RRLIST",newsService.getUnexaminedNewsByName(user.getName(),request.getParameter("RRname")));//TODO
         return  "editor_rr_1";
     }
 
@@ -125,11 +125,11 @@ public class EditorController {
         return "editor_rr_2";
     }
 
-    @RequestMapping("getUnPassedByNewsName")
+    @RequestMapping("/getUnPassedByNewsName")
     public String getUnPassedByNewsName(HttpServletRequest request){
     	//TODO 根据采编名称和新闻名模糊获取
     	User user=(User)request.getSession().getAttribute("user");
-    	request.setAttribute("RRLIST",newsService.getUnPassedNewsByNewsName(request.getParameter("RRname")));//TODO
+    	request.setAttribute("RRLIST",newsService.getUnPassedNewsByNewsName(user.getName(),request.getParameter("RRname")));//TODO
         return  "editor_rr_2";
     }
 
@@ -141,11 +141,25 @@ public class EditorController {
         return "editor_rr_3";
     }
 
-    @RequestMapping("getPassedByNewsName")
+    @RequestMapping("/getPassedByNewsName")
     public String getPassedByNewsName(HttpServletRequest request){
     	//TODO 根据采编名称和新闻名模糊获取
     	User user=(User)request.getSession().getAttribute("user");
-        request.setAttribute("RRLIST",newsService.getPassedNewsByNewsName(request.getParameter("RRname")));
+        request.setAttribute("RRLIST",newsService.getPassedNewsByNewsName(user.getName(),request.getParameter("RRname")));
         return  "editor_rr_3";
+    }
+    
+    @RequestMapping(value="getDraft")
+    public String getDraft(HttpServletRequest request){
+    	User user=(User)request.getSession().getAttribute("user");
+    	request.setAttribute("RRLIST",newsService.getDraft(user.getName()));
+    	return "editor_rr_4";
+    }
+    
+    @RequestMapping(value="getDraftByNewsName")
+    public String getDraftByNewsName(HttpServletRequest request){
+    	User user=(User)request.getSession().getAttribute("user");
+    	request.setAttribute("RRLIST",newsService.getDraftByNewsName(user.getName(),request.getParameter("RRname")));
+    	return "editor_rr_4";
     }
 }

@@ -22,7 +22,7 @@ public class UserController {
 
 	@RequestMapping("/getAllUser")
 	public String getAllUser(HttpServletRequest request){
-		request.setAttribute("USERLIST", userService.getAllUser());
+//		request.setAttribute("USERLIST", userService.getAllUser());
 		return "admin_userlist";
 	}
 	
