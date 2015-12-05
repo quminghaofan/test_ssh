@@ -258,13 +258,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					 </div>
 					 <div class="clearfix"> </div>
 					   <a class="news-letter" href="#">
-						 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>同意该网站协定</label>
+				<!-- TODO -->	
+				          <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>同意该网站协定</label>
 					   </a>
 					 </div>
-				</form>
 				<div class="clearfix"> </div>
 				<div class="register-but">
-				   <form>
 					   <input type="submit" value="提交">
 					   <div class="clearfix"> </div>
 				   </form>
@@ -290,8 +289,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 
 <script src="http://su.bdimg.com/static/superplus/js/lib/jquery-1.10.2_d88366fd.js"></script> 
-	<script type="text/javascript" language="javascript">	
-		function registerUser() {		
+	<script type="text/javascript" language="javascript"><!-- TODO 确认密码 -->		
+		function registerUser() { 	
 			var mobile = document.getElementById("mobile").value;		
 			var password = document.getElementById("password").value;		
 			var idcode = document.getElementById("idcode").value;		

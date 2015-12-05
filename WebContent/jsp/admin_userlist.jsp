@@ -37,14 +37,14 @@
 </head>
 <body>
 
-<form class="form-inline definewidth m20" action="index.html" method="get">
-    用户名/用户ID
+<form class="form-inline definewidth m20" action="/test_ssh/admin_user/getUser" method="get">
+    用户名  <!-- TODO 根据用户名或角色查询，做成下拉框 -->
     <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>
 </form>
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
-    <tr>
+    <tr><!-- 超级管理员：用户交易记录，平台收入查询（可根据时间），人员工资结算，查询某个用户的工资详情（可根据时间）-->
         <th>用户名</th>
         <th>角色</th>
         <th>银行卡号</th>
@@ -53,9 +53,9 @@
     <c:if test="${USERLIST!=null}">
     <c:forEach items="${USERLIST}" var="user">
         <tr>
-                <td>${user.}</td>
-                <td>${user.}</td>
-                <td>${user.}</td>
+                <td>${user.name}</td>
+                <td>${user.role}</td>
+                <td>${user.bankCardAccount}</td>
             </tr>
     </c:forEach>
 </c:if>

@@ -34,4 +34,9 @@ public class LoginController {
 			return "login";
 		}
 	}
+	
+	@RequestMapping(value="/register",method=RequestMethod.POST)
+	public String register(HttpServletRequest request){
+		return "";
+	}
 }

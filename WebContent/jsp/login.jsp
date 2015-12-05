@@ -235,7 +235,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			   <div class="col-md-6 login-left">
 			  	 <h3>新用户</h3>
 				 <p>创建一个账号，您将能够更好地进行艺术品交易，查看并跟踪您的订单。</p>
-				 <a class="acount-btn" href="/test_ssh/jsp/register.jsp">创建账号</a> <!-- TODO -->
+				 <a class="acount-btn" href="/test_ssh/jsp/register.jsp">创建账号</a>
 			   </div>
 			   <div class="col-md-6 login-right">
 			  	<h3>登录</h3>

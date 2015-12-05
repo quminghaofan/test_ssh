@@ -39,7 +39,7 @@
   <script type="text/javascript" src="../assets/js/config-min.js"></script>
   <script>
     BUI.use('common/main',function(){ 
-      var config = [{id:'1',menu:[{text:'用户管理',items:[{id:'12',text:'用户列表',href:'/test_ssh/editing/getAllUnreviewed'}]}]}];
+      var config = [{id:'1',menu:[{text:'用户管理',items:[{id:'12',text:'用户列表',href:'/test_ssh/admin_user/getAllUser'}]}]}];
       new PageUtil.MainPage({
         modulesConfig : config
       });
