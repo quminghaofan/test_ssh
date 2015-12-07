@@ -12,7 +12,7 @@ import cn.edu.xmu.oneonezero.entity.User;
 import cn.edu.xmu.oneonezero.service.UserService;
 
 @Controller
-@RequestMapping("/editor")
+@RequestMapping("/login")
 public class LoginController {
 	
 	@Resource(name="userService")
@@ -37,6 +37,9 @@ public class LoginController {
 	
 	@RequestMapping(value="/register",method=RequestMethod.POST)
 	public String register(HttpServletRequest request){
+		String userNameString=request.getParameter("username");
+		String psw=request.getParameter("password");
+		
 		return "";
 	}
 }

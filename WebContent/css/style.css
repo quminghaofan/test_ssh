@@ -1635,6 +1635,14 @@ p.m_11 {
 	padding:10px;
 	-webkit-appearance: none;
 }
+.login-right input[type="check"] {
+	border: 1px solid #DDDBDB;
+	outline-color:#fb4d01;
+	width: 60%;
+	font-size:0.8125em;
+	padding:10px;
+	-webkit-appearance: none;
+}
 .login-right input[type="submit"] {
 	background:#1bccf7;
 	color: #FFF;
