@@ -85,19 +85,4 @@
 </body>
 </html>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>  
-<script type="text/javascript">  
-$(function(){  
-	$('#img').change(function(){  
-		var file = this.files[0]; //选择上传的文件  
-		var r = new FileReader();  
-		r.readAsDataURL(file); //Base64  
-		document.getElementById("image").src=this.result;
-		});  });
 
-$(function () {       
-	$('#backid').click(function(){
-			window.location.href="/test_ssh/jsp/editor_rr_1.jsp";
-	 });
-
-});
-</script>

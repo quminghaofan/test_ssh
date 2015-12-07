@@ -5,10 +5,10 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>编辑</title>
-  <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
-  <link rel="stylesheet" type="text/css" href="../Css/bootstrap-responsive.css" />
-  <link rel="stylesheet" type="text/css" href="../Css/style.css" />
+  <title>审核</title>
+  <link rel="stylesheet" type="text/css" href="../Css1/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="../Css1/bootstrap-responsive.css" />
+  <link rel="stylesheet" type="text/css" href="../Css1/style.css" />
   <script type="text/javascript" src="../Js/jquery.js"></script>
   <script type="text/javascript" src="../Js/jquery.sorted.js"></script>
   <script type="text/javascript" src="../Js/bootstrap.js"></script>
@@ -36,38 +36,49 @@
   </style>
 </head>
 <body>
-<form action="/test_ssh/jsp/chiefEditor_rr_1.jsp" method="post" class="definewidth m20">
+<form action="/test_ssh/jsp/chiefEditor_rr_1.jsp" method="post" class="definewidth m10">
   <table class="table table-bordered table-hover m10">
+   <tr>
+            <td width="10%" class="tableleft">软文标题</td>
+            <td><input type="text" name="RRname" value="${news.name}" readonly="readonly"/></td>  <!--TODO-->
+        </tr>
+        <tr>
+            <td class="tableleft">内容</td>
+            <td><textarea name="content" readonly="readonly">${news.content}</textarea></td>  <!--TODO-->
+        </tr>
+        <tr>
+            <td class="tableleft">图片</td>
+            <td><span><img id="image" src="${news.picUrl}"></span>
+        </tr>
+        <tr>
+            <td width="10%" class="tableleft">上架时间</td>
+            <td><input name="txtDate time1" id="txtDate time1" class="Wdate" type="date" readonly="readonly"/></td>
+        </tr>
+        <tr>
+            <td width="10%" class="tableleft">下架时间</td>
+            <td><input name="txtDate time2" id="txtDate time2" class="Wdate" type="date" readonly="readonly"/></td>
+        </tr>
+         <tr>
+            <td width="10%" class="tableleft">价格</td>
+            <td><input type="text" name="RRname" value="${news.name}" readonly="readonly"/></td>  <!--TODO-->
+        </tr>
+        <tr>
+            <td width="10%" class="tableleft">等级</td>
+            <td><select name="rank" id="rank">
+                <option selected="selected" value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select></td>
+        </tr>
     <tr>
-      <td width="10%" class="tableleft">软文标题</td>
-      <td><input type="text" id="RRname" name="RRname" value="${RR.name}" readonly/></td>
-    </tr>
-    <tr>
-      <td class="tableleft">内容</td>
-      <td><input type="text" id="RRcontent" name="RRcontent" value="${RR.content}" readonly/></td>
-    </tr>
-    <tr>
-      <td class="tableleft">图片</td>
-      <td><img id="image" src="${RR.picUrl}"></td>
-      <td><input id="img" name="img" type="file" accept="image/*" readonly/></td>
-    </tr>
-    <tr>
-      <td class="tableleft"></td>
-      <td>
-        <button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
-      </td>
-    </tr>
+            <td class="tableleft"></td>
+            <td>
+               <button  class="btn btn-primary" type="button" >通过</button> <button type="submit" class="btn btn-primary" type="button"  name="btnid" id="btnid">不通过</button>				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/jsp/editor_rr_4.jsp'" value="返回列表">
+            </td>
+        </tr>
   </table>
 </form>
 </body>
 </html>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript">
-  $(function(){
-    $('#img').change(function(){
-      var file = this.files[0]; //选择上传的文件
-      var r = new FileReader();
-      r.readAsDataURL(file); //Base64
-      document.getElementById("image").src=this.result;
-    });  });
-</script>

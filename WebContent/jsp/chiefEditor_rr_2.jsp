@@ -49,6 +49,8 @@
         <th>作者</th>
         <th>审核状态</th>
         <th>上架时间</th>
+        <th>下架时间</th>
+        <th>价格</th>
         <th>等级</th>
         <th>操作</th>
     </tr>
@@ -61,8 +63,10 @@
                 <td>${rr.editor}</td>
                 <td>${rr.isExamined}</td>
                 <td>${rr.onShowTime}</td>
+                <td>${rr.offShowTime}</td>
+                <td>${rr.price}</td>
                 <td>${rr.rank}</td>
-                <td><a href="/test_ssh/chiefEditor/getNews?newsId=${rr.id}">查看</a></td>
+                <td><a href="/test_ssh/chiefEditor/getNews?newsId=${rr.id}">查看</a>&nbsp;&nbsp;<a href="">重新审核</a></td>
             </tr>
     </c:forEach>
 </c:if>
