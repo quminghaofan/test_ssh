@@ -26,7 +26,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/megamenu.js"></script>
 <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
 <script src="js/responsiveslides.min.js"></script>
-<script src="../js/jquery.min.js" type="text/javascript"></script>
+
 <script>
     $(function () {
       $("#slider").responsiveSlides({
@@ -110,8 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     %>
                     <li><a href="">申请成为艺术家</a></li> 
                     <li><a href=""> <%=session.getAttribute("username")%></a></li>
-                    <li><a href="">订单</a></li>
-                    <li><a href="">购物车</a></li>
+                    <li><a href="">我的订单</a></li>
                     <li><a href="">登出</a></li> 
                     <%} %>
 				</ul>
@@ -130,7 +129,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			<div class="clearfix"> </div>
 		</div>
-		
+		<div class="header_bottom_right">
+	  		  <%
+                	if(session.getAttribute("username")!=null){
+                %>
+	  		<ul class="bag">
+	  			<a href="#"><i class="bag_left"> </i></a>
+	  			<a href="#"><li class="bag_right"><p>购物篮</p> </li></a>
+	  			<div class="clearfix"> </div>
+	  		</ul>
+	  		 <%} %>
+		</div>
 		<div class="clearfix"> </div>
 	</div>
 </div>
@@ -147,6 +156,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="col1">
 							<div class="h_nav">
 								<ul>
+								<li><a href="">全部</a></li>
 								<c:forEach items="${TYPELIST}" var="type">
 									<li><a href="">${type.}</a></li>
 								</c:forEach>	
@@ -162,6 +172,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="col1">
 							<div class="h_nav">
 								<ul>
+								<li><a href="">全部</a></li>
 								<c:forEach items="${TYPELIST}" var="type">
 									<li><a href="">${type.}</a></li>
 								</c:forEach>	
@@ -177,6 +188,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="col1">
 							<div class="h_nav">
 								<ul>
+								<li><a href="">全部</a></li>
 								<c:forEach items="${TYPELIST}" var="type">
 									<li><a href="">${type.}</a></li>
 								</c:forEach>	
