@@ -71,11 +71,11 @@
         </tr>
         <tr>
             <td width="10%" class="tableleft">上架时间</td>
-            <td><input name="txtDate time1" id="txtDate time1" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/></td>
+            <td><input name="txtDate time1" id="txtDate time1" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})"/></td>
         </tr>
         <tr>
             <td width="10%" class="tableleft">下架时间</td>
-            <td><input name="txtDate time2" id="txtDate time2" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/></td>
+            <td><input name="txtDate time2" id="txtDate time2" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})"/></td>
         </tr>
          <tr>
             <td width="10%" class="tableleft">价格</td>

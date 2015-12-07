@@ -42,13 +42,15 @@
 
 //文件保存目录路径
 //String savePath = pageContext.getServletContext().getRealPath("/") + "attached/";
-String savePath=request.getSession().getServletContext().getRealPath("/") + "texteditor/attached/";
+//String savePath=request.getSession().getServletContext().getRealPath("/") + "attached/";
+String savePath="../attached";
 //文件保存目录URL
 File dir = new File(savePath);
 if(!dir.isDirectory())
 dir.mkdir();
-String saveUrl  = request.getContextPath() + "texteditor/attached/";
+//String saveUrl  = request.getContextPath() + "texteditor/attached/";
 //String saveUrl  ="/image/";
+String saveUrl="texteditor/attached";
 //定义允许上传的文件扩展名
 HashMap<String, String> extMap = new HashMap<String, String>();
 extMap.put("image", "gif,jpg,jpeg,png,bmp");
