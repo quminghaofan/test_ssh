@@ -33,7 +33,7 @@
         }
     </style>
     
-    <link rel="stylesheet" href="../texteditor/themes/default/default.css" />
+     <link rel="stylesheet" href="../texteditor/themes/default/default.css" />
         <script charset="utf-8" src="../texteditor/kindeditor-min.js"></script>
         <script charset="utf-8" src="../texteditor/lang/zh_CN.js"></script>
         <script>
@@ -64,15 +64,16 @@
         </tr>
         <tr>
             <td width="10%" class="tableleft">上架时间</td>
-            <td><input name="txtDate time1" id="txtDate time1" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/></td>
+            <td><input name="txtDate time1" id="txtDate time1" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" onchange="price_count()"/></td>
         </tr>
         <tr>
             <td width="10%" class="tableleft">下架时间</td>
-            <td><input name="txtDate time2" id="txtDate time2" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd HH:mm:ss'})"/></td>
+            <td><input name="txtDate time2" id="txtDate time2" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" onchange="price_count()"/>
+            <span id="time_err" style="display:none"><font color="red">下架时间不能小于上架时间</font></td>
         </tr>
          <tr>
             <td width="10%" class="tableleft">价格</td>
-            <td><input type="text" name="RRname" value="${news.name}" readonly="readonly"/></td>  <!--TODO-->
+            <td><input type="text" name="price" id="price" value="${news.name}" readonly="readonly"/></td>  <!--TODO-->
         </tr>
     <tr>
             <td class="tableleft"></td>
@@ -86,3 +87,33 @@
 </html>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>  
 
+<script type="text/javascript">  
+$(function(){  
+	$('#img').change(function(){  
+		var file = this.files[0]; //选择上传的文件  
+		var r = new FileReader();  
+		r.readAsDataURL(file); //Base64  
+		document.getElementById("image").src=this.result;
+		});  });
+		
+function price_count(){
+	var sDate1=document.getElementById("txtDate time1").value;
+	var sDate2=document.getElementById("txtDate time2").value;
+	document.getElementById("time_err").style.display="none";
+	if(sDate1!=""&&sDate2!=""){
+	  var  aDate,  oDate1,  oDate2,  iDays  
+      aDate  =  sDate1.split("-")  
+      oDate1  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0])    //转换为12-18-2002格式  
+      aDate  =  sDate2.split("-")  
+      oDate2  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0]) 
+	  if(oDate1>oDate2)
+		  document.getElementById("time_err").style.display="block";
+	  else{
+      iDays  =  parseInt(Math.abs(oDate1  -  oDate2)  /  1000  /  60  /  60  /24) ;   //把相差的毫秒数转换为天数  
+      var price=iDays*300;
+	  document.getElementById("price").value=price;
+	  }
+	}
+}
+
+</script>
