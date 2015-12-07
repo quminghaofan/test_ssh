@@ -2,6 +2,8 @@ package cn.edu.xmu.oneonezero.dao;
 
 
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
@@ -73,6 +75,40 @@ public class UserDaoImpl implements UserDao {
 		query.setString(1, psw);
 		
 		return !query.list().isEmpty();
+	}
+
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> getAllUsers() {
+		String hql = "from User";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		return query.list();
+	}
+
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> getUserByUserName(String userName) {
+		String hql = "from User u where u.name=?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, userName);
+		
+		return query.list();
+	}
+
+
+
+	@Override
+	public List<User> getUsersByRole(String role) {
+		String hql="from User u where u.role=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, role);
+		
+		return query.list();
 	}
 	
 	

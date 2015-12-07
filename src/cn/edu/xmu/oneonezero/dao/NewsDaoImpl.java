@@ -45,19 +45,18 @@ public class NewsDaoImpl implements NewsDao {
 	@Override
 	public boolean updateNews(News news) {
 		String hql = "update News n set n.chiefEditor= ?,n.editor=?,n.content=?,"
-				+ "n.offShowTime=?,n.onShowTime=?,n.picUrl=?,n.rank=?,n.isExamined=?,n.isPassed=?,n.name=? where n.id = ?";
+				+ "n.offShowTime=?,n.onShowTime=?,n.picUrl=?,n.rank=?,n.state=?,n.name=? where n.id = ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, news.getChiefEditor());
-		query.setString(1, news.getEditor());
+		query.setEntity(1, news.getEditor());//check
 		query.setString(2, news.getContent());
 		query.setString(3, news.getOffShowTime());
 		query.setString(4, news.getOnShowTime());
 		query.setString(5, news.getPicUrl());
 		query.setString(6, news.getRank());
-		query.setBoolean(7, news.getIsExamined());
-		query.setBoolean(8, news.getIsPassed());
-		query.setString(9, news.getName());
-		query.setLong(10, news.getId());
+		query.setString(7, news.getState());
+		query.setString(8, news.getName());
+		query.setLong(9, news.getId());
 		
 		return (query.executeUpdate() > 0);
 	}
@@ -65,7 +64,7 @@ public class NewsDaoImpl implements NewsDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<News> getNewsByEditor(String editor) {
-		String hql = "from News n where n.editor=?";
+		String hql = "from News n where n.editor.name=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, editor);
 		
@@ -75,7 +74,7 @@ public class NewsDaoImpl implements NewsDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<News> getUnexaminedNewsByEditor(String editor) {
-		String hql = "from News n where n.editor=? and n.isExamined=false ";
+		String hql = "from News n where n.editor.name=? and n.state='Unexamined' ";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, editor);
@@ -86,7 +85,7 @@ public class NewsDaoImpl implements NewsDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<News> getExaminedNewsByEditor(String editor) {
-		String hql = "from News n where n.editor=? and n.isExamined=true";
+		String hql = "from News n where n.editor.name=? and (n.state='Passed' or n.state='Unpassed')";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, editor);
@@ -96,7 +95,7 @@ public class NewsDaoImpl implements NewsDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<News> getExaminedNews() {
-		String hql = "from News n where n.isExamined=true";
+		String hql = "from News n where n.state='Unexamined'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		return query.list();
@@ -105,7 +104,7 @@ public class NewsDaoImpl implements NewsDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<News> getUnexaminedNews() {
-		String hql = "from News n where n.isExamined=false ";
+		String hql = "from News n where n.state='Unexamined' ";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		return query.list();
@@ -114,7 +113,7 @@ public class NewsDaoImpl implements NewsDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<News> getExaminedNewsByName(String newsName) {
-		String hql = "from News n where n.name=? and n.isExamined=true";
+		String hql = "from News n where n.name=? and (n.state='Passed' or n.state='Unpassed')";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, newsName);
@@ -124,7 +123,7 @@ public class NewsDaoImpl implements NewsDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<News> getUnexaminedNewsByName(String newsName) {
-		String hql = "from News n where n.name=? and n.isExamined=false";
+		String hql = "from News n where n.name=? and n.state='Unexamined'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, newsName);
@@ -135,7 +134,7 @@ public class NewsDaoImpl implements NewsDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<News> getUnexaminedNewsByEditorName(String editorName) {
-		String hql = "from News n where n.editor=? and n.isExamined=false";
+		String hql = "from News n where n.editor.name=? and n.state='Unexamined'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, editorName);
@@ -146,7 +145,7 @@ public class NewsDaoImpl implements NewsDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<News> getUnPassedNewsByEditorName(String editorName) {
-		String hql = "from News n where n.editor=? and n.isExamined=true and n.isPassed=false";
+		String hql = "from News n where n.editor.name=? and n.state='Unpassed'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, editorName);
@@ -157,7 +156,7 @@ public class NewsDaoImpl implements NewsDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<News> getPassedNewsByEditorName(String editorName) {
-		String hql = "from News n where n.editor=? and n.isExamined=true and n.isPassed=true";
+		String hql = "from News n where n.editor.name=? and n.state='Passed'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, editorName);
@@ -168,7 +167,7 @@ public class NewsDaoImpl implements NewsDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<News> getUnPassedNewsByNewsName(String newsName) {
-		String hql = "from News n where n.name=? and n.isExamined=true and n.isPassed=false";
+		String hql = "from News n where n.name=? and n.state='Unpassed'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, newsName);
@@ -179,7 +178,7 @@ public class NewsDaoImpl implements NewsDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<News> getPassedNewsByNewsName(String newsName) {
-		String hql = "from News n where n.editor=? and n.isExamined=true and n.isPassed=true";
+		String hql = "from News n where n.editor=? and n.state='Passed'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, newsName);
@@ -190,7 +189,7 @@ public class NewsDaoImpl implements NewsDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<News> getNewsVagueByEditorNameAndNewsName(String editorName, String newsName) {
-		String hql="from News n where n.editor=? and n.name like ?";
+		String hql="from News n where n.editor.name=? and n.name like ?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, editorName);
@@ -198,6 +197,60 @@ public class NewsDaoImpl implements NewsDao {
 		
 		return query.list();
 	
+	}
+
+	@Override
+	public List<News> getDraftByEditorName(String editorName) {
+		String hql="from News n where n.editor.name=? and n.state='Draft'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		
+		query.setString(0, editorName);
+		
+		return query.list();
+	}
+
+	@Override
+	public List<News> getDraftByEditorNameAndNewsName(String editorName, String newsName) {
+		String hql="from News n where n.editor.name=? and n.name=? and n.state='Draft'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		
+		query.setString(0, editorName);
+		query.setString(1, newsName);
+		
+		return query.list();
+	}
+
+	@Override
+	public List<News> getUnexaminedNewsByEditorNameAndNewsName(String editorName, String newsName) {
+		String hql="from News n where n.editor.name=? and n.name=? and n.state='Unexamined'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		
+		query.setString(0, editorName);
+		query.setString(1, newsName);
+		
+		return query.list();
+	}
+
+	@Override
+	public List<News> getPassedNewsByEditorNameAndNewsName(String editorName, String newsName) {
+		String hql="from News n where n.editor.name=? and n.name=? and n.state='Passed'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		
+		query.setString(0, editorName);
+		query.setString(1, newsName);
+		
+		return query.list();
+	}
+
+	@Override
+	public List<News> getUnpassedNewsByEditorNameAndNewsName(String editorName, String newsName) {
+		String hql="from News n where n.editor.name=? and n.name=? and n.state='Unpassed'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		
+		query.setString(0, editorName);
+		query.setString(1, newsName);
+		
+		return query.list();
 	}
 	
 	//异常代码：

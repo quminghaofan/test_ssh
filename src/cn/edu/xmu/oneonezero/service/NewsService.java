@@ -44,6 +44,14 @@ public List<News> getPassedNewsByNewsName(String newsName);//根据软文名字�
 public List<News> getNewsVagueByEditorNameAndNewsName(String editorName,String newsName);//根据采编名和软文模糊名返回相关的软文
 
 
+public List<News> getDraftByEditorName(String editorName);//获取某个采编的所有草稿
+
+public List<News> getDraftByEditorNameAndNewsName(String editorName,String newsName);//精确获取草稿
+
+public List<News> getUnexaminedNewsByEditorNameAndNewsName(String editorName,String newsName);//精确获取未审核
+public List<News> getPassedNewsByEditorNameAndNewsName(String editorName,String newsName);//精确获取已通过
+public List<News> getUnpassedNewsByEditorNameAndNewsName(String editorName,String newsName);//精确获取未通过
+
 
 
 

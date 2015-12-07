@@ -4,7 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name="News")
@@ -16,10 +21,9 @@ public class News {
 	private String onShowTime;
 	private String offShowTime;
 	private String rank;
-	private String editor;//采编
+	private User editor;//采编
 	private String chiefEditor;//主编
-	private boolean isExamined;//是否审核
-	private boolean isPassed;//是否审核通过
+	private String state;//软文的状态
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -66,10 +70,14 @@ public class News {
 	public void setRank(String rank) {
 		this.rank = rank;
 	}
-	public String getEditor() {
+	
+	@ManyToOne
+	@JoinColumn(name="editorId")
+	@Cascade(CascadeType.ALL)
+	public User getEditor() {
 		return editor;
 	}
-	public void setEditor(String editor) {
+	public void setEditor(User editor) {
 		this.editor = editor;
 	}
 	public String getChiefEditor() {
@@ -80,17 +88,12 @@ public class News {
 	}
 	
 	
-	public boolean getIsExamined() {
-		return isExamined;
+
+	public String getState() {
+		return state;
 	}
-	public void setIsExamined(boolean isExamined) {
-		this.isExamined = isExamined;
-	}
-	public boolean getIsPassed() {
-		return isPassed;
-	}
-	public void setIsPassed(boolean isPassed) {
-		this.isPassed = isPassed;
+	public void setState(String state) {
+		this.state = state;
 	}
 	
 	

@@ -5,8 +5,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="User")
+@Table(name="Role")
 public class Role {
-		
-	
+		long id;
+		String name;
 }

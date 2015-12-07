@@ -116,5 +116,37 @@ public class NewsServiceImpl implements NewsService {
 	public List<News> getNewsVagueByEditorNameAndNewsName(String editorName, String newsName) {
 		return newsDao.getNewsVagueByEditorNameAndNewsName(editorName, newsName);
 	}
+
+
+	@Override
+	public List<News> getDraftByEditorName(String editorName) {
+		return newsDao.getDraftByEditorName(editorName);
+	}
+
+
+	@Override
+	public List<News> getDraftByEditorNameAndNewsName(String editorName, String newsName) {
+		return newsDao.getDraftByEditorNameAndNewsName(editorName, newsName);
+	}
+
+
+	@Override
+	public List<News> getUnexaminedNewsByEditorNameAndNewsName(String editorName, String newsName) {
+		return newsDao.getUnexaminedNewsByEditorNameAndNewsName(editorName, newsName);
+	}
+
+
+	@Override
+	public List<News> getPassedNewsByEditorNameAndNewsName(String editorName, String newsName) {
+		return newsDao.getPassedNewsByEditorNameAndNewsName(editorName, newsName);
+	}
+
+
+	@Override
+	public List<News> getUnpassedNewsByEditorNameAndNewsName(String editorName, String newsName) {
+		return newsDao.getUnpassedNewsByEditorNameAndNewsName(editorName, newsName);
+	}
 	
+
+
 }
