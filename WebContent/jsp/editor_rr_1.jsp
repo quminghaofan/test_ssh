@@ -53,7 +53,7 @@
     <c:if test="${RRLIST!=null}">
     <c:forEach items="${RRLIST}" var="rr">
         <tr>
-                <td>${rr.name}</td>
+                <td>${rr.editor.name}</td>
                 <td><img src="${rr.picUrl}"/></td>
                 <td><a href="">查看</a>&nbsp;&nbsp;<a href="">撤回</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}'">删除</a></td>
             </tr>

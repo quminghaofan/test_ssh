@@ -31,15 +31,13 @@ public class ChiefEditorController {
         News news=newsService.getNews(newsId);
     	if(type.equals("1")) {
         	System.out.println(news.getId());
-        	news.setIsExamined(true);
-        	news.setIsPassed(true);
+        	news.setState("审核通过");
             newsService.updateNews(news);
             request.getSession().setAttribute("news", news);//TODO 点击通过时设置是否合理
             return "chiefEditor_rr_edit";
         }
         else {
-            news.setIsExamined(true);
-            news.setIsPassed(false);
+            news.setState("审核不通过");
             newsService.updateNews(news);
             return "chiefEditor_rr_2";
         }
