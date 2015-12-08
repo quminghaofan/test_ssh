@@ -269,7 +269,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</ul>
 		</div>
 		<div class="grid_2">
-		<c:forEach items="itemlist" var=item>
+		<c:forEach items="itemlist" var="item">
 			<div class="col-md-3 span_6">
 			  <div class="box_inner">
 				<img src="images/p1.jpg" class="img-responsive" alt=""/>
@@ -470,6 +470,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<p class="copy">Copyright &copy; 2015.厦门大学软件学院OneoneZero All rights reserved. More Information <a href="" target="_blank" title="OneoneZero">OneoneZero</a> - Made by <a href="" title="OneoneZero" target="_blank">OneoneZero</a></p>
 	</div>
 </div>
-
+</div>
 </body>
 </html>		
