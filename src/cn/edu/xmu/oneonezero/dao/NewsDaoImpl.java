@@ -252,6 +252,16 @@ public class NewsDaoImpl implements NewsDao {
 		
 		return query.list();
 	}
+
+	@Override
+	public void updateStateToDraft(long newsId) {
+		String hql = "update News n set n.state= '草稿' where n.id = ?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setLong(0, newsId);
+		
+		query.executeUpdate();
+
+	}
 	
 	//异常代码：
 	

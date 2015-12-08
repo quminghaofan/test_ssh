@@ -2,6 +2,8 @@ package cn.edu.xmu.oneonezero.service;
 
 import java.util.List;
 
+import org.hibernate.sql.Update;
+
 import cn.edu.xmu.oneonezero.entity.News;
 
 public interface NewsService {  
@@ -53,7 +55,7 @@ public List<News> getPassedNewsByEditorNameAndNewsName(String editorName,String 
 public List<News> getUnpassedNewsByEditorNameAndNewsName(String editorName,String newsName);//精确获取未通过
 
 
-
+public void updateStateToDraft(long newsId);//根据软文id将其状态改为草稿状态
 
 
 

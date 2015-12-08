@@ -146,6 +146,12 @@ public class NewsServiceImpl implements NewsService {
 	public List<News> getUnpassedNewsByEditorNameAndNewsName(String editorName, String newsName) {
 		return newsDao.getUnpassedNewsByEditorNameAndNewsName(editorName, newsName);
 	}
+
+
+	@Override
+	public void updateStateToDraft(long newsId) {
+		newsDao.updateStateToDraft(newsId);
+	}
 	
 
 
