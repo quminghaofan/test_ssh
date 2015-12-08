@@ -39,20 +39,20 @@ public List<News> getUnPassedNewsByEditorName(String editorName);//根据采编�
 
 public List<News> getPassedNewsByEditorName(String editorName);//根据采编名字得到所有 审核通过 的软文
 
-public List<News> getUnPassedNewsByNewsName(String newsName);//根据软文名字得到所有 审核未通过 的软文
+public List<News> getUnPassedNewsByVagueNewsName(String newsName);//根据软文名字得到所有 审核未通过 的软文
 
-public List<News> getPassedNewsByNewsName(String newsName);//根据软文名字得到所有 审核通过 的软文
+public List<News> getPassedNewsByVagueNewsName(String newsName);//根据软文名字得到所有 审核通过 的软文
 
 public List<News> getNewsVagueByEditorNameAndNewsName(String editorName,String newsName);//根据采编名和软文模糊名返回相关的软文
 
 
 public List<News> getDraftByEditorName(String editorName);//获取某个采编的所有草稿
 
-public List<News> getDraftByEditorNameAndNewsName(String editorName,String newsName);//精确获取草稿
+public List<News> getDraftByEditorNameAndVagueNewsName(String editorName,String newsName);//精确获取草稿
 
-public List<News> getUnexaminedNewsByEditorNameAndNewsName(String editorName,String newsName);//精确获取未审核
-public List<News> getPassedNewsByEditorNameAndNewsName(String editorName,String newsName);//精确获取已通过
-public List<News> getUnpassedNewsByEditorNameAndNewsName(String editorName,String newsName);//精确获取未通过
+public List<News> getUnexaminedNewsByEditorNameAndVagueNewsName(String editorName,String newsName);//精确获取未审核
+public List<News> getPassedNewsByEditorNameAndVagueNewsName(String editorName,String newsName);//精确获取已通过
+public List<News> getUnpassedNewsByEditorNameAndVagueNewsName(String editorName,String newsName);//精确获取未通过
 
 
 public void updateStateToDraft(long newsId);//根据软文id将其状态改为草稿状态
