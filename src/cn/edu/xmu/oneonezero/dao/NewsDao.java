@@ -55,5 +55,7 @@ public List<News> getUnexaminedNewsByEditorNameAndNewsName(String editorName,Str
 public List<News> getPassedNewsByEditorNameAndNewsName(String editorName,String newsName);//精确获取已通过
 public List<News> getUnpassedNewsByEditorNameAndNewsName(String editorName,String newsName);//精确获取未通过
 
+public void updateStateToDraft(long newsId);//根据软文id将其状态改为草稿状态
+
 
 }
