@@ -71,14 +71,14 @@ public class NewsServiceImpl implements NewsService {
 
 
 	@Override
-	public List<News> getExaminedNewsByName(String newsName) {
-		return newsDao.getExaminedNewsByName(newsName);
+	public List<News> getExaminedNewsByVagueNewsName(String newsName) {
+		return newsDao.getExaminedNewsByVagueNewsName(newsName);
 	}
 
 
 	@Override
-	public List<News> getUnexaminedNewsByName(String newsName) {
-		return newsDao.getUnexaminedNewsByName(newsName);
+	public List<News> getUnexaminedNewsByVagueNewsName(String newsName) {
+		return newsDao.getUnexaminedNewsByVagueNewsName(newsName);
 	}
 
 

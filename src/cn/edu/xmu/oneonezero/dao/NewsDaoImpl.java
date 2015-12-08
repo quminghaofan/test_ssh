@@ -112,21 +112,21 @@ public class NewsDaoImpl implements NewsDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<News> getExaminedNewsByName(String newsName) {
-		String hql = "from News n where n.name=? and (n.state='审核通过' or n.state='审核不通过')";
+	public List<News> getExaminedNewsByVagueNewsName(String newsName) {
+		String hql = "from News n where n.name like ? and (n.state='审核通过' or n.state='审核不通过')";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		query.setString(0, newsName);
+		query.setString(0, "%"+newsName+"%");
 		return query.list();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<News> getUnexaminedNewsByName(String newsName) {
-		String hql = "from News n where n.name=? and n.state='未审核'";
+	public List<News> getUnexaminedNewsByVagueNewsName(String newsName) {
+		String hql = "from News n where n.name like ? and n.state='未审核'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		query.setString(0, newsName);
+		query.setString(0, "%"+newsName+"%");
 		return query.list();
 		
 	}

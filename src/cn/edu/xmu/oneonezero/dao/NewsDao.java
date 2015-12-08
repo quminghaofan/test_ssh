@@ -32,9 +32,9 @@ public List<News> getExaminedNews();//得到所有经过审核的软文
 
 public List<News> getUnexaminedNews();//得到所有未审核的软文
 
-public List<News> getExaminedNewsByName(String newsName);//根据软文名字得到所有经过审核的软文
+public List<News> getExaminedNewsByVagueNewsName(String newsName);//根据软文名字得到所有经过审核的软文
 
-public List<News> getUnexaminedNewsByName(String newsName);//根据软文名字得到所有未审核的软文
+public List<News> getUnexaminedNewsByVagueNewsName(String newsName);//根据软文名字得到所有未审核的软文
 
 public List<News> getUnexaminedNewsByEditorName(String editorName);//根据采编名字得到所有 未审核 的软文
 
