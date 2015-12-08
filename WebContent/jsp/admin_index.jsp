@@ -26,7 +26,7 @@
       <div class="dl-inform"><div class="dl-inform-title"><s class="dl-inform-icon dl-up"></s></div></div>
       <ul id="J_Nav"  class="nav-list ks-clear">
             <li class="nav-item dl-selected"><div class="nav-item-inner nav-home">用户管理</div></li>       
-
+<li class="nav-item dl-selected"><div class="nav-item-inner nav-home">商品管理</div></li>
       </ul>
     </div>
     <ul id="J_NavContent" class="dl-tab-conten">
@@ -39,7 +39,7 @@
   <script type="text/javascript" src="../assets/js/config-min.js"></script>
   <script>
     BUI.use('common/main',function(){ 
-      var config = [{id:'1',menu:[{text:'用户管理',items:[{id:'12',text:'用户列表',href:'/test_ssh/admin_user/getAllUser'}]}]}];
+      var config = [{id:'1',menu:[{text:'用户管理',items:[{id:'12',text:'用户列表',href:'/test_ssh/admin_user/getAllUser'}]}]},{id:'4',menu:[{text:'商品管理',items:[{id:'12',text:'制成品管理',href:''},{id:'12',text:'拍卖品管理',href:''}]}]}];
       new PageUtil.MainPage({
         modulesConfig : config
       });

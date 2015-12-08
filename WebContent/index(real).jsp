@@ -208,9 +208,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 	  <div class="callbacks_container">
 	      <ul class="rslides" id="slider">
+	      <!-- 广告 -->
+	      <c:forEach items="adlist" var="ad">
 	        <li><img src="images/slider1.jpg" class="img-responsive" alt=""/></li>
-	        <li><img src="images/2.jpg" class="img-responsive" alt=""/></li>
-	        <li><img src="images/3.jpg" class="img-responsive" alt=""/></li>
+	        </c:forEach>
 	      </ul>
 	  </div>
 	</div> 
@@ -268,6 +269,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</ul>
 		</div>
 		<div class="grid_2">
+		<c:forEach items="itemlist" var=item>
 			<div class="col-md-3 span_6">
 			  <div class="box_inner">
 				<img src="images/p1.jpg" class="img-responsive" alt=""/>
@@ -284,54 +286,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				 </div>
 			   </div>
 			</div>
-			<div class="col-md-3 span_6">
-			  <div class="box_inner">
-				<img src="images/p2.jpg" class="img-responsive" alt=""/>
-				 <div class="sale-box"> </div>
-				 <div class="desc">
-				 	<h3>Ullamcorper suscipit</h3>
-				 	<h4>178,90 $</h4>
-				 	<ul class="list2">
-				 	  <li class="list2_left"><span class="m_1"><a href="#" class="link">Add to Cart</a></span></li>
-				 	  <li class="list2_right"><span class="m_2"><a href="#" class="link1">See More</a></span></li>
-				 	  <div class="clearfix"> </div>
-				 	</ul>
-				 	<div class="heart"> </div>
-				 </div>
-			   </div>
-			</div>
-			<div class="col-md-3 span_6">
-			  <div class="box_inner">
-				<img src="images/p3.jpg" class="img-responsive" alt=""/>
-				 <div class="sale-box"> </div>
-				 <div class="desc">
-				 	<h3>Ullamcorper suscipit</h3>
-				 	<h4>178,90 $</h4>
-				 	<ul class="list2">
-				 	  <li class="list2_left"><span class="m_1"><a href="#" class="link">Add to Cart</a></span></li>
-				 	  <li class="list2_right"><span class="m_2"><a href="#" class="link1">See More</a></span></li>
-				 	  <div class="clearfix"> </div>
-				 	</ul>
-				 	<div class="heart"> </div>
-				 </div>
-			   </div>
-			</div>
-			<div class="col-md-3 span_6">
-			  <div class="box_inner">
-				<img src="images/p4.jpg" class="img-responsive" alt=""/>
-				 <div class="sale-box"> </div>
-				 <div class="desc">
-				 	<h3>Ullamcorper suscipit</h3>
-				 	<h4>178,90 $</h4>
-				 	<ul class="list2">
-				 	  <li class="list2_left"><span class="m_1"><a href="#" class="link">Add to Cart</a></span></li>
-				 	  <li class="list2_right"><span class="m_2"><a href="#" class="link1">See More</a></span></li>
-				 	  <div class="clearfix"> </div>
-				 	</ul>
-				 	<div class="heart"> </div>
-				 </div>
-			   </div>
-			</div>
+			</c:forEach>
 			<div class="clearfix"> </div>
 		</div>
 	</div>
@@ -439,58 +394,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li class="spinner_head"><h3>新闻资讯</h3></li>
 			<div class="clearfix"> </div>
 		  </ul>
+		  <c:forEach items="RRlist" var="rr">
 		      <div class="a-top">
 				 <div class="left-grid">
 					<img src="images/n2.jpg" class="img-responsive" alt="" id="rr_img1"/>
 				 </div>
 				 <div class="right-grid">
 					<h4><a href="#" id="rr_title1">知名画家入驻</a></h4>
-					<p id="rr_content1">知名画家已与我方签约，正式入驻..</p>
+					<p id="rr_content1">知名画家已与我方签约，正式入驻..</p><!-- 保留前15或20个字符即可，然后加省略号 -->
 				 </div>
 				 <div class="but">
 				   <a class="arrow" href="#" id="rr_but1"> </a>
 				 </div>
 				 <div class="clearfix"></div>
 			 </div>
-			 <div class="a-top">
-				 <div class="left-grid">
-					<img src="images/n1.jpg" class="img-responsive" alt="" id="rr_img2"/>
-				 </div>
-				 <div class="right-grid">
-					<h4><a href="#" id="rr_title2">名家字画拍得100万</a></h4>
-					<p id="rr_content2">名家字画拍得100万...</p>
-				 </div>
-				 <div class="but">
-				   <a class="arrow" href="#" id="rr_but2"> </a>
-				 </div>
-				 <div class="clearfix"></div>
-			 </div>
-			  <div class="a-top">
-				 <div class="left-grid">
-					<img src="images/n3.jpg" class="img-responsive" alt="" id="rr_img3"/>
-				 </div>
-				 <div class="right-grid">
-					<h4><a href="#" id="rr_title3">今晚将拍卖名家真品</a></h4>
-					<p id="rr_content3">今晚将拍卖名家真品...</p>
-				 </div>
-				 <div class="but">
-				   <a class="arrow" href="#" id="rr_but3"> </a>
-				 </div>
-				 <div class="clearfix"></div>
-			 </div>
-			 <div class="a-top">
-				 <div class="left-grid">
-					<img src="images/n5.jpg" class="img-responsive" alt="" id="rr_img4"/>
-				 </div>
-				 <div class="right-grid">
-					<h4><a href="#" id="rr_title4">网站欲开设新模块</a></h4>
-					<p id="rr_content4">网站欲开设新模块...</p>
-				 </div>
-				 <div class="but">
-				   <a class="arrow" href="#" id="rr_but4"> </a>
-				 </div>
-				 <div class="clearfix"></div>
-			 </div>
+			 </c:forEach>
 			 <div class="clearfix"></div>
 	</div>
     <div class="content_bottom">
