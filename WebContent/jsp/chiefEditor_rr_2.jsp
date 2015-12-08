@@ -36,7 +36,7 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/chiefEditor/getExaminedByNewsName" method="get">
+<form class="form-inline definewidth m20" action="/test_ssh/chiefEditor/getExaminedByNewsName" method="post">
     软文名称
     <input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search">搜索</button>&nbsp;&nbsp;
@@ -50,7 +50,6 @@
         <th>审核状态</th>
         <th>上架时间</th>
         <th>下架时间</th>
-        <th>价格</th>
         <th>等级</th>
         <th>操作</th>
     </tr>
@@ -61,12 +60,11 @@
                 <td>${rr.name}</td>
                 <td><img src="${rr.picUrl}"></td>
                 <td>${rr.editor.name}</td>
-                <td>${rr.isExamined}</td>
+                <td>${rr.state}</td>
                 <td>${rr.onShowTime}</td>
-                <td>${rr.offShowTime}</td>
-                <td>${rr.price}</td>
+                <td>${rr.offShowTime}</td><!-- TODO价格 -->
                 <td>${rr.rank}</td>
-                <td><a href="/test_ssh/chiefEditor/getNews?newsId=${rr.id}">查看</a>&nbsp;&nbsp;<a href="">重新审核</a></td>
+                <td><a href="软文界面">查看</a>&nbsp;&nbsp;<a href="/test_ssh/chiefEditor/getNews?newsId=${rr.id}">重新审核</a></td>
             </tr>
     </c:forEach>
 </c:if>

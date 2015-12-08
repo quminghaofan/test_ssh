@@ -22,28 +22,39 @@ public class ChiefEditorController {
 
     @RequestMapping("/getNews")
     public String getNews(long newsId,HttpServletRequest request){
-        request.setAttribute("RR",newsService.getNews(newsId));
+        request.getSession().setAttribute("news",newsService.getNews(newsId));
         return "chiefEditor_checks";
     }
 
-    @RequestMapping(value="/examineNews",method=RequestMethod.POST)
-    public String examineNews(long newsId,String type,HttpServletRequest request){
-        News news=newsService.getNews(newsId);
-    	if(type.equals("1")) {
-        	System.out.println(news.getId());
+    @RequestMapping(value="/examineNews")
+    public String examineNews(String typePass,String typeExam,HttpServletRequest request){
+        News news=(News)request.getSession().getAttribute("news");
+        if(typeExam.equals("未审核"))typeExam="1";
+    	if(typePass.equals("1")) {
+    		news.setRank(request.getParameter("rank"));
         	news.setState("审核通过");
             newsService.updateNews(news);
-            request.getSession().setAttribute("news", news);//TODO 点击通过时设置是否合理
-            return "chiefEditor_rr_edit";
         }
         else {
             news.setState("审核不通过");
             newsService.updateNews(news);
-            return "chiefEditor_rr_2";
         }
+    	if(typeExam.equals("1")){
+    		return "redirect:/chiefEditor/getUnexamined";
+    	}
+    	else {
+			return "redirect:/chiefEditor/getExamined";
+		}
     }
 
-    @RequestMapping(value="/setNews",method=RequestMethod.POST)
+    @RequestMapping("/back")
+    public String back(String typeExam){
+    	if(typeExam.equals("未审核"))
+    		return "redirect:/chiefEditor/getUnexamined";
+    	return "redirect:/chiefEditor/getExamined";
+    }
+    
+    @RequestMapping(value="/setNews")
     public String setNews(HttpServletRequest request){
     	News news=(News) request.getSession().getAttribute("news");
         news.setRank(request.getParameter("rank"));
@@ -52,26 +63,26 @@ public class ChiefEditorController {
         return "redirect:/chiefEditor/getUnexamined";
     }
 
-    @RequestMapping("/getExamined")
+    @RequestMapping(value="/getExamined")
     public String getExamined(HttpServletRequest request){
         request.setAttribute("RRLIST", newsService.getExaminedNews());
         return "chiefEditor_rr_2";
     }
-    @RequestMapping("/getExaminedByNewsName")
+    @RequestMapping(value="/getExaminedByNewsName")
     public String getExaminedByNewsName(HttpServletRequest request){
-        request.setAttribute("RRLIST", newsService.getExaminedNewsByName(request.getParameter("RRname")));
+        request.setAttribute("RRLIST", newsService.getExaminedNewsByVagueNewsName(request.getParameter("RRname")));
         return "chiefEditor_rr_2";
     }
 
-    @RequestMapping("/getUnexamined")
+    @RequestMapping(value="/getUnexamined")
     public String getUnexamined(HttpServletRequest request){
         request.setAttribute("RRLIST",newsService.getUnexaminedNews());
         return "chiefEditor_rr_1";
     }
 
-    @RequestMapping("/getUnexaminedByNewsName")
+    @RequestMapping(value="/getUnexaminedByNewsName")
     public String getUnexaminedByNewsName(HttpServletRequest request){
-        request.setAttribute("RRLIST",newsService.getUnexaminedNewsByName(request.getParameter("RRname")));
+        request.setAttribute("RRLIST",newsService.getUnexaminedNewsByVagueNewsName(request.getParameter("RRname")));
         return "chiefEditor_rr_1";
     }
 }

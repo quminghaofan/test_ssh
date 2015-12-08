@@ -37,7 +37,7 @@
 </head>
 <body>
 
-<form class="form-inline definewidth m20" action="/test_ssh/chiefEditor/getUnexaminedByNewsName" method="get">
+<form class="form-inline definewidth m20" action="/test_ssh/chiefEditor/getUnexaminedByNewsName" method="post">
     软文名称
     <input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>

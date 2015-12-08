@@ -127,7 +127,7 @@ public class EditorController {
     @RequestMapping("/getUnexaminedByNewsName")
     public String getUnexaminedByNewsName(HttpServletRequest request){
         User user=(User)request.getSession().getAttribute("user");
-    	request.setAttribute("RRLIST",newsService.getUnexaminedNewsByEditorNameAndNewsName(user.getName(),request.getParameter("RRname")));
+    	request.setAttribute("RRLIST",newsService.getUnexaminedNewsByEditorNameAndVagueNewsName(user.getName(),request.getParameter("RRname")));
         return  "editor_rr_1";
     }
 
@@ -142,7 +142,7 @@ public class EditorController {
     @RequestMapping("/getUnPassedByNewsName")
     public String getUnPassedByNewsName(HttpServletRequest request){
     	User user=(User)request.getSession().getAttribute("user");
-    	request.setAttribute("RRLIST",newsService.getUnpassedNewsByEditorNameAndNewsName(user.getName(),request.getParameter("RRname")));
+    	request.setAttribute("RRLIST",newsService.getUnpassedNewsByEditorNameAndVagueNewsName(user.getName(),request.getParameter("RRname")));
         return  "editor_rr_2";
     }
 
@@ -157,7 +157,7 @@ public class EditorController {
     @RequestMapping("/getPassedByNewsName")
     public String getPassedByNewsName(HttpServletRequest request){
     	User user=(User)request.getSession().getAttribute("user");
-        request.setAttribute("RRLIST",newsService.getPassedNewsByEditorNameAndNewsName(user.getName(),request.getParameter("RRname")));
+        request.setAttribute("RRLIST",newsService.getPassedNewsByEditorNameAndVagueNewsName(user.getName(),request.getParameter("RRname")));
         return  "editor_rr_3";
     }
     
@@ -171,7 +171,7 @@ public class EditorController {
     @RequestMapping(value="getDraftByNewsName")
     public String getDraftByNewsName(HttpServletRequest request){
     	User user=(User)request.getSession().getAttribute("user");
-    	request.setAttribute("RRLIST",newsService.getDraftByEditorNameAndNewsName(user.getName(),request.getParameter("RRname")));
+    	request.setAttribute("RRLIST",newsService.getDraftByEditorNameAndVagueNewsName(user.getName(),request.getParameter("RRname")));
     	return "editor_rr_4";
     }
     //撤回

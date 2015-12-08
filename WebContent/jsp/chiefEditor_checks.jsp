@@ -36,15 +36,15 @@
   </style>
 </head>
 <body>
-<form action="/test_ssh/chiefEditor/examineNews?newsId=${rr.id}" method="post" class="definewidth m10">
+<form action="/test_ssh/chiefEditor/examineNews?type=1" method="post" class="definewidth m10">
   <table class="table table-bordered table-hover m10">
    <tr>
             <td width="10%" class="tableleft">软文标题</td>
-            <td><input type="text" name="RRname" value="${news.name}" readonly="readonly"/></td>  <!--TODO-->
+            <td><input type="text" name="RRname" value="${news.name}" readonly="readonly"/></td>
         </tr>
         <tr>
             <td class="tableleft">内容</td>
-            <td><textarea name="content" readonly="readonly">${news.content}</textarea></td>  <!--TODO-->
+            <td><textarea name="content" readonly="readonly">${news.content}</textarea></td>
         </tr>
         <tr>
             <td class="tableleft">图片</td>
@@ -74,7 +74,7 @@
     <tr>
             <td class="tableleft"></td>
             <td>
-               <button  class="btn btn-primary" type="button" >通过</button> <button type="submit" class="btn btn-primary" type="button"  name="btnid" id="btnid">不通过</button>				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/jsp/editor_rr_4.jsp'" value="返回列表">
+               <input class="btn btn-primary" type="button"  name="btnid" id="btnid" onclick="window.location.href='/test_ssh/chiefEditor/examineNews?typePass=1&typeExam=${news.state}'" value="通过">				 &nbsp;&nbsp;<input class="btn btn-primary" type="button"  name="btnid" id="btnid" onclick="window.location.href='/test_ssh/chiefEditor/examineNews?typePass=0&typeExam=${news.state}'" value="不通过">				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/chiefEditor/back?typeExam=${news.state}'" value="返回列表">
             </td>
         </tr>
   </table>
