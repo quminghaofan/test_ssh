@@ -47,7 +47,7 @@
                 <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
-<form action="/test_ssh/editor/editNews" method="post" class="definewidth m10">
+<form action="/test_ssh/editor/editNews?type=1" method="post" class="definewidth m10">
 <table class="table table-bordered table-hover m10">
     <tr>
             <td width="10%" class="tableleft">软文标题</td>
@@ -78,7 +78,7 @@
     <tr>
             <td class="tableleft"></td>
             <td>
-               <button type="submit" class="btn btn-primary" type="button"  name="savebtnid" id="savebtnid">保存</button> <button type="submit" class="btn btn-primary" type="button"  name="btnid" id="btnid">发送</button>				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表">
+               <button type="submit" class="btn btn-primary" type="button"  name="savebtnid" id="savebtnid">保存</button> <button type="submit" class="btn btn-primary" type="button"  name="btnid" id="btnid" onclick="window.location.href='/test_ssh/editor/editNews?type=0">发送</button>				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表">
             </td>
         </tr>
 </table>

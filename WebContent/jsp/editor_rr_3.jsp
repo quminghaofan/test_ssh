@@ -36,7 +36,7 @@ body {
 </head>
 <body>
 	<form class="form-inline definewidth m20"
-		action="/test_ssh/editor/getSuccessPassByNewsName" method="get">
+		action="/test_ssh/editor/getPassedByNewsName" method="get">
 		软文名称 <input type="text" name="RRname" id="RRname"
 			class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
 		<button type="submit" class="btn btn-primary" id="search">搜索</button>
@@ -69,7 +69,7 @@ body {
 						String str_date = formatter.format(now); 
 					%>
 					<c:if test="${rr.onShowTime.compareTo(str_date)<=0}">
-						<td><a href="软文界面">查看</a>&nbsp;&nbsp;<a href="/test_ssh/editor/withdraw?newsId="${rr.id}>撤回</a></td>
+						<td><a href="软文界面">查看</a>&nbsp;&nbsp;<a href="/test_ssh/editor/withdraw?newsId=${rr.id}&type=2">撤回</a></td>
 					</c:if>
 					<c:if test="${rr.onShowTime.compareTo(str_date)>0}">
 						<td><a href="软文界面">查看</a></td>

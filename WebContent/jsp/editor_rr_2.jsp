@@ -37,7 +37,7 @@
   </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/editor/getFailPassByNewsName" method="get">
+<form class="form-inline definewidth m20" action="/test_ssh/editor/getUnPassedByNewsName" method="get">
   软文名称
   <input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
   <button type="submit" class="btn btn-primary" id="search">搜索</button>
@@ -61,7 +61,7 @@
         <td>${rr.onShowTime}</td>
         <td>${rr.offShowTime}</td>
         <td>${rr.chiefEditor.name}</td>
-        <td><a href="">查看</a>&nbsp;&nbsp;<a href="">撤回</a></td>
+        <td><a href="">查看</a>&nbsp;&nbsp;<a href="/test_ssh/editor/withdraw?type=1&newsId=${rr.id}">撤回</a></td>
       </tr>
     </c:forEach>
   </c:if>

@@ -28,26 +28,34 @@ public class EditorController {
     private NewsService newsService;
 
     @RequestMapping(value="/addNews",method = RequestMethod.POST)
-    public String addNews(HttpServletRequest request){
+    public String addNews(String type,HttpServletRequest request){
     	News news=new News();
     	news.setName(request.getParameter("RRname"));
     	User user=((User)request.getSession().getAttribute("user"));
     	news.setEditor(user);
     	news.setContent(request.getParameter("RRcontent"));
     	news.setPicUrl(request.getParameter("img"));
+    	if(type.equals("1")){
+    		news.setState("草稿");
+    	}
+    	else {
+			news.setState("未审核");
+		}
         newsService.insertNews(news);
         return "redirect:/editor/getUnexamined"; 
     }
 
     @RequestMapping(value="/editNews",method=RequestMethod.POST)
-    public String editNews(String type,HttpServletRequest request){
+    public String editNews(String type,HttpServletRequest request){//TODO
     	News news=(News) request.getSession().getAttribute("news");
+    	User user=(User)request.getSession().getAttribute("user");
+    	news.setEditor(user);
     	news.setName(request.getParameter("RRname"));
     	news.setContent(request.getParameter("RRcontent"));
     	news.setPicUrl(request.getParameter("img"));
     	if(type.equals("1")){//保存
     		news.setState("草稿");
-    	}else {
+    	}else {//发送
 			news.setState("未审核");
 		}
         newsService.updateNews(news);
@@ -83,14 +91,14 @@ public class EditorController {
 //        }
 //    }
 
-    @RequestMapping("/setNews")
-    public String setNews(HttpServletRequest request){
-    	News news=(News) request.getAttribute("RR");
-        news.setRank(request.getParameter("rank"));
-        news.setOnShowTime(request.getParameter("txtDate"));
-        newsService.updateNews(news);
-        return "redirect:/editor/getUnexamined";
-    }
+//    @RequestMapping("/setNews")
+//    public String setNews(HttpServletRequest request){
+//    	News news=(News) request.getAttribute("RR");
+//        news.setRank(request.getParameter("rank"));
+//        news.setOnShowTime(request.getParameter("txtDate"));
+//        newsService.updateNews(news);
+//        return "redirect:/editor/getUnexamined";
+//    }
 
     @RequestMapping("/delNews")
     public String delNews(String type,long newsId,HttpServletRequest request){
@@ -119,13 +127,13 @@ public class EditorController {
     @RequestMapping("/getUnexaminedByNewsName")
     public String getUnexaminedByNewsName(HttpServletRequest request){
         User user=(User)request.getSession().getAttribute("user");
-    	request.setAttribute("RRLIST",newsService.getUnexaminedNewsByEditorNameAndNewsName(user.getName(),request.getParameter("RRname")));//TODO
+    	request.setAttribute("RRLIST",newsService.getUnexaminedNewsByEditorNameAndNewsName(user.getName(),request.getParameter("RRname")));
         return  "editor_rr_1";
     }
 
     //不通过
     @RequestMapping("/getUnPassed")
-    public String getUnPassedPass(HttpServletRequest request){
+    public String getUnPassed(HttpServletRequest request){
     	User user=(User)request.getSession().getAttribute("user");
         request.setAttribute("RRLIST",newsService.getUnPassedNewsByEditorName(user.getName()));
         return "editor_rr_2";
@@ -134,7 +142,7 @@ public class EditorController {
     @RequestMapping("/getUnPassedByNewsName")
     public String getUnPassedByNewsName(HttpServletRequest request){
     	User user=(User)request.getSession().getAttribute("user");
-    	request.setAttribute("RRLIST",newsService.getUnpassedNewsByEditorNameAndNewsName(user.getName(),request.getParameter("RRname")));//TODO
+    	request.setAttribute("RRLIST",newsService.getUnpassedNewsByEditorNameAndNewsName(user.getName(),request.getParameter("RRname")));
         return  "editor_rr_2";
     }
 
@@ -168,8 +176,16 @@ public class EditorController {
     }
     //撤回
     @RequestMapping("withdraw")
-    public String withdraw(Long newsId,HttpServletRequest request){
-    	//根据newsId修改状态为“草稿”
-    	return "redirect:/editor/getPassed";
+    public String withdraw(String type,long newsId,HttpServletRequest request){
+    	newsService.updateStateToDraft(newsId);
+    	if(type.equals("0")){
+    		return "redirect:/editor/getUnexamined";
+    	}
+    	else if(type.equals("1")){
+    		return "redirect:/editor/getUnPassed";
+    	}
+    	else {
+			return "redirect:/editor/getPassed";
+		}
     }
 }

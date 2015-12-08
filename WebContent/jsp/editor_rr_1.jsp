@@ -37,7 +37,7 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/editor/getUnreviewedByNewsName" method="get">
+<form class="form-inline definewidth m20" action="/test_ssh/editor/getUnexaminedByNewsName" method="get">
     软文名称
     <input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
     <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>&nbsp;&nbsp; 
@@ -55,7 +55,7 @@
         <tr>
                 <td>${rr.editor.name}</td>
                 <td><img src="${rr.picUrl}"/></td>
-                <td><a href="">查看</a>&nbsp;&nbsp;<a href="">撤回</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}'">删除</a></td>
+                <td><a href="">查看</a>&nbsp;&nbsp;<a href="/test_ssh/editor/withdraw?type=0&newsId=${rr.id}">撤回</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}'">删除</a></td>
             </tr>
     </c:forEach>
 </c:if>

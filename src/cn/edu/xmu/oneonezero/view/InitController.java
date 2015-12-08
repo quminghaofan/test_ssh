@@ -47,4 +47,5 @@ public class InitController {
 		String psw=request.getParameter("password");
 		return "";
 	}
+
 }

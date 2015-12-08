@@ -36,7 +36,7 @@
   </style>
 </head>
 <body>
-<form action="/test_ssh/jsp/chiefEditor_rr_1.jsp" method="post" class="definewidth m10">
+<form action="/test_ssh/chiefEditor/examineNews?newsId=${rr.id}" method="post" class="definewidth m10">
   <table class="table table-bordered table-hover m10">
    <tr>
             <td width="10%" class="tableleft">软文标题</td>
