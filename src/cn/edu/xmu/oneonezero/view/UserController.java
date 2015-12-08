@@ -30,10 +30,10 @@ public class UserController {
 	public String getUser(HttpServletRequest request){
 		String typeString=request.getParameter("");
 		if(typeString.equals("用户名")){
-			request.setAttribute("USERLIST", userService.getUserByName(request.getParameter("search")));
+			request.setAttribute("USERLIST", userService.getUserByUserName(request.getParameter("search")));
 		}
 		else {
-			request.setAttribute("USERLIST", userService.getUserByRole(request.getParameter("search")));
+			request.setAttribute("USERLIST", userService.getUsersByRole(request.getParameter("search")));
 		}
 		return "admin_userlist";
 	}

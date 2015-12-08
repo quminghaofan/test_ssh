@@ -60,7 +60,7 @@
         <td><img src="${rr.picUrl}"></td>
         <td>${rr.onShowTime}</td>
         <td>${rr.offShowTime}</td>
-        <td>${rr.chiefEditor}</td>
+        <td>${rr.chiefEditor.name}</td>
         <td><a href="">查看</a>&nbsp;&nbsp;<a href="">撤回</a></td>
       </tr>
     </c:forEach>

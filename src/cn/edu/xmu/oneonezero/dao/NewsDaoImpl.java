@@ -252,12 +252,5 @@ public class NewsDaoImpl implements NewsDao {
 		
 		return query.list();
 	}
-	
-	//异常代码：
-	
-
-
-	
-	
 
 }

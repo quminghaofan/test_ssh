@@ -90,7 +90,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/jquery.countdown.js"></script>
 <script src="js/script.js"></script>
 </head>
-<body>
+<body onload="/test_ssh/init/home">
 <div id="updown"><span class="up"></span><span class="down"></span></div>
 <div class="header_top">
   <div class="container">
@@ -493,7 +493,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 </div>
 			 <div class="clearfix"></div>
 	</div>
-	<!--è½¯æç»æ-->
     <div class="content_bottom">
     	<div class="col-md-3 span_1">
     	  <ul class="spinner">

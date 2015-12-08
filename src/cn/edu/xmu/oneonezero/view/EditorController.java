@@ -27,7 +27,7 @@ public class EditorController {
     @Resource(name="newsService")
     private NewsService newsService;
 
-    @RequestMapping(value="/addNews",method = RequestMethod.GET)
+    @RequestMapping(value="/addNews",method = RequestMethod.POST)
     public String addNews(HttpServletRequest request){
     	News news=new News();
     	news.setName(request.getParameter("RRname"));
@@ -40,14 +40,18 @@ public class EditorController {
     }
 
     @RequestMapping(value="/editNews",method=RequestMethod.POST)
-    public String editNews(HttpServletRequest request){
+    public String editNews(String type,HttpServletRequest request){
     	News news=(News) request.getSession().getAttribute("news");
     	news.setName(request.getParameter("RRname"));
     	news.setContent(request.getParameter("RRcontent"));
     	news.setPicUrl(request.getParameter("img"));
-    	System.out.println(news.getId());
+    	if(type.equals("1")){//保存
+    		news.setState("草稿");
+    	}else {
+			news.setState("未审核");
+		}
         newsService.updateNews(news);
-        return "redirect:/editor/getUnexamined"; 
+        return "redirect:/editor/getDraft"; 
     }
 //    
 //    @RequestMapping("/getNewsToCheck")
@@ -89,9 +93,12 @@ public class EditorController {
     }
 
     @RequestMapping("/delNews")
-    public String delNews(long newsId,HttpServletRequest request){
+    public String delNews(String type,long newsId,HttpServletRequest request){
         newsService.delNews(newsId);
-        return "redirect:/editor/getUnPassed";//TODO 只能删除未审核的和审核未通过的
+        if(type.equals("1")){//未通过
+        	return "redirect:/editor/getUnPassed";//TODO 只能删除未审核的和审核未通过的
+        }
+        else return "redirect:/editor/getDraft";
     }
 
     @RequestMapping("/getNewsPush")
@@ -158,5 +165,11 @@ public class EditorController {
     	User user=(User)request.getSession().getAttribute("user");
     	request.setAttribute("RRLIST",newsService.getDraftByEditorNameAndNewsName(user.getName(),request.getParameter("RRname")));
     	return "editor_rr_4";
+    }
+    //撤回
+    @RequestMapping("withdraw")
+    public String withdraw(Long newsId,HttpServletRequest request){
+    	//根据newsId修改状态为“草稿”
+    	return "redirect:/editor/getPassed";
     }
 }

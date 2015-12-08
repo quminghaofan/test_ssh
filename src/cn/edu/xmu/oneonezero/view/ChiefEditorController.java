@@ -26,7 +26,7 @@ public class ChiefEditorController {
         return "chiefEditor_checks";
     }
 
-    @RequestMapping(value="/examineNews",method=RequestMethod.GET)
+    @RequestMapping(value="/examineNews",method=RequestMethod.POST)
     public String examineNews(long newsId,String type,HttpServletRequest request){
         News news=newsService.getNews(newsId);
     	if(type.equals("1")) {

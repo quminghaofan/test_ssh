@@ -60,7 +60,7 @@
         <tr>
                 <td>${rr.name}</td>
                 <td><img src="${rr.picUrl}"></td>
-                <td>${rr.editor}</td>
+                <td>${rr.editor.name}</td>
                 <td>${rr.isExamined}</td>
                 <td>${rr.onShowTime}</td>
                 <td>${rr.offShowTime}</td>
