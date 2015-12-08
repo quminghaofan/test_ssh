@@ -24,20 +24,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start menu -->
 <link href="../css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="../js/megamenu.js"></script>
+<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+<script src="../js/responsiveslides.min.js"></script>
+
 <script>
-$(document).ready(function(){$(".megamenu").megamenu();});
-$(function(){
-	$("#updown").css("top",window.screen.availHeight/2-100+"px");
-	$(window).scroll(function() {		
-		if($(window).scrollTop() >= 100){
-			$('#updown').fadeIn(300); 
-		}else{    
-			$('#updown').fadeOut(300);    
-		}  
-	});
-	$('#updown .up').click(function(){$('html,body').animate({scrollTop: '0px'}, 800);});
-	$('#updown .down').click(function(){$('html,body').animate({scrollTop: document.body.clientHeight+'px'}, 800);});
-});
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	nav: false,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+    $(function(){
+    	$("#updown").css("top",window.screen.availHeight/2-100+"px");
+    	$(window).scroll(function() {		
+    		if($(window).scrollTop() >= 100){
+    			$('#updown').fadeIn(300); 
+    		}else{    
+    			$('#updown').fadeOut(300);    
+    		}  
+    	});
+    	$('#updown .up').click(function(){$('html,body').animate({scrollTop: '0px'}, 800);});
+    	$('#updown .down').click(function(){$('html,body').animate({scrollTop: document.body.clientHeight+'px'}, 800);});
+    });
 </script>
 <style type="text/css">
 #updown{
@@ -76,6 +87,9 @@ $(function(){
 	line-height:50px;
 }
 </style>
+<script src="../js/jquery.countdown.js"></script>
+<script src="../js/script.js"></script>
+		   <script type="text/javascript" src="../js/jquery.flexisel.js"></script>
 </head>
 <body>
 <div id="updown"><span class="up"></span><span class="down"></span></div>
@@ -83,6 +97,7 @@ $(function(){
   <div class="container">
   	<div class="header_top-box">
      <div class="header-top-left">
+			  
    				    <div class="clearfix"></div>
    			 </div>
 			 <div class="cssmenu">
@@ -110,7 +125,7 @@ $(function(){
 	 <div class="header_bottom-box">
 		<div class="header_bottom_left">
 			<div class="logo">
-				<a href="index.html"><img src="../images/logo_ooz.png" alt="首页"/></a>
+				<a href="index.jsp"><img src="../images/logo_ooz.png" alt="首页"/></a>
 			</div>
 			
 			<div class="clearfix"> </div>
@@ -130,6 +145,7 @@ $(function(){
 	  		</ul>
 	  		<%} %>
 		</div>
+		
 		<div class="clearfix"> </div>
 	</div>
 </div>
@@ -191,62 +207,88 @@ $(function(){
 	  </div>
 </div>
 </div>
-<div class="men">
+<div class="index_slider">
 	<div class="container">
-	
-<div class="col-md-9">
-	<div class="mens-toolbar">
-          <div class="sort">
-               	<div class="sort-by">
-		            <label>排序</label>
-		            <select>
-		                            <option value="">
-		                    乱序               </option>
-		                            <option value="">
-		                    价格：由高到低               </option>
-		                            <option value="">
-		                    价格：由低到高              </option>
-		            </select>
-		        </div>
-    		</div>
-	       <!--   <div class="pager">   
-	           <div class="limiter visible-desktop">
-	            <label>显示</label>
-	            <select>
-	                            <option value="" selected="selected">
-	                    9                </option>
-	                            <option value="">
-	                    15                </option>
-	                            <option value="">
-	                    30                </option>
-	                        </select> 每页        
-	             </div>
-	       		<ul class="dc_pagination dc_paginationA dc_paginationA06">
-				    <li><a href="#" class="previous">Pages</a></li>
-				    <li><a href="#">1</a></li>
-				    <li><a href="#">2</a></li>
-			  	</ul>
-		   		<div class="clearfix"></div>
-	    	</div>-->
-     	    <div class="clearfix"></div>
-	     </div>
-	          <div class="span_2">
-	          <c:forEach items="itemlist" var="item">
-	          	 <div class="col_1_of_single1 span_1_of_single1">
-	          	    <a href="single.html">
-				     <img src="../images/pic2.jpg" class="img-responsive" alt="" href=""/>
-				     <h3>parum clari</h3>
-				   	 <h4>Rs.399</h4>
-			         </a>  
-			         <ul class="list2">
-				 	  <li class="list2_left"><span class="m_1"><a href="#" class="link">添加购物篮</a></span></li>
-				 	  <li class="list2_right"><span class="m_2"><a href="#" class="link1">立即购买</a></span></li>
+	  <div class="callbacks_container">
+	      <ul class="rslides" id="slider">
+	        <li><img src="../images/slider1.jpg" class="img-responsive" alt=""/></li>
+	        <li><img src="../images/2.jpg" class="img-responsive" alt=""/></li>
+	        <li><img src="../images/3.jpg" class="img-responsive" alt=""/></li>
+	      </ul>
+	  </div>
+	</div> 
+</div>
+<div class="content_top" style="overflow:hidden">
+	<div class="container" >
+		<div class="grid_2">
+		<c:forEach items="ItemList" var="item">
+			<div class="col-md-3 span_6"  style="margin-top:2em">
+			  <div class="box_inner">
+				<img src="../images/p2.jpg" class="img-responsive" alt=""/>
+				 <div class="sale-box"> </div>
+				 <div class="desc">
+				 	<h3>Ullamcorper suscipit</h3>
+				 	<h4>178,90 $</h4>
+				 	<ul class="list2">
+				 	  <li class="list2_left"><span class="m_1"><a href="#" class="link">Add to Cart</a></span></li>
+				 	  <li class="list2_right"><span class="m_2"><a href="#" class="link1">See More</a></span></li>
+				 	  <div class="clearfix"> </div>
 				 	</ul>
-				  </div> 
-				  </c:forEach>
-			  </div>
-            </div>
-      </div>
+				 	<div class="heart"> </div>
+				 </div>
+			   </div>
+			</div>
+</c:forEach>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+    <div class="content_bottom">
+    	<div class="col-md-3 span_1">
+    	  <ul class="spinner">
+			 <i class="box_icon"> </i>
+			 <li class="spinner_head"><h3>mazim pla</h3></li>
+			 <div class="clearfix"> </div>
+		  </ul>
+		  <img src="images/t8.jpg" class="img-responsive" alt=""/>
+    	</div>
+    	<div class="col-md-3 span_1">
+    	  <ul class="spinner">
+			 <i class="bubble"> </i>
+			 <li class="spinner_head"><h3>About Us</h3></li>
+			 <div class="clearfix"> </div>
+		  </ul>
+		  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat</p>
+    	</div>
+    	<div class="col-md-3 span_1">
+    	  <ul class="spinner">
+			 <i class="mail"> </i>
+			 <li class="spinner_head"><h3>Contact Us</h3></li>
+			 <div class="clearfix"> </div>
+		  </ul>
+		 <ul class="social">
+			<li><a href=""> <i class="fb"> </i> </a></li>
+		    <li><a href=""><i class="tw"> </i> </a></li>
+			<li><a href=""><i class="google"> </i> </a></li>
+			<li><a href=""><i class="linkedin"> </i> </a></li>
+			<li><a href=""><i class="skype"> </i> </a></li>
+		</ul>
+    	</div>
+    	<div class="col-md-3 span_1">
+    	  <ul class="spinner">
+			 <i class="mail"> </i>
+			 <li class="spinner_head"><h3>Contact Us</h3></li>
+			 <div class="clearfix"> </div>
+		  </ul>
+		  <p>500 Lorem Ipsum Dolor Sit,</p>
+		  <p>22-56-2-9 Sit Amet, Lorem,</p>
+		  <p>Phone:(00) 222 666 444</p>
+		  <p><a href="mailto:info@demo.com"> info(at)gifty.com</a></p>
+    	</div>
+    	<div class="clearfix"> </div>
+    </div>
 </div>
 <div class="footer">
 	<div class="container">
