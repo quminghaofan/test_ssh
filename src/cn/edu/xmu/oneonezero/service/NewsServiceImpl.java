@@ -71,14 +71,14 @@ public class NewsServiceImpl implements NewsService {
 
 
 	@Override
-	public List<News> getExaminedNewsByName(String newsName) {
-		return newsDao.getExaminedNewsByName(newsName);
+	public List<News> getExaminedNewsByVagueNewsName(String newsName) {
+		return newsDao.getExaminedNewsByVagueNewsName(newsName);
 	}
 
 
 	@Override
-	public List<News> getUnexaminedNewsByName(String newsName) {
-		return newsDao.getUnexaminedNewsByName(newsName);
+	public List<News> getUnexaminedNewsByVagueNewsName(String newsName) {
+		return newsDao.getUnexaminedNewsByVagueNewsName(newsName);
 	}
 
 
@@ -101,14 +101,14 @@ public class NewsServiceImpl implements NewsService {
 
 
 	@Override
-	public List<News> getUnPassedNewsByNewsName(String newsName) {
-		return newsDao.getUnPassedNewsByNewsName(newsName);
+	public List<News> getUnPassedNewsByVagueNewsName(String newsName) {
+		return newsDao.getUnPassedNewsByVagueNewsName(newsName);
 	}
 
 
 	@Override
-	public List<News> getPassedNewsByNewsName(String newsName) {
-		return newsDao.getPassedNewsByNewsName(newsName);
+	public List<News> getPassedNewsByVagueNewsName(String newsName) {
+		return newsDao.getPassedNewsByVagueNewsName(newsName);
 	}
 
 
@@ -125,26 +125,26 @@ public class NewsServiceImpl implements NewsService {
 
 
 	@Override
-	public List<News> getDraftByEditorNameAndNewsName(String editorName, String newsName) {
-		return newsDao.getDraftByEditorNameAndNewsName(editorName, newsName);
+	public List<News> getDraftByEditorNameAndVagueNewsName(String editorName, String newsName) {
+		return newsDao.getDraftByEditorNameAndVagueNewsName(editorName, newsName);
 	}
 
 
 	@Override
-	public List<News> getUnexaminedNewsByEditorNameAndNewsName(String editorName, String newsName) {
-		return newsDao.getUnexaminedNewsByEditorNameAndNewsName(editorName, newsName);
+	public List<News> getUnexaminedNewsByEditorNameAndVagueNewsName(String editorName, String newsName) {
+		return newsDao.getUnexaminedNewsByEditorNameAndVagueNewsName(editorName, newsName);
 	}
 
 
 	@Override
-	public List<News> getPassedNewsByEditorNameAndNewsName(String editorName, String newsName) {
-		return newsDao.getPassedNewsByEditorNameAndNewsName(editorName, newsName);
+	public List<News> getPassedNewsByEditorNameAndVagueNewsName(String editorName, String newsName) {
+		return newsDao.getPassedNewsByEditorNameAndVagueNewsName(editorName, newsName);
 	}
 
 
 	@Override
-	public List<News> getUnpassedNewsByEditorNameAndNewsName(String editorName, String newsName) {
-		return newsDao.getUnpassedNewsByEditorNameAndNewsName(editorName, newsName);
+	public List<News> getUnpassedNewsByEditorNameAndVagueNewsName(String editorName, String newsName) {
+		return newsDao.getUnpassedNewsByEditorNameAndVagueNewsName(editorName, newsName);
 	}
 
 

@@ -112,21 +112,21 @@ public class NewsDaoImpl implements NewsDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<News> getExaminedNewsByName(String newsName) {
-		String hql = "from News n where n.name=? and (n.state='审核通过' or n.state='审核不通过')";
+	public List<News> getExaminedNewsByVagueNewsName(String newsName) {
+		String hql = "from News n where n.name like ? and (n.state='审核通过' or n.state='审核不通过')";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		query.setString(0, newsName);
+		query.setString(0, "%"+newsName+"%");
 		return query.list();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<News> getUnexaminedNewsByName(String newsName) {
-		String hql = "from News n where n.name=? and n.state='未审核'";
+	public List<News> getUnexaminedNewsByVagueNewsName(String newsName) {
+		String hql = "from News n where n.name like ? and n.state='未审核'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		query.setString(0, newsName);
+		query.setString(0, "%"+newsName+"%");
 		return query.list();
 		
 	}
@@ -166,22 +166,22 @@ public class NewsDaoImpl implements NewsDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<News> getUnPassedNewsByNewsName(String newsName) {
-		String hql = "from News n where n.name=? and n.state='审核不通过'";
+	public List<News> getUnPassedNewsByVagueNewsName(String newsName) {
+		String hql = "from News n where n.name like ? and n.state='审核不通过'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		query.setString(0, newsName);
+		query.setString(0, "%"+newsName+"%");
 		return query.list();
 		
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<News> getPassedNewsByNewsName(String newsName) {
-		String hql = "from News n where n.editor=? and n.state='审核通过'";
+	public List<News> getPassedNewsByVagueNewsName(String newsName) {
+		String hql = "from News n where n.name like ? and n.state='审核通过'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		query.setString(0, newsName);
+		query.setString(0, "%"+newsName+"%");
 		return query.list();
 		
 	}
@@ -210,45 +210,45 @@ public class NewsDaoImpl implements NewsDao {
 	}
 
 	@Override
-	public List<News> getDraftByEditorNameAndNewsName(String editorName, String newsName) {
-		String hql="from News n where n.editor.name=? and n.name=? and n.state='草稿'";
+	public List<News> getDraftByEditorNameAndVagueNewsName(String editorName, String newsName) {
+		String hql="from News n where n.editor.name=? and n.name like ? and n.state='草稿'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, editorName);
-		query.setString(1, newsName);
+		query.setString(1, "%"+newsName+"%");
 		
 		return query.list();
 	}
 
 	@Override
-	public List<News> getUnexaminedNewsByEditorNameAndNewsName(String editorName, String newsName) {
-		String hql="from News n where n.editor.name=? and n.name=? and n.state='未审核'";
+	public List<News> getUnexaminedNewsByEditorNameAndVagueNewsName(String editorName, String newsName) {
+		String hql="from News n where n.editor.name=? and n.name like ? and n.state='未审核'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, editorName);
-		query.setString(1, newsName);
+		query.setString(1, "%"+newsName+"%");
 		
 		return query.list();
 	}
 
 	@Override
-	public List<News> getPassedNewsByEditorNameAndNewsName(String editorName, String newsName) {
-		String hql="from News n where n.editor.name=? and n.name=? and n.state='审核通过'";
+	public List<News> getPassedNewsByEditorNameAndVagueNewsName(String editorName, String newsName) {
+		String hql="from News n where n.editor.name=? and n.name like ? and n.state='审核通过'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, editorName);
-		query.setString(1, newsName);
+		query.setString(1, "%"+newsName+"%");
 		
 		return query.list();
 	}
 
 	@Override
-	public List<News> getUnpassedNewsByEditorNameAndNewsName(String editorName, String newsName) {
-		String hql="from News n where n.editor.name=? and n.name=? and n.state='审核不通过'";
+	public List<News> getUnpassedNewsByEditorNameAndVagueNewsName(String editorName, String newsName) {
+		String hql="from News n where n.editor.name=? and n.name like ? and n.state='审核不通过'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, editorName);
-		query.setString(1, newsName);
+		query.setString(1, "%"+newsName+"%");
 		
 		return query.list();
 	}

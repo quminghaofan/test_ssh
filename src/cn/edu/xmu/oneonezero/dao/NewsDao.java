@@ -32,9 +32,9 @@ public List<News> getExaminedNews();//得到所有经过审核的软文
 
 public List<News> getUnexaminedNews();//得到所有未审核的软文
 
-public List<News> getExaminedNewsByName(String newsName);//根据软文名字得到所有经过审核的软文
+public List<News> getExaminedNewsByVagueNewsName(String newsName);//根据软文名字得到所有经过审核的软文
 
-public List<News> getUnexaminedNewsByName(String newsName);//根据软文名字得到所有未审核的软文
+public List<News> getUnexaminedNewsByVagueNewsName(String newsName);//根据软文名字得到所有未审核的软文
 
 public List<News> getUnexaminedNewsByEditorName(String editorName);//根据采编名字得到所有 未审核 的软文
 
@@ -42,18 +42,18 @@ public List<News> getUnPassedNewsByEditorName(String editorName);//根据采编�
 
 public List<News> getPassedNewsByEditorName(String editorName);//根据采编名字得到所有 审核通过 的软文
 
-public List<News> getUnPassedNewsByNewsName(String newsName);//根据软文名字得到所有 审核未通过 的软文
+public List<News> getUnPassedNewsByVagueNewsName(String newsName);//根据模糊软文名字得到所有 审核未通过 的软文
 
-public List<News> getPassedNewsByNewsName(String newsName);//根据软文名字得到所有 审核通过 的软文
+public List<News> getPassedNewsByVagueNewsName(String newsName);//根据模糊软文名字得到所有 审核通过 的软文
 
 
 public List<News> getDraftByEditorName(String editorName);//获取某个采编的所有草稿
 
-public List<News> getDraftByEditorNameAndNewsName(String editorName,String newsName);//精确获取草稿
+public List<News> getDraftByEditorNameAndVagueNewsName(String editorName,String newsName);//模糊软文名字获取草稿
 
-public List<News> getUnexaminedNewsByEditorNameAndNewsName(String editorName,String newsName);//精确获取未审核
-public List<News> getPassedNewsByEditorNameAndNewsName(String editorName,String newsName);//精确获取已通过
-public List<News> getUnpassedNewsByEditorNameAndNewsName(String editorName,String newsName);//精确获取未通过
+public List<News> getUnexaminedNewsByEditorNameAndVagueNewsName(String editorName,String newsName);//模糊软文名字获取未审核
+public List<News> getPassedNewsByEditorNameAndVagueNewsName(String editorName,String newsName);//模糊软文名字获取已通过
+public List<News> getUnpassedNewsByEditorNameAndVagueNewsName(String editorName,String newsName);//模糊软文名字获取未通过
 
 public void updateStateToDraft(long newsId);//根据软文id将其状态改为草稿状态
 
