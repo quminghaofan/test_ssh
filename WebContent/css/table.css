@@ -83,3 +83,65 @@ th.specalt {
     font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
     color: #797268;
 }
+
+
+.orderdiv {
+    clear: left;
+    margin-bottom: 4%;
+}
+
+.orderpic {
+    float: left;
+    
+    vertical-align: top;
+}
+
+.info {
+    vertical-align: top;
+    font-size: small;
+}
+
+.infomargin {
+    margin-bottom: 1.5%;
+}
+
+.orderbutton {
+    margin: 0 auto;
+    color: #333;
+    background-color: #E05B5B;
+    padding: 2% 3% 2% 3%;
+    font-size: 19px;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 3px solid #E05B5B;
+}
+.orderbutton:hover {
+    background: rgba(0, 0, 0, 0.66);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.76);
+    *border-bottom: none;
+    color: #E05B5B;
+    text-decoration: none;
+}
+#edit {
+    color: #333;
+    margin-left: 2%;
+    background-color: #E05B5B;
+    font-size: small;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 3px solid #E05B5B;
+}
+
+#edit:hover {
+    background: rgba(0, 0, 0, 0.66);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.76);
+    *border-bottom: none;
+    color: #E05B5B;
+    text-decoration: none;
+}
+.breakline {
+    background-color: #E05B5B;
+    height: 2px;
+    margin: 4% 0% 4% 0%;
+}
