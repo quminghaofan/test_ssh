@@ -57,7 +57,7 @@
                 <td>${rr.name}</td>
                 <td>${rr.picUrl}</td>
                 <td>${rr.editor.name}</td>
-            <td><a href="/test_ssh/chiefEditor/getNews?newsId=${rr.id}">审核</a></td>
+            <td><a href="/test_ssh/chiefEditor/getNews?newsId=${rr.id}&type=1">审核</a></td>
             </tr>
     </c:forEach>
 </c:if>

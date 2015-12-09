@@ -64,7 +64,7 @@
                 <td>${rr.onShowTime}</td>
                 <td>${rr.offShowTime}</td><!-- TODO价格 -->
                 <td>${rr.rank}</td>
-                <td><a href="软文界面">查看</a>&nbsp;&nbsp;<a href="/test_ssh/chiefEditor/getNews?newsId=${rr.id}">重新审核</a></td>
+                <td><a href="软文界面">查看</a>&nbsp;&nbsp;<a href="/test_ssh/chiefEditor/getNews?newsId=${rr.id}&type=0">重新审核</a></td>
             </tr>
     </c:forEach>
 </c:if>

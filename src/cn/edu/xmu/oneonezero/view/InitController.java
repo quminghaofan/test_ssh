@@ -25,16 +25,17 @@ public class InitController {
 	}
 	
 	@RequestMapping(value="/login",method = RequestMethod.POST)
-	public String login(HttpServletRequest request){
+	public String login(HttpServletRequest request){//TODO 获取
 		User user=new User();
 		String userName=request.getParameter("username");
 		String psw=request.getParameter("psw");
-		user.setName(userName);
-		user.setPassword(psw);
-		request.getSession().setAttribute("user",user);
 		boolean isSuccess=userService.isLoginSuccessful(userName, psw);
-		if(isSuccess)
+		if(isSuccess){
+			user.setName(userName);
+			user.setPassword(psw);
+			request.getSession().setAttribute("user",user);
 			return "editor_index";//TODO 根据角色进入不同的界面
+		}
 		else {
 			request.setAttribute("result", isSuccess);
 			return "login";

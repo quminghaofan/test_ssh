@@ -21,36 +21,41 @@ public class ChiefEditorController {
     private NewsService newsService;
 
     @RequestMapping("/getNews")
-    public String getNews(long newsId,HttpServletRequest request){
+    public String getNews(String type,long newsId,HttpServletRequest request){
         request.getSession().setAttribute("news",newsService.getNews(newsId));
-        return "chiefEditor_checks";
-    }
-
-    @RequestMapping(value="/examineNews")
-    public String examineNews(String typePass,String typeExam,HttpServletRequest request){
-        News news=(News)request.getSession().getAttribute("news");
-        if(typeExam.equals("未审核"))typeExam="1";
-    	if(typePass.equals("1")) {
-    		news.setRank(request.getParameter("rank"));
-        	news.setState("审核通过");
-            newsService.updateNews(news);
+        if(type.equals("1")){
+        	return "chiefEditor_checks";
         }
         else {
-            news.setState("审核不通过");
-            newsService.updateNews(news);
-        }
-    	if(typeExam.equals("1")){
-    		return "redirect:/chiefEditor/getUnexamined";
-    	}
-    	else {
-			return "redirect:/chiefEditor/getExamined";
+			return "chiefEditor_rechecks";
 		}
     }
 
-    @RequestMapping("/back")
-    public String back(String typeExam){
-    	if(typeExam.equals("未审核"))
-    		return "redirect:/chiefEditor/getUnexamined";
+    @RequestMapping(value="/examineNews")
+    public String examineNews(String type,HttpServletRequest request){
+        News news=(News)request.getSession().getAttribute("news");
+    	if(type.equals("1")) {
+    		news.setRank(request.getParameter("rank"));
+        	news.setState("审核通过");
+        }
+        else {
+            news.setState("审核不通过");
+        }
+        newsService.updateNews(news);
+    	return "redirect:/chiefEditor/getUnexamined";
+    }
+
+    @RequestMapping(value="/reExamineNews")
+    public String reExamineNews(String type,HttpServletRequest request){
+        News news=(News)request.getSession().getAttribute("news");
+    	if(type.equals("1")) {
+    		news.setRank(request.getParameter("rank"));
+        	news.setState("审核通过");
+        }
+        else {
+            news.setState("审核不通过");
+        }
+        newsService.updateNews(news);
     	return "redirect:/chiefEditor/getExamined";
     }
     

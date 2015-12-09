@@ -27,14 +27,17 @@ public class EditorController {
     @Resource(name="newsService")
     private NewsService newsService;
 
-    @RequestMapping(value="/addNews",method = RequestMethod.POST)
+    @RequestMapping(value="/addNews")
     public String addNews(String type,HttpServletRequest request){
     	News news=new News();
-    	news.setName(request.getParameter("RRname"));
     	User user=((User)request.getSession().getAttribute("user"));
     	news.setEditor(user);
-    	news.setContent(request.getParameter("RRcontent"));
+    	news.setName(request.getParameter("RRname"));
+    	news.setContent(request.getParameter("content"));
     	news.setPicUrl(request.getParameter("img"));
+    	news.setOnShowTime(request.getParameter("txtDate time1"));
+    	news.setOffShowTime(request.getParameter("txtDate time2"));
+    	news.setPrice(Double.parseDouble(request.getParameter("price")));
     	if(type.equals("1")){
     		news.setState("草稿");
     	}
@@ -42,17 +45,22 @@ public class EditorController {
 			news.setState("未审核");
 		}
         newsService.insertNews(news);
-        return "redirect:/editor/getUnexamined"; 
+        return "redirect:/editor/getDraft"; 
     }
 
-    @RequestMapping(value="/editNews",method=RequestMethod.POST)
-    public String editNews(String type,HttpServletRequest request){//TODO
+    @RequestMapping(value="/editNews")
+    public String editNews(String type,HttpServletRequest request){
     	News news=(News) request.getSession().getAttribute("news");
     	User user=(User)request.getSession().getAttribute("user");
     	news.setEditor(user);
     	news.setName(request.getParameter("RRname"));
-    	news.setContent(request.getParameter("RRcontent"));
+    	news.setContent(request.getParameter("content"));
     	news.setPicUrl(request.getParameter("img"));
+    	news.setOnShowTime(request.getParameter("txtDate time1"));
+    	news.setOffShowTime(request.getParameter("txtDate time2"));
+//    	System.out.println(request.getParameter("price"));
+    	news.setPrice(Double.parseDouble(request.getParameter("price")));
+//    	System.out.println(type);
     	if(type.equals("1")){//保存
     		news.setState("草稿");
     	}else {//发送

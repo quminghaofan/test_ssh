@@ -54,7 +54,7 @@
                 <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
-<form action="/test_ssh/editor/addNews?type=1" method="post" class="definewidth m10">
+<form action="" method="post" class="definewidth m10">
 <table class="table table-bordered table-hover m10">
     <tr>
             <td width="10%" class="tableleft">软文标题</td>
@@ -80,12 +80,12 @@
         </tr>
          <tr>
             <td width="10%" class="tableleft">价格</td>
-            <td><input type="text" name="price" id="price" value="${news.name}" readonly="readonly"/></td>  <!--TODO-->
+            <td><input type="text" name="price" id="price" value="${news.price}" readonly="readonly"/></td>  <!--TODO-->
         </tr>
     <tr>
             <td class="tableleft"></td>
             <td>
-               <button type="submit" class="btn btn-primary" type="button"  name="savebtnid" id="savebtnid">保存</button> <button type="submit" class="btn btn-primary" type="button"  name="btnid" id="btnid" onclick="window.location.href='/test_ssh/editor/addNews?type=0'">发送</button>				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid"  onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表">
+               <input class="btn btn-primary" type="button"  name="btnid" id="btnid" onclick="window.location.href='/test_ssh/editor/addNews?type=1'" value="保存">				 &nbsp;&nbsp; <input class="btn btn-primary" type="button"  name="btnid" id="btnid" onclick="window.location.href='/test_ssh/editor/addNews?type=0'" value="发送">				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid"  onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表">
             </td>
         </tr>
 </table>
