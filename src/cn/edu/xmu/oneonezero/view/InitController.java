@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 import cn.edu.xmu.oneonezero.entity.ItemType;
+import cn.edu.xmu.oneonezero.entity.News;
 import cn.edu.xmu.oneonezero.entity.User;
 import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
 import cn.edu.xmu.oneonezero.service.NewsService;
@@ -37,8 +38,12 @@ public class InitController {
 	@RequestMapping(value="/home",method=RequestMethod.GET)
 	public String home(HttpServletRequest request){
 		//获取今天要发布的4条新闻资讯
-		request.setAttribute("RRlist", newsService.getNews(1));
-		request.setAttribute("commodityArtworkList", commodityArtworkService.commodityArtworksToDisplay());
+		List<News> news=newsService.getExaminedNews();
+		System.out.println(news.get(0).getPicUrl());
+		request.setAttribute("RRlist", news);
+		List<CommodityArtwork> commodityArtworks=commodityArtworkService.commodityArtworksToDisplay();
+		System.out.println(commodityArtworks.get(0).getPicUrl());
+		request.setAttribute("commodityArtworkList",commodityArtworks);
 		return "index";
 	}
 	

@@ -301,7 +301,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</ul>
 			</div>
 			<div class="grid_2">
-				<c:forEach items="commodityArtworkList" var="item">
+				<c:forEach items="${commodityArtworkList}" var="item">
 					<div class="col-md-3 span_6">
 						<div class="box_inner">
 							<img src="${item.picUrl}" class="img-responsive" alt="" />
@@ -459,7 +459,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div></a>
 				</div>
 			</div>
-			<!--è½¯æ-->
 			<div class="col-md-8">
 				<ul class="spinner">
 					<i class="paperclip"> </i>
