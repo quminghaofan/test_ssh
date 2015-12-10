@@ -179,7 +179,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								<td>国画</td>
 								<td>1000000000</td>
-								<td><a href="/test_ssh/cart/delCart?itemId=">删除</a></td>
+								<td><a href="/test_ssh/cart/delCart?itemId=${item.id}">删除</a></td>
 							</tr>
 							</c:forEach>
 					</table>

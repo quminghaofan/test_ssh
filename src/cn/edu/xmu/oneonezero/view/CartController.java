@@ -11,6 +11,7 @@ import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 
@@ -18,13 +19,14 @@ import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 @RequestMapping("/cart")
 public class CartController {
 	
-	@RequestMapping("/add2Cart")
+	@RequestMapping(value="/add2Cart",method=RequestMethod.POST)
 	public void add2Cart(long itemId,String name,String type,String price,HttpServletResponse response,HttpServletRequest request){
 		CommodityArtwork commodityArtwork=new CommodityArtwork();
-//		commodityArtwork.setId(itemId);
-//		commodityArtwork.setName(name);
-//		commodityArtwork.setType(type);
-//		commodityArtwork.setPrice(price);
+		commodityArtwork.setId(itemId);
+		commodityArtwork.setName(name);
+		commodityArtwork.setType(type);
+		System.out.println(name);
+		commodityArtwork.setPrice(Double.parseDouble(price));
 		String commodityArtworkJson = JSONObject.fromObject(commodityArtwork).toString();
 		Cookie cookie=new Cookie(Long.toString(itemId), commodityArtworkJson);
 		cookie.setMaxAge(60*60*24*7);//保留7天
@@ -37,6 +39,7 @@ public class CartController {
 		return "cart";
 	}
 	
+	@RequestMapping("/delCart")
 	public String delCart(long itemId,HttpServletRequest request,HttpServletResponse response){
 		Cookie[] cookies=request.getCookies();
 		for(Cookie cookie:cookies){
@@ -49,6 +52,7 @@ public class CartController {
 		return "redirect:/cart/showCart";
 	}
 	
+	@RequestMapping("/cleanCart")
 	public String cleanCart(HttpServletRequest request,HttpServletResponse response) {
 		CommonMethod.cleanCookie(request, response);
 		return "redirect:/cart/showCart";
