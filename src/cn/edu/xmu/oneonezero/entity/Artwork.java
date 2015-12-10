@@ -23,6 +23,9 @@ public class Artwork {
 	protected String name;
 	protected String author;//作者
 	protected User owner;//持有用户
+	protected String picUrl;//图片路径
+	protected String artworkDescription;//描述
+	protected String type;//类别
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -53,6 +56,24 @@ public class Artwork {
 	}
 	public void setOwner(User owner) {
 		this.owner = owner;
+	}
+	public String getPicUrl() {
+		return picUrl;
+	}
+	public void setPicUrl(String picUrl) {
+		this.picUrl = picUrl;
+	}
+	public String getArtworkDescription() {
+		return artworkDescription;
+	}
+	public void setArtworkDescription(String artworkDescription) {
+		this.artworkDescription = artworkDescription;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	
