@@ -93,7 +93,7 @@ public class UserDaoImpl implements UserDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getUserByUserName(String userName) {
-		String hql = "from User u where u.name=?";
+		String hql = "from User u where u.name = ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, userName);
 		
@@ -104,11 +104,23 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> getUsersByRole(String role) {
-		String hql="from User u where u.role=?";
+		String hql="from User u where u.role = ?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, role);
 		
 		return query.list();
+	}
+
+
+
+	@Override
+	public User getUserByUserNameAndPassword(String userName, String password) {
+		String hql="from User u where u.name= ? and u.password= ?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, userName);
+		query.setString(1, password);
+		
+		return (User) query.list().get(0);
 	}
 	
 	

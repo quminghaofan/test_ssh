@@ -25,6 +25,7 @@ public List<User> getUserByUserName(String userName);//根据姓名获取用户
 
 public List<User> getUsersByRole(String role);//得到所有该角色的用户
 
+public User getUserByUserNameAndPassword(String userName,String password);//根据用户名和密码获得用户
 
 
 
