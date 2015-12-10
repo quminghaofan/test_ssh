@@ -23,7 +23,7 @@ public class InitController {
 	private NewsService newsService;
 	
 	@RequestMapping(value="/home",method=RequestMethod.GET)
-	public String setHome(HttpServletRequest request){
+	public String home(HttpServletRequest request){
 		//获取今天要发布的4条新闻资讯
 		request.setAttribute("RRlist", newsService.getNews(1));
 		return "index";
@@ -40,7 +40,8 @@ public class InitController {
 			user.setName(userName);
 			user.setPassword(psw);
 			request.getSession().setAttribute("user",user);
-			return "editor_index";//TODO 根据角色进入不同的界面
+			//return "editor_index";//TODO 根据角色进入不同的界面
+			return "index";
 		}
 		else {
 			request.setAttribute("result", isSuccess);
@@ -52,7 +53,7 @@ public class InitController {
 	public String register(HttpServletRequest request){
 		String userNameString=request.getParameter("username");
 		String psw=request.getParameter("password");
-		return "";
+		return "login";
 	}
 
 }
