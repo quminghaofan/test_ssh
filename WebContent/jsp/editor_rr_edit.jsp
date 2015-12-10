@@ -59,7 +59,7 @@
         </tr>
         <tr>
             <td class="tableleft">图片</td>
-            <td><div id="preview"><span><img id="image" src="${news.picUrl}" width="180" height="180"/></span></div>
+            <td><div id="preview"><span><img id="image" src="${news.picUrl}" width="30%" height="30%"/></span></div>
             <span><input id="img" name="img" type="file" accept="image/*" onchange="previewImage(this,'preview','image')"/></span></td>
         </tr>
         <tr>

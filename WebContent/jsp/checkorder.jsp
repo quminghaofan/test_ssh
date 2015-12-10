@@ -166,10 +166,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
 <div align="center">
     <div style="width: 90%;">
-        <div style="padding: 6%" align=" left">
+        <div style="padding: 6%" align="left">
  
 <div class="orderdiv" style="margin-top:2%">
-                <c:forEach items="" var="">
+                <c:forEach items="orderlist" var="order">
                     <div style="width:20%;" class="left-grid"><img class="img-responsive" src="../images/p3.jpg"></div>
                 
                 <div class="info" align="left">

@@ -14,7 +14,7 @@
     <script type="text/javascript" src="../Js/bootstrap.js"></script>
     <script type="text/javascript" src="../Js/ckform.js"></script>
     <script type="text/javascript" src="../Js/common.js"></script>
-
+<script type="text/javascript" src="../js/pictureload.js"></script>
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -66,8 +66,8 @@
         </tr>
         <tr>
             <td class="tableleft">图片</td>
-            <td><span><img id="image" src=""></span>
-            <span><input id="img" name="img" type="file" accept="image/*" /></span></td>
+            <td><div id="preview"><span><img id="image" src="${news.picUrl}" width="30%" height="30%"/></span></div>
+            <span><input id="img" name="img" type="file" accept="image/*" onchange="previewImage(this,'preview','image')"/></span></td>
         </tr>
         <tr>
             <td width="10%" class="tableleft">上架时间</td>
