@@ -185,6 +185,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<th scope="col">价格</th>
 							<th scope="col">操作</th>
 						</tr>  
+						<c:forEach items="${orderlist}" var="order">
 							<tr>
 							<td scope="col"><input type="checkbox"></td>
 								<td scope="row" class="spec">溪山行旅图</th>
@@ -193,6 +194,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<td>1000000000</td>
 								<td><a href="">删除</a></td>
 							</tr>
+							</c:forEach>
 					</table>
 				</div>
 				<div style="margin-top:3%"><a href="">继续购物</a></div>
