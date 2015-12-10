@@ -89,17 +89,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							onBlur="if (this.value == '') {this.value = '商品名称';}"> <input
 							type="submit" value="">
 					</div>
-					<%
-						if (session.getAttribute("username") != null) {
-					%>
-					<ul class="bag">
-						<a href="#"><i class="bag_left"> </i></a>
-						<a href="#"><li class="bag_right"><p>购物篮</p></li></a>
-						<div class="clearfix"></div>
-					</ul>
-					<%
-						}
-					%>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -192,7 +181,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								<td>国画</td>
 								<td>1000000000</td>
-								<td><a href="">删除</a></td>
+								<td><a href="/test_ssh/init/delCart?itemId=">删除</a></td>
 							</tr>
 							</c:forEach>
 					</table>
