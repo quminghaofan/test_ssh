@@ -33,28 +33,34 @@
         }
     </style>
     
-     <link rel="stylesheet" href="../texteditor/themes/default/default.css" />
+    <link rel="stylesheet" href="../texteditor/themes/default/default.css" />
         <script charset="utf-8" src="../texteditor/kindeditor-min.js"></script>
         <script charset="utf-8" src="../texteditor/lang/zh_CN.js"></script>
-       <script>
+         <script>
             var editor;
             KindEditor.ready(function(K) {
                 editor = K.create('textarea[name="content"]', {
                 	 resizeType : 1,
                      allowPreviewEmoticons: false,
-                     allowImageUpload:true,//允许上传图片
-                    allowFileManager : true,
-                    uploadJson:'../texteditor/jsp/upload_json.jsp', //上传图片的java代码，只不过放在jsp中
-                    fileManagerJson:'../texteditor/jsp/file_manager_json.jsp',
-                    afterUpload: function(){this.sync();}, //图片上传后，将上传内容同步到textarea中
+                
                     afterBlur: function(){this.sync();},   ////失去焦点时，将上传内容同步到textarea中
+                    items: [
+                            'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+                            'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                            'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                            'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen',
+                            'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                            'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 
+                             'table', 'hr', 'emoticons', 'pagebreak',
+                            'anchor', 'link', 'unlink', '|', 'about'
+                            ]
                 });
             });
                 </script> 
                 <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
-<form action="" method="post" class="definewidth m10">
+<form action="" method="post" class="definewidth m10" id="myform" name="myform">
 <table class="table table-bordered table-hover m10">
     <tr>
             <td width="10%" class="tableleft">软文标题</td>
@@ -84,8 +90,11 @@
         </tr>
     <tr>
             <td class="tableleft"></td>
-            <td>
+            <!-- <td>
                <input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="window.location.href='/test_ssh/editor/addNews?type=1'" value="保存">				 &nbsp;&nbsp; <input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="window.location.href='/test_ssh/editor/addNews?type=0'" value="发送">				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid"  onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表">
+            </td> -->
+            <td>
+               <input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="submit1()" value="保存">				 &nbsp;&nbsp; <input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="submit2()" value="发送">				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid"  onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表">
             </td>
         </tr>
 </table>
@@ -122,4 +131,15 @@ function price_count(){
 	}
 }
 
+function submit1(){
+	var myform=document.getElementById("myform");
+	myform.action="/test_ssh/editor/addNews?type=1";
+	myform.submit();
+	//return true;
+}
+function submit2(){
+	var myform=document.getElementById("myform");
+	myform.action="/test_ssh/editor/addNews?type=0";
+	myform.submit();
+}
 </script>
