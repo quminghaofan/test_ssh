@@ -80,6 +80,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="col1">
 							<div class="h_nav">
 								<ul>
+								<li><a href="">全部</a></li>
 								<c:forEach items="${TYPELIST}" var="type">
 									<li><a href="">${type.}</a></li>
 								</c:forEach>	
@@ -95,6 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="col1">
 							<div class="h_nav">
 								<ul>
+								<li><a href="">全部</a></li>
 								<c:forEach items="${TYPELIST}" var="type">
 									<li><a href="">${type.}</a></li>
 								</c:forEach>	
@@ -110,6 +112,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="col1">
 							<div class="h_nav">
 								<ul>
+								<li><a href="">全部</a></li>
 								<c:forEach items="${TYPELIST}" var="type">
 									<li><a href="">${type.}</a></li>
 								</c:forEach>	

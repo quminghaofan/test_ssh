@@ -10,22 +10,22 @@
 <meta name="keywords" content="Gifty Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!-- Custom Theme files -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />
-<link rel="stylesheet" href="css/jquery.countdown.css" />
+<link href="../css/style.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="../css/jquery.countdown.css" />
 <!-- Custom Theme files -->
 <!--webfont-->
 <link href='http://fonts.useso.com/css?family=Raleway:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
 <!-- dropdown -->
-<script src="js/jquery.easydropdown.js"></script>
+<script src="../js/jquery.easydropdown.js"></script>
 <!-- start menu -->
-<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="js/megamenu.js"></script>
+<link href="../css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="../js/megamenu.js"></script>
 <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
-<script src="js/responsiveslides.min.js"></script>
+<script src="../js/responsiveslides.min.js"></script>
 
 <script>
     $(function () {
@@ -67,16 +67,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	display:block;
 }
 #updown .up{
-	background:url(images/updown.png) no-repeat;
+	background:url(../images/updown.png) no-repeat;
 }
 #updown .up:hover{
-	background:url(images/updown.png) top right no-repeat;
+	background:url(../images/updown.png) top right no-repeat;
 }
 #updown .down{
-	background:url(images/updown.png) bottom left no-repeat;
+	background:url(../images/updown.png) bottom left no-repeat;
 }
 #updown .down:hover{
-	background:url(images/updown.png) bottom right no-repeat;
+	background:url(../images/updown.png) bottom right no-repeat;
 }
 #top{
 	background-color:#000;
@@ -87,10 +87,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	line-height:50px;
 }
 </style>
-<script src="js/jquery.countdown.js"></script>
-<script src="js/script.js"></script>
+<script src="../js/jquery.countdown.js"></script>
+<script src="../js/script.js"></script>
 </head>
-<body onload="/test_ssh/init/home">
+<body>
 <div id="updown"><span class="up"></span><span class="down"></span></div>
 <div class="header_top">
   <div class="container">
@@ -124,7 +124,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	 <div class="header_bottom-box">
 		<div class="header_bottom_left">
 			<div class="logo">
-				<a href="index.jsp"><img src="images/logo_ooz.png" alt="首页"/></a>
+				<a href="index.jsp"><img src="../images/logo_ooz.png" alt="首页"/></a>
 			</div>
 			
 			<div class="clearfix"> </div>
@@ -210,7 +210,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	      <ul class="rslides" id="slider">
 	      <!-- 广告 -->
 	      <c:forEach items="adlist" var="ad">
-	        <li><img src="images/slider1.jpg" class="img-responsive" alt=""/></li>
+	        <li><img src="../images/slider1.jpg" class="img-responsive" alt=""/></li>
 	        </c:forEach>
 	      </ul>
 	  </div>
@@ -394,20 +394,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li class="spinner_head"><h3>新闻资讯</h3></li>
 			<div class="clearfix"> </div>
 		  </ul>
-		  <c:forEach items="RRlist" var="rr">
+		  <c:forEach items="${RRlist}" var="rr">
 		      <div class="a-top">
 				 <div class="left-grid">
-					<img src="images/n2.jpg" class="img-responsive" alt="" id="rr_img1"/>
+					<img src="images/n2.jpg" class="img-responsive" alt=""/>
 				 </div>
 				 <div class="right-grid">
-					<h4><a href="#" id="rr_title1">知名画家入驻</a></h4>
-					<p id="rr_content1">知名画家已与我方签约，正式入驻..</p><!-- 保留前15或20个字符即可，然后加省略号 -->
+					<h4><a href="#">${rr.name}</a></h4>
+					<p>${rr.content}</p><!-- 保留前15或20个字符即可，然后加省略号 -->
 				 </div>
 				 <div class="but">
-				   <a class="arrow" href="#" id="rr_but1"> </a>
+				   <a class="arrow" href="#"> </a>
 				 </div>
 				 <div class="clearfix"></div>
 			 </div>
+			 
 			 </c:forEach>
 			 <div class="clearfix"></div>
 	</div>
@@ -458,7 +459,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <div class="footer">
 	<div class="container">
-		<img src="images/pay.png" class="img-responsive" alt=""/>
+		<img src="../images/pay.png" class="img-responsive" alt=""/>
 		<ul class="footer_nav">
 		  <li><a href="#">首页</a></li>
 		  <li><a href="#">定制</a></li>
