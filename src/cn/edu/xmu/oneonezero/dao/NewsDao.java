@@ -1,5 +1,6 @@
 package cn.edu.xmu.oneonezero.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import cn.edu.xmu.oneonezero.entity.News;
@@ -56,6 +57,9 @@ public List<News> getPassedNewsByEditorNameAndVagueNewsName(String editorName,St
 public List<News> getUnpassedNewsByEditorNameAndVagueNewsName(String editorName,String newsName);//模糊软文名字获取未通过
 
 public void updateStateToDraft(long newsId);//根据软文id将其状态改为草稿状态
+
+public List<News> getTopFourNews(Date today);//获取4个放在首页展示的软文
+
 
 
 }

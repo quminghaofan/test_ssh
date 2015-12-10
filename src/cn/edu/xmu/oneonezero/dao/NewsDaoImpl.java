@@ -2,6 +2,7 @@ package cn.edu.xmu.oneonezero.dao;
 
 
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -261,6 +262,16 @@ public class NewsDaoImpl implements NewsDao {
 		
 		query.executeUpdate();
 
+	}
+
+	@Override
+	public List<News> getTopFourNews(Date today) {
+		String hql = "from News n where n.onShowTime<? and n.offShowTime>? and n.rank<=4 order by u.rank desc";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setDate(0, today);
+		query.setDate(1, today);
+		
+		return query.list();
 	}
 	
 	//异常代码：

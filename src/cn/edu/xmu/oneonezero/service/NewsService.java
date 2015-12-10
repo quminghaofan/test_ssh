@@ -1,5 +1,6 @@
 package cn.edu.xmu.oneonezero.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.hibernate.sql.Update;
@@ -56,6 +57,8 @@ public List<News> getUnpassedNewsByEditorNameAndVagueNewsName(String editorName,
 
 
 public void updateStateToDraft(long newsId);//根据软文id将其状态改为草稿状态
+
+public List<News> getTopFourNews(Date today);//获取4个放在首页展示的软文
 
 
 

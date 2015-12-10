@@ -25,6 +25,7 @@ public class News {
 	private String chiefEditor;//主编
 	private String state;//软文的状态
 	private double price;//软文的价格
+	private String newsType;//软文or新闻
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -101,6 +102,12 @@ public class News {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	public String getNewsType() {
+		return newsType;
+	}
+	public void setNewsType(String newsType) {
+		this.newsType = newsType;
 	}
 	
 	

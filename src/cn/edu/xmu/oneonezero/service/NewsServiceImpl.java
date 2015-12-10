@@ -1,8 +1,10 @@
 package cn.edu.xmu.oneonezero.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import cn.edu.xmu.oneonezero.dao.NewsDao;
+import cn.edu.xmu.oneonezero.dao.UserDao;
 import cn.edu.xmu.oneonezero.entity.News;
 
 public class NewsServiceImpl implements NewsService {
@@ -151,6 +153,12 @@ public class NewsServiceImpl implements NewsService {
 	@Override
 	public void updateStateToDraft(long newsId) {
 		newsDao.updateStateToDraft(newsId);
+	}
+
+
+	@Override
+	public List<News> getTopFourNews(Date today) {
+		return newsDao.getTopFourNews(today);
 	}
 	
 
