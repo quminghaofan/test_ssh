@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.edu.xmu.oneonezero.entity.User;
+import cn.edu.xmu.oneonezero.service.NewsService;
 import cn.edu.xmu.oneonezero.service.UserService;
 
 @Controller
@@ -18,15 +19,20 @@ public class InitController {
 	@Resource(name="userService")
 	private UserService userService;
 	
+	@Resource(name="newsService")
+	private NewsService newsService;
+	
 	@RequestMapping(value="/home",method=RequestMethod.GET)
 	public String setHome(HttpServletRequest request){
 		//获取今天要发布的4条新闻资讯
-		return "";
+		request.setAttribute("RRlist", newsService.getNews(1));
+		return "index";
 	}
 	
 	@RequestMapping(value="/login",method = RequestMethod.POST)
 	public String login(HttpServletRequest request){//TODO 获取
 		User user=new User();
+		user.setId(1);//TODO
 		String userName=request.getParameter("username");
 		String psw=request.getParameter("psw");
 		boolean isSuccess=userService.isLoginSuccessful(userName, psw);

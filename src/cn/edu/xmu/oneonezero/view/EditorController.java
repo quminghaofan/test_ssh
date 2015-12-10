@@ -34,6 +34,7 @@ public class EditorController {
     	news.setEditor(user);
     	news.setName(request.getParameter("RRname"));
     	news.setContent(request.getParameter("content"));
+    	System.out.println(request.getParameter("content"));
     	news.setPicUrl(request.getParameter("img"));
     	news.setOnShowTime(request.getParameter("txtDate time1"));
     	news.setOffShowTime(request.getParameter("txtDate time2"));
@@ -55,6 +56,7 @@ public class EditorController {
     	news.setEditor(user);
     	news.setName(request.getParameter("RRname"));
     	news.setContent(request.getParameter("content"));
+    	System.out.println(request.getParameter("content"));
     	news.setPicUrl(request.getParameter("img"));
     	news.setOnShowTime(request.getParameter("txtDate time1"));
     	news.setOffShowTime(request.getParameter("txtDate time2"));
@@ -117,8 +119,8 @@ public class EditorController {
         else return "redirect:/editor/getDraft";
     }
 
-    @RequestMapping("/getNewsPush")
-    public String getNewsPush(HttpServletRequest request){
+    @RequestMapping("/getNews")
+    public String getNews(HttpServletRequest request){
 //        request.setAttribute("newsList", newsManager.getNewsByCollector(userId));
         return "刚进入的界面";//TODO
     }

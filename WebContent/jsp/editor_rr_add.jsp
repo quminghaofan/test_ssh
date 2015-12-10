@@ -85,7 +85,7 @@
     <tr>
             <td class="tableleft"></td>
             <td>
-               <input class="btn btn-primary" type="button"  name="btnid" id="btnid" onclick="window.location.href='/test_ssh/editor/addNews?type=1'" value="保存">				 &nbsp;&nbsp; <input class="btn btn-primary" type="button"  name="btnid" id="btnid" onclick="window.location.href='/test_ssh/editor/addNews?type=0'" value="发送">				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid"  onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表">
+               <input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="window.location.href='/test_ssh/editor/addNews?type=1'" value="保存">				 &nbsp;&nbsp; <input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="window.location.href='/test_ssh/editor/addNews?type=0'" value="发送">				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid"  onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表">
             </td>
         </tr>
 </table>

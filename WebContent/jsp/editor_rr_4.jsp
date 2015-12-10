@@ -47,7 +47,7 @@
         <th>图片</th>
         <th>上架时间</th>
         <th>下架时间</th>
-        <!-- TODO 价格 -->
+        <th>价格</th>
         <th>操作</th>
     </tr>
     </thead>
@@ -58,6 +58,7 @@
                 <td><img src="${rr.picUrl}"></td>
                 <td>${rr.onShowTime}</td>
                 <td>${rr.offShowTime}</td>
+                <td>${rr.price}</td>
             <td><a href="/test_ssh/editor/getNewsToEdit?newsId=${rr.id}">编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}&type=0'">删除</a></td>
             </tr>
     </c:forEach>

@@ -47,7 +47,7 @@
                 <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
-<form action="" method="post" class="definewidth m10">
+<form action="/test_ssh/editor/editNews" id="table" name="table" method="post" class="definewidth m10">
 <table class="table table-bordered table-hover m10">
     <tr>
             <td width="10%" class="tableleft">软文标题</td>
@@ -78,7 +78,10 @@
     <tr>
             <td class="tableleft"></td>
             <td>
-               <input class="btn btn-primary" type="button"  name="savebtnid" id="savebtnid" onclick="window.location.href='/test_ssh/editor/editNews?type=1'" value="保存">				 &nbsp;&nbsp; <input class="btn btn-primary" type="button"  name="savebtnid" id="savebtnid" onclick="window.location.href='/test_ssh/editor/editNews?type=1'" value="发送">				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表">
+            <input style="display:none" id="type" name="type"/>
+               <input class="btn btn-primary" type="button"  name="savebtnid" id="savebtnid" onclick="sub(1)" value="保存">				 &nbsp;&nbsp; 
+               <input class="btn btn-primary" type="button"  name="savebtnid" id="savebtnid" onclick="window.location.href='/test_ssh/editor/editNews?type=0'" value="发送">				 &nbsp;&nbsp;
+               <input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表">
             </td>
         </tr>
 </table>
@@ -88,6 +91,12 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>  
 
 <script type="text/javascript">  
+function sub(type){
+	document.getElementById("type").value = 1;
+	var table=document.getElementById("table");
+	alert(table);
+	table.subimt();
+}
 $(function(){  
 	$('#img').change(function(){  
 		var file = this.files[0]; //选择上传的文件  
