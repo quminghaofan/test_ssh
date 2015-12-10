@@ -19,16 +19,16 @@ import javax.persistence.TemporalType;
 @DiscriminatorValue("订单")
 @Table(name="ArtworkOrder")
 public class ArtworkOrder {
-	private long id;
-	private String orderId;//订单编号
-	private String name;
+	protected long id;
+	protected String orderId;//订单编号
+	protected String name;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date placeDate;//下单时间
-	private String payState;//支付状态
-	private String deliverState;//发货状态
-	private String receiveState;//收获状态
-	private String mobile;//联系方式
-	private String address;//发货地址
+	protected Date placeDate;//下单时间
+	protected String payState;//支付状态
+	protected String deliverState;//发货状态
+	protected String receiveState;//收获状态
+	protected String mobile;//联系方式
+	protected String address;//发货地址
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

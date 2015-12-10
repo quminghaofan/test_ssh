@@ -19,10 +19,10 @@ import org.hibernate.annotations.CascadeType;
 @DiscriminatorValue("普通艺术品")
 @Table(name="Artwork")
 public class Artwork {
-	private long id;
-	private String name;
-	private String author;//作者
-	private User owner;//持有用户
+	protected long id;
+	protected String name;
+	protected String author;//作者
+	protected User owner;//持有用户
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
