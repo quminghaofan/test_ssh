@@ -61,7 +61,7 @@
         <td>${rr.onShowTime}</td>
         <td>${rr.offShowTime}</td>
         <td>${rr.chiefEditor.name}</td>
-        <td><a href="">查看</a>&nbsp;&nbsp;<a href="/test_ssh/editor/withdraw?type=1&newsId=${rr.id}">撤回</a></td>
+        <td><a href="/test_ssh/news/showNews?type=5">查看</a>&nbsp;&nbsp;<a href="/test_ssh/editor/withdraw?type=1&newsId=${rr.id}">撤回</a></td>
       </tr>
     </c:forEach>
   </c:if>

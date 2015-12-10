@@ -53,14 +53,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="cssmenu">
 					<ul>
 						<%
-							if (session.getAttribute("username") == null) {
+							if (session.getAttribute("user") == null) {
 						%>
 						<li><a href="jsp/login.jsp">登录/注册</a></li>
 						<%
 							} else {
 						%>
 						<li><a href="">申请成为艺术家</a></li>
-						<li><a href=""> <%=session.getAttribute("username")%></a></li>
+						<li><a href=""> <%=session.getAttribute("user")%></a></li>
 						<li><a href="">我的订单</a></li>
 						<li><a href="">登出</a></li>
 						<%
@@ -189,13 +189,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <div align="right" style="font-weight: bolder">
                 <lable>总价&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</lable>
-                <lable>¥ 总价 </lable>
+                <lable>¥ ${total}</lable>
             </div>
 
            <div style="margin-top: 3%;text-align:left" >
                 <div style="margin-bottom: 2%;">
                     <lable>用户名:&nbsp;&nbsp;</lable>
-                    <lable style="font-weight: bold">用户名</lable>
+                    <lable style="font-weight: bold">#{username}</lable>
                 </div>
                 <div style="margin-bottom: 2%;">
                     <lable>地址:&nbsp;&nbsp;&nbsp;&nbsp;</lable>

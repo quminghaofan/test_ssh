@@ -165,7 +165,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					%>
 					<ul class="bag">
 						<a href="#"><i class="bag_left"> </i></a>
-						<a href="#"><li class="bag_right"><p>购物篮</p></li></a>
+						<a href="/test_ssh/cart/showCart"><li class="bag_right"><p>购物篮</p></li></a>
 						<div class="clearfix"></div>
 					</ul>
 					<%
@@ -199,7 +199,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</div>
 						</div></li>
-					<li><a class="color10" href="#">商城</a>
+					<li><a class="color10" href="/test_ssh/mall/enterMall">商城</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
@@ -301,20 +301,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</ul>
 			</div>
 			<div class="grid_2">
-				<c:forEach items="itemlist" var="item">
+				<c:forEach items="commodityArtworkList" var="item">
 					<div class="col-md-3 span_6">
 						<div class="box_inner">
-							<img src="images/p1.jpg" class="img-responsive" alt="" />
+							<img src="${item.picUrl}" class="img-responsive" alt="" />
 							<div class="sale-box"></div>
 							<div class="desc">
-								<h3>Ullamcorper suscipit</h3>
-								<h4>178,90 $</h4>
+								<h3>${item.name}</h3>
+								<h4>${item.price}</h4>
 								<ul class="list2">
 									<%
 										if (session.getAttribute("user") != null) {
 									%>
 									<li class="list2_left"><span class="m_1"><a
-											href="/test_ssh/init/add2Cart?itemId=&name=&type=&price="
+											href="/test_ssh/cart/add2Cart?itemId=${item.id}&name=${item.name}&type=${item.type}&price=${item.price}"
 											class="link">Add to Cart</a></span></li>
 									<%
 										} else {
@@ -469,17 +469,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<c:forEach items="${RRlist}" var="rr">
 					<div class="a-top">
 						<div class="left-grid">
-							<img src="images/n2.jpg" class="img-responsive" alt="" />
+							<img src="${rr.picUrl}" class="img-responsive" alt="" />
 						</div>
 						<div class="right-grid">
 							<h4>
-								<a href="#">${rr.name}</a>
+								<a href="/test_ssh/news/showNews?newsId=${rr.id}&type=1">${rr.name}</a>
 							</h4>
 							<p>${rr.content}</p>
 							<!-- 保留前15或20个字符即可，然后加省略号 -->
 						</div>
 						<div class="but">
-							<a class="arrow" href="#"> </a>
+							<a class="arrow" href="/test_ssh/news/showNews?newsId=${rr.id}&type=1"> </a>
 						</div>
 						<div class="clearfix"></div>
 					</div>

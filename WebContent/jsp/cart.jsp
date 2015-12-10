@@ -168,28 +168,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div style="">
 					<table class="table1" cellspacing="0">
 						<tr>
-						<th scope="col"></th>
 							<th scope="col">商品</th>
 							<th scope="col">类别</th>
 							<th scope="col">价格</th>
 							<th scope="col">操作</th>
 						</tr>  
-						<c:forEach items="${orderlist}" var="order">
+						<c:forEach items="${commodityArtworkList}" var="item">
 							<tr>
-							<td scope="col"><input type="checkbox"></td>
 								<td scope="row" class="spec">溪山行旅图</th>
 
 								<td>国画</td>
 								<td>1000000000</td>
-								<td><a href="/test_ssh/init/delCart?itemId=">删除</a></td>
+								<td><a href="/test_ssh/cart/delCart?itemId=">删除</a></td>
 							</tr>
 							</c:forEach>
 					</table>
 				</div>
-				<div style="margin-top:3%"><a href="">继续购物</a></div>
+				<div style="margin-top:3%"><a href="/test_ssh/mall/enterMall">继续购物</a></div>
 				<div align="center" style="padding-top: 3%;">
-					<a class="acount-btn" href="">清空购物车</a>
-				   <a class="acount-btn" href="" style="margin-top:2em">提交订单</a>
+					<a class="acount-btn" href="/test_ssh/cart/cleanCart">清空购物车</a>
+				   <a class="acount-btn" href="/test_ssh/mall/settle" style="margin-top:2em">去结算</a>
 				</div>
 			</div>
 		</div>

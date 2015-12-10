@@ -23,16 +23,12 @@ public class ChiefEditorController {
     @RequestMapping("/getNews")
     public String getNews(String type,long newsId,HttpServletRequest request){
         request.getSession().setAttribute("news",newsService.getNews(newsId));
-        if(type.equals("1")){
-        	return "chiefEditor_checks";
-        }
-        else {
-			return "chiefEditor_rechecks";
-		}
+        request.setAttribute("typeExamine",type);
+        return "chiefEditor_checks";
     }
 
     @RequestMapping(value="/examineNews")
-    public String examineNews(String type,HttpServletRequest request){
+    public String examineNews(String type,String typeExamine,HttpServletRequest request){
         News news=(News)request.getSession().getAttribute("news");
     	if(type.equals("1")) {
     		news.setRank(request.getParameter("rank"));
@@ -42,21 +38,12 @@ public class ChiefEditorController {
             news.setState("审核不通过");
         }
         newsService.updateNews(news);
-    	return "redirect:/chiefEditor/getUnexamined";
-    }
-
-    @RequestMapping(value="/reExamineNews")
-    public String reExamineNews(String type,HttpServletRequest request){
-        News news=(News)request.getSession().getAttribute("news");
-    	if(type.equals("1")) {
-    		news.setRank(request.getParameter("rank"));
-        	news.setState("审核通过");
+        if(typeExamine.equals("1")){
+        	return "redirect:/chiefEditor/getUnexamined";
         }
-        else {
-            news.setState("审核不通过");
+        else{
+        	return "redirect:/chiefEditor/getExamined";
         }
-        newsService.updateNews(news);
-    	return "redirect:/chiefEditor/getExamined";
     }
     
     @RequestMapping(value="/setNews")

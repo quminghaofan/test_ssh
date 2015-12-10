@@ -69,10 +69,10 @@ body {
 						String str_date = formatter.format(now); 
 					%>
 					<c:if test="${rr.onShowTime.compareTo(str_date)<=0}">
-						<td><a href="软文界面">查看</a>&nbsp;&nbsp;<a href="/test_ssh/editor/withdraw?newsId=${rr.id}&type=2">撤回</a></td>
+						<td><a href="/test_ssh/news/showNews?type=6">查看</a>&nbsp;&nbsp;<a href="/test_ssh/editor/withdraw?newsId=${rr.id}&type=2">撤回</a></td>
 					</c:if>
 					<c:if test="${rr.onShowTime.compareTo(str_date)>0}">
-						<td><a href="软文界面">查看</a></td>
+						<td><a href="/test_ssh/news/showNews?type=6">查看</a></td>
 					</c:if>
 				</tr>
 			</c:forEach>

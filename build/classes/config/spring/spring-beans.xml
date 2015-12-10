@@ -29,5 +29,14 @@
 		<property name="newsDao" ref="newsDao"></property>
 	</bean>
 	
+	<bean id="commodityArtworkDao" class="cn.edu.xmu.oneonezero.dao.CommodityArtworkDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+
+	<bean id="commodityArtworkService" class="cn.edu.xmu.oneonezero.service.CommodityArtworkServiceImpl">
+		<property name="commodityArtworkDao" ref="commodityArtworkDao"></property>
+	</bean>
+	
 	
 </beans>
