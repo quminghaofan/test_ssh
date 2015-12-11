@@ -60,7 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							} else {
 						%>
 						<li><a href="">申请成为艺术家</a></li>
-						<li><a href=""> <%=session.getAttribute("user")%></a></li>
+						<li><a href="">${username}</a></li>
 						<li><a href="">我的订单</a></li>
 						<li><a href="">登出</a></li>
 						<%
@@ -90,7 +90,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							type="submit" value="">
 					</div>
 					<%
-						if (session.getAttribute("username") != null) {
+						if (session.getAttribute("user") != null) {
 					%>
 					<ul class="bag">
 						<a href="#"><i class="bag_left"> </i></a>
@@ -217,7 +217,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
             <div align="right" style="margin-top: 3%;">
-                <a href=""><input type="button" class="orderbutton" style="margin-right:1.5%" value="返回购物篮"/></a>
+                <a href="/test_ssh/cart/showCart"><input type="button" class="orderbutton" style="margin-right:1.5%" value="返回购物篮"/></a>
                 <a href=""><input type="button" class="orderbutton" value="确认支付"/></a>
             </div>
         </div>

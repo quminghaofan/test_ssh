@@ -1,8 +1,6 @@
 package cn.edu.xmu.oneonezero.view;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -11,10 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 import cn.edu.xmu.oneonezero.entity.User;
@@ -48,9 +44,10 @@ public class CartController {
 	
 	@RequestMapping("/delCart")
 	public String delCart(long itemId,HttpServletRequest request,HttpServletResponse response){
+		User user=(User)request.getSession().getAttribute("user");
 		Cookie[] cookies=request.getCookies();
 		for(Cookie cookie:cookies){
-			if(cookie.getName().equals(Long.toString(itemId))){
+			if(cookie.getName().equals(user.getName()+"#"+Long.toString(itemId))){
 				cookie.setValue(null);
 				cookie.setMaxAge(0);
 				response.addCookie(cookie);

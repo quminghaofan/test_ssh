@@ -19,13 +19,13 @@ public class CommonMethod {
 	 */
 	public static List<CommodityArtwork> jsonToFinishedItem(HttpServletRequest request){
 		Cookie[] cookies=request.getCookies();
+		System.out.println("cookies.length:"+cookies.length);
 		int count=0;
 		User user=(User)request.getSession().getAttribute("user");
 		if(user==null)return null;
 		List<CommodityArtwork> commodityArtworks=new ArrayList<CommodityArtwork>();
 		CommodityArtwork commodityArtwork;
 		JSONObject jsonCart;
-		System.out.println("cookies.length:"+cookies.length);
 		for (Cookie cookie : cookies) {
 			if (cookie.getValue().startsWith("{")&&cookie.getName().startsWith(user.getName())) {
 				jsonCart = JSONObject.fromObject(cookie.getValue());
@@ -35,8 +35,9 @@ public class CommonMethod {
 				count++;
 			}
 		}
-		System.out.println("count:"+count);
-		request.setAttribute("total", count);
+//		System.out.println("count:"+count);
+//		request.setAttribute("total", count);
+//		System.out.println("commodityArtworks.size:"+commodityArtworks.size());
 		return commodityArtworks;
 	}
 	/**
