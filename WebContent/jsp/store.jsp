@@ -77,9 +77,7 @@ $(function(){
 	line-height:50px;
 }
 </style>
-<link rel="stylesheet" href="../page/jqpagination.css"/>
- <script src="../page/jquery-1.6.2.min.js"></script>
- <script src="../page/jquery.jqpagination.min.js"></script>
+
 </head>
 <body>
 <div id="updown"><span class="up"></span><span class="down"></span></div>
@@ -255,13 +253,79 @@ $(function(){
             </div>
       </div>
 </div>
-<div class="pagination" id="page">
-    <a href="#" class="first" data-action="first">&laquo;</a>
-    <a href="#" class="previous" data-action="previous">&lsaquo;</a>
-    <input type="text" readonly="readonly" data-max-page="40" />
-    <a href="#" class="next" data-action="next">&rsaquo;</a>
-    <a href="#" class="last" data-action="last">&raquo;</a>
-</div>
+<div class="pagging">
+
+         <div class="left">共${userNum}条记录</div>
+
+        <div class="right">
+
+         <c:if test="${currentPage == 1}">
+
+             <span class="disabled"><< 前一页</span>        
+
+         </c:if>
+
+         <c:if test="${currentPage != 1}">
+
+             <a href="listUser.do?page=${currentPage-1}"><< 前一页</a>
+
+         </c:if>
+
+         <c:if test="${currentPage == 1}">
+
+         <span class="current">1</span>
+
+        </c:if>
+
+         <c:if test="${currentPage != 1}">
+
+         <a href="listUser.do?page=1">1</a>
+
+        </c:if>
+
+         <%
+
+                 int pageTimes = (Integer)session.getAttribute("pageTimes");
+
+                 for(int i=1;i<pageTimes;i++)
+
+                 {
+
+                     request.setAttribute("page", i+1);
+
+         %>            
+
+         <c:if test="${currentPage == page}">
+
+             <span class="current"><%=i+1%></span>       
+
+         </c:if>
+
+         <c:if test="${currentPage != page}">
+
+              <a href="listUser.do?page=<%=i+1%>"><%=i+1%></a>
+
+         </c:if>
+
+         <%} %>
+
+         
+
+         <c:if test="${currentPage == pageTimes}">
+
+             <span class="disabled">后一页 >></span>        
+
+         </c:if>
+
+         <c:if test="${currentPage != pageTimes}">
+
+         <a href="listUser.do?page=${currentPage+1}">后一页 >></a>
+
+         </c:if>
+
+         </div>
+
+ </div> 
 <div class="footer">
 	<div class="container">
 		<img src="../images/pay.png" class="img-responsive" alt=""/>
@@ -280,15 +344,3 @@ $(function(){
 <input hidden value="${max_page}" id="max">
 </body>
 </html>		
-<script>
-$('.pagination').jqPagination({
-	   link_string : '/?page={page_number}',
-	   current_page: document.getElementById("current").value, //设置当前页 默认为1
-	   max_page : document.getElementById("max").value, //设置最大页 默认为1
-	   page_string : '第{current_page}页,共{max_page}页',
-	   paged : function(page) {
-	       //回发事件。。。
-	       window.location.href="";
-	      }
-	 });
-</script>
