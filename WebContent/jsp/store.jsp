@@ -77,6 +77,9 @@ $(function(){
 	line-height:50px;
 }
 </style>
+<link rel="stylesheet" href="../page/jqpagination.css"/>
+ <script src="../page/jquery-1.6.2.min.js"></script>
+ <script src="../page/jquery.jqpagination.min.js"></script>
 </head>
 <body>
 <div id="updown"><span class="up"></span><span class="down"></span></div>
@@ -252,6 +255,13 @@ $(function(){
             </div>
       </div>
 </div>
+<div class="pagination" id="page">
+    <a href="#" class="first" data-action="first">&laquo;</a>
+    <a href="#" class="previous" data-action="previous">&lsaquo;</a>
+    <input type="text" readonly="readonly" data-max-page="40" />
+    <a href="#" class="next" data-action="next">&rsaquo;</a>
+    <a href="#" class="last" data-action="last">&raquo;</a>
+</div>
 <div class="footer">
 	<div class="container">
 		<img src="../images/pay.png" class="img-responsive" alt=""/>
@@ -266,6 +276,19 @@ $(function(){
 		<p class="copy">Copyright &copy; 2015.厦门大学软件学院OneoneZero All rights reserved. More Information <a href="" target="_blank" title="OneoneZero">OneoneZero</a> - Made by <a href="" title="OneoneZero" target="_blank">OneoneZero</a></p>
 	</div>
 </div>
-
+<input hidden value="${current_page}" id="current">
+<input hidden value="${max_page}" id="max">
 </body>
 </html>		
+<script>
+$('.pagination').jqPagination({
+	   link_string : '/?page={page_number}',
+	   current_page: document.getElementById("current").value, //设置当前页 默认为1
+	   max_page : document.getElementById("max").value, //设置最大页 默认为1
+	   page_string : '第{current_page}页,共{max_page}页',
+	   paged : function(page) {
+	       //回发事件。。。
+	       window.location.href="";
+	      }
+	 });
+</script>
