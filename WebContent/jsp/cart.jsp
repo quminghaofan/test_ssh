@@ -56,7 +56,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<%
 							if (session.getAttribute("user") == null) {
 						%>
-						<li><a href="jsp/login.jsp">登录/注册</a></li>
+						<li><a href="/test_ssh/init/goToLogin/backUrl=/test_ssh/cart/showCart">登录/注册</a></li>
 						<%
 							} else {
 						%>

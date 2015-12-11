@@ -83,7 +83,8 @@ public class InitController {
 		if(session!=null){
 			session.removeAttribute("user");
 		}
-		CommonMethod.cleanCookie(request, response);
+//		CommonMethod.cleanCookie(request, response);
+		System.out.println(request.getCookies().length);
 		response.sendRedirect(backUrl);
 	}
 	

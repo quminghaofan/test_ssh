@@ -169,16 +169,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div style="padding: 6%" align="left">
  
 <div class="orderdiv" style="margin-top:2%">
-                <c:forEach items="orderlist" var="order">
-                    <div style="width:20%;" class="left-grid"><img class="img-responsive" src="../images/p3.jpg"></div>
+                <c:forEach items="${orderlist}" var="order">
+                    <div style="width:20%;" class="left-grid"><img class="img-responsive" src="${order.picUrl}"></div>
                 
                 <div class="info" align="left">
                     <div style="font-size: large" class="infomargin">
-                        <label>商品名</label>
+                        <label>${order.name}</label>
                     </div>
                     <div align="right">
-                    <label>类别:&nbsp;&nbsp;类别</label>
-                        <label>价格:&nbsp;&nbsp;&nbsp;&nbsp;¥&nbsp;&nbsp;价格</label>
+                    <label>类别:&nbsp;&nbsp;${order.type}</label>
+                        <label>价格:&nbsp;&nbsp;&nbsp;&nbsp;¥&nbsp;&nbsp;${order.price}</label>
                     </div>
                 </div>
             </div>
@@ -195,7 +195,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
            <div style="margin-top: 3%;text-align:left" >
                 <div style="margin-bottom: 2%;">
                     <lable>用户名:&nbsp;&nbsp;</lable>
-                    <lable style="font-weight: bold">#{username}</lable>
+                    <lable style="font-weight: bold">${username}</lable>
                 </div>
                 <div style="margin-bottom: 2%;">
                     <lable>地址:&nbsp;&nbsp;&nbsp;&nbsp;</lable>

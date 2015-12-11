@@ -26,11 +26,15 @@ public class MallController {
 		List<CommodityArtwork> commodityArtworks=CommonMethod.jsonToFinishedItem(request);
 		CommonMethod.cleanCookie(request, response);
 		Double total=0.0;
+		System.out.println(commodityArtworks.size());
 		for(CommodityArtwork commodityArtwork:commodityArtworks){
 			total+=commodityArtwork.getPrice();
+			System.out.println(total);
 		}
+		System.out.println(total);
 		User user=(User)request.getSession().getAttribute("user");
 		request.setAttribute("username",user.getName());
+		request.setAttribute("orderlist", commodityArtworks);
 		request.setAttribute("total", total);
 		return "checkorder";
 	}
