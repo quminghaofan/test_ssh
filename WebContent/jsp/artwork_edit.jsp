@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>艺术家</title>
+<title>艺术品编辑</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
@@ -167,30 +167,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <div class="men">
 		<div class="container">
   <div class="register">
-			   <div class="col-md-6 login-left">
-			  	 <h3>新用户</h3>
-				 <p>创建一个账号，您将能够更好地进行艺术品交易，查看并跟踪您的订单。</p>
-				 <a class="acount-btn" href="/test_ssh/jsp/register.jsp">创建账号</a>
-			   </div>
 			   <div class="col-md-6 login-right">
-			  	<h3>登录</h3>
-				<p>如果已有账号，请登录。</p>
-				<form id="loginform" method="get" onsubmit="return before_login()" action="/test_ssh/init/login?backUrl=${backUrl}">
-					<c:if test="${result.equals('fail')}">
-					<div id="result"><font color="red">用户名不存在或密码错误</font></div>
-				</c:if>
+				<form method="get"  action="">
+				<div>
+				<span>图片<label>*</label></span>
+<input type="file" accept="video/*;capture=camcorder"> 
+<input type="file" accept="audio/*;capture=microphone">
+</div>
 				  <div>
-					<span>账号<label>*</label></span>
-					<input type="text" name="username" id="username" onfocus="display1()"> 
-					<span style="display:none" id="username_blank"><font color="red">不能为空</font></span>
+					<span>艺术品名<label>*</label></span>
+					<input type="text"> 
+					
 				  </div>
 				  <div>
-					<span>密码<label>*</label></span>
-					<input type="password" name="psw" id="psw" onfocus="display2()"> 
-					<span style="display:none" id="psw_blank"><font color="red">不能为空</font></span>
+					<span>类别<label>*</label></span>
+					<select>
+					<c:forEach items="${TYPELIST}" var="type">
+                <option value="1">${type.}</option>
+                </c:forEach>
+            </select>
 				  </div>
-				  <a class="forgot" href="#">忘记密码?</a>
-				  <input type="submit" value="登录" onClick="loginform.onsubmit()">
+				  <div>
+					<span>种类<label>*</label></span>
+					<select id="select2" onchange="select2_change()">
+                <option value="展品">展品</option>
+              <option value="商品" selected="selected">商品</option>
+            </select>
+				  </div>
+				   <div id="price">
+					<span>价格</span>
+					<input type="text"> 
+				  </div>
+				   <div id="price">
+					<span>介绍</span>
+					<textarea></textarea> 
+				  </div>
+				  <input type="submit" value="确认">
+				  <input type="button" value="返回">
 			    </form>
 			   </div>	
 			   <div class="clearfix"> </div>
@@ -221,3 +234,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 </body>
 </html>
+<script>
+function select2_change(){
+	var select2=document.getElementById("select2").value;
+	if(select2=="展品")
+		document.getElementById("price").style.display="none";
+	else
+		document.getElementById("price").style.display="block";
+}
+</script>
