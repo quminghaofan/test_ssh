@@ -278,7 +278,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								id="username" name="username" placeholder="请用您的手机号注册"
 								onfocus="display1()" onblur="return checkPhoneNumber()"
 								onchange="" />
-							<!-- TODO -->
 							<span style="display: none" id="username_blank"> <font
 								color="red">不能为空</font></span> <span style="display: none"
 								id="username_exist"><font color="red">用戶名已存在</font></span>

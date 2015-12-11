@@ -1,5 +1,6 @@
 package cn.edu.xmu.oneonezero.view;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
 
@@ -39,38 +41,60 @@ public class InitController {
 	public String home(HttpServletRequest request){
 		//获取今天要发布的4条新闻资讯
 		List<News> news=newsService.getExaminedNews();
-		System.out.println(news.get(0).getPicUrl());
 		request.setAttribute("RRlist", news);
 		List<CommodityArtwork> commodityArtworks=commodityArtworkService.commodityArtworksToDisplay();
-		System.out.println(commodityArtworks.get(0).getPicUrl());
 		request.setAttribute("commodityArtworkList",commodityArtworks);
+		request.setAttribute("backUrl", request.getRequestURI());
 		return "index";
 	}
+	@RequestMapping(value="/goToLogin")
+	public String goToLogin(String backUrl,HttpServletRequest request){
+		request.setAttribute("backUrl", backUrl);
+		return "login";
+	}
 	
-	@RequestMapping(value="/login",method = RequestMethod.POST)
-	public String login(HttpServletRequest request){//TODO 获取
-		User user=new User();
-		user.setId(1);//TODO
+	@RequestMapping(value="/login",method = RequestMethod.GET)
+	public String login(String backUrl,HttpServletRequest request,
+			HttpServletResponse response) throws IOException{
 		String userName=request.getParameter("username");
 		String psw=request.getParameter("psw");
-		boolean isSuccess=userService.isLoginSuccessful(userName, psw);
-		if(isSuccess){
+		User user=userService.getUserByUserNameAndPassword(userName, psw);
+		if(user!=null){
 			user.setName(userName);
 			user.setPassword(psw);
 			request.getSession().setAttribute("user",user);
-//			return "editor_index";//TODO 根据角色进入不同的界面
-			return "index";
+			System.out.println(backUrl);
+//			if(backUrl==null){
+//				return "editor_index";
+//			}
+//			response.sendRedirect(backUrl);
+			return "redirect:/init/home";
 		}
 		else {
-			request.setAttribute("result", isSuccess);
+			request.setAttribute("result", "fail");
 			return "login";
 		}
+	}
+	
+	@RequestMapping(value="/logout",method = RequestMethod.GET)
+	public void logout(String backUrl,HttpServletRequest request,
+			HttpServletResponse response) throws IOException{
+		HttpSession session=request.getSession();
+		if(session!=null){
+			session.removeAttribute("user");
+		}
+		CommonMethod.cleanCookie(request, response);
+		response.sendRedirect(backUrl);
 	}
 	
 	@RequestMapping(value="/register",method=RequestMethod.POST)
 	public String register(HttpServletRequest request){
 		String userNameString=request.getParameter("username");
 		String psw=request.getParameter("password");
+		User user=new User();
+		user.setName(userNameString);
+		user.setPassword(psw);
+		userService.insertUser(user);
 		return "login";
 	}
 }

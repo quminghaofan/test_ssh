@@ -1,3 +1,4 @@
+<%@page import="cn.edu.xmu.oneonezero.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -53,16 +54,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="cssmenu">
 					<ul>
 						<%
-							if (session.getAttribute("username") == null) {
+							if (session.getAttribute("user") == null) {
 						%>
 						<li><a href="jsp/login.jsp">登录/注册</a></li>
 						<%
 							} else {
 						%>
 						<li><a href="">申请成为艺术家</a></li>
-						<li><a href=""> <%=session.getAttribute("username")%></a></li>
+						<li><a href=""> <%=((User)session.getAttribute("user")).getName()%></a></li>
 						<li><a href="">我的订单</a></li>
-						<li><a href="">登出</a></li>
+						<li><a href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
 						<%
 							}
 						%>
@@ -161,7 +162,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div style="padding: 5%">
 				<div class="menuhead1">
 					<h3>
-						你的购物篮有<em style="font-style: italic">5</em>
+						你的购物篮有<em style="font-style: italic">${total}</em>
 						件商品.
 					</h3>
 				</div>
@@ -175,10 +176,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</tr>  
 						<c:forEach items="${commodityArtworkList}" var="item">
 							<tr>
-								<td scope="row" class="spec">溪山行旅图</th>
+								<td scope="row" class="spec">${item.name}</th>
 
-								<td>国画</td>
-								<td>1000000000</td>
+								<td>${item.type}</td>
+								<td>${item.price}</td>
 								<td><a href="/test_ssh/cart/delCart?itemId=${item.id}">删除</a></td>
 							</tr>
 							</c:forEach>

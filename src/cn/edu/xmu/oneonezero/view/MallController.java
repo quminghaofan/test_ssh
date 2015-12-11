@@ -6,18 +6,18 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
+import cn.edu.xmu.oneonezero.entity.User;
 
 @Controller
 @RequestMapping("/mall")
 public class MallController {
 	@RequestMapping("/enterMall")
 	public String enterMall(HttpServletRequest request){
-		
+		//分页
 		return "store";
 	}
 	

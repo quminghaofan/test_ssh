@@ -1,3 +1,4 @@
+<%@page import="cn.edu.xmu.oneonezero.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -130,16 +131,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="cssmenu">
 					<ul>
 						<%
-							if (session.getAttribute("username") == null) {
+							if (session.getAttribute("user") == null) {
 						%>
-						<li><a href="jsp/login.jsp">登录/注册</a></li>
+						<li><a href="/test_ssh/init/goToLogin?backUrl=/test_ssh/init/home">登录/注册</a></li>
 						<%
 							} else {
 						%>
 						<li><a href="">申请成为艺术家</a></li>
-						<li><a href=""> <%=session.getAttribute("username")%></a></li>
+						<li><a href=""> <%=((User)session.getAttribute("user")).getName() %></a></li>
 						<li><a href="">我的订单</a></li>
-						<li><a href="">登出</a></li>
+						<li><a href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
 						<%
 							}
 						%>
@@ -314,13 +315,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										if (session.getAttribute("user") != null) {
 									%>
 									<li class="list2_left"><span class="m_1"><a
-											href="/test_ssh/cart/add2Cart?itemId=${item.id}&name=${item.name}&type=${item.type}&price=${item.price}"
+											href="/test_ssh/cart/add2Cart?backUrl=${backUrl}&itemId=${item.id}&name=${item.name}&type=${item.type}&price=${item.price}"
 											class="link">Add to Cart</a></span></li>
 									<%
 										} else {
 									%>
 									<li class="list2_left"><span class="m_1"><a
-											href="/test_ssh/init/login" class="link">Add to Cart</a></span></li>
+											href="/test_ssh/init/goToLogin?backUrl=/test_ssh/init/home" class="link">Add to Cart</a></span></li>
 									<%
 										}
 									%>
@@ -474,8 +475,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<h4>
 								<a href="/test_ssh/news/showNews?newsId=${rr.id}&type=1">${rr.name}</a>
 							</h4>
-							<p>${rr.content}</p>
-							<!-- 保留前15或20个字符即可，然后加省略号 -->
+							<p>${(rr.content).substring(0,1)} ...</p>
 						</div>
 						<div class="but">
 							<a class="arrow" href="/test_ssh/news/showNews?newsId=${rr.id}&type=1"> </a>

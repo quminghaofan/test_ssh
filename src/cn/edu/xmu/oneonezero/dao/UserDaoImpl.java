@@ -4,6 +4,7 @@ package cn.edu.xmu.oneonezero.dao;
 
 import java.util.List;
 
+import org.apache.commons.lang.ObjectUtils.Null;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
@@ -119,7 +120,7 @@ public class UserDaoImpl implements UserDao {
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, userName);
 		query.setString(1, password);
-		
+		if(query.list()==null)return null;
 		return (User) query.list().get(0);
 	}
 	
