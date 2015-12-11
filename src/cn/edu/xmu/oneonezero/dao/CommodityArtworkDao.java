@@ -2,8 +2,7 @@ package cn.edu.xmu.oneonezero.dao;
 
 import java.util.List;
 
-import org.json.simple.JSONObject;
-
+import net.sf.json.JSONObject;
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 
 public interface CommodityArtworkDao {

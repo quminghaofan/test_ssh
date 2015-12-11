@@ -31,6 +31,7 @@ public class CommonMethod {
 				jsonCart = JSONObject.fromObject(cookie.getValue());
 				commodityArtwork = (CommodityArtwork) JSONObject.toBean(
 						jsonCart, CommodityArtwork.class);
+//				System.out.println("commodityArtwork.getName():"+commodityArtwork.getName());
 				commodityArtworks.add(commodityArtwork);
 				count++;
 			}

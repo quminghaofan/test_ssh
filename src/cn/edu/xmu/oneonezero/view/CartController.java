@@ -1,7 +1,9 @@
 package cn.edu.xmu.oneonezero.view;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,21 +16,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 import cn.edu.xmu.oneonezero.entity.User;
+import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
 
 @Controller
 @RequestMapping("/cart")
 public class CartController {
+	@Resource(name="commodityArtworkService")
+	private CommodityArtworkService commodityArtworkService;
 	
 	@RequestMapping(value="/add2Cart",method = RequestMethod.GET)
-	public void add2Cart(String backUrl,long itemId,String name,String type,String price,
+	public void add2Cart(String backUrl,long itemId,
 			HttpServletResponse response,HttpServletRequest request) throws IOException{
-		CommodityArtwork commodityArtwork=new CommodityArtwork();//TODO 返回json类型
-//		System.out.println(itemId);
-		commodityArtwork.setId(itemId);
-		commodityArtwork.setName(name);
-		commodityArtwork.setType(type);
-		commodityArtwork.setPrice(Double.parseDouble(price));
-		String commodityArtworkJson = JSONObject.fromObject(commodityArtwork).toString();
+		String commodityArtworkJson = commodityArtworkService.getCommodityArtworkWithJSONTypeById(itemId).toString();
+//		System.out.println("commodityArtworkJson:"+commodityArtworkJson);
 		User user=(User)request.getSession().getAttribute("user");
 		Cookie cookie=new Cookie(user.getName()+"#"+Long.toString(itemId), commodityArtworkJson);
 		cookie.setMaxAge(60*60*24*7);//保留7天
@@ -38,6 +38,8 @@ public class CartController {
 	
 	@RequestMapping("/showCart")
 	public String showCart(HttpServletRequest request) {
+		List<CommodityArtwork> commodityArtworks=CommonMethod.jsonToFinishedItem(request);
+		System.out.println("name:"+commodityArtworks.get(0).getName());
 		request.setAttribute("commodityArtworkList", CommonMethod.jsonToFinishedItem(request));
 		return "cart";
 	}

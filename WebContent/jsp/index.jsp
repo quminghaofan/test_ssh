@@ -315,7 +315,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										if (session.getAttribute("user") != null) {
 									%>
 									<li class="list2_left"><span class="m_1"><a
-											href="/test_ssh/cart/add2Cart?backUrl=${backUrl}&itemId=${item.id}&name=${item.name}&type=${item.type}&price=${item.price}"
+											href="/test_ssh/cart/add2Cart?itemId=${item.id}&backUrl=/test_ssh/init/home"
 											class="link">Add to Cart</a></span></li>
 									<%
 										} else {
@@ -326,7 +326,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										}
 									%>
 									<li class="list2_right"><span class="m_2"><a
-											href="#" class="link1">See More</a></span></li>
+											href="/test_ssh/mall/seeMore?itemId=${item.id}" class="link1">See More</a></span></li>
 									<div class="clearfix"></div>
 								</ul>
 								<div class="heart"></div>

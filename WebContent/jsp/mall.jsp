@@ -125,7 +125,7 @@ $(function(){
 			  <input type="submit" value="">
 	  		</div>
 	  		<%
-                	if(session.getAttribute("username")!=null){
+                	if(session.getAttribute("user")!=null){
                 %>
 	  		<ul class="bag">
 	  			<a href="#"><i class="bag_left"> </i></a>
@@ -241,9 +241,9 @@ $(function(){
 	          <c:forEach items="itemlist" var="item">
 	          	 <div class="col_1_of_single1 span_1_of_single1">
 	          	    <a href="single.html">
-				     <img src="../images/pic2.jpg" class="img-responsive" alt="" href=""/>
-				     <h3>parum clari</h3>
-				   	 <h4>Rs.399</h4>
+				     <img src="${item.picUrl}" class="img-responsive" alt="" href=""/>
+				     <h3>${item.name}</h3>
+				   	 <h4>${item.price}</h4>
 			         </a>  
 			         <ul class="list2">
 				 	  <li class="list2_left"><span class="m_1"><a href="#" class="link">添加购物篮</a></span></li>
@@ -285,10 +285,10 @@ $('.pagination').jqPagination({
 	   link_string : '/?page={page_number}',
 	   current_page: document.getElementById("current").value, //设置当前页 默认为1
 	   max_page : document.getElementById("max").value, //设置最大页 默认为1
-	   page_string : '第{current_page}页,共{max_page}页',
+	   page_string : '{current_page}/{max_page}',
 	   paged : function(page) {
 	       //回发事件。。。
-	       window.location.href="";
+	       window.location.href="/test_ssh/mall/enterMall/page=${page}";
 	      }
 	 });
 </script>

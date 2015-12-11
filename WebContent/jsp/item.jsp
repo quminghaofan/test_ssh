@@ -1,3 +1,4 @@
+<%@page import="cn.edu.xmu.oneonezero.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -46,14 +47,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="cssmenu">
 					<ul>
 						<%
-							if (session.getAttribute("username") == null) {
+							if (session.getAttribute("user") == null) {
 						%>
 						<li><a href="jsp/login.jsp">登录/注册</a></li>
 						<%
 							} else {
 						%>
 						<li><a href="">申请成为艺术家</a></li>
-						<li><a href=""> <%=session.getAttribute("username")%></a></li>
+						<li><a href=""> <%=((User)session.getAttribute("user")).getName()%></a></li>
 						<li><a href="">我的订单</a></li>
 						<li><a href="">登出</a></li>
 						<%
@@ -83,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							type="submit" value="">
 					</div>
 					<%
-						if (session.getAttribute("username") != null) {
+						if (session.getAttribute("user") != null) {
 					%>
 					<ul class="bag">
 						<a href="#"><i class="bag_left"> </i></a>
@@ -112,7 +113,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="col1">
 									<div class="h_nav">
 										<ul>
-										<li><a href="">全部</a></li>
+											<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
 												<li><a href="">${type.}</a></li>
 											</c:forEach>
@@ -127,7 +128,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="col1">
 									<div class="h_nav">
 										<ul>
-										<li><a href="">全部</a></li>
+											<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
 												<li><a href="">${type.}</a></li>
 											</c:forEach>
@@ -142,7 +143,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="col1">
 									<div class="h_nav">
 										<ul>
-										<li><a href="">全部</a></li>
+											<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
 												<li><a href="">${type.}</a></li>
 											</c:forEach>
@@ -157,7 +158,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-<!-- 	<div class="men">
+	<!-- 	<div class="men">
 		<div class="container">
 <div class="a-top">
 				 <div class="left-grid">
@@ -178,54 +179,64 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			</div>
  -->
- 
- <div class="men">
+
+	<div class="men">
 		<div class="container">
-  
-  <div class="a-top">
-	  <div class="col-md-4 ">
-			<img  class="img-responsive" src="../images/n3.jpg" />
-		</div>
-		</div>
-		<!--è½¯æ-->
-		<div class="col-md-8">
-		      <div class="a-top">
-				 <div class="right-grid">
-				 <h3>商品名</h3>
-				 <h4 style="margin-top:2em">类别</h4>
-					<h4 style="margin-top:2em">价格</h4>
-					<p style="margin-top:2em">这里是商品介绍，测试的时候长一点，方便看换行效果，字体怎么样，好看吗</p>
-					<div style="margin-top:3em">
-				   <a class="acount-btn" href="">加入购物篮</a>
-				   <a class="acount-btn" href="" style="margin-top:2em">立即购买</a>
-				 </div>
-				 </div>
-				 <div class="clearfix"></div>
-			 </div>
-			 <div class="clearfix"></div>
-	</div>
 
-			</div>
-</div>
-
-
-			<div class="footer">
-				<div class="container">
-					<img src="../images/pay.png" class="img-responsive" alt="" />
-					<ul class="footer_nav">
-						<li><a href="#">首页</a></li>
-						<li><a href="#">定制</a></li>
-						<li><a href="#">商城</a></li>
-						<li><a href="#">拍卖</a></li>
-						<li><a href="#">关于我们</a></li>
-						<li><a href="">联系我们</a></li>
-					</ul>
-					<p class="copy">
-						Copyright &copy; 2015.厦门大学软件学院OneoneZero All rights reserved. More
-						Information <a href="" target="_blank" title="OneoneZero">OneoneZero</a>
-						- Made by <a href="" title="OneoneZero" target="_blank">OneoneZero</a>
-					</p>
+			<div class="a-top">
+				<div class="col-md-4 ">
+					<img class="img-responsive" src="../images/n3.jpg" />
 				</div>
 			</div>
+			<div class="col-md-8">
+				<div class="a-top">
+					<div class="right-grid">
+						<h3>${item.name}</h3>
+						<h4 style="margin-top: 2em">${item.type}</h4>
+						<h4 style="margin-top: 2em">${item.price}</h4>
+						<p style="margin-top: 2em">${item.artworkDescription}</p>
+						<div style="margin-top: 3em">
+							<%
+										if (session.getAttribute("user") != null) {
+							%>
+							<a class="acount-btn" href="/test_ssh/cart/add2Cart?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'&itemId=${item.id}">加入购物篮</a>
+							<a class="acount-btn" href="/test_ssh/mall/purchase?itemId=${item.id}" style="margin-top: 2em">立即购买</a>
+							<%
+										} else {
+							%>
+							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'">加入购物篮</a>
+							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'" style="margin-top: 2em">立即购买</a>
+							<%
+										}
+							%>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="footer">
+		<div class="container">
+			<img src="../images/pay.png" class="img-responsive" alt="" />
+			<ul class="footer_nav">
+				<li><a href="#">首页</a></li>
+				<li><a href="#">定制</a></li>
+				<li><a href="#">商城</a></li>
+				<li><a href="#">拍卖</a></li>
+				<li><a href="#">关于我们</a></li>
+				<li><a href="">联系我们</a></li>
+			</ul>
+			<p class="copy">
+				Copyright &copy; 2015.厦门大学软件学院OneoneZero All rights reserved. More
+				Information <a href="" target="_blank" title="OneoneZero">OneoneZero</a>
+				- Made by <a href="" title="OneoneZero" target="_blank">OneoneZero</a>
+			</p>
+		</div>
+	</div>
 </body>
 </html>

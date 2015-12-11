@@ -2,9 +2,10 @@ package cn.edu.xmu.oneonezero.dao;
 
 import java.util.List;
 
+import net.sf.json.JSONObject;
+
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
-import org.json.simple.JSONObject;
 
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 import cn.edu.xmu.oneonezero.entity.User;
@@ -39,7 +40,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 
 	@Override
 	public long getPageTotal(int num) {
-		String hql = "select count(*) from Artwork a where a.orderType='艺术品商品'";
+		String hql = "select count(*) from Artwork a";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		return (long)Math.ceil(((Double)query.uniqueResult())/num);
@@ -47,11 +48,10 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 
 	@Override
 	public JSONObject getCommodityArtworkWithJSONTypeById(long id) {
-		String hql = "from Artwork a where a.orderType='艺术品商品' and a.id=?";
+		String hql = "from Artwork a where a.id=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, id);
-		
-		return (JSONObject)query.uniqueResult();
+		return JSONObject.fromObject(query.uniqueResult());
 	}
 
 	

@@ -39,7 +39,6 @@ public class InitController {
 		request.setAttribute("RRlist", news);
 		List<CommodityArtwork> commodityArtworks=commodityArtworkService.commodityArtworksToDisplay();
 		request.setAttribute("commodityArtworkList",commodityArtworks);
-		request.setAttribute("backUrl", request.getRequestURI());
 		return "index";
 	}
 	@RequestMapping(value="/goToLogin")
