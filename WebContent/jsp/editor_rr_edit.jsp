@@ -14,7 +14,7 @@
     <script type="text/javascript" src="../Js/bootstrap.js"></script>
     <script type="text/javascript" src="../Js/ckform.js"></script>
     <script type="text/javascript" src="../Js/common.js"></script>
-    <script type="text/javascript" src="../js/pictureload.js"></script>
+
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -47,8 +47,12 @@
                 <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
-<form action=""  method="post" class="definewidth m10" id="myform" name="myform">
+<form action="/test_ssh/editor/editNews" method="post" class="definewidth m10">
 <table class="table table-bordered table-hover m10">
+    <tr>
+            <td width="10%" class="tableleft">软文类型</td>
+            <td><input type="text" name="RRname" value="${news.type}"/></td>  <!--TODO-->
+        </tr>
     <tr>
             <td width="10%" class="tableleft">软文标题</td>
             <td><input type="text" name="RRname" value="${news.name}"/></td>  <!--TODO-->
@@ -59,16 +63,21 @@
         </tr>
         <tr>
             <td class="tableleft">图片</td>
-            <td><div id="preview"><span><img id="image" src="${news.picUrl}" width="30%" height="30%"/></span></div>
-            <span><input id="img" name="img" type="file" accept="image/*" onchange="previewImage(this,'preview','image')"/></span></td>
+            <td><span><img id="image" src="${news.picUrl}"></span>
+            <span><input id="img" name="img" type="file" accept="image/*" /></span></td>
+        </tr>
+		<tr>
+            <td class="tableleft">视频</td>
+            <td><span><video id="video" src="${news.videoUrl}"></span>
+            <span><input id="vide" name="vide" type="file" accept="video/*" /></span></td>
         </tr>
         <tr>
             <td width="10%" class="tableleft">上架时间</td>
-            <td><input name="txtDate time1" id="txtDate time1" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" onchange="price_count()" value="${news.onShowTime}"/></td>
+            <td><input name="txtDate time1" id="txtDate time1" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" onchange="price_count()"/></td>
         </tr>
         <tr>
             <td width="10%" class="tableleft">下架时间</td>
-            <td><input name="txtDate time2" id="txtDate time2" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" onchange="price_count()" value="${news.offShowTime}"/>
+            <td><input name="txtDate time2" id="txtDate time2" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" onchange="price_count()"/>
             <span id="time_err" style="display:none"><font color="red">下架时间不能小于上架时间</font></td>
         </tr>
          <tr>
@@ -78,10 +87,7 @@
     <tr>
             <td class="tableleft"></td>
             <td>
-            <input style="display:none" id="type" name="type"/>
-               <input class="btn btn-primary" type="submit"  name="savebtnid" id="savebtnid" onclick="submit1()" value="保存">				 &nbsp;&nbsp; 
-               <input class="btn btn-primary" type="submit"  name="savebtnid" id="savebtnid" onclick="submit2()" value="发送">				 &nbsp;&nbsp;
-               <input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表">
+               <button type="submit" class="btn btn-primary" type="button"  name="savebtnid" id="savebtnid">保存</button> <button type="submit" class="btn btn-primary" type="button"  name="btnid" id="btnid">发送</button>				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/jsp/editor_rr_4.jsp'" value="返回列表">
             </td>
         </tr>
 </table>
@@ -91,7 +97,6 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>  
 
 <script type="text/javascript">  
-
 $(function(){  
 	$('#img').change(function(){  
 		var file = this.files[0]; //选择上传的文件  
@@ -99,7 +104,13 @@ $(function(){
 		r.readAsDataURL(file); //Base64  
 		document.getElementById("image").src=this.result;
 		});  });
-		
+$(function(){  
+	$('#img').change(function(){  
+		var file = this.files[0]; //选择上传的文件  
+		var r = new FileReader();  
+		r.readAsDataURL(file); //Base64  
+		document.getElementById("video").src=this.result;
+		});  });	
 function price_count(){
 	var sDate1=document.getElementById("txtDate time1").value;
 	var sDate2=document.getElementById("txtDate time2").value;
@@ -118,19 +129,6 @@ function price_count(){
 	  document.getElementById("price").value=price;
 	  }
 	}
-}
-function submit1(){
-	var myform=document.getElementById("myform");
-	myform.action="/test_ssh/editor/editNews?type=1";
-	
-	myform.submit();
-	//return true;
-}
-function submit2(){
-	var myform=document.getElementById("myform");
-	myform.action="/test_ssh/editor/editNews?type=0";
-	
-	myform.submit();
 }
 
 </script>
