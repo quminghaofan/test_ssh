@@ -31,25 +31,43 @@
                 padding-right: 5px;
             }
         }
-
+		#type{
+			width:115px;		
+		}
+		#onShowTime{
+			width:140px;
+			height:25px;
+		}
+		#offShowTime{
+			width:140px;
+			height:25px;
+		}
+		#RRname{
+			height:25px;
+		}
 
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/chiefEditor/getExaminedByNewsName" method="post">
-    软文名称
-    <input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
-    <button type="submit" class="btn btn-primary" id="search">搜索</button>&nbsp;&nbsp;
+<form class="form-inline definewidth m20" action="/test_ssh/chiefEditor/getExaminedByNewsName" method="get">
+ 	<font color="blue">软文类型: </font><select name="category" class="category" id="type"> 
+	<option>广告</option>
+	<option>新闻资讯</option>
+	</select>
+	<font color="blue">上架时间: </font><input type="date" name="user_date" id="onShowTime"/>
+	<font color="blue">下架时间: </font><input type="date" name="user_date" id="offShowTime"/>
+	<input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="请输入搜索内容......" value="">&nbsp;&nbsp; 
+    <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>
 </form>
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-        <th>软文标题</th>
-        <th>图片</th>
+        <th>软文标题</th>
         <th>作者</th>
         <th>审核状态</th>
         <th>上架时间</th>
         <th>下架时间</th>
+        <th>价格</th>
         <th>等级</th>
         <th>操作</th>
     </tr>
@@ -58,13 +76,13 @@
     <c:forEach items="${RRLIST}" var="rr">
         <tr>
                 <td>${rr.name}</td>
-                <td><img src="${rr.picUrl}"></td>
-                <td>${rr.editor.name}</td>
-                <td>${rr.state}</td>
+                <td>${rr.editor}</td>
+                <td>rr.isExamined}</td>
                 <td>${rr.onShowTime}</td>
-                <td>${rr.offShowTime}</td><!-- TODO价格 -->
+                <td>${rr.offShowTime}</td>
+                <td>${rr.price}</td>
                 <td>${rr.rank}</td>
-                <td><a href="/test_ssh/news/showNews?type=3">查看</a>&nbsp;&nbsp;<a href="/test_ssh/chiefEditor/getNews?newsId=${rr.id}&type=0">重新审核</a></td>
+                <td><a href="/test_ssh/chiefEditor/getNews?newsId=${rr.id}">查看</a>&nbsp;&nbsp;<a href="">重新审核</a></td>
             </tr>
     </c:forEach>
 </c:if>

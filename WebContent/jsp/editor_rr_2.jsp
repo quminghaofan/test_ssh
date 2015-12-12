@@ -33,20 +33,38 @@
       }
     }
 
+		#type{
+			width:115px;		
+		}
+		#onShowTime{
+			width:140px;
+			height:25px;
+		}
+		#offShowTime{
+			width:140px;
+			height:25px;
+		}
+		#RRname{
+			height:25px;
+		}
 
   </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/editor/getUnPassedByNewsName" method="get">
-  软文名称
-  <input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
-  <button type="submit" class="btn btn-primary" id="search">搜索</button>
+<form class="form-inline definewidth m20" action="/test_ssh/editor/getFailPassByNewsName" method="get">
+ 	<font color="blue">软文类型: </font><select id="type" name="category" class="category"> 
+	<option>广告</option>
+	<option>新闻资讯</option>
+	</select>
+	<font color="blue">上架时间: </font><input id="onShowTime" type="date" name="user_date" />
+	<font color="blue">下架时间: </font><input id="offShowTime" type="date" name="user_date" />
+	<input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="请输入搜索内容......" value="">&nbsp;&nbsp; 
+    <button type="submit" class="btn btn-primary" id="search">搜索</button>
 </form>
 <table class="table table-bordered table-hover definewidth m10">
   <thead>
   <tr>
-    <th>软文标题</th>
-    <th>图片</th>
+    <th>软文标题</th>
     <th>上架时间</th>
     <th>下架时间</th>
     <th>审核人</th>
@@ -57,11 +75,10 @@
     <c:forEach items="${RRLIST}" var="rr">
       <tr>
         <td>${rr.name}</td>
-        <td><img src="${rr.picUrl}"></td>
         <td>${rr.onShowTime}</td>
         <td>${rr.offShowTime}</td>
-        <td>${rr.chiefEditor.name}</td>
-        <td><a href="/test_ssh/news/showNews?type=5">查看</a>&nbsp;&nbsp;<a href="/test_ssh/editor/withdraw?type=1&newsId=${rr.id}">撤回</a></td>
+        <td>${rr.chiefEditor}</td>
+        <td><a href="">查看</a>&nbsp;&nbsp;<a href="">撤回</a></td>
       </tr>
     </c:forEach>
   </c:if>
