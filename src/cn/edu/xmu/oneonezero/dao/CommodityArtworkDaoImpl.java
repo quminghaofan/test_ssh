@@ -39,11 +39,11 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 	}
 
 	@Override
-	public long getPageTotal(int num) {
+	public int getPageTotal(int num) {
 		String hql = "select count(*) from Artwork a";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		return (long)Math.ceil(((Double)query.uniqueResult())/num);
+		return (int)Math.ceil(((Double)query.uniqueResult())/num);
 	}
 
 	@Override
