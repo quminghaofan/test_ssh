@@ -8,7 +8,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONObject;
+//import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +27,19 @@ public class CartController {
 	@RequestMapping(value="/add2Cart",method = RequestMethod.GET)
 	public void add2Cart(String backUrl,long itemId,
 			HttpServletResponse response,HttpServletRequest request) throws IOException{
+<<<<<<< Updated upstream
 		String commodityArtworkJson = commodityArtworkService.getCommodityArtworkWithJSONTypeById(itemId).toString();
 //		System.out.println("commodityArtworkJson:"+commodityArtworkJson);
+=======
+		CommodityArtwork commodityArtwork=new CommodityArtwork();//TODO 返回json类型
+//		System.out.println(itemId);
+		commodityArtwork.setId(itemId);
+		commodityArtwork.setName(name);
+		commodityArtwork.setType(type);
+		commodityArtwork.setPrice(Double.parseDouble(price));
+<<<<<<< Updated upstream
+		String commodityArtworkJson = JSONObject.fromObject(commodityArtwork).toString();
+>>>>>>> Stashed changes
 		User user=(User)request.getSession().getAttribute("user");
 		Cookie cookie=new Cookie(user.getName()+"#"+Long.toString(itemId), commodityArtworkJson);
 		cookie.setPath(request.getContextPath());
@@ -36,6 +47,13 @@ public class CartController {
 		cookie.setMaxAge(60*60*24*7);//保留7天 
 		response.addCookie(cookie);
 		response.sendRedirect(backUrl);//返回到原来的页面，更友好
+=======
+//		String commodityArtworkJson = JSONObject.fromObject(commodityArtwork).toString();
+//		Cookie cookie=new Cookie(Long.toString(itemId), commodityArtworkJson);
+//		cookie.setMaxAge(60*60*24*7);//保留7天
+//		response.addCookie(cookie);
+//		response.sendRedirect(backUrl);//返回到原来的页面，而不是系统配置的首页，更友好
+>>>>>>> Stashed changes
 	}
 	
 	@RequestMapping("/showCart")

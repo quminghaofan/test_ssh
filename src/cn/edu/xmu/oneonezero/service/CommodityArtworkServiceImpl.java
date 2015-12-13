@@ -19,16 +19,23 @@ public class CommodityArtworkServiceImpl implements CommodityArtworkService{
 		return commodityArtworkDao.commodityArtworksToDisplay();
 	}
 	@Override
-	public List<CommodityArtwork> getCommodityArtworksByPosition(int start, int num) {
-		return commodityArtworkDao.getCommodityArtworksByPosition(start, num);
+	public List<CommodityArtwork> getCommodityArtworksByPositionAndVagueName(String artName, int start, int num) {
+		return commodityArtworkDao.getCommodityArtworksByPositionAndVagueName(artName, start, num);
 	}
 	@Override
-	public int getPageTotal(int num) {
-		return commodityArtworkDao.getPageTotal(num);
+	public int getPageTotalByVagueName(String artName, int num) {
+		return commodityArtworkDao.getPageTotalByVagueName(artName, num);
 	}
 	@Override
 	public JSONObject getCommodityArtworkWithJSONTypeById(long id) {
 		return commodityArtworkDao.getCommodityArtworkWithJSONTypeById(id);
 	}
-
+	@Override
+	public List<CommodityArtwork> getCommodityArtworksByVagueArtNameInDescendingOrder(String artName) {
+		return commodityArtworkDao.getCommodityArtworksByVagueArtNameInDescendingOrder(artName);
+	}
+	@Override
+	public List<CommodityArtwork> getCommodityArtworksByVagueArtNameInAscendingOrder(String artName) {
+		return commodityArtworkDao.getCommodityArtworksByVagueArtNameInAscendingOrder(artName);
+	}
 }

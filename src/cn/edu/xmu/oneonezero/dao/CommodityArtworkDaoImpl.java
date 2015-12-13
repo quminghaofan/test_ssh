@@ -27,22 +27,24 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 	}
 
 	@Override
-	public List<CommodityArtwork> getCommodityArtworksByPosition(int page, int num) {
-		String hql = "from Artwork";
+	public List<CommodityArtwork> getCommodityArtworksByPositionAndVagueName(String artName,int start, int num) {
+		String hql = "from Artwork a where a.name like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setFirstResult(page*num);
+		query.setString(0, artName);
+		query.setFirstResult(start);
 		query.setMaxResults(num);
+		
 		if(query.list()==null||query.list().size()==0)return null;
 		
 		return query.list();
 	}
 
-	@Override
-	public int getPageTotal(int num) {
-		String hql = "select count(*) from Artwork a";
+	public int getPageTotalByVagueName(String artName,int num) {
+		String hql = "select count(*) from Artwork a where a.name like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, artName);
 		
-		return (int)Math.ceil(((Long)query.uniqueResult())/num);
+		return (int)Math.ceil(((Double)query.uniqueResult())/(double)num);
 	}
 
 	@Override
@@ -50,7 +52,28 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 		String hql = "from Artwork a where a.id=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, id);
+		if(query.list()==null||query.list().size()==0)return null;
 		return JSONObject.fromObject(query.uniqueResult());
+		
+		
+	}
+
+	@Override
+	public List<CommodityArtwork> getCommodityArtworksByVagueArtNameInDescendingOrder(String artName) {
+		String hql = "from Artwork a where a.name like ? order by a.price desc";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, artName);
+		if(query.list()==null||query.list().size()==0)return null;
+		return query.list();
+	}
+
+	@Override
+	public List<CommodityArtwork> getCommodityArtworksByVagueArtNameInAscendingOrder(String artName) {
+		String hql = "from Artwork a where a.name like ? order by a.price asc";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, artName);
+		if(query.list()==null||query.list().size()==0)return null;
+		return query.list();
 	}
 
 	
