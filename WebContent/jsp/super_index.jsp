@@ -39,7 +39,7 @@
   <script type="text/javascript" src="../assets/js/config-min.js"></script>
   <script>
     BUI.use('common/main',function(){ 
-      var config = [{id:'1',menu:[{text:'用户管理',items:[{id:'12',text:'用户列表',href:'/test_ssh/admin_user/getAllUser'}]}]},{id:'4',menu:[{text:'商品管理',items:[{id:'13',text:'制成品列表',href:''},{id:'15',text:'拍卖品管理',href:''}]}]}];
+      var config = [{id:'1',menu:[{text:'用户管理',items:[{id:'12',text:'管理员管理',href:''},{id:'13',text:'角色管理',href:''}]}]},{id:'4',menu:[{text:'商品管理',items:[{id:'5',text:'商品类别管理',href:''}]}]}];
       new PageUtil.MainPage({
         modulesConfig : config
       });
