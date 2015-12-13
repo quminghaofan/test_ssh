@@ -27,12 +27,11 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 	}
 
 	@Override
-	public List<CommodityArtwork> getCommodityArtworksByPosition(int start, int num) {
-		String hql = "from Artwork limit ? ?";
+	public List<CommodityArtwork> getCommodityArtworksByPosition(int page, int num) {
+		String hql = "from Artwork";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setInteger(0, start);
-		query.setInteger(1, num);
-		
+		query.setFirstResult(page*num);
+		query.setMaxResults(num);
 		if(query.list()==null||query.list().size()==0)return null;
 		
 		return query.list();
@@ -43,7 +42,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 		String hql = "select count(*) from Artwork a";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		return (int)Math.ceil(((Double)query.uniqueResult())/num);
+		return (int)Math.ceil(((Long)query.uniqueResult())/num);
 	}
 
 	@Override

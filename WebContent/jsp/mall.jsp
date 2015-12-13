@@ -248,7 +248,7 @@ $(function(){
 					<div class="clearfix"></div>
 				</div>
 				<div class="span_2">
-					<c:forEach items="itemlist" var="item">
+					<c:forEach items="${itemlist}" var="item">
 						<div class="col_1_of_single1 span_1_of_single1">
 							<a href="single.html"> <img src="${item.picUrl}"
 								class="img-responsive" alt="" href="" />
@@ -294,7 +294,7 @@ $(function(){
 
 			<c:if test="${currentPage != 1}">
 
-				<a href=/test_ssh/mall/enterMall "?page=1">1</a>
+				<a href="/test_ssh/mall/enterMall?page=1">1</a>
 
 			</c:if>
 
