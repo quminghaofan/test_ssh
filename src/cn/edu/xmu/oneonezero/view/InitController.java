@@ -73,12 +73,11 @@ public class InitController {
 	@RequestMapping(value="/logout",method = RequestMethod.GET)
 	public void logout(String backUrl,HttpServletRequest request,
 			HttpServletResponse response) throws IOException{
+		CommonMethod.cleanCookie(request, response);
 		HttpSession session=request.getSession();
 		if(session!=null){
 			session.removeAttribute("user");
 		}
-//		CommonMethod.cleanCookie(request, response);
-		System.out.println(request.getCookies().length);
 		response.sendRedirect(backUrl);
 	}
 	

@@ -31,15 +31,17 @@ public class CartController {
 //		System.out.println("commodityArtworkJson:"+commodityArtworkJson);
 		User user=(User)request.getSession().getAttribute("user");
 		Cookie cookie=new Cookie(user.getName()+"#"+Long.toString(itemId), commodityArtworkJson);
-		cookie.setMaxAge(60*60*24*7);//保留7天
+		cookie.setPath(request.getContextPath());
+		System.out.println("add-path:"+cookie.getPath());
+		cookie.setMaxAge(60*60*24*7);//保留7天 
 		response.addCookie(cookie);
 		response.sendRedirect(backUrl);//返回到原来的页面，更友好
 	}
 	
 	@RequestMapping("/showCart")
 	public String showCart(HttpServletRequest request) {
-		List<CommodityArtwork> commodityArtworks=CommonMethod.jsonToFinishedItem(request);
-		System.out.println("name:"+commodityArtworks.get(0).getName());
+//		List<CommodityArtwork> commodityArtworks=CommonMethod.jsonToFinishedItem(request);
+//		System.out.println("name:"+commodityArtworks.get(0).getName());
 		request.setAttribute("commodityArtworkList", CommonMethod.jsonToFinishedItem(request));
 		return "cart";
 	}
@@ -49,10 +51,15 @@ public class CartController {
 		User user=(User)request.getSession().getAttribute("user");
 		Cookie[] cookies=request.getCookies();
 		for(Cookie cookie:cookies){
-			if(cookie.getName().equals(user.getName()+"#"+Long.toString(itemId))){
-				cookie.setValue(null);
-				cookie.setMaxAge(0);
-				response.addCookie(cookie);
+			if(cookie.getName().equals(user.getName()+"#"+Long.toString(itemId))
+					/*&&cookie.getPath()!=null
+					&&cookie.getPath().equals(request.getContextPath())*/){
+				Cookie newcookie=new Cookie(cookie.getName(), null);
+				newcookie.setPath(request.getContextPath()); 
+				System.out.println("del-request:"+request.getContextPath());
+				System.out.println("del:"+cookie.getPath());
+				newcookie.setMaxAge(0);
+				response.addCookie(newcookie);
 			}
 		}
 		return "redirect:/cart/showCart";

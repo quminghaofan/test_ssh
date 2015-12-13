@@ -19,7 +19,7 @@ public class CommonMethod {
 	 */
 	public static List<CommodityArtwork> jsonToFinishedItem(HttpServletRequest request){
 		Cookie[] cookies=request.getCookies();
-		System.out.println("cookies.length:"+cookies.length);
+//		System.out.println("cookies.length:"+cookies.length);
 		int count=0;
 		User user=(User)request.getSession().getAttribute("user");
 		if(user==null)return null;
@@ -27,7 +27,10 @@ public class CommonMethod {
 		CommodityArtwork commodityArtwork;
 		JSONObject jsonCart;
 		for (Cookie cookie : cookies) {
-			if (cookie.getValue().startsWith("{")&&cookie.getName().startsWith(user.getName())) {
+			System.out.println("show-path:"+cookie.getPath());
+			if (cookie.getName().startsWith(user.getName())
+					/*&&cookie.getPath()!=null
+					&&cookie.getPath().equals(request.getContextPath())*/) {
 				jsonCart = JSONObject.fromObject(cookie.getValue());
 				commodityArtwork = (CommodityArtwork) JSONObject.toBean(
 						jsonCart, CommodityArtwork.class);
@@ -37,7 +40,7 @@ public class CommonMethod {
 			}
 		}
 //		System.out.println("count:"+count);
-//		request.setAttribute("total", count);
+		request.setAttribute("total", count);
 //		System.out.println("commodityArtworks.size:"+commodityArtworks.size());
 		return commodityArtworks;
 	}
@@ -52,10 +55,14 @@ public class CommonMethod {
 		User user=(User)request.getSession().getAttribute("user");
 		if(user==null)return;
 		for (Cookie cookie : cookies) {
-			if (cookie.getValue().startsWith("{")&&cookie.getName().startsWith(user.getName())) {
-				cookie.setValue(null);
-				cookie.setMaxAge(0);
-				response.addCookie(cookie);
+			if (cookie.getName().startsWith(user.getName())
+					/*&&cookie.getPath()!=null
+					&&cookie.getPath().equals(request.getContextPath())*/) {
+				Cookie newcookie=new Cookie(cookie.getName(), null);
+				newcookie.setPath(request.getContextPath()); 
+//				System.out.println("logout-path:"+request.getContextPath());
+				newcookie.setMaxAge(0);
+				response.addCookie(newcookie);
 			}
 		}
 	}

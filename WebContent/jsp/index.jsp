@@ -184,7 +184,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="menu_box">
 				<ul class="megamenu skyblue">
-					<li class="active grid"><a class="color2" href="index.jsp">首页</a></li>
+					<li class="active grid"><a class="color2" href="/test_ssh/init/home">首页</a></li>
 					<li><a class="color4" href="">定制</a>
 						<div class="megapanel">
 							<div class="row">

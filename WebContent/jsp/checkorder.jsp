@@ -1,3 +1,4 @@
+<%@page import="cn.edu.xmu.oneonezero.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -195,18 +196,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
            <div style="margin-top: 3%;text-align:left" >
                 <div style="margin-bottom: 2%;">
                     <lable>用户名:&nbsp;&nbsp;</lable>
-                    <lable style="font-weight: bold">${username}</lable>
+                    <lable style="font-weight: bold"><%=((User)session.getAttribute("user")).getName()%></lable>
                 </div>
                 <div style="margin-bottom: 2%;">
                     <lable>地址:&nbsp;&nbsp;&nbsp;&nbsp;</lable>
-                    <lable class="txt1" style="vertical-align:bottom" id="modi_address">用户地址</lable>
+                    <lable class="txt1" style="vertical-align:bottom" id="modi_address"><%=((User)session.getAttribute("user")).getAddress()%></lable>
                   <input type="button" style="display: inline;vertical-align:bottom" type="button" value="编辑" id="edit" class="btn1"/>
                    <input type="button" style="display: none;vertical-align:bottom" type="button" value="确认" id="edit" class="btn3" />
                     <input type="button" style="display: none;vertical-align:bottom" type="button" value="取消" id="edit" class="btn2" />
                 </div>
                 <div>
                     <lable>电话:&nbsp;&nbsp;&nbsp;&nbsp;</lable>
-                    <lable class="txt2" style="vertical-align:bottom" id="modi_phone">1344354545</lable>
+                    <lable class="txt2" style="vertical-align:bottom" id="modi_phone"><%=((User)session.getAttribute("user")).getMobile()%></lable>
                  <input type="button"  style="display: inline;vertical-align:bottom" type="button" value="编辑" id="edit" class="btn4"/>
                  <input type="button" style="display: none;vertical-align:bottom" type="button" value="确认" id="edit" class="btn6" />
                    <input type="button" style="display: none;vertical-align:bottom" type="button" value="取消" id="edit" class="btn5" />
@@ -218,7 +219,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <div align="right" style="margin-top: 3%;">
                 <a href="/test_ssh/cart/showCart"><input type="button" class="orderbutton" style="margin-right:1.5%" value="返回购物篮"/></a>
-                <a href=""><input type="button" class="orderbutton" value="确认支付"/></a>
+                <a href="/test_ssh/mall/pay"><input type="button" class="orderbutton" value="确认支付"/></a>
             </div>
         </div>
     </div>

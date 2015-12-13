@@ -10,7 +10,7 @@ public interface CommodityArtworkService {
 	
 	public List<CommodityArtwork> getCommodityArtworksByPosition(int start,int num);//获取今天要展示的3个艺术品商品
 
-	public long getPageTotal(int num);//根据每页数量获得总页数
+	public int getPageTotal(int num);//根据每页数量获得总页数
 
 	public JSONObject getCommodityArtworkWithJSONTypeById(long id);//根据id获取jsonObject类型艺术品
 }

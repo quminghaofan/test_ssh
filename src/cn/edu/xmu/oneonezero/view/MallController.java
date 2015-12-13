@@ -16,38 +16,52 @@ import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
 @Controller
 @RequestMapping("/mall")
 public class MallController {
-	@Resource(name="commodityArtworkService")
+	@Resource(name = "commodityArtworkService")
 	CommodityArtworkService commodityArtworkService;
+
 	@RequestMapping("/enterMall")
-	public String enterMall(HttpServletRequest request){
-		int page=Integer.parseInt(request.getParameter(""));
-		request.setAttribute("max_page", commodityArtworkService.getPageTotal(30));
-		request.setAttribute("current_page", page);
-		request.setAttribute("itemlist",commodityArtworkService.getCommodityArtworksByPosition(page-1, 30));
+	public String enterMall(String page, HttpServletRequest request) {
+		request.getSession().setAttribute("pageTimes", 30);
+		int curentPage;
+		if (page == null) {
+			curentPage = 1;
+		} else {
+			curentPage = Integer.parseInt(page);
+		}
+		int pageTimes = commodityArtworkService.getPageTotal(30);
+		request.setAttribute("totalpage", pageTimes);
+		request.getSession().setAttribute("pageTimes", pageTimes);
+		request.setAttribute("currentPage", curentPage);
+		request.setAttribute("itemlist", commodityArtworkService
+				.getCommodityArtworksByPosition(curentPage - 1, 30));
 		return "mall";
 	}
-	
+
 	@RequestMapping("/settle")
-	public String settle(HttpServletRequest request,HttpServletResponse response){
-		List<CommodityArtwork> commodityArtworks=CommonMethod.jsonToFinishedItem(request);
-		Double total=0.0;
-		System.out.println("commodityArtworks.size:"+commodityArtworks.size());
-		for(CommodityArtwork commodityArtwork:commodityArtworks){
-			total+=commodityArtwork.getPrice();
-			System.out.println("total1:"+total);
+	public String settle(HttpServletRequest request,
+			HttpServletResponse response) {
+		List<CommodityArtwork> commodityArtworks = CommonMethod
+				.jsonToFinishedItem(request);
+		Double total = 0.0;
+		// System.out.println("commodityArtworks.size:"+commodityArtworks.size());
+		for (CommodityArtwork commodityArtwork : commodityArtworks) {
+			total += commodityArtwork.getPrice();
 		}
-//		System.out.println(total);
-		User user=(User)request.getSession().getAttribute("user");
-		request.setAttribute("username",user.getName());
 		request.setAttribute("orderlist", commodityArtworks);
 		request.setAttribute("total", total);
-//		CommonMethod.cleanCookie(request, response);
+		CommonMethod.cleanCookie(request, response);
 		return "checkorder";
 	}
-	
+
 	@RequestMapping("/seeMore")
-	public String seeMore(long itemId,HttpServletRequest request){
-		
+	public String seeMore(long itemId, HttpServletRequest request) {
+
 		return "item";
+	}
+
+	@RequestMapping("/pay")
+	public String pay(HttpServletRequest request, HttpServletResponse response) {
+		CommonMethod.cleanCookie(request, response);
+		return "pay_success";
 	}
 }

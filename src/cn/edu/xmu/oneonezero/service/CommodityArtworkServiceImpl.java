@@ -23,7 +23,7 @@ public class CommodityArtworkServiceImpl implements CommodityArtworkService{
 		return commodityArtworkDao.getCommodityArtworksByPosition(start, num);
 	}
 	@Override
-	public long getPageTotal(int num) {
+	public int getPageTotal(int num) {
 		return commodityArtworkDao.getPageTotal(num);
 	}
 	@Override

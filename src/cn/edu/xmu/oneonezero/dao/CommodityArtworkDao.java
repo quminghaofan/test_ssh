@@ -10,7 +10,7 @@ public interface CommodityArtworkDao {
 
 	public List<CommodityArtwork> getCommodityArtworksByPosition(int start,int num);//按位置获取一系列艺术品
 	
-	public long getPageTotal(int num);//根据每页数量获得总页数
+	public int getPageTotal(int num);//根据每页数量获得总页数
 	
 	public JSONObject getCommodityArtworkWithJSONTypeById(long id);//根据id获取jsonObject类型艺术品
 
