@@ -41,8 +41,7 @@ public class MallController {
 		String sort=request.getParameter("sort");
 		request.setAttribute("status", sort);
 		if(sort==null||sort.equals("0")){
-			request.setAttribute("itemlist", commodityArtworkService
-					.getCommodityArtworksByPosition(/*itemname,*/curentPage - 1, 30));
+			request.setAttribute("itemlist", commodityArtworkService.getCommodityArtworksByPositionAndVagueName(itemname,curentPage - 1, 30));
 		}
 		else if(sort.equals("1")){
 			
@@ -50,7 +49,7 @@ public class MallController {
 		else{
 			
 		}
-		int pageTimes = commodityArtworkService.getPageTotal(/*itemname,*/30);
+		int pageTimes = commodityArtworkService.getPageTotalByVagueName(itemname,30);
 		request.setAttribute("totalpage", pageTimes);
 		request.getSession().setAttribute("pageTimes", pageTimes);
 		request.setAttribute("currentPage", curentPage);

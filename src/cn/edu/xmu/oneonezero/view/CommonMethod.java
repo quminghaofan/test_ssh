@@ -1,5 +1,8 @@
 package cn.edu.xmu.oneonezero.view;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +19,9 @@ public class CommonMethod {
 	 * 从cookie中获取json，转换成CommodityArtwork类型
 	 * @param request
 	 * @return
+	 * @throws UnsupportedEncodingException 
 	 */
-	public static List<CommodityArtwork> jsonToFinishedItem(HttpServletRequest request){
+	public static List<CommodityArtwork> jsonToFinishedItem(HttpServletRequest request) throws UnsupportedEncodingException{
 		Cookie[] cookies=request.getCookies();
 //		System.out.println("cookies.length:"+cookies.length);
 		int count=0;
@@ -28,10 +32,9 @@ public class CommonMethod {
 		JSONObject jsonCart;
 		for (Cookie cookie : cookies) {
 			System.out.println("show-path:"+cookie.getPath());
-			if (cookie.getName().startsWith(user.getName())
-					/*&&cookie.getPath()!=null
-					&&cookie.getPath().equals(request.getContextPath())*/) {
-				jsonCart = JSONObject.fromObject(cookie.getValue());
+			if (cookie.getName().startsWith(user.getName())) {
+				jsonCart = JSONObject.fromObject(URLDecoder.decode(cookie.getValue(),"utf-8"));
+//				System.out.println(cookie.getValue());
 				commodityArtwork = (CommodityArtwork) JSONObject.toBean(
 						jsonCart, CommodityArtwork.class);
 //				System.out.println("commodityArtwork.getName():"+commodityArtwork.getName());

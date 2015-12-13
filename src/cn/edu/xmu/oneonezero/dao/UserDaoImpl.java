@@ -4,7 +4,6 @@ package cn.edu.xmu.oneonezero.dao;
 
 import java.util.List;
 
-import org.apache.commons.lang.ObjectUtils.Null;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 

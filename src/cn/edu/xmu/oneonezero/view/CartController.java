@@ -11,6 +11,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+//import net.sf.json.JSONObject;
+
+
 import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Controller;
@@ -31,7 +34,7 @@ public class CartController {
 	public void add2Cart(String backUrl,long itemId,
 			HttpServletResponse response,HttpServletRequest request) throws IOException{
 		String commodityArtworkJson = commodityArtworkService.getCommodityArtworkWithJSONTypeById(itemId).toString();
-		System.out.println("commodityArtworkJson:"+commodityArtworkJson);
+//		System.out.println("commodityArtworkJson:"+commodityArtworkJson);
 		User user=(User)request.getSession().getAttribute("user");
 		Cookie cookie=new Cookie(user.getName()+"#"+Long.toString(itemId), URLEncoder.encode(commodityArtworkJson,"utf-8"));
 		cookie.setPath(request.getContextPath());
