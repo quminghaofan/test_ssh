@@ -1,6 +1,9 @@
 package cn.edu.xmu.oneonezero.view;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -28,18 +31,21 @@ public class CartController {
 	public void add2Cart(String backUrl,long itemId,
 			HttpServletResponse response,HttpServletRequest request) throws IOException{
 		String commodityArtworkJson = commodityArtworkService.getCommodityArtworkWithJSONTypeById(itemId).toString();
-//		System.out.println("commodityArtworkJson:"+commodityArtworkJson);
+		System.out.println("commodityArtworkJson:"+commodityArtworkJson);
 		User user=(User)request.getSession().getAttribute("user");
-		Cookie cookie=new Cookie(user.getName()+"#"+Long.toString(itemId), commodityArtworkJson);
+		Cookie cookie=new Cookie(user.getName()+"#"+Long.toString(itemId), URLEncoder.encode(commodityArtworkJson,"utf-8"));
 		cookie.setPath(request.getContextPath());
-		System.out.println("add-path:"+cookie.getPath());
+//		System.out.println("add-path:"+cookie.getPath());
 		cookie.setMaxAge(60*60*24*7);//保留7天 
 		response.addCookie(cookie);
-		response.sendRedirect(backUrl);//返回到原来的页面，更友好
+		if(backUrl==null){
+			response.sendRedirect("/mall/enterMall");
+		}
+		else response.sendRedirect(backUrl);//返回到原来的页面，更友好
 	}
 	
 	@RequestMapping("/showCart")
-	public String showCart(HttpServletRequest request) {
+	public String showCart(HttpServletRequest request) throws UnsupportedEncodingException {
 //		List<CommodityArtwork> commodityArtworks=CommonMethod.jsonToFinishedItem(request);
 //		System.out.println("name:"+commodityArtworks.get(0).getName());
 		request.setAttribute("commodityArtworkList", CommonMethod.jsonToFinishedItem(request));
@@ -56,8 +62,8 @@ public class CartController {
 					&&cookie.getPath().equals(request.getContextPath())*/){
 				Cookie newcookie=new Cookie(cookie.getName(), null);
 				newcookie.setPath(request.getContextPath()); 
-				System.out.println("del-request:"+request.getContextPath());
-				System.out.println("del:"+cookie.getPath());
+//				System.out.println("del-request:"+request.getContextPath());
+//				System.out.println("del:"+cookie.getPath());
 				newcookie.setMaxAge(0);
 				response.addCookie(newcookie);
 			}

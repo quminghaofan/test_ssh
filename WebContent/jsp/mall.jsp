@@ -11,7 +11,11 @@
 <meta name="keywords"
 	content="Gifty Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script type="application/x-javascript">
+	
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+</script>
 <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!-- Custom Theme files -->
@@ -30,24 +34,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	media="all" />
 <script type="text/javascript" src="../js/megamenu.js"></script>
 <script>
-$(document).ready(function(){$(".megamenu").megamenu();});
-$(function(){
-	$("#updown").css("top",window.screen.availHeight/2-100+"px");
-	$(window).scroll(function() {		
-		if($(window).scrollTop() >= 100){
-			$('#updown').fadeIn(300); 
-		}else{    
-			$('#updown').fadeOut(300);    
-		}  
+	$(document).ready(function() {
+		$(".megamenu").megamenu();
 	});
-	$('#updown .up').click(function(){$('html,body').animate({scrollTop: '0px'}, 800);});
-	$('#updown .down').click(function(){$('html,body').animate({scrollTop: document.body.clientHeight+'px'}, 800);});
-});
+	$(function() {
+		$("#updown").css("top", window.screen.availHeight / 2 - 100 + "px");
+		$(window).scroll(function() {
+			if ($(window).scrollTop() >= 100) {
+				$('#updown').fadeIn(300);
+			} else {
+				$('#updown').fadeOut(300);
+			}
+		});
+		$('#updown .up').click(function() {
+			$('html,body').animate({
+				scrollTop : '0px'
+			}, 800);
+		});
+		$('#updown .down').click(function() {
+			$('html,body').animate({
+				scrollTop : document.body.clientHeight + 'px'
+			}, 800);
+		});
+	});
+	function sort(){window.loction.href="/test_ssh/mall/enterMall";}
 </script>
 <style type="text/css">
 #updown {
-	_top: expression(eval(( document.compatMode && document.compatMode ==
-		"CSS1Compat")?documentElement.scrollTop+documentElement.clientHeight-this.clientHeight-1:document.body.scrollTop+document.body.clientHeight-this.clientHeight-1));
+	_top: expression(eval(( document.compatMode && document.compatMode == 
+		 "CSS1Compat")?documentElement.scrollTop+documentElement.clientHeight-this.clientHeight-1:document.body.scrollTop+document.body.clientHeight-this.clientHeight-1));
 	position: fixed;
 	_position: absolute;
 	top: 70%;
@@ -104,18 +119,20 @@ $(function(){
 				<div class="cssmenu">
 					<ul>
 						<%
-                	if(session.getAttribute("user")==null){
-                %>
+							if (session.getAttribute("user") == null) {
+						%>
 						<li><a
 							href="/test_ssh/jsp/login?backUrl=/test_ssh/mall/enterMall">登录/注册</a></li>
 						<%
-                    }else{
-                    %>
+							} else {
+						%>
 						<li><a href="">申请成为艺术家</a></li>
-						<li><a href=""> <%=((User)session.getAttribute("user")).getName()%></a></li>
+						<li><a href=""> <%=((User) session.getAttribute("user")).getName()%></a></li>
 						<li><a href="">我的订单</a></li>
 						<li><a href="">登出</a></li>
-						<%} %>
+						<%
+							}
+						%>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -127,27 +144,32 @@ $(function(){
 			<div class="header_bottom-box">
 				<div class="header_bottom_left">
 					<div class="logo">
-						<a href="/test_ssh/init/home"><img src="../images/logo_ooz.png"
-							alt="首页" /></a>
+						<a href="/test_ssh/init/home"><img
+							src="../images/logo_ooz.png" alt="首页" /></a>
 					</div>
 
 					<div class="clearfix"></div>
 				</div>
 				<div class="header_bottom_right">
 					<div class="search">
-						<input type="text" value="商品名称" onFocus="this.value = '';"
-							onBlur="if (this.value == '') {this.value = '商品名称';}"> <input
-							type="submit" value="">
+						<form action="/test_ssh/mall/search" method="post">
+							<input id="itemname" name="itemname" type="text" value="${itemname}"
+								onFocus="this.value = '';"
+								onBlur="if (this.value == '') {this.value = '商品名称';}"> <input
+								type="submit" value="">
+						</form>
 					</div>
 					<%
-                	if(session.getAttribute("user")!=null){
-                %>
+						if (session.getAttribute("user") != null) {
+					%>
 					<ul class="bag">
 						<a href="#"><i class="bag_left"> </i></a>
 						<a href="/test_ssh/cart/showCart"><li class="bag_right"><p>购物篮</p></li></a>
 						<div class="clearfix"></div>
 					</ul>
-					<%} %>
+					<%
+						}
+					%>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -176,7 +198,8 @@ $(function(){
 								</div>
 							</div>
 						</div></li>
-					<li class="active grid"><a class="color10" href="/test_ssh/mall/enterMall">商城</a>
+					<li class="active grid"><a class="color10"
+						href="/test_ssh/mall/enterMall">商城</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
@@ -219,10 +242,10 @@ $(function(){
 				<div class="mens-toolbar">
 					<div class="sort">
 						<div class="sort-by">
-							<label>排序</label> <select>
+							<label>按价格排序</label> <select name="sort" onchange="sort()">
 								<option value="0"></option>
-								<option value="1">价格：由高到低</option>
-								<option value="2">价格：由低到高</option>
+								<option value="1" ${status eq '1' ? 'selected': ''}>由高到低</option>
+								<option value="2" ${status eq '2' ? 'selected': ''}>由低到高</option>
 							</select>
 						</div>
 					</div>
@@ -251,15 +274,28 @@ $(function(){
 					<c:forEach items="${itemlist}" var="item">
 						<div class="col_1_of_single1 span_1_of_single1">
 							<a href="single.html"> <img src="${item.picUrl}"
-								class="img-responsive" alt="" href="" />
+								class="img-responsive" alt="" href="/test_ssh/mall/seeMore?itemId=${item.id}" />
 								<h3>${item.name}</h3>
 								<h4>${item.price}</h4>
 							</a>
 							<ul class="list2">
-								<li class="list2_left"><span class="m_1"><a href="#"
+								<%
+									if (session.getAttribute("user") != null) {
+								%>
+								<li class="list2_left"><span class="m_1"><a href="/test_ssh/cart/add2Cart?itemId=${item.id}&backUrl=${backUrl}"
 										class="link">添加购物篮</a></span></li>
 								<li class="list2_right"><span class="m_2"><a
 										href="#" class="link1">立即购买</a></span></li>
+								<%
+									} else {
+								%>
+								<li class="list2_left"><span class="m_1"><a href="/test_ssh/init/goToLogin?backUrl=${backUrl}"
+										class="link">添加购物篮</a></span></li>
+								<li class="list2_right"><span class="m_2"><a
+										href="/test_ssh/init/goToLogin?backUrl=${backUrl}" class="link1">立即购买</a></span></li>
+								<%
+									}
+								%>
 							</ul>
 						</div>
 					</c:forEach>
@@ -268,8 +304,6 @@ $(function(){
 		</div>
 	</div>
 	<div class="pagging">
-
-		<div class="left">共${totalpage}条记录</div>
 
 		<div class="right">
 
@@ -288,41 +322,41 @@ $(function(){
 
 			<c:if test="${currentPage == 1}">
 
-				<span class="current">1</span>
+				<span class="current">1/${totalpage}</span>
 
 			</c:if>
 
 			<c:if test="${currentPage != 1}">
 
-				<a href="/test_ssh/mall/enterMall?page=1">1</a>
+				<a href="/test_ssh/mall/enterMall?page=1">1/${totalpage}</a>
 
 			</c:if>
 
 			<%
+				int pageTimes = (Integer) session.getAttribute("pageTimes");
 
-                 int pageTimes = (Integer)session.getAttribute("pageTimes");
+				for (int i = 1; i < pageTimes; i++)
 
-                 for(int i=1;i<pageTimes;i++)
+				{
 
-                 {
-
-                     request.setAttribute("page", i+1);
-
-         %>
+					request.setAttribute("page", i + 1);
+			%>
 
 			<c:if test="${currentPage == page}">
 
-				<span class="current"><%=i+1%></span>
+				<span class="current"><%=i + 1%>/${totalpage}</span>
 
 			</c:if>
 
 			<c:if test="${currentPage != page}">
 
-				<a href="/test_ssh/mall/enterMall?page=<%=i+1%>"><%=i+1%></a>
+				<a href="/test_ssh/mall/enterMall?page=<%=i + 1%>"><%=i + 1%>/${totalpage}</a>
 
 			</c:if>
 
-			<%} %>
+			<%
+				}
+			%>
 
 
 

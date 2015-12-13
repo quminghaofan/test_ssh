@@ -16,14 +16,15 @@ public class NewsController {
 	public NewsService newsService;
 	
 	@RequestMapping("/showNews")
-	public String showNews(long newsId,String type,HttpServletRequest request){
+	public String showNews(long newsId,HttpServletRequest request){
 		request.getSession().setAttribute("news", newsService.getNews(newsId));
-		request.setAttribute("type", type);
+		request.setAttribute("type",1);
 		return "showNews";
 	}
 	
-	@ResourceMapping("/goBack")
+	@ResourceMapping("/goback")
 	public String goback(String type,HttpServletRequest request){
+		System.out.println("goback");
 		if(type.equals("1")){//主页
 			return "redirect:/init/home";
 		}

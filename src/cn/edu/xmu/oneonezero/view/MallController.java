@@ -1,5 +1,6 @@
 package cn.edu.xmu.oneonezero.view;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -22,26 +23,44 @@ public class MallController {
 	@RequestMapping("/enterMall")
 	public String enterMall(String page, HttpServletRequest request) {
 		request.getSession().setAttribute("pageTimes", 30);
+		String itemname=request.getParameter("itemname");
+		if(itemname!=null&&!itemname.equals("商品名称")){
+			request.setAttribute("itemname", itemname);
+		}
+		else {
+			itemname="";
+		}
+		
 		int curentPage;
 		if (page == null) {
 			curentPage = 1;
 		} else {
 			curentPage = Integer.parseInt(page);
 		}
-		int pageTimes = commodityArtworkService.getPageTotal(30);
+		
+		String sort=request.getParameter("sort");
+		request.setAttribute("status", sort);
+		if(sort==null||sort.equals("0")){
+			request.setAttribute("itemlist", commodityArtworkService
+					.getCommodityArtworksByPosition(/*itemname,*/curentPage - 1, 30));
+		}
+		else if(sort.equals("1")){
+			
+		}
+		else{
+			
+		}
+		int pageTimes = commodityArtworkService.getPageTotal(/*itemname,*/30);
 		request.setAttribute("totalpage", pageTimes);
 		request.getSession().setAttribute("pageTimes", pageTimes);
 		request.setAttribute("currentPage", curentPage);
-		request.setAttribute("itemlist", commodityArtworkService
-				.getCommodityArtworksByPosition(curentPage - 1, 30));
 		return "mall";
 	}
 
 	@RequestMapping("/settle")
 	public String settle(HttpServletRequest request,
-			HttpServletResponse response) {
-		List<CommodityArtwork> commodityArtworks = CommonMethod
-				.jsonToFinishedItem(request);
+			HttpServletResponse response) throws UnsupportedEncodingException {
+		List<CommodityArtwork> commodityArtworks = CommonMethod.jsonToFinishedItem(request);
 		Double total = 0.0;
 		// System.out.println("commodityArtworks.size:"+commodityArtworks.size());
 		for (CommodityArtwork commodityArtwork : commodityArtworks) {
@@ -63,5 +82,5 @@ public class MallController {
 	public String pay(HttpServletRequest request, HttpServletResponse response) {
 		CommonMethod.cleanCookie(request, response);
 		return "pay_success";
-	}
+	} 
 }

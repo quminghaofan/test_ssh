@@ -42,7 +42,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 		String hql = "select count(*) from Artwork a";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		return (int)Math.ceil(((Long)query.uniqueResult())/num);
+		return (int)Math.ceil(((Long)query.uniqueResult())/((double)num));
 	}
 
 	@Override
@@ -50,6 +50,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 		String hql = "from Artwork a where a.id=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, id);
+		System.out.println(""+JSONObject.fromObject(query.uniqueResult()));
 		return JSONObject.fromObject(query.uniqueResult());
 	}
 

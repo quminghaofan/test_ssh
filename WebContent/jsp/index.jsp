@@ -473,7 +473,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="right-grid">
 							<h4>
-								<a href="/test_ssh/news/showNews?newsId=${rr.id}&type=1">${rr.name}</a>
+								<a href="/test_ssh/news/showNews?newsId=${rr.id}">${rr.name}</a>
 							</h4>
 							<p>${(rr.content).substring(0,1)} ...</p>
 						</div>
