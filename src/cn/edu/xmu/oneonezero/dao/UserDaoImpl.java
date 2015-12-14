@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import cn.edu.xmu.oneonezero.entity.User;
 
 
+
 public class UserDaoImpl implements UserDao {
 
 	private SessionFactory sessionFactory;//创建一个会话工厂实例
