@@ -160,7 +160,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <div class="register">
 			   
 			   <div class="col-md-6 login-right">
-				<form id="applyform" method="post"  action="/artist/artistApply" onsubmit="return before_apply()">
+				<form id="applyform" method="post"  action="/test_ssh/artist/artistApply" onsubmit="return before_apply()">
 				  <div>
 					<span>真实姓名<label>*</label></span>
 					<input type="text" name="realname" id="realname" onfocus="name_blank.style.display='none'"> 
