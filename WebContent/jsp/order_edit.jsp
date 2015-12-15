@@ -1,11 +1,10 @@
-<%@page import="cn.edu.xmu.oneonezero.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>确认订单</title>
+<title>艺术品编辑</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
@@ -19,6 +18,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Custom Theme files -->
 <link href="../css/style.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="../css/jquery.countdown.css" />
+
 <!-- Custom Theme files -->
 <!--webfont-->
 <link
@@ -32,17 +32,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	media="all" />
 <script type="text/javascript" src="../js/megamenu.js"></script>
 <link href="../css/table.css" rel='stylesheet' type='text/css' />
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300'
-	rel='stylesheet' type='text/css'>
-<link
-	href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic'
-	rel='stylesheet' type='text/css'>
 <script>
 	$(document).ready(function() {
 		$(".megamenu").megamenu();
 	});
 </script>
+<link rel="stylesheet" href="../page/jqpagination.css"/>
+ <script src="../page/jquery-1.6.2.min.js"></script>
+ <script src="../page/jquery.jqpagination.min.js"></script>
 </head>
 <body>
 	<div class="header_top">
@@ -54,14 +51,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="cssmenu">
 					<ul>
 						<%
-							if (session.getAttribute("user") == null) {
+							if (session.getAttribute("username") == null) {
 						%>
 						<li><a href="jsp/login.jsp">登录/注册</a></li>
 						<%
 							} else {
 						%>
 						<li><a href="">申请成为艺术家</a></li>
-						<li><a href="">${username}</a></li>
+						<li><a href=""> <%=session.getAttribute("username")%></a></li>
 						<li><a href="">我的订单</a></li>
 						<li><a href="">登出</a></li>
 						<%
@@ -78,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header_bottom-box">
 				<div class="header_bottom_left">
 					<div class="logo">
-						<a href="/test_ssh/init/home"><img src="../images/logo_ooz.png"
+						<a href="index.html"><img src="../images/logo_ooz.png"
 							alt="首页" /></a>
 					</div>
 
@@ -86,12 +83,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="header_bottom_right">
 					<div class="search">
-						<input type="text" value="商品名称" onFocus="this.value = '';"
-							onBlur="if (this.value == '') {this.value = '商品名称';}"> <input
+						<input type="text" value="艺术品名称" onFocus="this.value = '';"
+							onBlur="if (this.value == '') {this.value = '艺术品名称';}"> <input
 							type="submit" value="">
 					</div>
 					<%
-						if (session.getAttribute("user") != null) {
+						if (session.getAttribute("username") != null) {
 					%>
 					<ul class="bag">
 						<a href="#"><i class="bag_left"> </i></a>
@@ -113,13 +110,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="menu_box">
 				<ul class="megamenu skyblue">
-					<li><a class="color2" href="/test_ssh/init/home">首页</a></li>
+					<li><a class="color2" href="index.jsp">首页</a></li>
 					<li><a class="color4" href="">定制</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
 									<div class="h_nav">
 										<ul>
+										<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
 												<li><a href="">${type.}</a></li>
 											</c:forEach>
@@ -128,12 +126,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</div>
 						</div></li>
-					<li class="active grid"><a class="color10" href="/test_ssh/mall/enterMall">商城</a>
+					<li><a class="color10" href="#">商城</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
 									<div class="h_nav">
 										<ul>
+										<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
 												<li><a href="">${type.}</a></li>
 											</c:forEach>
@@ -148,6 +147,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="col1">
 									<div class="h_nav">
 										<ul>
+										<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
 												<li><a href="">${type.}</a></li>
 											</c:forEach>
@@ -163,66 +163,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 
-<div class="men">
-<div class="container">
-<div align="center">
-    <div style="width: 90%;">
-        <div style="padding: 6%" align="left">
  
-<div class="orderdiv" style="margin-top:2%">
-                <c:forEach items="${orderlist}" var="order">
-                    <div style="width:20%;" class="left-grid"><img class="img-responsive" src="${order.picUrl}"></div>
-                
-                <div class="info" align="left">
-                    <div style="font-size: large" class="infomargin">
-                        <label>${order.name}</label>
-                    </div>
-                    <div align="right">
-                    <label>类别:&nbsp;&nbsp;${order.type}</label>
-                        <label>价格:&nbsp;&nbsp;&nbsp;&nbsp;¥&nbsp;&nbsp;${order.price}</label>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            </c:forEach>
-            
-            <div class="breakline"></div>
+ <div class="men">
+		<div class="container">
+  <div class="register">
+			   <div class="col-md-6 login-right">
+				<form method="get"  action="" class="artworkform">
+			
+				  <div>
+					<span>地址</span>
+					<input type="text" value="${order.adress}"> 
+				  </div>
+				   <div>
+					<span>电话</span>
+					<input type="text" value="${order.mobile}"> 
+				  </div>
+				  <input type="submit" value="确认">
+				  <input type="button" value="返回">
+			    </form>
+			   </div>	
+			   <div class="clearfix"> </div>
+		</div>
 
-            <div align="right" style="font-weight: bolder">
-                <lable>总价&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</lable>
-                <lable>¥ ${total}</lable>
-            </div>
-
-           <div style="margin-top: 3%;text-align:left" >
-                <div style="margin-bottom: 2%;">
-                    <lable>用户名:&nbsp;&nbsp;</lable>
-                    <lable style="font-weight: bold"><%=((User)session.getAttribute("user")).getName()%></lable>
-                </div>
-                <div style="margin-bottom: 2%;">
-                    <lable>地址:&nbsp;&nbsp;&nbsp;&nbsp;</lable>
-                    <lable class="txt1" style="vertical-align:bottom" id="modi_address"><%=((User)session.getAttribute("user")).getAddress()%></lable>
-                 </div>
-                <div>
-                    <lable>电话:&nbsp;&nbsp;&nbsp;&nbsp;</lable>
-                    <lable class="txt2" style="vertical-align:bottom" id="modi_phone"><%=((User)session.getAttribute("user")).getMobile()%></lable>
-                </div>
-                 <input type="button"  style="display: inline;vertical-align:bottom" type="button" value="编辑" id="edit" class="btn4"/>
-            </div>
-
-
-
-
-            <div align="right" style="margin-top: 3%;">
-                <a href="/test_ssh/cart/showCart"><input type="button" class="orderbutton" style="margin-right:1.5%" value="返回购物篮"/></a>
-                <a href="/test_ssh/mall/pay"><input type="button" class="orderbutton" value="确认支付"/></a>
-            </div>
-        </div>
-    </div>
-
+			</div>
 </div>
-</div>
-</div>
-
 
 
 			<div class="footer">
@@ -243,6 +207,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</p>
 				</div>
 			</div>
+			
 </body>
 </html>
-
+<script>
+function select2_change(){
+	var select2=document.getElementById("select2").value;
+	if(select2=="展品")
+		document.getElementById("price").style.display="none";
+	else
+		document.getElementById("price").style.display="block";
+}
+</script>
