@@ -30,21 +30,39 @@
                 padding-right: 5px;
             }
         }
+		#type{
+			width:115px;		
+		}
+		#onShowTime{
+			width:140px;
+			height:25px;
+		}
+		#offShowTime{
+			width:140px;
+			height:25px;
+		}
+		#RRname{
+			height:25px;
+		}
 
 
     </style>
 </head>
 <body>
 <form class="form-inline definewidth m20" action="/test_ssh/editor/getDraftByNewsName" method="get">
-    软文名称
-    <input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
+ 	<font color="blue">软文类型: </font><select id="type" name="category" class="category"> 
+	<option>广告</option>
+	<option>新闻资讯</option>
+	</select>
+	<font color="blue">上架时间: </font><input id="onShowTime" type="date" name="user_date" />
+	<font color="blue">下架时间: </font><input id="offShowTime" type="date" name="user_date" />
+	<input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="请输入搜索内容......" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search">搜索</button>&nbsp;&nbsp; <input type="button" class="btn btn-success" id="search" onclick="window.location.href='/test_ssh/jsp/editor_rr_add.jsp'" value="新增软文"/>
 </form>
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-        <th>软文标题</th>
-        <th>图片</th>
+        <th>软文标题</th>
         <th>上架时间</th>
         <th>下架时间</th>
         <th>价格</th>
@@ -55,11 +73,10 @@
     <c:forEach items="${RRLIST}" var="rr">
         <tr>
                 <td>${rr.name}</td>
-                <td><img src="${rr.picUrl}"></td>
                 <td>${rr.onShowTime}</td>
                 <td>${rr.offShowTime}</td>
                 <td>${rr.price}</td>
-            <td><a href="/test_ssh/editor/getNewsToEdit?newsId=${rr.id}">编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}&type=0'">删除</a></td>
+            <td><a href="/test_ssh/editor/getNewsToEdit?newsId=${rr.id}">编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}'">删除</a>&nbsp;&nbsp;<a href="/test_ssh/jsp/editor_rr_add.jsp">发送</a></td>
             </tr>
     </c:forEach>
 </c:if>

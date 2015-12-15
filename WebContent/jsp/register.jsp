@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
 	content="Gifty Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+Smartusername Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
 	
 	
@@ -34,6 +34,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="../css/megamenu.css" rel="stylesheet" type="text/css"
 	media="all" />
 <script type="text/javascript" src="../js/megamenu.js"></script>
+<script type="text/javascript" src="../js/username_repeat.js"></script>
 <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
 <style type="text/css">
 .btn {
@@ -41,14 +42,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	margin: 0 auto;
 	display: block;
 }
+#username_blank{
+	color:red;
+}
+#psw_blank{
+	color:red;
+}
+#psw_blank1{
+	color:red;
+}
+#check_blank{
+	color:red;
+}
 </style>
 </head>
 <body>
-	<div class="header_top">
+<div class="header_top">
   <div class="container">
   	<div class="header_top-box">
      <div class="header-top-left">
-		<div class="clearfix"></div>
+			  
+   				    <div class="clearfix"></div>
    			 </div>
 			 <div class="cssmenu">
 				<ul>
@@ -63,7 +77,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><a href=""> <%=session.getAttribute("username")%></a></li>
                     <li><a href="">订单</a></li>
                     <li><a href="">购物车</a></li>
-                    <li><a href="">登出</a></li> 
+                    <li><a href="">退出</a></li> 
                     <%} %>
 				</ul>
 			</div>
@@ -98,7 +112,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="col1">
 							<div class="h_nav">
 								<ul>
-								<li><a href="">全部</a></li>
 								<c:forEach items="${TYPELIST}" var="type">
 									<li><a href="">${type.}</a></li>
 								</c:forEach>	
@@ -114,7 +127,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="col1">
 							<div class="h_nav">
 								<ul>
-								<li><a href="">全部</a></li>
 								<c:forEach items="${TYPELIST}" var="type">
 									<li><a href="">${type.}</a></li>
 								</c:forEach>	
@@ -130,7 +142,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="col1">
 							<div class="h_nav">
 								<ul>
-								<li><a href="">全部</a></li>
 								<c:forEach items="${TYPELIST}" var="type">
 									<li><a href="">${type.}</a></li>
 								</c:forEach>	
@@ -151,190 +162,151 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="register">
 				<div class="col-md-6 login-left">
 					<h2 style="color: red">欢迎来到注册界面</h2>
-					<p>
-						如果您已有账号，请直接 <a href="/test_ssh/jsp/login.jsp"><font
-							color="blue">登录</font></a>
-					</p>
 				</div>
 				<div class="col-md-6 login-right">
+					<p>
+						如果您已有账号，请直接 <a href="/test_ssh/jsp/login"><font
+							color="blue">登录</font></a>
+					</p>
+
 					<h3 style="color: red" align="center-left">注册</h3>
 					<form id="registerform" method="post"
 						onsubmit="return before_register()"
-						action="/test_ssh/init/register">
+						action="/test_ssh/login/register">
 						<div>
-							<span> 账号 <label>*</label></span> <input type="text"
+							<span> 账号 <label>*</label></span> 
+							<input type="text"
 								id="username" name="username" placeholder="请用您的手机号注册"
-								onfocus="display1()" onblur="return checkPhoneNumber()"
-								onchange="" />
+								onfocus="display1()">
 							<span style="display: none" id="username_blank"> <font
-								color="red">不能为空</font></span> <span style="display: none"
-								id="username_exist"><font color="red">用戶名已存在</font></span>
+								color="red"></font></span>
 						</div>
 						<div>
-							<span> 密码 <label>*</label></span> <input name="password"
-								type="password" id="password" placeholder="密码由6-15位字母、数字或下划线组成"
-								onfocus="display2()" onblur="return checkPassword()" /> <span
-								style="display: none" id="psw_blank"><font color="red">不能为空</font></span>
+							<span> 密码 <label>*</label></span> 
+							<input name="password"
+								type="password" id="password" placeholder="请输入您的密码"
+								onfocus="display2()"> <span
+								style="display: none" id="psw_blank"><font color="red"></font></span>
 						</div>
 						<div>
-							<span>确认密码<label>*</label></span> <input name="password2"
-								type="password" id="password2" placeholder="请再次输入您的密码"
-								onblur="return checkPassword2()" /> <span style="display: none"
-								id="psw_blank1"><font color="red">不能为空</font></span>
+							<span>确认密码<label>*</label></span> 
+							<input name="password2"	type="password" id="password2" placeholder="请再次输入您的密码"
+								 onfocus="display3()"> 
+							<span style="display: none"
+								id="psw_blank1"><font color="red"></font></span>
 						</div>
 						<div>
-							<span> 验证码<label>*</label></span> <input type="check"
-								onblur="return verify()"> <input type="button"
-								name="send" value="发送验证码" style="float: center"
-								onclick=sendSMS() /> <span style="display: none"
-								id="check_blank"><font color="red">不能为空</font></span>
+							<span> 验证码<label>*</label></span> <input type="check"  id="checkok"
+								 onfocus="display4()">
+								<input type="button" id="check"	name="send" value="发送验证码" style="float: center"> 
+								<span style="display: none" id="check_blank"><font color="red"></font></span>								
 						</div>
 						<div class="clearfix"></div>
 						<a class="news-letter" href="#"> <label class="checkbox">
-								<input type="checkbox" name="confirm" id="cb" onclick="agree();"
+								<input type="checkbox" name="confirm" id="cb"
 								checked="checked" /><i> </i>我同意该网站协定
 						</label></a>
-				<input type="submit" value="提交" class="btn" id="tj"
-					onClick="registerform.onsubmit()" /> <br />
-				</form>
+						<input type="submit" value="提交" class="btn" id="tj" onClick="registerform.onsubmit()"> 
+					</form>
+				</div>
+				<div class="clearfix"></div>
 			</div>
-			<div class="clearfix"></div>
-		</div>
 	</div>
 	</div>
 	<div class="footer">
-	<div class="container">
-		<img src="images/pay.png" class="img-responsive" alt=""/>
-		<ul class="footer_nav">
-		  <li><a href="#">首页</a></li>
-		  <li><a href="#">定制</a></li>
-		  <li><a href="#">商城</a></li>
-		  <li><a href="#">拍卖</a></li>
-		  <li><a href="#">关于我们</a></li>
-		  <li><a href="">联系我们</a></li>
-		</ul>
-		<p class="copy">Copyright &copy; 2015.厦门大学软件学院OneoneZero All rights reserved. More Information <a href="" target="_blank" title="OneoneZero">OneoneZero</a> - Made by <a href="" title="OneoneZero" target="_blank">OneoneZero</a></p>
+		<div class="container">
+			<img src="images/pay.png" class="img-responsive" alt="" />
+			<ul class="footer_nav">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Blog</a></li>
+				<li><a href="#">Shop</a></li>
+				<li><a href="#">Media</a></li>
+				<li><a href="#">Features</a></li>
+				<li><a href="#">About Us</a></li>
+				<li><a href="contact.html">Contact Us</a></li>
+			</ul>
+			<p class="copy">
+				Copyright &copy; 2015.厦门大学软件学院OneoneZero All rights reserved. More
+				Information <a href="" target="_blank" title="OneoneZero">OneoneZero</a>
+				- Made by <a href="" title="OneoneZero" target="_blank">OneoneZero</a>
+			</p>
+		</div>
 	</div>
-</div>
 </body>
 </html>
 
 <script type="text/javascript">
 function before_register(){
 	var flag=0;
+	var a = /^((\(\d{3}\))|(\d{3}\-))?13\d{9}|14[57]\d{8}|15\d{9}|18\d{9}$/; 
+	//var reg = /^[0-9a-zA-Z_]+$;
+	var tel=document.getElementById("username").value;
 	if(document.getElementById("username").value==""){
 		document.getElementById("username_blank").style.display="block";
+		$("#username_blank").text("用户名不能为空"); 
 		flag=1;
 	}	
+	if((document.getElementById("username")).value.length!=11||!((document.getElementById("username").value).test(a))) 
+	{ 
+		document.getElementById("username_blank").style.display="block";
+		$("#username_blank").text("您输入的手机号不正确");
+		flag=1; 
+	}
 	if(document.getElementById("password").value==""){
 		document.getElementById("psw_blank").style.display="block";
+		$("#psw_blank").text("密码不能为空");
         flag=1;
 	}
+	/*		if(document.getElementById("password").length<6 || document.getElementById("password").length>15)
+		{
+			$("#psw_blank").text("密码长度必须在6-15之间");
+			flag=1;
+		}
+		if(!reg.test(document.getElementById("password").value)) 
+		{
+			$("#psw_blank").text("密码只能由数字、字母或下划线组成"); 
+			flag=1;
+		}*/
+	if(document.getElementById("password2").value==""){
+		document.getElementById("psw_blank1").style.display="block";
+		$("#psw_blank1").text("请确认您的密码");
+		flag=1;
+	}	
+	if(document.getElementById("password").value!=document.getElementById("password2").value)
+	{
+		document.getElementById("psw_blank1").style.display="block";
+		$("#psw_blank1").text("密码不一致，请重新输入");
+		flag=1;
+	}	
+	if(document.getElementById("checkok").value==""){
+		document.getElementById("check_blank").style.display="block";
+		$("#check_blank").text("验证码不能为空");
+        flag=1;
+	}
+	if(document.getElementById('cb').checked)
+    {
+		document.getElementById('tj').disabled=false;
+	}      
+	else
+    {
+		document.getElementById('tj').disabled='disabled';  
+		flag=1;
+	}
+	
 	if(flag==1)
 		return false;
+	
 }
-
 function display1(){
 	document.getElementById("username_blank").style.display="none";
 }
 function display2(){
 	document.getElementById("psw_blank").style.display="none";
 }
-function register()
-{
-	if(!checkPhoneNumber())
-	{
-		return false;
-	}
-	else if(!checkPassword())
-	{
-		return false;
-	}
-	else if(!checkPassword2())
-		return false;
-	else if(!verify())
-		return false;
-	else if(!agree())
-		return false;
-} 
-function checkPhoneNumber()
-{
-	var id=document.getElementById("username");
-	var phone = id.value;     
-	if(phone=="")
-	{
-		document.getElementById(id.name).innerHTML="请输入您的手机号";
-		return false;
-	}
-	if(!(/^1[3|5][0-9]\d{4,8}$/.test(phone)))
-	{ 
-		document.getElementById(id.name).innerHTML="您输入的手机号不存在";
-		return false; 
-	}
-	return true;
-}             
-
-function checkPassword()
-{
-	var id = document.getElementById("password");  
-	var password=id.value;
-	var reg = /^[0-9a-zA-Z_]+$;
-	if(id.length<6 || id.length>15)
-	{
-		document.getElementById(id.name).innerHTML="密码长度必须在6-15之间";
-		return false;
-	}
-	if(password=="")
-	{
-		document.getElementById(id.name).innerHTML="请输入您的密码";
-		return false;
-	
-	}
-	if(!reg.test(password)) 
-	{
-		document.getElementById(id.name).innerHTML = "密码只能由数字、字母或下划线组成"; 
-		return false;
-	}
-	return true;
+function display3(){
+	document.getElementById("psw_blank1").style.display="none";
 }
-
-function checkPassword2()
-{
-	var id=document.getElementById("password");
-	var id2=document.getElementById("password2");
-	var password = id.value;    
-	var password2 = id2.value;
-	if(password!=password2)
-	{
-		document.getElementById(id.name).innerHTML="两次输入的密码不一致";
-		return false;
-	}
-	if(password2=="")
-	{
-		document.getElementById(id.name).innerHTML="请输入确认密码";
-		return false;
-	
-	}
-	return true;    
+function display4(){
+	document.getElementById("check_blank").style.display="none";
 }
-
-function verify()
-{
-	var id=document.getElementById("check");
-	var check=id.value;
-	if(check=="")
-	{
-		document.getElementById(id.name).innerHTML="验证码不能为空";
-		return false;
-	}
-	
-	return true;
-}
-
-function agree(){
-   if(document.getElementById('cb').checked)
-          document.getElementById('tj').disabled=false;
-   else
-    document.getElementById('tj').disabled='disabled';  
-} 
 </script>
