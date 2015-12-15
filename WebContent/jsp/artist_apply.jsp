@@ -77,11 +77,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"></div>
 				</div>
 				<div class="header_bottom_right">
-					<div class="search">
-						<input type="text" value="商品名称" onFocus="this.value = '';"
-							onBlur="if (this.value == '') {this.value = '商品名称';}"> <input
-							type="submit" value="">
-					</div>
+					
 					<%
 						if (session.getAttribute("username") != null) {
 					%>
