@@ -30,7 +30,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 	public List<CommodityArtwork> getCommodityArtworksByPositionAndVagueName(String artName,int start, int num) {
 		String hql = "from Artwork a where a.name like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setString(0, artName);
+		query.setString(0, "%"+artName+"%");
 		query.setFirstResult(start);
 		query.setMaxResults(num);
 		
@@ -42,8 +42,10 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 	public int getPageTotalByVagueName(String artName,int num) {
 		String hql = "select count(*) from Artwork a where a.name like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setString(0, artName);
-		return (int)Math.ceil(((Long)query.uniqueResult())/((double)num));
+		query.setString(0, "%"+artName+"%");
+		int number=(int)Math.ceil(((Long)query.uniqueResult())/((double)num));
+		if(number==0)return 1;
+		return number;
 	}
 
 	@Override

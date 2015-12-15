@@ -57,7 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			}, 800);
 		});
 	});
-	function sort(){window.loction.href="/test_ssh/mall/enterMall";}
+	function sort(){window.loction="/test_ssh/mall/enterMall";}
 </script>
 <style type="text/css">
 #updown {
@@ -152,7 +152,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="header_bottom_right">
 					<div class="search">
-						<form action="/test_ssh/mall/search" method="post">
+						<form action="/test_ssh/mall/enterMall" method="get">
 							<input id="itemname" name="itemname" type="text" value="${itemname}"
 								onFocus="this.value = '';"
 								onBlur="if (this.value == '') {this.value = '商品名称';}"> <input
@@ -242,7 +242,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="mens-toolbar">
 					<div class="sort">
 						<div class="sort-by">
-							<label>按价格排序</label> <select name="sort" onchange="sort()">
+							<label>按价格排序</label> <select name="sort" id="sort" onchange="sort()">
 								<option value="0"></option>
 								<option value="1" ${status eq '1' ? 'selected': ''}>由高到低</option>
 								<option value="2" ${status eq '2' ? 'selected': ''}>由低到高</option>

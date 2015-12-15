@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 import cn.edu.xmu.oneonezero.entity.User;
@@ -20,9 +21,10 @@ public class MallController {
 	@Resource(name = "commodityArtworkService")
 	CommodityArtworkService commodityArtworkService;
 
-	@RequestMapping("/enterMall")
+	@RequestMapping(value="/enterMall",method=RequestMethod.GET)
 	public String enterMall(String page,HttpServletRequest request) {
 		String itemname=request.getParameter("itemname");
+		System.out.println("itemname:"+itemname);
 		if(itemname!=null&&!itemname.equals("商品名称")){
 			request.setAttribute("itemname", itemname);
 		}
@@ -38,18 +40,19 @@ public class MallController {
 			curentPage = Integer.parseInt(page);
 		}
 		
+		List<CommodityArtwork> commodityArtworks;
 		String sort=request.getParameter("sort");
 		request.setAttribute("status", sort);
 		if(sort==null||sort.equals("0")){
-			request.setAttribute("itemlist", commodityArtworkService.getCommodityArtworksByPositionAndVagueName(itemname,curentPage - 1, 30));
+			commodityArtworks=commodityArtworkService.getCommodityArtworksByPositionAndVagueName(itemname,curentPage - 1, 30);
 		}
 		else if(sort.equals("1")){
-			
+			commodityArtworks=commodityArtworkService.getCommodityArtworksByVagueArtNameInAscendingOrder(itemname);
 		}
 		else{
-			
+			commodityArtworks=commodityArtworkService.getCommodityArtworksByVagueArtNameInDescendingOrder(itemname);
 		}
-		
+		request.setAttribute("itemlist",commodityArtworks);
 		int pageTimes = commodityArtworkService.getPageTotalByVagueName(itemname,30);
 		request.setAttribute("totalpage", pageTimes);
 		request.getSession().setAttribute("pageTimes", pageTimes);

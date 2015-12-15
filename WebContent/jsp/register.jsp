@@ -172,7 +172,7 @@ Smartusername Compatible web template, free webdesigns for Nokia, Samsung, LG, S
 					<h3 style="color: red" align="center-left">注册</h3>
 					<form id="registerform" method="post"
 						onsubmit="return before_register()"
-						action="/test_ssh/login/register">
+						action="/test_ssh/init/register">
 						<div>
 							<span> 账号 <label>*</label></span> 
 							<input type="text"
