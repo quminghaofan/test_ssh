@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>用户列表</title>
+<title>订单列表</title>
 <link rel="stylesheet" type="text/css" href="../Css1/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="../Css1/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="../Css1/style.css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript" src="../Js/bootstrap.js"></script>
     <script type="text/javascript" src="../Js/ckform.js"></script>
     <script type="text/javascript" src="../Js/common.js"></script>
-
+<script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -38,24 +38,39 @@
 <body>
 
 <form class="form-inline definewidth m20" action="/test_ssh/admin_user/getUser" method="get">
-  根据<select style="width:auto"><option value="用户名">用户名</option><option value="角色">角色</option></select>搜索
-    <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
+    根据<select style="width:auto">
+    <option value="艺术品名">艺术品名</option>
+    <option value="卖家">卖家</option>
+    <option value="买家">买家</option>
+    </select>搜索<br>
+    <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; <br>
+    <input name="txtDate time1" id="txtDate time1" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" onchange="price_count()"/><br>
+    <input name="txtDate time1" id="txtDate time1" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" onchange="price_count()"/>
     <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>
 </form>
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
-    <tr><!-- 超级管理员：用户交易记录，平台收入查询（可根据时间），人员工资，查询某个用户的工资详情（可根据时间）-->
-        <th>用户名</th>
-        <th>角色</th>
-        <th>银行卡号</th>
+    <tr>
+        <th>艺术品名</th>
+        <th>卖家</th>
+        <th>买家</th>
+        <th>价格</th>
+        <th>类型</th>
+        <th>订单时间</th>
+        <th>订单状态</th>
+        <th></th>
     </tr>
     </thead>
-    <c:if test="${USERLIST!=null}">
-    <c:forEach items="${USERLIST}" var="user">
+    <c:if test="${ORDERLIST!=null}">
+    <c:forEach items="${ORDERLIST}" var="user">
         <tr>
-                <td>${user.name}</td>
-                <td>${user.role}</td>
-                <td>${user.bankCardAccount}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
     </c:forEach>
 </c:if>
@@ -63,7 +78,3 @@
 
 </body>
 </html>
-<script>
-    
-
-</script>
