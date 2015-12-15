@@ -5,7 +5,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta http-equiv="refresh" content="0.1;URl=/test_ssh/init/home">
+<meta http-equiv="refresh" content="0.01;URl=/test_ssh/init/home">
 <title>welcome</title>
 </head>
 <body>

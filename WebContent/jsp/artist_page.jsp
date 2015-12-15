@@ -169,7 +169,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div style="padding: 5%">
 				<div class="menuhead1">
 					<h3>
-						你的艺术品
+						我的艺术品
 					</h3>
 				</div>
 				<div style="">

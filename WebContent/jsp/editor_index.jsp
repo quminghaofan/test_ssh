@@ -39,7 +39,10 @@
   <script type="text/javascript" src="../assets/js/config-min.js"></script>
   <script>
     BUI.use('common/main',function(){ 
-      var config = [{id:'1',menu:[{text:'软文',items:[{id:'12',text:'待审核',href:'/test_ssh/editor/getUnexamined'},{id:'3',text:'未通过',href:'/test_ssh/editor/getUnPassed'},{id:'4',text:'已通过',href:'/test_ssh/editor/getPassed'},{id:'5',text:'草稿',href:'/test_ssh/editor/getDraft'}]}]}];
+      var config = [{id:'1',homePage:'5',menu:[{text:'软文',items:[{id:'12',text:'待审核',href:'/test_ssh/editor/getUnexamined'},
+                                                    {id:'3',text:'未通过',href:'/test_ssh/editor/getUnPassed'},
+                                                    {id:'4',text:'已通过',href:'/test_ssh/editor/getPassed'},
+                                                    {id:'5',text:'草稿',href:'/test_ssh/editor/getDraft'}]}]}];
       new PageUtil.MainPage({
         modulesConfig : config
       });

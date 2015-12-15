@@ -38,7 +38,8 @@
   <!--TODO-->
   <script>
     BUI.use('common/main',function(){
-      var config = [{id:'1',menu:[{text:'软文',items:[{id:'12',text:'未审核',href:'/test_ssh/chiefEditor/getUnexamined'},{id:'3',text:'已审核',href:'/test_ssh/chiefEditor/getExamined'}]}]}];
+      var config = [{id:'1',homePage:'12',menu:[{text:'软文',items:[{id:'12',text:'未审核',href:'/test_ssh/chiefEditor/getUnexamined'},
+                                                    {id:'3',text:'已审核',href:'/test_ssh/chiefEditor/getExamined'}]}]}];
       new PageUtil.MainPage({
         modulesConfig : config
       });

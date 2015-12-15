@@ -77,11 +77,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"></div>
 				</div>
 				<div class="header_bottom_right">
-					<div class="search">
-						<input type="text" value="商品名称" onFocus="this.value = '';"
-							onBlur="if (this.value == '') {this.value = '商品名称';}"> <input
-							type="submit" value="">
-					</div>
+					
 					<%
 						if (session.getAttribute("username") != null) {
 					%>
@@ -164,18 +160,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <div class="register">
 			   
 			   <div class="col-md-6 login-right">
-			  	
-				<form id="loginform" method="post"  action="/artist/artistApply">
+				<form id="applyform" method="post"  action="/artist/artistApply" onsubmit="return before_apply()">
 				  <div>
 					<span>真实姓名<label>*</label></span>
-					<input type="text" name="realname" id="realname" onfocus=""> 
-					
+					<input type="text" name="realname" id="realname" onfocus="name_blank.style.display='none'"> 
+					<span id="name_blank" style="display:none"><font color="red">真实姓名不能为空</font></span>
 				  </div>
 				  <div>
 					<span>银行卡号<label>*</label></span>
-					<input type="text" name="account" id="account" onfocus=""> 
+					<input type="text" name="account" id="account" onfocus="card_blank.style.display='none'"> 
+					<span id="card_blank" style="display:none"><font color="red">银行卡号不能为空</font></span>
 				  </div>
-				  <input type="submit" value="提交" onClick="">
+				  <input type="submit" value="提交" onClick="applyform.onsubmit()">
 			    </form>
 			   </div>	
 		</div>
@@ -204,3 +200,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 </body>
 </html>
+<script>
+function before_apply(){
+	var realname=document.getElementById("realname");
+	var account=document.getElementById("account");
+	var flag=0;
+	if(realname.value==""){
+		flag=1;
+		document.getElementById("name_blank").style.display="block";
+	}
+	if(realname.value==""){
+		flag=1;
+		document.getElementById("card_blank").style.display="block";
+	}
+	if(flag==1)
+		return false;
+}
+</script>
