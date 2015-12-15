@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import cn.edu.xmu.oneonezero.service.NewsService;
@@ -22,7 +23,7 @@ public class NewsController {
 		return "showNews";
 	}
 	
-	@ResourceMapping("/goback")
+	@RequestMapping(value="/goback")
 	public String goback(String type,HttpServletRequest request){
 		System.out.println("goback");
 		if(type.equals("1")){//主页

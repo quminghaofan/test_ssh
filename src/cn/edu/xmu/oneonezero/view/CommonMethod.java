@@ -69,4 +69,15 @@ public class CommonMethod {
 			}
 		}
 	}
+	
+	public static void addCookie(Long itemId,String value,HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
+//		System.out.println("commodityArtworkJson:"+commodityArtworkJson);
+		User user=(User)request.getSession().getAttribute("user");
+		Cookie cookie=new Cookie(user.getName()+"#"+Long.toString(itemId), URLEncoder.encode(value,"utf-8"));
+		cookie.setPath(request.getContextPath());
+//		System.out.println("add-path:"+cookie.getPath());
+		cookie.setMaxAge(60*60*24*7);//保留7天 
+		response.addCookie(cookie);
+		
+	}
 }

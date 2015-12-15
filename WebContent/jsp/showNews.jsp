@@ -21,10 +21,9 @@
 	href="http://res.img.ifeng.com/css/basic_new_v2.css" />
 <link rel="stylesheet" type="text/css"
 	href="http://y2.ifengimg.com/a/2014/1110/dxrw-1110.css" />
-<cmpp>
-<script src="http://m1.ifengimg.com/ifeng/sources/inice_v1.js"></script></cmpp>
-<cmpp>
-<script src="http://h0.ifengimg.com/20150625/fa.min.js"></script></cmpp>
+<cmpp> <script
+	src="http://m1.ifengimg.com/ifeng/sources/inice_v1.js"></script></cmpp>
+<cmpp> <script src="http://h0.ifengimg.com/20150625/fa.min.js"></script></cmpp>
 <style type="text/css">
 #textarea {
 	resize: none;

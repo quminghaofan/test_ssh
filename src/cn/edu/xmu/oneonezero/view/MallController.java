@@ -21,8 +21,7 @@ public class MallController {
 	CommodityArtworkService commodityArtworkService;
 
 	@RequestMapping("/enterMall")
-	public String enterMall(String page, HttpServletRequest request) {
-		request.getSession().setAttribute("pageTimes", 30);
+	public String enterMall(String page,HttpServletRequest request) {
 		String itemname=request.getParameter("itemname");
 		if(itemname!=null&&!itemname.equals("商品名称")){
 			request.setAttribute("itemname", itemname);
@@ -34,6 +33,7 @@ public class MallController {
 		int curentPage;
 		if (page == null) {
 			curentPage = 1;
+			request.getSession().setAttribute("pageTimes", 30);
 		} else {
 			curentPage = Integer.parseInt(page);
 		}
@@ -49,6 +49,7 @@ public class MallController {
 		else{
 			
 		}
+		
 		int pageTimes = commodityArtworkService.getPageTotalByVagueName(itemname,30);
 		request.setAttribute("totalpage", pageTimes);
 		request.getSession().setAttribute("pageTimes", pageTimes);
@@ -67,18 +68,25 @@ public class MallController {
 		}
 		request.setAttribute("orderlist", commodityArtworks);
 		request.setAttribute("total", total);
-		CommonMethod.cleanCookie(request, response);
 		return "checkorder";
+	}
+	
+	@RequestMapping("/settleOne")
+	public String settleOne(Long itemId,HttpServletResponse response,HttpServletRequest request) throws UnsupportedEncodingException{
+		String commodityArtworksJson=commodityArtworkService.getCommodityArtworkWithJSONTypeById(itemId).toString();
+		CommonMethod.addCookie(itemId, commodityArtworksJson, request, response);
+		return "redirect:/mall/settle";
 	}
 
 	@RequestMapping("/seeMore")
 	public String seeMore(long itemId, HttpServletRequest request) {
-
+		request.setAttribute("item", commodityArtworkService.getCommodityArtworkWithJSONTypeById(itemId));
 		return "item";
 	}
 
 	@RequestMapping("/pay")
 	public String pay(HttpServletRequest request, HttpServletResponse response) {
+		request.getAttribute("");
 		CommonMethod.cleanCookie(request, response);
 		return "pay_success";
 	} 

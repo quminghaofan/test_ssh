@@ -49,14 +49,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<%
 							if (session.getAttribute("user") == null) {
 						%>
-						<li><a href="jsp/login.jsp">登录/注册</a></li>
+						<li><a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'">登录/注册</a></li>
 						<%
 							} else {
 						%>
 						<li><a href="">申请成为艺术家</a></li>
 						<li><a href=""> <%=((User)session.getAttribute("user")).getName()%></a></li>
 						<li><a href="">我的订单</a></li>
-						<li><a href="">登出</a></li>
+						<li><a href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
 						<%
 							}
 						%>
@@ -71,24 +71,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header_bottom-box">
 				<div class="header_bottom_left">
 					<div class="logo">
-						<a href="index.html"><img src="../images/logo_ooz.png"
+						<a href="/test_ssh/init/home"><img src="../images/logo_ooz.png"
 							alt="首页" /></a>
 					</div>
 
 					<div class="clearfix"></div>
 				</div>
 				<div class="header_bottom_right">
-					<div class="search">
-						<input type="text" value="商品名称" onFocus="this.value = '';"
-							onBlur="if (this.value == '') {this.value = '商品名称';}"> <input
-							type="submit" value="">
-					</div>
 					<%
 						if (session.getAttribute("user") != null) {
 					%>
 					<ul class="bag">
 						<a href="#"><i class="bag_left"> </i></a>
-						<a href="#"><li class="bag_right"><p>购物篮</p></li></a>
+						<a href="/test_ssh/cart/showCart"><li class="bag_right"><p>购物篮</p></li></a>
 						<div class="clearfix"></div>
 					</ul>
 					<%
@@ -106,7 +101,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="menu_box">
 				<ul class="megamenu skyblue">
-					<li><a class="color2" href="index.jsp">首页</a></li>
+					<li><a class="color2" href="/test_ssh/init/home">首页</a></li>
 					<li><a class="color4" href="">定制</a>
 						<div class="megapanel">
 							<div class="row">
@@ -122,7 +117,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</div>
 						</div></li>
-					<li class="active grid"><a class="color10" href="#">商城</a>
+					<li class="active grid"><a class="color10" href="/test_ssh/mall/enterMall">商城</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
@@ -185,7 +180,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<div class="a-top">
 				<div class="col-md-4 ">
-					<img class="img-responsive" src="../images/n3.jpg" />
+					<img class="img-responsive" src="${item.picUrl}" />
 				</div>
 			</div>
 			<div class="col-md-8">
@@ -200,7 +195,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										if (session.getAttribute("user") != null) {
 							%>
 							<a class="acount-btn" href="/test_ssh/cart/add2Cart?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'&itemId=${item.id}">加入购物篮</a>
-							<a class="acount-btn" href="/test_ssh/mall/purchase?itemId=${item.id}" style="margin-top: 2em">立即购买</a>
+							<a class="acount-btn" href="/test_ssh/mall/settleOne?itemId=${item.id}" style="margin-top: 2em">立即购买</a>
 							<%
 										} else {
 							%>

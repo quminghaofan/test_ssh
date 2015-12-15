@@ -34,17 +34,14 @@ public class CartController {
 	public void add2Cart(String backUrl,long itemId,
 			HttpServletResponse response,HttpServletRequest request) throws IOException{
 		String commodityArtworkJson = commodityArtworkService.getCommodityArtworkWithJSONTypeById(itemId).toString();
-//		System.out.println("commodityArtworkJson:"+commodityArtworkJson);
-		User user=(User)request.getSession().getAttribute("user");
-		Cookie cookie=new Cookie(user.getName()+"#"+Long.toString(itemId), URLEncoder.encode(commodityArtworkJson,"utf-8"));
-		cookie.setPath(request.getContextPath());
-//		System.out.println("add-path:"+cookie.getPath());
-		cookie.setMaxAge(60*60*24*7);//保留7天 
-		response.addCookie(cookie);
+		CommonMethod.addCookie(itemId, commodityArtworkJson, request, response);
 		if(backUrl==null){
 			response.sendRedirect("/mall/enterMall");
 		}
-		else response.sendRedirect(backUrl);//返回到原来的页面，更友好
+		else {
+			backUrl=backUrl.replaceAll("'", "");
+			response.sendRedirect(backUrl);//返回到原来的页面，更友好
+		}
 	}
 	
 	@RequestMapping("/showCart")

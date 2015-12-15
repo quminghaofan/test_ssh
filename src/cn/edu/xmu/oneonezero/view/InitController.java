@@ -41,15 +41,16 @@ public class InitController {
 		request.setAttribute("commodityArtworkList",commodityArtworks);
 		return "index";
 	}
-	@RequestMapping(value="/goToLogin")
+	@RequestMapping(value="/goToLogin",method=RequestMethod.GET)
 	public String goToLogin(String backUrl,HttpServletRequest request){
-		request.setAttribute("backUrl", backUrl);
+		request.getSession().setAttribute("backUrl", backUrl);
 		return "login";
 	}
 	
 	@RequestMapping(value="/login",method = RequestMethod.GET)
-	public String login(String backUrl,HttpServletRequest request,
+	public void login(HttpServletRequest request,
 			HttpServletResponse response) throws IOException{
+		String backUrl=(String)request.getSession().getAttribute("backUrl");
 		String userName=request.getParameter("username");
 		String psw=request.getParameter("psw");
 		User user=userService.getUserByUserNameAndPassword(userName, psw);
@@ -57,17 +58,17 @@ public class InitController {
 			user.setName(userName);
 			user.setPassword(psw);
 			request.getSession().setAttribute("user",user);
-			System.out.println(backUrl);
-//			if(backUrl==null){
-//				return "editor_index";
-//			}
-//			response.sendRedirect(backUrl);
-			return "redirect:/init/home";
+//			System.out.println(backUrl);
+			if(backUrl==null){
+				backUrl="editor_index";
+			}
 		}
 		else {
 			request.setAttribute("result", "fail");
-			return "login";
+			backUrl="login";
 		}
+		backUrl=backUrl.replaceAll("'", "");
+		response.sendRedirect(backUrl);
 	}
 	
 	@RequestMapping(value="/logout",method = RequestMethod.GET)
