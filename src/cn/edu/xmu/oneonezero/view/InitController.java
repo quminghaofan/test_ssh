@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 import cn.edu.xmu.oneonezero.entity.News;
@@ -83,7 +84,7 @@ public class InitController {
 		response.sendRedirect(backUrl);
 	}
 
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	@RequestMapping(value = "/register")
 	public String register(HttpServletRequest request) {
 		String userNameString = request.getParameter("username");
 		String psw = request.getParameter("password");
@@ -93,5 +94,12 @@ public class InitController {
 		userService.insertUser(user);
 		System.out.println("login");
 		return "login";
+	}
+	
+	@RequestMapping(value="/judgeUserName")
+	@ResponseBody
+	public String judgeUserName(String username){
+		System.out.print(username);
+		return "error";
 	}
 }

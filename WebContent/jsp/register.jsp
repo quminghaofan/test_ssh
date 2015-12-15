@@ -177,7 +177,7 @@ Smartusername Compatible web template, free webdesigns for Nokia, Samsung, LG, S
 							<span> 账号 <label>*</label></span> 
 							<input type="text"
 								id="username" name="username" placeholder="请用您的手机号注册"
-								onfocus="display1()">
+								onfocus="display1()" onblur="judgeUserName()">
 							<span style="display: none" id="username_blank"> <font
 								color="red"></font></span>
 						</div>
@@ -307,4 +307,30 @@ function display3(){
 function display4(){
 	document.getElementById("check_blank").style.display="none";
 }
+function judgeUserName()
+{  
+	aler("12345");
+	$.ajax({
+			type : "post",
+			url : "/test_ssh/init/judgeUserName",
+			dataType : "text",
+			data : {
+				"username" : $("#username").val()
+			},
+			beforeSend : function(XMLHttpRequest) {
+				$("#username_blank").text("正在查询");
+
+			},
+			success : function(msg) {
+				var res = String($.trim(result)); 
+				if(res=="OK"){
+					$("#username_blank").text("该用户名可用");
+				}
+				else if(res=="error"){
+					$("#username_blank").text("该用户名已存在，请重新输入！");
+				}
+			},
+
+		});
+	}
 </script>

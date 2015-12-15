@@ -12,7 +12,9 @@
 	content="Gifty Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 </script>
 <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -67,27 +69,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				scrollTop : document.body.clientHeight + 'px'
 			}, 800);
 		});
-		
-		 $('#add2Cart').click(function() {
+		$('#add2Cart').click(function(){
 			$.ajax({
-				type : "POST",
-				data : {"itemId":$("#itemid").val()},
-				dataType : "text",
-				url : "/test_ssh/cart/add2Cart",
-				success : function(data) {
-					alert("添加成功！");
-				},
-				error : function(e) {
-					alert("添加失败！");
-				}
+					type : "POST",
+					data : {"itemId":$('#itemid').val()},
+					dataType : "text",
+					url : "/test_ssh/cart/add2Cart",
+					success : function(data) {
+						alert("添加成功！");
+					},
+					error : function(e) {
+						alert("添加失败！");
+					}
 			});
-		}); 
+		});
 	});
 </script>
 <style type="text/css">
 #updown {
-	_top: expression(eval(( document.compatMode && document.compatMode ==
-		"CSS1Compat")?documentElement.scrollTop+documentElement.clientHeight-this.clientHeight-1:document.body.scrollTop+document.body.clientHeight-this.clientHeight-1));
+	_top: expression(eval(( document.compatMode && document.compatMode == 
+		 "CSS1Compat")?documentElement.scrollTop+documentElement.clientHeight-this.clientHeight-1:document.body.scrollTop+document.body.clientHeight-this.clientHeight-1));
 	position: fixed;
 	_position: absolute;
 	top: 70%;
@@ -148,14 +149,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<%
 							if (session.getAttribute("user") == null) {
 						%>
-						<li><a href="/test_ssh/init/goToLogin?backUrl=/test_ssh/init/home">登录/注册</a></li>
+						<li><a
+							href="/test_ssh/init/goToLogin?backUrl=/test_ssh/init/home">登录/注册</a></li>
 						<%
 							} else {
 						%>
-						<li><a href="">申请成为艺术家</a></li>
-						<li><a href=""> <%=((User)session.getAttribute("user")).getName() %></a></li>
+						<li><a href="/test_ssh/jsp/artist_apply.jsp">申请成为艺术家</a></li>
+						<li><a href=""> <%=((User) session.getAttribute("user")).getName()%></a></li>
 						<li><a href="">我的订单</a></li>
-						<li><a href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
+						<li><a
+							href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
 						<%
 							}
 						%>
@@ -199,7 +202,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="menu_box">
 				<ul class="megamenu skyblue">
-					<li class="active grid"><a class="color2" href="/test_ssh/init/home">首页</a></li>
+					<li class="active grid"><a class="color2"
+						href="/test_ssh/init/home">首页</a></li>
 					<li><a class="color4" href="">定制</a>
 						<div class="megapanel">
 							<div class="row">
@@ -331,12 +335,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									%>
 									<li class="list2_left"><span class="m_1"><a
 											<%-- href="/test_ssh/cart/add2Cart?itemId=${item.id}&backUrl=/test_ssh/init/home" --%>
-											class="link" id="add2Cart">Add to Cart</a></span></li>
+											class="link"
+											id="add2Cart" >Add to Cart</a>
+											<input id="itemid" name="itemid" type="hidden" value="${item.id}"></span></li>
 									<%
 										} else {
 									%>
 									<li class="list2_left"><span class="m_1"><a
-											href="/test_ssh/init/goToLogin?backUrl=/test_ssh/init/home" class="link">加入购物车</a></span></li>
+											href="/test_ssh/init/goToLogin?backUrl=/test_ssh/init/home"
+											class="link">加入购物车</a></span></li>
 									<%
 										}
 									%>
@@ -361,7 +368,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</ul>
 			<ul id="flexiselDemo3">
 				<li><img src="images/n1.jpg" class="img-responsive" />
-				<div class="grid-flex">
+					<div class="grid-flex">
 						<h4>Contrary to popular</h4>
 						<p>589,90 $</p>
 						<div class="m_3">
@@ -370,7 +377,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="ticket"></div>
 					</div></li>
 				<li><img src="images/n2.jpg" class="img-responsive" />
-				<div class="grid-flex">
+					<div class="grid-flex">
 						<h4>Contrary to popular</h4>
 						<p>589,90 $</p>
 						<div class="m_3">
@@ -379,7 +386,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="ticket"></div>
 					</div></li>
 				<li><img src="images/n3.jpg" class="img-responsive" />
-				<div class="grid-flex">
+					<div class="grid-flex">
 						<h4>Contrary to popular</h4>
 						<p>589,90 $</p>
 						<div class="m_3">
@@ -388,7 +395,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="ticket"></div>
 					</div></li>
 				<li><img src="images/n4.jpg" class="img-responsive" />
-				<div class="grid-flex">
+					<div class="grid-flex">
 						<h4>Contrary to popular</h4>
 						<p>589,90 $</p>
 						<div class="m_3">
@@ -397,7 +404,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="ticket"></div>
 					</div></li>
 				<li><img src="images/n5.jpg" class="img-responsive" />
-				<div class="grid-flex">
+					<div class="grid-flex">
 						<h4>Contrary to popular</h4>
 						<p>589,90 $</p>
 						<div class="m_3">
@@ -490,10 +497,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<h4>
 								<a href="/test_ssh/news/showNews?newsId=${rr.id}">${rr.name}</a>
 							</h4>
-							<p>${(rr.content).substring(0,1)} ...</p>
+							<p>${(rr.content).substring(0,1)}...</p>
 						</div>
 						<div class="but">
-							<a class="arrow" href="/test_ssh/news/showNews?newsId=${rr.id}&type=1"> </a>
+							<a class="arrow"
+								href="/test_ssh/news/showNews?newsId=${rr.id}&type=1"> </a>
 						</div>
 						<div class="clearfix"></div>
 					</div>

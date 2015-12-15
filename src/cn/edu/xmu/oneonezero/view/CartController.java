@@ -30,17 +30,19 @@ public class CartController {
 	@Resource(name = "commodityArtworkService")
 	private CommodityArtworkService commodityArtworkService;
 
-	@RequestMapping(value = "/add2Cart", method = RequestMethod.POST)
+	@RequestMapping(value = "/add2Cart")
 	@ResponseBody
 	public void add2Cart(String itemId,
 			HttpServletResponse response, HttpServletRequest request)
 			throws IOException {
+		System.out.println(itemId);
 		if (itemId != null) {
 			String commodityArtworkJson = commodityArtworkService
 					.getCommodityArtworkWithJSONTypeById(Long.parseLong(itemId))
 					.toString();
 			CommonMethod.addCookie(Long.parseLong(itemId),
 					commodityArtworkJson, request, response);
+			System.out.println(request.getCookies().length);
 		}
 	}
 

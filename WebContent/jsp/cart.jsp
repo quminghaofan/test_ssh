@@ -111,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</div>
 						</div></li>
-					<li class="active grid"><a class="color10" href="#">商城</a>
+					<li class="active grid"><a class="color10" href="/test_ssh/mall/enterMall">商城</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">

@@ -165,7 +165,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			   
 			   <div class="col-md-6 login-right">
 			  	
-				<form id="loginform" method="post"  action="">
+				<form id="loginform" method="post"  action="/artist/artistApply">
 				  <div>
 					<span>真实姓名<label>*</label></span>
 					<input type="text" name="realname" id="realname" onfocus=""> 
