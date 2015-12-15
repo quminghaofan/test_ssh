@@ -1669,7 +1669,31 @@ border: 1px solid #DDDBDB;
 	padding:10px;
 	-webkit-appearance: none;
 }
-
+.login-right textarea{
+border: 1px solid #DDDBDB;
+	outline-color:#fb4d01;
+	width: 96%;
+	font-size:0.8125em;
+	padding:10px;
+	-webkit-appearance: none;
+}
+.login-right input[type="button"] {
+	background:#1bccf7;
+	color: #FFF;
+	font-size: 0.8em;
+	padding: 0.7em 1.2em;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	display: inline-block;
+	text-transform: uppercase;
+	border:none;
+	outline:none;
+}
+.login-right input[type="button"]:hover{
+	background:#000;
+}
 a.forgot {
 	font-size:0.8125em;
 }
@@ -2474,4 +2498,3 @@ h4.head_single {
 	padding: 0 15px;
 }
 }
-

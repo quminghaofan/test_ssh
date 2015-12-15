@@ -168,7 +168,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
   <div class="register">
 			   <div class="col-md-6 login-right">
-				<form method="get"  action="">
+				<form method="get"  action="" class="artworkform">
 				<div>
 				<span>图片<label>*</label></span>
 <input type="file" accept="video/*;capture=camcorder"> 

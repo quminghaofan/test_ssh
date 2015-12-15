@@ -145,3 +145,35 @@ th.specalt {
     height: 2px;
     margin: 4% 0% 4% 0%;
 }
+
+.bank{
+    width: 135px;
+    height: 32px;
+    border: 1px solid #b3b3b3;
+    background-image: url(../images/banklist.png);
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.paybutton {
+    margin: 0 auto;
+    color: #333;
+    background-color: #E05B5B;
+    padding: 2% 8% 2% 8%;
+    font-size: 19px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 3px solid #E05B5B;
+}
+
+.paybutton:hover {
+    background: rgba(0, 0, 0, 0.66);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.76);
+    *border-bottom: none;
+    color: #E05B5B;
+    text-decoration: none;
+}
+
+
+
