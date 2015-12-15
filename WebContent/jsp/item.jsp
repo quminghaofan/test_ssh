@@ -35,6 +35,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	$(document).ready(function() {
 		$(".megamenu").megamenu();
 	});
+	function sort(){
+		alert("123");
+		window.loction="/test_ssh/mall/enterMall";}
+	$(function() {
+	$('#add2Cart').click(function() {
+		$.ajax({
+			type : "POST",
+			data : {"itemId":$("#itemid").val()},
+			dataType : "text",
+			url : "/test_ssh/cart/add2Cart",
+			success : function(data) {
+				alert("添加成功！");
+			},
+			error : function(e) {
+				alert("添加失败！");
+			}
+		});
+	}); 
+	});
+	
 </script>
 </head>
 <body>
@@ -194,7 +214,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<%
 										if (session.getAttribute("user") != null) {
 							%>
-							<a class="acount-btn" href="/test_ssh/cart/add2Cart?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'&itemId=${item.id}">加入购物篮</a>
+							<a class="acount-btn" <%-- href="/test_ssh/cart/add2Cart?itemId=${item.id}&backUrl=/test_ssh/init/home" --%>
+											class="link" id="add2Cart">加入购物篮</a>
 							<a class="acount-btn" href="/test_ssh/mall/settleOne?itemId=${item.id}" style="margin-top: 2em">立即购买</a>
 							<%
 										} else {

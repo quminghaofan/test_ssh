@@ -331,12 +331,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									%>
 									<li class="list2_left"><span class="m_1"><a
 											<%-- href="/test_ssh/cart/add2Cart?itemId=${item.id}&backUrl=/test_ssh/init/home" --%>
-											class="link" id="add2Cart">Add to Cart</a></span></li>
+											class="link" id="add2Cart">加入购物篮</a></span></li>
 									<%
 										} else {
 									%>
 									<li class="list2_left"><span class="m_1"><a
-											href="/test_ssh/init/goToLogin?backUrl=/test_ssh/init/home" class="link">加入购物车</a></span></li>
+											href="/test_ssh/init/goToLogin?backUrl=/test_ssh/init/home" class="link">加入购物篮</a></span></li>
 									<%
 										}
 									%>
