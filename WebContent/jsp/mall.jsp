@@ -57,7 +57,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			}, 800);
 		});
 	});
-	function sort(){window.loction="/test_ssh/mall/enterMall";}
+	function sort(){
+		alert("123");
+		window.loction="/test_ssh/mall/enterMall";}
 </script>
 <style type="text/css">
 #updown {
@@ -152,7 +154,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="header_bottom_right">
 					<div class="search">
-						<form action="/test_ssh/mall/enterMall" method="get">
+						<form action="/test_ssh/mall/enterMall" method="post">
 							<input id="itemname" name="itemname" type="text" value="${itemname}"
 								onFocus="this.value = '';"
 								onBlur="if (this.value == '') {this.value = '商品名称';}"> <input

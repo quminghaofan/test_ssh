@@ -78,18 +78,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header_bottom-box">
 				<div class="header_bottom_left">
 					<div class="logo">
-						<a href="index.html"><img src="../images/logo_ooz.png"
+						<a href="/test_ssh/init/home"><img src="../images/logo_ooz.png"
 							alt="首页" /></a>
 					</div>
 
 					<div class="clearfix"></div>
-				</div>
-				<div class="header_bottom_right">
-					<div class="search">
-						<input type="text" value="商品名称" onFocus="this.value = '';"
-							onBlur="if (this.value == '') {this.value = '商品名称';}"> <input
-							type="submit" value="">
-					</div>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -102,7 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="menu_box">
 				<ul class="megamenu skyblue">
-					<li><a class="color2" href="index.jsp">首页</a></li>
+					<li><a class="color2" href="/test_ssh/init/home">首页</a></li>
 					<li><a class="color4" href="">定制</a>
 						<div class="megapanel">
 							<div class="row">

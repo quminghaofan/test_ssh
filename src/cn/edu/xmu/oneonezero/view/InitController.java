@@ -34,7 +34,7 @@ public class InitController {
 	@Resource(name = "commodityArtworkService")
 	private CommodityArtworkService commodityArtworkService;
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/home")
 	public String home(HttpServletRequest request) {
 		List<News> news = newsService.getExaminedNews();
 		request.setAttribute("RRlist", news);

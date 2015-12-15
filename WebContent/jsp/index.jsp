@@ -68,12 +68,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			}, 800);
 		});
 		
-		/* $("add2cart").click(function() {
+		 $('#add2Cart').click(function() {
 			$.ajax({
-				type : 'POST',
+				type : "POST",
 				data : {"itemId":$("#itemid").val()},
 				dataType : "text",
-				url : '/test_ssh/cart/add2Cart',
+				url : "/test_ssh/cart/add2Cart",
 				success : function(data) {
 					alert("添加成功！");
 				},
@@ -81,7 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					alert("添加失败！");
 				}
 			});
-		}); */
+		}); 
 	});
 </script>
 <style type="text/css">
@@ -330,8 +330,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										if (session.getAttribute("user") != null) {
 									%>
 									<li class="list2_left"><span class="m_1"><a
-											href="/test_ssh/cart/add2Cart?itemId=${item.id}&backUrl=/test_ssh/init/home"
-											class="link">Add to Cart</a></span></li>
+											<%-- href="/test_ssh/cart/add2Cart?itemId=${item.id}&backUrl=/test_ssh/init/home" --%>
+											class="link" id="add2Cart">Add to Cart</a></span></li>
 									<%
 										} else {
 									%>

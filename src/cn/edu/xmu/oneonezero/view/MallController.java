@@ -21,7 +21,7 @@ public class MallController {
 	@Resource(name = "commodityArtworkService")
 	CommodityArtworkService commodityArtworkService;
 
-	@RequestMapping(value="/enterMall",method=RequestMethod.GET)
+	@RequestMapping(value="/enterMall")
 	public String enterMall(String page,HttpServletRequest request) {
 		String itemname=request.getParameter("itemname");
 		System.out.println("itemname:"+itemname);
