@@ -238,15 +238,13 @@ Smartusername Compatible web template, free webdesigns for Nokia, Samsung, LG, S
 <script type="text/javascript">
 function before_register(){
 	var flag=0;
-	var a = /^((\(\d{3}\))|(\d{3}\-))?13\d{9}|14[57]\d{8}|15\d{9}|18\d{9}$/; 
-	//var reg = /^[0-9a-zA-Z_]+$;
 	var tel=document.getElementById("username").value;
 	if(document.getElementById("username").value==""){
 		document.getElementById("username_blank").style.display="block";
 		$("#username_blank").text("用户名不能为空"); 
 		flag=1;
 	}	
-	if((document.getElementById("username")).value.length!=11||!((document.getElementById("username").value).test(a))) 
+	if(!(/^1\d{10}$/.test(tel)))
 	{ 
 		document.getElementById("username_blank").style.display="block";
 		$("#username_blank").text("您输入的手机号不正确");
