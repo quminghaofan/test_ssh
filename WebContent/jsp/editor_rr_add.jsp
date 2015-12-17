@@ -14,7 +14,7 @@
     <script type="text/javascript" src="../Js/bootstrap.js"></script>
     <script type="text/javascript" src="../Js/ckform.js"></script>
     <script type="text/javascript" src="../Js/common.js"></script>
-
+<script type="text/javascript" src="../js/pictureload.js"></script>
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -73,8 +73,8 @@
         </tr>
         <tr>
             <td class="tableleft">图片</td>
-            <td><span><img id="image" src=""></span>
-            <span><input id="img" name="img" type="file" accept="image/*" /></span></td>
+            <td><div id="preview"><span><img id="image" src="${news.picUrl}" width="30%" height="30%"/></span></div>
+            <span><input id="img" name="img" type="file" accept="images/*" onchange="previewImage(this,'preview','image')"/></span></td>
         </tr>
 		<tr>
 		<td class="tableleft">视频</td>
@@ -97,8 +97,7 @@
     <tr>
             <td class="tableleft"></td>
             <td>
-               <button type="submit" class="btn btn-primary" type="button"  name="savebtnid" id="savebtnid" onsubmit="/test_ssh/editor/addNews?type=1">保存</button> <button type="submit" class="btn btn-primary" type="button"  name="btnid" id="btnid" onsubmit="/test_ssh/editor/addNews?type=1">发送</button>				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid"  onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表">
-            </td>
+               <input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="submit1()" value="保存">				 &nbsp;&nbsp; <input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="submit2()" value="发送">				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid"  onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表"></td>
         </tr>
 </table>
 </form>
@@ -140,6 +139,17 @@ function price_count(){
 	  document.getElementById("price").value=price;
 	  }
 	}
+}
+function submit1(){
+	var myform=document.getElementById("myform");
+	myform.action="/test_ssh/editor/addNews?type=1";
+	myform.submit();
+	//return true;
+}
+function submit2(){
+	var myform=document.getElementById("myform");
+	myform.action="/test_ssh/editor/addNews?type=0";
+	myform.submit();
 }
 
 </script>

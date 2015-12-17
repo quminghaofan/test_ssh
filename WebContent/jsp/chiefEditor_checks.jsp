@@ -78,11 +78,23 @@
 		<tr>
             <td class="tableleft"></td>
             <td>
-               <button  class="btn btn-primary" type="button" onbumit="/test_ssh/chiefEditor/examineNews?type=1&typeExamine=${typeExamine}">通过</button> <button type="submit" class="btn btn-primary" type="button"  name="btnid" id="btnid" onbumit="/test_ssh/chiefEditor/examineNews?type=0&typeExamine=${typeExamine}">不通过</button>				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/chiefEditor/goback?typeExamine=${typeExamine}'" value="返回列表">
-            </td>
+             <input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="submit1()" value="通过">				 &nbsp;&nbsp;<input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="submit2()" value="不通过">				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/chiefEditor/getUnExamined'" value="返回列表"> </td>
         </tr>
   </table>
 </form>
 </body>
 </html>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>
+function submit1(){
+	var myform=document.getElementById("myform");
+	myform.action="/test_ssh/chiefEditor/examineNews?type=1&typeExamine=${typeExamine}";
+	myform.submit();
+	//return true;
+}
+function submit2(){
+	var myform=document.getElementById("myform");
+	myform.action="/test_ssh/chiefEditor/examineNews?type=0&typeExamine=${typeExamine}";
+	myform.submit();
+}
+</script>
