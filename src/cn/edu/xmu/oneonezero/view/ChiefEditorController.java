@@ -46,6 +46,14 @@ public class ChiefEditorController {
         }
     }
     
+    @RequestMapping("/goback")
+    public String goback(String type,HttpServletRequest request){
+    	if(type.equals("1")){
+    		return "redirect:/chiefEditor/getUnexamined";
+    	}
+    	return "redirect:/chiefEditor/getUnexamined";
+    }
+    
     @RequestMapping(value="/setNews")
     public String setNews(HttpServletRequest request){
     	News news=(News) request.getSession().getAttribute("news");

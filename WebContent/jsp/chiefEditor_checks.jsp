@@ -78,7 +78,7 @@
 		<tr>
             <td class="tableleft"></td>
             <td>
-               <button  class="btn btn-primary" type="button" >通过</button> <button type="submit" class="btn btn-primary" type="button"  name="btnid" id="btnid">不通过</button>				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/jsp/editor_rr_4.jsp'" value="返回列表">
+               <button  class="btn btn-primary" type="button" onbumit="/test_ssh/chiefEditor/examineNews?type=1&typeExamine=${typeExamine}">通过</button> <button type="submit" class="btn btn-primary" type="button"  name="btnid" id="btnid" onbumit="/test_ssh/chiefEditor/examineNews?type=0&typeExamine=${typeExamine}">不通过</button>				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/chiefEditor/goback?typeExamine=${typeExamine}'" value="返回列表">
             </td>
         </tr>
   </table>
