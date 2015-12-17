@@ -17,9 +17,9 @@ public class NewsController {
 	public NewsService newsService;
 	
 	@RequestMapping("/showNews")
-	public String showNews(long newsId,HttpServletRequest request){
+	public String showNews(long newsId,String type,HttpServletRequest request){
 		request.getSession().setAttribute("news", newsService.getNews(newsId));
-		request.setAttribute("type",1);
+		request.setAttribute("type",type);
 		return "showNews";
 	}
 	

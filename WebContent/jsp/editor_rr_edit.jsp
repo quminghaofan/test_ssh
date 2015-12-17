@@ -51,7 +51,7 @@
 <table class="table table-bordered table-hover m10">
     <tr>
             <td width="10%" class="tableleft">软文类型</td>
-            <td><input type="text" name="RRname" value="${news.type}"/></td>  <!--TODO-->
+            <td><input type="text" name="RRname" value="${news.newsType}"/></td>  <!--TODO-->
         </tr>
     <tr>
             <td width="10%" class="tableleft">软文标题</td>
@@ -66,11 +66,11 @@
             <td><span><img id="image" src="${news.picUrl}"></span>
             <span><input id="img" name="img" type="file" accept="image/*" /></span></td>
         </tr>
-		<tr>
+		<%-- <tr>
             <td class="tableleft">视频</td>
             <td><span><video id="video" src="${news.videoUrl}"></span>
             <span><input id="vide" name="vide" type="file" accept="video/*" /></span></td>
-        </tr>
+        </tr> --%>
         <tr>
             <td width="10%" class="tableleft">上架时间</td>
             <td><input name="txtDate time1" id="txtDate time1" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" onchange="price_count()"/></td>

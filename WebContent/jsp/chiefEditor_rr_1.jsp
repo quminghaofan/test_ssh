@@ -74,10 +74,9 @@
     <c:forEach items="${RRLIST}" var="rr">
         <tr>
                 <td>${rr.name}</td>
-                <td>${rr.editor}</td>
+                <td>${rr.editor.name}</td>
 				<td>${rr.onShowTime}</td>
 				<td>${rr.offShowTime}</td>
-                <!--  <td><a href="/test_ssh/chiefEditor/getNews?newsId=${rr.id}">查看</a>&nbsp;&nbsp;<a href="/test_ssh/chiefEditor/examineNews?newsId=${rr.id}&type=1">通过</a>&nbsp;&nbsp;<a href="/test_ssh/chiefEditor/examineNews?newsId=${rr.id}&type=0">不通过</a></td>-->
             <td><a href="">审核</a></td>
             </tr>
     </c:forEach>

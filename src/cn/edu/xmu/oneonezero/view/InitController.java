@@ -52,7 +52,7 @@ public class InitController {
 	}
 
 	@RequestMapping(value = "/login")
-	public void login(HttpServletRequest request, HttpServletResponse response)
+	public String login(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		String backUrl = (String) request.getSession().getAttribute("backUrl");
 		String userName = request.getParameter("username");
@@ -62,15 +62,16 @@ public class InitController {
 			request.getSession().setAttribute("user", user);
 			System.out.println("backurl:"+backUrl);
 			if (backUrl == null) {
-				backUrl = "/test_ssh/jsp/editor_index.jsp";
+				return "editor_index";
 			} else {
 				backUrl = backUrl.replaceAll("'", "");
 			}
 		} else {
-//			request.setAttribute("result", "fail");
-			backUrl = "/test_ssh/jsp/login.jsp?result=fail";
+			request.setAttribute("result", "fail");
+			return "login";
 		}
 		response.sendRedirect(backUrl);
+		return null;
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)

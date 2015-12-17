@@ -113,16 +113,10 @@ public class EditorController {
     @RequestMapping("/delNews")
     public String delNews(String type,long newsId,HttpServletRequest request){
         newsService.delNews(newsId);
-        if(type.equals("1")){//未通过
+        if(type!=null&&type.equals("1")){//未通过
         	return "redirect:/editor/getUnPassed";//TODO 只能删除未审核的和审核未通过的
         }
         else return "redirect:/editor/getDraft";
-    }
-
-    @RequestMapping("/getNews")
-    public String getNews(HttpServletRequest request){
-//        request.setAttribute("newsList", newsManager.getNewsByCollector(userId));
-        return "刚进入的界面";//TODO
     }
 
 
@@ -197,5 +191,17 @@ public class EditorController {
     	else {
 			return "redirect:/editor/getPassed";
 		}
+    }
+    
+    @RequestMapping("/search")
+    public String search(String type,HttpServletRequest request){
+    	User user=(User)request.getSession().getAttribute("user");
+    	String newsType=request.getParameter("category");
+    	String startTime=request.getParameter("onShowTime");
+    	System.out.println(startTime);
+    	String endTime=request.getParameter("offShowTime");
+    	String newsName=request.getParameter("RRname");
+    	request.setAttribute("RRLIST","");
+    	return "";
     }
 }

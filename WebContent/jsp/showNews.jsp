@@ -340,7 +340,7 @@
 		<div class="ExcAllCon">
 			<div class="ExcCon">
 				<div class="ExcCon01">
-					<a href="/test_ssh/news/goback?type=${type}">返回首页</a>
+					<a href="/test_ssh/news/goback?type=${type}">返回</a>
 					<h1 align="center">${news.name}</h1>
 					<pre class="f14 cGray" align="center">
 				主编：<input type="text" name="RRname" style="border: none"

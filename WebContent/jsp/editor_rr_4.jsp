@@ -49,14 +49,15 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/editor/getDraftByNewsName" method="get">
- 	<font color="blue">软文类型: </font><select id="type" name="category" class="category"> 
+<form class="form-inline definewidth m20" action="/test_ssh/editor/getDraftByNewsName?type=4" method="post">
+ 	<font color="blue">软文类型: </font><select id="category" name="category" class="category"> 
+	<option selected></option>
 	<option>广告</option>
 	<option>新闻资讯</option>
 	</select>
-	<font color="blue">上架时间: </font><input id="onShowTime" type="date" name="user_date" />
-	<font color="blue">下架时间: </font><input id="offShowTime" type="date" name="user_date" />
-	<input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="请输入搜索内容......" value="">&nbsp;&nbsp; 
+	<font color="blue">开始时间: </font><input id="onShowTime" name="onShowTime" type="date" name="user_date" />
+	<font color="blue">结束时间: </font><input id="offShowTime" name="offShowTime" type="date" name="user_date" />
+	<input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="请输入软文名称关键字......" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search">搜索</button>&nbsp;&nbsp; <input type="button" class="btn btn-success" id="search" onclick="window.location.href='/test_ssh/jsp/editor_rr_add.jsp'" value="新增软文"/>
 </form>
 <table class="table table-bordered table-hover definewidth m10">
@@ -66,6 +67,7 @@
         <th>上架时间</th>
         <th>下架时间</th>
         <th>价格</th>
+        <th>软文类型</th>
         <th>操作</th>
     </tr>
     </thead>
@@ -76,7 +78,8 @@
                 <td>${rr.onShowTime}</td>
                 <td>${rr.offShowTime}</td>
                 <td>${rr.price}</td>
-            <td><a href="/test_ssh/editor/getNewsToEdit?newsId=${rr.id}">编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}'">删除</a>&nbsp;&nbsp;<a href="/test_ssh/jsp/editor_rr_add.jsp">发送</a></td>
+                <td>${rr.newsType}</td>
+            <td><a href="/test_ssh/editor/getNewsToEdit?newsId=${rr.id}">编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}'">删除</a>
             </tr>
     </c:forEach>
 </c:if>

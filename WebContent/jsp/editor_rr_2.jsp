@@ -51,14 +51,15 @@
   </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/editor/getFailPassByNewsName" method="get">
- 	<font color="blue">软文类型: </font><select id="type" name="category" class="category"> 
+<form class="form-inline definewidth m20" action="/test_ssh/editor/getUnPassedByNewsName?type=2" method="post">
+ 	<font color="blue">软文类型: </font><select id="category" name="category" class="category"> 
+	<option selected></option>
 	<option>广告</option>
 	<option>新闻资讯</option>
 	</select>
-	<font color="blue">上架时间: </font><input id="onShowTime" type="date" name="user_date" />
-	<font color="blue">下架时间: </font><input id="offShowTime" type="date" name="user_date" />
-	<input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="请输入搜索内容......" value="">&nbsp;&nbsp; 
+	<font color="blue">开始时间: </font><input id="onShowTime" name="onShowTime" type="date" name="user_date" />
+	<font color="blue">结束时间: </font><input id="offShowTime" name="offShowTime" type="date" name="user_date" />
+	<input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="请输入软文名称关键字......" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search">搜索</button>
 </form>
 <table class="table table-bordered table-hover definewidth m10">
@@ -68,6 +69,7 @@
     <th>上架时间</th>
     <th>下架时间</th>
     <th>审核人</th>
+    <th>软文类型</th>
     <th>操作</th>
   </tr>
   </thead>
@@ -78,7 +80,8 @@
         <td>${rr.onShowTime}</td>
         <td>${rr.offShowTime}</td>
         <td>${rr.chiefEditor}</td>
-        <td><a href="">查看</a>&nbsp;&nbsp;<a href="">撤回</a></td>
+        <td>${rr.newsType}</td>
+        <td><a href="/test_ssh/news/showNews?newsId=${rr.id}&type=5">查看</a>&nbsp;&nbsp;<a href="/test_ssh/editor/withdraw?newsId=${rr.id}&type=1">撤回</a></td>
       </tr>
     </c:forEach>
   </c:if>
