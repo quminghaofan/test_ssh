@@ -49,16 +49,20 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/chiefEditor/getExaminedByNewsName" method="get">
- 	<font color="blue">软文类型: </font><select name="category" class="category" id="type"> 
-	<option>广告</option>
-	<option>新闻资讯</option>
-	</select>
-	<font color="blue">上架时间: </font><input type="date" name="user_date" id="onShowTime"/>
-	<font color="blue">下架时间: </font><input type="date" name="user_date" id="offShowTime"/>
-	<input type="text" name="RRname" id="RRname"class="abc input-default" placeholder="请输入搜索内容......" value="">&nbsp;&nbsp; 
-    <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>
-</form>
+<form class="form-inline definewidth m20"
+		action="/test_ssh/chiefEditor/getUnexaminedByNewsName?type=1" method="post">
+		<font color="blue">软文类型: </font><select id="newsType" name="category" class="category">
+			<option selected></option>
+			<option>广告</option>
+			<option>新闻资讯</option>
+		</select> <font color="blue">开始时间: </font><input id="onShowTime" name="onShowTime" type="date"
+			name="user_date" /> <font color="blue">结束时间: </font><input
+			id="offShowTime" name="offShowTime" type="date" name="user_date" /> <input type="text"
+			name="RRname" id="RRname" class="abc input-default"
+			placeholder="请输入软文名称关键字......" value="">&nbsp;&nbsp;
+		<button type="submit" class="btn btn-primary" id="search"
+			name="search">搜索</button>
+	</form>
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>

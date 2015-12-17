@@ -1,6 +1,7 @@
 package cn.edu.xmu.oneonezero.view;
 
 import cn.edu.xmu.oneonezero.entity.News;
+import cn.edu.xmu.oneonezero.entity.User;
 import cn.edu.xmu.oneonezero.service.NewsService;
 
 import org.springframework.stereotype.Controller;
@@ -84,5 +85,17 @@ public class ChiefEditorController {
     public String getUnexaminedByNewsName(HttpServletRequest request){
         request.setAttribute("RRLIST",newsService.getUnexaminedNewsByVagueNewsName(request.getParameter("RRname")));
         return "chiefEditor_rr_1";
+    }
+    
+    @RequestMapping("/search")
+    public String search(String type,HttpServletRequest request){
+    	User user=(User)request.getSession().getAttribute("user");
+    	String newsType=request.getParameter("category");
+    	String startTime=request.getParameter("onShowTime");
+    	System.out.println(startTime);
+    	String endTime=request.getParameter("offShowTime");
+    	String newsName=request.getParameter("RRname");
+    	request.setAttribute("RRLIST","");
+    	return "";
     }
 }
