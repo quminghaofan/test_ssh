@@ -19,6 +19,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Custom Theme files -->
 <link href="../css/style.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="../css/jquery.countdown.css" />
+<link rel="stylesheet" href="../css/etalage.css">
+
 <!-- Custom Theme files -->
 <!--webfont-->
 <link
@@ -195,7 +197,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
  -->
 
-	<div class="men">
+	<!--  <div class="men">
 		<div class="container">
 
 			<div class="a-top">
@@ -234,6 +236,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		</div>
 	</div>
+-->
+<div style="float:left;width:5%">
+	<a href=""><img src="../images/back.png" alt="返回" class="img-responsive"/>
+	</a>
+					</div>
+<div class="men">
+	<div class="container">
+	  <div class="single_top">
+	       <div class="col-md-9 single_right">
+	   	       <div class="grid images_3_of_2">
+									<img src="${item.picUrl}" class="img-responsive" />		
+						 <div class="clearfix"></div>		
+				  </div> 
+				  <div class="desc1 span_3_of_2">
+				    <h1>${item.name}</h1>
+				    <p class="m_5">${item.type} </p>
+				    <p class="m_5">${item.price} </p>
+				    <div class="btn_form">
+						<%
+										if (session.getAttribute("user") != null) {
+							%>
+							<a class="acount-btn" <%-- href="/test_ssh/cart/add2Cart?itemId=${item.id}&backUrl=/test_ssh/init/home" --%>
+											class="link" id="add2Cart">加入购物篮</a>
+							<a class="acount-btn" href="/test_ssh/mall/settleOne?itemId=${item.id}" style="margin-top: 2em">立即购买</a>
+							<%
+										} else {
+							%>
+							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'">加入购物篮</a>
+							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'" style="margin-top: 2em">立即购买</a>
+							<%
+										}
+							%>
+					 <p class="m_text2">${item.artworkDescription}</p>
+				  </div>
+				  <div class="clearfix"></div>	
+       </div>
+ 
+     </div>
+      </div>
+</div>
+
 
 
 	<div class="footer">
