@@ -4,7 +4,6 @@ import java.util.List;
 
 import net.sf.json.JSONObject;
 import cn.edu.xmu.oneonezero.dao.CommodityArtworkDao;
-import cn.edu.xmu.oneonezero.dao.NewsDao;
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 
 public class CommodityArtworkServiceImpl implements CommodityArtworkService{

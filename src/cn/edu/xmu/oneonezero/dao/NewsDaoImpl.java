@@ -48,7 +48,7 @@ public class NewsDaoImpl implements NewsDao {
 		String hql = "update News n set n.chiefEditor= ?,n.editor=?,n.content=?,"
 				+ "n.offShowTime=?,n.onShowTime=?,n.picUrl=?,n.rank=?,n.state=?,n.name=? where n.id = ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setString(0, news.getChiefEditor());
+		query.setEntity(0, news.getChiefEditor());
 		query.setEntity(1, news.getEditor());//check
 		query.setString(2, news.getContent());
 		query.setString(3, news.getOffShowTime());
@@ -273,6 +273,39 @@ public class NewsDaoImpl implements NewsDao {
 		
 		return query.list();
 	}
+
+	@Override
+	public List<News> getNewsByUserIdAndTimespace(long userId, String newsType, Date startTime, Date endTime,
+			String newsName, String state) {
+		String hql = "from News n where n.id=? and n.newsType=? and n.onShowTime>? and n.offShowTime<? "
+				+ "and n.name like ? and n.state=?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setLong(0, userId);
+		query.setString(1, newsType);
+		query.setDate(2, startTime);//如果用户不输入，是否在view层就处理好（比如设定一个早一些的时间）
+		query.setDate(3, endTime);
+		query.setString(4, newsName);
+		query.setString(5, state);
+		if(query.list()==null||query.list().size()==0) 
+			return null;
+		return query.list();
+	}
+
+	@Override
+	public List<News> getNewsByTimespace(String newsType, Date startTime, Date endTime, String newsName, String state) {
+		String hql = "from News n where n.newsType=? and n.onShowTime>? and n.offShowTime<? "
+				+ "and n.name like ? and n.state=?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, newsType);
+		query.setDate(1, startTime);
+		query.setDate(2, endTime);
+		query.setString(3, newsName);
+		query.setString(4, state);
+		if(query.list()==null||query.list().size()==0) 
+			return null;
+		return query.list();
+	}
+
 	
 	//异常代码：
 

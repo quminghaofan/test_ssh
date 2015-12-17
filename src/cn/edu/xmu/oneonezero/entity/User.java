@@ -12,6 +12,7 @@ public class User {
 	private long id;
 	private String name;
 	private String nickName;
+	private String realName;//真实姓名
 	private String password;
 	private String role;
 	private String mobile;
@@ -81,6 +82,12 @@ public class User {
 	}
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
+	}
+	public String getRealName() {
+		return realName;
+	}
+	public void setRealName(String realName) {
+		this.realName = realName;
 	}
 	
 	

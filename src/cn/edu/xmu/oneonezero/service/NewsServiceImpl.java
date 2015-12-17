@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.List;
 
 import cn.edu.xmu.oneonezero.dao.NewsDao;
-import cn.edu.xmu.oneonezero.dao.UserDao;
 import cn.edu.xmu.oneonezero.entity.News;
 
 public class NewsServiceImpl implements NewsService {
@@ -159,6 +158,19 @@ public class NewsServiceImpl implements NewsService {
 	@Override
 	public List<News> getTopFourNews(Date today) {
 		return newsDao.getTopFourNews(today);
+	}
+
+
+	@Override
+	public List<News> getNewsByUserIdAndTimespace(long userId, String newsType, Date startTime, Date endTime,
+			String newsName, String state) {
+		return newsDao.getNewsByUserIdAndTimespace(userId, newsType, startTime, endTime, newsName, state);
+	}
+
+
+	@Override
+	public List<News> getNewsByTimespace(String newsType, Date startTime, Date endTime, String newsName, String state) {
+		return newsDao.getNewsByTimespace(newsType, startTime, endTime, newsName, state);
 	}
 	
 

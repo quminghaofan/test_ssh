@@ -22,7 +22,7 @@ public class News {
 	private String offShowTime;
 	private String rank;
 	private User editor;//采编
-	private String chiefEditor;//主编
+	private User chiefEditor;//主编
 	private String state;//软文的状态
 	private double price;//软文的价格
 	private String newsType;//软文or新闻
@@ -82,10 +82,13 @@ public class News {
 	public void setEditor(User editor) {
 		this.editor = editor;
 	}
-	public String getChiefEditor() {
+	@ManyToOne
+	@JoinColumn(name="chiefEditorId")
+	@Cascade(CascadeType.ALL)
+	public User getChiefEditor() {
 		return chiefEditor;
 	}
-	public void setChiefEditor(String chiefEditor) {
+	public void setChiefEditor(User chiefEditor) {
 		this.chiefEditor = chiefEditor;
 	}
 	

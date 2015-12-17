@@ -120,8 +120,20 @@ public class UserDaoImpl implements UserDao {
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, userName);
 		query.setString(1, password);
-		if(query.list()==null||query.list().size()==0)return null;
+		if(query.list()==null||query.list().size()==0) return null;
 		return (User) query.list().get(0);
+	}
+
+
+
+	@Override
+	public boolean isNameExist(String userName) {
+		String hql="from User u where u.name= ?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, userName);
+		if(query.list().size()!=0) 
+			return true;
+		return false;
 	}
 	
 	

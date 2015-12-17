@@ -3,7 +3,6 @@ package cn.edu.xmu.oneonezero.service;
 import java.sql.Date;
 import java.util.List;
 
-import org.hibernate.sql.Update;
 
 import cn.edu.xmu.oneonezero.entity.News;
 
@@ -60,6 +59,10 @@ public void updateStateToDraft(long newsId);//根据软文id将其状态改为�
 
 public List<News> getTopFourNews(Date today);//获取4个放在首页展示的软文
 
+
+public List<News> getNewsByUserIdAndTimespace(long userId, String newsType, Date startTime, Date endTime,String newsName, String state);//根据userID、模糊名称、审核状态，查询startTime<上架时间&下架时间<endTime的新闻
+
+public List<News> getNewsByTimespace(String newsType, Date startTime, Date endTime,String newsName, String state);//根据模糊名称、审核状态，查询startTime<上架时间&下架时间<endTime的新闻
 
 
 

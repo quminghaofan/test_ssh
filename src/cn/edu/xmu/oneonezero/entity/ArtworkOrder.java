@@ -10,9 +10,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @DiscriminatorColumn(name="orderType",discriminatorType=DiscriminatorType.STRING)
@@ -21,12 +26,15 @@ import javax.persistence.TemporalType;
 public class ArtworkOrder {
 	protected long id;
 	protected String orderId;//订单编号
+	protected User user;//下订单的用户
+
 	protected String name;
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date placeDate;//下单时间
-	protected String payState;//支付状态
-	protected String deliverState;//发货状态
-	protected String receiveState;//收获状态
+//	protected String payState;//支付状态
+//	protected String deliverState;//发货状态
+//	protected String receiveState;//收获状态
+	protected String state;
 	protected String mobile;//联系方式
 	protected String address;//发货地址
 	
@@ -44,6 +52,15 @@ public class ArtworkOrder {
 	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
+	@ManyToOne
+	@JoinColumn(name="userId")
+	@Cascade(CascadeType.ALL)
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public String getName() {
 		return name;
 	}
@@ -56,23 +73,11 @@ public class ArtworkOrder {
 	public void setPlaceDate(Date placeDate) {
 		this.placeDate = placeDate;
 	}
-	public String getPayState() {
-		return payState;
+	public String getState() {
+		return state;
 	}
-	public void setPayState(String payState) {
-		this.payState = payState;
-	}
-	public String getDeliverState() {
-		return deliverState;
-	}
-	public void setDeliverState(String deliverState) {
-		this.deliverState = deliverState;
-	}
-	public String getReceiveState() {
-		return receiveState;
-	}
-	public void setReceiveState(String receiveState) {
-		this.receiveState = receiveState;
+	public void setState(String state) {
+		this.state = state;
 	}
 	public String getMobile() {
 		return mobile;

@@ -65,4 +65,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUserByUserNameAndPassword(userName, password);
 	}
 
+
+	@Override
+	public boolean isNameExist(String userName) {
+		return userDao.isNameExist(userName);
+	}
+
 }
