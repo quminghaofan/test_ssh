@@ -39,6 +39,7 @@
 
 <form class="form-inline definewidth m20" action="/test_ssh/admin_user/getUser" method="get">
     根据<select style="width:auto">
+    <option value="">订单编号</option>
     <option value="艺术品名">艺术品名</option>
     <option value="艺术品类别">艺术品类别</option>
     <option value="卖家">卖家</option>
@@ -52,11 +53,12 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
+        <th>订单编号</th>
         <th>艺术品名</th>
         <th>艺术品类别</th>
         <th>卖家</th>
         <th>买家</th>
-        <th>价格</th>
+        <th>成交价格</th>
         <th>订单类型</th>
         <th>订单时间</th>
         <th>订单状态</th>
@@ -64,7 +66,7 @@
     </tr>
     </thead>
     <c:if test="${ORDERLIST!=null}">
-    <c:forEach items="${ORDERLIST}" var="user">
+    <c:forEach items="${ORDERLIST}" var="order">
         <tr>
                 <td></td>
                 <td></td>

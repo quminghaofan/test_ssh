@@ -309,10 +309,10 @@ function display4(){
 }
 function judgeUserName()
 {  
-	aler("12345");
+	alert("12345");
 	$.ajax({
 			type : "post",
-			url : "/test_ssh/init/judgeUserName",
+			url : "/test_ssh/init/judgeUserName_",
 			dataType : "text",
 			data : {
 				"username" : $("#username").val()
@@ -322,11 +322,10 @@ function judgeUserName()
 
 			},
 			success : function(msg) {
-				var res = String($.trim(result)); 
-				if(res=="OK"){
+				if(msg=="OK"){
 					$("#username_blank").text("该用户名可用");
 				}
-				else if(res=="error"){
+				else if(msg=="error"){
 					$("#username_blank").text("该用户名已存在，请重新输入！");
 				}
 			},

@@ -38,7 +38,7 @@ public class ChiefEditorController {
         else {
             news.setState("审核不通过");
         }
-        newsService.updateNews(news);
+        newsService.updateNews(news);//TODO 添加审核人
         if(typeExamine.equals("1")){
         	return "redirect:/chiefEditor/getUnexamined";
         }

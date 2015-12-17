@@ -14,7 +14,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript">
 	
 	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 
 
 </script>
@@ -71,23 +73,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				scrollTop : document.body.clientHeight + 'px'
 			}, 800);
 		});
-		$('#add2Cart').click(function() {
-			$.ajax({
-				type : "POST",
-				data : {
-					"itemId" : $('#itemid').val()
-				},
-				dataType : "text",
-				url : "/test_ssh/cart/add2Cart",
-				success : function(data) {
-					alert("添加成功！");
-				},
-				error : function(e) {
-					alert("添加失败！");
-				}
-			});
-		});
 	});
+	function add2Cart(index) {
+		$.ajax({
+			type : "POST",
+			data : {
+				"itemId" : index
+			},
+			dataType : "text",
+			url : "/test_ssh/cart/add2Cart",
+			success : function(data) {
+				alert("添加成功！");
+			},
+			error : function(e) {
+				alert("添加失败！");
+			}
+		});
+
+	}
 </script>
 <style type="text/css">
 #updown {
@@ -337,12 +340,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<%
 										if (session.getAttribute("user") != null) {
 									%>
-									<li class="list2_left"><span class="m_1"><a
-											<%-- href="/test_ssh/cart/add2Cart?itemId=${item.id}&backUrl=/test_ssh/init/home" --%>
-
-											class="link"
-											id="add2Cart">加入购物篮</a> <input id="itemid" name="itemid"
-											type="hidden" value="${item.id}"></span></li>
+									<li class="list2_left"><span class="m_1">
+									<a class="link" id="add2Cart" onclick="add2Cart(${item.id})">加入购物篮</a> 
+									<input id="itemid" name="itemid" value="${item.id}"></span></li>
 									<%
 										} else {
 									%>

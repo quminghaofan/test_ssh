@@ -80,13 +80,13 @@
     <c:forEach items="${RRLIST}" var="rr">
         <tr>
                 <td>${rr.name}</td>
-                <td>${rr.editor}</td>
-                <td>rr.isExamined}</td>
+                <td>${rr.editor.name}</td>
+                <td>${rr.state}</td>
                 <td>${rr.onShowTime}</td>
                 <td>${rr.offShowTime}</td>
                 <td>${rr.price}</td>
                 <td>${rr.rank}</td>
-                <td><a href="/test_ssh/chiefEditor/getNews?newsId=${rr.id}">查看</a>&nbsp;&nbsp;<a href="">重新审核</a></td>
+                <td><a href="/test_ssh/news/showNews?newsId=${rr.id}&type=3">查看</a>&nbsp;&nbsp;<a href="/test_ssh/chiefEditor/getNews?type=2&newsId=${rr.id}">重新审核</a></td>
             </tr>
     </c:forEach>
 </c:if>

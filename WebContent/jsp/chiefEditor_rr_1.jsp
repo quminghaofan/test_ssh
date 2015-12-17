@@ -81,7 +81,7 @@
                 <td>${rr.editor.name}</td>
 				<td>${rr.onShowTime}</td>
 				<td>${rr.offShowTime}</td>
-            <td><a href="/test_ssh/">审核</a></td>
+            <td><a href="/test_ssh/news/showNews?newsId=${rr.id}&type=2">查看</a>&nbsp;&nbsp;<a href="/test_ssh/chiefEditor/getNews?type=1&newsId=${rr.id}">审核</a></td>
             </tr>
     </c:forEach>
 	</c:if>

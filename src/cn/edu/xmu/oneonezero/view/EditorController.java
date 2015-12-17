@@ -32,9 +32,10 @@ public class EditorController {
     	News news=new News();
     	User user=((User)request.getSession().getAttribute("user"));
     	news.setEditor(user);
+    	news.setNewsType(request.getParameter("category"));
     	news.setName(request.getParameter("RRname"));
     	news.setContent(request.getParameter("content"));
-    	System.out.println(request.getParameter("content"));
+    	System.out.println("newstype"+request.getParameter("category"));
     	news.setPicUrl(request.getParameter("img"));
     	news.setOnShowTime(request.getParameter("txtDate time1"));
     	news.setOffShowTime(request.getParameter("txtDate time2"));
@@ -54,18 +55,22 @@ public class EditorController {
     	News news=(News) request.getSession().getAttribute("news");
     	User user=(User)request.getSession().getAttribute("user");
     	news.setEditor(user);
+    	news.setNewsType(request.getParameter("category"));
+//    	System.out.println("newstype:"+news.getNewsType());
     	news.setName(request.getParameter("RRname"));
     	news.setContent(request.getParameter("content"));
-    	System.out.println(request.getParameter("content"));
     	news.setPicUrl(request.getParameter("img"));
     	news.setOnShowTime(request.getParameter("txtDate time1"));
     	news.setOffShowTime(request.getParameter("txtDate time2"));
 //    	System.out.println(request.getParameter("price"));
     	news.setPrice(Double.parseDouble(request.getParameter("price")));
-//    	System.out.println(type);
+    	type=type.replaceAll(",", "");
+    	System.out.println("editNews-type:"+type);
     	if(type.equals("1")){//保存
+    		System.out.print("草稿");
     		news.setState("草稿");
-    	}else {//发送
+    	}else if(type.equals("0")){//发送
+    		System.out.print("发送");
 			news.setState("未审核");
 		}
         newsService.updateNews(news);
@@ -79,7 +84,8 @@ public class EditorController {
 //    }
 
     @RequestMapping("/getNewsToEdit")
-    public String getNewsToEdit(long newsId,HttpServletRequest request){
+    public String getNewsToEdit(Long newsId,HttpServletRequest request){
+//    	System.out.println("getNewsToEdit-newsId:"+newsId);
     	News news=newsService.getNews(newsId);
         request.getSession().setAttribute("news",news);
         return "editor_rr_edit";
@@ -111,7 +117,7 @@ public class EditorController {
 //    }
 
     @RequestMapping("/delNews")
-    public String delNews(String type,long newsId,HttpServletRequest request){
+    public String delNews(String type,Long newsId,HttpServletRequest request){
         newsService.delNews(newsId);
         if(type!=null&&type.equals("1")){//未通过
         	return "redirect:/editor/getUnexamined";

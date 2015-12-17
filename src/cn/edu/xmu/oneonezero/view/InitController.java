@@ -62,7 +62,7 @@ public class InitController {
 			request.getSession().setAttribute("user", user);
 			System.out.println("backurl:"+backUrl);
 			if (backUrl == null) {
-				return "editor_index";
+				return "editor_index";//TODO 根据角色
 			} else {
 				backUrl = backUrl.replaceAll("'", "");
 			}
@@ -97,8 +97,8 @@ public class InitController {
 		return "login";
 	}
 	
-	@RequestMapping(value="/judgeUserName")
 	@ResponseBody
+	@RequestMapping(value="/judgeUserName_")
 	public String judgeUserName(String username){
 		System.out.print(username);
 		return "error";

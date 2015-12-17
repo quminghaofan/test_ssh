@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
+import cn.edu.xmu.oneonezero.entity.News;
 import cn.edu.xmu.oneonezero.service.NewsService;
 
 @Controller
@@ -18,7 +19,9 @@ public class NewsController {
 	
 	@RequestMapping("/showNews")
 	public String showNews(long newsId,String type,HttpServletRequest request){
-		request.getSession().setAttribute("news", newsService.getNews(newsId));
+		News news=newsService.getNews(newsId);
+		request.setAttribute("news",news);
+//		System.out.println("shownews:"+news.getName());
 		request.setAttribute("type",type);
 		return "showNews";
 	}

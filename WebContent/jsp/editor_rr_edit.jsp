@@ -47,15 +47,17 @@
                 <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
-<form action="/test_ssh/editor/editNews" method="post" class="definewidth m10">
+<form method="post" class="definewidth m10" id="myform">
 <table class="table table-bordered table-hover m10">
     <tr>
             <td width="10%" class="tableleft">软文类型</td>
-            <td><input type="text" name="RRname" value="${news.newsType}"/></td>  <!--TODO-->
-        </tr>
+            <td><select id="newsType" name="category" class="category">
+			<option value="1" ${status eq '1' ? 'selected': ''}>广告</option>
+			<option value="2" ${status eq '2' ? 'selected': ''}>新闻</option></td>
+     </tr>
     <tr>
             <td width="10%" class="tableleft">软文标题</td>
-            <td><input type="text" name="RRname" value="${news.name}"/></td>  <!--TODO-->
+            <td><input type="text" name="RRname" value="${news.name}"/></td>
         </tr>
         <tr>
             <td class="tableleft">内容</td>
@@ -72,11 +74,11 @@
         </tr> --%>
         <tr>
             <td width="10%" class="tableleft">上架时间</td>
-            <td><input name="txtDate time1" id="txtDate time1" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" onchange="price_count()"/></td>
+            <td><input name="txtDate time1" id="txtDate time1" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" onchange="price_count()" value="${news.onShowTime}"/></td>
         </tr>
         <tr>
             <td width="10%" class="tableleft">下架时间</td>
-            <td><input name="txtDate time2" id="txtDate time2" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" onchange="price_count()"/>
+            <td><input name="txtDate time2" id="txtDate time2" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" onchange="price_count()" value="${news.offShowTime}"/>
             <span id="time_err" style="display:none"><font color="red">下架时间不能小于上架时间</font></td>
         </tr>
          <tr>
