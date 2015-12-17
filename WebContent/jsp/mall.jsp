@@ -302,9 +302,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									if (session.getAttribute("user") != null) {
 								%>
 								<li class="list2_left"><span class="m_1"><a <%-- href="/test_ssh/cart/add2Cart?itemId=${item.id}&backUrl=/test_ssh/init/home" --%>
-											class="link" id="add2Cart">添加购物篮</a></span></li>
+											class="link" id="add2Cart${item.id}">添加购物篮</a></span></li>
 								<li class="list2_right"><span class="m_2"><a
-										href="#" class="link1">立即购买</a></span></li>
+										href="/test_ssh/mall/settleOne?itemId=${item.id}" class="link1">立即购买</a></span></li>
 								<%
 									} else {
 								%>

@@ -97,7 +97,7 @@
     <tr>
             <td class="tableleft"></td>
             <td>
-               <button type="submit" class="btn btn-primary" type="button"  name="savebtnid" id="savebtnid">保存</button> <button type="submit" class="btn btn-primary" type="button"  name="btnid" id="btnid" >发送</button>				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid"  onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/jsp/editor_rr_4.jsp'" value="返回列表">
+               <button type="submit" class="btn btn-primary" type="button"  name="savebtnid" id="savebtnid" onsubmit="/test_ssh/editor/addNews?type=1">保存</button> <button type="submit" class="btn btn-primary" type="button"  name="btnid" id="btnid" onsubmit="/test_ssh/editor/addNews?type=1">发送</button>				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid"  onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表">
             </td>
         </tr>
 </table>

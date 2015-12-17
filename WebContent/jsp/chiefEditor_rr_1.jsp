@@ -77,7 +77,7 @@
                 <td>${rr.editor.name}</td>
 				<td>${rr.onShowTime}</td>
 				<td>${rr.offShowTime}</td>
-            <td><a href="">审核</a></td>
+            <td><a href="/test_ssh/">审核</a></td>
             </tr>
     </c:forEach>
 	</c:if>

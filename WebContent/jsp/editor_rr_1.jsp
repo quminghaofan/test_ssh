@@ -87,7 +87,7 @@ body {
 					<td>${rr.newsType}</td>
 					<td><a href="/test_ssh/news/showNews?newsId=${rr.id}&type=4">查看</a>&nbsp;&nbsp;<a
 						href="/test_ssh/editor/withdraw?newsId=${rr.id}&type=0">撤回</a>&nbsp;&nbsp;<a href="javascript:void(0)"
-						onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}'">删除</a></td>
+						onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}&type=1'">删除</a></td>
 				</tr>
 			</c:forEach>
 		</c:if>

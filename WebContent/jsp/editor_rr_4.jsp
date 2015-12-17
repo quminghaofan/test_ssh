@@ -79,7 +79,7 @@
                 <td>${rr.offShowTime}</td>
                 <td>${rr.price}</td>
                 <td>${rr.newsType}</td>
-            <td><a href="/test_ssh/editor/getNewsToEdit?newsId=${rr.id}">编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}'">删除</a>
+            <td><a href="/test_ssh/editor/getNewsToEdit?newsId=${rr.id}">编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/editor/delNews?newsId=${rr.id}&type=0'">删除</a>
             </tr>
     </c:forEach>
 </c:if>

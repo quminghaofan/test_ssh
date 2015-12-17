@@ -114,7 +114,7 @@ public class EditorController {
     public String delNews(String type,long newsId,HttpServletRequest request){
         newsService.delNews(newsId);
         if(type!=null&&type.equals("1")){//未通过
-        	return "redirect:/editor/getUnPassed";//TODO 只能删除未审核的和审核未通过的
+        	return "redirect:/editor/getUnexamined";
         }
         else return "redirect:/editor/getDraft";
     }
