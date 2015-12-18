@@ -41,31 +41,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <script type="text/javascript" src="../js/addcart.js"></script>
 <script src="../ogLaVp_data/requestAnimationFrame.js"></script>
-<script src="../ogLaVp_data/jquery_002.js"></script> 
-<script src="../ogLaVp_data/stopExecutionOnTimeout-6c99970ade81e43be51fa877be0f7600.js"></script>
+<script src="../ogLaVp_data/jquery_002.js"></script>
+<script
+	src="../ogLaVp_data/stopExecutionOnTimeout-6c99970ade81e43be51fa877be0f7600.js"></script>
 <link href='../css/totop.css' rel='stylesheet' type='text/css'>
 <script>
 $(document).ready(function() {
 	$(".megamenu").megamenu();
 });
-</script> 
+</script>
 
 <style type="text/css">
-
 </style>
 <script src="../js/jquery.countdown.js"></script>
 <script src="../js/script.js"></script>
 </head>
 <body>
 	<div id="updown">
-	<%if (session.getAttribute("user") != null) {
+		<%if (session.getAttribute("user") != null) {
 					%>
-					<a href="/test_ssh/cart/showCart"><span id="end" class="cart"></span></a>
-					<%
+		<a href="/test_ssh/cart/showCart"><span id="end" class="cart"></span></a>
+		<%
 						}
 					%>
-	
-	<span class="up"></span><span class="down"></span>
+
+		<span class="up"></span><span class="down"></span>
 	</div>
 	<div class="header_top">
 		<div class="container">
@@ -77,29 +77,29 @@ $(document).ready(function() {
 				<div class="cssmenu">
 					<ul>
 						<%
-							if (session.getAttribute("user") == null) {
+						    User user=(User)session.getAttribute("user");
+							if (user == null) {
 						%>
 						<li><a
 							href="/test_ssh/init/goToLogin?backUrl=/test_ssh/init/home">登录/注册</a></li>
 						<%
 							} else {
-							if (((User)session.getAttribute("user")).getRole()!="1") {//角色判断
+								if ((user.getRole()).getName() != "艺术家"
+										&& (user.getRole()).getName() != "预备艺术家") {//角色判断
 						%>
 						<li><a href="/test_ssh/jsp/artist_apply.jsp">我的店铺</a></li>
 						<%
-							} 
-							else if(((User)session.getAttribute("user")).getRole()!="1"){
+							} else if ((user.getRole()).getName() != "预备艺术家") {
 						%>
-								<li>成为艺术家的申请正在审核...</li>
+						<li>成为艺术家的申请正在审核...</li>
 						<%
-							}
-							else {
+							} else {
 						%>
 						<li><a href="">我的店铺</a></li>
 						<%
 							}
 						%>
-						<li><a href=""> <%=((User) session.getAttribute("user")).getName()%></a></li>
+						<li><a href=""> <%=user.getName()%></a></li>
 						<li><a href="/test_ssh/order/myOrder">我的订单</a></li>
 						<li><a
 							href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
@@ -205,7 +205,7 @@ $(document).ready(function() {
 				<ul class="rslides" id="slider">
 					<!-- 广告 -->
 					<c:forEach items="adlist" var="ad">
-						<li><img src="{ad.}" class="img-responsive" alt="" href=""/></li>
+						<li><img src="{ad.}" class="img-responsive" alt="" href="" /></li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -276,14 +276,14 @@ $(document).ready(function() {
 									<%
 										if (session.getAttribute("user") != null) {
 									%>
-									<li class="list2_left"><span class="m_1">
-									<a class="link" id="add2Cart" onclick="add2Cart(${item.id})">加入购物篮</a> 
+									<li class="list2_left"><span class="m_1"> <a
+											class="link" id="add2Cart" onclick="add2Cart(${item.id})">加入购物篮</a>
 									</span></li>
 									<%
 										} else {
 									%>
-									<li class="list2_left"><span class="m_1">
-									<a href="/test_ssh/init/goToLogin?backUrl=/test_ssh/init/home"
+									<li class="list2_left"><span class="m_1"> <a
+											href="/test_ssh/init/goToLogin?backUrl=/test_ssh/init/home"
 											class="link">加入购物篮</a></span></li>
 									<%
 										}
@@ -292,7 +292,7 @@ $(document).ready(function() {
 											href="/test_ssh/mall/seeMore?itemId=${item.id}" class="link1">更多</a></span></li>
 									<div class="clearfix"></div>
 								</ul>
-								
+
 							</div>
 						</div>
 					</div>

@@ -33,7 +33,7 @@
 				<value>cn.edu.xmu.oneonezero.entity.ArtworkOrder</value>
 				<value>cn.edu.xmu.oneonezero.entity.CommodityArtworkOrder</value>
 				<value>cn.edu.xmu.oneonezero.entity.CommodityArtwork</value>
-				<value>cn.edu.xmu.oneonezero.entity.Shop</value>
+				<value>cn.edu.xmu.oneonezero.entity.DataDictionary</value>
  			</list>
 		</property>
 	</bean>
