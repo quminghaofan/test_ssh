@@ -244,7 +244,7 @@ function before_register(){
 		$("#username_blank").text("用户名不能为空"); 
 		flag=1;
 	}	
-	if(!(/^1\d{10}$/.test(tel)))
+	else if(!(/^1\d{10}$/.test(tel)))
 	{ 
 		document.getElementById("username_blank").style.display="block";
 		$("#username_blank").text("您输入的手机号不正确");
@@ -311,7 +311,7 @@ function judgeUserName()
 {  
 	$.ajax({
 			type : "post",
-			url : "/test_ssh/init/judgeUserName_",
+			url : "/test_ssh/init/judgeUserName",
 			dataType : "text",
 			data : {
 				"username" : $("#username").val()
@@ -321,10 +321,12 @@ function judgeUserName()
 
 			},
 			success : function(msg) {
+				document.getElementById("username_blank").style.display="block";
 				if(msg=="OK"){
 					$("#username_blank").text("该用户名可用");
 				}
 				else if(msg=="error"){
+					document.getElementById("username").value="";
 					$("#username_blank").text("该用户名已存在，请重新输入！");
 				}
 			},
