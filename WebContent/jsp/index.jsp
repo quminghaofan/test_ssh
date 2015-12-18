@@ -84,7 +84,17 @@ $(document).ready(function() {
 						<%
 							} else {
 						%>
+						<%
+							if (true) {//角色判断
+						%>
 						<li><a href="/test_ssh/jsp/artist_apply.jsp">申请成为艺术家</a></li>
+						<%
+							} else {
+						%>
+						<li><a href="">我的店铺</a></li>
+						<%
+							}
+						%>
 						<li><a href=""> <%=((User) session.getAttribute("user")).getName()%></a></li>
 						<li><a href="">我的订单</a></li>
 						<li><a
@@ -191,8 +201,7 @@ $(document).ready(function() {
 				<ul class="rslides" id="slider">
 					<!-- 广告 -->
 					<c:forEach items="adlist" var="ad">
-						<li><img src="../images/slider1.jpg" class="img-responsive"
-							alt="" /></li>
+						<li><img src="{ad.}" class="img-responsive" alt="" href=""/></li>
 					</c:forEach>
 				</ul>
 			</div>
