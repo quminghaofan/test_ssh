@@ -49,7 +49,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public boolean updateUser(User user) {
 		String hql = "update User u set u.address= ?,u.bankCardAccount=?,u.headPhoto=?,"
-				+ "u.mobile=?,u.name=?,u.password=?,u.description=?,u.role=?,u.nickName=? where u.id = ?";
+				+ "u.mobile=?,u.name=?,u.password=?,u.description=?,u.role=?,u.nickName=?,u.state=?,u.idPhoto =?,u.realName=? where u.id = ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, user.getAddress());
 		query.setString(1, user.getBankCardAccount());
@@ -60,7 +60,10 @@ public class UserDaoImpl implements UserDao {
 		query.setString(6, user.getDescription());
 		query.setEntity(7, user.getRole());
 		query.setString(8, user.getNickName());
-		query.setLong(9, user.getId());
+		query.setString(9, user.getState());
+		query.setString(10, user.getIdPhoto());
+		query.setString(11, user.getRealName());
+		query.setLong(12, user.getId());
 		
 		return (query.executeUpdate() > 0);
 		
