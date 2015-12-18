@@ -41,7 +41,7 @@
     根据<select style="width:auto">
     <option value="艺术品名">艺术品名</option>
     <option value="卖家">卖家</option>
-    </select>搜索<br>
+    </select>搜索
     <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
    <select>
    <option selected="selected" value="全部">全部</option>

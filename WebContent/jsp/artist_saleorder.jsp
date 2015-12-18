@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>艺术家商店</title>
+<title>艺术家出售记录</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
@@ -169,33 +169,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div style="padding: 5%">
 				<div class="menuhead1">
 				<a class="acount-btn" href="">我的艺术品</a>
-				   <a class="acount-btn" href="" style="margin-top:2em">我的出售</a>
+				   <a class="acount-btn" href="" style="margin-top:2em">我的出售记录</a>
 					<h3>
-						我的艺术品
+						我的出售记录
 					</h3>
 				</div>
 				<div style="">
 					<table class="table1" cellspacing="0">
 						<tr>
-						<th scope="col">图片</th>
 							<th scope="col">艺术品名</th>
-							<th scope="col">类别</th>
 							<th scope="col">种类</th>
 							<th scope="col">价格</th>
+							<th scope="col">买家</th>
+							<th scope="col">地址</th>
+							<th scope="col">电话</th>
 							<th scope="col">操作</th>
 						</tr>  
-						<c:forEach items="${commodityArtworkList}" var="item">
+						<c:forEach items="${orderList}" var="order">
 							<tr>
-								<td scope="row" class="spec">${item.name}</th>
-
-								<td>${item.type}</td>
-								<td>${item.price}</td>
-								<td><a href="">编辑</a>
-								<a href="">删除</a></td>
+								<td scope="row" class="spec"></th>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>
+								<c:if test=""><!--是否已发货  -->
+								<a href="">发货</a>
+								</c:if></td>
+								<c:if test="">
+								<a>已发货</a>
+								</c:if></td>
 							</tr>
 							</c:forEach>
 					</table>
-					<a href="">添加</a>
+					
 				</div>
 			</div>
 		</div>
