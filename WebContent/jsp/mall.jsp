@@ -191,7 +191,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<div class="col-md-9">
 				<div class="mens-toolbar">
-					<div class="sort">
+					<!-- <div class="sort">
 						<div class="sort-by">
 							<label>按价格排序</label> <select name="sort" id="sort" onchange="sort()">
 								<option value="0"></option>
@@ -200,7 +200,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</select>
 						</div>
 					</div>
-					<!--   <div class="pager">   
+					 <div class="pager">   
 	           <div class="limiter visible-desktop">
 	            <label>显示</label>
 	            <select>

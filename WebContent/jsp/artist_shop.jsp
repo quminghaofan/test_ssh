@@ -168,6 +168,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div style="background-color: white; width: 100%">
 			<div style="padding: 5%">
 				<div class="menuhead1">
+				<a class="acount-btn" href="">我的艺术品</a>
+				   <a class="acount-btn" href="" style="margin-top:2em">我的出售</a>
 					<h3>
 						我的艺术品
 					</h3>
