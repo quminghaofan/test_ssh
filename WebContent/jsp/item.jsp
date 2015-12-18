@@ -33,6 +33,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="../css/megamenu.css" rel="stylesheet" type="text/css"
 	media="all" />
 <script type="text/javascript" src="../js/megamenu.js"></script>
+<script src="../js/responsiveslides.min.js"></script>
+<script type="text/javascript" src="../js/addcart.js"></script>
+<script src="../ogLaVp_data/requestAnimationFrame.js"></script>
+<script src="../ogLaVp_data/jquery_002.js"></script> 
+<script src="../ogLaVp_data/stopExecutionOnTimeout-6c99970ade81e43be51fa877be0f7600.js"></script>
+<link href='../css/totop.css' rel='stylesheet' type='text/css'>
 <script>
 	$(document).ready(function() {
 		$(".megamenu").megamenu();
@@ -40,26 +46,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	function sort(){
 		alert("123");
 		window.loction="/test_ssh/mall/enterMall";}
-	$(function() {
-	$('#add2Cart').click(function() {
-		$.ajax({
-			type : "POST",
-			data : {"itemId":$("#itemid").val()},
-			dataType : "text",
-			url : "/test_ssh/cart/add2Cart",
-			success : function(data) {
-				alert("添加成功！");
-			},
-			error : function(e) {
-				alert("添加失败！");
-			}
-		});
-	}); 
-	});
 	
 </script>
 </head>
 <body>
+<div id="updown">
+	<%if (session.getAttribute("user") != null) {
+					%>
+					<a href="/test_ssh/cart/showCart"><span id="end" class="cart"></span></a>
+					<%
+						}
+					%>
+	
+	<span class="up"></span><span class="down"></span>
+	</div>
 	<div class="header_top">
 		<div class="container">
 			<div class="header_top-box">
@@ -257,8 +257,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<%
 										if (session.getAttribute("user") != null) {
 							%>
-							<a class="acount-btn" <%-- href="/test_ssh/cart/add2Cart?itemId=${item.id}&backUrl=/test_ssh/init/home" --%>
-											class="link" id="add2Cart">加入购物篮</a>
+							<a class="acount-btn" class="link" id="add2Cart" onclick="add2Cart(${item.id},this)">加入购物篮</a>
 							<a class="acount-btn" href="/test_ssh/mall/settleOne?itemId=${item.id}" style="margin-top: 2em">立即购买</a>
 							<%
 										} else {
