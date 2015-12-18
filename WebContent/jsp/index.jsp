@@ -37,112 +37,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="../css/megamenu.css" rel="stylesheet" type="text/css"
 	media="all" />
 <script type="text/javascript" src="../js/megamenu.js"></script>
-<script>
-	$(document).ready(function() {
-		$(".megamenu").megamenu();
-	});
-</script>
 <script src="../js/responsiveslides.min.js"></script>
 
+<script type="text/javascript" src="../js/addcart.js"></script>
+<script src="../ogLaVp_data/requestAnimationFrame.js"></script>
+<script src="../ogLaVp_data/jquery_002.js"></script> 
+<script src="../ogLaVp_data/stopExecutionOnTimeout-6c99970ade81e43be51fa877be0f7600.js"></script>
+<link href='../css/totop.css' rel='stylesheet' type='text/css'>
 <script>
-	$(function() {
-		$("#slider").responsiveSlides({
-			auto : true,
-			nav : false,
-			speed : 500,
-			namespace : "callbacks",
-			pager : true,
-		});
-	});
-	$(function() {
-		$("#updown").css("top", window.screen.availHeight / 2 - 100 + "px");
-		$(window).scroll(function() {
-			if ($(window).scrollTop() >= 100) {
-				$('#updown').fadeIn(300);
-			} else {
-				$('#updown').fadeOut(300);
-			}
-		});
-		$('#updown .up').click(function() {
-			$('html,body').animate({
-				scrollTop : '0px'
-			}, 800);
-		});
-		$('#updown .down').click(function() {
-			$('html,body').animate({
-				scrollTop : document.body.clientHeight + 'px'
-			}, 800);
-		});
-	});
-	function add2Cart(index) {
-		$.ajax({
-			type : "POST",
-			data : {
-				"itemId" : index
-			},
-			dataType : "text",
-			url : "/test_ssh/cart/add2Cart",
-			success : function(data) {
-				alert("添加成功！");
-			},
-			error : function(e) {
-				alert("添加失败！");
-			}
-		});
+$(document).ready(function() {
+	$(".megamenu").megamenu();
+});
+</script> 
 
-	}
-</script>
 <style type="text/css">
-#updown {
-	_top: expression(eval(( document.compatMode && document.compatMode == 
-		 "CSS1Compat")?documentElement.scrollTop+documentElement.clientHeight-this.clientHeight-1:document.body.scrollTop+document.body.clientHeight-this.clientHeight-1));
-	position: fixed;
-	_position: absolute;
-	top: 70%;
-	right: 5%;
-	display: none;
-	z-index: 10000
-}
 
-#updown span {
-	cursor: pointer;
-	width: 48px;
-	height: 50px;
-	display: block;
-}
-
-#updown .up {
-	background: url(../images/updown.png) no-repeat;
-}
-
-#updown .up:hover {
-	background: url(../images/updown.png) top right no-repeat;
-}
-
-#updown .down {
-	background: url(../images/updown.png) bottom left no-repeat;
-}
-
-#updown .down:hover {
-	background: url(../images/updown.png) bottom right no-repeat;
-}
-
-#top {
-	background-color: #000;
-	margin: 0em 0 10px 0em;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #E5E5E5;
-	height: 50px;
-	line-height: 50px;
-}
 </style>
 <script src="../js/jquery.countdown.js"></script>
 <script src="../js/script.js"></script>
 </head>
 <body>
 	<div id="updown">
-		<span class="up"></span><span class="down"></span>
+	<%if (session.getAttribute("user") != null) {
+					%>
+					<a href="/test_ssh/cart/showCart"><span id="end" class="cart"></span></a>
+					<%
+						}
+					%>
+	
+	<span class="up"></span><span class="down"></span>
 	</div>
 	<div class="header_top">
 		<div class="container">
@@ -160,8 +83,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							href="/test_ssh/init/goToLogin?backUrl=/test_ssh/init/home">登录/注册</a></li>
 						<%
 							} else {
+							if (((User)session.getAttribute("user")).getRole()!="1") {//角色判断
 						%>
-						<li><a href="/test_ssh/jsp/artist_apply.jsp">申请成为艺术家</a></li>
+						<li><a href="/test_ssh/jsp/artist_apply.jsp">我的店铺</a></li>
+						<%
+							} 
+							else if(((User)session.getAttribute("user")).getRole()!="1"){
+						%>
+								<li>成为艺术家的申请正在审核...</li>
+						<%
+							}
+							else {
+						%>
+						<li><a href="">我的店铺</a></li>
+						<%
+							}
+						%>
 						<li><a href=""> <%=((User) session.getAttribute("user")).getName()%></a></li>
 						<li><a href="/test_ssh/order/myOrder">我的订单</a></li>
 						<li><a
@@ -268,8 +205,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<ul class="rslides" id="slider">
 					<!-- 广告 -->
 					<c:forEach items="adlist" var="ad">
-						<li><img src="../images/slider1.jpg" class="img-responsive"
-							alt="" /></li>
+						<li><img src="{ad.}" class="img-responsive" alt="" href=""/></li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -346,8 +282,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<%
 										} else {
 									%>
-									<li class="list2_left"><span class="m_1"><a
-											href="/test_ssh/init/goToLogin?backUrl=/test_ssh/init/home"
+									<li class="list2_left"><span class="m_1">
+									<a href="/test_ssh/init/goToLogin?backUrl=/test_ssh/init/home"
 											class="link">加入购物篮</a></span></li>
 									<%
 										}
@@ -356,7 +292,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											href="/test_ssh/mall/seeMore?itemId=${item.id}" class="link1">更多</a></span></li>
 									<div class="clearfix"></div>
 								</ul>
-								<div class="heart"></div>
+								
 							</div>
 						</div>
 					</div>
