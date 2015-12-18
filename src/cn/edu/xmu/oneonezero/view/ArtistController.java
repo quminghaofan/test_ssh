@@ -21,6 +21,7 @@ public class ArtistController {
 		User user=(User)request.getSession().getAttribute("user");
 		user.setBankCardAccount(request.getParameter("account"));
 		user.setRole("预备艺术家");
+		user.setRealName(request.getParameter("realname"));
 		userService.updateUser(user);
 		return "redirect:/init/home";
 	}

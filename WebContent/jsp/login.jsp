@@ -163,7 +163,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <div class="footer">
 	<div class="container">
-		<img src="images/pay.png" class="img-responsive" alt=""/>
+		<img src="../images/pay.png" class="img-responsive" alt=""/>
 		<ul class="footer_nav">
 		  <li><a href="#">首页</a></li>
 		  <li><a href="#">定制</a></li>
