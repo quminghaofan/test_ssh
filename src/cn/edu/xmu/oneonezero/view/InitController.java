@@ -62,7 +62,16 @@ public class InitController {
 			request.getSession().setAttribute("user", user);
 			System.out.println("backurl:"+backUrl);
 			if (backUrl == null) {
-				return "editor_index";//TODO 根据角色
+				String roleName=null;//TODO
+				if(roleName.equals("超级管理员"))return "super_index";
+				else if(roleName.equals("普通管理员"))return "admin_index";
+				else if(roleName.equals("主编"))return "chiefEditor_index";
+				else if(roleName.equals("采编"))return "editor_index";
+				else {
+
+					request.setAttribute("result", "fail");
+					return "login";
+				}
 			} else {
 				backUrl = backUrl.replaceAll("'", "");
 			}
@@ -82,6 +91,9 @@ public class InitController {
 		if (session != null) {
 			session.removeAttribute("user");
 		}
+		if(backUrl==null){
+			backUrl="goToLogin";
+		}
 		response.sendRedirect(backUrl);
 	}
 
@@ -98,9 +110,11 @@ public class InitController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/judgeUserName_")
+	@RequestMapping(value="/judgeUserName")
 	public String judgeUserName(String username){
-		System.out.print(username);
+		if(userService.isNameExist(username)){
+			return "success";
+		}
 		return "error";
 	}
 }

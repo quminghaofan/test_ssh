@@ -105,7 +105,7 @@ Smartusername Compatible web template, free webdesigns for Nokia, Samsung, LG, S
 	<div class="container">
 		<div class="menu_box">
 	     <ul class="megamenu skyblue">
-			<li class="active grid"><a class="color2" href="index.jsp">首页</a></li>
+			<li class="active grid"><a class="color2" href="/test_ssh/init/home">首页</a></li>
 			<li><a class="color4" href="">定制</a>
 			<div class="megapanel">
 					<div class="row">
@@ -121,7 +121,7 @@ Smartusername Compatible web template, free webdesigns for Nokia, Samsung, LG, S
 					  </div>
 					</div>
 			</li>				
-			<li><a class="color10" href="#">商城</a>
+			<li><a class="color10" href="/test_ssh/mall/enterMall">商城</a>
 				<div class="megapanel">
 					<div class="row">
 						<div class="col1">
@@ -309,7 +309,6 @@ function display4(){
 }
 function judgeUserName()
 {  
-	alert("12345");
 	$.ajax({
 			type : "post",
 			url : "/test_ssh/init/judgeUserName_",

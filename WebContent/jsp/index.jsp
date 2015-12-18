@@ -163,7 +163,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						%>
 						<li><a href="/test_ssh/jsp/artist_apply.jsp">申请成为艺术家</a></li>
 						<li><a href=""> <%=((User) session.getAttribute("user")).getName()%></a></li>
-						<li><a href="">我的订单</a></li>
+						<li><a href="/test_ssh/order/myOrder">我的订单</a></li>
 						<li><a
 							href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
 						<%
@@ -232,9 +232,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="col1">
 									<div class="h_nav">
 										<ul>
-											<li><a href="">全部</a></li>
+											<li><a href="/test_ssh/mall/enterMall">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
+												<li><a href="/test_ssh/mall/enterMall?type=${type.id}">${type.name}</a></li>
 											</c:forEach>
 										</ul>
 									</div>
@@ -342,7 +342,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									%>
 									<li class="list2_left"><span class="m_1">
 									<a class="link" id="add2Cart" onclick="add2Cart(${item.id})">加入购物篮</a> 
-									<input id="itemid" name="itemid" value="${item.id}"></span></li>
+									</span></li>
 									<%
 										} else {
 									%>

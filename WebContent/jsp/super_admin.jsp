@@ -55,7 +55,7 @@
     <c:forEach items="${ADMINLIST}" var="admin">
         <tr>
                 <td>${admin.name}</td>
-                <td></td>s
+                <td></td>
                 <td><a href="">编辑</a></td>
             </tr>
     </c:forEach>

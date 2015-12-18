@@ -1,3 +1,4 @@
+<%@page import="cn.edu.xmu.oneonezero.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -18,7 +19,9 @@
        <!--<img src="/chinapost/Public/assets/img/top.png">-->
       </div>
 
-    <div class="dl-log">欢迎您，<span class="dl-log-user"><!--需要填用户名  --></span><a href="/chinapost/index.php?m=Public&a=logout" title="退出系统" class="dl-log-quit">[退出]</a>
+    <div class="dl-log">欢迎您，
+    <span class="dl-log-user"><!-- 用户名 --></span>
+    <a href="/test_ssh/init/logout" title="退出系统" class="dl-log-quit">[退出]</a>
     </div>
   </div>
    <div class="content">
@@ -42,7 +45,7 @@
     BUI.use('common/main',function(){ 
       var config = [{id:'1',homePage:'12',menu:[{text:'用户管理',items:[{id:'12',text:'用户列表',href:'/test_ssh/admin_user/getAllUser'}]}]},
                     {id:'4',menu:[{text:'商品管理',items:[{id:'13',text:'制成品列表',href:''},{id:'15',text:'拍卖品管理',href:''}]}]},
-                    {id:"7",menu:[{text:'订单管理',items:[{id:'17',text:'订单列表',href:''}]}]}];
+                    {id:"7",menu:[{text:'订单管理',items:[{id:'17',text:'订单列表',href:'/test_ssh/admin_user/getAllOrder'}]}]}];
       new PageUtil.MainPage({
         modulesConfig : config
       });
