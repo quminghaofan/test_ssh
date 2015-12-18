@@ -277,7 +277,7 @@ $(document).ready(function() {
 										if (session.getAttribute("user") != null) {
 									%>
 									<li class="list2_left"><span class="m_1"> <a
-											class="link" id="add2Cart" onclick="add2Cart(${item.id})">加入购物篮</a>
+											class="link" id="add2Cart" onclick="add2Cart(${item.id},this,event)">加入购物篮</a>
 									</span></li>
 									<%
 										} else {
