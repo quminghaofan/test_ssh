@@ -5,6 +5,16 @@ import cn.edu.xmu.oneonezero.entity.DataDictionary;
 
 public class DataDictionaryServiceImpl implements DataDictionaryService{
 	private DataDictionaryDao dataDictionaryDao;
+	
+	
+	public DataDictionaryServiceImpl() {
+	}
+
+
+	public DataDictionaryServiceImpl(DataDictionaryDao dataDictionaryDao) {
+		this.dataDictionaryDao = dataDictionaryDao;
+	}
+
 
 	public void setDataDictionaryDao(DataDictionaryDao dataDictionaryDao) {
 		this.dataDictionaryDao = dataDictionaryDao;

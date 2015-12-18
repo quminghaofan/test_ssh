@@ -46,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="cssmenu">
 					<ul>
 						<%
-							if (session.getAttribute("username") == null) {
+							if (session.getAttribute("user") == null) {
 						%>
 						<li><a href="jsp/login.jsp">登录/注册</a></li>
 						<%

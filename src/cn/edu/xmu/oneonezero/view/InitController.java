@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
+import cn.edu.xmu.oneonezero.entity.DataDictionary;
 import cn.edu.xmu.oneonezero.entity.News;
 import cn.edu.xmu.oneonezero.entity.User;
 import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
+import cn.edu.xmu.oneonezero.service.DataDictionaryService;
 import cn.edu.xmu.oneonezero.service.NewsService;
 import cn.edu.xmu.oneonezero.service.UserService;
 
@@ -34,13 +36,15 @@ public class InitController {
 
 	@Resource(name = "commodityArtworkService")
 	private CommodityArtworkService commodityArtworkService;
+	
+	@Resource(name = "dataDictionaryService")
+	private DataDictionaryService dataDictionaryService;
 
 	@RequestMapping(value = "/home")
 	public String home(HttpServletRequest request) {
 		List<News> news = newsService.getExaminedNews();
 		request.setAttribute("RRlist", news);
-		List<CommodityArtwork> commodityArtworks = commodityArtworkService
-				.commodityArtworksToDisplay();
+		List<CommodityArtwork> commodityArtworks = commodityArtworkService.commodityArtworksToDisplay();
 		request.setAttribute("commodityArtworkList", commodityArtworks);
 		return "index";
 	}
@@ -60,7 +64,7 @@ public class InitController {
 		User user = userService.getUserByUserNameAndPassword(userName, psw);
 		if (user != null) {
 			request.getSession().setAttribute("user", user);
-			System.out.println("backurl:"+backUrl);
+			System.out.println("backurl1:"+backUrl);
 			if (backUrl == null) {
 				String roleName=null;//TODO
 				if(roleName.equals("超级管理员"))return "super_index";
@@ -68,12 +72,12 @@ public class InitController {
 				else if(roleName.equals("主编"))return "chiefEditor_index";
 				else if(roleName.equals("采编"))return "editor_index";
 				else {
-
 					request.setAttribute("result", "fail");
 					return "login";
 				}
 			} else {
 				backUrl = backUrl.replaceAll("'", "");
+				System.out.println("backur2:"+backUrl);
 			}
 		} else {
 			request.setAttribute("result", "fail");
@@ -104,8 +108,8 @@ public class InitController {
 		User user = new User();
 		user.setName(userNameString);
 		user.setPassword(psw);
+		user.setRole(dataDictionaryService.getDataDictionaryByName("预备艺术家"));
 		userService.insertUser(user);
-		System.out.println("login");
 		return "login";
 	}
 	

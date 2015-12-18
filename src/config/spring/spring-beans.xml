@@ -38,5 +38,13 @@
 		<property name="commodityArtworkDao" ref="commodityArtworkDao"></property>
 	</bean>
 	
+	<bean id="dataDictionaryDao" class="cn.edu.xmu.oneonezero.dao.DataDictionaryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="dataDictionaryService" class="cn.edu.xmu.oneonezero.service.DataDictionaryServiceImpl">
+		<property name="dataDictionaryDao" ref="dataDictionaryDao"></property>
+	</bean>
+	
 	
 </beans>

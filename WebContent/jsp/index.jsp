@@ -81,7 +81,7 @@ $(document).ready(function() {
 							if (user == null) {
 						%>
 						<li><a
-							href="/test_ssh/init/goToLogin?backUrl=/test_ssh/init/home">登录/注册</a></li>
+							href="/test_ssh/init/goToLogin?backUrl='/test_ssh/init/home'">登录/注册</a></li>
 						<%
 							} else {
 								if ((user.getRole()).getName() != "艺术家"
