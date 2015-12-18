@@ -1,6 +1,7 @@
 package cn.edu.xmu.oneonezero.view;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -76,9 +77,12 @@ public class MallController {
 	
 	@RequestMapping("/settleOne")
 	public String settleOne(Long itemId,HttpServletResponse response,HttpServletRequest request) throws UnsupportedEncodingException{
-		String commodityArtworksJson=commodityArtworkService.getCommodityArtworkWithJSONTypeById(itemId).toString();
-		CommonMethod.addCookie(itemId, commodityArtworksJson, request, response);
-		return "redirect:/mall/settle";
+		List<CommodityArtwork> commodityArtworks=new ArrayList<CommodityArtwork>();
+		CommodityArtwork commodityArtwork=null;
+		commodityArtworks.add(commodityArtwork);
+		request.setAttribute("orderlist", commodityArtworks);
+		request.setAttribute("total", commodityArtwork.getPrice());
+		return "checkorder";
 	}
 
 	@RequestMapping("/seeMore")
