@@ -25,7 +25,7 @@ public class Artwork {
 	protected User owner;//持有用户
 	protected String picUrl;//图片路径
 	protected String artworkDescription;//描述
-	protected String type;//类别
+	protected DataDictionary type;//类别
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -69,10 +69,14 @@ public class Artwork {
 	public void setArtworkDescription(String artworkDescription) {
 		this.artworkDescription = artworkDescription;
 	}
-	public String getType() {
+	
+	@ManyToOne
+	@JoinColumn(name="typeId")
+	@Cascade(CascadeType.ALL)
+	public DataDictionary getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(DataDictionary type) {
 		this.type = type;
 	}
 	

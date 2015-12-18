@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class DataDictionary {
 	private long id;
 	private String number;
-	private String data;
+	private String name;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -25,11 +25,11 @@ public class DataDictionary {
 	public void setNumber(String number) {
 		this.number = number;
 	}
-	public String getData() {
-		return data;
+	public String getName() {
+		return name;
 	}
-	public void setData(String data) {
-		this.data = data;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

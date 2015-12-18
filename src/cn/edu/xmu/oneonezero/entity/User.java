@@ -14,13 +14,27 @@ public class User {
 	private String nickName;
 	private String realName;//真实姓名
 	private String password;
-	private String role;
+	private DataDictionary role;//角色
 	private String mobile;
 	private String headPhoto;
 	private String address;
 	private String bankCardAccount;
 	private String description;
+	private String state;//是否被禁用
+	private String idPhoto;//审核照片
 	
+	public String getIdPhoto() {
+		return idPhoto;
+	}
+	public void setIdPhoto(String idPhoto) {
+		this.idPhoto = idPhoto;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
@@ -41,10 +55,11 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getRole() {
+	
+	public DataDictionary getRole() {
 		return role;
 	}
-	public void setRole(String role) {
+	public void setRole(DataDictionary role) {
 		this.role = role;
 	}
 	public String getMobile() {

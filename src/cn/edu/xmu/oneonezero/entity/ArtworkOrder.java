@@ -34,7 +34,7 @@ public class ArtworkOrder {
 //	protected String payState;//支付状态
 //	protected String deliverState;//发货状态
 //	protected String receiveState;//收获状态
-	protected String state;
+	protected String state;//未支付、已支付未发货、已支付未收货、已支付已收货
 	protected String mobile;//联系方式
 	protected String address;//发货地址
 	
