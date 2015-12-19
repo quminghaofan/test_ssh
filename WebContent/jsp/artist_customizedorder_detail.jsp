@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>申请成为艺术家</title>
+<title>定制订单详情</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
@@ -35,6 +35,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		$(".megamenu").megamenu();
 	});
 </script>
+<script type="text/javascript" src="../js/pictureload.js"></script>
 <script type="text/javascript" src="../js/pictureload.js"></script>
 </head>
 <body>
@@ -159,26 +160,70 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <div class="men">
 		<div class="container">
   <div class="register">
-			   <h1>申请成为艺术家</h1>
+			   
 			   <div class="col-md-6 login-right">
-				<form id="applyform" method="post"  action="/test_ssh/artist/artistApply" onsubmit="return before_apply()">
+				<form id="myform" method="post">
 				  <div>
-					<span>真实姓名<label>*</label></span>
-					<input type="text" name="realname" id="realname" onfocus="name_blank.style.display='none'"> 
-					<span id="name_blank" style="display:none"><font color="red">真实姓名不能为空</font></span>
+					<span>艺术品名</span>
+					<input type="text" readonly="readonly" value=""> 
 				  </div>
 				  <div>
-					<span>银行卡号<label>*</label></span>
-					<input type="text" name="account" id="account" onfocus="card_blank.style.display='none'"> 
-					<span id="card_blank" style="display:none"><font color="red">银行卡号不能为空</font></span>
+					<span>类别</span>
+					<input type="text" readonly="readonly" value=""> 
 				  </div>
-				  <div id="preview" style="border:solid 1px">
+				  <div>
+					<span>买家</span>
+					<input type="text" readonly="readonly" value=""> 
+				  </div>
+				  <%if(true){ %><!-- 判断是否有模板 -->
+				  <div>
+					<span>模板</span>
+					<img id="image" src="" width="30%"
+							height="30%" />
+				  </div>
+				  <%} %>
+				  <div>
+					<span>需求</span>
+					<input type="text" readonly="readonly" value=""> 
+				  </div>
+				   <div>
+					<span>第一期价格</span>
+					<input type="text"  value=""> 
+				  </div>
+				   <div>
+					<span>第二期价格</span>
+					<input type="text"  value=""> 
+				  </div>
+				   <div>
+					<span>第三期价格</span>
+					<input type="text"  value=""> 
+				  </div>
+				  <%if(true){ %><!--挨个判断是否存在  -->
+				  <div id="preview">
+				  <span>第一期样品</span>
 						<span><img id="image" src="" width="30%"
 							height="30%" /></span>
-					</div> <span><input id="img" name="img" type="file"
-						accept="images/*" onchange="previewImage(this,'preview','image')" style="width: 60%"/></span>
-						<span id="photo_blank"><font color="red">请提交身份证照片</font></span>
-				  <input type="submit" value="提交" onClick="applyform.onsubmit()">
+					</div> <span>
+		<div id="preview">
+				  <span>第二期样品</span>
+						<span><img id="image" src="" width="30%"
+							height="30%" /></span>
+					</div> 
+						<div id="preview">
+				  <span>第三期样品</span>
+						<span><img id="image" src="" width="30%"
+							height="30%" /></span>
+					</div> 
+					<%} %>
+						<%if(true){ %><!-- 判断是否已经接受或拒绝 -->
+				  <input type="submit" value="接受" onClick="">
+				  <input type="button" value="拒绝" onClick="">
+				  <%}else if(true){ %><!-- 判断是否已经发货 -->
+				  <input type="button" value="发货" onClick="">
+				  <%} %>
+				  <input type="button" value="返回列表" onClick="">
+								
+				  
 			    </form>
 			   </div>	
 		</div>
@@ -207,25 +252,3 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 </body>
 </html>
-<script>
-function before_apply(){
-	var realname=document.getElementById("realname");
-	var account=document.getElementById("account");
-	var img=document.getElementById("img");
-	var flag=0;
-	if(realname.value==""){
-		flag=1;
-		document.getElementById("name_blank").style.display="block";
-	}
-	if(realname.value==""){
-		flag=1;
-		document.getElementById("card_blank").style.display="block";
-	}
-	if(img.value==""){
-		flag=1;
-		document.getElementById("photo_blank").text="身份证照片不能为空";
-	}
-	if(flag==1)
-		return false;
-}
-</script>

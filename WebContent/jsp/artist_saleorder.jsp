@@ -187,7 +187,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</tr>  
 						<c:forEach items="${orderList}" var="order">
 							<tr>
-								<td scope="row" class="spec"></th>
+								<td scope="row" class="spec"></td>
 								<td></td>
 								<td></td>
 								<td></td>
@@ -195,7 +195,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<td>
 								<c:if test=""><!--是否已发货  -->
 								<a href="">发货</a>
-								</c:if></td>
+								</c:if>
 								<c:if test="">
 								<a>已发货</a>
 								</c:if></td>

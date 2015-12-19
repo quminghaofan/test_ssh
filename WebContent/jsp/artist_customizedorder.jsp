@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>申请成为艺术家</title>
+<title>艺术家定制记录</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
@@ -18,6 +18,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Custom Theme files -->
 <link href="../css/style.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="../css/jquery.countdown.css" />
+
 <!-- Custom Theme files -->
 <!--webfont-->
 <link
@@ -30,12 +31,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="../css/megamenu.css" rel="stylesheet" type="text/css"
 	media="all" />
 <script type="text/javascript" src="../js/megamenu.js"></script>
+<link href="../css/table.css" rel='stylesheet' type='text/css' />
 <script>
 	$(document).ready(function() {
 		$(".megamenu").megamenu();
 	});
 </script>
-<script type="text/javascript" src="../js/pictureload.js"></script>
+
 </head>
 <body>
 	<div class="header_top">
@@ -47,7 +49,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="cssmenu">
 					<ul>
 						<%
-							if (session.getAttribute("user") == null) {
+							if (session.getAttribute("username") == null) {
 						%>
 						<li><a href="jsp/login.jsp">登录/注册</a></li>
 						<%
@@ -78,7 +80,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"></div>
 				</div>
 				<div class="header_bottom_right">
-					
+					<div class="search">
+						<input type="text" value="艺术品名称" onFocus="this.value = '';"
+							onBlur="if (this.value == '') {this.value = '艺术品名称';}"> <input
+							type="submit" value="">
+					</div>
 					<%
 						if (session.getAttribute("username") != null) {
 					%>
@@ -158,34 +164,64 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  
  <div class="men">
 		<div class="container">
-  <div class="register">
-			   <h1>申请成为艺术家</h1>
-			   <div class="col-md-6 login-right">
-				<form id="applyform" method="post"  action="/test_ssh/artist/artistApply" onsubmit="return before_apply()">
-				  <div>
-					<span>真实姓名<label>*</label></span>
-					<input type="text" name="realname" id="realname" onfocus="name_blank.style.display='none'"> 
-					<span id="name_blank" style="display:none"><font color="red">真实姓名不能为空</font></span>
-				  </div>
-				  <div>
-					<span>银行卡号<label>*</label></span>
-					<input type="text" name="account" id="account" onfocus="card_blank.style.display='none'"> 
-					<span id="card_blank" style="display:none"><font color="red">银行卡号不能为空</font></span>
-				  </div>
-				  <div id="preview" style="border:solid 1px">
-						<span><img id="image" src="" width="30%"
-							height="30%" /></span>
-					</div> <span><input id="img" name="img" type="file"
-						accept="images/*" onchange="previewImage(this,'preview','image')" style="width: 60%"/></span>
-						<span id="photo_blank"><font color="red">请提交身份证照片</font></span>
-				  <input type="submit" value="提交" onClick="applyform.onsubmit()">
-			    </form>
-			   </div>	
+  <div align="center">
+  
+		<div style="background-color: white; width: 100%">
+			<div style="padding: 5%">
+				<div class="menuhead1">
+				<a class="acount-btn" href="">我的艺术品</a>
+				   <a class="acount-btn" href="" style="margin-top:2em">我的出售记录</a>
+				   <a class="acount-btn" href="" style="margin-top:2em">我的定制记录</a>
+					<h3>
+						我的定制记录
+					</h3>
+				</div>
+				<div style="">
+					<table class="table1" cellspacing="0">
+						<tr>
+							<th scope="col">艺术品名</th>
+							<th scope="col">买家</th>
+							<th scope="col">地址</th>
+							<th scope="col">电话</th>
+							<th scope="col">操作</th>
+						</tr>  
+						<c:forEach items="${orderList}" var="order">
+							<tr>
+								<td scope="row" class="spec">${order.}</td>
+								<td>${order.}</td>
+								<td>${order.}</td>
+								<td>${order}</td>
+								<td>
+								 <%if(true){ %><!-- 判断是否已经接受订单 -->
+								<%if(true){ %><!-- 判断用户是否已经支付 且当前期数在3期内-->
+								<a href="">上传小样</a>
+								<%} %>
+								<%if(true) {%><!-- 判断是否已经发货 -->
+								<a href="">发货</a>
+								<%} else{%>
+								<a>已发货</a>
+								<%} %>
+								}
+								<%}else if(true){ %><!-- 判断是否已经拒绝订单或订单已经中止 -->
+								<%}else{ %>
+								<a>接受</a><a>拒绝</a>
+								<%} %>
+								<a href="">详情</a>
+								</td>
+							</tr>
+							</c:forEach>
+					</table>
+					
+				</div>
+			</div>
 		</div>
+	</div>
 
 			</div>
 </div>
-
+<div class="pagination" id="page">
+  
+</div>
 
 			<div class="footer">
 				<div class="container">
@@ -205,27 +241,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</p>
 				</div>
 			</div>
+			
+			<input hidden value="${current_page}" id="current">
+<input hidden value="${max_page}" id="max">
 </body>
 </html>
-<script>
-function before_apply(){
-	var realname=document.getElementById("realname");
-	var account=document.getElementById("account");
-	var img=document.getElementById("img");
-	var flag=0;
-	if(realname.value==""){
-		flag=1;
-		document.getElementById("name_blank").style.display="block";
-	}
-	if(realname.value==""){
-		flag=1;
-		document.getElementById("card_blank").style.display="block";
-	}
-	if(img.value==""){
-		flag=1;
-		document.getElementById("photo_blank").text="身份证照片不能为空";
-	}
-	if(flag==1)
-		return false;
-}
-</script>

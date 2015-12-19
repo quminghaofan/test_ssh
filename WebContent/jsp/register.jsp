@@ -215,7 +215,7 @@ Smartusername Compatible web template, free webdesigns for Nokia, Samsung, LG, S
 	</div>
 	<div class="footer">
 		<div class="container">
-			<img src="images/pay.png" class="img-responsive" alt="" />
+			<img src="../images/pay.png" class="img-responsive" alt="" />
 			<ul class="footer_nav">
 				<li><a href="#">Home</a></li>
 				<li><a href="#">Blog</a></li>

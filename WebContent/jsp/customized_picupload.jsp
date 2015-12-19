@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>申请成为艺术家</title>
+<title>定制订单样品上传</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
@@ -35,6 +35,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		$(".megamenu").megamenu();
 	});
 </script>
+<script type="text/javascript" src="../js/pictureload.js"></script>
 <script type="text/javascript" src="../js/pictureload.js"></script>
 </head>
 <body>
@@ -159,26 +160,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <div class="men">
 		<div class="container">
   <div class="register">
-			   <h1>申请成为艺术家</h1>
+			   
 			   <div class="col-md-6 login-right">
-				<form id="applyform" method="post"  action="/test_ssh/artist/artistApply" onsubmit="return before_apply()">
-				  <div>
-					<span>真实姓名<label>*</label></span>
-					<input type="text" name="realname" id="realname" onfocus="name_blank.style.display='none'"> 
-					<span id="name_blank" style="display:none"><font color="red">真实姓名不能为空</font></span>
-				  </div>
-				  <div>
-					<span>银行卡号<label>*</label></span>
-					<input type="text" name="account" id="account" onfocus="card_blank.style.display='none'"> 
-					<span id="card_blank" style="display:none"><font color="red">银行卡号不能为空</font></span>
-				  </div>
+				<form id="myform" method="post">
 				  <div id="preview" style="border:solid 1px">
 						<span><img id="image" src="" width="30%"
 							height="30%" /></span>
 					</div> <span><input id="img" name="img" type="file"
-						accept="images/*" onchange="previewImage(this,'preview','image')" style="width: 60%"/></span>
-						<span id="photo_blank"><font color="red">请提交身份证照片</font></span>
-				  <input type="submit" value="提交" onClick="applyform.onsubmit()">
+						accept="images/*" onchange="previewImage(this,'preview','image')" /></span>
+								
+				  <input type="submit" value="接受" onClick="">
+				  <input type="button" value="返回" onClick="">
 			    </form>
 			   </div>	
 		</div>
@@ -207,25 +199,3 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 </body>
 </html>
-<script>
-function before_apply(){
-	var realname=document.getElementById("realname");
-	var account=document.getElementById("account");
-	var img=document.getElementById("img");
-	var flag=0;
-	if(realname.value==""){
-		flag=1;
-		document.getElementById("name_blank").style.display="block";
-	}
-	if(realname.value==""){
-		flag=1;
-		document.getElementById("card_blank").style.display="block";
-	}
-	if(img.value==""){
-		flag=1;
-		document.getElementById("photo_blank").text="身份证照片不能为空";
-	}
-	if(flag==1)
-		return false;
-}
-</script>
