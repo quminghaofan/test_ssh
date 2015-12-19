@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>艺术家申请管理</title>
+<title>艺术家申请审核</title>
 <link rel="stylesheet" type="text/css" href="../Css1/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="../Css1/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="../Css1/style.css" />
