@@ -176,7 +176,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input type="text" readonly="readonly" value=""> 
 				  </div>
 				  <%if(true){ %><!-- 判断是否有模板 -->
-				  <div>
+				  <div style="border: solid 1px">
 					<span>模板</span>
 					<img id="image" src="" width="30%"
 							height="30%" />
@@ -199,17 +199,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input type="text"  value=""> 
 				  </div>
 				  <%if(true){ %><!--挨个判断是否存在  -->
-				  <div id="preview">
+				  <div id="preview" style="border: solid 1px">
 				  <span>第一期样品</span>
 						<span><img id="image" src="" width="30%"
 							height="30%" /></span>
 					</div> <span>
-		<div id="preview">
+		<div id="preview" style="border: solid 1px">
 				  <span>第二期样品</span>
 						<span><img id="image" src="" width="30%"
 							height="30%" /></span>
 					</div> 
-						<div id="preview">
+						<div id="preview" style="border: solid 1px">
 				  <span>第三期样品</span>
 						<span><img id="image" src="" width="30%"
 							height="30%" /></span>

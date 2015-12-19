@@ -172,12 +172,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input type="text" name="account" id="account" onfocus="card_blank.style.display='none'"> 
 					<span id="card_blank" style="display:none"><font color="red">银行卡号不能为空</font></span>
 				  </div>
+				  <div>
+					<span>个人介绍</span>
+					<textarea name="intro" id="intro"></textarea>
+                 </div>
+                 <div>
+                 <span>身份证照片</span>
+					<span><input id="img" name="img" type="file"
+						accept="images/*" onchange="previewImage(this,'preview','image')" style="width: 60%"/></span>
+						<span id="photo_blank" style="display: none"><font color="red">身份证照片不能为空</font></span>
 				  <div id="preview" style="border:solid 1px">
 						<span><img id="image" src="" width="30%"
 							height="30%" /></span>
-					</div> <span><input id="img" name="img" type="file"
-						accept="images/*" onchange="previewImage(this,'preview','image')" style="width: 60%"/></span>
-						<span id="photo_blank"><font color="red">请提交身份证照片</font></span>
+					</div> 
+					</div>
 				  <input type="submit" value="提交" onClick="applyform.onsubmit()">
 			    </form>
 			   </div>	
@@ -223,7 +231,7 @@ function before_apply(){
 	}
 	if(img.value==""){
 		flag=1;
-		document.getElementById("photo_blank").text="身份证照片不能为空";
+		document.getElementById("photo_blank").style.display="block";
 	}
 	if(flag==1)
 		return false;
