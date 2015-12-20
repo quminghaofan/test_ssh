@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>用户定制艺术品</title>
+<title>申请成为艺术家</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
@@ -18,47 +18,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Custom Theme files -->
 <link href="../css/style.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="../css/jquery.countdown.css" />
-<link href="../css/style1.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
 <!--webfont-->
 <link
 	href='http://fonts.useso.com/css?family=Raleway:100,200,300,400,500,600,700,800,900'
 	rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,800,400' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Marvel:400,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
-
 <!-- dropdown -->
 <script src="../js/jquery.easydropdown.js"></script>
 <!-- start menu -->
 <link href="../css/megamenu.css" rel="stylesheet" type="text/css"
 	media="all" />
 <script type="text/javascript" src="../js/megamenu.js"></script>
-<link href="../css/table.css" rel='stylesheet' type='text/css' />
 <script>
 	$(document).ready(function() {
 		$(".megamenu").megamenu();
 	});
 </script>
-<script>var __links = document.querySelectorAll('a');function __linkClick(e) { parent.window.postMessage(this.href, '*');} ;for (var i = 0, l = __links.length; i < l; i++) {if ( __links[i].getAttribute('data-t') == '_blank' ) { __links[i].addEventListener('click', __linkClick, false);}}</script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script>$(document).ready(function(c) {
-	$('.sky-close').on('click', function(c){
-		$('.green-button').fadeOut('slow', function(c){
-	  		$('.green-button').remove();
-		});
-	});	  
-});
-</script>
-<script>$(document).ready(function(c) {
-	$('.oran-close').on('click', function(c){
-		$('.orange-button').fadeOut('slow', function(c){
-	  		$('.orange-button').remove();
-		});
-	});	  
-});
-</script>
+<script type="text/javascript" src="../js/pictureload.js"></script>
 </head>
 <body>
 	<div class="header_top">
@@ -70,7 +47,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="cssmenu">
 					<ul>
 						<%
-							if (session.getAttribute("username") == null) {
+							if (session.getAttribute("user") == null) {
 						%>
 						<li><a href="jsp/login.jsp">登录/注册</a></li>
 						<%
@@ -88,6 +65,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"></div>
 			</div>
 		</div>
+	</div>
+	<div class="header_bottom">
+		<div class="container">
+			<div class="header_bottom-box">
+				<div class="header_bottom_left">
+					<div class="logo">
+						<a href="index.html"><img src="../images/logo_ooz.png"
+							alt="首页" /></a>
+					</div>
+
+					<div class="clearfix"></div>
+				</div>
+				<div class="header_bottom_right">
+					
+					<%
+						if (session.getAttribute("username") != null) {
+					%>
+					<ul class="bag">
+						<a href="#"><i class="bag_left"> </i></a>
+						<a href="#"><li class="bag_right"><p>购物篮</p></li></a>
+						<div class="clearfix"></div>
+					</ul>
+					<%
+						}
+					%>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<div class="copyrights">
+		Collect from <a href="">OneoneZero</a>
 	</div>
 	<div class="menu">
 		<div class="container">
@@ -146,36 +155,143 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 
-</br>
-<h1><font color="red">欢迎您定制艺术品</font></h1>
-<div class="contact">
-	<div class="contact-main">
-	<form>
-		<h3>姓名</h3>
-		<input type="text" value="如：张三" class="hola" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请填写您的姓名';}"/>
-		<h3>手机号</h3>
-		<input type="text" value="如：18106987217" class="hola" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请填写您的手机号';}"/>
-		<h3>地址</h3>
-		<input type="text" value="如：**省**市**街道**" class="hola" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请填写您的地址';}"/>
-		<h3>定制品名称</h3>
-		<input type="text" value="如：八骏图" class="hola" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请填写定制品名称';}"/>
-		<h3>定制品类别</h3>
-		<input type="text" value="如：油画" class="hola" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请填写定制品类别';}"/>
-		<h3>第一阶段价格</h3>
-		<input type="text" value="如：200.0元" class="hola" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请填写第一阶段的定制价格';}"/>
-		<h3>备注（选填）</h3>
-		<textarea  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入定制品的相关备注，以便更好地为您服务';}"/>请输入定制品的相关备注，以便更好地为您服务</textarea>
-	</form>
-	</div>
-	<div class="enviar">
-	
-    <div class="contact-enviar">
-		<a href=""><input type="submit" value="提交"></a>
-		</div>
-		<div class="clear"> </div>
-	</div>
-</div>
-	
+ 
+ <div class="men">
+		<div class="container">
+  <div class="register">
+			   <h1>欢迎您定制艺术品</h1>
+			   <div class="col-md-6 login-right">
+				<form id="customizeform" method="post"  action="/test_ssh/artist/artistApply" onsubmit="return before_customize()">
+				  <div>
+					<span>定制品类别<label>*</label></span>
+					<!--<input type="text" name="type" id="type" onfocus="type_blank.style.display='none'">--> 
 
+					<select type="text" name="arttype" id="arttype">
+						<option>----------请选择----------</option>
+						<option value="油画">油画</option>
+						<option value="陶瓷">陶瓷</option>
+						<option value="书法">书法</option>
+						<option value="雕刻">雕刻</option>
+						<option value="玻璃制品">玻璃制品</option>
+						<option value="绘画">绘画</option>
+						<option value="花艺">花艺</option>
+						<option value="吹瓶">吹瓶</option>
+					</select>
+					<span id="type_blank" style="display:none"><font color="red">请选择您要定制的艺术品类别</font></span>
+				  </div>				  
+				  <div>
+					<span>定制品名称<label>*</label></span>
+					<input type="text" name="artname" id="artname" onfocus="name_blank.style.display='none'"> 
+					<span id="name_blank" style="display:none"><font color="red">定制品名称不能为空</font></span>
+				  </div>
+				  <div>
+					<span>手机号<label>*</label></span>
+					<input type="text" name="telephone" id="telephone" onfocus="telephone_blank.style.display='none'"> 
+					<span id="telephone_blank" style="display:none"><font color="red">手机号不能为空</font></span>
+				  </div>
+				  <div>
+				  <div>
+					<span>联系地址<label>*</label></span>
+					<input type="text" name="address" id="address" onfocus="address_blank.style.display='none'"> 
+					<span id="address_blank" style="display:none"><font color="red">不能为空</font></span>
+				  </div>
+				  			  
+				  <div>
+					<span>银行卡号<label>*</label></span>
+					<input type="text" name="account" id="account" onfocus="card_blank.style.display='none'"> 
+					<span id="card_blank" style="display:none"><font color="red">银行卡号不能为空</font></span>
+				  </div>
+				  <div>
+					<span>开户行<label>*</label></span>
+					<input type="text" name="bank" id="bank" onfocus="bank_blank.style.display='none'"> 
+					<span id="bank_blank" style="display:none"><font color="red">开户行不能为空</font></span>
+				  </div>				  
+				  <div>
+					<span>备注</span>
+					<textarea name="intro" id="intro"></textarea>
+                 </div>
+                 <div>
+                 <span>样本图片</span>
+					<span><input id="img" name="img" type="file"
+						accept="images/*" onchange="previewImage(this,'preview','image')" style="width: 60%"/></span>
+						<!--<span id="photo_blank" style="display: none"><font color="red">身份证照片不能为空</font></span>-->
+				  <div id="preview" style="border:solid 1px">
+						<span><img id="image" src="" width="30%"
+							height="30%" /></span>
+					</div> 
+				</div>
+				<a href="/test_ssh/artist/index"><input type="submit" value="返回"></a>
+				  <input type="submit" value="提交" align="center-right" onClick="customizeform.onsubmit()">
+				  
+			    </form>
+			   </div>	
+		</div>
+
+			</div>
+</div>
+
+
+			<div class="footer">
+				<div class="container">
+					<img src="../images/pay.png" class="img-responsive" alt="" />
+					<ul class="footer_nav">
+						<li><a href="#">首页</a></li>
+						<li><a href="#">定制</a></li>
+						<li><a href="#">商城</a></li>
+						<li><a href="#">拍卖</a></li>
+						<li><a href="#">关于我们</a></li>
+						<li><a href="">联系我们</a></li>
+					</ul>
+					<p class="copy">
+						Copyright &copy; 2015.厦门大学软件学院OneoneZero All rights reserved. More
+						Information <a href="" target="_blank" title="OneoneZero">OneoneZero</a>
+						- Made by <a href="" title="OneoneZero" target="_blank">OneoneZero</a>
+					</p>
+				</div>
+			</div>
 </body>
 </html>
+<script>
+function before_customize(){
+	var arttype=document.getElementById("arttype");
+	var artname=document.getElementById("artname");
+	var telephone=document.getElementById("telephone");
+	var address=document.getElementById("address");
+	var bank=document.getElementById("bank");
+	var account=document.getElementById("account");
+	var img=document.getElementById("img");
+	var flag=0;
+	if((arttype.value=="") || (arttype.value=="----------请选择----------")){
+		flag=1;
+		document.getElementById("type_blank").style.display="block";
+	}
+	if(artname.value==""){
+		flag=1;
+		document.getElementById("name_blank").style.display="block";
+	}
+	if(telephone.value==""){
+		flag=1;
+		document.getElementById("telephone_blank").style.display="block";
+	}
+	else if(!(/^1\d{10}$/.test(telephone.value)))
+	{ 
+		document.getElementById("telephone_blank").style.display="block";
+		$("#telephone_blank").text("您输入的手机号不正确");
+		flag=1; 
+	}
+	if(address.value==""){
+		flag=1;
+		document.getElementById("address_blank").style.display="block";
+	}
+	if(bank.value==""){
+		flag=1;
+		document.getElementById("bank_blank").style.display="block";
+	}
+	if(account.value==""){
+		flag=1;
+		document.getElementById("card_blank").style.display="block";
+	}
+	if(flag==1)
+		return false;
+}
+</script>
