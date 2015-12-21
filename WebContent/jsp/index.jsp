@@ -84,12 +84,12 @@ $(document).ready(function() {
 							href="/test_ssh/init/goToLogin?backUrl='/test_ssh/init/home'">登录/注册</a></li>
 						<%
 							} else {
-								if ((user.getRole()).getName() != "艺术家"
-										&& (user.getRole()).getName() != "预备艺术家") {//角色判断
+								if (!(user.getRole()).getName() .equals("艺术家") 
+										&&!(user.getRole()).getName().equals("预备艺术家")) {//角色判断
 						%>
 						<li><a href="/test_ssh/jsp/artist_apply.jsp">我的店铺</a></li>
 						<%
-							} else if ((user.getRole()).getName() != "预备艺术家") {
+							} else if (!(user.getRole()).getName().equals("预备艺术家")) {
 						%>
 						<li>成为艺术家的申请正在审核...</li>
 						<%
