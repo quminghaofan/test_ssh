@@ -54,8 +54,8 @@
             <td><input type="text"
 								id="username" name="username" 
 								 onblur="judgeUserName()">
-							<span style="display: none" id="username_blank"> <font
-								color="red"></font></span></td>  <!--TODO-->
+							<span  id="username_blank" style="display:none"> <font
+								color="red">用户名已存在</font></span></td>  <!--TODO-->
             
         </tr>
         <tr>
