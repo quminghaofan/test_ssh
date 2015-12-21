@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>艺术家商店</title>
+<title>申请成为艺术家</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
@@ -18,7 +18,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Custom Theme files -->
 <link href="../css/style.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="../css/jquery.countdown.css" />
-
 <!-- Custom Theme files -->
 <!--webfont-->
 <link
@@ -31,13 +30,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="../css/megamenu.css" rel="stylesheet" type="text/css"
 	media="all" />
 <script type="text/javascript" src="../js/megamenu.js"></script>
-<link href="../css/table.css" rel='stylesheet' type='text/css' />
 <script>
 	$(document).ready(function() {
 		$(".megamenu").megamenu();
 	});
 </script>
-
+<script type="text/javascript" src="../js/pictureload.js"></script>
 </head>
 <body>
 	<div class="header_top">
@@ -49,7 +47,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="cssmenu">
 					<ul>
 						<%
-							if (session.getAttribute("username") == null) {
+							if (session.getAttribute("user") == null) {
 						%>
 						<li><a href="jsp/login.jsp">登录/注册</a></li>
 						<%
@@ -80,11 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"></div>
 				</div>
 				<div class="header_bottom_right">
-					<div class="search">
-						<input type="text" value="艺术品名称" onFocus="this.value = '';"
-							onBlur="if (this.value == '') {this.value = '艺术品名称';}"> <input
-							type="submit" value="">
-					</div>
+					
 					<%
 						if (session.getAttribute("username") != null) {
 					%>
@@ -164,50 +158,78 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  
  <div class="men">
 		<div class="container">
-		
-  <div align="center">
-  <a class="acount-btn" href="">我的艺术品</a>
-				   <a class="acount-btn" href="" style="margin-top:2em">我的出售记录</a>
-				   <a class="acount-btn" href="" style="margin-top:2em">我的定制记录</a>
-		<div style="background-color: white; width: 100%">
-			<div style="padding: 5%">
-				<div class="menuhead1">
-				<h3>
-						我的艺术品
-					</h3>
-				</div>
-				<div style="">
-					<table class="table1" cellspacing="0">
-						<tr>
-						<th scope="col">图片</th>
-							<th scope="col">艺术品名</th>
-							<th scope="col">类别</th>
-							<th scope="col">种类</th>
-							<th scope="col">价格</th>
-							<th scope="col">操作</th>
-						</tr>  
-						<c:forEach items="${commodityArtworkList}" var="item">
-							<tr>
-								<td scope="row" class="spec">${item.name}</th>
+  <div class="register">
+			   <h1>欢迎您定制艺术品</h1>
+			   <div class="col-md-6 login-right">
+				<form id="customizeform" method="post"  action="/test_ssh/artist/artistApply" onsubmit="return before_customize()">
+				  <div>
+					<span>定制品类别<label>*</label></span>
+					<!--<input type="text" name="type" id="type" onfocus="type_blank.style.display='none'">--> 
 
-								<td>${item.type}</td>
-								<td>${item.price}</td>
-								<td><a href="">编辑</a>
-								<a href="">删除</a></td>
-							</tr>
-							</c:forEach>
-					</table>
-					<a href="/test_ssh/jsp/artwork_edit">添加</a>
+					<select type="text" name="arttype" id="arttype">
+						<option>----------请选择----------</option>
+						<option value="油画">油画</option>
+						<option value="陶瓷">陶瓷</option>
+						<option value="书法">书法</option>
+						<option value="雕刻">雕刻</option>
+						<option value="玻璃制品">玻璃制品</option>
+						<option value="绘画">绘画</option>
+						<option value="花艺">花艺</option>
+						<option value="吹瓶">吹瓶</option>
+					</select>
+					<span id="type_blank" style="display:none"><font color="red">请选择您要定制的艺术品类别</font></span>
+				  </div>				  
+				  <div>
+					<span>定制品名称<label>*</label></span>
+					<input type="text" name="artname" id="artname" onfocus="name_blank.style.display='none'"> 
+					<span id="name_blank" style="display:none"><font color="red">定制品名称不能为空</font></span>
+				  </div>
+				  <div>
+					<span>手机号<label>*</label></span>
+					<input type="text" name="telephone" id="telephone" onfocus="telephone_blank.style.display='none'"> 
+					<span id="telephone_blank" style="display:none"><font color="red">手机号不能为空</font></span>
+				  </div>
+				  <div>
+				  <div>
+					<span>联系地址<label>*</label></span>
+					<input type="text" name="address" id="address" onfocus="address_blank.style.display='none'"> 
+					<span id="address_blank" style="display:none"><font color="red">不能为空</font></span>
+				  </div>
+				  			  
+				  <div>
+					<span>银行卡号<label>*</label></span>
+					<input type="text" name="account" id="account" onfocus="card_blank.style.display='none'"> 
+					<span id="card_blank" style="display:none"><font color="red">银行卡号不能为空</font></span>
+				  </div>
+				  <div>
+					<span>开户行<label>*</label></span>
+					<input type="text" name="bank" id="bank" onfocus="bank_blank.style.display='none'"> 
+					<span id="bank_blank" style="display:none"><font color="red">开户行不能为空</font></span>
+				  </div>				  
+				  <div>
+					<span>备注</span>
+					<textarea name="intro" id="intro"></textarea>
+                 </div>
+                 <div>
+                 <span>样本图片</span>
+					<span><input id="img" name="img" type="file"
+						accept="images/*" onchange="previewImage(this,'preview','image')" style="width: 60%"/></span>
+						<!--<span id="photo_blank" style="display: none"><font color="red">身份证照片不能为空</font></span>-->
+				  <div id="preview" style="border:solid 1px">
+						<span><img id="image" src="" width="30%"
+							height="30%" /></span>
+					</div> 
 				</div>
-			</div>
+				<a href="/test_ssh/artist/index"><input type="submit" value="返回"></a>
+				  <input type="submit" value="提交" align="center-right" onClick="customizeform.onsubmit()">
+				  
+			    </form>
+			   </div>	
 		</div>
-	</div>
 
 			</div>
 </div>
-<div class="pagination" id="page">
-  
-</div>
+
 
 			<div class="footer">
 				<div class="container">
@@ -227,8 +249,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</p>
 				</div>
 			</div>
-			
-			<input hidden value="${current_page}" id="current">
-<input hidden value="${max_page}" id="max">
 </body>
 </html>
+<script>
+function before_customize(){
+	var arttype=document.getElementById("arttype");
+	var artname=document.getElementById("artname");
+	var telephone=document.getElementById("telephone");
+	var address=document.getElementById("address");
+	var bank=document.getElementById("bank");
+	var account=document.getElementById("account");
+	var img=document.getElementById("img");
+	var flag=0;
+	if((arttype.value=="") || (arttype.value=="----------请选择----------")){
+		flag=1;
+		document.getElementById("type_blank").style.display="block";
+	}
+	if(artname.value==""){
+		flag=1;
+		document.getElementById("name_blank").style.display="block";
+	}
+	if(telephone.value==""){
+		flag=1;
+		document.getElementById("telephone_blank").style.display="block";
+	}
+	else if(!(/^1\d{10}$/.test(telephone.value)))
+	{ 
+		document.getElementById("telephone_blank").style.display="block";
+		$("#telephone_blank").text("您输入的手机号不正确");
+		flag=1; 
+	}
+	if(address.value==""){
+		flag=1;
+		document.getElementById("address_blank").style.display="block";
+	}
+	if(bank.value==""){
+		flag=1;
+		document.getElementById("bank_blank").style.display="block";
+	}
+	if(account.value==""){
+		flag=1;
+		document.getElementById("card_blank").style.display="block";
+	}
+	if(flag==1)
+		return false;
+}
+</script>

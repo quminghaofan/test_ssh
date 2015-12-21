@@ -5,7 +5,7 @@
 if (document.location.search.match(/type=embed/gi)) {
   window.parent.postMessage('resize', "*");
 }
-function add2Cart(index,self) {
+function add2Cart(index,self,event) {
 	$.ajax({
 		type : "POST",
 		data : {
@@ -18,12 +18,12 @@ function add2Cart(index,self) {
 			var offset = $('#end').offset(), flyer = $('<img width="5%" class="u-flyer" src="../images/mengna.jpg"/>');
 			flyer.fly({
 			    start: {
-			        left: self.offsetLeft,
-			        top: self.offsetTop
+			        left: event.clientX,
+			        top: event.clientY
 			    },
 			    end: {
 			        left: offset.left,
-			        top: offset.top,
+			        top: offset.top-$(window).scrollTop(),
 			        width: 20,
 			        height: 20
 			    }
@@ -51,9 +51,11 @@ $(function() {
 	$(window).scroll(function() {
 		if ($(window).scrollTop() >= 100) {
 			$('#updown').fadeIn(300);
+			
 		} else {
 			$('#updown').fadeOut(300);
 		}
+		$('#end').fadeIn(100);
 	});
 	$('#updown .up').click(function() {
 		$('html,body').animate({

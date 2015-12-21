@@ -35,6 +35,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		$(".megamenu").megamenu();
 	});
 </script>
+<script type="text/javascript" src="../js/pictureload.js"></script>
 </head>
 <body>
 	<div class="header_top">
@@ -158,7 +159,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <div class="men">
 		<div class="container">
   <div class="register">
-			   
+			   <h1>申请成为艺术家</h1>
 			   <div class="col-md-6 login-right">
 				<form id="applyform" method="post"  action="/test_ssh/artist/artistApply" onsubmit="return before_apply()">
 				  <div>
@@ -171,6 +172,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input type="text" name="account" id="account" onfocus="card_blank.style.display='none'"> 
 					<span id="card_blank" style="display:none"><font color="red">银行卡号不能为空</font></span>
 				  </div>
+				  <div>
+					<span>个人介绍</span>
+					<textarea name="intro" id="intro"></textarea>
+                 </div>
+                 <div>
+                 <span>身份证照片</span>
+					<span><input id="img" name="img" type="file"
+						accept="images/*" onchange="previewImage(this,'preview','image')" style="width: 60%"/></span>
+						<span id="photo_blank" style="display: none"><font color="red">身份证照片不能为空</font></span>
+				  <div id="preview" style="border:solid 1px">
+						<span><img id="image" src="" width="30%"
+							height="30%" /></span>
+					</div> 
+					</div>
 				  <input type="submit" value="提交" onClick="applyform.onsubmit()">
 			    </form>
 			   </div>	
@@ -204,6 +219,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 function before_apply(){
 	var realname=document.getElementById("realname");
 	var account=document.getElementById("account");
+	var img=document.getElementById("img");
 	var flag=0;
 	if(realname.value==""){
 		flag=1;
@@ -212,6 +228,10 @@ function before_apply(){
 	if(realname.value==""){
 		flag=1;
 		document.getElementById("card_blank").style.display="block";
+	}
+	if(img.value==""){
+		flag=1;
+		document.getElementById("photo_blank").style.display="block";
 	}
 	if(flag==1)
 		return false;

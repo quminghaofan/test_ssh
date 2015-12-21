@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>艺术家商店</title>
+<title>定制订单详情</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
@@ -18,7 +18,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Custom Theme files -->
 <link href="../css/style.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="../css/jquery.countdown.css" />
-
 <!-- Custom Theme files -->
 <!--webfont-->
 <link
@@ -31,13 +30,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="../css/megamenu.css" rel="stylesheet" type="text/css"
 	media="all" />
 <script type="text/javascript" src="../js/megamenu.js"></script>
-<link href="../css/table.css" rel='stylesheet' type='text/css' />
 <script>
 	$(document).ready(function() {
 		$(".megamenu").megamenu();
 	});
 </script>
-
+<script type="text/javascript" src="../js/pictureload.js"></script>
+<script type="text/javascript" src="../js/pictureload.js"></script>
 </head>
 <body>
 	<div class="header_top">
@@ -49,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="cssmenu">
 					<ul>
 						<%
-							if (session.getAttribute("username") == null) {
+							if (session.getAttribute("user") == null) {
 						%>
 						<li><a href="jsp/login.jsp">登录/注册</a></li>
 						<%
@@ -80,11 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"></div>
 				</div>
 				<div class="header_bottom_right">
-					<div class="search">
-						<input type="text" value="艺术品名称" onFocus="this.value = '';"
-							onBlur="if (this.value == '') {this.value = '艺术品名称';}"> <input
-							type="submit" value="">
-					</div>
+					
 					<%
 						if (session.getAttribute("username") != null) {
 					%>
@@ -164,50 +159,78 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  
  <div class="men">
 		<div class="container">
-		
-  <div align="center">
-  <a class="acount-btn" href="">我的艺术品</a>
-				   <a class="acount-btn" href="" style="margin-top:2em">我的出售记录</a>
-				   <a class="acount-btn" href="" style="margin-top:2em">我的定制记录</a>
-		<div style="background-color: white; width: 100%">
-			<div style="padding: 5%">
-				<div class="menuhead1">
-				<h3>
-						我的艺术品
-					</h3>
-				</div>
-				<div style="">
-					<table class="table1" cellspacing="0">
-						<tr>
-						<th scope="col">图片</th>
-							<th scope="col">艺术品名</th>
-							<th scope="col">类别</th>
-							<th scope="col">种类</th>
-							<th scope="col">价格</th>
-							<th scope="col">操作</th>
-						</tr>  
-						<c:forEach items="${commodityArtworkList}" var="item">
-							<tr>
-								<td scope="row" class="spec">${item.name}</th>
-
-								<td>${item.type}</td>
-								<td>${item.price}</td>
-								<td><a href="">编辑</a>
-								<a href="">删除</a></td>
-							</tr>
-							</c:forEach>
-					</table>
-					<a href="/test_ssh/jsp/artwork_edit">添加</a>
-				</div>
-			</div>
+  <div class="register">
+			   
+			   <div class="col-md-6 login-right">
+				<form id="myform" method="post">
+				  <div>
+					<span>艺术品名</span>
+					<input type="text" readonly="readonly" value=""> 
+				  </div>
+				  <div>
+					<span>类别</span>
+					<input type="text" readonly="readonly" value=""> 
+				  </div>
+				  <div>
+					<span>买家</span>
+					<input type="text" readonly="readonly" value=""> 
+				  </div>
+				  <%if(true){ %><!-- 判断是否有模板 -->
+				  <div style="border: solid 1px">
+					<span>模板</span>
+					<img id="image" src="" width="30%"
+							height="30%" />
+				  </div>
+				  <%} %>
+				  <div>
+					<span>需求</span>
+					<input type="text" readonly="readonly" value=""> 
+				  </div>
+				   <div>
+					<span>第一期价格</span>
+					<input type="text"  value=""> 
+				  </div>
+				   <div>
+					<span>第二期价格</span>
+					<input type="text"  value=""> 
+				  </div>
+				   <div>
+					<span>第三期价格</span>
+					<input type="text"  value=""> 
+				  </div>
+				  <%if(true){ %><!--挨个判断是否存在  -->
+				  <div id="preview" style="border: solid 1px">
+				  <span>第一期样品</span>
+						<span><img id="image" src="" width="30%"
+							height="30%" /></span>
+					</div> <span>
+		<div id="preview" style="border: solid 1px">
+				  <span>第二期样品</span>
+						<span><img id="image" src="" width="30%"
+							height="30%" /></span>
+					</div> 
+						<div id="preview" style="border: solid 1px">
+				  <span>第三期样品</span>
+						<span><img id="image" src="" width="30%"
+							height="30%" /></span>
+					</div> 
+					<%} %>
+						<%if(true){ %><!-- 判断是否已经接受或拒绝 -->
+				  <input type="submit" value="接受" onClick="">
+				  <input type="button" value="拒绝" onClick="">
+				  <%}else if(true){ %><!-- 判断是否已经发货 -->
+				  <input type="button" value="发货" onClick="">
+				  <%} %>
+				  <input type="button" value="返回列表" onClick="">
+								
+				  
+			    </form>
+			   </div>	
 		</div>
-	</div>
 
 			</div>
 </div>
-<div class="pagination" id="page">
-  
-</div>
+
 
 			<div class="footer">
 				<div class="container">
@@ -227,8 +250,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</p>
 				</div>
 			</div>
-			
-			<input hidden value="${current_page}" id="current">
-<input hidden value="${max_page}" id="max">
 </body>
 </html>

@@ -5,22 +5,22 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>商品单页</title>
+<title>商城</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
 	content="Gifty Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 </script>
 <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!-- Custom Theme files -->
 <link href="../css/style.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="../css/jquery.countdown.css" />
-<link rel="stylesheet" href="../css/etalage.css">
-
 <!-- Custom Theme files -->
 <!--webfont-->
 <link
@@ -32,6 +32,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start menu -->
 <link href="../css/megamenu.css" rel="stylesheet" type="text/css"
 	media="all" />
+	
 <script type="text/javascript" src="../js/megamenu.js"></script>
 <script src="../js/responsiveslides.min.js"></script>
 <script type="text/javascript" src="../js/addcart.js"></script>
@@ -43,22 +44,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	$(document).ready(function() {
 		$(".megamenu").megamenu();
 	});
+	
 	function sort(){
 		alert("123");
 		window.loction="/test_ssh/mall/enterMall";}
-	
 </script>
+
 </head>
 <body>
-<div id="updown">
+	<div id="updown">
 	<%if (session.getAttribute("user") != null) {
 					%>
 					<a href="/test_ssh/cart/showCart"><span id="end" class="cart"></span></a>
 					<%
 						}
 					%>
-	
-	<span class="up"></span><span class="down"></span>
+<span class="up"></span><span class="down"></span>
 	</div>
 	<div class="header_top">
 		<div class="container">
@@ -71,14 +72,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<%
 							if (session.getAttribute("user") == null) {
 						%>
-						<li><a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'">登录/注册</a></li>
+						<li><a
+							href="/test_ssh/jsp/login?backUrl=/test_ssh/mall/enterMall">登录/注册</a></li>
 						<%
 							} else {
 						%>
 						<li><a href="">申请成为艺术家</a></li>
-						<li><a href=""> <%=((User)session.getAttribute("user")).getName()%></a></li>
+						<li><a href=""> <%=((User) session.getAttribute("user")).getName()%></a></li>
 						<li><a href="">我的订单</a></li>
-						<li><a href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
+						<li><a href="">登出</a></li>
 						<%
 							}
 						%>
@@ -93,13 +95,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header_bottom-box">
 				<div class="header_bottom_left">
 					<div class="logo">
-						<a href="/test_ssh/init/home"><img src="../images/logo_ooz.png"
-							alt="首页" /></a>
+						<a href="/test_ssh/init/home"><img
+							src="../images/logo_ooz.png" alt="首页" /></a>
 					</div>
 
 					<div class="clearfix"></div>
 				</div>
 				<div class="header_bottom_right">
+					<div class="search">
+						<form action="/test_ssh/mall/enterMall" method="post">
+							<input id="itemname" name="itemname" type="text" value="${itemname}"
+								onFocus="this.value = '';"
+								onBlur="if (this.value == '') {this.value = '商品名称';}"> <input
+								type="submit" value="">
+						</form>
+					</div>
 					<%
 						if (session.getAttribute("user") != null) {
 					%>
@@ -124,7 +134,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="menu_box">
 				<ul class="megamenu skyblue">
 					<li><a class="color2" href="/test_ssh/init/home">首页</a></li>
-					<li><a class="color4" href="">定制</a>
+					<li class="active grid"><a class="color4" href="">定制</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
@@ -139,7 +149,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</div>
 						</div></li>
-					<li class="active grid"><a class="color10" href="/test_ssh/mall/enterMall">商城</a>
+					<li><a class="color10"
+						href="/test_ssh/mall/enterMall">商城</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
@@ -175,108 +186,121 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-	<!-- 	<div class="men">
-		<div class="container">
-<div class="a-top">
-				 <div class="left-grid">
-					<img src="../images/n2.jpg" class="img-responsive" alt=""/>
-				 </div>
-				 <div class="right-grid">
-				 <h3>商品名</h3>
-					<h4>价格</h4>
-					<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-				 <div style="margin-top:3em">
-				   <a class="acount-btn" href="">加入购物篮</a>&nbsp;&nbsp;
-				   <a class="acount-btn" href="">立即购买</a>
-				 </div>
-				 </div>
-				 <div class="clearfix"></div>
-			 </div>
-			
-			</div>
-			</div>
- -->
-
-	<!--  <div class="men">
+	<div class="men">
 		<div class="container">
 
-			<div class="a-top">
-				<div class="col-md-4 ">
-					<img class="img-responsive" src="${item.picUrl}" />
-				</div>
-			</div>
-			<div class="col-md-8">
-				<div class="a-top">
-					<div class="right-grid">
-						<h3>${item.name}</h3>
-						<h4 style="margin-top: 2em">${item.type}</h4>
-						<h4 style="margin-top: 2em">${item.price}</h4>
-						<p style="margin-top: 2em">${item.artworkDescription}</p>
-						<div style="margin-top: 3em">
-							<%
-										if (session.getAttribute("user") != null) {
-							%>
-							<a class="acount-btn" <%-- href="/test_ssh/cart/add2Cart?itemId=${item.id}&backUrl=/test_ssh/init/home" --%>
-											class="link" id="add2Cart">加入购物篮</a>
-							<a class="acount-btn" href="/test_ssh/mall/settleOne?itemId=${item.id}" style="margin-top: 2em">立即购买</a>
-							<%
-										} else {
-							%>
-							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'">加入购物篮</a>
-							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'" style="margin-top: 2em">立即购买</a>
-							<%
-										}
-							%>
-						</div>
-					</div>
+			<div class="col-md-9">
+				<div class="mens-toolbar">
+					
 					<div class="clearfix"></div>
 				</div>
-				<div class="clearfix"></div>
+				<div class="span_2">
+					<c:forEach items="${itemlist}" var="item">
+						<div class="col_1_of_single1 span_1_of_single1">
+							<a href=""> <img src="${item.picUrl}"
+								class="img-responsive" alt="" href="/test_ssh/mall/seeMore?itemId=${item.id}" />
+								<h3>${item.name}</h3>
+								<h4>${item.}</h4><!-- 类别 -->
+								<h4>${item.}</h4><!-- 艺术家 -->
+							</a>
+							<ul class="list2">
+								<%
+									if (session.getAttribute("user") != null) {
+								%>
+							<li class="list2_left"><span class="m_1">
+									<a class="link"  onclick="">申请定制</a> 
+								<li class="list2_right"><span class="m_2"><a
+										href="" class="link1">查看艺术家</a></span></li>
+								<%
+									} else {
+								%>
+								<li class="list2_left"><span class="m_1"><a href="/test_ssh/init/goToLogin?backUrl=${backUrl}"
+										class="link">申请定制</a></span></li>
+								<li class="list2_right"><span class="m_2"><a
+										href="/test_ssh/init/goToLogin?backUrl=${backUrl}" class="link1">详情</a></span></li>
+								<%
+									}
+								%>
+							</ul>
+						</div>
+					</c:forEach>
+				</div>
 			</div>
-
 		</div>
 	</div>
--->
-<div style="float:left;width:5%">
-	<a href=""><img src="../images/back.png" alt="返回" class="img-responsive"/>
-	</a>
-					</div>
-<div class="men">
-	<div class="container">
-	  <div class="single_top">
-	       <div class="col-md-9 single_right">
-	   	       <div class="grid images_3_of_2">
-									<img src="${item.picUrl}" class="img-responsive" />		
-						 <div class="clearfix"></div>		
-				  </div> 
-				  <div class="desc1 span_3_of_2">
-				    <h1>${item.name}</h1>
-				    <p class="m_5">${item.type} </p>
-				    <p class="m_5">${item.price} </p>
-				    <div class="btn_form">
-						<%
-										if (session.getAttribute("user") != null) {
-							%>
-							<a class="acount-btn" class="link" id="add2Cart" onclick="add2Cart(${item.id},this)">加入购物篮</a>
-							<a class="acount-btn" href="/test_ssh/mall/settleOne?itemId=${item.id}" style="margin-top: 2em">立即购买</a>
-							<%
-										} else {
-							%>
-							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'">加入购物篮</a>
-							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'" style="margin-top: 2em">立即购买</a>
-							<%
-										}
-							%>
-					 <p class="m_text2">${item.artworkDescription}</p>
-				  </div>
-				  <div class="clearfix"></div>	
-       </div>
- 
-     </div>
-      </div>
-</div>
-</div>
+	<div class="pagging">
 
+		<div class="right">
+
+			<c:if test="${currentPage == 1}">
+
+				<span class="disabled">&lt;&lt; 前一页</span>
+
+			</c:if>
+
+			<c:if test="${currentPage != 1}">
+
+				<a href="/test_ssh/mall/enterMall?page=${currentPage-1}">&lt;&lt;
+					前一页</a>
+
+			</c:if>
+
+			<c:if test="${currentPage == 1}">
+
+				<span class="current">1/${totalpage}</span>
+
+			</c:if>
+
+			<c:if test="${currentPage != 1}">
+
+				<a href="/test_ssh/mall/enterMall?page=1">1/${totalpage}</a>
+
+			</c:if>
+
+			<%
+				int pageTimes = (Integer) session.getAttribute("pageTimes");
+
+				for (int i = 1; i < pageTimes; i++)
+
+				{
+
+					request.setAttribute("page", i + 1);
+			%>
+
+			<c:if test="${currentPage == page}">
+
+				<span class="current"><%=i + 1%>/${totalpage}</span>
+
+			</c:if>
+
+			<c:if test="${currentPage != page}">
+
+				<a href="/test_ssh/mall/enterMall?page=<%=i + 1%>"><%=i + 1%>/${totalpage}</a>
+
+			</c:if>
+
+			<%
+				}
+			%>
+
+
+
+			<c:if test="${currentPage == pageTimes}">
+
+				<span class="disabled">后一页 &gt;&gt;</span>
+
+			</c:if>
+
+			<c:if test="${currentPage != pageTimes}">
+
+				<a href="/test_ssh/mall/enterMall?page=${currentPage+1}">后一页
+					&gt;&gt;</a>
+
+			</c:if>
+
+		</div>
+
+	</div>
 
 	<div class="footer">
 		<div class="container">
@@ -296,5 +320,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</p>
 		</div>
 	</div>
+
 </body>
 </html>

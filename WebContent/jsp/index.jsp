@@ -277,7 +277,7 @@ $(document).ready(function() {
 										if (session.getAttribute("user") != null) {
 									%>
 									<li class="list2_left"><span class="m_1"> <a
-											class="link" id="add2Cart" onclick="add2Cart(${item.id})">加入购物篮</a>
+											class="link" id="add2Cart" onclick="add2Cart(${item.id},this,event)">加入购物篮</a>
 									</span></li>
 									<%
 										} else {
@@ -308,51 +308,22 @@ $(document).ready(function() {
 				<li class="promote_head"><h3>定制</h3></li>
 			</ul>
 			<ul id="flexiselDemo3">
-				<li><img src="images/n1.jpg" class="img-responsive" />
+			<c:forEach items="customizedlist" var="cus">
+				<li><img src="../images/n1.jpg" class="img-responsive" />
 					<div class="grid-flex">
-						<h4>Contrary to popular</h4>
-						<p>589,90 $</p>
+						<h4>名称</h4>
+						<p>类别</p>
+						<p>艺术家</p>
 						<div class="m_3">
-							<a href="#" class="link2">Add to Cart</a>
+							<a href="#" class="link2">详情</a>
 						</div>
 						<div class="ticket"></div>
 					</div></li>
-				<li><img src="images/n2.jpg" class="img-responsive" />
-					<div class="grid-flex">
-						<h4>Contrary to popular</h4>
-						<p>589,90 $</p>
-						<div class="m_3">
-							<a href="#" class="link2">Add to Cart</a>
-						</div>
-						<div class="ticket"></div>
-					</div></li>
-				<li><img src="images/n3.jpg" class="img-responsive" />
-					<div class="grid-flex">
-						<h4>Contrary to popular</h4>
-						<p>589,90 $</p>
-						<div class="m_3">
-							<a href="#" class="link2">Add to Cart</a>
-						</div>
-						<div class="ticket"></div>
-					</div></li>
-				<li><img src="images/n4.jpg" class="img-responsive" />
-					<div class="grid-flex">
-						<h4>Contrary to popular</h4>
-						<p>589,90 $</p>
-						<div class="m_3">
-							<a href="#" class="link2">Add to Cart</a>
-						</div>
-						<div class="ticket"></div>
-					</div></li>
-				<li><img src="images/n5.jpg" class="img-responsive" />
-					<div class="grid-flex">
-						<h4>Contrary to popular</h4>
-						<p>589,90 $</p>
-						<div class="m_3">
-							<a href="#" class="link2">Add to Cart</a>
-						</div>
-						<div class="ticket"></div>
-					</div></li>
+					
+				</c:forEach>
+				
+				
+				
 			</ul>
 			<script type="text/javascript">
 				$(window).load(function() {
@@ -381,7 +352,7 @@ $(document).ready(function() {
 
 				});
 			</script>
-			<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+			<script type="text/javascript" src="../js/jquery.flexisel.js"></script>
 		</div>
 	</div>
 	<div class="container">

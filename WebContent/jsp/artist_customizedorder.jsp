@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>艺术家商店</title>
+<title>艺术家定制记录</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
@@ -164,7 +164,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  
  <div class="men">
 		<div class="container">
-		
   <div align="center">
   <a class="acount-btn" href="">我的艺术品</a>
 				   <a class="acount-btn" href="" style="margin-top:2em">我的出售记录</a>
@@ -172,32 +171,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div style="background-color: white; width: 100%">
 			<div style="padding: 5%">
 				<div class="menuhead1">
-				<h3>
-						我的艺术品
+				
+					<h3>
+						我的定制记录
 					</h3>
 				</div>
 				<div style="">
 					<table class="table1" cellspacing="0">
 						<tr>
-						<th scope="col">图片</th>
 							<th scope="col">艺术品名</th>
-							<th scope="col">类别</th>
-							<th scope="col">种类</th>
-							<th scope="col">价格</th>
+							<th scope="col">买家</th>
+							<th scope="col">地址</th>
+							<th scope="col">电话</th>
 							<th scope="col">操作</th>
 						</tr>  
-						<c:forEach items="${commodityArtworkList}" var="item">
+						<c:forEach items="${orderList}" var="order">
 							<tr>
-								<td scope="row" class="spec">${item.name}</th>
-
-								<td>${item.type}</td>
-								<td>${item.price}</td>
-								<td><a href="">编辑</a>
-								<a href="">删除</a></td>
+								<td scope="row" class="spec">${order.}</td>
+								<td>${order.}</td>
+								<td>${order.}</td>
+								<td>${order}</td>
+								<td>
+								 <%if(true){ %><!-- 判断是否已经接受订单 -->
+								<%if(true){ %><!-- 判断用户是否已经支付 且当前期数在3期内-->
+								<a href="">上传小样</a>
+								<%} %>
+								<%if(true) {%><!-- 判断是否已经发货 -->
+								<a href="">发货</a>
+								<%} else{%>
+								<a>已发货</a>
+								<%} %>
+								}
+								<%}else if(true){ %><!-- 判断是否已经拒绝订单或订单已经中止 -->
+								<%}else{ %>
+								<a>接受</a><a>拒绝</a>
+								<%} %>
+								<a href="">详情</a>
+								</td>
 							</tr>
 							</c:forEach>
 					</table>
-					<a href="/test_ssh/jsp/artwork_edit">添加</a>
+					
 				</div>
 			</div>
 		</div>

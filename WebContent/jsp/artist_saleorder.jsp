@@ -165,12 +165,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  
  <div class="men">
 		<div class="container">
+		
   <div align="center">
+  <a class="acount-btn" href="">我的艺术品</a>
+				   <a class="acount-btn" href="" style="margin-top:2em">我的出售记录</a>
+				   <a class="acount-btn" href="" style="margin-top:2em">我的定制记录</a>
 		<div style="background-color: white; width: 100%">
 			<div style="padding: 5%">
 				<div class="menuhead1">
-				<a class="acount-btn" href="/test_ssh/artist/myArt">我的艺术品</a>
-				   <a class="acount-btn" href="/test_ssh/artist/mySale" style="margin-top:2em">我的出售</a>
 					<h3>
 						我的出售记录
 					</h3>
@@ -186,16 +188,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</tr>  
 						<c:forEach items="${orderList}" var="order">
 							<tr>
-								<td scope="row" class="spec"></th>
+								<td scope="row" class="spec"></td>
 								<td>${order.name}</td>
 								<td>${order.type}</td>
 								<td>${order.price}</td>
 								<td>${order.user.name}</td>
-								
 								<td>
 								<c:if test=""><!--是否已发货  -->
 								<a href="">发货</a>
-								</c:if></td>
+								</c:if>
 								<c:if test="">
 								<a>已发货</a>
 								</c:if></td>

@@ -1,11 +1,11 @@
-<%@page import="cn.edu.xmu.oneonezero.entity.User"%>
+﻿<%@page import="cn.edu.xmu.oneonezero.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>商品单页</title>
+<title>艺术品单页</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
@@ -50,16 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 </head>
 <body>
-<div id="updown">
-	<%if (session.getAttribute("user") != null) {
-					%>
-					<a href="/test_ssh/cart/showCart"><span id="end" class="cart"></span></a>
-					<%
-						}
-					%>
-	
-	<span class="up"></span><span class="down"></span>
-	</div>
+
 	<div class="header_top">
 		<div class="container">
 			<div class="header_top-box">
@@ -175,99 +166,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-	<!-- 	<div class="men">
-		<div class="container">
-<div class="a-top">
-				 <div class="left-grid">
-					<img src="../images/n2.jpg" class="img-responsive" alt=""/>
-				 </div>
-				 <div class="right-grid">
-				 <h3>商品名</h3>
-					<h4>价格</h4>
-					<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-				 <div style="margin-top:3em">
-				   <a class="acount-btn" href="">加入购物篮</a>&nbsp;&nbsp;
-				   <a class="acount-btn" href="">立即购买</a>
-				 </div>
-				 </div>
-				 <div class="clearfix"></div>
-			 </div>
-			
-			</div>
-			</div>
- -->
-
-	<!--  <div class="men">
-		<div class="container">
-
-			<div class="a-top">
-				<div class="col-md-4 ">
-					<img class="img-responsive" src="${item.picUrl}" />
-				</div>
-			</div>
-			<div class="col-md-8">
-				<div class="a-top">
-					<div class="right-grid">
-						<h3>${item.name}</h3>
-						<h4 style="margin-top: 2em">${item.type}</h4>
-						<h4 style="margin-top: 2em">${item.price}</h4>
-						<p style="margin-top: 2em">${item.artworkDescription}</p>
-						<div style="margin-top: 3em">
-							<%
-										if (session.getAttribute("user") != null) {
-							%>
-							<a class="acount-btn" <%-- href="/test_ssh/cart/add2Cart?itemId=${item.id}&backUrl=/test_ssh/init/home" --%>
-											class="link" id="add2Cart">加入购物篮</a>
-							<a class="acount-btn" href="/test_ssh/mall/settleOne?itemId=${item.id}" style="margin-top: 2em">立即购买</a>
-							<%
-										} else {
-							%>
-							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'">加入购物篮</a>
-							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'" style="margin-top: 2em">立即购买</a>
-							<%
-										}
-							%>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-
-		</div>
-	</div>
--->
 <div style="float:left;width:5%">
-	<a href=""><img src="../images/back.png" alt="返回" class="img-responsive"/>
-	</a>
-					</div>
+	<a href="/test_ssh/jsp/artInfoAndCommodity"><img src="../images/back.png" alt="返回" class="img-responsive"/></a>
+</div>
 <div class="men">
 	<div class="container">
 	  <div class="single_top">
 	       <div class="col-md-9 single_right">
 	   	       <div class="grid images_3_of_2">
-									<img src="${item.picUrl}" class="img-responsive" />		
+									<img src="${Artwork.picUrl}" class="img-responsive" />		
 						 <div class="clearfix"></div>		
 				  </div> 
 				  <div class="desc1 span_3_of_2">
-				    <h1>${item.name}</h1>
-				    <p class="m_5">${item.type} </p>
-				    <p class="m_5">${item.price} </p>
+				    <h1>${Artwork.name}</h1>
+				    <p class="m_5">${Artwork.type} </p>
+				    <p class="m_5">${Artwork.price} </p>
 				    <div class="btn_form">
 						<%
 										if (session.getAttribute("user") != null) {
 							%>
-							<a class="acount-btn" class="link" id="add2Cart" onclick="add2Cart(${item.id},this)">加入购物篮</a>
-							<a class="acount-btn" href="/test_ssh/mall/settleOne?itemId=${item.id}" style="margin-top: 2em">立即购买</a>
+							<a class="acount-btn" href="/test_ssh/jsp/customizeArt?ArtworkId=${Artwork.id}" style="margin-top: 2em">定制艺术品</a>
 							<%
 										} else {
 							%>
-							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'">加入购物篮</a>
-							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'" style="margin-top: 2em">立即购买</a>
+							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='customizeArt?ArtworkId=${Artwork.id}'" style="margin-top: 2em">定制艺术品</a>
 							<%
-										}
+							}
 							%>
-					 <p class="m_text2">${item.artworkDescription}</p>
+					 <p class="m_text2">${Artwork.artworkDescription}</p>
 				  </div>
 				  <div class="clearfix"></div>	
        </div>

@@ -5,7 +5,7 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<!-- 
+
 	<bean id="userDao" class="cn.edu.xmu.oneonezero.dao.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -15,7 +15,7 @@
 		<property name="userDao" ref="userDao"></property>
 	</bean>
 	
-	此处为代理
+	<!-- 此处为代理 -->
 	<bean name="userService" parent="transactionProxy">
 		<property name="target" ref="userServiceBase"></property>
 	</bean>	
@@ -45,6 +45,4 @@
 	<bean id="dataDictionaryService" class="cn.edu.xmu.oneonezero.service.DataDictionaryServiceImpl">
 		<property name="dataDictionaryDao" ref="dataDictionaryDao"></property>
 	</bean>
-	-->
-	
 </beans>

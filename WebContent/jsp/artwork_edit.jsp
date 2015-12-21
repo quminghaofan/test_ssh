@@ -18,7 +18,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Custom Theme files -->
 <link href="../css/style.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="../css/jquery.countdown.css" />
-
+<script type="text/javascript" src="../js/pictureload.js"></script>
 <!-- Custom Theme files -->
 <!--webfont-->
 <link
@@ -171,8 +171,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form method="get"  action="" class="artworkform">
 				<div>
 				<span>图片<label>*</label></span>
-<input type="file" accept="video/*;capture=camcorder"> 
-<input type="file" accept="audio/*;capture=microphone">
+				<div id="preview" style="border:solid 1px">
+						<span><img id="image" src="" width="30%"
+							height="30%" /></span>
+					</div> <span><input id="img" name="img" type="file"
+						accept="images/*" onchange="previewImage(this,'preview','image')" style="width: 60%"/></span>
+
 </div>
 				  <div>
 					<span>艺术品名<label>*</label></span>
