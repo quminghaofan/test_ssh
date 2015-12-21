@@ -24,8 +24,8 @@ h3 {margin:0px;padding:0px;font-size:10pt;color:#666;}
 /*定义general样式 */	
 #general {margin-right: auto;margin-left: auto;padding:0px;text-align:left;line-height:1.5;width:591px;height:206px;background:url("image/general.jpg") no-repeat;}
 	.row {margin:0px;padding-left:64px;}
-		#headPhoto,#realname,#titlename,#phone,#address,#card,#description{width:90px;}
-		#headPhotoValue,#realnameValue,#titlenameValue,#phoneValue,#adressValue,#cardValue,#desValue{}
+		#nickname,#headPhoto,#realname,#titlename,#phone,#address,#card,#description{width:90px;}
+		#nicknameValue,#headPhotoValue,#realnameValue,#titlenameValue,#phoneValue,#adressValue,#cardValue,#desValue{}
 #manu{
 	margin-right: auto;margin-left: auto;padding:0px;text-align:left;font-size:12pt;
 margin:0px;padding-left:100px;}
