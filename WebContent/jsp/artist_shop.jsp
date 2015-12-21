@@ -168,8 +168,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div style="background-color: white; width: 100%">
 			<div style="padding: 5%">
 				<div class="menuhead1">
-				<a class="acount-btn" href="">我的艺术品</a>
-				   <a class="acount-btn" href="" style="margin-top:2em">我的出售</a>
+				<a class="acount-btn" href="/test_ssh/artist/myArt">我的艺术品</a>
+				   <a class="acount-btn" href="/test_ssh/artist/mySale" style="margin-top:2em">我的出售</a>
 					<h3>
 						我的艺术品
 					</h3>
@@ -195,7 +195,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</tr>
 							</c:forEach>
 					</table>
-					<a href="">添加</a>
+					<a href="/test_ssh/jsp/artwork_edit">添加</a>
 				</div>
 			</div>
 		</div>

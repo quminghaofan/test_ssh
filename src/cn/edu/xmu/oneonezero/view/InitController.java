@@ -66,7 +66,7 @@ public class InitController {
 			request.getSession().setAttribute("user", user);
 			System.out.println("backurl1:"+backUrl);
 			if (backUrl == null) {
-				String roleName=null;//TODO
+				String roleName=user.getRole().getName();
 				if(roleName.equals("超级管理员"))return "super_index";
 				else if(roleName.equals("普通管理员"))return "admin_index";
 				else if(roleName.equals("主编"))return "chiefEditor_index";
