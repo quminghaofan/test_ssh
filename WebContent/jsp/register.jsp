@@ -317,12 +317,13 @@ function judgeUserName()
 				"username" : $("#username").val()
 			},
 			beforeSend : function(XMLHttpRequest) {
+				document.getElementById("username_blank").style.display="block";
 				$("#username_blank").text("正在查询");
 
 			},
 			success : function(msg) {
 				document.getElementById("username_blank").style.display="block";
-				if(msg=="OK"){
+				if(msg=="success"){
 					$("#username_blank").text("该用户名可用");
 				}
 				else if(msg=="error"){

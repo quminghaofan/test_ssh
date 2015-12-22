@@ -47,19 +47,24 @@
                 <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
-<form action="/test_ssh/super/addAdmin?adminId=${admin.id}"  method="post" class="definewidth m10" id="myform" name="myform">
+<form action="/test_ssh/super/addAdmin?adminId=${admin.id}" method="post" class="definewidth m10" id="myform" name="myform">
 <table class="table table-bordered table-hover m10">
     <tr>
             <td width="10%" class="tableleft">管理员账号</td>
-            <td><input type="text" name="adminname" value="${admin.name}"/></td>
+            <td><input type="text"
+								id="username" name="username" 
+								 onblur="judgeUserName()" value="${admin.name}">
+							<span  id="username_blank" style="display:none"> <font
+								color="red">用户名已存在</font></span></td>
+            
         </tr>
         <tr>
             <td class="tableleft">真实姓名</td>
-            <td><intput type="text" name="realname" value="${admin.realName}"></intput></td>
+            <td><input type="text" name="realname" value="${admin.realName}"/></td>
         </tr>
        <tr>
             <td class="tableleft">角色</td>
-            <td><select id="role" name="role" value="">
+            <td><select id="role" name="role">
             <c:forEach items="${ROLELIST}" var="role">
             <option value="${role.name}">${role.name}</option>
             </c:forEach>
@@ -78,4 +83,33 @@
 </form>
 </body>
 </html>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>  
+ 
+<script>
+function judgeUserName()
+{  
+	$.ajax({
+			type : "post",
+			url : "/test_ssh/init/judgeUserName",
+			dataType : "text",
+			data : {
+				"username" : $("#username").val()
+			},
+			beforeSend : function(XMLHttpRequest) {
+				document.getElementById("username_blank").style.display="block";
+				$("#username_blank").text("正在查询");
+
+			},
+			success : function(msg) {
+				document.getElementById("username_blank").style.display="block";
+				if(msg=="success"){
+					$("#username_blank").text("该用户名可用");
+				}
+				else if(msg=="error"){
+					document.getElementById("username").value="";
+					$("#username_blank").text("该用户名已存在，请重新输入！");
+				}
+			},
+
+		});
+}
+</script>
