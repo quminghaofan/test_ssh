@@ -5,9 +5,11 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 @DiscriminatorValue("商品订单")
+@Table(name="CommodityArtworkOrder")
 public class CommodityArtworkOrder extends ArtworkOrder{
 
 	private CommodityArtwork commodityArtwork;//订单中包含的艺术品

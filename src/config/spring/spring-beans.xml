@@ -45,4 +45,47 @@
 	<bean id="dataDictionaryService" class="cn.edu.xmu.oneonezero.service.DataDictionaryServiceImpl">
 		<property name="dataDictionaryDao" ref="dataDictionaryDao"></property>
 	</bean>
+	
+	<bean id="artworkOrderDao" class="cn.edu.xmu.oneonezero.dao.ArtworkOrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+
+	<bean id="artworkOrderService" class="cn.edu.xmu.oneonezero.service.ArtworkOrderServiceImpl">
+		<property name="artworkOrderDao" ref="artworkOrderDao"></property>
+	</bean>
+	
+	<bean id="artworkDao" class="cn.edu.xmu.oneonezero.dao.ArtworkDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+
+	<bean id="artworkService" class="cn.edu.xmu.oneonezero.service.ArtworkServiceImpl">
+		<property name="artworkDao" ref="artworkDao"></property>
+	</bean>
+	
+	<bean id="customizedArtworkDao" class="cn.edu.xmu.oneonezero.dao.CustomizedArtworkDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+
+	<bean id="customizedArtworkService" class="cn.edu.xmu.oneonezero.service.CustomizedArtworkServiceImpl">
+		<property name="customizedArtworkDao" ref="customizedArtworkDao"></property>
+	</bean>
+	
+	<bean id="customizedArtworkOrderDao" class="cn.edu.xmu.oneonezero.dao.CustomizedArtworkOrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+
+	<bean id="customizedArtworkOrderService" class="cn.edu.xmu.oneonezero.service.CustomizedArtworkOrderServiceImpl">
+		<property name="customizedArtworkOrderDao" ref="customizedArtworkOrderDao"></property>
+	</bean>
+	
+	
+	
+	
+	
+	
+	
 </beans>

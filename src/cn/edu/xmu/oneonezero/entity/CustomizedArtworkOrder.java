@@ -1,7 +1,16 @@
 package cn.edu.xmu.oneonezero.entity;
 
-import java.sql.Date;
 
+import java.util.Date;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@DiscriminatorValue("定制艺术品订单")
+@Table(name="CustomizedArtworkOrder")
 public class CustomizedArtworkOrder extends ArtworkOrder{
 	private CustomizedArtwork customizedArtwork;//定制的艺术品
 	private Date customizedTime;//定制时间
@@ -10,7 +19,7 @@ public class CustomizedArtworkOrder extends ArtworkOrder{
 	private double midPrice;//
 	private double endPrice;//
 	
-	
+	@OneToOne
 	public CustomizedArtwork getCustomizedArtwork() {
 		return customizedArtwork;
 	}

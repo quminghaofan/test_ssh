@@ -19,4 +19,8 @@ public interface CommodityArtworkService {
 	public List<CommodityArtwork> getCommodityArtworksByVagueArtNameInDescendingOrder(String artName);//按价格从高到低排序，根据艺术品名称模糊分页获取艺术品
 	
 	public List<CommodityArtwork> getCommodityArtworksByVagueArtNameInAscendingOrder(String artName);//按价格从低到高排序，根据艺术品名称模糊分页获取艺术品
+
+	public List<CommodityArtwork> getAllCommodityArtworks();//获取所有艺术品商品
+	
+	public List<CommodityArtwork> getCommodityArtworksByArtistId(long ownerId);//获取艺术家的所有艺术品商品
 }

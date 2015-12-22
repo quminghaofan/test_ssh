@@ -77,6 +77,25 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 		return query.list();
 	}
 
+	@Override
+	public List<CommodityArtwork> getAllCommodityArtworks() {
+		String hql = "from CommodityArtwork";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		return query.list();
+	}
+
+	@Override
+	public List<CommodityArtwork> getCommodityArtworksByArtistId(long ownerId) {
+		String hql = "from CommodityArtwork ca where ca.owner.id= ?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setLong(0, ownerId);
+		
+		return query.list();
+	}
+
+	
+
 	
 
 }
