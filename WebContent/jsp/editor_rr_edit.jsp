@@ -67,11 +67,7 @@
             <td class="tableleft">图片</td>
             <td><div id="preview"><span><img id="image" src="${news.picUrl}" width="30%" height="30%"/></span></div>
             <span><input id="img" name="img" type="file" accept="image/*" onchange="previewImage(this,'preview','image')"/></span></td> </tr>
-		<%-- <tr>
-            <td class="tableleft">视频</td>
-            <td><span><video id="video" src="${news.videoUrl}"></span>
-            <span><input id="vide" name="vide" type="file" accept="video/*" /></span></td>
-        </tr> --%>
+
         <tr>
             <td width="10%" class="tableleft">上架时间</td>
             <td><input name="txtDate time1" id="txtDate time1" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" onchange="price_count()" value="${news.onShowTime}"/></td>

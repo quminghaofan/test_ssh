@@ -85,11 +85,7 @@ body {
 					</div> <span><input id="img" name="img" type="file"
 						accept="images/*" onchange="previewImage(this,'preview','image')" /></span></td>
 			</tr>
-			<tr>
-				<td class="tableleft">视频</td>
-				<td><span><video id="video" src=""></span> <span><input
-						id="vide" name="vide" type="file" accept="video/*" /></span></td>
-			</tr>
+
 			<tr>
 				<td width="10%" class="tableleft">上架时间</td>
 				<td><input name="txtDate time1" id="txtDate time1"
