@@ -165,7 +165,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form id="myform" method="post">
 				  <div>
 					<span>艺术品名</span>
-					<input type="text" readonly="readonly" value=""> 
+					<input type="text" readonly="readonly" value="${order.commodityArtwor.name}"> 
 				  </div>
 				  <div>
 					<span>类别</span>

@@ -47,7 +47,7 @@
                 <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
-<form method="post" class="definewidth m10" id="myform">
+<form method="post" class="definewidth m10" id="myform" enctype="multipart/form-data">
 <table class="table table-bordered table-hover m10">
     <tr>
             <td width="10%" class="tableleft">软文类型</td>
@@ -67,11 +67,6 @@
             <td class="tableleft">图片</td>
             <td><div id="preview"><span><img id="image" src="${news.picUrl}" width="30%" height="30%"/></span></div>
             <span><input id="img" name="img" type="file" accept="image/*" onchange="previewImage(this,'preview','image')"/></span></td> </tr>
-		<%-- <tr>
-            <td class="tableleft">视频</td>
-            <td><span><video id="video" src="${news.videoUrl}"></span>
-            <span><input id="vide" name="vide" type="file" accept="video/*" /></span></td>
-        </tr> --%>
         <tr>
             <td width="10%" class="tableleft">上架时间</td>
             <td><input name="txtDate time1" id="txtDate time1" class="Wdate" type="text" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" onchange="price_count()" value="${news.onShowTime}"/></td>

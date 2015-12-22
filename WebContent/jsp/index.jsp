@@ -309,13 +309,13 @@ $(document).ready(function() {
 			</ul>
 			<ul id="flexiselDemo3">
 			<c:forEach items="customizedlist" var="cus">
-				<li><img src="../images/n1.jpg" class="img-responsive" />
+				<li><img src="${cus.picUrl}" class="img-responsive" />
 					<div class="grid-flex">
-						<h4>名称</h4>
-						<p>类别</p>
-						<p>艺术家</p>
+						<h4>${cus.name}</h4>
+						<p>${cus.type}</p>
+						<p>${cus.author.realName}</p>
 						<div class="m_3">
-							<a href="#" class="link2">详情</a>
+							<a href="/test_ssh/" class="link2">详情</a>
 						</div>
 						<div class="ticket"></div>
 					</div></li>

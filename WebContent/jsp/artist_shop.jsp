@@ -166,9 +166,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		
   <div align="center">
-  <a class="acount-btn" href="">我的艺术品</a>
-				   <a class="acount-btn" href="" style="margin-top:2em">我的出售记录</a>
-				   <a class="acount-btn" href="" style="margin-top:2em">我的定制记录</a>
+  <a class="acount-btn">我的艺术品</a>
+				   <a class="acount-btn" href="/test_ssh/artist/mySale" style="margin-top:2em">我的出售记录</a>
+				   <a class="acount-btn" href="/test_ssh/artist/myCustomized" style="margin-top:2em">我的定制记录</a>
 		<div style="background-color: white; width: 100%">
 			<div style="padding: 5%">
 				<div class="menuhead1">
@@ -192,12 +192,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								<td>${item.type}</td>
 								<td>${item.price}</td>
-								<td><a href="">编辑</a>
-								<a href="">删除</a></td>
+								<td><a href="/test_ssh/artist/goToEdit?itemId=${item.id}">编辑</a>
+								<a href="/test_ssh/artist/delArtwork?itemId=${itemid}">删除</a></td>
 							</tr>
 							</c:forEach>
 					</table>
-					<a href="/test_ssh/jsp/artwork_edit">添加</a>
+					<a href="/test_ssh/jsp/artwork_edit.jsp">添加</a>
 				</div>
 			</div>
 		</div>
