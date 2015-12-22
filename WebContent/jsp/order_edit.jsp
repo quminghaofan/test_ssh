@@ -179,7 +179,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input type="text" value="${order.mobile}"> 
 				  </div>
 				  <input type="submit" value="确认">
-				  <input type="button" value="返回">
+				  <input type="button" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/super/adminManage'" value="返回">
 			    </form>
 			   </div>	
 			   <div class="clearfix"> </div>

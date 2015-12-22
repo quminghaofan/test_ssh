@@ -41,7 +41,7 @@ public class AdminUserController {
 	
 	@RequestMapping("/getAllPreparatoryArtist")
 	public String getAllPreparatoryArtist(HttpServletRequest request){
-//		request.setAttribute("USERLIST", arg1);
+//		request.setAttribute("USERLIST", userService.);
 		return "admin_artistapply";
 	}
 	
@@ -60,7 +60,7 @@ public class AdminUserController {
 	
 	@RequestMapping("/getAllCommodityArtwork")
 	public String getAllCommodityArtwork(HttpServletRequest request){
-//		request.setAttribute("", arg1);
+//		request.setAttribute("ITEMLIST", arg1);
 		return "admin_commodityitem";
 	}
 	

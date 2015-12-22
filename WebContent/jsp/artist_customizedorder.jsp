@@ -165,9 +165,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <div class="men">
 		<div class="container">
   <div align="center">
-  <a class="acount-btn" href="">我的艺术品</a>
-				   <a class="acount-btn" href="" style="margin-top:2em">我的出售记录</a>
-				   <a class="acount-btn" href="" style="margin-top:2em">我的定制记录</a>
+  <a class="acount-btn" href="/test_ssh/aritst/myArt">我的艺术品</a>
+				   <a class="acount-btn" href="/test_ssh/aritst/mySale" style="margin-top:2em">我的出售记录</a>
+				   <a class="acount-btn" style="margin-top:2em">我的定制记录</a>
 		<div style="background-color: white; width: 100%">
 			<div style="padding: 5%">
 				<div class="menuhead1">
@@ -188,9 +188,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<c:forEach items="${orderList}" var="order">
 							<tr>
 								<td scope="row" class="spec">${order.}</td>
-								<td>${order.}</td>
-								<td>${order.}</td>
-								<td>${order}</td>
+								<td>${order.commodityArtwor.name}</td>
+								<td>${order.user.name}</td>
+								<td>${order.user.address}</td>
+								<td>${order.mobil}</td>
 								<td>
 								 <%if(true){ %><!-- 判断是否已经接受订单 -->
 								<%if(true){ %><!-- 判断用户是否已经支付 且当前期数在3期内-->
@@ -206,7 +207,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<%}else{ %>
 								<a>接受</a><a>拒绝</a>
 								<%} %>
-								<a href="">详情</a>
+								<a href="/test_ssh/artist/customizedorderDetail?orderId=${order.id}">详情</a>
 								</td>
 							</tr>
 							</c:forEach>

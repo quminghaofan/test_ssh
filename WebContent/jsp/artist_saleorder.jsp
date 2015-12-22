@@ -167,9 +167,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		
   <div align="center">
-  <a class="acount-btn" href="">我的艺术品</a>
-				   <a class="acount-btn" href="" style="margin-top:2em">我的出售记录</a>
-				   <a class="acount-btn" href="" style="margin-top:2em">我的定制记录</a>
+  <a class="acount-btn" href="/test_ssh/aritst/myArt">我的艺术品</a>
+				   <a class="acount-btn" style="margin-top:2em">我的出售记录</a>
+				   <a class="acount-btn" href="/test_ssh/aritst/myCustomized" style="margin-top:2em">我的定制记录</a>
 		<div style="background-color: white; width: 100%">
 			<div style="padding: 5%">
 				<div class="menuhead1">
@@ -189,15 +189,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<c:forEach items="${orderList}" var="order">
 							<tr>
 								<td scope="row" class="spec"></td>
-								<td>${order.name}</td>
-								<td>${order.type}</td>
-								<td>${order.price}</td>
+								<td>${order.commodityArtwor.name}</td>
 								<td>${order.user.name}</td>
+								<td>${order.user.address}</td>
+								<td>${order.mobil}</td>
 								<td>
-								<c:if test=""><!--是否已发货  -->
+								<c:if test="${(order.state).equals('已支付未发货')}">
 								<a href="">发货</a>
 								</c:if>
-								<c:if test="">
+								<c:if test="${(order.state).equals('已支付已发货')}">
 								<a>已发货</a>
 								</c:if></td>
 							</tr>

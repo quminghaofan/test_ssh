@@ -168,11 +168,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
   <div class="register">
 			   <div class="col-md-6 login-right">
-				<form method="get"  action="" class="artworkform">
+				<form method="get"  action="/test_ssh/artist/editOrAddArtwork?itemId=${item.id}" class="artworkform">
 				<div>
 				<span>图片<label>*</label></span>
 				<div id="preview" style="border:solid 1px">
-						<span><img id="image" src="" width="30%"
+						<span><img id="image" src="${item.picUrl}" width="30%"
 							height="30%" /></span>
 					</div> <span><input id="img" name="img" type="file"
 						accept="images/*" onchange="previewImage(this,'preview','image')" style="width: 60%"/></span>
@@ -180,14 +180,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 				  <div>
 					<span>艺术品名<label>*</label></span>
-					<input type="text"> 
+					<input id="name" name="name" type="text" value="${item.name}"> 
 					
 				  </div>
 				  <div>
 					<span>类别<label>*</label></span>
-					<select>
+					<select id="type" name="type">
 					<c:forEach items="${TYPELIST}" var="type">
-                <option value="1">${type.}</option>
+                <option value="${type.id}">${type.name}</option>
                 </c:forEach>
             </select>
 				  </div>
@@ -200,14 +200,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				  </div>
 				   <div id="price">
 					<span>价格</span>
-					<input type="text"> 
+					<input type="text" value="${item.price}"> 
 				  </div>
-				   <div id="price">
+				   <div id="description">
 					<span>介绍</span>
-					<textarea></textarea> 
+					<textarea>${item.artworkDescription}</textarea> 
 				  </div>
 				  <input type="submit" value="确认">
-				  <input type="button" value="返回">
+				  <input type="button" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/artist//myArt'" value="返回">
 			    </form>
 			   </div>	
 			   <div class="clearfix"> </div>

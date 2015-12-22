@@ -46,6 +46,7 @@ public class InitController {
 		request.setAttribute("RRlist", news);
 		List<CommodityArtwork> commodityArtworks = commodityArtworkService.commodityArtworksToDisplay();
 		request.setAttribute("commodityArtworkList", commodityArtworks);
+//		request.setAttribute("customizedlist", arg1);
 		return "index";
 	}
 
@@ -66,15 +67,16 @@ public class InitController {
 			request.getSession().setAttribute("user", user);
 			System.out.println("backurl1:"+backUrl);
 			if (backUrl == null) {
-				String roleName=user.getRole().getName();
-				if(roleName.equals("超级管理员"))return "super_index";
-				else if(roleName.equals("普通管理员"))return "admin_index";
-				else if(roleName.equals("主编"))return "chiefEditor_index";
-				else if(roleName.equals("采编"))return "editor_index";
-				else {
-					request.setAttribute("result", "fail");
-					return "login";
-				}
+//				String roleName=user.getRole().getName();
+//				if(roleName.equals("超级管理员"))return "super_index";
+//				else if(roleName.equals("普通管理员"))return "admin_index";
+//				else if(roleName.equals("主编"))return "chiefEditor_index";
+//				else if(roleName.equals("采编"))return "editor_index";
+//				else {
+//					request.setAttribute("result", "fail");
+//					return "login";
+//				}
+				return "editor_index";
 			} else {
 				backUrl = backUrl.replaceAll("'", "");
 				System.out.println("backur2:"+backUrl);

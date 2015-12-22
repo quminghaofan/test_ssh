@@ -7,9 +7,13 @@ import cn.edu.xmu.oneonezero.service.NewsService;
 
 
 
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -51,7 +55,7 @@ public class EditorController {
     }
 
     @RequestMapping(value="/editNews")
-    public String editNews(String type,HttpServletRequest request){
+    public String editNews(@RequestParam(value = "img", required = false) MultipartFile filedata,String type,HttpServletRequest request){
     	News news=(News) request.getSession().getAttribute("news");
     	User user=(User)request.getSession().getAttribute("user");
     	news.setEditor(user);
@@ -59,7 +63,8 @@ public class EditorController {
 //    	System.out.println("newstype:"+news.getNewsType());
     	news.setName(request.getParameter("RRname"));
     	news.setContent(request.getParameter("content"));
-    	news.setPicUrl(request.getParameter("img"));
+    	String picurl=PicUpload.saveFile(filedata);
+    	news.setPicUrl(picurl);
     	news.setOnShowTime(request.getParameter("txtDate time1"));
     	news.setOffShowTime(request.getParameter("txtDate time2"));
 //    	System.out.println(request.getParameter("price"));
@@ -76,12 +81,6 @@ public class EditorController {
         newsService.updateNews(news);
         return "redirect:/editor/getDraft"; 
     }
-//    
-//    @RequestMapping("/getNewsToCheck")
-//    public String getNewsToCheck(long newsId,HttpServletRequest request){
-//        request.setAttribute("RR",newsManager.getNews(newsId));
-//        return "chiefEditor_checks";
-//    }
 
     @RequestMapping("/getNewsToEdit")
     public String getNewsToEdit(Long newsId,HttpServletRequest request){
@@ -90,31 +89,6 @@ public class EditorController {
         request.getSession().setAttribute("news",news);
         return "editor_rr_edit";
     }
-//    
-//    @RequestMapping("/examineNews")
-//    public String examineNews(News news,String type,HttpServletRequest request){
-//        if(type.equals("1")) {
-//        	news.setState("");
-//            newsService.updateNews(news);
-//            request.setAttribute("RR", news);
-//            return "chiefEditor_rr_edit";
-//        }
-//        else {
-//            news.setIsExamined(true);
-//            news.setIsPassed(true);
-//            newsService.updateNews(news);
-//            return "chiefEditor_rr_2";
-//        }
-//    }
-
-//    @RequestMapping("/setNews")
-//    public String setNews(HttpServletRequest request){
-//    	News news=(News) request.getAttribute("RR");
-//        news.setRank(request.getParameter("rank"));
-//        news.setOnShowTime(request.getParameter("txtDate"));
-//        newsService.updateNews(news);
-//        return "redirect:/editor/getUnexamined";
-//    }
 
     @RequestMapping("/delNews")
     public String delNews(String type,Long newsId,HttpServletRequest request){
