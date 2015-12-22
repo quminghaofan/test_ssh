@@ -47,21 +47,24 @@
                 <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
-<form   method="post" class="definewidth m10" id="myform" name="myform" onsubmit="return before_save()">
+
+<form  action="/test_ssh/super/addAdmin?adminId=${admin.id}"  method="post" class="definewidth m10" id="myform" name="myform" onsubmit="return before_save()">
+
 <table class="table table-bordered table-hover m10">
     <tr>
             <td width="10%" class="tableleft">管理员账号</td>
-            <td><input type="text"
-								id="username" name="username" 
-								 onblur="judgeUserName()">
-							<font color="red"><span  id="username_blank" style="display:none"> </span></font></td>  <!--TODO-->
+            <td><input type="text" id="username" name="username"  onblur="judgeUserName()" value="${admin.name}">
+							<font color="red"><span  id="username_blank" style="display:none"> </span></font></td>
+
             
         </tr>
         <tr>
             <td class="tableleft">真实姓名</td>
-            <td><input type="text" name="realname" id="realname"></intput>
+
+            <td><input type="text" name="realname" id="realname" value="${admin.realName}"></intput>
             <span  id="realname_blank" style="display:none"> <font
 								color="red">真实姓名不能为空</font></span></td>  <!--TODO--></td>  <!--TODO-->
+
         </tr>
        <tr>
             <td class="tableleft">角色</td>
@@ -69,18 +72,22 @@
             <c:forEach items="${ROLELIST}" var="role">
             <option value="${role.name}">${role.name}</option>
             </c:forEach>
+
             </select>
             <span  id="role_blank" style="display:none"> <font
 								color="red">角色不能为空</font></span></td>  <!--TODO--></td>  <!--TODO-->
+
         </tr>
        
 
     <tr>
             <td class="tableleft"></td>
             <td>
+
             <input style="display:none" id="type" name="type"/>
                <input class="btn btn-primary" type="submit"  name="savebtnid" id="savebtnid" onclick="myform.onsubmit()" value="保存">				 &nbsp;&nbsp; 
-               <input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href=''" value="返回列表">
+               <input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/super/adminManage'" value="返回列表">
+
             </td>
         </tr>
 </table>
@@ -99,6 +106,7 @@ function judgeUserName()
 				"username" : $("#username").val()
 			},
 			beforeSend : function(XMLHttpRequest) {
+				document.getElementById("username_blank").style.display="block";
 				$("#username_blank").text("正在查询");
 				
 			},
@@ -114,6 +122,7 @@ function judgeUserName()
 			},
 
 		});
+
 	}
 
 function before_save(){
@@ -136,5 +145,6 @@ function before_save(){
 		}
 	if(flag==1)
 		return false;
+
 }
 </script>
