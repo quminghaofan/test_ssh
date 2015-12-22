@@ -317,6 +317,7 @@ function judgeUserName()
 				"username" : $("#username").val()
 			},
 			beforeSend : function(XMLHttpRequest) {
+				document.getElementById("username_blank").style.display="block";
 				$("#username_blank").text("正在查询");
 
 			},

@@ -38,16 +38,17 @@
 <body>
 
 <form class="form-inline definewidth m20" action="/test_ssh/admin_user/getUser" method="get">
-  根据<select style="width:auto"><option value="用户名">用户名</option><option value="角色">角色</option></select>搜索
+  根据用户名搜索：
     <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>
 </form>
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
-    <tr><!-- 超级管理员：用户交易记录，平台收入查询（可根据时间），人员工资，查询某个用户的工资详情（可根据时间）-->
+    <tr>
         <th>用户名</th>
         <th>角色</th>
         <th>银行卡号</th>
+        <th>操作</th>
     </tr>
     </thead>
     <c:if test="${USERLIST!=null}">
@@ -56,6 +57,12 @@
                 <td>${user.name}</td>
                 <td>${user.role}</td>
                 <td>${user.bankCardAccount}</td>
+                <c:if test="${user.state}">
+                <td><a href="/test_ssh/admin_user/delUser?userId=${user.id}">禁用</a></td>
+                </c:if>
+                <c:if test="${!(user.state)}">
+                <td><a href="/test_ssh/admin_user/startUsing?userId=${user.id}">启用</a></td>
+                </c:if>
             </tr>
     </c:forEach>
 </c:if>
@@ -63,7 +70,3 @@
 
 </body>
 </html>
-<script>
-    
-
-</script>

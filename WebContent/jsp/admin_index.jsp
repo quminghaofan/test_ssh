@@ -44,8 +44,8 @@
   <script>
     BUI.use('common/main',function(){ 
       var config = [{id:'1',homePage:'12',menu:[{text:'用户管理',items:[{id:'12',text:'用户列表',href:'/test_ssh/admin_user/getAllUser'},
-                                                                    {id:'19',text:'艺术家申请审核',href:''}]}]},
-                    {id:'4',menu:[{text:'商品管理',items:[{id:'13',text:'制成品列表',href:''},{id:'15',text:'拍卖品管理',href:''}]}]},
+                                                                    {id:'19',text:'艺术家申请审核',href:'/test_ssh/admin_user/getAllPreparatoryArtist'}]}]},
+                    {id:'4',menu:[{text:'商品管理',items:[{id:'13',text:'制成品列表',href:'/test_ssh/admin_user/getAllCommodityArtwork'}]}]},
                     {id:"7",menu:[{text:'订单管理',items:[{id:'17',text:'订单列表',href:'/test_ssh/admin_user/getAllOrder'}]}]}];
       new PageUtil.MainPage({
         modulesConfig : config

@@ -5,31 +5,28 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
-import cn.edu.xmu.oneonezero.entity.DataDictionary;
+import cn.edu.xmu.oneonezero.entity.CustomizedArtwork;
 
-public class DataDictionaryDaoImpl implements DataDictionaryDao{
-
+public class CustomizedArtworkDaoImpl implements CustomizedArtworkDao {
 	private SessionFactory sessionFactory;//创建一个会话工厂实例
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
+
 	@Override
-	public DataDictionary getDataDictionaryByName(String name) {
-		String hql = "from DataDictionary d where d.name=?";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setString(0, name);
-		
-		return (DataDictionary)query.uniqueResult();
-	}
-	@Override
-	public List<String> getAllArtworkTypes() {
-		String hql = "from DataDictionary d where d.number like ?";
+	public List<CustomizedArtwork> getAllFinishedCustomizedArtworks() {
+		String hql = "from CustomizedArtWork ca where ca.isFinished=true";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		query.setString(0, "01"+"%");
 		return query.list();
-		
 	}
 
+	@Override
+	public List<CustomizedArtwork> getAllCustomizedArtworks() {
+		String hql = "from CustomizedArtWork ";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		return query.list();
+	}
 }

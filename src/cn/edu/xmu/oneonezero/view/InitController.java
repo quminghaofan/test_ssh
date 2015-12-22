@@ -116,7 +116,7 @@ public class InitController {
 	@ResponseBody
 	@RequestMapping(value="/judgeUserName")
 	public String judgeUserName(String username){
-		if(userService.isNameExist(username)){
+		if(!userService.isNameExist(username)){
 			return "success";
 		}
 		return "error";

@@ -1,11 +1,19 @@
 package cn.edu.xmu.oneonezero.entity;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@DiscriminatorValue("定制艺术品")
+@Table(name="CustomizedArtwork")
 public class CustomizedArtwork extends Artwork{
 	private String startImg;//
 	private String midImg;//
 	private String endImg;//
 	
 	private String remarks;//备注
+	private boolean isFinished;//是否完成
 
 	public String getStartImg() {
 		return startImg;
@@ -37,6 +45,14 @@ public class CustomizedArtwork extends Artwork{
 
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+
+	public boolean getIsFinished() {
+		return isFinished;
+	}
+
+	public void setIsFinished(boolean isFinished) {
+		this.isFinished = isFinished;
 	}
 	
 	

@@ -25,7 +25,7 @@ public class User {
 	private String address;
 	private String bankCardAccount;
 	private String description;
-	private String state;//是否被禁用
+	private boolean state;//是否被禁用
 	private String idPhoto;//审核照片
 	
 	public String getIdPhoto() {
@@ -34,12 +34,7 @@ public class User {
 	public void setIdPhoto(String idPhoto) {
 		this.idPhoto = idPhoto;
 	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
@@ -111,6 +106,12 @@ public class User {
 	}
 	public void setRealName(String realName) {
 		this.realName = realName;
+	}
+	public boolean getState() {
+		return state;
+	}
+	public void setState(boolean state) {
+		this.state = state;
 	}
 	
 	

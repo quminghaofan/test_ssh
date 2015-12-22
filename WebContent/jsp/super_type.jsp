@@ -37,30 +37,28 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/editor/getUnexaminedByNewsName" method="get">
-    产品类别名称
-    <input type="text" name="typename" id="typename"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
-    <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>&nbsp;&nbsp; 
-</form>
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-        <th>产品类别名称</th>
+        <th>产品类别编号</th>
+        <th>产品类别名称</th>
         <th>操作</th>
     </tr>
     </thead>
     <c:if test="${TYPELIST!=null}">
     <c:forEach items="${TYPELIST}" var="type">
         <tr>
+                <td>${(type.number).substring((type.number).length() - 3)}</td>
                 <td>${type.name}</td>
-                <td><a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href=''">删除</a></td>
+                <td><a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/super/delArtType?typeId=${type.id}'">删除</a></td>
             </tr>
     </c:forEach>
 </c:if>
         </table>
 
-<form class="form-inline definewidth m20" action="" method="get">
-    <input  type="text"  id="type"class="abc input-default" placeholder="" value="" style="display:none;margin-left:42.5%">&nbsp;&nbsp;
+<form class="form-inline definewidth m20" action="/test_ssh/super/addArtType" method="post">
+    产品类别编号：<input  type="text"  id="type"class="abc input-default" placeholder="" value="" style="display:none;margin-left:42.5%">&nbsp;&nbsp;
+    产品类别名称：<input  type="text"  id="type"class="abc input-default" placeholder="" value="" style="display:none;margin-left:42.5%">&nbsp;&nbsp;
     <button  type="submit" class="btn btn-primary" id="confirm" style="display:none;margin-left:50%">确认</button>&nbsp;&nbsp;
 </form>
 <div style="margin-left:50%">
