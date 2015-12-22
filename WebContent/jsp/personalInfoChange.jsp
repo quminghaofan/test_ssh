@@ -182,7 +182,8 @@ top:400px;
 						<div>
 							<span>头像 <label>*</label></span>
 							<img id="headPhotoValue" src="${user.headPhoto}"/>
-						<div></br>
+						</div></br>
+						<div>
 							<span> 昵称 <label>*</label></span> 
 							<input type="text"
 								id="username" name="username" value="${user.nickName}"
