@@ -82,6 +82,14 @@
 		<property name="customizedArtworkOrderDao" ref="customizedArtworkOrderDao"></property>
 	</bean>
 	
+	<bean id="commodityArtworkOrderDao" class="cn.edu.xmu.oneonezero.dao.CommodityArtworkOrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+
+	<bean id="commodityArtworkOrderService" class="cn.edu.xmu.oneonezero.service.CommodityArtworkOrderServiceImpl">
+		<property name="commodityArtworkOrderDao" ref="commodityArtworkOrderDao"></property>
+	</bean>
 	
 	
 	
