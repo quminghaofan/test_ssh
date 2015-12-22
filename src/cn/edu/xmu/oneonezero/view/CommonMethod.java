@@ -21,7 +21,7 @@ public class CommonMethod {
 	 * @return
 	 * @throws UnsupportedEncodingException 
 	 */
-	public static List<CommodityArtwork> jsonToFinishedItem(HttpServletRequest request) throws UnsupportedEncodingException{
+	public static List<CommodityArtwork> jsonToCommodityArtwork(HttpServletRequest request) throws UnsupportedEncodingException{
 		Cookie[] cookies=request.getCookies();
 //		System.out.println("cookies.length:"+cookies.length);
 		int count=0;
@@ -31,7 +31,7 @@ public class CommonMethod {
 		CommodityArtwork commodityArtwork;
 		JSONObject jsonCart;
 		for (Cookie cookie : cookies) {
-			System.out.println("show-path:"+cookie.getPath());
+//			System.out.println("show-path:"+cookie.getPath());
 			if (cookie.getName().startsWith(user.getName())) {
 				jsonCart = JSONObject.fromObject(URLDecoder.decode(cookie.getValue(),"utf-8"));
 //				System.out.println(cookie.getValue());

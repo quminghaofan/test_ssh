@@ -40,7 +40,7 @@
 <form class="form-inline definewidth m20" action="/test_ssh/admin_user/getUser" method="get">
     根据<select style="width:auto">
     <option value="艺术品名">艺术品名</option>
-    <option value="卖家">卖家</option>
+    <option value="卖家">卖家用户名</option>
     </select>搜索
     <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
    <select>
@@ -57,21 +57,20 @@
         <th>图片</th>
         <th>艺术品名</th>
         <th>艺术品类别</th>
-        <th>卖家</th>
+        <th>卖家用户名</th>
         <th>价格</th>
-        <th></th>
+        <th>状态</th>
     </tr>
     </thead>
     <c:if test="${ITEMLIST!=null}">
     <c:forEach items="${ITEMLIST}" var="item">
         <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
+                <td>${item.picUrl}</td>
+                <td>${item.name}</td>
+                <td>${item.type}</td><!-- TODO -->
+                <td>${item.owner.name}</td>
+                <td>${item.price}</td>
+                <td>${item.state}</td>
             </tr>
     </c:forEach>
 </c:if>

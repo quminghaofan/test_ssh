@@ -56,10 +56,10 @@
     <c:forEach items="${USERLIST}" var="user">
         <tr>
                 <td>${user.name}</td>
-                <td>${user.}</td>
+                <td>${user.realName}</td>
                 <td>${user.bankCardAccount}</td>
-                 <td>${user.}</td>
-                 <td><a>通过</a>&nbsp;&nbsp;<a>不通过</a></td>
+                 <td>${user.description}</td>
+                 <td><a href="/test_ssh/admin_user/exmineArtist/userId=${user.id}&type=1">通过</a>&nbsp;&nbsp;<a href="/test_ssh/admin_user/exmineArtist/userId=${user.id}&type=0">不通过</a></td>
             </tr>
     </c:forEach>
 </c:if>

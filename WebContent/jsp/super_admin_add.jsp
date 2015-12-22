@@ -47,32 +47,31 @@
                 <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
-<form action=""  method="post" class="definewidth m10" id="myform" name="myform">
+<form action="/test_ssh/super/addAdmin?adminId=${admin.id}"  method="post" class="definewidth m10" id="myform" name="myform">
 <table class="table table-bordered table-hover m10">
     <tr>
             <td width="10%" class="tableleft">管理员账号</td>
-            <td><input type="text" name="adminname"/></td>  <!--TODO-->
+            <td><input type="text" name="adminname" value="${admin.name}"/></td>
         </tr>
         <tr>
             <td class="tableleft">真实姓名</td>
-            <td><intput type="text" name="realname"></intput></td>  <!--TODO-->
+            <td><intput type="text" name="realname" value="${admin.realName}"></intput></td>
         </tr>
        <tr>
             <td class="tableleft">角色</td>
-            <td><select>
+            <td><select id="role" name="role" value="">
             <c:forEach items="${ROLELIST}" var="role">
             <option value="${role.name}">${role.name}</option>
             </c:forEach>
-            </select></td>  <!--TODO-->
+            </select></td>
         </tr>
        
 
     <tr>
             <td class="tableleft"></td>
             <td>
-            <input style="display:none" id="type" name="type"/>
-               <input class="btn btn-primary" type="submit"  name="savebtnid" id="savebtnid" onclick="submit1()" value="保存">				 &nbsp;&nbsp; 
-               <input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表">
+               <input class="btn btn-primary" type="submit"  name="savebtnid" id="savebtnid" value="保存">				 &nbsp;&nbsp; 
+               <input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/super/adminManage'" value="返回">
             </td>
         </tr>
 </table>

@@ -68,7 +68,7 @@ public class MallController {
 	@RequestMapping("/settle")
 	public String settle(HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException {
-		List<CommodityArtwork> commodityArtworks = CommonMethod.jsonToFinishedItem(request);
+		List<CommodityArtwork> commodityArtworks = CommonMethod.jsonToCommodityArtwork(request);
 		Double total = 0.0;
 		// System.out.println("commodityArtworks.size:"+commodityArtworks.size());
 		for (CommodityArtwork commodityArtwork : commodityArtworks) {

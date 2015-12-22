@@ -53,7 +53,7 @@ public class CartController {
 		// commodityArtworks=CommonMethod.jsonToFinishedItem(request);
 		// System.out.println("name:"+commodityArtworks.get(0).getName());
 		request.setAttribute("commodityArtworkList",
-				CommonMethod.jsonToFinishedItem(request));
+				CommonMethod.jsonToCommodityArtwork(request));
 		return "cart";
 	}
 

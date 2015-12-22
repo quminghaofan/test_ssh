@@ -37,10 +37,10 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/editor/getUnexaminedByNewsName" method="get">
+<form class="form-inline definewidth m20" action="/test_ssh/super/getAdmin" method="get">
     管理员账号
     <input type="text" name="rolename" id="rolename"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
-    <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>&nbsp;&nbsp; <input type="button" class="btn btn-success" id="addnew" onclick="window.location.href=" value="新增管理员"/>
+    <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>&nbsp;&nbsp; <input type="button" class="btn btn-success" id="addnew" onclick="window.location.href='/test_ssh/super/goToAddAdmin'" value="新增管理员"/>
 </form>
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
@@ -55,8 +55,9 @@
     <c:forEach items="${ADMINLIST}" var="admin">
         <tr>
                 <td>${admin.name}</td>
-                <td></td>
-                <td><a href="">编辑</a></td>
+                <td>${admin.role.name}</td>
+                <td><a href="/test_ssh/super/goToEdit?userId=${admin.id}">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;<a href="/test_ssh/super/delAdmin?userId=${admin.id}">禁用</a></td>
             </tr>
     </c:forEach>
 </c:if>
