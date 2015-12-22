@@ -19,7 +19,7 @@ public class ArtworkOrderDaoImpl implements ArtworkOrderDao{
 	}
 	
 	@Override
-	public List<ArtworkOrder> getNewsByUserId(long userId) {
+	public List<ArtworkOrder> getArtworkOrderByUserId(long userId) {
 		String hql = "from  ArtworkOrder a where a.user.id=? order by a.placeTime desc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, userId);

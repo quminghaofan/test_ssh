@@ -14,8 +14,8 @@ public class ArtworkOrderServiceImpl implements ArtworkOrderService{
 	}
 
 	@Override
-	public List<ArtworkOrder> getNewsByUserId(long userId) {
-		return  artworkOrderDao.getNewsByUserId(userId);
+	public List<ArtworkOrder> getArtworkOrderByUserId(long userId) {
+		return  artworkOrderDao.getArtworkOrderByUserId(userId);
 	}
 
 	@Override

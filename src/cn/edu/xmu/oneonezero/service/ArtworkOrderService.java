@@ -16,7 +16,7 @@ public interface ArtworkOrderService {
 	
 	
 	
-	public List<ArtworkOrder> getNewsByUserId(long userId);//根据用户id获取所有的订单
+	public List<ArtworkOrder> getArtworkOrderByUserId(long userId);//根据用户id获取所有的订单
 
 	public List<ArtworkOrder> getOrdersByOrderIdAndTimespace(String orderId,Date startTime,Date endTime);//1.根据订单编号查找一段时间的订单
 	
