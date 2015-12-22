@@ -9,12 +9,12 @@
 <link rel="stylesheet" type="text/css" href="../Css1/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="../Css1/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="../Css1/style.css" />
-    <script type="text/javascript" src="../Js/jquery.js"></script>
-    <script type="text/javascript" src="../Js/jquery.sorted.js"></script>
-    <script type="text/javascript" src="../Js/bootstrap.js"></script>
-    <script type="text/javascript" src="../Js/ckform.js"></script>
-    <script type="text/javascript" src="../Js/common.js"></script>
-    <script type="text/javascript" src="../js/pictureload.js"></script>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/ckform.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -47,20 +47,24 @@
                 <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
-<form action="/test_ssh/super/addAdmin?adminId=${admin.id}" method="post" class="definewidth m10" id="myform" name="myform">
+
+<form  action="/test_ssh/super/addAdmin?adminId=${admin.id}"  method="post" class="definewidth m10" id="myform" name="myform" onsubmit="return before_save()">
+
 <table class="table table-bordered table-hover m10">
     <tr>
             <td width="10%" class="tableleft">管理员账号</td>
-            <td><input type="text"
-								id="username" name="username" 
-								 onblur="judgeUserName()" value="${admin.name}">
-							<span  id="username_blank" style="display:none"> <font
-								color="red">用户名已存在</font></span></td>
+            <td><input type="text" id="username" name="username"  onblur="judgeUserName()" value="${admin.name}">
+							<font color="red"><span  id="username_blank" style="display:none"> </span></font></td>
+
             
         </tr>
         <tr>
             <td class="tableleft">真实姓名</td>
-            <td><input type="text" name="realname" value="${admin.realName}"/></td>
+
+            <td><input type="text" name="realname" id="realname" value="${admin.realName}"></intput>
+            <span  id="realname_blank" style="display:none"> <font
+								color="red">真实姓名不能为空</font></span></td>  <!--TODO--></td>  <!--TODO-->
+
         </tr>
        <tr>
             <td class="tableleft">角色</td>
@@ -68,15 +72,22 @@
             <c:forEach items="${ROLELIST}" var="role">
             <option value="${role.name}">${role.name}</option>
             </c:forEach>
-            </select></td>
+
+            </select>
+            <span  id="role_blank" style="display:none"> <font
+								color="red">角色不能为空</font></span></td>  <!--TODO--></td>  <!--TODO-->
+
         </tr>
        
 
     <tr>
             <td class="tableleft"></td>
             <td>
-               <input class="btn btn-primary" type="submit"  name="savebtnid" id="savebtnid" value="保存">				 &nbsp;&nbsp; 
-               <input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/super/adminManage'" value="返回">
+
+            <input style="display:none" id="type" name="type"/>
+               <input class="btn btn-primary" type="submit"  name="savebtnid" id="savebtnid" onclick="myform.onsubmit()" value="保存">				 &nbsp;&nbsp; 
+               <input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/super/adminManage'" value="返回列表">
+
             </td>
         </tr>
 </table>
@@ -97,7 +108,7 @@ function judgeUserName()
 			beforeSend : function(XMLHttpRequest) {
 				document.getElementById("username_blank").style.display="block";
 				$("#username_blank").text("正在查询");
-
+				
 			},
 			success : function(msg) {
 				document.getElementById("username_blank").style.display="block";
@@ -111,5 +122,29 @@ function judgeUserName()
 			},
 
 		});
+
+	}
+
+function before_save(){
+	var role=document.getElementById("role");
+	var realname=document.getElementById("realname");
+	var username=document.getElementById("username");
+	var flag=0;
+	if(username.value==""){
+		flag=1;
+		document.getElementById("username_blank").style.display="block";
+		$("#username_blank").text("用户名不能为空");
+		}
+	if(realname.value==""){
+		flag=1;
+		document.getElementById("realname_blank").style.display="block";
+		}
+	if(role.value==""){
+		flag=1;
+		document.getElementById("role_blank").style.display="block";
+		}
+	if(flag==1)
+		return false;
+
 }
 </script>

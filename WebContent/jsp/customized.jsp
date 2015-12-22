@@ -200,7 +200,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<a href=""> <img src="${item.picUrl}"
 								class="img-responsive" alt="" href="/test_ssh/mall/seeMore?itemId=${item.id}" />
 								<h3>${item.name}</h3>
-								<h4>${item.}</h4><!-- 类别 -->
+								<h4>${item.type}</h4><!-- 类别 -->
 								<h4>${item.}</h4><!-- 艺术家 -->
 							</a>
 							<ul class="list2">

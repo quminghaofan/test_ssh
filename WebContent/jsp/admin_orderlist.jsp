@@ -10,11 +10,11 @@
 <link rel="stylesheet" type="text/css"
 	href="../Css1/bootstrap-responsive.css" />
 <link rel="stylesheet" type="text/css" href="../Css1/style.css" />
-<script type="text/javascript" src="../Js/jquery.js"></script>
-<script type="text/javascript" src="../Js/jquery.sorted.js"></script>
-<script type="text/javascript" src="../Js/bootstrap.js"></script>
-<script type="text/javascript" src="../Js/ckform.js"></script>
-<script type="text/javascript" src="../Js/common.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery.sorted.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/ckform.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
 <script language="javascript" type="text/javascript"
 	src="../My97DatePicker/WdatePicker.js"></script>
 <style type="text/css">
