@@ -7,6 +7,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
+import cn.edu.xmu.oneonezero.entity.CommodityArtworkOrder;
 import cn.edu.xmu.oneonezero.entity.CustomizedArtworkOrder;
 
 public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
@@ -26,15 +27,6 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 		return query.list();
 	}
 
-	@Override
-	public List<CustomizedArtworkOrder> getFinishedCustomizedArtworkOrdersByUserId(long userId) {
-		String hql = "from  CustomizedArtworkOrder cao.user.id=? and cao.customizedArtwork.isFinished=true";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setLong(0, userId);
-		if(query.list()==null||query.list().size()==0) 
-			return null;
-		return query.list();
-	}
 
 	@Override
 	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByOrderIdAndTimespace(String orderId, Date startTime,
@@ -200,13 +192,29 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 		return query.list();
 	}
 
+
 	@Override
-	public List<CustomizedArtworkOrder> getAllFinishedCustomizedArtworkOrders() {
-		String hql = "from  CustomizedArtworkOrder cao.customizedArtwork.isFinished=true";
+	public void insertCustomizedArtworkOrder(CustomizedArtworkOrder customizedArtworkOrder) {
+		sessionFactory.getCurrentSession().saveOrUpdate(customizedArtworkOrder);
+	}
+
+	@Override
+	public boolean deleteCustomizedArtworkOrder(long customizedArtworkId) {
+		String hql = "delete CustomizedArtworkOrder cao where cao.id = ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setLong(0, customizedArtworkId);
+		
+		return (query.executeUpdate() > 0);
+	}
+
+	@Override
+	public CustomizedArtworkOrder getCustomedArtworkOrderByOrderId(long customizedArtworkOrderId) {
+		String hql = "from  CustomizedArtworkOrder cao.id=?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setLong(0, customizedArtworkOrderId);
 		if(query.list()==null||query.list().size()==0) 
 			return null;
-		return query.list();
+		return (CustomizedArtworkOrder) query.uniqueResult();
 	}
 	
 	

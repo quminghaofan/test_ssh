@@ -15,11 +15,16 @@ public class UserDaoImpl implements UserDao {
 
 	private SessionFactory sessionFactory;//创建一个会话工厂实例
 
+	
+
+
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
-
 
 	@Override
 	public boolean delUser(long id) {
@@ -48,24 +53,25 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public boolean updateUser(User user) {
-		String hql = "update User u set u.address= ?,u.bankCardAccount=?,u.headPhoto=?,"
-				+ "u.mobile=?,u.name=?,u.password=?,u.description=?,u.role=?,u.nickName=?,u.state=?,u.idPhoto =?,u.realName=? where u.id = ?";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setString(0, user.getAddress());
-		query.setString(1, user.getBankCardAccount());
-		query.setString(2, user.getHeadPhoto());
-		query.setString(3, user.getMobile());
-		query.setString(4, user.getName());
-		query.setString(5, user.getPassword());
-		query.setString(6, user.getDescription());
-		query.setEntity(7, user.getRole());
-		query.setString(8, user.getNickName());
-		query.setBoolean(9, user.getState());
-		query.setString(10, user.getIdPhoto());
-		query.setString(11, user.getRealName());
-		query.setLong(12, user.getId());
+//		String hql = "update User u set u.address= ?,u.bankCardAccount=?,u.headPhoto=?,"
+//				+ "u.mobile=?,u.name=?,u.password=?,u.description=?,u.role=?,u.nickName=?,u.state=?,u.idPhoto =?,u.realName=? where u.id = ?";
+//		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+//		query.setString(0, user.getAddress());
+//		query.setString(1, user.getBankCardAccount());
+//		query.setString(2, user.getHeadPhoto());
+//		query.setString(3, user.getMobile());
+//		query.setString(4, user.getName());
+//		query.setString(5, user.getPassword());
+//		query.setString(6, user.getDescription());
+//		query.setEntity(7, user.getRole());
+//		query.setString(8, user.getNickName());
+//		query.setBoolean(9, user.getState());
+//		query.setString(10, user.getIdPhoto());
+//		query.setString(11, user.getRealName());
+//		query.setLong(12, user.getId());
 		
-		return (query.executeUpdate() > 0);
+		sessionFactory.getCurrentSession().saveOrUpdate(user);
+		return true;
 		
 	}
 
@@ -137,6 +143,17 @@ public class UserDaoImpl implements UserDao {
 		if(query.list().size()!=0) 
 			return true;
 		return false;
+	}
+
+
+
+	@Override
+	public List<User> getAllManager() {
+		String hql="from User u where u.role.name='管理员'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		if(query.list().size()!=0)
+			if(query.list()==null||query.list().size()==0) return null;
+			return query.list();
 	}
 	
 	

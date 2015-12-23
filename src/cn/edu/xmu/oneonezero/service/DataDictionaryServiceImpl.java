@@ -31,6 +31,12 @@ public class DataDictionaryServiceImpl implements DataDictionaryService{
 	public List<String> getAllArtworkTypes() {
 		return dataDictionaryDao.getAllArtworkTypes();
 	}
+
+
+	@Override
+	public List<String> getAllRoles() {
+		return dataDictionaryDao.getAllRoles();
+	}
 	
 	
 }

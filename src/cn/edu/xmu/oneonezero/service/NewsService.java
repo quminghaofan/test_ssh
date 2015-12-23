@@ -3,9 +3,11 @@ package cn.edu.xmu.oneonezero.service;
 import java.sql.Date;
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.xmu.oneonezero.entity.News;
 
+@Transactional
 public interface NewsService {  
 
 //为view层提供直接调用的接口

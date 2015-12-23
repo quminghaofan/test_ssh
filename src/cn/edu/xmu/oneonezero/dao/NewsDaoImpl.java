@@ -6,8 +6,11 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import cn.edu.xmu.oneonezero.entity.News;
 
@@ -15,6 +18,11 @@ import cn.edu.xmu.oneonezero.entity.News;
 public class NewsDaoImpl implements NewsDao {
 
 	private SessionFactory sessionFactory;//创建一个会话工厂实例
+
+
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
@@ -26,7 +34,7 @@ public class NewsDaoImpl implements NewsDao {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, id);
 		
-		return (News)query.uniqueResult();
+		return (News)query.list().get(0);
 	}
 
 	@Override
@@ -45,21 +53,24 @@ public class NewsDaoImpl implements NewsDao {
 
 	@Override
 	public boolean updateNews(News news) {
-		String hql = "update News n set n.chiefEditor= ?,n.editor=?,n.content=?,"
-				+ "n.offShowTime=?,n.onShowTime=?,n.picUrl=?,n.rank=?,n.state=?,n.name=? where n.id = ?";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setEntity(0, news.getChiefEditor());
-		query.setEntity(1, news.getEditor());//check
-		query.setString(2, news.getContent());
-		query.setString(3, news.getOffShowTime());
-		query.setString(4, news.getOnShowTime());
-		query.setString(5, news.getPicUrl());
-		query.setString(6, news.getRank());
-		query.setString(7, news.getState());
-		query.setString(8, news.getName());
-		query.setLong(9, news.getId());
+//		String hql = "update News n set n.chiefEditor= ?,n.editor=?,n.content=?,"
+//				+ "n.offShowTime=?,n.onShowTime=?,n.picUrl=?,n.rank=?,n.state=?,n.name=? where n.id = ?";
+//		query.setEntity(0, news.getChiefEditor());
+//		query.setEntity(1, news.getEditor());//check
+//		query.setString(2, news.getContent());
+//		query.setString(3, news.getOffShowTime());
+//		query.setString(4, news.getOnShowTime());
+//		query.setString(5, news.getPicUrl());
+//		query.setString(6, news.getRank());
+//		query.setString(7, news.getState());
+//		query.setString(8, news.getName());
+//		query.setLong(9, news.getId());
 		
-		return (query.executeUpdate() > 0);
+		
+		sessionFactory.getCurrentSession().saveOrUpdate(news);
+//		sessionFactory.getCurrentSession().persist(news);
+		sessionFactory.getCurrentSession().flush();
+		return true;
 	}
 
 	@SuppressWarnings("unchecked")

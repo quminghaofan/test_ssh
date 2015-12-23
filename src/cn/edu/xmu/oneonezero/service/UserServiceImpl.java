@@ -71,4 +71,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.isNameExist(userName);
 	}
 
+
+	@Override
+	public List<User> getAllManager() {
+		return userDao.getAllManager();
+	}
+
 }

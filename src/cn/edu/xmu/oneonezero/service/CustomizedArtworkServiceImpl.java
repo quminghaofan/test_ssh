@@ -14,10 +14,6 @@ public class CustomizedArtworkServiceImpl implements CustomizedArtworkService{
 	}
 
 
-	@Override
-	public List<CustomizedArtwork> getAllFinishedCustomizedArtworks() {
-		return customizedArtworkDao.getAllFinishedCustomizedArtworks();
-	}
 
 
 	@Override

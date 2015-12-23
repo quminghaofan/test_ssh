@@ -113,4 +113,16 @@ public class ArtworkOrderDaoImpl implements ArtworkOrderDao{
 		return null;
 	}
 
+	
+	
+	@Override
+	public List<ArtworkOrder> getOrderByOrderId(long artworkOrderId) {
+		String hql = "from  ArtworkOrder a where a.id=?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setLong(0, artworkOrderId);
+		if(query.list()==null||query.list().size()==0) 
+			return null;
+		return query.list();
+	}
+
 }

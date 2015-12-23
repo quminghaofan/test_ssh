@@ -13,7 +13,6 @@ public class CustomizedArtwork extends Artwork{
 	private String endImg;//
 	
 	private String remarks;//备注
-	private boolean isFinished;//是否完成
 
 	public String getStartImg() {
 		return startImg;
@@ -47,13 +46,6 @@ public class CustomizedArtwork extends Artwork{
 		this.remarks = remarks;
 	}
 
-	public boolean getIsFinished() {
-		return isFinished;
-	}
-
-	public void setIsFinished(boolean isFinished) {
-		this.isFinished = isFinished;
-	}
 	
 	
 	

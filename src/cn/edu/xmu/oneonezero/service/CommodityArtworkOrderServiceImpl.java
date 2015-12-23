@@ -48,6 +48,42 @@ public class CommodityArtworkOrderServiceImpl implements CommodityArtworkOrderSe
 			Date startTime, Date endTime) {
 		return commodityArtworkOrderDao.getCommodityArtworkOrdersByArtistNameAndTimespace(artistName, startTime, endTime);
 	}
+
+
+	@Override
+	public List<CommodityArtworkOrder> getAllCommodityArtworkOrders() {
+		return commodityArtworkOrderDao.getAllCommodityArtworkOrders();
+	}
+
+
+	@Override
+	public List<CommodityArtworkOrder> getCommodityArtworkOrdersByArtistId(long artistId) {
+		return commodityArtworkOrderDao.getCommodityArtworkOrdersByArtistId(artistId);
+	}
+
+
+	@Override
+	public List<CommodityArtworkOrder> getCommodityArtworkOrdersByUserId(long userId) {
+		return commodityArtworkOrderDao.getCommodityArtworkOrdersByUserId(userId);
+	}
+
+
+	@Override
+	public void insertCommodityArtworkOrder(CommodityArtworkOrder commodityArtworkOrder) {
+		commodityArtworkOrderDao.insertCommodityArtworkOrder(commodityArtworkOrder);
+	}
+
+
+	@Override
+	public boolean deleteCommodityArtworkOrder(long commodityArtworkId) {
+		return commodityArtworkOrderDao.deleteCommodityArtworkOrder(commodityArtworkId);
+	}
+
+
+	@Override
+	public CommodityArtworkOrder getCommodityArtworkOrderByOrderId(long commodityArtworkOrderId) {
+		return commodityArtworkOrderDao.getCommodityArtworkOrderByOrderId(commodityArtworkOrderId);
+	}
 	
 	
 }

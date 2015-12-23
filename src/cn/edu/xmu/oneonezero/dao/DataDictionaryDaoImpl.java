@@ -24,12 +24,20 @@ public class DataDictionaryDaoImpl implements DataDictionaryDao{
 	}
 	@Override
 	public List<String> getAllArtworkTypes() {
-		String hql = "from DataDictionary d where d.number like ?";
+		String hql = "select d.name from DataDictionary d where d.number like ?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		query.setString(0, "02"+"%");
+		return query.list();
+		
+	}
+	@Override
+	public List<String> getAllRoles() {
+		String hql = "select d.name from DataDictionary d where d.number like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, "01"+"%");
 		return query.list();
-		
 	}
 
 }

@@ -14,13 +14,6 @@ public class CustomizedArtworkDaoImpl implements CustomizedArtworkDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	@Override
-	public List<CustomizedArtwork> getAllFinishedCustomizedArtworks() {
-		String hql = "from CustomizedArtWork ca where ca.isFinished=true";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		
-		return query.list();
-	}
 
 	@Override
 	public List<CustomizedArtwork> getAllCustomizedArtworks() {

@@ -48,6 +48,11 @@ public class ArtworkOrderServiceImpl implements ArtworkOrderService{
 	public List<ArtworkOrder> getOrdersByUserNameAndTimespace(String userName, Date startTime, Date endTime) {
 		return getOrdersByUserNameAndTimespace(userName, startTime, endTime);
 	}
+
+	@Override
+	public List<ArtworkOrder> getOrderByOrderId(long artworkOrderId) {
+		return artworkOrderDao.getOrderByOrderId(artworkOrderId);
+	}
 	
 	
 }

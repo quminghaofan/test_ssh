@@ -21,10 +21,6 @@ public class CustomizedArtworkOrderServiceImpl implements CustomizedArtworkOrder
 	}
 
 
-	@Override
-	public List<CustomizedArtworkOrder> getFinishedCustomizedArtworkOrdersByUserId(long userId) {
-		return customizedArtworkOrderDao.getFinishedCustomizedArtworkOrdersByUserId(userId);
-	}
 
 
 	@Override
@@ -68,9 +64,23 @@ public class CustomizedArtworkOrderServiceImpl implements CustomizedArtworkOrder
 	}
 
 
+
+
 	@Override
-	public List<CustomizedArtworkOrder> getAllFinishedCustomizedArtworkOrders() {
-		return customizedArtworkOrderDao.getAllFinishedCustomizedArtworkOrders();
+	public void insertCustomizedArtworkOrder(CustomizedArtworkOrder customizedArtworkOrder) {
+		customizedArtworkOrderDao.insertCustomizedArtworkOrder(customizedArtworkOrder);
+	}
+
+
+	@Override
+	public boolean deleteCustomizedArtworkOrder(long customizedArtworkId) {
+		return customizedArtworkOrderDao.deleteCustomizedArtworkOrder(customizedArtworkId);
+	}
+
+
+	@Override
+	public CustomizedArtworkOrder getCustomedArtworkOrderByOrderId(long customizedArtworkOrderId) {
+		return customizedArtworkOrderDao.getCustomedArtworkOrderByOrderId(customizedArtworkOrderId);
 	}
 	
 	
