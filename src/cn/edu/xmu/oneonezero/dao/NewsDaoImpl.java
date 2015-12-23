@@ -2,8 +2,8 @@ package cn.edu.xmu.oneonezero.dao;
 
 
 
-import java.sql.Date;
-import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -53,22 +53,9 @@ public class NewsDaoImpl implements NewsDao {
 
 	@Override
 	public boolean updateNews(News news) {
-//		String hql = "update News n set n.chiefEditor= ?,n.editor=?,n.content=?,"
-//				+ "n.offShowTime=?,n.onShowTime=?,n.picUrl=?,n.rank=?,n.state=?,n.name=? where n.id = ?";
-//		query.setEntity(0, news.getChiefEditor());
-//		query.setEntity(1, news.getEditor());//check
-//		query.setString(2, news.getContent());
-//		query.setString(3, news.getOffShowTime());
-//		query.setString(4, news.getOnShowTime());
-//		query.setString(5, news.getPicUrl());
-//		query.setString(6, news.getRank());
-//		query.setString(7, news.getState());
-//		query.setString(8, news.getName());
-//		query.setLong(9, news.getId());
 		
 		
 		sessionFactory.getCurrentSession().saveOrUpdate(news);
-//		sessionFactory.getCurrentSession().persist(news);
 		sessionFactory.getCurrentSession().flush();
 		return true;
 	}
@@ -288,33 +275,141 @@ public class NewsDaoImpl implements NewsDao {
 	@Override
 	public List<News> getNewsByUserIdAndTimespace(long userId, String newsType, Date startTime, Date endTime,
 			String newsName, String state) {
-		String hql = "from News n where n.id=? and n.newsType=? and n.onShowTime>? and n.offShowTime<? "
-				+ "and n.name like ? and n.state=?";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setLong(0, userId);
-		query.setString(1, newsType);
-		query.setDate(2, startTime);//如果用户不输入，是否在view层就处理好（比如设定一个早一些的时间）
-		query.setDate(3, endTime);
-		query.setString(4, newsName);
-		query.setString(5, state);
-		if(query.list()==null||query.list().size()==0) 
-			return null;
-		return query.list();
-	}
+		String hql = "from News n where n.id=?  and n.onShowTime>? and n.offShowTime<? "
+				+ "and n.name like ? and n.state=? and n.newsType=?";
+		Query query;
+		if(!newsType.equals(null))
+		{
+			query = sessionFactory.getCurrentSession().createQuery(hql);
 
-	@Override
-	public List<News> getNewsByTimespace(String newsType, Date startTime, Date endTime, String newsName, String state) {
-		String hql = "from News n where n.newsType=? and n.onShowTime>? and n.offShowTime<? "
-				+ "and n.name like ? and n.state=?";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setString(0, newsType);
-		query.setDate(1, startTime);
-		query.setDate(2, endTime);
+			query.setString(5, newsType);
+		}
+		else{
+			hql = "from News n where n.id=?  and n.onShowTime>? and n.offShowTime<? "
+					+ "and n.name like ? and n.state=?";
+			query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		}
+		query.setLong(0, userId);
+		
+		if(startTime!=null)
+			query.setDate(1, startTime);
+		else
+		{
+			Calendar temCal=Calendar.getInstance();
+			temCal.set(2015,1,1);
+			
+			Date temDate=(Date) temCal.getTime();
+			query.setDate(1, temDate);
+		}
+		if(endTime!=null)
+			query.setDate(2, endTime);
+		else
+		{
+			Calendar temCal=Calendar.getInstance();
+			temCal.set(2050,1,1);
+			
+			Date temDate=(Date) temCal.getTime();
+			query.setDate(2, temDate);
+		}
 		query.setString(3, newsName);
 		query.setString(4, state);
 		if(query.list()==null||query.list().size()==0) 
 			return null;
 		return query.list();
+	}
+
+	//0:已审核 1:未审核
+	@Override
+	public List<News> getExaminedNewsByTimespace(String newsType, Date startTime, Date endTime, String newsName) {
+		String hql = "from News n where  n.onShowTime>? and n.offShowTime<? "
+				+ "and n.name like ? and (n.state='审核通过' or n.state='审核未通过') and n.newsType=?";
+		Query query;
+		
+		if(!newsType.equals(null))
+		{
+			query = sessionFactory.getCurrentSession().createQuery(hql);
+
+			query.setString(3, newsType);
+		}
+		else{
+			hql = "from News n where n.newsType=? and n.onShowTime>? and n.offShowTime<? "
+					+ "and n.name like ? and (n.state='审核通过' or n.state='审核未通过')";
+			query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		}
+		if(startTime!=null)
+			query.setDate(0, startTime);
+		else
+		{
+			Calendar temCal=Calendar.getInstance();
+			temCal.set(2015,1,1);
+			
+			Date temDate=(Date) temCal.getTime();
+			query.setDate(0, temDate);
+		}
+		if(endTime!=null)
+			query.setDate(1, endTime);
+		else
+		{
+			Calendar temCal=Calendar.getInstance();
+			temCal.set(2050,1,1);
+			
+			Date temDate=(Date) temCal.getTime();
+			query.setDate(1, temDate);
+		}
+	
+		query.setString(2, newsName);
+		if(query.list()==null||query.list().size()==0) 
+			return null;
+		return query.list();
+		
+	}
+	
+	@Override
+	public List<News> getUnexaminedNewsByTimespace(String newsType, Date startTime, Date endTime, String newsName) {
+		String hql = "from News n where  n.onShowTime>? and n.offShowTime<? "
+				+ "and n.name like ? and (n.state='审核通过' or n.state='审核未通过') and n.newsType=?";
+		Query query;
+		
+		if(!newsType.equals(null))
+		{
+			query = sessionFactory.getCurrentSession().createQuery(hql);
+
+			query.setString(3, newsType);
+		}
+		else{
+			hql = "from News n where n.newsType=? and n.onShowTime>? and n.offShowTime<? "
+					+ "and n.name like ? and n.state='未审核' ";
+			query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		}
+		if(startTime!=null)
+			query.setDate(0, startTime);
+		else
+		{
+			Calendar temCal=Calendar.getInstance();
+			temCal.set(2015,1,1);
+			
+			Date temDate=(Date) temCal.getTime();
+			query.setDate(0, temDate);
+		}
+		if(endTime!=null)
+			query.setDate(1, endTime);
+		else
+		{
+			Calendar temCal=Calendar.getInstance();
+			temCal.set(2050,1,1);
+			
+			Date temDate=(Date) temCal.getTime();
+			query.setDate(1, temDate);
+		}
+	
+		query.setString(2, newsName);
+		if(query.list()==null||query.list().size()==0) 
+			return null;
+		return query.list();
+		
 	}
 
 	

@@ -13,8 +13,6 @@ public interface UserDao {
 
 	public void insertUser(User user);  //添加用户到数据库
 
-	public boolean delUser(long id);	//根据用户id删除User对象
-
 	public void updateUser(User user);	//更新用户
 
 	public boolean isLoginSuccessful(String userName, String psw);//验证登陆信息是否正确
@@ -30,7 +28,7 @@ public interface UserDao {
 
 	public boolean isNameExist(String userName);//判断用户名是否存在
 
-	public List<User> getAllManager();//获取所有管理员
+	public List<User> getAllManager();//获取所有管理员(包括普通管理员、主编、采编)
 
 	public void setUserStateTrue(long userId);//根据userId更改user状态为可用
 	

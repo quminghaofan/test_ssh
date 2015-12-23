@@ -1,6 +1,6 @@
 package cn.edu.xmu.oneonezero.service;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import cn.edu.xmu.oneonezero.dao.NewsDao;
@@ -170,7 +170,11 @@ public class NewsServiceImpl implements NewsService {
 
 	@Override
 	public List<News> getNewsByTimespace(String newsType, Date startTime, Date endTime, String newsName, String state) {
-		return newsDao.getNewsByTimespace(newsType, startTime, endTime, newsName, state);
+		if(state.equals("0"))
+			return newsDao.getExaminedNewsByTimespace(newsType, startTime, endTime, newsName);
+		else
+			return newsDao.getUnexaminedNewsByTimespace(newsType, startTime, endTime, newsName);
+					
 	}
 	
 

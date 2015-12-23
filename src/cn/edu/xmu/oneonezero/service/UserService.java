@@ -11,8 +11,6 @@ public interface UserService {
 
 	public void insertUser(User user);  //插入一个User
 
-	public boolean delUser(long id);  //根据id删除一个User
-
 	public void updateUser(User user);  //更新user
 
 	public boolean isLoginSuccessful(String userName,String psw);//验证登陆信息是否正确
@@ -29,7 +27,7 @@ public interface UserService {
 
 	public boolean isNameExist(String userName);//判断用户名是否存在
 
-	public List<User> getAllManager();//获取所有管理员
+	public List<User> getAllManager();//获取所有管理员(包括普通管理员、主编、采编)
 
 	public void setUserStateTrue(long userId);//根据userId更改user状态为可用
 	

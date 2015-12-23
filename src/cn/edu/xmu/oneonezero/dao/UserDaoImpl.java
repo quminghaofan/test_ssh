@@ -26,14 +26,6 @@ public class UserDaoImpl implements UserDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	@Override
-	public boolean delUser(long id) {
-		String hql = "delete User u where u.id = ?";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setLong(0, id);
-		
-		return (query.executeUpdate() > 0);
-	}
 
 	@Override
 	public User getUser(long id) {
@@ -132,7 +124,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> getAllManager() {
-		String hql="from User u where u.role.name='管理员'";
+		String hql="from User u where u.role.name='普通管理员' or u.role.name='采编' or u.role.name='主编'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		if(query.list().size()!=0)
 			if(query.list()==null||query.list().size()==0) return null;

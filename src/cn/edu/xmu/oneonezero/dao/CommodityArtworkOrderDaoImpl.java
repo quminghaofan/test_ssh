@@ -173,7 +173,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 
 	@Override
 	public List<CommodityArtworkOrder> getAllCommodityArtworkOrders() {
-		String hql = "from  CommodityArtworkOrder cao.commodityArtwork.cansale=true";
+		String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.cansale=true";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		if(query.list()==null||query.list().size()==0) 
 			return null;
@@ -182,7 +182,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 
 	@Override
 	public List<CommodityArtworkOrder> getCommodityArtworkOrdersByArtistId(long artistId) {
-		String hql = "from  CommodityArtworkOrder cao.commodityArtwork.owner.id=?";
+		String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.owner.id=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, artistId);
 		if(query.list()==null||query.list().size()==0) 
@@ -192,7 +192,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 
 	@Override
 	public List<CommodityArtworkOrder> getCommodityArtworkOrdersByUserId(long userId) {
-		String hql = "from  CommodityArtworkOrder cao.user.id=?";
+		String hql = "from  CommodityArtworkOrder cao where cao.user.id=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, userId);
 		if(query.list()==null||query.list().size()==0) 
@@ -216,7 +216,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 
 	@Override
 	public CommodityArtworkOrder getCommodityArtworkOrderByOrderId(long commodityArtworkOrderId) {
-		String hql = "from  CommodityArtworkOrder cao.id=?";
+		String hql = "from  CommodityArtworkOrder cao where cao.id=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, commodityArtworkOrderId);
 		if(query.list()==null||query.list().size()==0) 
@@ -226,7 +226,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 
 	@Override
 	public List<CommodityArtworkOrder> getCommodityArtworkOrdersByOwnerId(long ownerId) {
-		String hql = "from  CommodityArtworkOrder cao.commodityArtwork.owner.id=? ";
+		String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.owner.id=? ";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, ownerId);
 		if(query.list()==null||query.list().size()==0) 
