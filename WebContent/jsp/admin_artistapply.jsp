@@ -32,7 +32,16 @@
             }
         }
 
-
+#masklayer{
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.7);
+    z-index: 9;
+}
     </style>
 </head>
 <body>
@@ -59,15 +68,35 @@
                 <td>${user.realName}</td>
                 <td>${user.bankCardAccount}</td>
                  <td>${user.description}</td>
-                 <td><a href="/test_ssh/admin_user/exmineArtist/userId=${user.id}&type=1">通过</a>&nbsp;&nbsp;<a href="/test_ssh/admin_user/exmineArtist/userId=${user.id}&type=0">不通过</a></td>
+                 <td><a href="/test_ssh/admin_user/exmineArtist/userId=${user.id}&type=1">通过</a>&nbsp;&nbsp;<a href="javascript:showreason(${user.id})">不通过</a></td>
             </tr>
     </c:forEach>
-</c:if>
+</c:if> 
         </table>
+
+<div style="display: none;" id="reason" align="center">
+<div id="masklayer" ></div>
+<input type="hidden" id="userid" name="userid">
+<div style="z-index:10;position:absolute;left:30%;background-color:white;width:30%;height:30%" >
+<h3>未通过理由</h3>
+<form class="form-inline definewidth m20" action="" method="post" id="reasonform">
+    <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
+    <button type="submit" class="btn btn-primary" onclick="fail()">确定</button>
+</form>
+</div>
+</div>
 
 </body>
 </html>
 <script>
-    
-
+    function showreason(userid){
+        document.getElementById("reason").style.display="block";
+        document.getElementById("userid").value=userid;
+        }
+function fail(){alert("a");
+	var userid=document.getElementById("userid").value;
+	var reason=document.getElementById("reasonform");
+	reason.action="/test_ssh/admin_user/exmineArtist/userId="+userid+"&type=0";
+	reason.submit();
+}
 </script>
