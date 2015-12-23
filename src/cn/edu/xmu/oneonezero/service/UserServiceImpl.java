@@ -31,8 +31,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean updateUser(User user) {
-		return userDao.updateUser(user);
+	public void updateUser(User user) {
+		userDao.updateUser(user);
 	}
 
 
@@ -93,6 +93,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> getAllPreparativeArtist() {
 		return userDao.getAllPreparativeArtist();
+	}
+
+
+	@Override
+	public void setUserStateFalse(long userId) {
+		userDao.setUserStateFalse(userId);
 	}
 
 }

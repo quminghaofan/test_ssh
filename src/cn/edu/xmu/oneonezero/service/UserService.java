@@ -13,7 +13,7 @@ public interface UserService {
 
 	public boolean delUser(long id);  //根据id删除一个User
 
-	public boolean updateUser(User user);  //更新user
+	public void updateUser(User user);  //更新user
 
 	public boolean isLoginSuccessful(String userName,String psw);//验证登陆信息是否正确
 
@@ -33,6 +33,8 @@ public interface UserService {
 
 	public void setUserStateTrue(long userId);//根据userId更改user状态为可用
 	
+	public void setUserStateFalse(long userId);//根据userId更改user状态为禁用
+
 	public List<User> getAllCommonUsersAndArtist();//获得所有普通用户和艺术家
 	
 	public List<User> getAllPreparativeArtist();//获得所有预备艺术家
