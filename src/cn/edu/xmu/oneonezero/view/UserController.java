@@ -1,11 +1,15 @@
 package cn.edu.xmu.oneonezero.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import cn.edu.xmu.oneonezero.entity.CommodityArtworkOrder;
 import cn.edu.xmu.oneonezero.entity.User;
 
 @Controller
@@ -30,14 +34,21 @@ public class UserController {
 	
 	@RequestMapping("/myOrderPayment")
 	public String myOrderPayment(Long orderId,String type,HttpServletRequest request){
-		if(type.equals("1")){
-			//根据id获取成品订单
+		request.getAttribute("");
+		if(true){//支付成功
+			if(type.equals("1")){
+				//更新订单状态，根据id成品订单
+			}
+			else {
+				//更新订单状态，根据id定制订单
+			}
+			//
+			return "pay_success";
 		}
 		else {
-			//根据id获取艺术品订单
+			//支付失败，进入输入账号界面
+			return "";
 		}
-		//TODO 支付
-		return "pay_success";
 	}
 	
 	@RequestMapping("/cancelOrder")

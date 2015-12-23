@@ -168,17 +168,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
   <div class="register">
 			   <div class="col-md-6 login-right">
-				<form method="get"  action="" class="artworkform">
+			   <%
+        	      String address=(String)session.getAttribute("address");
+        	      String mobile=(String)session.getAttribute("mobile");
+               %>
+				<form method="get"  action="/test_ssh/mall/editOrder?address=<%=address %>&mobile=<%=mobile%>&type=${type}&wh=1" class="artworkform">
 				  <div>
 					<span>地址</span>
-					<input type="text" value="<%=session.getAttribute("address") %>"> 
+					<input type="text" value="<%=address %>"> 
 				  </div>
 				   <div>
 					<span>电话</span>
-					<input type="text" value="<%=session.getAttribute("mobile") %>"> 
+					<input type="text" value="<%=mobile %>"> 
 				  </div>
 				  <input type="submit" value="确认">
-				  <input type="button" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/super/adminManage'" value="返回">
+				  <input type="button" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/mall/goBack?type=${type}'" value="返回">
 			    </form>
 			   </div>	
 			   <div class="clearfix"> </div>

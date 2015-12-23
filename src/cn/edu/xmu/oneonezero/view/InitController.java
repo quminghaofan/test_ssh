@@ -67,16 +67,16 @@ public class InitController {
 			request.getSession().setAttribute("user", user);
 			System.out.println("backurl1:"+backUrl);
 			if (backUrl == null) {
-//				String roleName=user.getRole().getName();
-//				if(roleName.equals("超级管理员"))return "super_index";
-//				else if(roleName.equals("普通管理员"))return "admin_index";
-//				else if(roleName.equals("主编"))return "chiefEditor_index";
-//				else if(roleName.equals("采编"))return "editor_index";
-//				else {
-//					request.setAttribute("result", "fail");
-//					return "login";
-//				}
-				return "editor_index";
+				String roleName=user.getRole().getName();
+				if(roleName.equals("超级管理员"))return "super_index";
+				else if(roleName.equals("普通管理员"))return "admin_index";
+				else if(roleName.equals("主编"))return "chiefEditor_index";
+				else if(roleName.equals("采编"))return "editor_index";
+				else {
+					request.setAttribute("result", "fail");
+					return "login";
+				}
+//				return "editor_index";
 			} else {
 				backUrl = backUrl.replaceAll("'", "");
 				System.out.println("backur2:"+backUrl);
@@ -90,7 +90,7 @@ public class InitController {
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public void logout(String backUrl, HttpServletRequest request,
+	public String logout(String backUrl, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		CommonMethod.cleanCookie(request, response);
 		HttpSession session = request.getSession();
@@ -98,9 +98,10 @@ public class InitController {
 			session.removeAttribute("user");
 		}
 		if(backUrl==null){
-			backUrl="goToLogin";
+			return "login";
 		}
 		response.sendRedirect(backUrl);
+		return "";
 	}
 
 	@RequestMapping(value = "/register")
