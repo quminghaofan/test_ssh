@@ -37,6 +37,18 @@ public class DataDictionaryServiceImpl implements DataDictionaryService{
 	public List<String> getAllRoles() {
 		return dataDictionaryDao.getAllRoles();
 	}
+
+
+	@Override
+	public boolean deleteArtworkType(long typeId) {
+		return dataDictionaryDao.deleteArtworkType(typeId);
+	}
+
+
+	@Override
+	public void insertDataDictionary(DataDictionary dataDictionary) {
+		dataDictionaryDao.insertDataDictionary(dataDictionary);
+	}
 	
 	
 }

@@ -2,6 +2,8 @@ package cn.edu.xmu.oneonezero.dao;
 
 import java.util.List;
 
+import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
+
 import cn.edu.xmu.oneonezero.entity.User;
 
 public interface UserDao {
@@ -29,6 +31,13 @@ public interface UserDao {
 	public boolean isNameExist(String userName);//判断用户名是否存在
 
 	public List<User> getAllManager();//获取所有管理员
+
+	public void setUserStateTrue(long userId);//根据userId更改user状态为可用
+	
+	public List<User> getAllCommonUsersAndArtist();//获得所有普通用户和艺术家
+	
+	public List<User> getAllPreparativeArtist();//获得所有预备艺术家
+	
 
 
 

@@ -77,4 +77,22 @@ public class UserServiceImpl implements UserService {
 		return userDao.getAllManager();
 	}
 
+
+	@Override
+	public void setUserStateTrue(long userId) {
+		userDao.setUserStateTrue(userId);
+	}
+
+
+	@Override
+	public List<User> getAllCommonUsersAndArtist() {
+		return userDao.getAllCommonUsersAndArtist();
+	}
+
+
+	@Override
+	public List<User> getAllPreparativeArtist() {
+		return userDao.getAllPreparativeArtist();
+	}
+
 }

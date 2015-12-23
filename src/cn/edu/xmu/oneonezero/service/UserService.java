@@ -31,4 +31,12 @@ public interface UserService {
 
 	public List<User> getAllManager();//获取所有管理员
 
+	public void setUserStateTrue(long userId);//根据userId更改user状态为可用
+	
+	public List<User> getAllCommonUsersAndArtist();//获得所有普通用户和艺术家
+	
+	public List<User> getAllPreparativeArtist();//获得所有预备艺术家
+	
+	
+	
 }  

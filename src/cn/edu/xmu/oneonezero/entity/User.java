@@ -58,7 +58,7 @@ public class User {
 	
 	@ManyToOne
 	@JoinColumn(name="roleId")
-	@Cascade(CascadeType.ALL)
+	@Cascade(CascadeType.DELETE)
 	public DataDictionary getRole() {
 		return role;
 	}

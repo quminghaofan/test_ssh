@@ -155,6 +155,30 @@ public class UserDaoImpl implements UserDao {
 			if(query.list()==null||query.list().size()==0) return null;
 			return query.list();
 	}
+
+	@Override
+	public void setUserStateTrue(long userId) {
+		getUser(userId).setState(true);
+		sessionFactory.getCurrentSession().flush();
+	}
+
+	@Override
+	public List<User> getAllCommonUsersAndArtist() {
+		String hql="from User u where u.role.name='普通用户' or u.role.name='艺术家'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		if(query.list().size()!=0)
+			if(query.list()==null||query.list().size()==0) return null;
+			return query.list();
+	}
+
+	@Override
+	public List<User> getAllPreparativeArtist() {
+		String hql="from User u where u.role.name='预备艺术家' ";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		if(query.list().size()!=0)
+			if(query.list()==null||query.list().size()==0) return null;
+			return query.list();
+	}
 	
 	
 	

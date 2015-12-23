@@ -39,5 +39,18 @@ public class DataDictionaryDaoImpl implements DataDictionaryDao{
 		query.setString(0, "01"+"%");
 		return query.list();
 	}
+	@Override
+	public boolean deleteArtworkType(long typeId) {
+		String hql = "delete DataDictionary d where d.id = ?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setLong(0, typeId);
+		
+		return (query.executeUpdate() > 0);
+
+	}
+	@Override
+	public void insertDataDictionary(DataDictionary dataDictionary) {
+		sessionFactory.getCurrentSession().saveOrUpdate(dataDictionary);
+	}
 
 }

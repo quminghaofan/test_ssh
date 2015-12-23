@@ -11,4 +11,10 @@ public interface DataDictionaryDao {
 	
 	public List<String> getAllRoles();//获取所有角色
 	
+	public boolean deleteArtworkType(long typeId);//根据id删除艺术品类型
+	
+	public void insertDataDictionary(DataDictionary dataDictionary);//添加数据字典
+
+
+
 }
