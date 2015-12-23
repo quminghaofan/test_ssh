@@ -59,9 +59,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="jsp/login.jsp">登录/注册</a></li>
 						<%
 							} else {
+								User user=(User)session.getAttribute("user");
 						%>
 						<li><a href="">申请成为艺术家</a></li>
-						<li><a href="">${username}</a></li>
+						<li><a href=""><%=user.getName()%></a></li>
 						<li><a href="">我的订单</a></li>
 						<li><a href="">登出</a></li>
 						<%
@@ -190,19 +191,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
 
            <div style="margin-top: 3%;text-align:left" >
+           <%User user=(User)session.getAttribute("user");
+           String address;
+           String mobile;
+           if(session.getAttribute("address")==null){
+        	   address=user.getAddress();
+        	   mobile=user.getMobile();
+           }
+           else{
+        	   address=(String)session.getAttribute("address");
+        	   mobile=(String)session.getAttribute("mobile");
+           }
+           %>
                 <div style="margin-bottom: 2%;">
                     <lable>用户名:&nbsp;&nbsp;</lable>
-                    <lable style="font-weight: bold"><%=((User)session.getAttribute("user")).getName()%></lable>
+                    <lable style="font-weight: bold"><%=user.getName()%></lable>
                 </div>
                 <div style="margin-bottom: 2%;">
                     <lable>地址:&nbsp;&nbsp;&nbsp;&nbsp;</lable>
-                    <lable class="txt1" style="vertical-align:bottom" id="modi_address"><%=((User)session.getAttribute("user")).getAddress()%></lable>
+                    <lable class="txt1" style="vertical-align:bottom" id="modi_address"><%=address %></lable>
                  </div>
                 <div>
                     <lable>电话:&nbsp;&nbsp;&nbsp;&nbsp;</lable>
-                    <lable class="txt2" style="vertical-align:bottom" id="modi_phone"><%=((User)session.getAttribute("user")).getMobile()%></lable>
+                    <lable class="txt2" style="vertical-align:bottom" id="modi_phone"><%=mobile%></lable>
                 </div>
-                 <input type="button"  style="display: inline;vertical-align:bottom" type="button" value="编辑" id="edit" class="btn4"/>
+                 <input type="button" style="display: inline;vertical-align:bottom" type="button" value="编辑" id="edit" class="btn4" onclick="/test_ssh/mall/editOrder?address=<%=address %>&mobile=<%=mobile%>"/>
             </div>
 
 

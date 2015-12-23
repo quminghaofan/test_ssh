@@ -17,13 +17,18 @@ public class PicUpload {
      * @param filedata
      *           文件数据
      */
-    private static String picDir="C:\\Program Files\\apache-tomcat-7.0.65\\webapps\\test_ssh";
-    public static String saveFile(MultipartFile filedata) {
+    public static String saveFile(MultipartFile filedata,String saveFilePath) {
         // 保存相对路径到数据库 图片写入服务器
         if (filedata != null && !filedata.isEmpty()) {
             // 获取图片的文件名
-            String fileName = filedata.getOriginalFilename();
-            String saveFilePath = picDir;
+        	String fileName = filedata.getOriginalFilename();
+            // 获取图片的扩展名
+            String extensionName = fileName
+                    .substring(fileName.lastIndexOf(".") + 1);
+            // 新的图片文件名 = 获取时间戳+"."图片扩展名
+            String newFileName = String.valueOf(System.currentTimeMillis())
+                    + "." + extensionName;
+//            String saveFilePath = picDir;
             /* 构建文件目录 */
             File fileDir = new File(saveFilePath);
             if (!fileDir.exists()) {
@@ -32,7 +37,7 @@ public class PicUpload {
      
             try {
                 FileOutputStream out = new FileOutputStream(saveFilePath + "\\"
-                        + fileName);
+                        + newFileName);
                 // 写入文件
                 out.write(filedata.getBytes());
                 out.flush();
@@ -40,7 +45,7 @@ public class PicUpload {
             } catch (Exception e) {
                 e.printStackTrace();
             }  
-            return saveFilePath + "\\"+ fileName;
+            return fileName;
         }
         return "";
     }
@@ -48,8 +53,8 @@ public class PicUpload {
      * 
      * 功能描述：删除图片
      */
-    public static void deleteFile(String picName) {
-        File fileDir = new File(picDir+"\\"+picName);
+    public static void deleteFile(String picName,String picUrl) {
+        File fileDir = new File(picUrl+picName);
         if (fileDir.exists()) {
             //把修改之前的图片删除 以免太多没用的图片占据空间
             fileDir.delete();

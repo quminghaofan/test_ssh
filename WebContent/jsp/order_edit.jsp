@@ -169,14 +169,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <div class="register">
 			   <div class="col-md-6 login-right">
 				<form method="get"  action="" class="artworkform">
-			
 				  <div>
 					<span>地址</span>
-					<input type="text" value="${order.adress}"> 
+					<input type="text" value="<%=session.getAttribute("address") %>"> 
 				  </div>
 				   <div>
 					<span>电话</span>
-					<input type="text" value="${order.mobile}"> 
+					<input type="text" value="<%=session.getAttribute("mobile") %>"> 
 				  </div>
 				  <input type="submit" value="确认">
 				  <input type="button" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/super/adminManage'" value="返回">

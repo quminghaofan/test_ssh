@@ -61,7 +61,7 @@ body {
 	src="../My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
-	<form method="post" class="definewidth m10" id="myform">
+	<form method="post" class="definewidth m10" id="myform" enctype="multipart/form-data">
 		<table class="table table-bordered table-hover m10">
 			<tr>
 				<td width="10%" class="tableleft">软文类型</td>

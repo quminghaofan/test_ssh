@@ -308,7 +308,7 @@ $(document).ready(function() {
 				<li class="promote_head"><h3>定制</h3></li>
 			</ul>
 			<ul id="flexiselDemo3">
-			<c:forEach items="customizedlist" var="cus">
+			<c:forEach items="${customizedlist}" var="cus">
 				<li><img src="${cus.picUrl}" class="img-responsive" />
 					<div class="grid-flex">
 						<h4>${cus.name}</h4>

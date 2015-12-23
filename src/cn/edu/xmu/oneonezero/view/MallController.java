@@ -2,6 +2,7 @@ package cn.edu.xmu.oneonezero.view;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
+import cn.edu.xmu.oneonezero.entity.CommodityArtworkOrder;
 import cn.edu.xmu.oneonezero.entity.User;
+import cn.edu.xmu.oneonezero.service.CommodityArtworkOrderService;
 import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
 
 @Controller
@@ -21,6 +23,9 @@ import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
 public class MallController {
 	@Resource(name = "commodityArtworkService")
 	CommodityArtworkService commodityArtworkService;
+	
+	@Resource(name="commodityArtworkOrderService")
+	private CommodityArtworkOrderService commodityArtworkOrderService;
 
 	@RequestMapping(value="/enterMall")
 	public String enterMall(String page,Long typeId,HttpServletRequest request) {
@@ -68,12 +73,24 @@ public class MallController {
 	@RequestMapping("/settle")
 	public String settle(HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException {
+		User user=(User)request.getSession().getAttribute("user");
 		List<CommodityArtwork> commodityArtworks = CommonMethod.jsonToCommodityArtwork(request);
 		Double total = 0.0;
 		// System.out.println("commodityArtworks.size:"+commodityArtworks.size());
+		List<CommodityArtworkOrder> commodityArtworkOrders=new ArrayList<CommodityArtworkOrder>();
 		for (CommodityArtwork commodityArtwork : commodityArtworks) {
 			total += commodityArtwork.getPrice();
+			CommodityArtworkOrder commodityArtworkOrder=new CommodityArtworkOrder();
+			commodityArtworkOrder.setCommodityArtwork(commodityArtwork);
+//			commodityArtworkOrder.setPrice(commodityArtwork.getPrice()); TODO price属性可以去掉
+			commodityArtworkOrder.setUser(user);
+			commodityArtworkOrder.setAddress(user.getAddress());
+			commodityArtworkOrder.setMobile(user.getMobile());
+			commodityArtworkOrder.setPlaceDate(new Date(System.currentTimeMillis()));
+			commodityArtworkOrder.setState("未支付");
+			commodityArtworkOrders.add(commodityArtworkOrder);
 		}
+//		commodityArtworkOrderService.inser  TODO 
 		request.setAttribute("orderlist", commodityArtworks);
 		request.setAttribute("total", total);
 		return "checkorder";
@@ -81,9 +98,19 @@ public class MallController {
 	
 	@RequestMapping("/settleOne")
 	public String settleOne(Long itemId,HttpServletResponse response,HttpServletRequest request) throws UnsupportedEncodingException{
+		User user=(User)request.getSession().getAttribute("user");
 		List<CommodityArtwork> commodityArtworks=new ArrayList<CommodityArtwork>();
 		CommodityArtwork commodityArtwork=null;//TODO
 		commodityArtworks.add(commodityArtwork);
+		CommodityArtworkOrder commodityArtworkOrder=new CommodityArtworkOrder();
+		commodityArtworkOrder.setCommodityArtwork(commodityArtwork);
+//		commodityArtworkOrder.setPrice(commodityArtwork.getPrice()); TODO price属性可以去掉
+		commodityArtworkOrder.setUser(user);
+		commodityArtworkOrder.setAddress(user.getAddress());
+		commodityArtworkOrder.setMobile(user.getMobile());
+		commodityArtworkOrder.setPlaceDate(new Date(System.currentTimeMillis()));
+		commodityArtworkOrder.setState("未支付");
+//		commodityArtworkOrderService.insert
 		request.setAttribute("orderlist", commodityArtworks);
 		request.setAttribute("total", commodityArtwork.getPrice());
 		return "checkorder";
@@ -101,4 +128,16 @@ public class MallController {
 		CommonMethod.cleanCookie(request, response);
 		return "pay_success";
 	} 
+	
+	@RequestMapping("/editOrder")//TODO
+	public String editOrder(String type,String address,String mobile,HttpServletRequest request){
+		request.getSession().setAttribute("address", address);
+		request.getSession().setAttribute("mobile", mobile);
+		if(type.equals("1")){
+		return "order_edit";
+		}
+		else {
+			return "redirect:/mall/";
+		}
+	}
 }

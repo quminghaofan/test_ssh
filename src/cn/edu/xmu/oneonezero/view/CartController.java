@@ -35,23 +35,22 @@ public class CartController {
 	public void add2Cart(String itemId,
 			HttpServletResponse response, HttpServletRequest request)
 			throws IOException {
-		System.out.println(itemId);
 		if (itemId != null) {
 			String commodityArtworkJson = commodityArtworkService
 					.getCommodityArtworkWithJSONTypeById(Long.parseLong(itemId))
 					.toString();
+			System.out.println("add2cart:"+commodityArtworkJson);
 			CommonMethod.addCookie(Long.parseLong(itemId),
 					commodityArtworkJson, request, response);
-			System.out.println(request.getCookies().length);
 		}
 	}
 
 	@RequestMapping("/showCart")
 	public String showCart(HttpServletRequest request)
 			throws UnsupportedEncodingException {
-		// List<CommodityArtwork>
-		// commodityArtworks=CommonMethod.jsonToFinishedItem(request);
-		// System.out.println("name:"+commodityArtworks.get(0).getName());
+		/* List<CommodityArtwork>
+		 commodityArtworks=CommonMethod.jsonToCommodityArtwork(request);
+		 System.out.println("showcart:"+commodityArtworks.get(0).getType());*/
 		request.setAttribute("commodityArtworkList",
 				CommonMethod.jsonToCommodityArtwork(request));
 		return "cart";
