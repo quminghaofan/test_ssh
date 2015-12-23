@@ -84,6 +84,12 @@ public class CommodityArtworkOrderServiceImpl implements CommodityArtworkOrderSe
 	public CommodityArtworkOrder getCommodityArtworkOrderByOrderId(long commodityArtworkOrderId) {
 		return commodityArtworkOrderDao.getCommodityArtworkOrderByOrderId(commodityArtworkOrderId);
 	}
+
+
+	@Override
+	public List<CommodityArtworkOrder> getCommodityArtworkOrdersByOwnerId(long ownerId) {
+		return commodityArtworkOrderDao.getCommodityArtworkOrdersByOwnerId(ownerId);
+	}
 	
 	
 }

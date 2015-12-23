@@ -94,6 +94,34 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 		return query.list();
 	}
 
+	@Override
+	public void insertCommodityArtwork(CommodityArtwork commodityArtwork) {
+		sessionFactory.getCurrentSession().saveOrUpdate(commodityArtwork);
+	}
+
+	@Override
+	public CommodityArtwork getCommodityArtworkById(long commodityArtworkId) {
+		String hql = "from CommodityArtwork ca where ca.id= ?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setLong(0, commodityArtworkId);
+		
+		return (CommodityArtwork) query.uniqueResult();
+	
+	}
+
+	@Override
+	public void updateCommodityArtwork(CommodityArtwork commodityArtwork) {
+		sessionFactory.getCurrentSession().saveOrUpdate(commodityArtwork);
+	}
+
+	@Override
+	public List<CommodityArtwork> getAllExhibitArtworks() {
+		String hql = "from CommodityArtwork where a.canSell=false";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		return query.list();
+	}
+
 	
 
 	

@@ -82,6 +82,12 @@ public class CustomizedArtworkOrderServiceImpl implements CustomizedArtworkOrder
 	public CustomizedArtworkOrder getCustomedArtworkOrderByOrderId(long customizedArtworkOrderId) {
 		return customizedArtworkOrderDao.getCustomedArtworkOrderByOrderId(customizedArtworkOrderId);
 	}
+
+
+	@Override
+	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByOwnerId(long ownerId) {
+		return customizedArtworkOrderDao.getCustomizedArtworkOrdersByOwnerId(ownerId);
+	}
 	
 	
 }

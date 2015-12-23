@@ -45,4 +45,20 @@ public class CommodityArtworkServiceImpl implements CommodityArtworkService{
 	public List<CommodityArtwork> getCommodityArtworksByArtistId(long ownerId) {
 		return commodityArtworkDao.getCommodityArtworksByArtistId(ownerId);
 	}
+	@Override
+	public void insertCommodityArtwork(CommodityArtwork commodityArtwork) {
+		commodityArtworkDao.insertCommodityArtwork(commodityArtwork);
+	}
+	@Override
+	public CommodityArtwork getCommodityArtworkById(long commodityArtworkId) {
+		return commodityArtworkDao.getCommodityArtworkById(commodityArtworkId);
+	}
+	@Override
+	public void updateCommodityArtwork(CommodityArtwork commodityArtwork) {
+		commodityArtworkDao.updateCommodityArtwork(commodityArtwork);
+	}
+	@Override
+	public List<CommodityArtwork> getAllExhibitArtworks() {
+		return commodityArtworkDao.getAllExhibitArtworks();
+	}
 }

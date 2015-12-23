@@ -16,7 +16,7 @@ public class ArtworkDaoImpl implements ArtworkDao{
 
 	@Override
 	public List<Artwork> getArtworksByType(String type) {
-		String hql = "from  Artwork a.type.name like ? ";
+		String hql = "from  Artwork a where a.type.name like ? ";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, type);
 		if(query.list()==null||query.list().size()==0) 
@@ -35,6 +35,16 @@ public class ArtworkDaoImpl implements ArtworkDao{
 		
 		if(query.list()==null||query.list().size()==0)return null;
 		
+		return query.list();
+	}
+
+	@Override
+	public List<Artwork> getArtworksByAuthorName(String authorName) {
+		String hql = "from  Artwork a where a.author like ? ";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, authorName);
+		if(query.list()==null||query.list().size()==0) 
+			return null;
 		return query.list();
 	}
 }

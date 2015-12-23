@@ -21,6 +21,11 @@ public class ArtworkServiceImpl implements ArtworkService{
 	public List<Artwork> getArtworksByTypeAndArtworkName(String type, String artworkName, int start, int num) {
 		return artworkDao.getArtworksByTypeAndArtworkName(type, artworkName, start, num);
 	}
+
+	@Override
+	public List<Artwork> getArtworksByAuthorName(String authorName) {
+		return artworkDao.getArtworksByAuthorName(authorName);
+	}
 	
 	
 }

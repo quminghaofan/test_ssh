@@ -28,6 +28,8 @@ public interface CustomizedArtworkOrderService {
 	
 	public CustomizedArtworkOrder getCustomedArtworkOrderByOrderId(long customizedArtworkOrderId);//根据订单id获取定制艺术品订单	
 
+	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByOwnerId(long ownerId);//根据卖家id 获得获得所有的定制艺术品订单
+	
 
 	
 }

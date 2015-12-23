@@ -223,6 +223,16 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			return null;
 		return (CommodityArtworkOrder) query.uniqueResult();
 	}
+
+	@Override
+	public List<CommodityArtworkOrder> getCommodityArtworkOrdersByOwnerId(long ownerId) {
+		String hql = "from  CommodityArtworkOrder cao.commodityArtwork.owner.id=? ";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setLong(0, ownerId);
+		if(query.list()==null||query.list().size()==0) 
+			return null;
+		return query.list();
+	}
 	
 	
 }

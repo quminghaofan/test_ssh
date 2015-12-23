@@ -216,6 +216,16 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 			return null;
 		return (CustomizedArtworkOrder) query.uniqueResult();
 	}
+
+	@Override
+	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByOwnerId(long ownerId) {
+		String hql = "from  CustomizedArtworkOrder cao.customizedArtwork.owner.id=? ";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setLong(0, ownerId);
+		if(query.list()==null||query.list().size()==0) 
+			return null;
+		return query.list();
+	}
 	
 	
 	
