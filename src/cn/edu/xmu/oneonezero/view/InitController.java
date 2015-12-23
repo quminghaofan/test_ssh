@@ -46,6 +46,8 @@ public class InitController {
 		request.setAttribute("RRlist", news);
 		List<CommodityArtwork> commodityArtworks = commodityArtworkService.commodityArtworksToDisplay();
 		request.setAttribute("commodityArtworkList", commodityArtworks);
+		request.setAttribute("TYPELIST", dataDictionaryService.getAllArtworkTypes());
+//		request.setAttribute("adlist", );
 //		request.setAttribute("customizedlist", arg1);
 		return "index";
 	}

@@ -148,15 +148,15 @@ $(document).ready(function() {
 				<ul class="megamenu skyblue">
 					<li class="active grid"><a class="color2"
 						href="/test_ssh/init/home">首页</a></li>
-					<li><a class="color4" href="">定制</a>
+					<li><a class="color7" href="/test_ssh/customizedenterCustomized">定制</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
 									<div class="h_nav">
 										<ul>
-											<li><a href="">全部</a></li>
+											<li><a href="/test_ssh/mall/enterMall?go=0">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
+												<li><a href="/test_ssh/mall/enterMall?typeId=${type.id}&go=0">${type.name}</a></li>
 											</c:forEach>
 										</ul>
 									</div>
@@ -169,24 +169,9 @@ $(document).ready(function() {
 								<div class="col1">
 									<div class="h_nav">
 										<ul>
-											<li><a href="/test_ssh/mall/enterMall">全部</a></li>
+											<li><a href="/test_ssh/mall/enterMall?go=1">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="/test_ssh/mall/enterMall?type=${type.id}">${type.name}</a></li>
-											</c:forEach>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div></li>
-					<li><a class="color7" href="#">拍卖</a>
-						<div class="megapanel">
-							<div class="row">
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<li><a href="">全部</a></li>
-											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
+												<li><a href="/test_ssh/mall/enterMall?typeId=${type.id}&go=1">${type.name}</a></li>
 											</c:forEach>
 										</ul>
 									</div>
@@ -203,9 +188,10 @@ $(document).ready(function() {
 		<div class="container">
 			<div class="callbacks_container">
 				<ul class="rslides" id="slider">
-					<!-- 广告 -->
-					<c:forEach items="adlist" var="ad">
-						<li><img src="{ad.}" class="img-responsive" alt="" href="" /></li>
+					<c:forEach items="${adlist}" var="ad">
+					<c:if test="${ad.picUrl!=null}">
+						<li><img src="${ad.picUrl}" class="img-responsive" alt="" href="/test_ssh/news/showNews?newsId=${ad.id}&type=1" /></li>
+					</c:if>
 					</c:forEach>
 				</ul>
 			</div>

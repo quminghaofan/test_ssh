@@ -44,10 +44,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	$(document).ready(function() {
 		$(".megamenu").megamenu();
 	});
-	
-	function sort(){
-		alert("123");
-		window.loction="/test_ssh/mall/enterMall";}
 </script>
 
 </head>
@@ -103,7 +99,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="header_bottom_right">
 					<div class="search">
-						<form action="/test_ssh/mall/enterMall" method="post">
+						<form action="/test_ssh/mall/enterMall?typeId=${typeId}&go=0" method="post">
 							<input id="itemname" name="itemname" type="text" value="${itemname}"
 								onFocus="this.value = '';"
 								onBlur="if (this.value == '') {this.value = '商品名称';}"> <input
@@ -134,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="menu_box">
 				<ul class="megamenu skyblue">
 					<li><a class="color2" href="/test_ssh/init/home">首页</a></li>
-					<li class="active grid"><a class="color4" href="">定制</a>
+					<li><a class="color4" href="">定制</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
@@ -149,8 +145,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</div>
 						</div></li>
-					<li><a class="color10"
-						href="/test_ssh/mall/enterMall">商城</a>
+					<li class="active grid"><a class="color10"
+						href="/test_ssh/mall/enterMall&go=0">商城</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
@@ -191,33 +187,59 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<div class="col-md-9">
 				<div class="mens-toolbar">
-					
+					<!-- <div class="sort">
+						<div class="sort-by">
+							<label>按价格排序</label> <select name="sort" id="sort" onchange="sort()">
+								<option value="0"></option>
+								<option value="1" ${status eq '1' ? 'selected': ''}>由高到低</option>
+								<option value="2" ${status eq '2' ? 'selected': ''}>由低到高</option>
+							</select>
+						</div>
+					</div>
+					 <div class="pager">   
+	           <div class="limiter visible-desktop">
+	            <label>显示</label>
+	            <select>
+	                            <option value="" selected="selected">
+	                    9                </option>
+	                            <option value="">
+	                    15                </option>
+	                            <option value="">
+	                    30                </option>
+	                        </select> 每页        
+	             </div>
+	       		<ul class="dc_pagination dc_paginationA dc_paginationA06">
+				    <li><a href="#" class="previous">Pages</a></li>
+				    <li><a href="#">1</a></li>
+				    <li><a href="#">2</a></li>
+			  	</ul>
+		   		<div class="clearfix"></div>
+	    	</div>-->
 					<div class="clearfix"></div>
 				</div>
 				<div class="span_2">
 					<c:forEach items="${itemlist}" var="item">
 						<div class="col_1_of_single1 span_1_of_single1">
-							<a href=""> <img src="${item.picUrl}"
+							<a href="single.html"> <img src="${item.picUrl}"
 								class="img-responsive" alt="" href="/test_ssh/mall/seeMore?itemId=${item.id}" />
 								<h3>${item.name}</h3>
-								<h4>${item.type}</h4><!-- 类别 -->
-								<h4>${item.}</h4><!-- 艺术家 -->
+								<h4>${item.price}</h4>
 							</a>
 							<ul class="list2">
 								<%
 									if (session.getAttribute("user") != null) {
 								%>
 							<li class="list2_left"><span class="m_1">
-									<a class="link"  onclick="">申请定制</a> 
+									<a class="link" id="add2Cart" onclick="add2Cart(${item.id},this)">加入购物篮</a> 
 								<li class="list2_right"><span class="m_2"><a
-										href="" class="link1">查看艺术家</a></span></li>
+										href="/test_ssh/mall/settleOne?itemId=${item.id}" class="link1">立即购买</a></span></li>
 								<%
 									} else {
 								%>
 								<li class="list2_left"><span class="m_1"><a href="/test_ssh/init/goToLogin?backUrl=${backUrl}"
-										class="link">申请定制</a></span></li>
+										class="link">添加购物篮</a></span></li>
 								<li class="list2_right"><span class="m_2"><a
-										href="/test_ssh/init/goToLogin?backUrl=${backUrl}" class="link1">详情</a></span></li>
+										href="/test_ssh/init/goToLogin?backUrl=${backUrl}" class="link1">立即购买</a></span></li>
 								<%
 									}
 								%>
@@ -240,7 +262,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<c:if test="${currentPage != 1}">
 
-				<a href="/test_ssh/mall/enterMall?page=${currentPage-1}">&lt;&lt;
+				<a href="/test_ssh/mall/enterMall?page=${currentPage-1}&typeId=${typeId}&go=0">&lt;&lt;
 					前一页</a>
 
 			</c:if>
@@ -253,7 +275,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<c:if test="${currentPage != 1}">
 
-				<a href="/test_ssh/mall/enterMall?page=1">1/${totalpage}</a>
+				<a href="/test_ssh/mall/enterMall?page=1&typeId=${typeId}&go=0">1/${totalpage}</a>
 
 			</c:if>
 
@@ -275,7 +297,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<c:if test="${currentPage != page}">
 
-				<a href="/test_ssh/mall/enterMall?page=<%=i + 1%>"><%=i + 1%>/${totalpage}</a>
+				<a href="/test_ssh/mall/enterMall?page=<%=i + 1%>&typeId=${typeId}&go=0"><%=i + 1%>/${totalpage}</a>
 
 			</c:if>
 
@@ -293,7 +315,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<c:if test="${currentPage != pageTimes}">
 
-				<a href="/test_ssh/mall/enterMall?page=${currentPage+1}">后一页
+				<a href="/test_ssh/mall/enterMall?page=${currentPage+1}&typeId=${typeId}&go=0">后一页
 					&gt;&gt;</a>
 
 			</c:if>

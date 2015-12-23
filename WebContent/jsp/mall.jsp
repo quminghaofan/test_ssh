@@ -44,10 +44,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	$(document).ready(function() {
 		$(".megamenu").megamenu();
 	});
-	
-	function sort(){
-		alert("123");
-		window.loction="/test_ssh/mall/enterMall";}
 </script>
 
 </head>
@@ -103,7 +99,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="header_bottom_right">
 					<div class="search">
-						<form action="/test_ssh/mall/enterMall" method="post">
+						<form action="/test_ssh/mall/enterMall?typeId=${typeId}&go=1" method="post">
 							<input id="itemname" name="itemname" type="text" value="${itemname}"
 								onFocus="this.value = '';"
 								onBlur="if (this.value == '') {this.value = '商品名称';}"> <input
@@ -150,7 +146,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						</div></li>
 					<li class="active grid"><a class="color10"
-						href="/test_ssh/mall/enterMall">商城</a>
+						href="/test_ssh/mall/enterMall&go=1">商城</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
@@ -266,7 +262,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<c:if test="${currentPage != 1}">
 
-				<a href="/test_ssh/mall/enterMall?page=${currentPage-1}">&lt;&lt;
+				<a href="/test_ssh/mall/enterMall?page=${currentPage-1}&typeId=${typeId}&go=1">&lt;&lt;
 					前一页</a>
 
 			</c:if>
@@ -279,7 +275,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<c:if test="${currentPage != 1}">
 
-				<a href="/test_ssh/mall/enterMall?page=1">1/${totalpage}</a>
+				<a href="/test_ssh/mall/enterMall?page=1&typeId=${typeId}&go=1">1/${totalpage}</a>
 
 			</c:if>
 
@@ -301,7 +297,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<c:if test="${currentPage != page}">
 
-				<a href="/test_ssh/mall/enterMall?page=<%=i + 1%>"><%=i + 1%>/${totalpage}</a>
+				<a href="/test_ssh/mall/enterMall?page=<%=i + 1%>&typeId=${typeId}&go=1"><%=i + 1%>/${totalpage}</a>
 
 			</c:if>
 
@@ -319,7 +315,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<c:if test="${currentPage != pageTimes}">
 
-				<a href="/test_ssh/mall/enterMall?page=${currentPage+1}">后一页
+				<a href="/test_ssh/mall/enterMall?page=${currentPage+1}&typeId=${typeId}&go=1">后一页
 					&gt;&gt;</a>
 
 			</c:if>

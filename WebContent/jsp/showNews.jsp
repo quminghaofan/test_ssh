@@ -54,10 +54,12 @@
 					<div class="box1">
 						<div class="wrap">
 							<div class="box1-info">
+							<c:if test="${news.picUrl!=null}">
 								<p>
 								<img id="picture" src="${news.picUrl}" height="350" width="500"
 						readonly="readonly" />
 								</p>
+								</c:if>
 								<p>
 									"${news.content}"
 								</p>

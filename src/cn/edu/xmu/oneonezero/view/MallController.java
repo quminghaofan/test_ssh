@@ -28,7 +28,7 @@ public class MallController {
 	private CommodityArtworkOrderService commodityArtworkOrderService;
 
 	@RequestMapping(value = "/enterMall")
-	public String enterMall(String page, Long typeId, HttpServletRequest request) {
+	public String enterMall(String page,String go, Long typeId, HttpServletRequest request) {
 		String itemname = request.getParameter("itemname");
 		System.out.println("itemname:" + itemname);
 		if (itemname != null && !itemname.equals("商品名称")) {
@@ -46,32 +46,27 @@ public class MallController {
 		}
 
 		List<CommodityArtwork> commodityArtworks = null;// TODO
-		if (typeId == null)
+		if (typeId == null){//TODO 返回值改为artwork
 			commodityArtworks = commodityArtworkService
 					.getCommodityArtworksByPositionAndVagueName(itemname,
 							curentPage - 1, 30);
-		else {
-			// commodityArtworks
 		}
-		// String sort=request.getParameter("sort");
-		// request.setAttribute("status", sort);
-		// if(sort==null||sort.equals("0")){
-		// commodityArtworks=commodityArtworkService.getCommodityArtworksByPositionAndVagueName(itemname,curentPage
-		// - 1, 30);
-		// }
-		// else if(sort.equals("1")){
-		// commodityArtworks=commodityArtworkService.getCommodityArtworksByVagueArtNameInAscendingOrder(itemname);
-		// }
-		// else{
-		// commodityArtworks=commodityArtworkService.getCommodityArtworksByVagueArtNameInDescendingOrder(itemname);
-		// }
+		else {
+			// commodityArtworks 根据类型，模糊名称分页获取
+		}
 		request.setAttribute("itemlist", commodityArtworks);
 		int pageTimes = commodityArtworkService.getPageTotalByVagueName(
 				itemname, 30);
 		request.setAttribute("totalpage", pageTimes);
 		request.getSession().setAttribute("pageTimes", pageTimes);
 		request.setAttribute("currentPage", curentPage);
-		return "mall";
+		request.setAttribute("typeId", typeId);
+		if(go.equals("1")){
+			return "mall";
+		}
+		else{ 
+			return "customized";
+		}
 	}
 
 	@RequestMapping("/settle")
