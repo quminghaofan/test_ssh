@@ -135,7 +135,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			   <div class="col-md-6 login-right">
 			  	<h3>支付宝支付</h3>
 				
-				<form id="loginform" method="post" onsubmit="return before_login()" action="/test_ssh/init/login">
+				<form id="loginform" method="post" onsubmit="return before_login()" action="/test_ssh/mall/login">
 					<c:if test="${result==0}">
 					<div id="result"><font color="red">用户名不存在或密码错误</font></div>
 				</c:if>
@@ -144,7 +144,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</c:if>
 				<div>
 					<span>支付金额</span>
-					<input type="text" name="price" id="price" readonly="readonly"> 
+					<input type="text" name="price" id="price" readonly="readonly" value="${total}"> 
 				  </div>
 				  <div>
 					<span>支付宝账号<label>*</label></span>

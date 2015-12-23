@@ -56,9 +56,9 @@
 </c:if>
         </table>
 
-<form class="form-inline definewidth m20" action="/test_ssh/super/addArtType" method="post">
-    产品类别编号：<input  type="text"  id="type"class="abc input-default" placeholder="" value="" style="display:none;margin-left:42.5%">&nbsp;&nbsp;
-    产品类别名称：<input  type="text"  id="type"class="abc input-default" placeholder="" value="" style="display:none;margin-left:42.5%">&nbsp;&nbsp;
+<form class="form-inline definewidth m20" action="/test_ssh/super/addArtType" method="post"><!-- TODO 编号规则：两位整数，不存在数据库里的 -->
+    产品类别编号：<input  type="text"  id="typenumber" name="typenumber" class="abc input-default" placeholder="" value="" style="display:none;margin-left:42.5%">&nbsp;&nbsp;
+    产品类别名称：<input  type="text"  id="typename" name="typename" class="abc input-default" placeholder="" value="" style="display:none;margin-left:42.5%">&nbsp;&nbsp;
     <button  type="submit" class="btn btn-primary" id="confirm" style="display:none;margin-left:50%">确认</button>&nbsp;&nbsp;
 </form>
 <div style="margin-left:50%">

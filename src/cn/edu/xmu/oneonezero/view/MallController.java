@@ -17,6 +17,7 @@ import cn.edu.xmu.oneonezero.entity.CommodityArtworkOrder;
 import cn.edu.xmu.oneonezero.entity.User;
 import cn.edu.xmu.oneonezero.service.CommodityArtworkOrderService;
 import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
+import cn.edu.xmu.oneonezero.service.CustomizedArtworkService;
 
 @Controller
 @RequestMapping("/mall")
@@ -27,8 +28,12 @@ public class MallController {
 	@Resource(name = "commodityArtworkOrderService")
 	private CommodityArtworkOrderService commodityArtworkOrderService;
 
+	@Resource(name = "customizedArtworkService")
+	private CustomizedArtworkService customizedArtworkService;
+
 	@RequestMapping(value = "/enterMall")
-	public String enterMall(String page,String go, Long typeId, HttpServletRequest request) {
+	public String enterMall(String page, String go, Long typeId,
+			HttpServletRequest request) {
 		String itemname = request.getParameter("itemname");
 		System.out.println("itemname:" + itemname);
 		if (itemname != null && !itemname.equals("商品名称")) {
@@ -44,27 +49,29 @@ public class MallController {
 		} else {
 			curentPage = Integer.parseInt(page);
 		}
-
-		List<CommodityArtwork> commodityArtworks = null;// TODO
-		if (typeId == null){//TODO 返回值改为artwork
-			commodityArtworks = commodityArtworkService
-					.getCommodityArtworksByPositionAndVagueName(itemname,
-							curentPage - 1, 30);
-		}
-		else {
-			// commodityArtworks 根据类型，模糊名称分页获取
-		}
-		request.setAttribute("itemlist", commodityArtworks);
 		int pageTimes = commodityArtworkService.getPageTotalByVagueName(
 				itemname, 30);
 		request.setAttribute("totalpage", pageTimes);
 		request.getSession().setAttribute("pageTimes", pageTimes);
 		request.setAttribute("currentPage", curentPage);
 		request.setAttribute("typeId", typeId);
-		if(go.equals("1")){
+		if (go.equals("1")) {
+			if (typeId == null) {//
+				request.setAttribute("itemlist", commodityArtworkService
+						.getCommodityArtworksByPositionAndVagueName(itemname,
+								curentPage - 1, 30));
+			} else {
+				// request.setAttribute("itemlist",commodityArtworkService.get);
+				// commodityArtworks 根据类型，模糊名称分页获取
+			}
 			return "mall";
-		}
-		else{ 
+		} else {
+			if (typeId == null) {//
+			// request.setAttribute("itemlist",customizedArtworkService.);获取展品
+			} else {
+				// request.setAttribute("itemlist",);
+				// 根据类型，模糊名称分页获取展品
+			}
 			return "customized";
 		}
 	}
@@ -90,8 +97,11 @@ public class MallController {
 			HttpServletRequest request) throws UnsupportedEncodingException {
 		User user = (User) request.getSession().getAttribute("user");
 		List<CommodityArtwork> commodityArtworks = new ArrayList<CommodityArtwork>();
-		CommodityArtwork commodityArtwork = null;// TODO
-		commodityArtworks.add(commodityArtwork);
+		CommodityArtwork commodityArtwork = commodityArtworkService
+				.getCommodityArtworkById(itemId);
+		if (commodityArtwork != null) {
+			commodityArtworks.add(commodityArtwork);
+		}
 		request.setAttribute("orderlist", commodityArtworks);
 		request.setAttribute("total", commodityArtwork.getPrice());
 		request.setAttribute("type", itemId);
@@ -109,14 +119,13 @@ public class MallController {
 	public String goToPay(Long type, HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException {
 		User user = (User) request.getSession().getAttribute("user");
-		List<CommodityArtworkOrder> commodityArtworkOrders= new ArrayList<CommodityArtworkOrder>();
+		List<CommodityArtworkOrder> commodityArtworkOrders = new ArrayList<CommodityArtworkOrder>();
 		if (type == 0) {
-			List<CommodityArtwork> commodityArtworks = CommonMethod.jsonToCommodityArtwork(request); 
+			List<CommodityArtwork> commodityArtworks = CommonMethod
+					.jsonToCommodityArtwork(request);
 			for (CommodityArtwork commodityArtwork : commodityArtworks) {
 				CommodityArtworkOrder commodityArtworkOrder = new CommodityArtworkOrder();
 				commodityArtworkOrder.setCommodityArtwork(commodityArtwork);
-				// commodityArtworkOrder.setPrice(commodityArtwork.getPrice());
-				// TODO price属性可以去掉
 				commodityArtworkOrder.setUser(user);
 				commodityArtworkOrder.setAddress(user.getAddress());
 				commodityArtworkOrder.setMobile(user.getMobile());
@@ -125,14 +134,12 @@ public class MallController {
 				commodityArtworkOrder.setState("未支付");
 				commodityArtworkOrders.add(commodityArtworkOrder);
 			}
-			//TODO 添加
+			// TODO 添加
 			CommonMethod.cleanCookie(request, response);
 		} else {
-			CommodityArtwork commodityArtwork=null;//TODO 根据id-type获取
+			CommodityArtwork commodityArtwork = commodityArtworkService.getCommodityArtworkById(type);
 			CommodityArtworkOrder commodityArtworkOrder = new CommodityArtworkOrder();
 			commodityArtworkOrder.setCommodityArtwork(commodityArtwork);
-			// commodityArtworkOrder.setPrice(commodityArtwork.getPrice());
-			// TODO price属性可以去掉
 			commodityArtworkOrder.setUser(user);
 			commodityArtworkOrder.setAddress(user.getAddress());
 			commodityArtworkOrder.setMobile(user.getMobile());
@@ -140,48 +147,52 @@ public class MallController {
 					.currentTimeMillis()));
 			commodityArtworkOrder.setState("未支付");
 			commodityArtworkOrders.add(commodityArtworkOrder);
-			//TODO 添加
+			commodityArtworkService.insertCommodityArtwork(commodityArtwork);
 		}
-		request.getSession().setAttribute("commodityArtworkOrders", commodityArtworkOrders);
-		return "";// 输入账号界面
+		request.getSession().setAttribute("commodityArtworkOrders",
+				commodityArtworkOrders);
+		request.setAttribute("total", request.getParameter("total"));
+		return "payment_login";
 	}
 
 	@RequestMapping("/pay")
 	public String pay(HttpServletRequest request, HttpServletResponse response) {
-		request.getAttribute("");
-		if(true){//支付成功
-			List<CommodityArtworkOrder> commodityArtworkOrders=(ArrayList<CommodityArtworkOrder>)request.getSession().getAttribute("commodityArtworkOrders");
-			for(CommodityArtworkOrder commodityArtworkOrder:commodityArtworkOrders){
-				//更新订单状态，根据id
+		String total = request.getParameter("price");
+		String name = request.getParameter("username");
+		String psw = request.getParameter("psw");
+		if (true) {// 支付成功
+			List<CommodityArtworkOrder> commodityArtworkOrders = (ArrayList<CommodityArtworkOrder>) request
+					.getSession().getAttribute("commodityArtworkOrders");
+			for (CommodityArtworkOrder commodityArtworkOrder : commodityArtworkOrders) {
+				// 更新订单状态，根据id
 			}
 			return "pay_success";
-		}
-		else {
-			//支付失败，进入输入账号界面
-			return "";
+		} else {
+			// 支付失败，进入输入账号界面
+			// request.setAttribute("result", arg1);
+			return "payment_login";
 		}
 	}
 
 	@RequestMapping("/editOrder")
-	public String editOrder(String wh,Long type, String address, String mobile,
-			HttpServletRequest request) {
+	public String editOrder(String wh, Long type, String address,
+			String mobile, HttpServletRequest request) {
 		request.getSession().setAttribute("address", address);
 		request.setAttribute("type", type);
 		if (wh.equals("0")) {
 			request.getSession().setAttribute("mobile", mobile);
 			return "order_edit";
 		} else {
-			return "redirect:/mall/goBack?type="+type;
+			return "redirect:/mall/goBack?type=" + type;
 		}
 	}
-	
+
 	@RequestMapping("/goBack")
-	public String goBack(Long type,HttpServletRequest request){
-		if(type==0){
+	public String goBack(Long type, HttpServletRequest request) {
+		if (type == 0) {
 			return "redirect:/mall/settle";
-		}
-		else {
-			return "redirect:/mall/settleOne?itemId="+type;
+		} else {
+			return "redirect:/mall/settleOne?itemId=" + type;
 		}
 	}
 }

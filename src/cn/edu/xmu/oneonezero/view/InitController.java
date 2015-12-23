@@ -20,6 +20,7 @@ import cn.edu.xmu.oneonezero.entity.DataDictionary;
 import cn.edu.xmu.oneonezero.entity.News;
 import cn.edu.xmu.oneonezero.entity.User;
 import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
+import cn.edu.xmu.oneonezero.service.CustomizedArtworkService;
 import cn.edu.xmu.oneonezero.service.DataDictionaryService;
 import cn.edu.xmu.oneonezero.service.NewsService;
 import cn.edu.xmu.oneonezero.service.UserService;
@@ -39,6 +40,9 @@ public class InitController {
 	
 	@Resource(name = "dataDictionaryService")
 	private DataDictionaryService dataDictionaryService;
+	
+	@Resource(name="customizedArtworkService")
+	private CustomizedArtworkService customizedArtworkService;
 
 	@RequestMapping(value = "/home")
 	public String home(HttpServletRequest request) {
@@ -47,8 +51,8 @@ public class InitController {
 		List<CommodityArtwork> commodityArtworks = commodityArtworkService.commodityArtworksToDisplay();
 		request.setAttribute("commodityArtworkList", commodityArtworks);
 		request.setAttribute("TYPELIST", dataDictionaryService.getAllArtworkTypes());
-//		request.setAttribute("adlist", );
-//		request.setAttribute("customizedlist", arg1);
+//		request.setAttribute("adlist",news.);
+		request.setAttribute("customizedlist", customizedArtworkService.getAllCustomizedArtworks());
 		return "index";
 	}
 

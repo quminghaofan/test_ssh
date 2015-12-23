@@ -45,7 +45,7 @@ public class PicUpload {
             } catch (Exception e) {
                 e.printStackTrace();
             }  
-            return fileName;
+            return newFileName;
         }
         return "";
     }

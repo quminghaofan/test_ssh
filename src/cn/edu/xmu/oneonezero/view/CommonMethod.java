@@ -58,9 +58,7 @@ public class CommonMethod {
 		User user=(User)request.getSession().getAttribute("user");
 		if(user==null)return;
 		for (Cookie cookie : cookies) {
-			if (cookie.getName().startsWith(user.getName())
-					/*&&cookie.getPath()!=null
-					&&cookie.getPath().equals(request.getContextPath())*/) {
+			if (cookie.getName().startsWith(user.getName())) {
 				Cookie newcookie=new Cookie(cookie.getName(), null);
 				newcookie.setPath(request.getContextPath()); 
 //				System.out.println("logout-path:"+request.getContextPath());

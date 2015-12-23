@@ -63,11 +63,7 @@ public class CartController {
 		Cookie[] cookies = request.getCookies();
 		for (Cookie cookie : cookies) {
 			if (cookie.getName().equals(
-					user.getName() + "#" + Long.toString(itemId))
-			/*
-			 * &&cookie.getPath()!=null
-			 * &&cookie.getPath().equals(request.getContextPath())
-			 */) {
+					user.getName() + "#" + Long.toString(itemId))) {
 				Cookie newcookie = new Cookie(cookie.getName(), null);
 				newcookie.setPath(request.getContextPath());
 				// System.out.println("del-request:"+request.getContextPath());

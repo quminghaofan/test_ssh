@@ -9,9 +9,12 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 import cn.edu.xmu.oneonezero.entity.CommodityArtworkOrder;
+import cn.edu.xmu.oneonezero.entity.CustomizedArtwork;
 import cn.edu.xmu.oneonezero.entity.DataDictionary;
 import cn.edu.xmu.oneonezero.entity.User;
+import cn.edu.xmu.oneonezero.service.CommodityArtworkOrderService;
 import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
+import cn.edu.xmu.oneonezero.service.CustomizedArtworkOrderService;
 import cn.edu.xmu.oneonezero.service.DataDictionaryService;
 import cn.edu.xmu.oneonezero.service.UserService;
 
@@ -26,6 +29,12 @@ public class ArtistController {
 	
 	@Resource(name="commodityArtworkService")
 	private CommodityArtworkService commodityArtworkService;
+	
+	@Resource(name="commodityArtworkOrderService")
+	private CommodityArtworkOrderService commodityArtworkOrderService;
+	
+	@Resource(name="customizedArtworkOrderService")
+	private CustomizedArtworkOrderService customizedArtworkOrderService;
 	
 	@RequestMapping("/artistApply")
 	public String artistApply(HttpServletRequest request){
@@ -42,34 +51,34 @@ public class ArtistController {
 	@RequestMapping("/myArt")
 	public String myArtWork(HttpServletRequest request){
 		User user=(User)request.getSession().getAttribute("user");
-//		request.setAttribute("commodityArtworkList", );
+		request.setAttribute("commodityArtworkList",commodityArtworkService.getCommodityArtworksByArtistId(user.getId()));
 		return "artist_shop";
 	}
 	
 	@RequestMapping("/mySale")
 	public String mySale(HttpServletRequest request){
 		User user=(User)request.getSession().getAttribute("user");
-//		request.setAttribute("orderList", );
+		request.setAttribute("orderList",commodityArtworkOrderService.getCommodityArtworkOrdersByArtistId(user.getId()));
 		return "artist_saleorder";
 	}
 	
 	@RequestMapping("myCustomized")
 	public String myCustomized(HttpServletRequest request){
 		User user=(User)request.getSession().getAttribute("user");
-//		request.setAttribute("orderList", arg1);
+		request.setAttribute("orderList",customizedArtworkOrderService.getCustomizedArtworkOrdersByOwnerId(user.getId()));
 		return "artist_customizedorder";
 	}
 	@RequestMapping("/goToEdit")
 	public String goToEdit(Long itemid,HttpServletRequest request){
-//		CommodityArtwork commodityArtwork=commodityArtworkService.get
-//		request.setAttribute("item", arg1);
-//		request.setAttribute("TYPELIST", arg1);
+		CommodityArtwork commodityArtwork=commodityArtworkService.getCommodityArtworkById(itemid);
+		request.setAttribute("item", commodityArtwork);
+		request.setAttribute("TYPELIST",dataDictionaryService.getAllArtworkTypes());
 		return "artwork_edit";
 	}
 	
 	@RequestMapping("customizedorderDetail")
 	public String customizedorderDetail(Long orderId,HttpServletRequest request){
-//		request.setAttribute("order",commodityArtworkService.);
+		request.setAttribute("order",customizedArtworkOrderService.getCustomedArtworkOrderByOrderId(orderId));
 		return "artist_customizedorder_detail";
 	}
 	
@@ -80,6 +89,11 @@ public class ArtistController {
 		String type=request.getParameter("type");
 		DataDictionary dataDictionary=dataDictionaryService.getDataDictionaryByName(type);
 		String model=request.getParameter("select2");
+		boolean canSell;
+		if(model.equals("1"))canSell=false;
+		else {
+			canSell=true;
+		}
 		String price=request.getParameter("price");
 		String description=request.getParameter("description");
 		if(itemId==null){
@@ -87,27 +101,27 @@ public class ArtistController {
 			commodityArtwork.setPicUrl(picUrl);
 			commodityArtwork.setName(name);
 			commodityArtwork.setType(dataDictionary);
-//			commodityArtwork.setModel
+			commodityArtwork.setCanSell(canSell);
 			commodityArtwork.setPrice(Double.parseDouble(price));
 			commodityArtwork.setArtworkDescription(description);
-//			commodityArtworkService.insert
+			commodityArtworkService.insertCommodityArtwork(commodityArtwork);
 		}
 		else {
-			CommodityArtwork commodityArtwork=null;/*=commodityArtworkService.getCommodityArtworkWithJSONTypeById(itemId);*/
+			CommodityArtwork commodityArtwork=commodityArtworkService.getCommodityArtworkById(itemId);
 			commodityArtwork.setPicUrl(picUrl);
 			commodityArtwork.setName(name);
 			commodityArtwork.setType(dataDictionary);
-//			commodityArtwork.setModel
+			commodityArtwork.setCanSell(canSell);
 			commodityArtwork.setPrice(Double.parseDouble(price));
 			commodityArtwork.setArtworkDescription(description);
-//			commodityArtworkService.upda
+			commodityArtworkService.updateCommodityArtwork(commodityArtwork);
 		}
 		return "redirect:/artist/myArt";
 	}
 	
 	@RequestMapping("delArtwork")
 	public String delArtwork(Long itemId,HttpServletRequest request){
-		//del
+//		commodityArtworkService.
 		return "redirect:/artist/myArt";
 	}
 }

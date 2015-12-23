@@ -187,62 +187,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<div class="col-md-9">
 				<div class="mens-toolbar">
-					<!-- <div class="sort">
-						<div class="sort-by">
-							<label>按价格排序</label> <select name="sort" id="sort" onchange="sort()">
-								<option value="0"></option>
-								<option value="1" ${status eq '1' ? 'selected': ''}>由高到低</option>
-								<option value="2" ${status eq '2' ? 'selected': ''}>由低到高</option>
-							</select>
-						</div>
-					</div>
-					 <div class="pager">   
-	           <div class="limiter visible-desktop">
-	            <label>显示</label>
-	            <select>
-	                            <option value="" selected="selected">
-	                    9                </option>
-	                            <option value="">
-	                    15                </option>
-	                            <option value="">
-	                    30                </option>
-	                        </select> 每页        
-	             </div>
-	       		<ul class="dc_pagination dc_paginationA dc_paginationA06">
-				    <li><a href="#" class="previous">Pages</a></li>
-				    <li><a href="#">1</a></li>
-				    <li><a href="#">2</a></li>
-			  	</ul>
-		   		<div class="clearfix"></div>
-	    	</div>-->
+					
 					<div class="clearfix"></div>
 				</div>
 				<div class="span_2">
 					<c:forEach items="${itemlist}" var="item">
 						<div class="col_1_of_single1 span_1_of_single1">
-							<a href="single.html"> <img src="${item.picUrl}"
+							<a href=""> <img src="${item.picUrl}"
 								class="img-responsive" alt="" href="/test_ssh/mall/seeMore?itemId=${item.id}" />
 								<h3>${item.name}</h3>
-								<h4>${item.price}</h4>
+								<h4>${item.type}</h4>
+								<h4>${item.author.realName}</h4>
 							</a>
 							<ul class="list2">
 								<%
 									if (session.getAttribute("user") != null) {
 								%>
 							<li class="list2_left"><span class="m_1">
-									<a class="link" id="add2Cart" onclick="add2Cart(${item.id},this)">加入购物篮</a> 
-								<li class="list2_right"><span class="m_2"><a
-										href="/test_ssh/mall/settleOne?itemId=${item.id}" class="link1">立即购买</a></span></li>
+									<a class="link"  onclick="">申请定制</a> 
 								<%
 									} else {
 								%>
 								<li class="list2_left"><span class="m_1"><a href="/test_ssh/init/goToLogin?backUrl=${backUrl}"
-										class="link">添加购物篮</a></span></li>
-								<li class="list2_right"><span class="m_2"><a
-										href="/test_ssh/init/goToLogin?backUrl=${backUrl}" class="link1">立即购买</a></span></li>
+										class="link">申请定制</a></span></li>
 								<%
 									}
 								%>
+								<li class="list2_right"><span class="m_2"><a
+										href="/test_ssh/customized/seeMore?artist=${item.author.id}" class="link1">查看艺术家</a></span></li>
 							</ul>
 						</div>
 					</c:forEach>

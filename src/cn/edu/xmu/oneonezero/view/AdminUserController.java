@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 import cn.edu.xmu.oneonezero.entity.CommodityArtworkOrder;
 import cn.edu.xmu.oneonezero.entity.DataDictionary;
 import cn.edu.xmu.oneonezero.entity.User;
 import cn.edu.xmu.oneonezero.service.ArtworkOrderService;
+import cn.edu.xmu.oneonezero.service.CommodityArtworkOrderService;
+import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
 import cn.edu.xmu.oneonezero.service.DataDictionaryService;
 import cn.edu.xmu.oneonezero.service.UserService;
 
@@ -26,10 +29,16 @@ public class AdminUserController {
 	
 	@Resource(name="dataDictionaryService")
 	private DataDictionaryService dataDictionaryService;
+	
+	@Resource(name="commodityArtworkOrderService")
+	private CommodityArtworkOrderService commodityArtworkOrderService;
+	
+	@Resource(name="commodityArtworkService")
+	private CommodityArtworkService commodityArtworkService;
 
 	@RequestMapping("/getAllUser")
 	public String getAllUser(HttpServletRequest request){
-//		request.setAttribute("USERLIST", userService.getAllUsers());TODO
+		request.setAttribute("USERLIST", userService.getAllCommonUsersAndArtist());
 		return "admin_userlist";
 	}
 	
@@ -41,7 +50,7 @@ public class AdminUserController {
 	
 	@RequestMapping("/getAllPreparatoryArtist")
 	public String getAllPreparatoryArtist(HttpServletRequest request){
-//		request.setAttribute("USERLIST", userService.);
+		request.setAttribute("USERLIST", userService.getAllPreparativeArtist());
 		return "admin_artistapply";
 	}
 	
@@ -54,13 +63,13 @@ public class AdminUserController {
 	public String getOrder(HttpServletRequest request){
 		CommodityArtworkOrder commodityArtworkOrder;
 		String typeString=request.getParameter("search");
-//		request.setAttribute("ORDERLIST", arg1);
+		request.setAttribute("ORDERLIST", commodityArtworkOrderService.getAllCommodityArtworkOrders());
 		return "admin_orderlist";
 	}
 	
 	@RequestMapping("/getAllCommodityArtwork")
 	public String getAllCommodityArtwork(HttpServletRequest request){
-//		request.setAttribute("ITEMLIST", arg1);
+		request.setAttribute("ITEMLIST",commodityArtworkService.getAllCommodityArtworks());
 		return "admin_commodityitem";
 	}
 	
@@ -68,19 +77,19 @@ public class AdminUserController {
 	public String myOrder(HttpServletRequest request){
 		User user=(User)request.getSession().getAttribute("user");
 		//TODO 根据用户id获取所有订单
-//		request.setAttribute("ORDERLIST", arg1);
+		request.setAttribute("ORDERLIST",commodityArtworkOrderService.getCommodityArtworkOrdersByUserId(user.getId()));
 		return "admin_orderlist";
 	}
 	
 	@RequestMapping("/delUser")
 	public String delUser(Long userId,HttpServletRequest request){
-		userService.delUser(userId);
+		userService.setUserStateFalse(userId);
 		return "redirect:/admin_user/getAllUser";
 	}
 	
 	@RequestMapping("/startUsing")
 	public String startUsing(Long userId,HttpServletRequest request){
-//		userService. TODO 启用
+		userService.setUserStateTrue(userId);
 		return "redirect:/admin_user/getAllUser";
 	}
 	

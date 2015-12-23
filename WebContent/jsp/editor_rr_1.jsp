@@ -55,11 +55,11 @@ body {
 </head>
 <body>
 	<form class="form-inline definewidth m20"
-		action="/test_ssh/editor/getUnexaminedByNewsName?type=1" method="post">
+		action="/test_ssh/editor/search?type=1" method="post">
 		<font color="blue">软文类型: </font><select id="newsType" name="category" class="category">
 			<option selected></option>
-			<option>广告</option>
-			<option>新闻资讯</option>
+			<option value="广告">广告</option>
+			<option value="资讯">资讯</option>
 		</select> <font color="blue">开始时间: </font><input id="onShowTime" name="onShowTime" type="date"
 			name="user_date" /> <font color="blue">结束时间: </font><input
 			id="offShowTime" name="offShowTime" type="date" name="user_date" /> <input type="text"

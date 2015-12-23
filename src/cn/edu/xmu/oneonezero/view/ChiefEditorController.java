@@ -1,12 +1,14 @@
 package cn.edu.xmu.oneonezero.view;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import cn.edu.xmu.oneonezero.entity.News;
 import cn.edu.xmu.oneonezero.entity.User;
 import cn.edu.xmu.oneonezero.service.NewsService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +33,7 @@ public class ChiefEditorController {
     @RequestMapping(value="/examineNews")
     public String examineNews(String type,String typeExamine,HttpServletRequest request){
         News news=(News)request.getSession().getAttribute("news");
+        User user=(User)request.getSession().getAttribute("user");
     	if(type.equals("1")) {
     		news.setRank(request.getParameter("rank"));
         	news.setState("审核通过");
@@ -38,7 +41,8 @@ public class ChiefEditorController {
         else {
             news.setState("审核不通过");
         }
-        newsService.updateNews(news);//TODO 添加审核人
+    	news.setChiefEditor(user);
+        newsService.updateNews(news);
         if(typeExamine.equals("1")){
         	return "redirect:/chiefEditor/getUnexamined";
         }
@@ -88,14 +92,19 @@ public class ChiefEditorController {
     }
     
     @RequestMapping("/search")
-    public String search(String type,HttpServletRequest request){
-    	User user=(User)request.getSession().getAttribute("user");
+    public String search(String type,HttpServletRequest request) throws ParseException{
+    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd ");
     	String newsType=request.getParameter("category");
     	String startTime=request.getParameter("onShowTime");
-    	System.out.println(startTime);
+//    	System.out.println(startTime);
     	String endTime=request.getParameter("offShowTime");
     	String newsName=request.getParameter("RRname");
-    	request.setAttribute("RRLIST","");
-    	return "";
+    	request.setAttribute("RRLIST",newsService.getNewsByTimespace(newsType,sdf.parse(startTime), sdf.parse(endTime), newsName,type));
+    	if(type.equals("1")){
+    	return "chiefEditor_rr_1";
+    	}
+    	else {
+			return "chiefEditor_rr_2";
+		}
     }
 }

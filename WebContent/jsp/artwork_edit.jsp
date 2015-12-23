@@ -194,8 +194,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				  <div>
 					<span>种类<label>*</label></span>
 					<select id="select2" onchange="select2_change()">
-                <option value="展品">展品</option>
-              <option value="商品" selected="selected">商品</option>
+                <option value="1">展品</option>
+              <option value="0" selected="selected">商品</option>
             </select>
 				  </div>
 				   <div id="price">

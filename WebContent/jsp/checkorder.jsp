@@ -187,7 +187,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <div align="right" style="font-weight: bolder">
                 <lable>总价&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</lable>
-                <lable>¥ ${total}</lable>
+                <lable id="total" name="total">¥ ${total}</lable>
             </div>
 
            <div style="margin-top: 3%;text-align:left" >

@@ -3,6 +3,7 @@ package cn.edu.xmu.oneonezero.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,17 +12,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.edu.xmu.oneonezero.entity.CommodityArtworkOrder;
 import cn.edu.xmu.oneonezero.entity.User;
+import cn.edu.xmu.oneonezero.service.CommodityArtworkOrderService;
+import cn.edu.xmu.oneonezero.service.CustomizedArtworkOrderService;
+import cn.edu.xmu.oneonezero.service.CustomizedArtworkService;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
-//	@Qualifier("")
-//	private 
+	@Qualifier("commodityArtworkOrderService")
+	private CommodityArtworkOrderService commodityArtworkOrderService;
+	@Resource(name="customizedArtworkOrderService")
+	private CustomizedArtworkOrderService customizedArtworkOrderService;
+	
 	@RequestMapping("/myOrder")
 	public String myOrder(HttpServletRequest request){
 		User user=(User)request.getSession().getAttribute("user");
-		//TODO 根据用户id获取所有成品订单
-//		request.setAttribute("orderList", arg1);
+		request.setAttribute("orderList",commodityArtworkOrderService.getCommodityArtworkOrdersByUserId(user.getId()));
 		return "user_order";
 	}
 	
@@ -29,6 +35,7 @@ public class UserController {
 	public String myCustomized(HttpServletRequest request){
 		User user=(User)request.getSession().getAttribute("user");
 		//TODO 根据用户id获取所有定制订单
+		request.setAttribute("order",customizedArtworkOrderService.getCustomizedArtworkOrdersByUserId(user.getId()));
 		return "user_customizedorder";
 	}
 	

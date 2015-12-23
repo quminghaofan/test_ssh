@@ -1,9 +1,14 @@
 package cn.edu.xmu.oneonezero.view;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import cn.edu.xmu.oneonezero.entity.News;
 import cn.edu.xmu.oneonezero.entity.User;
 import cn.edu.xmu.oneonezero.service.NewsService;
+
+
 
 
 
@@ -120,26 +125,12 @@ public class EditorController {
         return "editor_rr_1";
     }
 
-    @RequestMapping("/getUnexaminedByNewsName")
-    public String getUnexaminedByNewsName(HttpServletRequest request){
-        User user=(User)request.getSession().getAttribute("user");
-    	request.setAttribute("RRLIST",newsService.getUnexaminedNewsByEditorNameAndVagueNewsName(user.getName(),request.getParameter("RRname")));
-        return  "editor_rr_1";
-    }
-
     //不通过
     @RequestMapping("/getUnPassed")
     public String getUnPassed(HttpServletRequest request){
     	User user=(User)request.getSession().getAttribute("user");
         request.setAttribute("RRLIST",newsService.getUnPassedNewsByEditorName(user.getName()));
         return "editor_rr_2";
-    }
-
-    @RequestMapping("/getUnPassedByNewsName")
-    public String getUnPassedByNewsName(HttpServletRequest request){
-    	User user=(User)request.getSession().getAttribute("user");
-    	request.setAttribute("RRLIST",newsService.getUnpassedNewsByEditorNameAndVagueNewsName(user.getName(),request.getParameter("RRname")));
-        return  "editor_rr_2";
     }
 
     //已通过
@@ -149,25 +140,11 @@ public class EditorController {
         request.setAttribute("RRLIST",newsService.getPassedNewsByEditorName(user.getName()));
         return "editor_rr_3";
     }
-
-    @RequestMapping("/getPassedByNewsName")
-    public String getPassedByNewsName(HttpServletRequest request){
-    	User user=(User)request.getSession().getAttribute("user");
-        request.setAttribute("RRLIST",newsService.getPassedNewsByEditorNameAndVagueNewsName(user.getName(),request.getParameter("RRname")));
-        return  "editor_rr_3";
-    }
     
     @RequestMapping(value="getDraft")
     public String getDraft(HttpServletRequest request){
     	User user=(User)request.getSession().getAttribute("user");
     	request.setAttribute("RRLIST",newsService.getDraftByEditorName(user.getName()));
-    	return "editor_rr_4";
-    }
-    
-    @RequestMapping(value="getDraftByNewsName")
-    public String getDraftByNewsName(HttpServletRequest request){
-    	User user=(User)request.getSession().getAttribute("user");
-    	request.setAttribute("RRLIST",newsService.getDraftByEditorNameAndVagueNewsName(user.getName(),request.getParameter("RRname")));
     	return "editor_rr_4";
     }
     //撤回
@@ -186,13 +163,32 @@ public class EditorController {
     }
     
     @RequestMapping("/search")
-    public String search(String type,HttpServletRequest request){
+    public String search(String type,HttpServletRequest request) throws ParseException{
+    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd ");
     	User user=(User)request.getSession().getAttribute("user");
     	String newsType=request.getParameter("category");
     	String startTime=request.getParameter("onShowTime");
     	String endTime=request.getParameter("offShowTime");
     	String newsName=request.getParameter("RRname");
-//    	request.setAttribute("RRLIST","");
-    	return "redirect:/";
+    	if(type.equals("1")){
+        	request.setAttribute("RRLIST",newsService.getNewsByUserIdAndTimespace(user.getId(),
+        			newsType, sdf.parse(startTime), sdf.parse(endTime), newsName, "未审核"));
+        	return "editor_rr_1";
+    	}
+    	else if(type.equals("2")){
+        	request.setAttribute("RRLIST",newsService.getNewsByUserIdAndTimespace(user.getId(),
+        			newsType, sdf.parse(startTime), sdf.parse(endTime), newsName, "审核不通过"));
+        	return "editor_rr_2";
+    	}
+    	else if(type.equals("3")){
+        	request.setAttribute("RRLIST",newsService.getNewsByUserIdAndTimespace(user.getId(),
+        			newsType, sdf.parse(startTime), sdf.parse(endTime), newsName, "审核通过"));
+        	return "editor_rr_3";
+    	}
+    	else{
+        	request.setAttribute("RRLIST",newsService.getNewsByUserIdAndTimespace(user.getId(),
+        			newsType, sdf.parse(startTime), sdf.parse(endTime), newsName, "草稿"));
+        	return "editor_rr_4";
+    	}
     }
 }
