@@ -41,7 +41,8 @@
   <script>
     BUI.use('common/main',function(){
       var config = [{id:'1',homePage:'12',menu:[{text:'软文',items:[{id:'12',text:'未审核',href:'/test_ssh/chiefEditor/getUnexamined'},
-                                                    {id:'3',text:'已审核',href:'/test_ssh/chiefEditor/getExamined'}]}]}];
+                                                    {id:'3',text:'已审核',href:'/test_ssh/chiefEditor/getExamined'},
+                                                    {id:'4',text:'个人信息修改',href:''}]}]}];
       new PageUtil.MainPage({
         modulesConfig : config
       });
