@@ -233,6 +233,13 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			return null;
 		return query.list();
 	}
+
+	@Override
+	public void updateCommodityArtworkOrderState(long orderId, String state) {
+		CommodityArtworkOrder tempCAO=getCommodityArtworkOrderByOrderId(orderId);
+		tempCAO.setState(state);
+		
+	}
 	
 	
 }

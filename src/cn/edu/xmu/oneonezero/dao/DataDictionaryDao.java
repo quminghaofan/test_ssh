@@ -7,9 +7,9 @@ import cn.edu.xmu.oneonezero.entity.DataDictionary;
 public interface DataDictionaryDao {
 	public DataDictionary getDataDictionaryByName(String name);//根据name获取整个实体
 	
-	public List<String> getAllArtworkTypes();//获取所有艺术品类别
+	public List<DataDictionary> getAllArtworkTypes();//获取所有艺术品类别
 	
-	public List<String> getAllRoles();//获取所有角色
+	public List<DataDictionary> getAllRoles();//获取所有角色
 	
 	public boolean deleteArtworkType(long typeId);//根据id删除艺术品类型
 	

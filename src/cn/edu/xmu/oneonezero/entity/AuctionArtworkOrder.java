@@ -1,6 +1,6 @@
 package cn.edu.xmu.oneonezero.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class AuctionArtworkOrder extends ArtworkOrder{
 	private AuctionArtwork auctionArtwork;//拍卖的艺术品

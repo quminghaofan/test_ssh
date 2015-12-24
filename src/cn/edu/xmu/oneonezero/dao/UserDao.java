@@ -2,8 +2,6 @@ package cn.edu.xmu.oneonezero.dao;
 
 import java.util.List;
 
-import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
-
 import cn.edu.xmu.oneonezero.entity.User;
 
 public interface UserDao {
@@ -16,7 +14,6 @@ public interface UserDao {
 	public void updateUser(User user);	//更新用户
 
 	public boolean isLoginSuccessful(String userName, String psw);//验证登陆信息是否正确
-
 
 	public List<User> getAllUsers();//获取所有用户
 

@@ -23,8 +23,8 @@ public class DataDictionaryDaoImpl implements DataDictionaryDao{
 		return (DataDictionary)query.uniqueResult();
 	}
 	@Override
-	public List<String> getAllArtworkTypes() {
-		String hql = "select d.name from DataDictionary d where d.number like ?";
+	public List<DataDictionary> getAllArtworkTypes() {
+		String hql = "from DataDictionary d where d.number like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, "02"+"%");
@@ -32,8 +32,8 @@ public class DataDictionaryDaoImpl implements DataDictionaryDao{
 		
 	}
 	@Override
-	public List<String> getAllRoles() {
-		String hql = "select d.name from DataDictionary d where d.number like ?";
+	public List<DataDictionary> getAllRoles() {
+		String hql = "from DataDictionary d where d.number like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setString(0, "01"+"%");

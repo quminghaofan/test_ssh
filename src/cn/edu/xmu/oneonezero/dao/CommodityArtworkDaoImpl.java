@@ -122,6 +122,13 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 		return query.list();
 	}
 
+	@Override
+	public void prohibitCommodityArtwork(long commodityArtworkId) {
+		CommodityArtwork temCommodityArtwork=getCommodityArtworkById(commodityArtworkId);
+		temCommodityArtwork.setIsExist(false);
+		
+	}
+
 	
 
 	

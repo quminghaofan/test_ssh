@@ -33,5 +33,8 @@ public interface CommodityArtworkOrderDao {
 
 	public List<CommodityArtworkOrder> getCommodityArtworkOrdersByOwnerId(long ownerId);//根据卖家id 获得获得所有的艺术品商品订单
 	
+	public void updateCommodityArtworkOrderState(long orderId,String state );//根据订单id和state更新成品订单状态
+	
+	
 	
 }

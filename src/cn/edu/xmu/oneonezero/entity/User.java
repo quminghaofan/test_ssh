@@ -28,7 +28,8 @@ public class User {
 	private boolean state;//是否被禁用
 	private String idPhoto;//审核照片
 	
-	public String getIdPhoto() {
+	public 
+	String getIdPhoto() {
 		return idPhoto;
 	}
 	public void setIdPhoto(String idPhoto) {

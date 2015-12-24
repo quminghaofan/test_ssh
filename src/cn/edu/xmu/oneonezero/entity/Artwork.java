@@ -26,7 +26,9 @@ public class Artwork {
 	protected String picUrl;//图片路径
 	protected String artworkDescription;//描述
 	protected DataDictionary type;//类别
+	protected boolean isExist;//用于判断该商品是否被删除
 	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
@@ -80,5 +82,11 @@ public class Artwork {
 		this.type = type;
 	}
 	
+	public boolean getIsExist() {
+		return isExist;
+	}
+	public void setIsExist(boolean isExist) {
+		this.isExist = isExist;
+	}
 	
 }

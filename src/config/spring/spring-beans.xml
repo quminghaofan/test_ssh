@@ -91,6 +91,14 @@
 		<property name="commodityArtworkOrderDao" ref="commodityArtworkOrderDao"></property>
 	</bean>
 	
+	<bean id="accountDao" class="cn.edu.xmu.oneonezero.dao.AccountDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+
+	<bean id="accountService" class="cn.edu.xmu.oneonezero.service.AccountServiceImpl">
+		<property name="accountDao" ref="accountDao"></property>
+	</bean>
 	
 	
 	

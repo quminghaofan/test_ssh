@@ -31,7 +31,7 @@ public interface CommodityArtworkDao {
 	
 	public void updateCommodityArtwork(CommodityArtwork commodityArtwork);//根据id更新艺术品商品
 	
-	//根据id禁用艺术品商品
+	public void prohibitCommodityArtwork(long commodityArtworkId);//根据id禁用艺术品商品
 	
 	public List<CommodityArtwork> getAllExhibitArtworks();//获取所有艺术品展品
 	

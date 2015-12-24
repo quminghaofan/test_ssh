@@ -1,5 +1,7 @@
 package cn.edu.xmu.oneonezero.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,8 +20,8 @@ public class News {
 	private String name;
 	private String content;
 	private String picUrl;//加一个编写时间
-	private String onShowTime;
-	private String offShowTime;
+	private Date onShowTime;
+	private Date offShowTime;
 	private String rank;
 	private User editor;//采编
 	private User chiefEditor;//主编
@@ -54,16 +56,16 @@ public class News {
 		this.picUrl = picUrl;
 	}
 
-	public String getOnShowTime() {
+	public Date getOnShowTime() {
 		return onShowTime;
 	}
-	public void setOnShowTime(String onShowTime) {
+	public void setOnShowTime(Date onShowTime) {
 		this.onShowTime = onShowTime;
 	}
-	public String getOffShowTime() {
+	public Date getOffShowTime() {
 		return offShowTime;
 	}
-	public void setOffShowTime(String offShowTime) {
+	public void setOffShowTime(Date offShowTime) {
 		this.offShowTime = offShowTime;
 	}
 	public String getRank() {

@@ -28,13 +28,13 @@ public class DataDictionaryServiceImpl implements DataDictionaryService{
 
 
 	@Override
-	public List<String> getAllArtworkTypes() {
+	public List<DataDictionary> getAllArtworkTypes() {
 		return dataDictionaryDao.getAllArtworkTypes();
 	}
 
 
 	@Override
-	public List<String> getAllRoles() {
+	public List<DataDictionary> getAllRoles() {
 		return dataDictionaryDao.getAllRoles();
 	}
 
