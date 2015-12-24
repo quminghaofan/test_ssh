@@ -48,7 +48,7 @@
     <c:if test="${TYPELIST!=null}">
     <c:forEach items="${TYPELIST}" var="type">
         <tr>
-                <td>${(type.number).substring((type.number).length() - 3)}</td>
+                <td>${type.number}</td>
                 <td>${type.name}</td>
                 <td><a href="javascript:void(0)" onclick="if(window.confirm('确定删除该项吗？')) this.href='/test_ssh/super/delArtType?typeId=${type.id}'">删除</a></td>
             </tr>
@@ -56,8 +56,7 @@
 </c:if>
         </table>
 
-<form class="form-inline definewidth m20" action="/test_ssh/super/addArtType" method="post"><!-- TODO 编号规则：两位整数，不存在数据库里的 -->
-    产品类别编号：<input  type="text"  id="typenumber" name="typenumber" class="abc input-default" placeholder="" value="" style="display:none;margin-left:42.5%">&nbsp;&nbsp;
+<form class="form-inline definewidth m20" action="/test_ssh/super/addArtType" method="post">
     产品类别名称：<input  type="text"  id="typename" name="typename" class="abc input-default" placeholder="" value="" style="display:none;margin-left:42.5%">&nbsp;&nbsp;
     <button  type="submit" class="btn btn-primary" id="confirm" style="display:none;margin-left:50%">确认</button>&nbsp;&nbsp;
 </form>
