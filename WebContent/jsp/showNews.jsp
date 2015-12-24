@@ -8,6 +8,13 @@
 		<title>软文详情</title>
 		<link href="../css2/style.css" rel='stylesheet' type='text/css' />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords"
+	content="Gifty Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript">
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+</script>
 		<link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		</script>
@@ -35,6 +42,12 @@
 		</script>
 		<!-- //End fancyBox light-box -->
 	</head>
+	<style type="css/type">
+	#return{
+	float:center;
+	margin:0 auto;
+	}
+	</style>
 	<body>
 			<!--start-content--->
 <div style="float:left;width:5%">
@@ -57,14 +70,15 @@
 					<div class="box1">
 						<div class="wrap">
 							<div class="box1-info">
+							
 							<c:if test="${news.picUrl!=null}">
 								<p>
-								<img id="picture" src="${news.picUrl}" height="150" width="200"
+								<img id="picture" src="${news.picUrl}"
 						readonly="readonly" />
 								</p>
 								</c:if>
 								<p>
-									"${news.content}"
+									${news.content}
 								</p>
 							</div>
 							<div class="box1-demo">
@@ -76,7 +90,8 @@
 				</div>
 				<!----//End-divice-features---->
 				<!---start-footer---->
-				
+				<a href="#" id="return"><font color="blue">返回顶部</font></a>
+
 				<div class="wrap">
 				<div class="footer">
 						<div class="footer-left">
@@ -91,9 +106,9 @@
 				</div>
 			</div>
 			<!--//End-content--->
-			<a href="#"><style align="center">返回顶部</style></a>
 		<!----//End-wrap---->
 	<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
-</body>
+			
+	</body>
 </html>
 
