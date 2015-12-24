@@ -4,7 +4,6 @@ import java.util.List;
 
 import net.sf.json.JSONObject;
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
-import cn.edu.xmu.oneonezero.entity.User;
 
 public interface CommodityArtworkDao {
 	public List<CommodityArtwork> commodityArtworksToDisplay();//获取今天要展示的3个艺术品商品

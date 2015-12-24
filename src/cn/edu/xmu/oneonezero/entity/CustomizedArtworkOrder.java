@@ -1,7 +1,6 @@
 package cn.edu.xmu.oneonezero.entity;
 
 
-import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

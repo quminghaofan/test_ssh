@@ -52,5 +52,6 @@ public class DataDictionaryDaoImpl implements DataDictionaryDao{
 	public void insertDataDictionary(DataDictionary dataDictionary) {
 		sessionFactory.getCurrentSession().saveOrUpdate(dataDictionary);
 	}
+	//设置编号（自增）
 
 }

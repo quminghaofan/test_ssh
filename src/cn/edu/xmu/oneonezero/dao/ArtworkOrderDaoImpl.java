@@ -8,7 +8,6 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
 import cn.edu.xmu.oneonezero.entity.ArtworkOrder;
-import cn.edu.xmu.oneonezero.entity.News;
 
 public class ArtworkOrderDaoImpl implements ArtworkOrderDao{
 

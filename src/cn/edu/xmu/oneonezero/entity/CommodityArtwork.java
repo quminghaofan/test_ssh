@@ -4,7 +4,6 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 @Entity
 @DiscriminatorValue("艺术品商品")
