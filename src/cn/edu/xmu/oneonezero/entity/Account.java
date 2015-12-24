@@ -12,7 +12,7 @@ public class Account {
 	private long id;
 	private String accountNumber;
 	private String password;
-	private double balance;
+	private double balance;//余额
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

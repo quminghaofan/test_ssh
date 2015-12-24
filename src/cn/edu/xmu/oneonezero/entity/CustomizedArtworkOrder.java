@@ -16,6 +16,8 @@ public class CustomizedArtworkOrder extends ArtworkOrder{
 	private double startPrice;//3个阶段价格
 	private double midPrice;//
 	private double endPrice;//
+	private String stage;//订制所处阶段 1,2,3
+	
 	@OneToOne
 	public CustomizedArtwork getCustomizedArtwork() {
 		return customizedArtwork;
@@ -40,6 +42,12 @@ public class CustomizedArtworkOrder extends ArtworkOrder{
 	}
 	public void setEndPrice(double endPrice) {
 		this.endPrice = endPrice;
+	}
+	public String getStage() {
+		return stage;
+	}
+	public void setStage(String stage) {
+		this.stage = stage;
 	}
 	
 	

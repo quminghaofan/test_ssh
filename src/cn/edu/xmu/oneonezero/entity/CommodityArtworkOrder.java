@@ -7,7 +7,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@DiscriminatorValue("商品订单")
+@DiscriminatorValue("艺术品商品订单")
 @Table(name="CommodityArtworkOrder")
 public class CommodityArtworkOrder extends ArtworkOrder{
 
