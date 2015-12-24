@@ -10,7 +10,6 @@ public class DataDictionary {
 	private long id;
 	private String number;
 	private String name;
-	private boolean isAccept;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -32,12 +31,7 @@ public class DataDictionary {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public boolean getIsAccept() {
-		return isAccept;
-	}
-	public void setIsAccept(boolean isAccept) {
-		this.isAccept = isAccept;
-	}
+	
 	
 	
 }

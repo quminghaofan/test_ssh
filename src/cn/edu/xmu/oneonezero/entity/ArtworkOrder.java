@@ -35,6 +35,7 @@ public class ArtworkOrder {
 	protected String state;//未支付、已支付未发货、已支付未收货、已支付已收货
 	protected String mobile;//联系方式
 	protected String address;//发货地址
+	protected boolean isAccept;//是否接受订单
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -82,6 +83,12 @@ public class ArtworkOrder {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public boolean getIsAccept() {
+		return isAccept;
+	}
+	public void setIsAccept(boolean isAccept) {
+		this.isAccept = isAccept;
 	}
 	
 
