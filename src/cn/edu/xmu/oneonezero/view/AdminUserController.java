@@ -94,21 +94,32 @@ public class AdminUserController {
 	}
 	
 	@RequestMapping("/getAllArtwork")
-	public String getAllCommodityArtwork(HttpServletRequest request){
-//		request.setAttribute("ITEMLIST",commodityArtworkService.getAllCommodityArtworks());
-		request.setAttribute("ITEMLIST",artworkService.getArtworksByAuthorName("1"));
+	public String getAllCommodityArtwork(String type,HttpServletRequest request){
 		request.setAttribute("TYPELIST",dataDictionaryService.getAllArtworkTypes());
-		return "admin_commodityitem";
+		if(type.equals("1")){ 
+			request.setAttribute("ITEMLIST",commodityArtworkService.getAllCommodityArtworks());
+			return "admin_commodityitem";
+		}
+		else {
+			request.setAttribute("ITEMLIST", customizedArtworkService.getAllCustomizedArtworks());
+			return "admin_customizeditem";
+		}
 	}
 	
 	@RequestMapping("/getArtwork")
-	public String getCommodityArtwork(HttpServletRequest request){
+	public String getCommodityArtwork(String type,HttpServletRequest request){
 		String sign=request.getParameter("sign");//0：根据艺术品名称，1：根据卖家用户名
 		String name=request.getParameter("username");//模糊
 		String typeId=request.getParameter("type");//空值，表不做限制
-//		request.setAttribute("ITEMLIST",commodityArtworkService.get);
 		request.setAttribute("TYPELIST", dataDictionaryService.getAllArtworkTypes());
+		if(type.equals("1")){
+//		request.setAttribute("ITEMLIST",commodityArtworkService.get);
 		return "admin_commodityitem";
+		}
+		else{
+//			request.setAttribute("ITEMLIST",customizedArtworkService.get);
+			return "admin_customizeditem";
+		}
 	}
 	
 	@RequestMapping("/delUser")

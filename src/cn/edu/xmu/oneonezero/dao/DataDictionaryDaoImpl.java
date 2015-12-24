@@ -27,7 +27,7 @@ public class DataDictionaryDaoImpl implements DataDictionaryDao{
 		String hql = "from DataDictionary d where d.number like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		query.setString(0, "02"+"%");
+		query.setString(0, "02"+"__");
 		return query.list();
 		
 	}
@@ -36,7 +36,7 @@ public class DataDictionaryDaoImpl implements DataDictionaryDao{
 		String hql = "from DataDictionary d where d.number like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		query.setString(0, "01"+"%");
+		query.setString(0, "01"+"__");
 		return query.list();
 	}
 	@Override
