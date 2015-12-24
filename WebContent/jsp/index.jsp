@@ -148,7 +148,7 @@ $(document).ready(function() {
 				<ul class="megamenu skyblue">
 					<li class="active grid"><a class="color2"
 						href="/test_ssh/init/home">首页</a></li>
-					<li><a class="color7" href="/test_ssh/customizedenterCustomized">定制</a>
+					<li><a class="color7" href="/test_ssh/mall/enterMall?go=0">定制</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
@@ -163,7 +163,7 @@ $(document).ready(function() {
 								</div>
 							</div>
 						</div></li>
-					<li><a class="color10" href="/test_ssh/mall/enterMall">商城</a>
+					<li><a class="color10" href="/test_ssh/mall/enterMall?go=1">商城</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">

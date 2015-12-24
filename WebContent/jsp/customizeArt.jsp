@@ -161,21 +161,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <div class="register">
 			   <h1>欢迎您定制艺术品</h1>
 			   <div class="col-md-6 login-right">
-				<form id="customizeform" method="post"  action="/test_ssh/artist/artistApply" onsubmit="return before_customize()">
+				<form id="customizeform" method="post"  action="/test_ssh/customized/customizationApplying?artistId=${artistId}" onsubmit="return before_customize()" enctype="multipart/form-data">
 				  <div>
 					<span>定制品类别<label>*</label></span>
 					<!--<input type="text" name="type" id="type" onfocus="type_blank.style.display='none'">--> 
 
 					<select type="text" name="arttype" id="arttype">
 						<option>----------请选择----------</option>
-						<option value="油画">油画</option>
-						<option value="陶瓷">陶瓷</option>
-						<option value="书法">书法</option>
-						<option value="雕刻">雕刻</option>
-						<option value="玻璃制品">玻璃制品</option>
-						<option value="绘画">绘画</option>
-						<option value="花艺">花艺</option>
-						<option value="吹瓶">吹瓶</option>
+						<c:forEach items="${TYPELIST})" var="type">
+						<option value="${type.id}">${type.name}</option>
+						</c:forEach>
 					</select>
 					<span id="type_blank" style="display:none"><font color="red">请选择您要定制的艺术品类别</font></span>
 				  </div>				  
@@ -190,21 +185,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span id="telephone_blank" style="display:none"><font color="red">手机号不能为空</font></span>
 				  </div>
 				  <div>
-				  <div>
 					<span>联系地址<label>*</label></span>
 					<input type="text" name="address" id="address" onfocus="address_blank.style.display='none'"> 
 					<span id="address_blank" style="display:none"><font color="red">不能为空</font></span>
-				  </div>
-				  			  
-				  <div>
-					<span>银行卡号<label>*</label></span>
-					<input type="text" name="account" id="account" onfocus="card_blank.style.display='none'"> 
-					<span id="card_blank" style="display:none"><font color="red">银行卡号不能为空</font></span>
-				  </div>
-				  <div>
-					<span>开户行<label>*</label></span>
-					<input type="text" name="bank" id="bank" onfocus="bank_blank.style.display='none'"> 
-					<span id="bank_blank" style="display:none"><font color="red">开户行不能为空</font></span>
 				  </div>				  
 				  <div>
 					<span>备注</span>
@@ -214,13 +197,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                  <span>样本图片</span>
 					<span><input id="img" name="img" type="file"
 						accept="images/*" onchange="previewImage(this,'preview','image')" style="width: 60%"/></span>
-						<!--<span id="photo_blank" style="display: none"><font color="red">身份证照片不能为空</font></span>-->
 				  <div id="preview" style="border:solid 1px">
 						<span><img id="image" src="" width="30%"
 							height="30%" /></span>
 					</div> 
 				</div>
-				<a href="/test_ssh/artist/index"><input type="submit" value="返回"></a>
+				  <input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/customized/goBack?artistId=${artist.id}'" value="返回"></a>
 				  <input type="submit" value="提交" align="center-right" onClick="customizeform.onsubmit()">
 				  
 			    </form>
@@ -257,8 +239,6 @@ function before_customize(){
 	var artname=document.getElementById("artname");
 	var telephone=document.getElementById("telephone");
 	var address=document.getElementById("address");
-	var bank=document.getElementById("bank");
-	var account=document.getElementById("account");
 	var img=document.getElementById("img");
 	var flag=0;
 	if((arttype.value=="") || (arttype.value=="----------请选择----------")){
@@ -282,14 +262,6 @@ function before_customize(){
 	if(address.value==""){
 		flag=1;
 		document.getElementById("address_blank").style.display="block";
-	}
-	if(bank.value==""){
-		flag=1;
-		document.getElementById("bank_blank").style.display="block";
-	}
-	if(account.value==""){
-		flag=1;
-		document.getElementById("card_blank").style.display="block";
 	}
 	if(flag==1)
 		return false;

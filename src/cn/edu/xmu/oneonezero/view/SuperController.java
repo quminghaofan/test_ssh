@@ -1,8 +1,5 @@
 package cn.edu.xmu.oneonezero.view;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 

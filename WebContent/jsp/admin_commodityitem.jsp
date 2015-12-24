@@ -37,16 +37,16 @@
 </head>
 <body>
 
-<form class="form-inline definewidth m20" action="/test_ssh/admin_user/getUser" method="get">
-    根据<select style="width:auto">
-    <option value="艺术品名">艺术品名</option>
-    <option value="卖家">卖家用户名</option>
+<form class="form-inline definewidth m20" action="/test_ssh/admin_user/getArtwork" method="post">
+    根据<select style="width:auto" name="sign" id="sign">
+    <option value="0">艺术品名</option>
+    <option value="1">卖家用户名</option>
     </select>搜索
     <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
-   <select>
+   <select name="type" id="type">
    <option selected="selected" value="全部">全部</option>
    <c:forEach items="${TYPELIST}" var="type">
-   <option value="${type}">${type}</option>
+   <option value="${type.id}">${type.name}</option>
    </c:forEach>
    </select>
     <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>
@@ -56,21 +56,31 @@
     <tr>
         <th>图片</th>
         <th>艺术品名</th>
-        <th>艺术品类别</th>
+        <th>艺术品类型</th>
         <th>卖家用户名</th>
         <th>价格</th>
         <th>状态</th>
+        <th>类别</th>
     </tr>
     </thead>
     <c:if test="${ITEMLIST!=null}">
     <c:forEach items="${ITEMLIST}" var="item">
         <tr>
-                <td>${item.picUrl}</td>
+                <td><img id="image" src="${item.picUrl}"/></td>
                 <td>${item.name}</td>
-                <td>${item.type}</td><!-- TODO -->
+                <td>${item.type.name}</td>
                 <td>${item.owner.name}</td>
                 <td>${item.price}</td>
-                <td>${item.state}</td>
+                <td>${item.sellState}</td>
+                <c:if test="${item.canSell}">
+                <td>商品</td>
+                </c:if>
+                <c:if test="${!(item.canSell)}">
+                <td>展品</td>
+                </c:if>
+                <c:if test="${(item.canSell)==null}">
+                <td></td>
+                </c:if>
             </tr>
     </c:forEach>
 </c:if>

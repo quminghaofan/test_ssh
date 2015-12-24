@@ -125,6 +125,7 @@ public class MallController {
 					.jsonToCommodityArtwork(request);
 			for (CommodityArtwork commodityArtwork : commodityArtworks) {
 				CommodityArtworkOrder commodityArtworkOrder = new CommodityArtworkOrder();
+				commodityArtworkOrder.setOrderId(Long.toString(System.currentTimeMillis()));
 				commodityArtworkOrder.setCommodityArtwork(commodityArtwork);
 				commodityArtworkOrder.setUser(user);
 				commodityArtworkOrder.setAddress(user.getAddress());
@@ -139,6 +140,7 @@ public class MallController {
 		} else {
 			CommodityArtwork commodityArtwork = commodityArtworkService.getCommodityArtworkById(type);
 			CommodityArtworkOrder commodityArtworkOrder = new CommodityArtworkOrder();
+			commodityArtworkOrder.setOrderId(Long.toString(System.currentTimeMillis()));
 			commodityArtworkOrder.setCommodityArtwork(commodityArtwork);
 			commodityArtworkOrder.setUser(user);
 			commodityArtworkOrder.setAddress(user.getAddress());

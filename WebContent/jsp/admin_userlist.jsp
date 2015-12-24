@@ -37,7 +37,7 @@
 </head>
 <body>
 
-<form class="form-inline definewidth m20" action="/test_ssh/admin_user/getUser" method="get">
+<form class="form-inline definewidth m20" action="/test_ssh/admin_user/getUser?type=0" method="post">
   根据用户名搜索：
     <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>
@@ -47,7 +47,6 @@
     <tr>
         <th>用户名</th>
         <th>角色</th>
-        <th>银行卡号</th>
         <th>操作</th>
     </tr>
     </thead>
@@ -55,8 +54,7 @@
     <c:forEach items="${USERLIST}" var="user">
         <tr>
                 <td>${user.name}</td>
-                <td>${user.role}</td>
-                <td>${user.bankCardAccount}</td>
+                <td>${user.role.name}</td>
                 <c:if test="${user.state}">
                 <td><a href="/test_ssh/admin_user/delUser?userId=${user.id}">禁用</a></td>
                 </c:if>

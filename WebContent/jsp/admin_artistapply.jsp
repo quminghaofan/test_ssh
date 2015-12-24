@@ -46,8 +46,8 @@
 </head>
 <body>
 
-<form class="form-inline definewidth m20" action="/test_ssh/admin_user/getUser" method="get">
-  
+<form class="form-inline definewidth m20" action="/test_ssh/admin_user/getUser?type=1" method="post">
+   根据用户名搜索：
     <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>
 </form>
@@ -58,6 +58,7 @@
         <th>真实姓名</th>
         <th>银行卡号</th>
         <th>个人介绍</th>
+        <th>身份证照片</th>
         <th>操作</th>
     </tr>
     </thead>
@@ -68,7 +69,8 @@
                 <td>${user.realName}</td>
                 <td>${user.bankCardAccount}</td>
                  <td>${user.description}</td>
-                 <td><a href="/test_ssh/admin_user/exmineArtist/userId=${user.id}&type=1">通过</a>&nbsp;&nbsp;<a href="javascript:showreason(${user.id})">不通过</a></td>
+                 <td><img id="image" src="${user.idPhoto}"/></td>
+                 <td><a href="/test_ssh/admin_user/exmineArtist?userId=${user.id}&type=1">通过</a>&nbsp;&nbsp;<a href="javascript:showreason(${user.id})">不通过</a></td>
             </tr>
     </c:forEach>
 </c:if> 
@@ -80,7 +82,7 @@
 <div style="z-index:10;position:absolute;left:30%;background-color:white;width:30%;height:30%" >
 <h3>未通过理由</h3>
 <form class="form-inline definewidth m20" action="" method="post" id="reasonform">
-    <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
+    <input type="text" name="reason" id="reason"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" onclick="fail()">确定</button>
 </form>
 </div>
@@ -93,10 +95,10 @@
         document.getElementById("reason").style.display="block";
         document.getElementById("userid").value=userid;
         }
-function fail(){alert("a");
+function fail(){
 	var userid=document.getElementById("userid").value;
 	var reason=document.getElementById("reasonform");
-	reason.action="/test_ssh/admin_user/exmineArtist/userId="+userid+"&type=0";
+	reason.action="/test_ssh/admin_user/exmineArtist?userId="+userid+"&type=0";
 	reason.submit();
 }
 </script>

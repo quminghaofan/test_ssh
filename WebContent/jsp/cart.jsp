@@ -171,7 +171,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<tr>
 								<td scope="row" class="spec">${item.name}</th>
 
-								<td>${item.type}</td>
+								<td>${item.type.name}</td>
 								<td>${item.price}</td>
 								<td><a href="/test_ssh/cart/delCart?itemId=${item.id}">删除</a></td>
 							</tr>

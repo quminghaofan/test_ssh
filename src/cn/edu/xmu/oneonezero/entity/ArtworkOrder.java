@@ -27,7 +27,7 @@ public class ArtworkOrder {
 	protected String orderId;//订单编号
 	protected User user;//下订单的用户
 
-	protected String name;
+	protected String name;//去掉
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date placeDate;//下单时间
 //	protected String payState;//支付状态

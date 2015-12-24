@@ -1,4 +1,5 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@page import="cn.edu.xmu.oneonezero.entity.User"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -181,17 +182,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			class="img-responsive" /></a>
 	</div>
 	<div style="float: right; width: 20%; height: 35%">
-		<a href="/test_ssh/jsp/customizeArt"><img
+	<%User user=(User)session.getAttribute("user");
+	if(user!=null){%>
+		<a href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}"><img
 			src="../images/customize.jpg" alt="申请定制" class="img-responsive" /></a>
+	<%}else{ %>
+	<a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'"><img
+			src="../images/customize.jpg" alt="申请定制" class="img-responsive" /></a>
+	<%} %>
 	</div>
 	</br>
 	</br>
 	<form action="" method="post">
 		<div>
-			<img id="headPhotoValue" src="${artist.headPhoto}" />
+			<img id="headPhotoValue" src="${artist.headPhoto}" class="img-responsive"/>
 		</div>
-		<input id="nick" value="${artist.nickName}" style="border: none"
-			readonly="true"> <!--<p id="CommodityList">点击查看艺术家的<a href="#"><font color="#FA8072" bold="true" size="">作品</font></a></p>-->
 			<div id="header">
 				<h1 id="title">
 					<font color="">艺术家简介</font>
@@ -199,63 +204,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div> </br>
 			<div id="general">
 				<div class="row">
-					<label id="realname">真实姓名:</label> <label id="realnameValue"><input
-						value="${artist.realName}" style="border: none"
-						readonly="true"></label>
+					<label id="realname">真实姓名:</label> <label id="realnameValue">${artist.realName}</label>
 				</div>
 				<div class="row">
-					<label id="phone">手机号:</label> <label id="phoneValue"><input
-						value="${artist.mobile}" style="border: none" readonly="true"></label>
+					<label id="phone">手机号:</label> <label id="phoneValue">${artist.mobile}</label>
 				</div>
 				<div class="row">
-					<label id="address">联系地址:</label> <label id="addressValue"><input
-						value="${artist.address}" style="border: none"
-						readonly="true"></label>
+					<label id="address">联系地址:</label> <label id="addressValue">${artist.address}</label>
 				</div>
 				<div class="row">
-					<label id="card">银行帐号:</label> <label id="cardValue"><input
-						value="${artist.bankCardAccount}" style="border: none"
-						readonly="true"></label>
+					<label id="description">艺术家描述:</label> <label id="desValue">${artist.description}</label>
 				</div>
-				<div class="row">
-					<label id="description">艺术家描述:</label> <label id="desValue"><input
-						value="${artist.description}" style="border: none"
-						readonly="true"></label>
-				</div>
-				</br>
-				<p id="manu">
-					您要<a href="/test_ssh/jsp/customizeArt" id="make">申请定制</a>吗？
-				</p>
 				<p>--------------------------------------------------------------------------------------------</p>
 
 			</div>
 	</form>
 	<div id="header">
 		<h1 id="title">
-			<font color="">我的艺术品</font>
+			<font color="">艺术家成就展示</font>
 		</h1>
 	</div>
 	</br>
 	<form action="" method="get">
-		<c:forEach items="${artCommodList}" var="artCommodity">
+		<c:forEach items="${artCommodList}" var="artWork">
 			<div class="span_3">
 				<div class="col-sm-3 grid_1">
-					<a href="/test_ssh/jsp/customizeArt"> <img
-						src="${artWork.name}" class.jpg="img-responsive" alt="" />
-						<h3>
-							<input value="${artWork.type}" style="border: none"
-								readonly="true" />
-						</h3> <!--<p><input value="${artWork.artworkDescription}" style="border:none" readonly="true"/></p>-->
-						<h4>
-							<input value="${artWork.name}" style="border: none"
-								readonly="true" />
-						</h4>
-					</a>
+					<img src="${artWork.picUrl}" class="img-responsive" alt="" />
+					<h3>${artWork.type}</h3>
+					<h4>${artWork.name}</h4>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 		</c:forEach>
 	</form>
+	<p id="manu">
+		您要<a href="/test_ssh/jsp/customizeArt" id="make">申请定制</a>吗？
+	</p>
 	<a href="#"><font color="black">返回顶部</font></a>
 	<!--<p id="manu">您要<a href="/test_ssh/jsp/customizeArt" id="make">申请定制</a>吗？</p>-->
 

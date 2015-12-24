@@ -39,8 +39,8 @@ body {
 <body>
 
 	<form class="form-inline definewidth m20"
-		action="/test_ssh/admin_user/getOrder" method="post">
-		根据<select style="width: auto" id="search" name="search">
+		action="/test_ssh/admin_user/getOrder?type=${type}" method="post">
+		根据<select style="width: auto" id="sign" name="sign">
 			<option value="1">订单编号</option>
 			<option value="2">艺术品名</option>
 			<option value="3">卖家用户名</option>
@@ -49,7 +49,7 @@ body {
 		 <input type="text" name="username" id="username" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
 		 艺术品类型<select style="width: auto" id="search" name="search">
 			<c:forEach items="${TYPELIST}" var="type">
-				<li><option value="${type.name}">${type.name}</option></a></li>
+				<li><option value="${type.id}">${type.name}</option></a></li>
 			</c:forEach>
 		</select>
 		起始时间 <input name="txtDate time1" id="txtDate time1" class="Wdate"

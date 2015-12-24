@@ -13,12 +13,11 @@ import javax.persistence.Table;
 @Table(name="CustomizedArtworkOrder")
 public class CustomizedArtworkOrder extends ArtworkOrder{
 	private CustomizedArtwork customizedArtwork;//定制的艺术品
-	private Date customizedTime;//定制时间
-	private String comment;//用户评论
+	private Date customizedTime;//定制时间，去掉
+	private String comment;//用户评论，去掉
 	private double startPrice;//3个阶段价格
 	private double midPrice;//
 	private double endPrice;//
-	
 	@OneToOne
 	public CustomizedArtwork getCustomizedArtwork() {
 		return customizedArtwork;
