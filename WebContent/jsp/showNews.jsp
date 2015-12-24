@@ -37,8 +37,10 @@
 	</head>
 	<body>
 			<!--start-content--->
-			<a href="/test_ssh/news/goback?type=${type}"><font color="blue">返回</font></a>
-			<div class="content">
+<div style="float:left;width:5%">
+	<a href="/test_ssh/news/goback?type=${type}"><img src="../images/back.png" alt="返回" class="img-responsive"/>
+	</a>
+</div>			<div class="content">
 				<!---start-get-download-link---->
 				<div class="get-download get-download1">
 					</br>
