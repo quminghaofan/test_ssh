@@ -56,20 +56,27 @@
 </c:if>
         </table>
 
-<form class="form-inline definewidth m20" action="/test_ssh/super/addArtType" method="post"><!-- TODO 编号规则：两位整数，不存在数据库里的 -->
-    产品类别编号：<input  type="text"  id="typenumber" name="typenumber" class="abc input-default" placeholder="" value="" style="display:none;margin-left:42.5%">&nbsp;&nbsp;
-    产品类别名称：<input  type="text"  id="typename" name="typename" class="abc input-default" placeholder="" value="" style="display:none;margin-left:42.5%">&nbsp;&nbsp;
-    <button  type="submit" class="btn btn-primary" id="confirm" style="display:none;margin-left:50%">确认</button>&nbsp;&nbsp;
+<form class="form-inline definewidth m20" action="/test_ssh/super/addArtType" method="post" id="type" style="display:none"><!-- TODO 编号规则：两位整数，不存在数据库里的 -->
+   <div><span style="margin-left:38%">产品类别编号：</span>
+   <input  type="text"  id="typenumber" name="typenumber" class="abc input-default" placeholder="" value="" style="margin-left:42.5%;width:25%">
+     </div>
+     <div>
+     <span style="margin-left:38%">产品类别名称：</span>
+     <input  type="text"  id="typename" name="typename" class="abc input-default" placeholder="" value="" style=";margin-left:42.5%;width:25%">
+    </div>
+    <br><br>
+    <button  type="submit" class="btn btn-primary" id="confirm" style="margin-left:50%">确认</button>&nbsp;&nbsp;
 </form>
 <div style="margin-left:50%">
  <input type="button" class="btn btn-primary" id="cancel" onclick="cancel()"style="display:none" value="取消">&nbsp;&nbsp;
+ <br>
  <input type="button" class="btn btn-primary" id="addnew" onclick="addnew()" value="新增">&nbsp;&nbsp; 
  </div>
 </body>
 </html>
 <script>
 function cancel(){
-	document.getElementById("confirm").style.display="none";
+	
 	document.getElementById("addnew").style.display="block";
 	document.getElementById("type").style.display="none";
 	document.getElementById("cancel").style.display="none";
