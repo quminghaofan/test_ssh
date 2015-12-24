@@ -25,9 +25,9 @@ public class News {
 	private String rank;
 	private User editor;//采编
 	private User chiefEditor;//主编
-	private String state;//软文的状态 未审核、审核未通过、审核通过、草稿
+	private String state;//软文的状态 未审核、审核不通过、审核通过、草稿
 	private double price;//软文的价格
-	private String newsType;//软文、新闻
+	private String newsType;//资讯、广告
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

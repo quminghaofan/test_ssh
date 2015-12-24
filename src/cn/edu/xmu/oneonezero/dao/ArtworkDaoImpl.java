@@ -47,4 +47,20 @@ public class ArtworkDaoImpl implements ArtworkDao{
 			return null;
 		return query.list();
 	}
+
+	@Override
+	public void setArtworkState(long artworkId, boolean state) {
+		getArtworkByArtworkId(artworkId).setIsExist(state);
+		sessionFactory.getCurrentSession().flush();
+	}
+
+	@Override
+	public Artwork getArtworkByArtworkId(long artworkId) {
+		String hql = "from  Artwork a where a.id = ? ";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setLong(0, artworkId);
+		if(query.list()==null||query.list().size()==0) 
+			return null;
+		return (Artwork) query.uniqueResult();
+	}
 }

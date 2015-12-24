@@ -19,7 +19,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 
 	@Override
 	public List<CommodityArtwork> commodityArtworksToDisplay() {
-		String hql = "from Artwork a where (a.id=1 or a.id=2 or a.id=3) and a.canSell=true";
+		String hql = "from CommodityArtwork a where (a.id=1 or a.id=2 or a.id=3) and a.canSell=true";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		return query.list();
@@ -27,7 +27,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 
 	@Override
 	public List<CommodityArtwork> getCommodityArtworksByPositionAndVagueName(String artName,int start, int num) {
-		String hql = "from Artwork a where a.canSell=true and a.name like ?";
+		String hql = "from CommodityArtwork a where a.canSell=true and a.name like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, "%"+artName+"%");
 		query.setFirstResult(start);
@@ -39,7 +39,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 	}
 
 	public int getPageTotalByVagueName(String artName,int num) {
-		String hql = "select count(*) from Artwork a where a.canSell=true and a.name like ?";
+		String hql = "select count(*) from CommodityArtwork a where a.canSell=true and a.name like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, "%"+artName+"%");
 		int number=(int)Math.ceil(((Long)query.uniqueResult())/((double)num));
@@ -49,7 +49,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 
 	@Override
 	public JSONObject getCommodityArtworkWithJSONTypeById(long id) {
-		String hql = "from Artwork a where a.canSell=true and a.id=?";
+		String hql = "from CommodityArtwork a where a.canSell=true and a.id=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, id);
 		if(query.list()==null||query.list().size()==0)return null;
@@ -60,7 +60,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 
 	@Override
 	public List<CommodityArtwork> getCommodityArtworksByVagueArtNameInDescendingOrder(String artName) {
-		String hql = "from Artwork a where a.canSell=true and a.name like ? order by a.price desc";
+		String hql = "from CommodityArtwork a where a.canSell=true and a.name like ? order by a.price desc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, artName);
 		if(query.list()==null||query.list().size()==0)return null;
@@ -69,7 +69,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 
 	@Override
 	public List<CommodityArtwork> getCommodityArtworksByVagueArtNameInAscendingOrder(String artName) {
-		String hql = "from Artwork a where a.canSell=true and a.name like ? order by a.price asc";
+		String hql = "from CommodityArtwork a where a.canSell=true and a.name like ? order by a.price asc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, artName);
 		if(query.list()==null||query.list().size()==0)return null;
@@ -78,7 +78,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 
 	@Override
 	public List<CommodityArtwork> getAllCommodityArtworks() {
-		String hql = "from CommodityArtwork a where a.canSell=true";
+		String hql = "from CommodityCommodityArtwork a where a.canSell=true";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		return query.list();
@@ -86,7 +86,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 
 	@Override
 	public List<CommodityArtwork> getCommodityArtworksByArtistId(long ownerId) {
-		String hql = "from CommodityArtwork ca where ca.canSell=true and ca.owner.id= ?";
+		String hql = "from CommodityCommodityArtwork ca where ca.canSell=true and ca.owner.id= ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, ownerId);
 		
@@ -126,6 +126,21 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 		CommodityArtwork temCommodityArtwork=getCommodityArtworkById(commodityArtworkId);
 		temCommodityArtwork.setIsExist(false);
 		
+	}
+
+	@Override
+	public List<CommodityArtwork> getCommodityArtworksByVagueArtworkNamePageNumber(Long artworkTypeId, String artName,
+			int start, int num) {
+		String hql = "from CommodityArtwork a where a.type.id=? and a.name like ?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setLong(0, artworkTypeId);
+		query.setString(1, "%"+artName+"%");
+		query.setFirstResult(start);
+		query.setMaxResults(num);
+		
+		if(query.list()==null||query.list().size()==0)return null;
+		
+		return query.list();
 	}
 
 	

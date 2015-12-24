@@ -132,8 +132,8 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void setUserStateTrue(long userId) {
-		getUser(userId).setState(true);
+	public void setUserState(long userId,boolean state) {
+		getUser(userId).setState(state);
 		sessionFactory.getCurrentSession().flush();
 	}
 
@@ -155,12 +155,6 @@ public class UserDaoImpl implements UserDao {
 			return query.list();
 	}
 
-	@Override
-	public void setUserStateFalse(long userId) {
-		getUser(userId).setState(true);
-		sessionFactory.getCurrentSession().flush();
-	
-	}
 	
 	
 	

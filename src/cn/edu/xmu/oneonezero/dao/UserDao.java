@@ -27,10 +27,8 @@ public interface UserDao {
 
 	public List<User> getAllManager();//获取所有管理员(包括普通管理员、主编、采编)
 
-	public void setUserStateTrue(long userId);//根据userId更改user状态为可用
+	public void setUserState(long userId,boolean state);//根据userId更改user状态
 	
-	public void setUserStateFalse(long userId);//根据userId更改user状态为禁用
-
 	public List<User> getAllCommonUsersAndArtist();//获得所有普通用户和艺术家
 	
 	public List<User> getAllPreparativeArtist();//获得所有预备艺术家

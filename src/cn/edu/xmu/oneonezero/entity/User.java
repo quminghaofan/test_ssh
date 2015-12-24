@@ -24,9 +24,11 @@ public class User {
 	private String headPhoto;
 	private String address;
 	private String bankCardAccount;
-	private String description;
-	private boolean state;//是否被禁用
+	private String description;//用户描述
+	private boolean state;//是否被禁用,0是被禁用
 	private String idPhoto;//审核照片
+	private String noPassReason;//艺术家审核不通过的原因
+	
 	
 	public 
 	String getIdPhoto() {
@@ -113,6 +115,12 @@ public class User {
 	}
 	public void setState(boolean state) {
 		this.state = state;
+	}
+	public String getNoPassReason() {
+		return noPassReason;
+	}
+	public void setNoPassReason(String noPassReason) {
+		this.noPassReason = noPassReason;
 	}
 	
 	

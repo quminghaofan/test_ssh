@@ -26,6 +26,16 @@ public class ArtworkServiceImpl implements ArtworkService{
 	public List<Artwork> getArtworksByAuthorName(String authorName) {
 		return artworkDao.getArtworksByAuthorName(authorName);
 	}
+
+	@Override
+	public Artwork getArtworkByArtworkId(long artworkId) {
+		return artworkDao.getArtworkByArtworkId(artworkId);
+	}
+
+	@Override
+	public void setArtworkState(long artworkId, boolean state) {
+		artworkDao.setArtworkState(artworkId, state);
+	}
 	
 	
 }

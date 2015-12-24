@@ -74,10 +74,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 
-	@Override
-	public void setUserStateTrue(long userId) {
-		userDao.setUserStateTrue(userId);
-	}
 
 
 	@Override
@@ -93,8 +89,8 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public void setUserStateFalse(long userId) {
-		userDao.setUserStateFalse(userId);
+	public void setUserState(long userId,boolean state) {
+		userDao.setUserState(userId,state);
 	}
 
 }

@@ -261,8 +261,8 @@ public class NewsDaoImpl implements NewsDao {
 	}
 
 	@Override
-	public List<News> getTopFourNews(Date today) {
-		String hql = "from News n where n.onShowTime<? and n.offShowTime>? and n.rank<=4 order by u.rank desc";
+	public List<News> getNewsToday(Date today) {
+		String hql = "from News n where n.newsType='资讯' and n.onShowTime<? and n.offShowTime>? order by u.rank desc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setDate(0, today);
 		query.setDate(1, today);
@@ -271,143 +271,220 @@ public class NewsDaoImpl implements NewsDao {
 	}
 
 	@Override
-	public List<News> getNewsByUserIdAndTimespace(long userId, String newsType, Date startTime, Date endTime,
+	public List<News> getNewsByEditorIdAndTimespace(long editorId, String newsType, Date startTime, Date endTime,
 			String newsName, String state) {
-		String hql = "from News n where n.id=?  and n.onShowTime>? and n.offShowTime<? "
-				+ "and n.name like ? and n.state=? and n.newsType=?";
-		Query query;
-		if(!newsType.equals(null))
+		if(newsType!=null)
 		{
-			query = sessionFactory.getCurrentSession().createQuery(hql);
-
-			query.setString(5, newsType);
+			String hql = "from  News n where n.editor.id=? and n.newsType=? and n.onShowTime>? "
+					+ "and n.offShowTime<? and n.name like ? and n.state = ?";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			query.setLong(0, editorId);
+			query.setString(1, newsType);
+			if(startTime!=null)
+				query.setDate(2, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(2, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(3, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(3, temDate);
+			}
+			query.setString(4, "%"+newsName+"%");
+			query.setString(5, state);
+			
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
 		}
 		else{
-			hql = "from News n where n.id=?  and n.onShowTime>? and n.offShowTime<? "
-					+ "and n.name like ? and n.state=?";
-			query = sessionFactory.getCurrentSession().createQuery(hql);
-
-		}
-		query.setLong(0, userId);
-		
-		if(startTime!=null)
-			query.setDate(1, startTime);
-		else
-		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2015,1,1);
+			String hql = "from  News n where n.editor.id=? and n.onShowTime>? "
+					+ "and n.offShowTime<? and n.name like ? and n.state = ?";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			query.setLong(0, editorId);
 			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(1, temDate);
-		}
-		if(endTime!=null)
-			query.setDate(2, endTime);
-		else
-		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2050,1,1);
+			if(startTime!=null)
+				query.setDate(1, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(1, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(2, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(2, temDate);
+			}
+			query.setString(3, "%"+newsName+"%");
+			query.setString(4, state);
 			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(2, temDate);
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
 		}
-		query.setString(3, newsName);
-		query.setString(4, state);
-		if(query.list()==null||query.list().size()==0) 
-			return null;
-		return query.list();
 	}
 
-	//0:已审核 1:未审核
+	
 	@Override
 	public List<News> getExaminedNewsByTimespace(String newsType, Date startTime, Date endTime, String newsName) {
-		String hql = "from News n where  n.onShowTime>? and n.offShowTime<? "
-				+ "and n.name like ? and (n.state='审核通过' or n.state='审核未通过') and n.newsType=?";
-		Query query;
 		
-		if(!newsType.equals(null))
+		if(newsType!=null)
 		{
-			query = sessionFactory.getCurrentSession().createQuery(hql);
-
-			query.setString(3, newsType);
+			String hql = "from  News n where n.newsType=? and n.onShowTime>? "
+					+ "and n.offShowTime<? and n.name like ? and (n.state = '审核通过' or n.state= '审核不通过')";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			query.setString(0, newsType);
+			if(startTime!=null)
+				query.setDate(1, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(1, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(2, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(2, temDate);
+			}
+			query.setString(3, "%"+newsName+"%");
+			
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
 		}
-		else{
-			hql = "from News n where n.newsType=? and n.onShowTime>? and n.offShowTime<? "
-					+ "and n.name like ? and (n.state='审核通过' or n.state='审核未通过')";
-			query = sessionFactory.getCurrentSession().createQuery(hql);
-
-		}
-		if(startTime!=null)
-			query.setDate(0, startTime);
 		else
 		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2015,1,1);
+			String hql = "from  News n where n.onShowTime>? "
+					+ "and n.offShowTime<? and n.name like ? and (n.state = '审核通过' or n.state= '审核不通过')";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			if(startTime!=null)
+				query.setDate(0, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(0, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(1, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(1, temDate);
+			}
+			query.setString(2, "%"+newsName+"%");
 			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(0, temDate);
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
 		}
-		if(endTime!=null)
-			query.setDate(1, endTime);
-		else
-		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2050,1,1);
-			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(1, temDate);
-		}
-	
-		query.setString(2, newsName);
-		if(query.list()==null||query.list().size()==0) 
-			return null;
-		return query.list();
-		
 	}
 	
 	@Override
 	public List<News> getUnexaminedNewsByTimespace(String newsType, Date startTime, Date endTime, String newsName) {
-		String hql = "from News n where  n.onShowTime>? and n.offShowTime<? "
-				+ "and n.name like ? and (n.state='审核通过' or n.state='审核未通过') and n.newsType=?";
-		Query query;
-		
-		if(!newsType.equals(null))
+		if(newsType!=null)
 		{
-			query = sessionFactory.getCurrentSession().createQuery(hql);
-
-			query.setString(3, newsType);
+			String hql = "from  News n where n.newsType=? and n.onShowTime>? "
+					+ "and n.offShowTime<? and n.name like ? and n.state = '未审核' ";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			query.setString(0, newsType);
+			if(startTime!=null)
+				query.setDate(1, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(1, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(2, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(2, temDate);
+			}
+			query.setString(3, "%"+newsName+"%");
+			
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
 		}
 		else{
-			hql = "from News n where n.newsType=? and n.onShowTime>? and n.offShowTime<? "
-					+ "and n.name like ? and n.state='未审核' ";
-			query = sessionFactory.getCurrentSession().createQuery(hql);
+			String hql = "from  News n where n.onShowTime>? "
+					+ "and n.offShowTime<? and n.name like ? and n.state = '未审核' ";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			if(startTime!=null)
+				query.setDate(0, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(0, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(1, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(1, temDate);
+			}
+			query.setString(2, "%"+newsName+"%");
+			
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
+		}
+	}
 
-		}
-		if(startTime!=null)
-			query.setDate(0, startTime);
-		else
-		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2015,1,1);
-			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(0, temDate);
-		}
-		if(endTime!=null)
-			query.setDate(1, endTime);
-		else
-		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2050,1,1);
-			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(1, temDate);
-		}
-	
-		query.setString(2, newsName);
-		if(query.list()==null||query.list().size()==0) 
-			return null;
-		return query.list();
+	@Override
+	public List<News> getAdvertisementToday(Date today) {
+		String hql = "from News n where n.newsType='广告' and n.onShowTime<? and n.offShowTime>? order by u.rank desc";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setDate(0, today);
+		query.setDate(1, today);
 		
+		return query.list();
 	}
 
 	

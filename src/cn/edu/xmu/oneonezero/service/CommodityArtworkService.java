@@ -34,5 +34,7 @@ public interface CommodityArtworkService {
 
 	public List<CommodityArtwork> getAllExhibitArtworks();//获取所有艺术品展品
 	
+	public List<CommodityArtwork> getCommodityArtworksByVagueArtworkNamePageNumber(Long artworkTypeId, String artName, int start,int num);//获取所有艺术品展品
+	
 
 }

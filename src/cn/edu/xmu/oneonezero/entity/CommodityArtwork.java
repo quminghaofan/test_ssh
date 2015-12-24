@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Table(name="CommodityArtwork")
 public class CommodityArtwork extends Artwork{
 	private double price;//价格
-	private boolean sellState;//是否卖出
+	private boolean sellState;//卖出否：true：没卖出
 	private boolean canSell;//是否可卖
 	
 	public double getPrice() {

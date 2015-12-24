@@ -61,4 +61,9 @@ public class CommodityArtworkServiceImpl implements CommodityArtworkService{
 	public List<CommodityArtwork> getAllExhibitArtworks() {
 		return commodityArtworkDao.getAllExhibitArtworks();
 	}
+	@Override
+	public List<CommodityArtwork> getCommodityArtworksByVagueArtworkNamePageNumber(Long artworkTypeId, String artName,
+			int start, int num) {
+		return commodityArtworkDao.getCommodityArtworksByVagueArtworkNamePageNumber(artworkTypeId, artName, start, num);
+	}
 }

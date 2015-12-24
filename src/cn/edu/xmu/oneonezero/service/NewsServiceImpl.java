@@ -155,26 +155,43 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 
+
+
+	@Override
+	public List<News> getNewsByEditorIdAndTimespace(long editorId, String newsType, Date startTime, Date endTime,
+			String newsName, String state) {
+		return newsDao.getNewsByEditorIdAndTimespace(editorId, newsType, startTime, endTime, newsName, state);
+	
+	}
+
+
+
+
 	@Override
 	public List<News> getTopFourNews(Date today) {
-		return newsDao.getTopFourNews(today);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
 	@Override
-	public List<News> getNewsByUserIdAndTimespace(long userId, String newsType, Date startTime, Date endTime,
-			String newsName, String state) {
-		return newsDao.getNewsByUserIdAndTimespace(userId, newsType, startTime, endTime, newsName, state);
+	public List<News> getNewsToday(Date today) {
+		return newsDao.getNewsToday(today);
+	}
+
+
+	@Override
+	public List<News> getAdvertisementToday(Date today) {
+		return newsDao.getAdvertisementToday(today);
 	}
 
 
 	@Override
 	public List<News> getNewsByTimespace(String newsType, Date startTime, Date endTime, String newsName, String state) {
-		if(state.equals("0"))
-			return newsDao.getExaminedNewsByTimespace(newsType, startTime, endTime, newsName);
-		else
+		if(state.equals("1"))
 			return newsDao.getUnexaminedNewsByTimespace(newsType, startTime, endTime, newsName);
-					
+		else
+			return newsDao.getExaminedNewsByTimespace(newsType, startTime, endTime, newsName);
 	}
 	
 

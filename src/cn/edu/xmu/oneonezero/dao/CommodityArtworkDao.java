@@ -8,8 +8,6 @@ import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 public interface CommodityArtworkDao {
 	public List<CommodityArtwork> commodityArtworksToDisplay();//获取今天要展示的3个艺术品商品
 
-	
-	
 	public List<CommodityArtwork> getCommodityArtworksByPositionAndVagueName(String artName,int start,int num);//按位置和模糊名称获取一系列艺术品商品
 	
 	public int getPageTotalByVagueName(String artName,int num);//根据模糊名字和每页数量获得总页数
@@ -34,5 +32,9 @@ public interface CommodityArtworkDao {
 	
 	public List<CommodityArtwork> getAllExhibitArtworks();//获取所有艺术品展品
 	
+	public List<CommodityArtwork> getCommodityArtworksByVagueArtworkNamePageNumber(Long artworkTypeId, String artName, int start,int num);//根据艺术品类型id，模糊艺术品名称，页码，每页数量 分页获取商品艺术品，返回list
 
+	
+	
+	
 }

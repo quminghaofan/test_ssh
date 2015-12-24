@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Type;
 
 @Entity
 @DiscriminatorColumn(name="artworkType",discriminatorType=DiscriminatorType.STRING)
@@ -65,6 +66,7 @@ public class Artwork {
 	public void setPicUrl(String picUrl) {
 		this.picUrl = picUrl;
 	}
+	@Type(type="text")
 	public String getArtworkDescription() {
 		return artworkDescription;
 	}
