@@ -250,6 +250,7 @@ $(document).ready(function() {
 				</ul>
 			</div>
 			<div class="grid_2">
+			<c:if test="${commodityArtworkList!=null}">
 				<c:forEach items="${commodityArtworkList}" var="item">
 					<div class="col-md-3 span_6">
 						<div class="box_inner">
@@ -283,6 +284,7 @@ $(document).ready(function() {
 						</div>
 					</div>
 				</c:forEach>
+				</c:if>
 				<div class="clearfix"></div>
 			</div>
 		</div>
@@ -294,6 +296,7 @@ $(document).ready(function() {
 				<li class="promote_head"><h3>定制</h3></li>
 			</ul>
 			<ul id="flexiselDemo3">
+			<c:if test="${customizedlist!=null}">
 			<c:forEach items="${customizedlist}" var="cus">
 				<li><img src="${cus.picUrl}" class="img-responsive" />
 					<div class="grid-flex">
@@ -308,7 +311,7 @@ $(document).ready(function() {
 					
 				</c:forEach>
 				
-				
+				</c:if>
 				
 			</ul>
 			<script type="text/javascript">

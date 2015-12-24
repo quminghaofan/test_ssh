@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import cn.edu.xmu.oneonezero.entity.DataDictionary;
 import cn.edu.xmu.oneonezero.entity.User;
@@ -23,7 +22,8 @@ public class SuperController {
 
 	@RequestMapping("/adminManage")
 	public String adminManage(HttpServletRequest request) {
-		 request.setAttribute("ADIMLIST",userService.getAllManager());//TODO 
+		System.out.println("adminManage:"+(userService.getAllManager()).size());
+		request.setAttribute("ADMINLIST",userService.getAllManager());
 		return "super_admin";
 	}
 
@@ -45,16 +45,16 @@ public class SuperController {
 		return "super_admin_add";
 	}
 
-	@ResourceMapping("/goToEdit")
+	@RequestMapping("/goToEdit")
 	public String goToEdit(Long userId,HttpServletRequest request) {
 		request.setAttribute("admin",userService.getUser(userId));
 		request.setAttribute("ROLELIST",dataDictionaryService.getAllRoles());
 		return "super_admin_add";
 	}
 	
-	@ResourceMapping("/getAdmin")
+	@RequestMapping("/getAdmin")
 	public String getAdmin(HttpServletRequest request){
-		 request.setAttribute("ADIMLIST",userService.getUserByUserName(request.getParameter("rolename")));
+		 request.setAttribute("ADMINLIST",userService.getUserByUserName(request.getParameter("rolename")));
 		return "super_admin";
 	}
 
@@ -65,7 +65,7 @@ public class SuperController {
 	}
 	@RequestMapping("/addAdmin")
 	public String addAdmin(Long adminId, HttpServletRequest request) {
-		String nameString=request.getParameter("adminname");
+		String nameString=request.getParameter("username");
 		String realnameString=request.getParameter("realname");
 		DataDictionary dataDictionary = dataDictionaryService
 				.getDataDictionaryByName(request.getParameter("role"));
@@ -75,6 +75,7 @@ public class SuperController {
 			user.setRealName(realnameString);
 			user.setRole(dataDictionary);
 			user.setPassword("123456");
+			user.setState(true);
 			userService.insertUser(user);
 		} else {
 			User user=userService.getUser(adminId);
@@ -96,7 +97,6 @@ public class SuperController {
 	@RequestMapping("/addArtType")
 	public String addArtType(HttpServletRequest request){
 		DataDictionary dataDictionary=new DataDictionary();
-		dataDictionary.setNumber("02"+request.getParameter("typenumber"));
 		dataDictionary.setName(request.getParameter("typename"));
 		dataDictionaryService.insertDataDictionary(dataDictionary);
 		return "redirect:/super/artTypeManage";

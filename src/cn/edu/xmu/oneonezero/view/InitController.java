@@ -52,6 +52,7 @@ public class InitController {
 		request.setAttribute("commodityArtworkList", commodityArtworks);
 		request.setAttribute("TYPELIST", dataDictionaryService.getAllArtworkTypes());
 //		request.setAttribute("adlist",news.);
+//		request.setAttribute("RRlist", newsService.get);
 		request.setAttribute("customizedlist", customizedArtworkService.getAllCustomizedArtworks());
 		return "index";
 	}
