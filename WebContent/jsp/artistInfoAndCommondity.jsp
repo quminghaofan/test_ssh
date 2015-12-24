@@ -41,10 +41,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 		</script>
 <style type="text/css">
+
 #headPhotoValue {
 	width: 100px;
 	height: 100px;
-	border-radius: 100px
+	border-radius: 100px;
+	
+
+	
+	margin-left:77px;
+	padding:0px;text-align:center;
+	
 }
 
 #nick {
@@ -194,15 +201,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</br>
 	</br>
 	<form action="" method="post">
-		<div>
-			<img id="headPhotoValue" src="${artist.headPhoto}" class="img-responsive"/>
-		</div>
+			<div id="logo">
+				<img id="headPhotoValue" src="${artist.headPhoto}"/>
+			</div>
 			<div id="header">
+
 				<h1 id="title">
 					<font color="">艺术家简介</font>
 				</h1>
 			</div> </br>
 			<div id="general">
+				<div class="row">
+					<label id="nickname">昵称:</label> <label id="nicknameValue">${artist.realName}</label>
+				</div>
 				<div class="row">
 					<label id="realname">真实姓名:</label> <label id="realnameValue">${artist.realName}</label>
 				</div>
@@ -219,27 +230,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			</div>
 	</form>
-	<div id="header">
-		<h1 id="title">
+	<div id="header1">
+		<h1 id="title1">
 			<font color="">艺术家成就展示</font>
 		</h1>
 	</div>
 	</br>
 	<form action="" method="get">
+		<div class="span_3">
 		<c:forEach items="${artCommodList}" var="artWork">
-			<div class="span_3">
-				<div class="col-sm-3 grid_1">
-					<img src="${artWork.picUrl}" class="img-responsive" alt="" />
-					<h3>${artWork.type.name}</h3>
-					<h4>${artWork.name}</h4>
-				</div>
-				<div class="clearfix"></div>
+			<div class="col-sm-3 grid_1">
+				<img src="${artWork.picUrl}" class="img-responsive" alt="" />
+				<h3>${artWork.type}</h3>
+				<h4>${artWork.name}</h4>
 			</div>
 		</c:forEach>
+		<div class="clearfix"></div>
+		</div>
 	</form>
 	<p id="manu">
-		您要<a href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}" id="make">申请定制</a>吗？
+		您要<a href="/test_ssh/jsp/customizeArt" id="make">申请定制</a>吗？
 	</p>
+	</br>
+	</br>
 	<a href="#"><font color="black">返回顶部</font></a>
 	<!--<p id="manu">您要<a href="/test_ssh/jsp/customizeArt" id="make">申请定制</a>吗？</p>-->
 
