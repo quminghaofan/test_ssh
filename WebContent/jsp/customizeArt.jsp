@@ -111,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<ul>
 										<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
+												<li><a href="">${type.name}</a></li>
 											</c:forEach>
 										</ul>
 									</div>
@@ -126,7 +126,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<ul>
 										<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
+												<li><a href="">${type.name}</a></li>
 											</c:forEach>
 										</ul>
 									</div>
@@ -141,7 +141,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<ul>
 										<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
+												<li><a href="">${type.name}</a></li>
 											</c:forEach>
 										</ul>
 									</div>
@@ -168,7 +168,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 					<select type="text" name="arttype" id="arttype">
 						<option>----------请选择----------</option>
-						<c:forEach items="${TYPELIST})" var="type">
+						<c:forEach items="${TYPELIST}" var="type">
 						<option value="${type.id}">${type.name}</option>
 						</c:forEach>
 					</select>

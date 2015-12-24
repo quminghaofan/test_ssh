@@ -47,12 +47,10 @@ public class InitController {
 	@RequestMapping(value = "/home")
 	public String home(HttpServletRequest request) {
 		List<News> news = newsService.getExaminedNews();
-		request.setAttribute("RRlist", news);
-		List<CommodityArtwork> commodityArtworks = commodityArtworkService.commodityArtworksToDisplay();
-		request.setAttribute("commodityArtworkList", commodityArtworks);
+		request.setAttribute("RRlist", news);//TODO
+		request.setAttribute("commodityArtworkList",commodityArtworkService.commodityArtworksToDisplay());
 		request.setAttribute("TYPELIST", dataDictionaryService.getAllArtworkTypes());
 //		request.setAttribute("adlist",news.);
-//		request.setAttribute("RRlist", newsService.get);
 		request.setAttribute("customizedlist", customizedArtworkService.getAllCustomizedArtworks());
 		return "index";
 	}
@@ -108,7 +106,7 @@ public class InitController {
 			return "login";
 		}
 		response.sendRedirect(backUrl);
-		return "";
+		return null;
 	}
 
 	@RequestMapping(value = "/register")
