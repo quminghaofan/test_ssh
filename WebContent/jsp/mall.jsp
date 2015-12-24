@@ -219,7 +219,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="span_2">
 					<c:forEach items="${itemlist}" var="item">
-						<div class="col_1_of_single1 span_1_of_single1">
+						<div class="col_1_of_single1 span_1_of_single1" align="left">
 							<a href="single.html"> <img src="${item.picUrl}"
 								class="img-responsive" alt="" href="/test_ssh/mall/seeMore?itemId=${item.id}" />
 								<h3>${item.name}</h3>
