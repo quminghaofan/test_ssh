@@ -55,6 +55,7 @@ public class MallController {
 		request.getSession().setAttribute("pageTimes", pageTimes);
 		request.setAttribute("currentPage", curentPage);
 		request.setAttribute("typeId", typeId);
+		System.out.println("购物："+go);
 		if (go.equals("1")) {
 			if (typeId == null) {//
 				request.setAttribute("itemlist", commodityArtworkService

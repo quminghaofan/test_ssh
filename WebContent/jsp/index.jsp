@@ -258,7 +258,7 @@ $(document).ready(function() {
 							<div class="sale-box"></div>
 							<div class="desc">
 								<h3>${item.name}</h3>
-								<h4>${item.price}</h4>
+								<%-- <h4>${item.price}</h4> --%><!-- TODO -->
 								<ul class="list2">
 									<%
 										if (session.getAttribute("user") != null) {
@@ -301,10 +301,10 @@ $(document).ready(function() {
 				<li><img src="${cus.picUrl}" class="img-responsive" />
 					<div class="grid-flex">
 						<h4>${cus.name}</h4>
-						<p>${cus.type}</p>
-						<p>${cus.author.realName}</p>
+						<p>${cus.type.name}</p>
+						<p>${cus.owner.realName}</p>
 						<div class="m_3">
-							<a href="/test_ssh/" class="link2">详情</a>
+							<a href="/test_ssh/customized/seeMore?artistId=${cus.owner.id}" class="link2">详情</a>
 						</div>
 						<div class="ticket"></div>
 					</div></li>

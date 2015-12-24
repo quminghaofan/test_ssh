@@ -194,17 +194,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<c:forEach items="${itemlist}" var="item">
 						<div class="col_1_of_single1 span_1_of_single1">
 							<a href=""> <img src="${item.picUrl}"
-								class="img-responsive" alt="" href="/test_ssh/mall/seeMore?itemId=${item.id}" />
+								class="img-responsive" alt="" href="/test_ssh/customized/seeMore?artistId=${item.owner.id}" />
 								<h3>${item.name}</h3>
 								<h4>${item.type}</h4>
-								<h4>${item.author.realName}</h4>
+								<h4>${item.owner.realName}</h4>
 							</a>
 							<ul class="list2">
 								<%
 									if (session.getAttribute("user") != null) {
 								%>
 							<li class="list2_left"><span class="m_1">
-									<a class="link"  onclick="">申请定制</a> 
+									<a class="link"  onclick="/test_ssh/customized/goToCustomizationApplying?artistId=${item.owner.id}">申请定制</a> 
 								<%
 									} else {
 								%>

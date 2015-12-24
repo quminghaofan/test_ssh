@@ -178,7 +178,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</c:forEach>
 					</table>
 				</div>
-				<div style="margin-top:3%"><a href="/test_ssh/mall/enterMall">继续购物</a></div>
+				<div style="margin-top:3%"><a href="/test_ssh/mall/enterMall?go=1">继续购物</a></div>
 				<div align="center" style="padding-top: 3%;">
 					<a class="acount-btn" href="/test_ssh/cart/cleanCart">清空购物车</a>
 				   <a class="acount-btn" href="/test_ssh/mall/settle" style="margin-top:2em">去结算</a>

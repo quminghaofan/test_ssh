@@ -22,4 +22,26 @@ public class CustomizedArtworkDaoImpl implements CustomizedArtworkDao {
 		
 		return query.list();
 	}
+
+
+	@Override
+	public List<CustomizedArtwork> getCustomizedArtworksByVagueArtworkNamePageNumber(Long artworkTypeId, String artName,
+			int start, int num) {
+		String hql = "from CustomizedArtwork a where a.type.id=? and a.name like ?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setLong(0, artworkTypeId);
+		query.setString(1, "%"+artName+"%");
+		query.setFirstResult(start);
+		query.setMaxResults(num);
+		
+		if(query.list()==null||query.list().size()==0)return null;
+		
+		return query.list();
+	}
+
+
+	@Override
+	public void insertCustomizedArtwork(CustomizedArtwork customizedArtwork) {
+		sessionFactory.getCurrentSession().saveOrUpdate(customizedArtwork);
+	}
 }

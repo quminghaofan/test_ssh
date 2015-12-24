@@ -16,6 +16,7 @@ import cn.edu.xmu.oneonezero.entity.CustomizedArtwork;
 import cn.edu.xmu.oneonezero.entity.CustomizedArtworkOrder;
 import cn.edu.xmu.oneonezero.entity.DataDictionary;
 import cn.edu.xmu.oneonezero.entity.User;
+import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
 import cn.edu.xmu.oneonezero.service.CustomizedArtworkOrderService;
 import cn.edu.xmu.oneonezero.service.CustomizedArtworkService;
 import cn.edu.xmu.oneonezero.service.DataDictionaryService;
@@ -36,10 +37,14 @@ public class CustomizedController {
 	@Resource(name="customizedArtworkOrderService")
 	private CustomizedArtworkOrderService customizedArtworkOrderService;
 	
+	@Resource(name="commodityArtworkService")
+	private CommodityArtworkService commodityArtworkService;
+	
 	@RequestMapping("seeMore")
 	public String seeMore(Long artistId,HttpServletRequest request){
-		request.setAttribute("itemlist",userService.getUser(artistId));
-//		request.setAttribute("artCommodList", arg1);//TODO 根据艺术家id获取艺术家展品
+		request.setAttribute("artist",userService.getUser(artistId));
+		request.setAttribute("artCommodList",
+				commodityArtworkService.getCommodityArtworksByArtistId(artistId));//TODO 根据艺术家id获取艺术家展品
 		return "artistInfoAndCommondity";
 	}
 	
@@ -60,9 +65,14 @@ public class CustomizedController {
 		customizedArtwork.setName(request.getParameter("artname"));
 		customizedArtwork.setRemarks(request.getParameter("intro"));
 		String path = request.getSession().getServletContext().getRealPath("\\attached");
-		customizedArtwork.setPicUrl("..\\attached\\"+PicUpload.saveFile(filedata,path));
+		String picurl=PicUpload.saveFile(filedata,path);
+		if(picurl.equals(""))picurl=null;
+		else {
+			picurl="..\\attached\\"+picurl;
+		}
+		customizedArtwork.setPicUrl(picurl);
 		customizedArtwork.setOwner(artist);
-//		customizedArtwork.insert
+//		customizedArtworkService.
 		
 		CustomizedArtworkOrder customizedArtworkOrder=new CustomizedArtworkOrder();
 		customizedArtworkOrder.setMobile(request.getParameter("telephone"));

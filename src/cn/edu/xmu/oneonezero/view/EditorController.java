@@ -72,8 +72,13 @@ public class EditorController {
     		String temp=(news.getPicUrl()).replaceAll("..\\\\attached", "");
     		PicUpload.deleteFile(temp,path);
     	}
-    	
-    	news.setPicUrl("..\\attached\\"+PicUpload.saveFile(filedata,path));
+
+		String picurl=PicUpload.saveFile(filedata,path);
+		if(picurl.equals(""))picurl=null;
+		else {
+			picurl="..\\attached\\"+picurl;
+		}
+    	news.setPicUrl(picurl);
     	
     	news.setOnShowTime(format.parse(request.getParameter("txtDate time1")));
     	news.setOffShowTime(format.parse(request.getParameter("txtDate time2")));

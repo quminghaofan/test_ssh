@@ -21,4 +21,22 @@ public class CustomizedArtworkServiceImpl implements CustomizedArtworkService{
 		return customizedArtworkDao.getAllCustomizedArtworks();
 	}
 
+
+
+
+	@Override
+	public List<CustomizedArtwork> getCustomizedArtworksByVagueArtworkNamePageNumber(Long artworkTypeId, String artName,
+			int start, int num) {
+		return customizedArtworkDao.getCustomizedArtworksByVagueArtworkNamePageNumber(artworkTypeId, artName, start, num);
+	}
+
+
+
+
+	@Override
+	public void insertCustomizedArtwork(CustomizedArtwork customizedArtwork) {
+		customizedArtworkDao.insertCustomizedArtwork(customizedArtwork);
+		
+	}
+
 }
