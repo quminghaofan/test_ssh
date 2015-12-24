@@ -17,7 +17,7 @@ public class CustomizedArtworkDaoImpl implements CustomizedArtworkDao {
 
 	@Override
 	public List<CustomizedArtwork> getAllCustomizedArtworks() {
-		String hql = "from CustomizedArtWork ";
+		String hql = "from CustomizedArtwork ";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		return query.list();

@@ -12,7 +12,6 @@ import javax.persistence.Table;
 public class CommodityArtworkOrder extends ArtworkOrder{
 
 	private CommodityArtwork commodityArtwork;//订单中包含的艺术品
-	private double price;//订单价格
 	
 	@OneToOne
 	public CommodityArtwork getCommodityArtwork() {
@@ -20,12 +19,6 @@ public class CommodityArtworkOrder extends ArtworkOrder{
 	}
 	public void setCommodityArtwork(CommodityArtwork commodityArtwork) {
 		this.commodityArtwork = commodityArtwork;
-	}
-	public double getPrice() {
-		return price;
-	}
-	public void setPrice(double price) {
-		this.price = price;
 	}
 	
 }

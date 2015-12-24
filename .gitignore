@@ -3,3 +3,10 @@ WebContent/jsp/login.jsp
 WebContent/jsp/login.jsp
 WebContent/jsp/login.jsp
 WebContent/jsp/login.jsp
+WebContent/jsp/showNews.jsp
+
+.classpath
+
+*.xml
+
+*.jsp
