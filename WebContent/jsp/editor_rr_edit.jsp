@@ -47,13 +47,13 @@
                 <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
-<form method="post" class="definewidth m10" id="myform">
+<form method="post" class="definewidth m10" id="myform" enctype="multipart/form-data">
 <table class="table table-bordered table-hover m10">
     <tr>
             <td width="10%" class="tableleft">软文类型</td>
             <td><select id="newsType" name="category" class="category">
-			<option value="1" ${status eq '1' ? 'selected': ''}>广告</option>
-			<option value="2" ${status eq '2' ? 'selected': ''}>新闻</option></td>
+			<option value="广告" ${status eq '1' ? 'selected': ''}>广告</option>
+			<option value="新闻" ${status eq '2' ? 'selected': ''}>新闻</option></td>
      </tr>
     <tr>
             <td width="10%" class="tableleft">软文标题</td>
@@ -66,7 +66,7 @@
         <tr>
             <td class="tableleft">图片</td>
             <td><div id="preview"><span><img id="image" src="${news.picUrl}" width="30%" height="30%"/></span></div>
-            <span><input id="img" name="img" type="file" accept="image/*" onchange="previewImage(this,'preview','image')"/></span></td> </tr>
+            <span><input id="img" name="img" type="file" accept="image/*" onchange="previewImage(this,'preview','image')" value="${news.picUrl}"/></span></td> </tr>
 
         <tr>
             <td width="10%" class="tableleft">上架时间</td>
@@ -131,7 +131,7 @@ function price_count(){
 }
 function submit1(){
 	var myform=document.getElementById("myform");
-	myform.action="/test_ssh/editor/editNews?type=1";
+	myform.action="/test_ssh/editor/editNews?type=1"
 	
 	myform.submit();
 	//return true;

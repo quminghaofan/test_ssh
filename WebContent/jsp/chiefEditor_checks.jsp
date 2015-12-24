@@ -78,7 +78,7 @@
 		<tr>
             <td class="tableleft"></td>
             <td>
-             <input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="submit1()" value="通过">				 &nbsp;&nbsp;<input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="submit2()" value="不通过">				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/chiefEditor/getUnExamined'" value="返回列表"> </td>
+             <input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="submit1()" value="通过">				 &nbsp;&nbsp;<input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="submit2()" value="不通过">				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/chiefEditor/goback?type=${typeExamine}'" value="返回列表"> </td>
         </tr>
   </table>
 </form>

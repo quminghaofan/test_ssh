@@ -2,6 +2,7 @@ package cn.edu.xmu.oneonezero.view;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import cn.edu.xmu.oneonezero.entity.News;
 import cn.edu.xmu.oneonezero.entity.User;
@@ -23,7 +24,7 @@ public class ChiefEditorController {
     @Resource(name="newsService")
     private NewsService newsService;
 
-    private SimpleDateFormat format=new SimpleDateFormat("yyyy-mm-dd");
+    private SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
     
     @RequestMapping("/getNews")
     public String getNews(String type,long newsId,HttpServletRequest request){
@@ -55,10 +56,11 @@ public class ChiefEditorController {
     
     @RequestMapping("/goback")
     public String goback(String type,HttpServletRequest request){
+    	System.out.println("go:"+type);
     	if(type.equals("1")){
     		return "redirect:/chiefEditor/getUnexamined";
     	}
-    	return "redirect:/chiefEditor/getUnexamined";
+    	return "redirect:/chiefEditor/getExamined";
     }
     
     @RequestMapping(value="/setNews")
@@ -75,33 +77,32 @@ public class ChiefEditorController {
         request.setAttribute("RRLIST", newsService.getExaminedNews());
         return "chiefEditor_rr_2";
     }
-    @RequestMapping(value="/getExaminedByNewsName")
-    public String getExaminedByNewsName(HttpServletRequest request){
-        request.setAttribute("RRLIST", newsService.getExaminedNewsByVagueNewsName(request.getParameter("RRname")));
-        return "chiefEditor_rr_2";
-    }
 
     @RequestMapping(value="/getUnexamined")
     public String getUnexamined(HttpServletRequest request){
         request.setAttribute("RRLIST",newsService.getUnexaminedNews());
         return "chiefEditor_rr_1";
     }
-
-    @RequestMapping(value="/getUnexaminedByNewsName")
-    public String getUnexaminedByNewsName(HttpServletRequest request){
-        request.setAttribute("RRLIST",newsService.getUnexaminedNewsByVagueNewsName(request.getParameter("RRname")));
-        return "chiefEditor_rr_1";
-    }
-    
     @RequestMapping("/search")
     public String search(String type,HttpServletRequest request) throws ParseException{
-    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd ");
+    	Date start,end;
     	String newsType=request.getParameter("category");
     	String startTime=request.getParameter("onShowTime");
 //    	System.out.println(startTime);
-    	String endTime=request.getParameter("offShowTime");
     	String newsName=request.getParameter("RRname");
-    	request.setAttribute("RRLIST",newsService.getNewsByTimespace(newsType,sdf.parse(startTime), sdf.parse(endTime), newsName,type));
+    	
+    	if(startTime.equals("")){
+    		start=null;
+    	}else {
+			start=format.parse(startTime);
+		}
+    	String endTime=request.getParameter("offShowTime");
+    	if(endTime.equals("")){
+    		end=null;
+    	}else {
+    		end=format.parse(endTime);
+		}
+    	request.setAttribute("RRLIST",newsService.getNewsByTimespace(newsType,start, end, newsName,type));
     	if(type.equals("1")){
     	return "chiefEditor_rr_1";
     	}

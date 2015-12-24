@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -90,14 +91,14 @@ body {
 					<td>${rr.rank}</td>
 					<td>${rr.newsType}</td>
 					<%
-						java.util.Date now = new java.util.Date();
+						Date now = new Date(System.currentTimeMillis());
 					%>
-					<c:if test="${rr.onShowTime.compareTo(now)>0}">
+					<c:if test="${(rr.onShowTime).getTime()>now.getTime()}">
 						<td><a href="/test_ssh/news/showNews?newsId=${rr.id}&type=6">查看</a>&nbsp;&nbsp;<a
 							href="/test_ssh/editor/withdraw?newsId=${rr.id}&type=2">撤回</a></td>
 					</c:if>
 
-					<c:if test="${rr.onShowTime.compareTo(now)<0}">
+					<c:if test="${(rr.onShowTime).getTime()<=now.getTime()}">
 						<td><a href="/test_ssh/news/showNews?newsId=${rr.id}&type=6">查看</a>
 					</c:if>
 				</tr>

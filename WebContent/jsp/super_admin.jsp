@@ -37,7 +37,7 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="/test_ssh/super/getAdmin" method="get">
+<form class="form-inline definewidth m20" action="/test_ssh/super/getAdmin" method="post">
     管理员账号
     <input type="text" name="rolename" id="rolename"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
     <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>&nbsp;&nbsp; <input type="button" class="btn btn-success" id="addnew" onclick="window.location.href='/test_ssh/super/goToAddAdmin'" value="新增管理员"/>
@@ -51,10 +51,11 @@
         <th>操作</th>
     </tr>
     </thead>
-    <c:if test="${ADIMLIST!=null}">
+    <c:if test="${ADMINLIST!=null}">
     <c:forEach items="${ADMINLIST}" var="admin">
         <tr>
                 <td>${admin.name}</td>
+                <td>${admin.realName}</td>
                 <td>${admin.role.name}</td>
                 <td><a href="/test_ssh/super/goToEdit?userId=${admin.id}">编辑</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;<a href="/test_ssh/super/delAdmin?userId=${admin.id}">禁用</a></td>

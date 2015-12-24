@@ -3,27 +3,19 @@ package cn.edu.xmu.oneonezero.view;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import cn.edu.xmu.oneonezero.entity.News;
 import cn.edu.xmu.oneonezero.entity.User;
 import cn.edu.xmu.oneonezero.service.NewsService;
 
-
-
-
-
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * 采编
@@ -36,7 +28,7 @@ public class EditorController {
     @Resource(name="newsService")
     private NewsService newsService;
     
-    private SimpleDateFormat format=new SimpleDateFormat("yyyy-mm-dd");
+    private SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 
     @RequestMapping(value="/addNews")
     public String addNews(@RequestParam(value = "img", required = false) MultipartFile filedata,String type,HttpServletRequest request) throws ParseException{
@@ -79,7 +71,6 @@ public class EditorController {
     	if(news.getPicUrl()!=null){
     		String temp=(news.getPicUrl()).replaceAll("..\\\\attached", "");
     		PicUpload.deleteFile(temp,path);
-    		System.out.println("picUrl:"+temp);
     	}
     	
     	news.setPicUrl("..\\attached\\"+PicUpload.saveFile(filedata,path));
@@ -88,8 +79,7 @@ public class EditorController {
     	news.setOffShowTime(format.parse(request.getParameter("txtDate time2")));
 //    	System.out.println(request.getParameter("price"));
     	news.setPrice(Double.parseDouble(request.getParameter("price")));
-//    	type=type.replaceAll(",", "");
-//    	System.out.println("editNews-type:"+type);
+    	System.out.println("editNews-type:"+type);
     	if(type.equals("1")){//保存
     		System.out.print("草稿");
     		news.setState("草稿");
@@ -166,30 +156,41 @@ public class EditorController {
     
     @RequestMapping("/search")
     public String search(String type,HttpServletRequest request) throws ParseException{
-    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd ");
+    	Date start,end;
     	User user=(User)request.getSession().getAttribute("user");
     	String newsType=request.getParameter("category");
     	String startTime=request.getParameter("onShowTime");
+    	
+    	if(startTime.equals("")){
+    		start=null;
+    	}else {
+			start=format.parse(startTime);
+		}
     	String endTime=request.getParameter("offShowTime");
+    	if(endTime.equals("")){
+    		end=null;
+    	}else {
+    		end=format.parse(endTime);
+		}
     	String newsName=request.getParameter("RRname");
     	if(type.equals("1")){
         	request.setAttribute("RRLIST",newsService.getNewsByUserIdAndTimespace(user.getId(),
-        			newsType, sdf.parse(startTime), sdf.parse(endTime), newsName, "未审核"));
+        			newsType, start, end, newsName, "未审核"));
         	return "editor_rr_1";
     	}
     	else if(type.equals("2")){
         	request.setAttribute("RRLIST",newsService.getNewsByUserIdAndTimespace(user.getId(),
-        			newsType, sdf.parse(startTime), sdf.parse(endTime), newsName, "审核不通过"));
+        			newsType, start, end, newsName, "审核不通过"));
         	return "editor_rr_2";
     	}
     	else if(type.equals("3")){
         	request.setAttribute("RRLIST",newsService.getNewsByUserIdAndTimespace(user.getId(),
-        			newsType, sdf.parse(startTime), sdf.parse(endTime), newsName, "审核通过"));
+        			newsType, start, end, newsName, "审核通过"));
         	return "editor_rr_3";
     	}
     	else{
         	request.setAttribute("RRLIST",newsService.getNewsByUserIdAndTimespace(user.getId(),
-        			newsType, sdf.parse(startTime), sdf.parse(endTime), newsName, "草稿"));
+        			newsType,start, end, newsName, "草稿"));
         	return "editor_rr_4";
     	}
     }

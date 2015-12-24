@@ -173,7 +173,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 
 	@Override
 	public List<CommodityArtworkOrder> getAllCommodityArtworkOrders() {
-		String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.cansale=true";
+		String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.canSell=true";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		if(query.list()==null||query.list().size()==0) 
 			return null;

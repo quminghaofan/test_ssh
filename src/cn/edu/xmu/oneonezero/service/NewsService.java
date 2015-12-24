@@ -1,10 +1,8 @@
 package cn.edu.xmu.oneonezero.service;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.hibernate.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.xmu.oneonezero.entity.News;

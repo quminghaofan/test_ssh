@@ -8,7 +8,6 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
-import cn.edu.xmu.oneonezero.entity.User;
 
 public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 

@@ -7,7 +7,6 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
-import cn.edu.xmu.oneonezero.entity.CommodityArtworkOrder;
 import cn.edu.xmu.oneonezero.entity.CustomizedArtworkOrder;
 
 public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{

@@ -66,8 +66,8 @@ body {
 			<tr>
 				<td width="10%" class="tableleft">软文类型</td>
 				<td><select id="newsType" name="category" class="category">
-						<option value="1">广告</option>
-						<option value="2">新闻</option></td>
+						<option value="广告">广告</option>
+						<option value="新闻">新闻</option></td>
 			</tr>
 			<tr>
 				<td width="10%" class="tableleft">软文标题</td>
@@ -83,7 +83,7 @@ body {
 						<span><img id="image" src="${news.picUrl}" width="30%"
 							height="30%" /></span>
 					</div> <span><input id="img" name="img" type="file"
-						accept="images/*" onchange="previewImage(this,'preview','image')" /></span></td>
+						accept="images/*" onchange="previewImage(this,'preview','image')"  value="${news.picUrl}"/></span></td>
 			</tr>
 
 			<tr>

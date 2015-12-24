@@ -4,7 +4,6 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
 import cn.edu.xmu.oneonezero.entity.Account;
-import cn.edu.xmu.oneonezero.entity.User;
 
 public class AccountDaoImpl implements AccountDao{
 	private SessionFactory sessionFactory;//创建一个会话工厂实例

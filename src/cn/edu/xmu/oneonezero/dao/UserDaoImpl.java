@@ -78,9 +78,9 @@ public class UserDaoImpl implements UserDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getUserByUserName(String userName) {
-		String hql = "from User u where u.name = ?";
+		String hql = "from User u where u.name like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setString(0, userName);
+		query.setString(0, "%"+userName+"%");
 		
 		return query.list();
 	}

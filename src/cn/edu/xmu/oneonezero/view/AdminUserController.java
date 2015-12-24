@@ -61,15 +61,15 @@ public class AdminUserController {
 	
 	@RequestMapping(value="/getAllOrder")
 	public String getAllOrder(String type,HttpServletRequest request){//type:0:定制 1：制成
+		request.setAttribute("TYPELIST", dataDictionaryService.getAllArtworkTypes());
 		if(type.equals("0")){
 		request.setAttribute("ORDERLIST",customizedArtworkOrderService.getAllCustomizedArtworkOrders());
+		return "admin_customizedArtworkorderlist";
 		}
 		else {
 			request.setAttribute("ORDERLIST",commodityArtworkOrderService.getAllCommodityArtworkOrders());
+			return "admin_commodityArtworkorderlist";
 		}
-		request.setAttribute("type", type);
-		request.setAttribute("TYPELIST", dataDictionaryService.getAllArtworkTypes());
-		return "admin_orderlist";
 	}
 	
 	@RequestMapping("/getAllPreparatoryArtist")
@@ -86,11 +86,18 @@ public class AdminUserController {
 	@RequestMapping(value="/getOrder")
 	public String getOrder(String type,HttpServletRequest request){//type:0:定制 1：制成
 		String sign=request.getParameter("sign");//1:订单编号 2：艺术品名 3：卖家用户名 4：买家用户名
+		String name=request.getParameter("username");
+		String typeId=request.getParameter("type");
+		String startTime=request.getParameter("txtDate time1");
+		String endTime=request.getParameter("txtDate time2");
 		if(type.equals("0")){
-			
+//			request.setAttribute("ORDERLIST",customizedArtworkOrderService.get);
+			return "admin_customizedArtworkorderlist";
 		}
-//		request.setAttribute("ORDERLIST",);
-		return "admin_orderlist";
+		else {
+//			request.setAttribute("ORDERLIST",commodityArtworkOrderService.);
+			return "admin_commodityArtworkorderlist";
+		}
 	}
 	
 	@RequestMapping("/getAllArtwork")
