@@ -42,11 +42,12 @@
 				<!---start-get-download-link---->
 				<div class="get-download get-download1">
 					</br>
-					<p>"${news.name}"</p>
+					<p>${news.name}</p>
 					</br>
 					<p><font color="gray" size="2px">主编/<input value="${news.chiefEditor.name}"  style="border: none"/></font></p>
 					<p><font  color="gray" size="2px">采编/<input value="${news.editor.name}"  style="border: none"/></font></p>
 				</div>
+
 				</div>
 				<!---//End-get-download-link---->
 				<!----start-divice-features---->
@@ -56,7 +57,7 @@
 							<div class="box1-info">
 							<c:if test="${news.picUrl!=null}">
 								<p>
-								<img id="picture" src="${news.picUrl}" height="350" width="500"
+								<img id="picture" src="${news.picUrl}" height="150" width="200"
 						readonly="readonly" />
 								</p>
 								</c:if>
