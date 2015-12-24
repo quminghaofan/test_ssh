@@ -35,9 +35,11 @@ public class EditorController {
 
     @Resource(name="newsService")
     private NewsService newsService;
+    
+    private SimpleDateFormat format=new SimpleDateFormat("yyyy-mm-dd");
 
     @RequestMapping(value="/addNews")
-    public String addNews(@RequestParam(value = "img", required = false) MultipartFile filedata,String type,HttpServletRequest request){
+    public String addNews(@RequestParam(value = "img", required = false) MultipartFile filedata,String type,HttpServletRequest request) throws ParseException{
     	String path = request.getSession().getServletContext().getRealPath("\\attached");
     	News news=new News();
     	User user=((User)request.getSession().getAttribute("user"));
@@ -49,8 +51,8 @@ public class EditorController {
     	
     	news.setPicUrl("..\\attached\\"+PicUpload.saveFile(filedata,path));
     	
-    	news.setOnShowTime(request.getParameter("txtDate time1"));
-    	news.setOffShowTime(request.getParameter("txtDate time2"));
+    	news.setOnShowTime(format.parse(request.getParameter("txtDate time1")));
+    	news.setOffShowTime(format.parse(request.getParameter("txtDate time2")));
     	news.setPrice(Double.parseDouble(request.getParameter("price")));
     	System.out.println("type:"+type);
     	if(type.equals("1")){
@@ -64,7 +66,7 @@ public class EditorController {
     }
 
     @RequestMapping(value="/editNews")
-    public String editNews(@RequestParam(value = "img", required = false) MultipartFile filedata,String type,HttpServletRequest request){
+    public String editNews(@RequestParam(value = "img", required = false) MultipartFile filedata,String type,HttpServletRequest request) throws ParseException{
     	String path = request.getSession().getServletContext().getRealPath("\\attached");
     	News news=(News) request.getSession().getAttribute("news");
     	User user=(User)request.getSession().getAttribute("user");
@@ -82,8 +84,8 @@ public class EditorController {
     	
     	news.setPicUrl("..\\attached\\"+PicUpload.saveFile(filedata,path));
     	
-    	news.setOnShowTime(request.getParameter("txtDate time1"));
-    	news.setOffShowTime(request.getParameter("txtDate time2"));
+    	news.setOnShowTime(format.parse(request.getParameter("txtDate time1")));
+    	news.setOffShowTime(format.parse(request.getParameter("txtDate time2")));
 //    	System.out.println(request.getParameter("price"));
     	news.setPrice(Double.parseDouble(request.getParameter("price")));
 //    	type=type.replaceAll(",", "");

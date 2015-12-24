@@ -23,6 +23,8 @@ public class ChiefEditorController {
     @Resource(name="newsService")
     private NewsService newsService;
 
+    private SimpleDateFormat format=new SimpleDateFormat("yyyy-mm-dd");
+    
     @RequestMapping("/getNews")
     public String getNews(String type,long newsId,HttpServletRequest request){
         request.getSession().setAttribute("news",newsService.getNews(newsId));
@@ -60,10 +62,10 @@ public class ChiefEditorController {
     }
     
     @RequestMapping(value="/setNews")
-    public String setNews(HttpServletRequest request){
+    public String setNews(HttpServletRequest request) throws ParseException{
     	News news=(News) request.getSession().getAttribute("news");
         news.setRank(request.getParameter("rank"));
-        news.setOnShowTime(request.getParameter("txtDate"));
+        news.setOnShowTime(format.parse(request.getParameter("txtDate")));
         newsService.updateNews(news);
         return "redirect:/chiefEditor/getUnexamined";
     }
