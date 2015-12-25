@@ -175,8 +175,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <label>${order.name}</label>
                     </div>
                     <div align="right">
-                    <label>类别:&nbsp;&nbsp;${order.type.name}</label>
-                        <label>价格:&nbsp;&nbsp;&nbsp;&nbsp;¥&nbsp;&nbsp;${order.price}</label>
+                    <label>类别:&nbsp;${order.type.name}</label>&nbsp;&nbsp;
+                        <label>价格:&nbsp;¥&nbsp;${order.price}</label>
                     </div>
                 </div>
             </div>
