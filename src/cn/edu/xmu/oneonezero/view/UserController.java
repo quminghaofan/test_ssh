@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import cn.edu.xmu.oneonezero.entity.User;
 import cn.edu.xmu.oneonezero.service.AccountService;
@@ -90,5 +92,12 @@ public class UserController {
 			customizedArtworkOrderService.updateCustomizedArtworkOrderState(orderId, "已支付已收货");
 			return "redirect:/user/myCustomized";
 		}
+	}
+	
+	@RequestMapping("changeInfo")
+	public String changeInfo(@RequestParam(value = "img", required = false) MultipartFile filedata,HttpServletRequest request){
+		User user=(User)request.getSession().getAttribute("user");
+		user.setNickName(request.getParameter(""));
+		return "redirect:/init/home";
 	}
 }

@@ -183,13 +183,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								value="${order.customizedArtwork.remarks}">
 						</div>
 						<div>
-							<span>第一期价格</span> <input type="text" value="${order.startPrice}">
+							<span>第一期价格</span> <input type="text" readonly="readonly" value="${order.startPrice}">
 						</div>
 						<div>
-							<span>第二期价格</span> <input type="text" value="${order.midPrice}">
+							<span>第二期价格</span> <input type="text" readonly="readonly" value="${order.midPrice}">
 						</div>
 						<div>
-							<span>第三期价格</span> <input type="text" value="${order.endPrice}">
+							<span>第三期价格</span> <input type="text" readonly="readonly" value="${order.endPrice}">
 						</div>
 						<div id="preview" style="border: solid 1px">
 							<span>第一期样品</span> <span><img id="image"
@@ -203,7 +203,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span>第三期样品</span> <span><img id="image"
 								src="${order.endImg}" width="30%" height="30%" /></span>
 						</div>
-				  <input type="button" value="返回列表" onClick="">
+				  <input type="button" value="返回列表" onclick="/test_ssh/user/myCustomized">
 								
 				  
 			    </form>

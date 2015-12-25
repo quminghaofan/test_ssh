@@ -166,6 +166,6 @@ public class ArtistController {
 		else {//拒绝
 			
 		}
-		return "";
+		return "redirect:/artist/myCustomized";
 	}
 }

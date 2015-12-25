@@ -206,7 +206,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span>第三期样品</span> <span><img id="image"
 								src="${order.endImg}" width="30%" height="30%" /></span>
 						</div>
-						<input type="button" value="返回列表" onClick="/test_ssh/artist/myCustomized">
+						<input type="button" value="返回列表" onclick="/test_ssh/artist/myCustomized">
 					</form>
 				</div>
 			</div>

@@ -1,4 +1,5 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@page import="cn.edu.xmu.oneonezero.entity.User"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -73,14 +74,15 @@ top:400px;
 			 <div class="cssmenu">
 				<ul>
 					 <%
-                	if(session.getAttribute("username")==null){
+					 User user=(User)session.getAttribute("user");
+                	if(user==null){
                 %>
 					<li><a href="jsp/login.jsp">登录/注册</a></li> 
 					<%
                     }else{
                     %>
                     <li><a href="">申请成为艺术家</a></li> 
-                    <li><a href=""> <%=session.getAttribute("username")%></a></li>
+                    <li><a href=""> <%=user.getName()%></a></li>
                     <li><a href="">订单</a></li>
                     <li><a href="">购物车</a></li>
                     <li><a href="">退出</a></li> 
@@ -174,19 +176,16 @@ top:400px;
 						如果您已有账号，请直接 <a href="/test_ssh/jsp/login"><font
 							color="blue">登录</font></a>
 					</p>-->
-					<form id="changeform" method="post" action="#">
 					<h3 style="color: blue" align="center-left">您可以对个人信息进行编辑</h3></br>
-					<form id="registerform" method="post"
-						onsubmit="return before_register()"
-						action="/test_ssh/init/register">
+					<form id="registerform" method="post" onsubmit="return before_register()" action="/test_ssh/user/changeInfo" enctype="multipart/form-data">
 						<div>
 							<span>头像 <label>*</label></span>
-							<img id="headPhotoValue" src="${user.headPhoto}"/>
+							<img id="headPhotoValue" src="<%=user.getHeadPhoto()%>"/>
 						</div></br>
 						<div>
 							<span> 昵称 <label>*</label></span> 
 							<input type="text"
-								id="username" name="username" value="${user.nickName}"
+								id="username" name="username" value="<%=user.getNickName()%>"
 								onfocus="display1()" onblur="judgeUserName()">
 							<span style="display: none" id="username_blank"> <font
 								color="red"></font></span>
@@ -194,7 +193,7 @@ top:400px;
 						<div>
 							<span> 手机号 <label>*</label></span> 
 							<input type="text"
-								id="mobile" name="mobile" value="${user.mobile}"
+								id="mobile" name="mobile" value="<%=user.getMobile()%>"
 								onfocus="display2()" onblur="judgeMobile()">
 							<span style="display: none" id="mobile_blank"> <font
 								color="red"></font></span>
@@ -202,20 +201,20 @@ top:400px;
 						<div>
 							<span> 联系地址 <label>*</label></span> 
 							<input name="address"
-								type="text" id="address" value="${user.address}"
+								type="text" id="address" value="<%=user.getAddress()%>"
 								onfocus="display3()"> <span
 								style="display: none" id="address_blank"><font color="red"></font></span>
 						</div>
 						<div>
 							<span>银行账号<label>*</label></span> 
-							<input name="card"	type="text" id="card" value="${user.bankCardAccount}"
+							<input name="card"	type="text" id="card" value="<%=user.getBankCardAccount()%>"
 								 onfocus="display4()"> 
 							<span style="display: none"
 								id="card_blank"><font color="red"></font></span>
 						</div>
 						<div>
 							<span>个性签名<label>*</label></span> 
-							<input name="description"	type="text" id="description" value="${user.description}"
+							<input name="description"	type="text" id="description" value="<%=user.getDescription()%>"
 								onfocus="display5()">
 							<span style="display: none"
 								id="description_blank"><font color="red"></font></span>
