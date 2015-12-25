@@ -117,7 +117,7 @@ $(document).ready(function() {
 			<div class="header_bottom-box">
 				<div class="header_bottom_left">
 					<div class="logo">
-						<a href="index.jsp"><img src="../images/logo_ooz.png" alt="首页" /></a>
+						<a href="/test_ssh/init/home"><img src="../images/logo_ooz.png" alt="首页" /></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -422,11 +422,9 @@ $(document).ready(function() {
 			<div class="container">
 				<img src="../images/pay.png" class="img-responsive" alt="" />
 				<ul class="footer_nav">
-					<li><a href="#">首页</a></li>
-					<li><a href="#">定制</a></li>
-					<li><a href="#">商城</a></li>
-					<li><a href="#">拍卖</a></li>
-					<li><a href="#">关于我们</a></li>
+					<li><a href="/test_ssh/init/home">首页</a></li>
+					<li><a href="/test_ssh/mall/enterMall?go=0">定制</a></li>
+					<li><a href="/test_ssh/mall/enterMall?go=1">商城</a></li>
 					<li><a href="">联系我们</a></li>
 				</ul>
 				<p class="copy">
