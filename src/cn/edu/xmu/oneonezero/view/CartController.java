@@ -47,9 +47,6 @@ public class CartController {
 	@RequestMapping("/showCart")
 	public String showCart(HttpServletRequest request)
 			throws UnsupportedEncodingException {
-		/* List<CommodityArtwork>
-		 commodityArtworks=CommonMethod.jsonToCommodityArtwork(request);
-		 System.out.println("showcart:"+commodityArtworks.get(0).getType());*/
 		request.setAttribute("commodityArtworkList",
 				CommonMethod.jsonToCommodityArtwork(request));
 		return "cart";

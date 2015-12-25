@@ -148,7 +148,24 @@ public class ArtistController {
 	
 	@RequestMapping("delArtwork")
 	public String delArtwork(Long itemId,HttpServletRequest request){
-//		commodityArtworkService
+		commodityArtworkService.setCommodityArtworkIsExistByArtworkId(itemId, false);
 		return "redirect:/artist/myArt";
+	}
+	
+	@RequestMapping("deliverGoods")
+	public String deliverGoods(Long orderId,HttpServletRequest request){
+		commodityArtworkOrderService.updateCommodityArtworkOrderState(orderId, "已支付已发货");
+		return "redirect:/artist/mySale";
+	}
+	
+	@RequestMapping("isAccept")
+	public String isAccept(Long orderId,String type,HttpServletRequest request){
+		if(type.equals("0")){//接受
+//		customizedArtworkOrderService.
+		}
+		else {//拒绝
+			
+		}
+		return "";
 	}
 }

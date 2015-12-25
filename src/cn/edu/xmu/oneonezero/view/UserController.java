@@ -56,7 +56,7 @@ public class UserController {
 				System.out.println("!null:"+stage);
 				if(stage!=null){
 					System.out.println("null:"+stage);
-//				customizedArtworkOrderService.up
+				customizedArtworkOrderService.updateCustomizedArtworkOrderStage(orderId, stage);
 				}
 			}
 			return "pay_success";
@@ -87,7 +87,7 @@ public class UserController {
 			return "redirect:/user/myOrder";
 		}
 		else {
-			//TODO 定制品订单状态修改 state=已支付已收货
+			customizedArtworkOrderService.updateCustomizedArtworkOrderState(orderId, "已支付已收货");
 			return "redirect:/user/myCustomized";
 		}
 	}

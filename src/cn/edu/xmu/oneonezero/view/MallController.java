@@ -101,7 +101,6 @@ public class MallController {
 	@RequestMapping("/settleOne")
 	public String settleOne(Long itemId, HttpServletResponse response,
 			HttpServletRequest request) throws UnsupportedEncodingException {
-		User user = (User) request.getSession().getAttribute("user");
 		List<CommodityArtwork> commodityArtworks = new ArrayList<CommodityArtwork>();
 		CommodityArtwork commodityArtwork = commodityArtworkService
 				.getCommodityArtworkById(itemId);

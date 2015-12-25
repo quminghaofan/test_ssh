@@ -95,7 +95,7 @@ public class AdminUserController {
 		String startTime=request.getParameter("txtDate time1");
 		String endTime=request.getParameter("txtDate time2");
 		if(type.equals("0")){
-//			request.setAttribute("ORDERLIST",customizedArtworkOrderService.get);
+//			request.setAttribute("ORDERLIST",customizedArtworkOrderService.getByOrderIdOrArtworkNameOrOwnerNameOrUserName(sign, name, typeId, startTime, endTime));
 			return "admin_customizedArtworkorderlist";
 		}
 		else {
@@ -124,7 +124,7 @@ public class AdminUserController {
 		String typeId=request.getParameter("type");//空值，表不做限制
 		request.setAttribute("TYPELIST", dataDictionaryService.getAllArtworkTypes());
 		if(type.equals("1")){
-//		request.setAttribute("ITEMLIST",commodityArtworkService.get);
+		request.setAttribute("ITEMLIST",commodityArtworkService.getByVagueArtworkNameOrOwnerName(sign, name, typeId));
 		return "admin_commodityitem";
 		}
 		else{

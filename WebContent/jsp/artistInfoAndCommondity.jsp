@@ -241,7 +241,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<c:forEach items="${artCommodList}" var="artWork">
 			<div class="col-sm-3 grid_1">
 				<img src="${artWork.picUrl}" class="img-responsive" alt="" />
-				<h3>${artWork.type}</h3>
+				<h3>${artWork.type.name}</h3>
 				<h4>${artWork.name}</h4>
 			</div>
 		</c:forEach>
@@ -249,7 +249,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</form>
 	<p id="manu">
-		您要<a href="/test_ssh/jsp/customizeArt" id="make">申请定制</a>吗？
+		您要
+	<%if(user!=null){%>
+		<a href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}"><img
+			src="../images/customize.jpg" alt="申请定制" class="img-responsive" /></a>
+	<%}else{ %>
+	<a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'"><img
+			src="../images/customize.jpg" alt="申请定制" class="img-responsive" /></a>
+	<%} %>吗？
 	</p>
 	</br>
 	</br>

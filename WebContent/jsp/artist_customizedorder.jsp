@@ -11,7 +11,9 @@
 	content="Gifty Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 </script>
 <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -115,7 +117,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="col1">
 									<div class="h_nav">
 										<ul>
-										<li><a href="">全部</a></li>
+											<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
 												<li><a href="">${type.}</a></li>
 											</c:forEach>
@@ -130,7 +132,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="col1">
 									<div class="h_nav">
 										<ul>
-										<li><a href="">全部</a></li>
+											<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
 												<li><a href="">${type.}</a></li>
 											</c:forEach>
@@ -145,7 +147,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="col1">
 									<div class="h_nav">
 										<ul>
-										<li><a href="">全部</a></li>
+											<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
 												<li><a href="">${type.}</a></li>
 											</c:forEach>
@@ -161,91 +163,85 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 
- 
- <div class="men">
+
+	<div class="men">
 		<div class="container">
-  <div align="center">
-  <a class="acount-btn" href="/test_ssh/artist/myArt">我的艺术品</a>
-				   <a class="acount-btn" href="/test_ssh/artist/mySale" style="margin-top:2em">我的出售记录</a>
-				   <a class="acount-btn" style="margin-top:2em">我的定制记录</a>
-		<div style="background-color: white; width: 100%">
-			<div style="padding: 5%">
-				<div class="menuhead1">
-				
-					<h3>
-						我的定制记录
-					</h3>
-				</div>
-				<div style="">
-					<table class="table1" cellspacing="0">
-						<tr>
-							<th scope="col">艺术品名</th>
-							<th scope="col">买家</th>
-							<th scope="col">地址</th>
-							<th scope="col">电话</th>
-							<th scope="col">操作</th>
-						</tr>  
-						<c:forEach items="${orderList}" var="order">
-							<tr>
-								<td scope="row" class="spec">${order.}</td>
-								<td>${order.commodityArtwor.name}</td>
-								<td>${order.user.name}</td>
-								<td>${order.user.address}</td>
-								<td>${order.mobil}</td>
-								<td>
-								<%-- <c:if test="${order.isAccept}"> --%>
-								<%if(true){ %><!-- 判断是否已经接受订单 -->
-								<%if(true){ %><!-- 判断用户是否已经支付 且当前期数在3期内-->
-								<a href="">上传小样</a>
-								<%} %>
-								<%if(true) {%><!-- 判断是否已经发货 -->
-								<a href="">发货</a>
-								<%} else{%>
-								<a>已发货</a>
-								<%} %>
-								}
-								
-								<%}else if(true){ %><!-- 判断是否已经拒绝订单或订单已经中止 -->
-								<%}else{ %>
-								<a>接受</a><a>拒绝</a>
-								<%} %>
-								<a href="/test_ssh/artist/customizedorderDetail?orderId=${order.id}">详情</a>
-								</td>
-							</tr>
-							</c:forEach>
-					</table>
-					
+			<div align="center">
+				<a class="acount-btn" href="/test_ssh/artist/myArt">我的艺术品</a> <a
+					class="acount-btn" href="/test_ssh/artist/mySale"
+					style="margin-top: 2em">我的出售记录</a> <a class="acount-btn"
+					style="margin-top: 2em">我的定制记录</a>
+				<div style="background-color: white; width: 100%">
+					<div style="padding: 5%">
+						<div class="menuhead1">
+
+							<h3>我的定制记录</h3>
+						</div>
+						<div style="">
+							<table class="table1" cellspacing="0">
+								<tr>
+									<th scope="col">艺术品名</th>
+									<th scope="col">买家</th>
+									<th scope="col">地址</th>
+									<th scope="col">电话</th>
+									<th scope="col">操作</th>
+								</tr>
+								<c:forEach items="${orderList}" var="order">
+									<tr>
+										<td scope="row" class="spec">${order.}</td>
+										<td>${order.commodityArtwor.name}</td>
+										<td>${order.user.name}</td>
+										<td>${order.user.address}</td>
+										<td>${order.mobil}</td>
+										<td><c:if test="${order.isAccept==null}">
+												<input type="submit" value="接受"
+													onClick="/test_ssh/artist/isAccept?orderId=${order.id}&type=0">
+												<input type="button" value="拒绝"
+													onClick="/test_ssh/artist/isAccept?orderId=${order.id}&type=1">
+											</c:if> <c:if test="${order.isAccept}">
+
+												<c:if test="${(order.state).equals('已支付未发货')}">
+													<a href="/test_ssh/artist/deliverGoods?orderId=${order.id}">发货</a>
+												</c:if>
+												<c:if test="${(order.state).equals('已支付已发货')}">
+													<a>已发货</a>
+												</c:if>
+											</c:if> <c:if test="${!(order.isAccept)}">已拒绝</c:if> <a
+											href="/test_ssh/artist/customizedorderDetail?orderId=${order.id}">详情</a>
+										</td>
+									</tr>
+								</c:forEach>
+							</table>
+
+						</div>
+					</div>
 				</div>
 			</div>
+
+		</div>
+	</div>
+	<div class="pagination" id="page"></div>
+
+	<div class="footer">
+		<div class="container">
+			<img src="../images/pay.png" class="img-responsive" alt="" />
+			<ul class="footer_nav">
+				<li><a href="#">首页</a></li>
+				<li><a href="#">定制</a></li>
+				<li><a href="#">商城</a></li>
+				<li><a href="#">拍卖</a></li>
+				<li><a href="#">关于我们</a></li>
+				<li><a href="">联系我们</a></li>
+			</ul>
+			<p class="copy">
+				Copyright &copy; 2015.厦门大学软件学院OneoneZero All rights reserved. More
+				Information <a href="" target="_blank" title="OneoneZero">OneoneZero</a>
+				- Made by <a href="" title="OneoneZero" target="_blank">OneoneZero</a>
+			</p>
 		</div>
 	</div>
 
-			</div>
-</div>
-<div class="pagination" id="page">
-  
-</div>
-
-			<div class="footer">
-				<div class="container">
-					<img src="../images/pay.png" class="img-responsive" alt="" />
-					<ul class="footer_nav">
-						<li><a href="#">首页</a></li>
-						<li><a href="#">定制</a></li>
-						<li><a href="#">商城</a></li>
-						<li><a href="#">拍卖</a></li>
-						<li><a href="#">关于我们</a></li>
-						<li><a href="">联系我们</a></li>
-					</ul>
-					<p class="copy">
-						Copyright &copy; 2015.厦门大学软件学院OneoneZero All rights reserved. More
-						Information <a href="" target="_blank" title="OneoneZero">OneoneZero</a>
-						- Made by <a href="" title="OneoneZero" target="_blank">OneoneZero</a>
-					</p>
-				</div>
-			</div>
-			
-			<input hidden value="${current_page}" id="current">
-<input hidden value="${max_page}" id="max">
+	<input hidden value="${current_page}" id="current">
+	<input hidden value="${max_page}" id="max">
 </body>
 </html>

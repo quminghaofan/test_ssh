@@ -183,13 +183,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								value="${order.customizedArtwork.remarks}">
 						</div>
 						<div>
-							<span>第一期价格</span> <input type="text" value="${order.startPrice}">
+							<span>第一期价格</span> <input type="text" readonly="readonly"
+								value="${order.startPrice}">
 						</div>
 						<div>
-							<span>第二期价格</span> <input type="text" value="${order.midPrice}">
+							<span>第二期价格</span> <input type="text" readonly="readonly"
+								value="${order.midPrice}">
 						</div>
 						<div>
-							<span>第三期价格</span> <input type="text" value="${order.endPrice}">
+							<span>第三期价格</span> <input type="text"  readonly="readonly"
+								value="${order.endPrice}">
 						</div>
 						<div id="preview" style="border: solid 1px">
 							<span>第一期样品</span> <span><img id="image"
@@ -203,24 +206,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span>第三期样品</span> <span><img id="image"
 								src="${order.endImg}" width="30%" height="30%" /></span>
 						</div>
-						<c:if test="${!(order.isAccept)}">
-							<input type="submit" value="接受"
-								onClick="/test_ssh/artist/isAccept?orderId=${order.id}&type=0">
-							<input type="button" value="拒绝"
-								onClick="/test_ssh/artist/isAccept?orderId=${order.id}&type=1">
-						</c:if>
-						<c:if test="${order.isAccept}">
-						
-							<c:if test="${(order.state).equals('已支付未发货')}">
-								<a href="/test_ssh/artist/deliverGoods?orderId=${order.id}">发货</a>
-							</c:if>
-							<c:if test="${(order.state).equals('已支付已发货')}">
-								<a>已发货</a>
-							</c:if>
-						</c:if>
 						<input type="button" value="返回列表" onClick="">
-
-
 					</form>
 				</div>
 			</div>
