@@ -51,6 +51,17 @@
     <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>
 </form>
+<div style="display: none;" id="reason" align="center">
+<div id="masklayer" ></div>
+<input type="hidden" id="userid" name="userid">
+<div style="z-index:10;position:absolute;left:30%;background-color:white;width:30%;height:35%" >
+<h3>未通过理由</h3>
+<form class="form-inline definewidth m20" action="" method="post" id="reasonform">
+    <input type="text" name="reason" id="reason"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
+    <button type="submit" class="btn btn-primary" onclick="fail()">确定</button>
+</form>
+</div>
+</div>
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
@@ -76,17 +87,7 @@
 </c:if> 
         </table>
 
-<div style="display: none;" id="reason" align="center">
-<div id="masklayer" ></div>
-<input type="hidden" id="userid" name="userid">
-<div style="z-index:10;position:absolute;left:30%;background-color:white;width:30%;height:30%" >
-<h3>未通过理由</h3>
-<form class="form-inline definewidth m20" action="" method="post" id="reasonform">
-    <input type="text" name="reason" id="reason"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
-    <button type="submit" class="btn btn-primary" onclick="fail()">确定</button>
-</form>
-</div>
-</div>
+
 
 </body>
 </html>

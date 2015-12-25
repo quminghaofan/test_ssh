@@ -20,7 +20,7 @@
       </div>
 
       <% User user=(User)session.getAttribute("user");%>
-    <div class="dl-log">欢迎您，<span class="dl-log-user">
+    <div class="dl-log">欢迎您，<%=user.getName() %><span class="dl-log-user">
     <%-- <%=user.getName()%> --%>
     </span><a href="/test_ssh/init/logout" title="退出系统" class="dl-log-quit">[退出]</a>
     </div>

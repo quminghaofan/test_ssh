@@ -137,7 +137,7 @@ body {
         <td>${rr.name}</td>
         <td>${rr.onShowTime}</td>
         <td>${rr.offShowTime}</td>
-        <td>${rr.chiefEditor}</td>
+        <td>${rr.chiefEditor.name}</td>
         <td>${rr.newsType}</td>
         <td><a href="/test_ssh/news/showNews?newsId=${rr.id}&type=5">查看</a>&nbsp;&nbsp;<a href="/test_ssh/editor/withdraw?newsId=${rr.id}&type=1">撤回</a></td>
       </tr>

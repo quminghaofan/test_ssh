@@ -141,7 +141,7 @@ body {
 			<c:forEach items="${RRLIST}" var="rr">
 				<tr>
 					<td>${rr.name}</td>
-					<td>${rr.chiefEditor}</td>
+					<td>${rr.chiefEditor.name}</td>
 					<td>${rr.onShowTime}</td>
 					<td>${rr.offShowTime}</td>
 					<td>${rr.rank}</td>
