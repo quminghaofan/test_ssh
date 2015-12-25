@@ -79,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"></div>
 				</div>
 				<div class="header_bottom_right">
-					
+
 					<%
 						if (session.getAttribute("username") != null) {
 					%>
@@ -110,7 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="col1">
 									<div class="h_nav">
 										<ul>
-										<li><a href="">全部</a></li>
+											<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
 												<li><a href="">${type.}</a></li>
 											</c:forEach>
@@ -125,7 +125,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="col1">
 									<div class="h_nav">
 										<ul>
-										<li><a href="">全部</a></li>
+											<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
 												<li><a href="">${type.}</a></li>
 											</c:forEach>
@@ -140,7 +140,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="col1">
 									<div class="h_nav">
 										<ul>
-										<li><a href="">全部</a></li>
+											<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
 												<li><a href="">${type.}</a></li>
 											</c:forEach>
@@ -156,95 +156,96 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 
- 
- <div class="men">
+
+	<div class="men">
 		<div class="container">
-  <div class="register">
-			   
-			   <div class="col-md-6 login-right">
-				<form id="myform" method="post">
-				  <div>
-					<span>艺术品名</span>
-					<input type="text" readonly="readonly" value="${order.commodityArtwor.name}"> 
-				  </div>
-				  <div>
-					<span>类别</span>
-					<input type="text" readonly="readonly" value="${order.type.name}"> 
-				  </div>
-				  <div>
-					<span>买家</span>
-					<input type="text" readonly="readonly" value="${order.user.name}"> 
-				  </div>
-				  <div style="border: solid 1px">
-					<span>模板</span>
-					<img id="image" src="" width="30%"
-							height="30%" />
-				  </div>
-				  <div>
-					<span>需求</span>
-					<input type="text" readonly="readonly" value="${order.customizedArtwork.remarks}"> 
-				  </div>
-				   <div>
-					<span>第一期价格</span>
-					<input type="text"  value="${order.startPrice}"> 
-				  </div>
-				   <div>
-					<span>第二期价格</span>
-					<input type="text"  value="${order.midPrice}"> 
-				  </div>
-				   <div>
-					<span>第三期价格</span>
-					<input type="text"  value="${order.endPrice}"> 
-				  </div>
-				  <div id="preview" style="border: solid 1px">
-				  <span>第一期样品</span>
-						<span><img id="image" src="${order.startImg}" width="30%"
-							height="30%" /></span>
-					</div>
-		          <div id="preview" style="border: solid 1px">
-				  <span>第二期样品</span>
-						<span><img id="image" src="${order.midImg}" width="30%"
-							height="30%" /></span>
-					</div> 
+			<div class="register">
+
+				<div class="col-md-6 login-right">
+					<form id="myform" method="post">
+						<div>
+							<span>艺术品名</span> <input type="text" readonly="readonly"
+								value="${order.commodityArtwor.name}">
+						</div>
+						<div>
+							<span>类别</span> <input type="text" readonly="readonly"
+								value="${order.type.name}">
+						</div>
+						<div>
+							<span>买家</span> <input type="text" readonly="readonly"
+								value="${order.user.name}">
+						</div>
+						<div style="border: solid 1px">
+							<span>模板</span> <img id="image" src="" width="30%" height="30%" />
+						</div>
+						<div>
+							<span>需求</span> <input type="text" readonly="readonly"
+								value="${order.customizedArtwork.remarks}">
+						</div>
+						<div>
+							<span>第一期价格</span> <input type="text" value="${order.startPrice}">
+						</div>
+						<div>
+							<span>第二期价格</span> <input type="text" value="${order.midPrice}">
+						</div>
+						<div>
+							<span>第三期价格</span> <input type="text" value="${order.endPrice}">
+						</div>
 						<div id="preview" style="border: solid 1px">
-				  <span>第三期样品</span>
-						<span><img id="image" src="${order.endImg}" width="30%"
-							height="30%" /></span>
-					</div> 
-						<%if(true){ %><!-- 判断是否已经接受或拒绝 -->
-				  <input type="submit" value="接受" onClick="">
-				  <input type="button" value="拒绝" onClick="">
-				  <%}else if(true){ %><!-- 判断是否已经发货 -->
-				  <input type="button" value="发货" onClick="">
-				  <%} %>
-				  <input type="button" value="返回列表" onClick="">
-								
-				  
-			    </form>
-			   </div>	
-		</div>
+							<span>第一期样品</span> <span><img id="image"
+								src="${order.startImg}" width="30%" height="30%" /></span>
+						</div>
+						<div id="preview" style="border: solid 1px">
+							<span>第二期样品</span> <span><img id="image"
+								src="${order.midImg}" width="30%" height="30%" /></span>
+						</div>
+						<div id="preview" style="border: solid 1px">
+							<span>第三期样品</span> <span><img id="image"
+								src="${order.endImg}" width="30%" height="30%" /></span>
+						</div>
+						<c:if test="${!(order.isAccept)}">
+							<input type="submit" value="接受"
+								onClick="/test_ssh/artist/isAccept?orderId=${order.id}&type=0">
+							<input type="button" value="拒绝"
+								onClick="/test_ssh/artist/isAccept?orderId=${order.id}&type=1">
+						</c:if>
+						<c:if test="${order.isAccept}">
+						
+							<c:if test="${(order.state).equals('已支付未发货')}">
+								<a href="/test_ssh/artist/deliverGoods?orderId=${order.id}">发货</a>
+							</c:if>
+							<c:if test="${(order.state).equals('已支付已发货')}">
+								<a>已发货</a>
+							</c:if>
+						</c:if>
+						<input type="button" value="返回列表" onClick="">
 
-			</div>
-</div>
 
-
-			<div class="footer">
-				<div class="container">
-					<img src="../images/pay.png" class="img-responsive" alt="" />
-					<ul class="footer_nav">
-						<li><a href="#">首页</a></li>
-						<li><a href="#">定制</a></li>
-						<li><a href="#">商城</a></li>
-						<li><a href="#">拍卖</a></li>
-						<li><a href="#">关于我们</a></li>
-						<li><a href="">联系我们</a></li>
-					</ul>
-					<p class="copy">
-						Copyright &copy; 2015.厦门大学软件学院OneoneZero All rights reserved. More
-						Information <a href="" target="_blank" title="OneoneZero">OneoneZero</a>
-						- Made by <a href="" title="OneoneZero" target="_blank">OneoneZero</a>
-					</p>
+					</form>
 				</div>
 			</div>
+
+		</div>
+	</div>
+
+
+	<div class="footer">
+		<div class="container">
+			<img src="../images/pay.png" class="img-responsive" alt="" />
+			<ul class="footer_nav">
+				<li><a href="#">首页</a></li>
+				<li><a href="#">定制</a></li>
+				<li><a href="#">商城</a></li>
+				<li><a href="#">拍卖</a></li>
+				<li><a href="#">关于我们</a></li>
+				<li><a href="">联系我们</a></li>
+			</ul>
+			<p class="copy">
+				Copyright &copy; 2015.厦门大学软件学院OneoneZero All rights reserved. More
+				Information <a href="" target="_blank" title="OneoneZero">OneoneZero</a>
+				- Made by <a href="" title="OneoneZero" target="_blank">OneoneZero</a>
+			</p>
+		</div>
+	</div>
 </body>
 </html>

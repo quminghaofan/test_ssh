@@ -52,7 +52,7 @@ public class AccountDaoImpl implements AccountDao{
 
 	@Override
 	public boolean isLoginSuccessful(String accountNumber, String password) {
-		if(getAccountByAccountNumber(accountNumber).equals(null))
+		if(getAccountByAccountNumber(accountNumber)==null)
 			return false;
 		else if(!getAccountByAccountNumber(accountNumber).getPassword().equals(password))
 			return false;
@@ -62,7 +62,7 @@ public class AccountDaoImpl implements AccountDao{
 	
 	@Override
 	public int payMoney(String accountNumber, String password, double payAmount) {
-		if(isLoginSuccessful(accountNumber, password))
+		if(!isLoginSuccessful(accountNumber, password))
 			return 0;
 		else 
 			{
