@@ -53,7 +53,7 @@
             <td width="10%" class="tableleft">软文类型</td>
             <td><select id="newsType" name="category" class="category">
 			<option value="广告" ${status eq '1' ? 'selected': ''}>广告</option>
-			<option value="新闻" ${status eq '2' ? 'selected': ''}>新闻</option></td>
+			<option value="新闻" ${status eq '2' ? 'selected': ''}>新闻</option></select></td>
      </tr>
     <tr>
             <td width="10%" class="tableleft">软文标题</td>

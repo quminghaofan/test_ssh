@@ -91,15 +91,19 @@ $(document).ready(function() {
 						<%
 							} else if ((user.getRole()).getName().equals("预备艺术家")) {
 						%>
-						<li>成为艺术家的申请正在审核...</li>
+						<li><a>成为艺术家的申请正在审核...</a></li>
 						<%
 							} else {
 						%>
 						<li><a href="/test_ssh/artist/myArt">我的店铺</a></li>
 						<%
 							}
+								if(user.getNickName()==null){
 						%>
-						<li><a href=""> <%=user.getName()%></a></li>
+						<li><a href="/test_ssh/jsp/personalInfoChange.jsp"> <%=user.getName()%></a></li>
+						<% }else{%>
+						<li><a href="/test_ssh/jsp/personalInfoChange.jsp"> <%=user.getNickName()%></a></li>
+						<%} %>
 						<li><a href="/test_ssh/user/myOrder">我的订单</a></li>
 						<li><a
 							href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
