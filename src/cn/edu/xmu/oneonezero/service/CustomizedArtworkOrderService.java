@@ -3,7 +3,6 @@ package cn.edu.xmu.oneonezero.service;
 import java.util.Date;
 import java.util.List;
 
-import cn.edu.xmu.oneonezero.entity.CommodityArtworkOrder;
 import cn.edu.xmu.oneonezero.entity.CustomizedArtworkOrder;
 
 public interface CustomizedArtworkOrderService {

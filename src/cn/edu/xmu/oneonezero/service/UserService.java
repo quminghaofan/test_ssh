@@ -17,7 +17,7 @@ public interface UserService {
 
 	public List<User> getAllUsers();//获取所有用户
 
-	public List<User> getUserByUserName(String userName,String type);//根据姓名获取用户(1表示获取预备艺术家，0表示全部)
+	public List<User> getUserByUserName(String userName,String type);//根据姓名获取用户(1表示获取预备艺术家，2表示所有艺术家和普通用户，0表示全部)
 	
 	public List<User> getPreparativeUserByUserName(String userName);//根据姓名获取预备艺术家
 
@@ -36,6 +36,7 @@ public interface UserService {
 	public List<User> getAllPreparativeArtist();//获得所有预备艺术家
 	
 	public void setUserState(long userId,boolean state);//根据userId更改user状态,true为启用，false为禁用
+	
 	
 	
 

@@ -104,8 +104,10 @@ public class UserServiceImpl implements UserService {
 	public List<User> getUserByUserName(String userName, String type) {
 		if(type.equals("0"))
 			return userDao.getAllUsers();
-		else
+		else if(type.equals("1"))
 			return userDao.getPreparativeUserByUserName(userName);
+		else
+			return userDao.getCommonUsersAndArtistByUserName(userName);
 	}
 
 }

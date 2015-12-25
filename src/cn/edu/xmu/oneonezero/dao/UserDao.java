@@ -35,6 +35,7 @@ public interface UserDao {
 	
 	public List<User> getAllPreparativeArtist();//获得所有预备艺术家
 	
+	public List<User> getCommonUsersAndArtistByUserName(String userName);//在所有普通用户和艺术家中根据用户名查找
 
 
 

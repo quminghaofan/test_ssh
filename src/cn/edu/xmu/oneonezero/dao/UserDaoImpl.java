@@ -162,6 +162,14 @@ public class UserDaoImpl implements UserDao {
 		query.setString(0, "%"+userName+"%");
 		return query.list();
 	}
+
+	@Override
+	public List<User> getCommonUsersAndArtistByUserName(String userName) {
+		String hql = "from User u where u.state=true and  (u.role.name='普通用户' or u.role.name='艺术家') and u.name like ?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, "%"+userName+"%");
+		return query.list();
+	}
 	
 	
 

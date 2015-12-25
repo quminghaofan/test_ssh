@@ -79,7 +79,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 
 	@Override
 	public List<CommodityArtwork> getAllCommodityArtworks() {
-		String hql = "from CommodityCommodityArtwork a.isExist=true and a where a.canSell=true";
+		String hql = "from CommodityArtwork a.isExist=true and a where a.canSell=true";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		return query.list();

@@ -15,7 +15,7 @@ public class CustomizedArtworkOrder extends ArtworkOrder{
 	private double startPrice;//3个阶段价格
 	private double midPrice;//
 	private double endPrice;//
-	private String stage;//订制所处阶段 1,2,3
+	private String stage;//订制所处阶段 第一阶段已付款、第二阶段已付款、第三阶段已付款
 	
 	@OneToOne
 	public CustomizedArtwork getCustomizedArtwork() {
