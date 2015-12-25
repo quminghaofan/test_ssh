@@ -67,10 +67,12 @@
 <table class="table table-bordered table-hover definewidth m10">
     <thead>
     <tr>
-        <th >软文标题</th>
-		<th>作者</th>
-		<th>上架时间</th>
-		<th>下架时间</th>
+        <th>软文标题</th>
+        <th>作者</th>
+        <th>上架时间</th>
+        <th>下架时间</th>
+        <th>价格</th>
+        <th>类型</th>
         <th>操作</th>
     </tr>
     </thead>
@@ -79,8 +81,10 @@
         <tr>
                 <td>${rr.name}</td>
                 <td>${rr.editor.name}</td>
-				<td>${rr.onShowTime}</td>
-				<td>${rr.offShowTime}</td>
+                <td>${rr.onShowTime}</td>
+                <td>${rr.offShowTime}</td>
+                <td>${rr.price}</td>
+                <td>${rr.newsType}</td>
             <td><a href="/test_ssh/news/showNews?newsId=${rr.id}&type=2">查看</a>&nbsp;&nbsp;<a href="/test_ssh/chiefEditor/getNews?type=1&newsId=${rr.id}">审核</a></td>
             </tr>
     </c:forEach>

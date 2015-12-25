@@ -119,7 +119,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<ul>
 										<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
+												<li><a href="">${type.name}</a></li>
 											</c:forEach>
 										</ul>
 									</div>
@@ -134,7 +134,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<ul>
 										<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
+												<li><a href="">${type.name}</a></li>
 											</c:forEach>
 										</ul>
 									</div>
@@ -149,7 +149,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<ul>
 										<li><a href="">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
+												<li><a href="">${type.name}</a></li>
 											</c:forEach>
 										</ul>
 									</div>
@@ -168,14 +168,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
   <div class="register">
 			   <div class="col-md-6 login-right">
-				<form method="get"  action="/test_ssh/artist/editOrAddArtwork?itemId=${item.id}" class="artworkform">
+				<form method="post"  action="/test_ssh/artist/editOrAddArtwork?itemId=${item.id}" class="artworkform" enctype="multipart/form-data">
 				<div>
 				<span>图片<label>*</label></span>
 				<div id="preview" style="border:solid 1px">
 						<span><img id="image" src="${item.picUrl}" width="30%"
 							height="30%" /></span>
 					</div> <span><input id="img" name="img" type="file"
-						accept="images/*" onchange="previewImage(this,'preview','image')" style="width: 60%"/></span>
+						accept="images/*" onchange="previewImage(this,'preview','image')" style="width: 60%" value="${item.picUrl}"/></span>
 
 </div>
 				  <div>
@@ -187,24 +187,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span>类别<label>*</label></span>
 					<select id="type" name="type">
 					<c:forEach items="${TYPELIST}" var="type">
-                <option value="${type.id}">${type.name}</option>
+                <option value="${type.name}">${type.name}</option>
                 </c:forEach>
             </select>
 				  </div>
 				  <div>
 					<span>种类<label>*</label></span>
-					<select id="select2" onchange="select2_change()">
+					<select id="select2" onchange="select2_change()" name="select2">
                 <option value="1">展品</option>
               <option value="0" selected="selected">商品</option>
             </select>
 				  </div>
 				   <div id="price">
 					<span>价格</span>
-					<input type="text" value="${item.price}"> 
+					<input type="text" value="${item.price}" id="price" name="price"> 
 				  </div>
 				   <div id="description">
 					<span>介绍</span>
-					<textarea>${item.artworkDescription}</textarea> 
+					<textarea id="description" name="description">${item.artworkDescription}</textarea> 
 				  </div>
 				  <input type="submit" value="确认">
 				  <input type="button" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/artist//myArt'" value="返回">

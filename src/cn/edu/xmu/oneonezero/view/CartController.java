@@ -39,7 +39,6 @@ public class CartController {
 			String commodityArtworkJson = commodityArtworkService
 					.getCommodityArtworkWithJSONTypeById(Long.parseLong(itemId))
 					.toString();
-			System.out.println("add2cart:"+commodityArtworkJson);
 			CommonMethod.addCookie(Long.parseLong(itemId),
 					commodityArtworkJson, request, response);
 		}

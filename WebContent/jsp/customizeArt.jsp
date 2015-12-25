@@ -171,7 +171,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<c:forEach items="${TYPELIST}" var="type">
 						<option value="${type.id}">${type.name}</option>
 						</c:forEach>
-					</select>
+					</select> 
 					<span id="type_blank" style="display:none"><font color="red">请选择您要定制的艺术品类别</font></span>
 				  </div>				  
 				  <div>
@@ -202,7 +202,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							height="30%" /></span>
 					</div> 
 				</div>
-				  <input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/customized/goBack?artistId=${artist.id}'" value="返回"></a>
+				  <input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/customized/goBack?artistId=${artistId}'" value="返回"></a>
 				  <input type="submit" value="提交" align="center-right" onClick="customizeform.onsubmit()">
 				  
 			    </form>

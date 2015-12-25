@@ -161,7 +161,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <div class="register">
 			   <h1>申请成为艺术家</h1>
 			   <div class="col-md-6 login-right">
-				<form id="applyform" method="post"  action="/test_ssh/artist/artistApply" onsubmit="return before_apply()">
+				<form id="applyform" method="post"  action="/test_ssh/artist/artistApply" onsubmit="return before_apply()" enctype="multipart/form-data">
 				  <div>
 					<span>真实姓名<label>*</label></span>
 					<input type="text" name="realname" id="realname" onfocus="name_blank.style.display='none'"> 

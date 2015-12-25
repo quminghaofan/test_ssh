@@ -169,52 +169,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				  </div>
 				  <div>
 					<span>类别</span>
-					<input type="text" readonly="readonly" value=""> 
+					<input type="text" readonly="readonly" value="${order.type.name}"> 
 				  </div>
 				  <div>
 					<span>买家</span>
-					<input type="text" readonly="readonly" value=""> 
+					<input type="text" readonly="readonly" value="${order.user.name}"> 
 				  </div>
-				  <%if(true){ %><!-- 判断是否有模板 -->
 				  <div style="border: solid 1px">
 					<span>模板</span>
 					<img id="image" src="" width="30%"
 							height="30%" />
 				  </div>
-				  <%} %>
 				  <div>
 					<span>需求</span>
-					<input type="text" readonly="readonly" value=""> 
+					<input type="text" readonly="readonly" value="${order.customizedArtwork.remarks}"> 
 				  </div>
 				   <div>
 					<span>第一期价格</span>
-					<input type="text"  value=""> 
+					<input type="text"  value="${order.startPrice}"> 
 				  </div>
 				   <div>
 					<span>第二期价格</span>
-					<input type="text"  value=""> 
+					<input type="text"  value="${order.midPrice}"> 
 				  </div>
 				   <div>
 					<span>第三期价格</span>
-					<input type="text"  value=""> 
+					<input type="text"  value="${order.endPrice}"> 
 				  </div>
-				  <%if(true){ %><!--挨个判断是否存在  -->
 				  <div id="preview" style="border: solid 1px">
 				  <span>第一期样品</span>
-						<span><img id="image" src="" width="30%"
+						<span><img id="image" src="${order.startImg}" width="30%"
 							height="30%" /></span>
-					</div> <span>
-		<div id="preview" style="border: solid 1px">
+					</div>
+		          <div id="preview" style="border: solid 1px">
 				  <span>第二期样品</span>
-						<span><img id="image" src="" width="30%"
+						<span><img id="image" src="${order.midImg}" width="30%"
 							height="30%" /></span>
 					</div> 
 						<div id="preview" style="border: solid 1px">
 				  <span>第三期样品</span>
-						<span><img id="image" src="" width="30%"
+						<span><img id="image" src="${order.endImg}" width="30%"
 							height="30%" /></span>
 					</div> 
-					<%} %>
 						<%if(true){ %><!-- 判断是否已经接受或拒绝 -->
 				  <input type="submit" value="接受" onClick="">
 				  <input type="button" value="拒绝" onClick="">

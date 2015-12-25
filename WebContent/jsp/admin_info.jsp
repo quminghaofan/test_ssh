@@ -1,3 +1,4 @@
+<%@page import="cn.edu.xmu.oneonezero.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -36,19 +37,19 @@
   </style>
 </head>
 <body>
-
+<%User user=(User)session.getAttribute("user"); %>
   <table class="table table-bordered table-hover m10">
   		<tr>
             <td width="10%" class="tableleft">用户名</td>
-            <td><input type="text"  value="rgdgf" readonly="readonly"/></td>  <!--TODO-->
+            <td><input type="text"  value="<%=user.getName() %>" readonly="readonly"/></td>
         </tr>
 		<tr>
             <td width="10%" class="tableleft">角色</td>
-            <td><input type="text" value="fgdg" readonly="readonly"/></td>  <!--TODO-->
+            <td><input type="text" value="<%=user.getRole().getName() %>" readonly="readonly"/></td>
         </tr>
         <tr>
             <td class="tableleft">真实姓名</td>
-            <td><input type="text"  value="gfdg" readonly="readonly"/></td>  <!--TODO-->
+            <td><input type="text"  value="<%=user.getRealName() %>" readonly="readonly"/></td>
         </tr>
         <tr id="psw_edit">
             <td class="tableleft"></td>
@@ -57,11 +58,11 @@
              	</td>	
              	</tr>	
         </table>
-        <form method="post" class="definewidth m10" id="myform" style="display:block" onsubmit="return before_edit()" >
+        <form method="post" class="definewidth m10" id="myform" style="display:none" onsubmit="return before_edit()" action="/test_ssh/super/changePsw?userId=<%=user.getId() %>">
         <table class="table table-bordered table-hover m10">
         <tr>
             <td class="tableleft">新密码</td>
-            <td><input type="password" id="password" placeholder="请输入您的新密码"/>
+            <td><input type="password" id="password" name="password" placeholder="请输入您的新密码"/>
             <span id="psw_blank" style="display: none"><font color="red">密码不能为空</font></span></td>
         </tr>
         <tr>

@@ -188,16 +188,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</tr>  
 						<c:forEach items="${commodityArtworkList}" var="item">
 							<tr>
-								<td scope="row" class="spec">${item.name}</th>
-
-								<td>${item.type}</td>
+							<td><span><img id="image" src="${item.picUrl}"/></span></td>
+								<td scope="row" class="spec">${item.name}</td>
+								<td>${item.type.name}</td>
+								<td>
+								<c:if test="${item.canSell}">商品</c:if>
+								<c:if test="${!(item.canSell)}">展品</c:if>
+								</td>
 								<td>${item.price}</td>
-								<td><a href="/test_ssh/artist/goToEdit?itemId=${item.id}">编辑</a>
+								<td><a href="/test_ssh/artist/goToEditOrAdd?itemId=${item.id}">编辑</a>
 								<a href="/test_ssh/artist/delArtwork?itemId=${itemid}">删除</a></td>
 							</tr>
 							</c:forEach>
 					</table>
-					<a href="/test_ssh/jsp/artwork_edit.jsp">添加</a>
+					<a href="/test_ssh/artist/goToEditOrAdd">添加</a>
 				</div>
 			</div>
 		</div>

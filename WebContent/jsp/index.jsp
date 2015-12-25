@@ -258,7 +258,7 @@ $(document).ready(function() {
 							<div class="sale-box"></div>
 							<div class="desc">
 								<h3>${item.name}</h3>
-								<%-- <h4>${item.price}</h4> --%><!-- TODO -->
+								<h4>${item.price}</h4>
 								<ul class="list2">
 									<%
 										if (session.getAttribute("user") != null) {

@@ -167,9 +167,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		
   <div align="center">
-  <a class="acount-btn" href="/test_ssh/aritst/myArt">我的艺术品</a>
+  <a class="acount-btn" href="/test_ssh/artist/myArt">我的艺术品</a>
 				   <a class="acount-btn" style="margin-top:2em">我的出售记录</a>
-				   <a class="acount-btn" href="/test_ssh/aritst/myCustomized" style="margin-top:2em">我的定制记录</a>
+				   <a class="acount-btn" href="/test_ssh/artist/myCustomized" style="margin-top:2em">我的定制记录</a>
 		<div style="background-color: white; width: 100%">
 			<div style="padding: 5%">
 				<div class="menuhead1">

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 import cn.edu.xmu.oneonezero.entity.CommodityArtworkOrder;
 import cn.edu.xmu.oneonezero.entity.User;
+import cn.edu.xmu.oneonezero.service.AccountService;
 import cn.edu.xmu.oneonezero.service.CommodityArtworkOrderService;
 import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
 import cn.edu.xmu.oneonezero.service.CustomizedArtworkService;
@@ -30,6 +31,9 @@ public class MallController {
 
 	@Resource(name = "customizedArtworkService")
 	private CustomizedArtworkService customizedArtworkService;
+	
+	@Resource(name="accountService")
+	private AccountService accountService;
 
 	@RequestMapping(value = "/enterMall")
 	public String enterMall(String page, String go, Long typeId,
@@ -155,6 +159,7 @@ public class MallController {
 		request.getSession().setAttribute("commodityArtworkOrders",
 				commodityArtworkOrders);
 		request.setAttribute("total", request.getParameter("total"));
+		request.setAttribute("picUrl", "/test_ssh/mall/pay");
 		return "payment_login";
 	}
 
@@ -163,16 +168,18 @@ public class MallController {
 		String total = request.getParameter("price");
 		String name = request.getParameter("username");
 		String psw = request.getParameter("psw");
-		if (true) {// 支付成功
+		int pay=accountService.payMoney(name, psw,Double.parseDouble(total));
+		if (pay==1) {
 			List<CommodityArtworkOrder> commodityArtworkOrders = (ArrayList<CommodityArtworkOrder>) request
 					.getSession().getAttribute("commodityArtworkOrders");
 			for (CommodityArtworkOrder commodityArtworkOrder : commodityArtworkOrders) {
-				// 更新订单状态，根据id
+				commodityArtworkOrderService.updateCommodityArtworkOrderState(commodityArtworkOrder.getId(), "已支付未发货");
 			}
 			return "pay_success";
 		} else {
-			// 支付失败，进入输入账号界面
-			// request.setAttribute("result", arg1);
+			request.setAttribute("result",pay);
+			request.setAttribute("total", total);
+			request.setAttribute("picUrl", "/test_ssh/mall/pay");
 			return "payment_login";
 		}
 	}
@@ -180,6 +187,7 @@ public class MallController {
 	@RequestMapping("/editOrder")
 	public String editOrder(String wh, Long type, String address,
 			String mobile, HttpServletRequest request) {
+		System.out.println("editorder");
 		request.getSession().setAttribute("address", address);
 		request.setAttribute("type", type);
 		if (wh.equals("0")) {

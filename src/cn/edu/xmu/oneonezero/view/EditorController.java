@@ -32,7 +32,7 @@ public class EditorController {
 
     @RequestMapping(value="/addNews")
     public String addNews(@RequestParam(value = "img", required = false) MultipartFile filedata,String type,HttpServletRequest request) throws ParseException{
-    	String path = request.getSession().getServletContext().getRealPath("\\attached");
+    	String path =CommonMethod.getPicUrl(request);
     	News news=new News();
     	User user=((User)request.getSession().getAttribute("user"));
     	news.setEditor(user);
@@ -59,7 +59,7 @@ public class EditorController {
 
     @RequestMapping(value="/editNews")
     public String editNews(@RequestParam(value = "img", required = false) MultipartFile filedata,String type,HttpServletRequest request) throws ParseException{
-    	String path = request.getSession().getServletContext().getRealPath("\\attached");
+    	String path = CommonMethod.getPicUrl(request);
     	News news=(News) request.getSession().getAttribute("news");
     	User user=(User)request.getSession().getAttribute("user");
     	news.setEditor(user);
@@ -84,7 +84,9 @@ public class EditorController {
     	news.setOffShowTime(format.parse(request.getParameter("txtDate time2")));
 //    	System.out.println(request.getParameter("price"));
     	news.setPrice(Double.parseDouble(request.getParameter("price")));
+    	
     	System.out.println("editNews-type:"+type);
+    	
     	if(type.equals("1")){//保存
     		System.out.print("草稿");
     		news.setState("草稿");
@@ -179,22 +181,22 @@ public class EditorController {
 		}
     	String newsName=request.getParameter("RRname");
     	if(type.equals("1")){
-        	request.setAttribute("RRLIST",newsService.getNewsByUserIdAndTimespace(user.getId(),
+        	request.setAttribute("RRLIST",newsService.getNewsByEditorIdAndTimespace(user.getId(),
         			newsType, start, end, newsName, "未审核"));
         	return "editor_rr_1";
     	}
     	else if(type.equals("2")){
-        	request.setAttribute("RRLIST",newsService.getNewsByUserIdAndTimespace(user.getId(),
+        	request.setAttribute("RRLIST",newsService.getNewsByEditorIdAndTimespace(user.getId(),
         			newsType, start, end, newsName, "审核不通过"));
         	return "editor_rr_2";
     	}
     	else if(type.equals("3")){
-        	request.setAttribute("RRLIST",newsService.getNewsByUserIdAndTimespace(user.getId(),
+        	request.setAttribute("RRLIST",newsService.getNewsByEditorIdAndTimespace(user.getId(),
         			newsType, start, end, newsName, "审核通过"));
         	return "editor_rr_3";
     	}
     	else{
-        	request.setAttribute("RRLIST",newsService.getNewsByUserIdAndTimespace(user.getId(),
+        	request.setAttribute("RRLIST",newsService.getNewsByEditorIdAndTimespace(user.getId(),
         			newsType,start, end, newsName, "草稿"));
         	return "editor_rr_4";
     	}

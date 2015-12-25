@@ -59,11 +59,12 @@ public class CustomizedController {
 	public String customizationApplying(@RequestParam(value = "img", required = false) MultipartFile filedata,Long artistId,HttpServletRequest request){
 		User artist=userService.getUser(artistId);
 		User user=(User)request.getSession().getAttribute("user");
+		
 		CustomizedArtwork customizedArtwork=new CustomizedArtwork();
 		DataDictionary dataDictionary=dataDictionaryService.getDataDictionaryByName(request.getParameter("arttype"));
 		customizedArtwork.setType(dataDictionary);
 		customizedArtwork.setName(request.getParameter("artname"));
-		customizedArtwork.setRemarks(request.getParameter("intro"));
+		customizedArtwork.setRemarks(request.getParameter("intro"));//TODO
 		String path = request.getSession().getServletContext().getRealPath("\\attached");
 		String picurl=PicUpload.saveFile(filedata,path);
 		if(picurl.equals(""))picurl=null;
@@ -72,7 +73,7 @@ public class CustomizedController {
 		}
 		customizedArtwork.setPicUrl(picurl);
 		customizedArtwork.setOwner(artist);
-//		customizedArtworkService.
+		customizedArtworkService.insertCustomizedArtwork(customizedArtwork);
 		
 		CustomizedArtworkOrder customizedArtworkOrder=new CustomizedArtworkOrder();
 		customizedArtworkOrder.setMobile(request.getParameter("telephone"));

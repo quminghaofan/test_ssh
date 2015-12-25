@@ -43,7 +43,7 @@
     BUI.use('common/main',function(){ 
       var config = [{id:'1',homePage:'12',menu:[{text:'用户管理',items:[{id:'12',text:'管理员管理',href:'/test_ssh/super/adminManage'},
                                                                     {id:'13',text:'角色管理',href:'/test_ssh/super/roleManege'},
-                                                                    {id:'3',text:'个人信息修改',href:''}]}]},
+                                                                    {id:'3',text:'个人信息修改',href:'/test_ssh/jsp/admin_info.jsp'}]}]},
                     {id:'4',menu:[{text:'商品管理',items:[{id:'5',text:'商品类别管理',href:'/test_ssh/super/artTypeManage'}]}]}];
       new PageUtil.MainPage({
         modulesConfig : config

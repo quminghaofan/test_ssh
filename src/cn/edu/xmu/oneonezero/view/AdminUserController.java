@@ -1,7 +1,7 @@
 package cn.edu.xmu.oneonezero.view;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -53,6 +53,7 @@ public class AdminUserController {
 	@Resource(name="artworkService")
 	private ArtworkService  artworkService;
 
+	private SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 	@RequestMapping("/getAllUser")
 	public String getAllUser(HttpServletRequest request){
 		request.setAttribute("USERLIST", userService.getAllCommonUsersAndArtist());
@@ -79,12 +80,15 @@ public class AdminUserController {
 	}
 	
 	@RequestMapping(value="/getUser")
-	public String getUser(String type,HttpServletRequest request){//TODO 1:预备艺术家 0：全部
-		request.setAttribute("USERLIST", userService.getUserByUserName(request.getParameter("username")));
+	public String getUser(String type,HttpServletRequest request){//1:预备艺术家 2：艺术家和普通用户
+		request.setAttribute("USERLIST", userService.getUserByUserName(request.getParameter("username"),type));
+		if(type.equals("2")){
 		return "admin_userlist";
+		}
+		else return "admin_artistapply";
 	}
 	@RequestMapping(value="/getOrder")
-	public String getOrder(String type,HttpServletRequest request){//type:0:定制 1：制成
+	public String getOrder(String type,HttpServletRequest request) throws ParseException{//type:0:定制 1：制成
 		String sign=request.getParameter("sign");//1:订单编号 2：艺术品名 3：卖家用户名 4：买家用户名
 		String name=request.getParameter("username");
 		String typeId=request.getParameter("type");
@@ -95,7 +99,7 @@ public class AdminUserController {
 			return "admin_customizedArtworkorderlist";
 		}
 		else {
-//			request.setAttribute("ORDERLIST",commodityArtworkOrderService.);
+			request.setAttribute("ORDERLIST",commodityArtworkOrderService.getByOrderIdOrArtworkNameOrOwnerNameOrUserName(sign, name, typeId,format.parse(startTime), format.parse(endTime)));
 			return "admin_commodityArtworkorderlist";
 		}
 	}
@@ -124,20 +128,20 @@ public class AdminUserController {
 		return "admin_commodityitem";
 		}
 		else{
-//			request.setAttribute("ITEMLIST",customizedArtworkService.get);
+			request.setAttribute("ITEMLIST",customizedArtworkService.getByCustomizedArtworkNameOrOwnerId(sign, name, typeId));
 			return "admin_customizeditem";
 		}
 	}
 	
 	@RequestMapping("/delUser")
 	public String delUser(Long userId,HttpServletRequest request){
-		userService.setUserStateFalse(userId);
+		userService.setUserState(userId,false);
 		return "redirect:/admin_user/getAllUser";
 	}
 	
 	@RequestMapping("/startUsing")
 	public String startUsing(Long userId,HttpServletRequest request){
-		userService.setUserStateTrue(userId);
+		userService.setUserState(userId,true);
 		return "redirect:/admin_user/getAllUser";
 	}
 	
@@ -151,7 +155,7 @@ public class AdminUserController {
 		}
 		else {
 			dataDictionary=dataDictionaryService.getDataDictionaryByName("普通用户");
-//			request.getAttribute("reason");//TODO 不通过的原因
+			user.setNoPassReason(request.getParameter("reason"));
 		}
 		user.setRole(dataDictionary);
 		userService.updateUser(user);

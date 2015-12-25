@@ -73,6 +73,7 @@
         <th>下架时间</th>
         <th>价格</th>
         <th>等级</th>
+        <th>类型</th>
         <th>操作</th>
     </tr>
     </thead>
@@ -86,6 +87,7 @@
                 <td>${rr.offShowTime}</td>
                 <td>${rr.price}</td>
                 <td>${rr.rank}</td>
+                <td>${rr.newsType}</td>
                 <td><a href="/test_ssh/news/showNews?newsId=${rr.id}&type=3">查看</a>&nbsp;&nbsp;<a href="/test_ssh/chiefEditor/getNews?type=2&newsId=${rr.id}">重新审核</a></td>
             </tr>
     </c:forEach>

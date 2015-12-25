@@ -175,7 +175,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <label>${order.name}</label>
                     </div>
                     <div align="right">
-                    <label>类别:&nbsp;&nbsp;${order.type}</label>
+                    <label>类别:&nbsp;&nbsp;${order.type.name}</label>
                         <label>价格:&nbsp;&nbsp;&nbsp;&nbsp;¥&nbsp;&nbsp;${order.price}</label>
                     </div>
                 </div>
@@ -215,7 +215,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <lable>电话:&nbsp;&nbsp;&nbsp;&nbsp;</lable>
                     <lable class="txt2" style="vertical-align:bottom" id="modi_phone"><%=mobile%></lable>
                 </div>
-                 <input type="button" style="display: inline;vertical-align:bottom" type="button" value="编辑" id="edit" class="btn4" onclick="/test_ssh/mall/editOrder?address=<%=address %>&mobile=<%=mobile%>&type=${type}&wh=0"/>
+                 <input type="button" style="display: inline;vertical-align:bottom" value="编辑" id="edit" class="btn4" onclick="/test_ssh/mall/editOrder?address=<%=address %>&mobile=<%=mobile%>&type=${type}&wh=0"/>
             </div>
 
 

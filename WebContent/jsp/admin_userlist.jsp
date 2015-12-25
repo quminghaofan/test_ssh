@@ -37,7 +37,7 @@
 </head>
 <body>
 
-<form class="form-inline definewidth m20" action="/test_ssh/admin_user/getUser?type=0" method="post">
+<form class="form-inline definewidth m20" action="/test_ssh/admin_user/getUser?type=2" method="post">
   根据用户名搜索：
     <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
     <button type="submit" class="btn btn-primary" id="search" name="search">搜索</button>

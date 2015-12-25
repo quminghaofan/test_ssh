@@ -54,13 +54,13 @@ public class SuperController {
 	
 	@RequestMapping("/getAdmin")
 	public String getAdmin(HttpServletRequest request){
-		 request.setAttribute("ADMINLIST",userService.getUserByUserName(request.getParameter("rolename")));
+		 request.setAttribute("ADMINLIST",userService.getUserByUserName(request.getParameter("rolename"),"0"));
 		return "super_admin";
 	}
 
 	@RequestMapping("/delAdmin")
 	public String delAdmin(Long userId,HttpServletRequest request){
-		userService.setUserStateFalse(userId);
+		userService.setUserState(userId,false);
 		return "redirect:/super/adminManage";
 	}
 	@RequestMapping("/addAdmin")
@@ -98,8 +98,16 @@ public class SuperController {
 	public String addArtType(HttpServletRequest request){
 		DataDictionary dataDictionary=new DataDictionary();
 		dataDictionary.setName(request.getParameter("typename"));
-		dataDictionaryService.insertDataDictionary(dataDictionary);
+		dataDictionaryService.insertArtworkTypeDataDictionary(dataDictionary);
 		return "redirect:/super/artTypeManage";
+	}
+	
+	@RequestMapping("/changePsw")
+	public String changePsw(Long userId,HttpServletRequest request){
+		//TODO 修改密码
+		System.out.println(userId);
+		System.out.println(request.getParameter("password"));
+		return "admin_info";
 	}
 
 }

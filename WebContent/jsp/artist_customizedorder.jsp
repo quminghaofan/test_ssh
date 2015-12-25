@@ -165,8 +165,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <div class="men">
 		<div class="container">
   <div align="center">
-  <a class="acount-btn" href="/test_ssh/aritst/myArt">我的艺术品</a>
-				   <a class="acount-btn" href="/test_ssh/aritst/mySale" style="margin-top:2em">我的出售记录</a>
+  <a class="acount-btn" href="/test_ssh/artist/myArt">我的艺术品</a>
+				   <a class="acount-btn" href="/test_ssh/artist/mySale" style="margin-top:2em">我的出售记录</a>
 				   <a class="acount-btn" style="margin-top:2em">我的定制记录</a>
 		<div style="background-color: white; width: 100%">
 			<div style="padding: 5%">
@@ -193,7 +193,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<td>${order.user.address}</td>
 								<td>${order.mobil}</td>
 								<td>
-								 <%if(true){ %><!-- 判断是否已经接受订单 -->
+								<%-- <c:if test="${order.isAccept}"> --%>
+								<%if(true){ %><!-- 判断是否已经接受订单 -->
 								<%if(true){ %><!-- 判断用户是否已经支付 且当前期数在3期内-->
 								<a href="">上传小样</a>
 								<%} %>
@@ -203,6 +204,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<a>已发货</a>
 								<%} %>
 								}
+								
 								<%}else if(true){ %><!-- 判断是否已经拒绝订单或订单已经中止 -->
 								<%}else{ %>
 								<a>接受</a><a>拒绝</a>

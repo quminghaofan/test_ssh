@@ -1,6 +1,7 @@
 package cn.edu.xmu.oneonezero.view;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -46,11 +47,10 @@ public class InitController {
 
 	@RequestMapping(value = "/home")
 	public String home(HttpServletRequest request) {
-		List<News> news = newsService.getExaminedNews();
-		request.setAttribute("RRlist", news);//TODO
+		request.setAttribute("RRlist",newsService.getNewsToday(new Date(System.currentTimeMillis())));
 		request.setAttribute("commodityArtworkList",commodityArtworkService.commodityArtworksToDisplay());
 		request.setAttribute("TYPELIST", dataDictionaryService.getAllArtworkTypes());
-//		request.setAttribute("adlist",news.);
+		request.setAttribute("adlist",newsService.getAdvertisementToday(new Date(System.currentTimeMillis())));
 		request.setAttribute("customizedlist", customizedArtworkService.getAllCustomizedArtworks());
 		return "index";
 	}

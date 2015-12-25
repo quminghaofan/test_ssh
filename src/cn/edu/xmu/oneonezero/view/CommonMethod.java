@@ -78,4 +78,8 @@ public class CommonMethod {
 		response.addCookie(cookie);
 		
 	}
+	
+	public static String getPicUrl(HttpServletRequest request) {
+		return request.getSession().getServletContext().getRealPath("\\attached");
+	}
 }

@@ -12,7 +12,11 @@
 	content="Gifty Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 </script>
 <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -36,29 +40,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="../js/responsiveslides.min.js"></script>
 <script type="text/javascript" src="../js/addcart.js"></script>
 <script src="../ogLaVp_data/requestAnimationFrame.js"></script>
-<script src="../ogLaVp_data/jquery_002.js"></script> 
-<script src="../ogLaVp_data/stopExecutionOnTimeout-6c99970ade81e43be51fa877be0f7600.js"></script>
+<script src="../ogLaVp_data/jquery_002.js"></script>
+<script
+	src="../ogLaVp_data/stopExecutionOnTimeout-6c99970ade81e43be51fa877be0f7600.js"></script>
 <link href='../css/totop.css' rel='stylesheet' type='text/css'>
 <script>
 	$(document).ready(function() {
 		$(".megamenu").megamenu();
 	});
-	function sort(){
+	function sort() {
 		alert("123");
-		window.loction="/test_ssh/mall/enterMall";}
-	
+		window.loction = "/test_ssh/mall/enterMall";
+	}
 </script>
 </head>
 <body>
-<div id="updown">
-	<%if (session.getAttribute("user") != null) {
-					%>
-					<a href="/test_ssh/cart/showCart"><span id="end" class="cart"></span></a>
-					<%
-						}
-					%>
-	
-	<span class="up"></span><span class="down"></span>
+	<div id="updown">
+		<%
+			if (session.getAttribute("user") != null) {
+		%>
+		<a href="/test_ssh/cart/showCart"><span id="end" class="cart"></span></a>
+		<%
+			}
+		%>
+
+		<span class="up"></span><span class="down"></span>
 	</div>
 	<div class="header_top">
 		<div class="container">
@@ -71,14 +77,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<%
 							if (session.getAttribute("user") == null) {
 						%>
-						<li><a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'">登录/注册</a></li>
+						<li><a
+							href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'">登录/注册</a></li>
 						<%
 							} else {
 						%>
 						<li><a href="">申请成为艺术家</a></li>
-						<li><a href=""> <%=((User)session.getAttribute("user")).getName()%></a></li>
+						<li><a href=""> <%=((User) session.getAttribute("user")).getName()%></a></li>
 						<li><a href="">我的订单</a></li>
-						<li><a href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
+						<li><a
+							href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
 						<%
 							}
 						%>
@@ -93,8 +101,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header_bottom-box">
 				<div class="header_bottom_left">
 					<div class="logo">
-						<a href="/test_ssh/init/home"><img src="../images/logo_ooz.png"
-							alt="首页" /></a>
+						<a href="/test_ssh/init/home"><img
+							src="../images/logo_ooz.png" alt="首页" /></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -139,7 +147,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</div>
 						</div></li>
-					<li class="active grid"><a class="color10" href="/test_ssh/mall/enterMall">商城</a>
+					<li class="active grid"><a class="color10"
+						href="/test_ssh/mall/enterMall">商城</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
@@ -175,44 +184,71 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-	
 
-<div class="men">
-	<div class="container">
-	 <div align="center">
-		<div style="background-color: white; width: 100%">
-		<a class="acount-btn" href="/test_ssh/user/myOrder">我的订单</a>
-				   <a class="acount-btn" style="margin-top:2em">我的定制</a>
-				   </div>
-				   </div>
-				   <br><br><br>
-	<c:forEach items="orderlist" var="order">
-	<div class="a-top">
-						<div class="left-grid">
-							 <% %><!-- 判断并显示当期小样 -->
-				<img src="../images/p3.jpg" class="img-responsive" />	
-									<% %>	
-						</div>
-						<div class="right-grid">
-							 <h4>${order}</h4>
-				    <p >${order}</p><!-- 艺术家 -->
-				    <p > ${order} ${order} ${order}</p><!-- 价格 -->
-				    <div class="btn" style="float: right">
-							<%if(true){ %><!-- 判断支付状态 -->
-						<a class="acount-btn" class="link"  onclick="">支付</a>
-						<a class="acount-btn" class="link" >拒绝</a>
-						<%}else{ %>
-						<a class="acount-btn" class="link"  onclick="">收货</a>
-						<%} %>
-						<a class="acount-btn" class="link"  onclick="">详情</a>
-						</div>
-						</div>
-						
-						<div class="clearfix"></div>
+
+	<div class="men">
+		<div class="container">
+			<div align="center">
+				<div style="background-color: white; width: 100%">
+					<a class="acount-btn" href="/test_ssh/user/myOrder">我的订单</a> <a
+						class="acount-btn" style="margin-top: 2em">我的定制</a>
+				</div>
+			</div>
+			<br> <br> <br>
+			<c:forEach items="${orderlist}" var="order">
+				<div class="a-top">
+					<div class="left-grid">
+						<img src="${order.customizedArtwork.startImg}" class="img-responsive" />
+						<img src="${order.customizedArtwork.midImg}" class="img-responsive" />
+						<img src="${order.customizedArtwork.endImg}" class="img-responsive" />
 					</div>
-					</c:forEach>
-</div>
-</div>
+					<div class="right-grid">
+						<h4>订单编号：${order.orderId}</h4>
+						<p>艺术家姓名：${order.customizedArtwork.realName}</p>
+						<!-- 艺术家 -->
+						<p>第一阶段费用：${order.startPrice}</p>
+						<p>第二阶段费用：${order.midPrice}</p>
+						<p>第三阶段费用： ${order.endPrice}</p>
+						<!-- 价格 -->
+						<div class="btn" style="float: right">
+							<c:if test="${(order.state).equals('未支付')}">
+								<a class="acount-btn" class="link"
+									onclick="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=0&stage=第一阶段已付款">第一阶段支付</a>
+								<a class="acount-btn" class="link"
+									onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
+							</c:if>
+							<c:if test="${(order.stage).equals('第一阶段已付款')}">
+								<a class="acount-btn" class="link"
+									onclick="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=0&stage=第二阶段已付款">第二阶段支付</a>
+								<a class="acount-btn" class="link"
+									onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
+							</c:if>
+							<c:if test="${(order.stage).equals('第二阶段已付款')}">
+								<a class="acount-btn" class="link"
+									onclick="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=0&stage=第三阶段已付款">第三阶段支付</a>
+								<a class="acount-btn" class="link"
+									onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
+							</c:if>
+							<c:if test="${(order.stage).equals('第三阶段已付款')}">
+								<a class="acount-btn" class="link">未发货</a>
+								<a class="acount-btn" class="link"
+									onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
+							</c:if>
+							<c:if test="${(order.state).equals('已支付未收货')}">
+								<a class="acount-btn" class="link"
+									onclick="/test_ssh/user/getItem?orderId=${order.id}&type=0">收货</a>
+							</c:if>
+							<c:if test="${(order.state).equals('已支付已收货')}">
+								<a class="acount-btn" class="link">已收货</a>
+							</c:if>
+						</div>
+					</div>
+
+					<div class="clearfix"></div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
 
 
 

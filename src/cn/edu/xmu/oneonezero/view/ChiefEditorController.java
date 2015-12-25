@@ -102,6 +102,7 @@ public class ChiefEditorController {
     	}else {
     		end=format.parse(endTime);
 		}
+    	System.out.println("搜索："+newsService.getNewsByTimespace(newsType,start, end, newsName,type).size());
     	request.setAttribute("RRLIST",newsService.getNewsByTimespace(newsType,start, end, newsName,type));
     	if(type.equals("1")){
     	return "chiefEditor_rr_1";

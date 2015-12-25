@@ -93,14 +93,16 @@ body {
 					<%
 						Date now = new Date(System.currentTimeMillis());
 					%>
+					<td>
 					<c:if test="${(rr.onShowTime).getTime()>now.getTime()}">
-						<td><a href="/test_ssh/news/showNews?newsId=${rr.id}&type=6">查看</a>&nbsp;&nbsp;<a
-							href="/test_ssh/editor/withdraw?newsId=${rr.id}&type=2">撤回</a></td>
+						<a href="/test_ssh/news/showNews?newsId=${rr.id}&type=6">查看</a>&nbsp;&nbsp;<a
+							href="/test_ssh/editor/withdraw?newsId=${rr.id}&type=2">撤回</a>
 					</c:if>
 
 					<c:if test="${(rr.onShowTime).getTime()<=now.getTime()}">
-						<td><a href="/test_ssh/news/showNews?newsId=${rr.id}&type=6">查看</a>
+						<a href="/test_ssh/news/showNews?newsId=${rr.id}&type=6">查看</a>
 					</c:if>
+					</td>
 				</tr>
 			</c:forEach>
 		</c:if>
