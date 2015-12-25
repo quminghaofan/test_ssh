@@ -273,6 +273,8 @@ public class NewsDaoImpl implements NewsDao {
 	@Override
 	public List<News> getNewsByEditorIdAndTimespace(long editorId, String newsType, Date startTime, Date endTime,
 			String newsName, String state) {
+		if(newsName==null)
+			newsName="";
 		if(newsType!=null)
 		{
 			String hql = "from  News n where n.editor.id=? and n.newsType=? and n.onShowTime>? "
@@ -345,7 +347,8 @@ public class NewsDaoImpl implements NewsDao {
 	
 	@Override
 	public List<News> getExaminedNewsByTimespace(String newsType, Date startTime, Date endTime, String newsName) {
-		
+		if(newsName==null)
+			newsName="";
 		if(newsType!=null)
 		{
 			String hql = "from  News n where n.newsType=? and n.onShowTime>? "
@@ -413,6 +416,8 @@ public class NewsDaoImpl implements NewsDao {
 	
 	@Override
 	public List<News> getUnexaminedNewsByTimespace(String newsType, Date startTime, Date endTime, String newsName) {
+		if(newsName==null)
+			newsName="";
 		if(newsType!=null)
 		{
 			String hql = "from  News n where n.newsType=? and n.onShowTime>? "
