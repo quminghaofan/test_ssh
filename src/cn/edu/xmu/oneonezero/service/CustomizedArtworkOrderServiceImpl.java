@@ -115,6 +115,12 @@ public class CustomizedArtworkOrderServiceImpl implements CustomizedArtworkOrder
 		customizedArtworkOrderDao.updateCustomizedArtworkOrderState(orderId, state);
 		
 	}
+
+
+	@Override
+	public void cancelCustomizedArtworkOrder(long id) {
+		customizedArtworkOrderDao.cancelCustomizedArtworkOrder(id);
+	}
 	
 	
 }

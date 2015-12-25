@@ -95,4 +95,8 @@ public class CommodityArtworkServiceImpl implements CommodityArtworkService{
 		else
 			return commodityArtworkDao.getByVagueOwnerName(name, typeId);
 	}
+	@Override
+	public int getExhibitPageTotalByVagueName(String artName, int num) {
+		return commodityArtworkDao.getExhibitPageTotalByVagueName(artName, num);
+	}
 }

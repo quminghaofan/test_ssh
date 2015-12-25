@@ -18,7 +18,7 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 
 	@Override
 	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByUserId(long userId) {
-		String hql = "from  CustomizedArtworkOrder where cao.user.id=? ";
+		String hql = "from  CustomizedArtworkOrder cao where cao.user.id=? ";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, userId);
 		if(query.list()==null||query.list().size()==0) 
@@ -184,7 +184,7 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 
 	@Override
 	public List<CustomizedArtworkOrder> getAllCustomizedArtworkOrders() {
-		String hql = "from  CustomizedArtworkOrder cao.user.id=? ";
+		String hql = "from  CustomizedArtworkOrder cao where cao.user.id=? ";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		if(query.list()==null||query.list().size()==0) 
 			return null;
@@ -209,7 +209,7 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 
 	@Override
 	public CustomizedArtworkOrder getCustomedArtworkOrderByOrderId(long customizedArtworkOrderId) {
-		String hql = "from  CustomizedArtworkOrder cao.id=?";
+		String hql = "from  CustomizedArtworkOrder cao where cao.id=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, customizedArtworkOrderId);
 		if(query.list()==null||query.list().size()==0) 
@@ -510,6 +510,12 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 		CustomizedArtworkOrder customizedArtworkOrder=getCustomedArtworkOrderByOrderId(orderId);
 		customizedArtworkOrder.setState(state);
 		
+	}
+
+	@Override
+	public void cancelCustomizedArtworkOrder(long id) {
+		CustomizedArtworkOrder customizedArtworkOrder=getCustomedArtworkOrderByOrderId(id);
+		customizedArtworkOrder.setCancelled(true);
 	}
 	
 	

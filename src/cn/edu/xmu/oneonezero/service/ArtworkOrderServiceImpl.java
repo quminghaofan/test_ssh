@@ -50,8 +50,13 @@ public class ArtworkOrderServiceImpl implements ArtworkOrderService{
 	}
 
 	@Override
-	public List<ArtworkOrder> getOrderByOrderId(long artworkOrderId) {
+	public ArtworkOrder getOrderByOrderId(long artworkOrderId) {
 		return artworkOrderDao.getOrderByOrderId(artworkOrderId);
+	}
+
+	@Override
+	public void setArtworkOrderIsAccept(long id, boolean isAccept) {
+		artworkOrderDao.setArtworkOrderIsAccept(id, isAccept);
 	}
 	
 	

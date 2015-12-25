@@ -110,6 +110,12 @@ public class CommodityArtworkOrderServiceImpl implements CommodityArtworkOrderSe
 		else
 			return commodityArtworkOrderDao.getByUserName(name, typeId, startTime, endTime);
 	}
+
+
+	@Override
+	public void insertSomeCommodityArtworkOrders(List<CommodityArtworkOrder> aList) {
+		commodityArtworkOrderDao.insertSomeCommodityArtworkOrders(aList);
+	}
 	
 	
 }

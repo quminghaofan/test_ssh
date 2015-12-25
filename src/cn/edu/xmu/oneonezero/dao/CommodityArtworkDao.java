@@ -49,4 +49,7 @@ public interface CommodityArtworkDao {
 	
 	public List<CommodityArtwork> getByVagueOwnerName(String name, String typeId);//根据卖家用户名搜索
 	
+	public int getExhibitPageTotalByVagueName(String artName,int num);//根据模糊名字和每页数量获得展品总页数
+	
+	
 }
