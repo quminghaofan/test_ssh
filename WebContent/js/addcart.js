@@ -51,11 +51,15 @@ $(function() {
 	$(window).scroll(function() {
 		if ($(window).scrollTop() >= 100) {
 			$('#updown').fadeIn(300);
-			
+			$('.up').fadeIn(300);
+			$('.down').fadeIn(300);
 		} else {
-			$('#updown').fadeOut(300);
+			//$('#updown').fadeOut(300);
+			//$('.cart').fadeIn(300);
+			$('.up').fadeOut(300);
+			$('.down').fadeOut(300);
+			
 		}
-		$('#end').fadeIn(100);
 	});
 	$('#updown .up').click(function() {
 		$('html,body').animate({
@@ -66,5 +70,6 @@ $(function() {
 		$('html,body').animate({
 			scrollTop : document.body.clientHeight + 'px'
 		}, 800);
+	
 	});
 });
