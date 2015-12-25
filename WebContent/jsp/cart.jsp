@@ -169,7 +169,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</tr>  
 						<c:forEach items="${commodityArtworkList}" var="item">
 							<tr>
-								<td scope="row" class="spec">${item.name}</th>
+								<td scope="row" class="spec">${item.name}</td>
 
 								<td>${item.type.name}</td>
 								<td>${item.price}</td>
@@ -179,10 +179,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</table>
 				</div>
 				<div style="margin-top:3%"><a href="/test_ssh/mall/enterMall?go=1">继续购物</a></div>
+				<c:if test="${total!=0}">
 				<div align="center" style="padding-top: 3%;">
 					<a class="acount-btn" href="/test_ssh/cart/cleanCart">清空购物车</a>
 				   <a class="acount-btn" href="/test_ssh/mall/settle" style="margin-top:2em">去结算</a>
 				</div>
+				</c:if>
 			</div>
 		</div>
 	</div>

@@ -49,33 +49,34 @@ public class MallController {
 		int curentPage;
 		if (page == null) {
 			curentPage = 1;
-			request.getSession().setAttribute("pageTimes", 30);
 		} else {
 			curentPage = Integer.parseInt(page);
 		}
-		int pageTimes = commodityArtworkService.getPageTotalByVagueName(
-				itemname, 30);
-		request.setAttribute("totalpage", pageTimes);
-		request.getSession().setAttribute("pageTimes", pageTimes);
+		int pageTimes;
 		request.setAttribute("currentPage", curentPage);
 		request.setAttribute("typeId", typeId);
 		System.out.println("购物："+go);
 		if (go.equals("1")) {
-			if (typeId == null) {//
+			pageTimes = commodityArtworkService.getPageTotalByVagueName(
+					itemname, 30);
+			request.setAttribute("totalpage", pageTimes);
+			request.getSession().setAttribute("pageTimes", pageTimes);
+			if (typeId == null) {
 				request.setAttribute("itemlist", commodityArtworkService
 						.getCommodityArtworksByPositionAndVagueName(itemname,
 								curentPage - 1, 30));
 			} else {
-				// request.setAttribute("itemlist",commodityArtworkService.get);
-				// commodityArtworks 根据类型，模糊名称分页获取
+				 request.setAttribute("itemlist",commodityArtworkService.getCommodityArtworksByArtworkTypeIdVagueArtworkNamePageNumber(typeId, itemname, curentPage-1, 30));
 			}
 			return "mall";
 		} else {
-			if (typeId == null) {//
-			// request.setAttribute("itemlist",customizedArtworkService.);获取展品
+//			pageTimes = commodityArtworkService.get获取展品的页数
+//			request.setAttribute("totalpage", pageTimes);
+//			request.getSession().setAttribute("pageTimes", pageTimes);
+			if (typeId == null) {
+			 request.setAttribute("itemlist",commodityArtworkService.getExhibitArtworksByVagueArtNameAndPage(itemname, curentPage-1, 30));
 			} else {
-				// request.setAttribute("itemlist",);
-				// 根据类型，模糊名称分页获取展品
+				 request.setAttribute("itemlist",commodityArtworkService.getExhibitArtworksByArtworkTypeIdVagueArtworkNamePageNumber(typeId, itemname, curentPage-1, 30));
 			}
 			return "customized";
 		}
@@ -110,6 +111,7 @@ public class MallController {
 		request.setAttribute("orderlist", commodityArtworks);
 		request.setAttribute("total", commodityArtwork.getPrice());
 		request.setAttribute("type", itemId);
+		System.out.println("itemId:"+itemId);
 		return "checkorder";
 	}
 
@@ -121,10 +123,11 @@ public class MallController {
 	}
 
 	@RequestMapping("/goToPay")
-	public String goToPay(Long type, HttpServletRequest request,
+	public String goToPay(Long type, String total,HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException {
 		User user = (User) request.getSession().getAttribute("user");
 		List<CommodityArtworkOrder> commodityArtworkOrders = new ArrayList<CommodityArtworkOrder>();
+		System.out.println("type:"+type);
 		if (type == 0) {
 			List<CommodityArtwork> commodityArtworks = CommonMethod
 					.jsonToCommodityArtwork(request);
@@ -154,11 +157,13 @@ public class MallController {
 					.currentTimeMillis()));
 			commodityArtworkOrder.setState("未支付");
 			commodityArtworkOrders.add(commodityArtworkOrder);
+//			System.out.println("添加一个");
 			commodityArtworkService.insertCommodityArtwork(commodityArtwork);
 		}
 		request.getSession().setAttribute("commodityArtworkOrders",
 				commodityArtworkOrders);
-		request.setAttribute("total", request.getParameter("total"));
+//		System.out.print("total:"+request.getParameter("total"));
+		request.setAttribute("total",total);
 		request.setAttribute("picUrl", "/test_ssh/mall/pay");
 		return "payment_login";
 	}
@@ -170,9 +175,9 @@ public class MallController {
 		String psw = request.getParameter("psw");
 		int pay=accountService.payMoney(name, psw,Double.parseDouble(total));
 		if (pay==1) {
-			List<CommodityArtworkOrder> commodityArtworkOrders = (ArrayList<CommodityArtworkOrder>) request
-					.getSession().getAttribute("commodityArtworkOrders");
+			List<CommodityArtworkOrder> commodityArtworkOrders = (ArrayList<CommodityArtworkOrder>) request.getSession().getAttribute("commodityArtworkOrders");
 			for (CommodityArtworkOrder commodityArtworkOrder : commodityArtworkOrders) {
+//				System.out.println("commodityArtworkOrderId:"+commodityArtworkOrder.getId());
 				commodityArtworkOrderService.updateCommodityArtworkOrderState(commodityArtworkOrder.getId(), "已支付未发货");
 			}
 			return "pay_success";
