@@ -13,7 +13,7 @@ public interface DataDictionaryDao {
 	
 	public boolean deleteArtworkType(long typeId);//根据id删除艺术品类型
 	
-	public void insertDataDictionary(DataDictionary dataDictionary);//添加数据字典
+	public void insertArtworkTypeDataDictionary(DataDictionary artworkTypeDataDictionary);//添加艺术品类型数据字典
 
 
 

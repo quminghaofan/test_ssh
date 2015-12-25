@@ -39,4 +39,31 @@ public class CustomizedArtworkServiceImpl implements CustomizedArtworkService{
 		
 	}
 
+
+
+
+	@Override
+	public CustomizedArtwork getCustomizedArtworkById(long customizedArtworkId) {
+		return customizedArtworkDao.getCustomizedArtworkById(customizedArtworkId);
+	}
+
+
+
+
+	@Override
+	public void setCustomizedArtworkIsExistByArtworkId(long artworkId, boolean isExist) {
+		customizedArtworkDao.setCustomizedArtworkIsExistByArtworkId(artworkId, isExist);
+	}
+
+
+
+
+	@Override
+	public List<CustomizedArtwork> getByCustomizedArtworkNameOrOwnerId(String sign, String name, String typeId) {
+		if(sign.equals("0"))
+			return customizedArtworkDao.getByVagueArtworkName(name, typeId);
+		else
+			return customizedArtworkDao.getByVagueOwnerName(name, typeId);
+	}
+
 }

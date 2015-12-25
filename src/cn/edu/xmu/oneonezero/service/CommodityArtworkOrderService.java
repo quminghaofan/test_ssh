@@ -32,5 +32,10 @@ public interface CommodityArtworkOrderService {
 	
 	public void updateCommodityArtworkOrderState(long orderId,String state );//根据订单id和state更新成品订单状态
 	
+	public List<CommodityArtworkOrder> getByOrderIdOrArtworkNameOrOwnerNameOrUserName(String sign, String name, String typeId,Date startTime,Date endTime);
+	//sign=1表根据订单编号查找，=2表艺术品名，=3表卖家用户名，=4表买家用户名  typeId:艺术品类型id，为空值时表示不做限制  startTime~endTime:表示订单的下单时间在这个时间段，可以为空，表不做限制
+
+
+	
 	
 }

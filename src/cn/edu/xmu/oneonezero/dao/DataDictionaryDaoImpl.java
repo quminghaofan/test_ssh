@@ -49,8 +49,14 @@ public class DataDictionaryDaoImpl implements DataDictionaryDao{
 
 	}
 	@Override
-	public void insertDataDictionary(DataDictionary dataDictionary) {
-		sessionFactory.getCurrentSession().saveOrUpdate(dataDictionary);
+	public void insertArtworkTypeDataDictionary(DataDictionary artworkTypeDataDictionary) {
+		int typeAmount=getAllArtworkTypes().size();
+		int tem1=Integer.parseInt(getAllArtworkTypes().get(typeAmount-1).getNumber());
+		tem1++;
+		String temString="0".concat(String.valueOf(tem1));
+		artworkTypeDataDictionary.setNumber(temString);
+		
+		sessionFactory.getCurrentSession().saveOrUpdate(artworkTypeDataDictionary);
 	}
 	//设置编号（自增）
 

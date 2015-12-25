@@ -275,7 +275,41 @@ public class NewsDaoImpl implements NewsDao {
 			String newsName, String state) {
 		if(newsName==null)
 			newsName="";
-		if(newsType!=null)
+		if(newsType==null||newsType.equals(""))
+		{
+			String hql = "from  News n where n.editor.id=? and n.onShowTime>? "
+					+ "and n.offShowTime<? and n.name like ? and n.state = ?";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			query.setLong(0, editorId);
+			
+			if(startTime!=null)
+				query.setDate(1, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(1, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(2, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(2, temDate);
+			}
+			query.setString(3, "%"+newsName+"%");
+			query.setString(4, state);
+			
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
+		}
+		else
 		{
 			String hql = "from  News n where n.editor.id=? and n.newsType=? and n.onShowTime>? "
 					+ "and n.offShowTime<? and n.name like ? and n.state = ?";
@@ -309,39 +343,6 @@ public class NewsDaoImpl implements NewsDao {
 				return null;
 			return query.list();
 		}
-		else{
-			String hql = "from  News n where n.editor.id=? and n.onShowTime>? "
-					+ "and n.offShowTime<? and n.name like ? and n.state = ?";
-			Query query = sessionFactory.getCurrentSession().createQuery(hql);
-			query.setLong(0, editorId);
-			
-			if(startTime!=null)
-				query.setDate(1, startTime);
-			else
-			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2000,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(1, temDate);
-			}
-			if(endTime!=null)
-				query.setDate(2, endTime);
-			else
-			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2050,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(2, temDate);
-			}
-			query.setString(3, "%"+newsName+"%");
-			query.setString(4, state);
-			
-			if(query.list()==null||query.list().size()==0) 
-				return null;
-			return query.list();
-		}
 	}
 
 	
@@ -349,33 +350,32 @@ public class NewsDaoImpl implements NewsDao {
 	public List<News> getExaminedNewsByTimespace(String newsType, Date startTime, Date endTime, String newsName) {
 		if(newsName==null)
 			newsName="";
-		if(newsType!=null)
+		if(newsType==null||newsType.equals(""))
 		{
-			String hql = "from  News n where n.newsType=? and n.onShowTime>? "
+			String hql = "from  News n where n.onShowTime>? "
 					+ "and n.offShowTime<? and n.name like ? and (n.state = '审核通过' or n.state= '审核不通过')";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
-			query.setString(0, newsType);
 			if(startTime!=null)
-				query.setDate(1, startTime);
+				query.setDate(0, startTime);
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
 				temCal.set(2000,1,1);
 				
 				Date temDate=(Date) temCal.getTime();
-				query.setDate(1, temDate);
+				query.setDate(0, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(2, endTime);
+				query.setDate(1, endTime);
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
 				temCal.set(2050,1,1);
 				
 				Date temDate=(Date) temCal.getTime();
-				query.setDate(2, temDate);
+				query.setDate(1, temDate);
 			}
-			query.setString(3, "%"+newsName+"%");
+			query.setString(2, "%"+newsName+"%");
 			
 			if(query.list()==null||query.list().size()==0) 
 				return null;
@@ -383,45 +383,8 @@ public class NewsDaoImpl implements NewsDao {
 		}
 		else
 		{
-			String hql = "from  News n where n.onShowTime>? "
-					+ "and n.offShowTime<? and n.name like ? and (n.state = '审核通过' or n.state= '审核不通过')";
-			Query query = sessionFactory.getCurrentSession().createQuery(hql);
-			if(startTime!=null)
-				query.setDate(0, startTime);
-			else
-			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2000,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(0, temDate);
-			}
-			if(endTime!=null)
-				query.setDate(1, endTime);
-			else
-			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2050,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(1, temDate);
-			}
-			query.setString(2, "%"+newsName+"%");
-			
-			if(query.list()==null||query.list().size()==0) 
-				return null;
-			return query.list();
-		}
-	}
-	
-	@Override
-	public List<News> getUnexaminedNewsByTimespace(String newsType, Date startTime, Date endTime, String newsName) {
-		if(newsName==null)
-			newsName="";
-		if(newsType!=null)
-		{
 			String hql = "from  News n where n.newsType=? and n.onShowTime>? "
-					+ "and n.offShowTime<? and n.name like ? and n.state = '未审核' ";
+					+ "and n.offShowTime<? and n.name like ? and (n.state = '审核通过' or n.state= '审核不通过')";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			query.setString(0, newsType);
 			if(startTime!=null)
@@ -450,7 +413,15 @@ public class NewsDaoImpl implements NewsDao {
 				return null;
 			return query.list();
 		}
-		else{
+		
+	}
+	
+	@Override
+	public List<News> getUnexaminedNewsByTimespace(String newsType, Date startTime, Date endTime, String newsName) {
+		if(newsName==null)
+			newsName="";
+		if(newsType==null||newsType.equals(""))
+		{
 			String hql = "from  News n where n.onShowTime>? "
 					+ "and n.offShowTime<? and n.name like ? and n.state = '未审核' ";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -475,6 +446,38 @@ public class NewsDaoImpl implements NewsDao {
 				query.setDate(1, temDate);
 			}
 			query.setString(2, "%"+newsName+"%");
+			
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
+		}
+		else
+		{
+			String hql = "from  News n where n.newsType=? and n.onShowTime>? "
+					+ "and n.offShowTime<? and n.name like ? and n.state = '未审核' ";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			query.setString(0, newsType);
+			if(startTime!=null)
+				query.setDate(1, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(1, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(2, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(2, temDate);
+			}
+			query.setString(3, "%"+newsName+"%");
 			
 			if(query.list()==null||query.list().size()==0) 
 				return null;

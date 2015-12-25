@@ -54,7 +54,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public boolean isLoginSuccessful(String userName, String psw) {
-		String hql = "from User u where u.name = ? and u.password=?";
+		String hql = "from User u where u.state=true and u.name = ? and u.password=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, userName);
 		query.setString(1, psw);
@@ -67,7 +67,7 @@ public class UserDaoImpl implements UserDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getAllUsers() {
-		String hql = "from User";
+		String hql = "from User where u.state=true";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		return query.list();
@@ -78,7 +78,7 @@ public class UserDaoImpl implements UserDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getUserByUserName(String userName) {
-		String hql = "from User u where u.name like ?";
+		String hql = "from User u where u.state=true and  u.name like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, "%"+userName+"%");
 		
@@ -89,7 +89,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> getUsersByRole(String role) {
-		String hql="from User u where u.role = ?";
+		String hql="from User u where u.state=true and u.role = ?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, role);
 		
@@ -100,7 +100,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User getUserByUserNameAndPassword(String userName, String password) {
-		String hql="from User u where u.name= ? and u.password= ?";
+		String hql="from User u where u.state=true and  u.name= ? and u.password= ?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, userName);
 		query.setString(1, password);
@@ -112,7 +112,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public boolean isNameExist(String userName) {
-		String hql="from User u where u.name= ?";
+		String hql="from User u where u.state=true and  u.name= ?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, userName);
 		if(query.list().size()!=0) 
@@ -124,7 +124,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> getAllManager() {
-		String hql="from User u where u.role.name='普通管理员' or u.role.name='采编' or u.role.name='主编'";
+		String hql="from User u where u.state=true and  (u.role.name='普通管理员' or u.role.name='采编' or u.role.name='主编')";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		if(query.list().size()!=0)
 			if(query.list()==null||query.list().size()==0) return null;
@@ -139,7 +139,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> getAllCommonUsersAndArtist() {
-		String hql="from User u where u.role.name='普通用户' or u.role.name='艺术家'";
+		String hql="from User u where u.state=true and  (u.role.name='普通用户' or u.role.name='艺术家')";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		if(query.list().size()!=0)
 			if(query.list()==null||query.list().size()==0) return null;
@@ -148,12 +148,22 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> getAllPreparativeArtist() {
-		String hql="from User u where u.role.name='预备艺术家' ";
+		String hql="from User u where u.state=true and  u.role.name='预备艺术家' ";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		if(query.list().size()!=0)
 			if(query.list()==null||query.list().size()==0) return null;
 			return query.list();
 	}
+
+	@Override
+	public List<User> getPreparativeUserByUserName(String userName) {
+		String hql = "from User u where u.state=true and u.role='预备艺术家' and u.name like ?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, "%"+userName+"%");
+		return query.list();
+	}
+	
+	
 
 	
 	

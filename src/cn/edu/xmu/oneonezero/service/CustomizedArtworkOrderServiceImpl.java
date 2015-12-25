@@ -88,6 +88,20 @@ public class CustomizedArtworkOrderServiceImpl implements CustomizedArtworkOrder
 	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByOwnerId(long ownerId) {
 		return customizedArtworkOrderDao.getCustomizedArtworkOrdersByOwnerId(ownerId);
 	}
+
+
+	@Override
+	public List<CustomizedArtworkOrder> getByOrderIdOrArtworkNameOrOwnerNameOrUserName(String sign, String name,
+			String typeId, Date startTime, Date endTime) {
+		if(sign.equals("1"))
+			return customizedArtworkOrderDao.getByOrderId(name, typeId, startTime, endTime);
+		else if(sign.equals("2"))
+			return customizedArtworkOrderDao.getByArtworkName(name, typeId, startTime, endTime);
+		else if(sign.equals("3"))
+			return customizedArtworkOrderDao.getByOwnerName(name, typeId, startTime, endTime);
+		else
+			return customizedArtworkOrderDao.getByUserName(name, typeId, startTime, endTime);
+	}
 	
 	
 }

@@ -33,6 +33,12 @@ public interface CommodityArtworkOrderDao {
 	
 	public void updateCommodityArtworkOrderState(long orderId,String state );//根据订单id和state更新成品订单状态
 	
+	public List<CommodityArtworkOrder> getByOrderId(String name,String typeId, Date startTime,Date endTime);//name表示OrderId
 	
+	public List<CommodityArtworkOrder> getByArtworkName(String name,String typeId, Date startTime,Date endTime);//name表示ArtworkName
+	
+	public List<CommodityArtworkOrder> getByOwnerName(String name,String typeId, Date startTime,Date endTime);//name表示OwnerNama
+	
+	public List<CommodityArtworkOrder> getByUserName(String name,String typeId, Date startTime,Date endTime);//name表示UserName
 	
 }

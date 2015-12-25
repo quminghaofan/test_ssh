@@ -46,8 +46,9 @@ public class DataDictionaryServiceImpl implements DataDictionaryService{
 
 
 	@Override
-	public void insertDataDictionary(DataDictionary dataDictionary) {
-		dataDictionaryDao.insertDataDictionary(dataDictionary);
+	public void insertArtworkTypeDataDictionary(DataDictionary artworkTypedataDictionary) {
+		
+		dataDictionaryDao.insertArtworkTypeDataDictionary(artworkTypedataDictionary);
 	}
 	
 	

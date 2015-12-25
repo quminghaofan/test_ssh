@@ -32,9 +32,21 @@ public interface CommodityArtworkDao {
 	
 	public List<CommodityArtwork> getAllExhibitArtworks();//获取所有艺术品展品
 	
-	public List<CommodityArtwork> getCommodityArtworksByVagueArtworkNamePageNumber(Long artworkTypeId, String artName, int start,int num);//根据艺术品类型id，模糊艺术品名称，页码，每页数量 分页获取商品艺术品，返回list
+	public List<CommodityArtwork> getCommodityArtworksByArtworkTypeIdVagueArtworkNamePageNumber(Long artworkTypeId, String artName, int start,int num);//根据艺术品类型id，模糊艺术品名称，页码，每页数量 分页获取商品艺术品，返回list
+
+	public List<CommodityArtwork> getExhibitArtworksByArtworkTypeIdVagueArtworkNamePageNumber(Long artworkTypeId, String artName, int start,int num);//根据艺术品类型id，模糊艺术品名称，页码，每页数量 分页获取艺术品展品，返回list
+
+	public List<CommodityArtwork> getExhibitArtworksByVagueArtNameAndPage(String artName, int start,int num);//根据模糊艺术品名称，页码，每页数量 分页获取艺术品展品，返回list
 
 	
+	public void setCommodityArtworkIsExistByArtworkId(long artworkId, boolean isExist);//根据id设置艺术品商品isExist
+
+	public void deleteExhibitArtworkByArtworkId(long artworkId);//根据id设置艺术品商品isExist
 	
+	public List<CommodityArtwork> getExhibitArtworksByOwnerId(long artistId);//根据艺术家id获取展品
+
+	public List<CommodityArtwork> getByVagueArtworkName(String name, String typeId);//根据艺术品名称搜索
+	
+	public List<CommodityArtwork> getByVagueOwnerName(String name, String typeId);//根据卖家用户名搜索
 	
 }

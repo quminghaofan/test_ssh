@@ -18,7 +18,7 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 
 	@Override
 	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByUserId(long userId) {
-		String hql = "from  CustomizedArtworkOrder cao.user.id=? ";
+		String hql = "from  CustomizedArtworkOrder where cao.user.id=? ";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, userId);
 		if(query.list()==null||query.list().size()==0) 
@@ -225,6 +225,278 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 		if(query.list()==null||query.list().size()==0) 
 			return null;
 		return query.list();
+	}
+
+	@Override
+	public List<CustomizedArtworkOrder> getByOrderId(String name, String typeId, Date startTime, Date endTime) {
+		if(typeId==null||typeId.equals(""))
+		{
+			String hql = "from  CustomizedArtworkOrder cao where cao.orderId = ?  and cao.placeDate>? and cao.placeDate<?";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			
+			query.setString(0, name);
+			
+			if(startTime!=null)
+				query.setDate(1, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(1, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(2, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(2, temDate);
+			}
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
+		}
+		else
+		{
+			String hql = "from  CustomizedArtworkOrder cao where cao.orderId = ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			
+			query.setString(0, name);
+			Long tem1=Long.parseLong(typeId);
+			query.setLong(1,tem1);
+			
+			if(startTime!=null)
+				query.setDate(2, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(2, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(3, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(3, temDate);
+			}
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
+		}
+	}
+
+	@Override
+	public List<CustomizedArtworkOrder> getByArtworkName(String name, String typeId, Date startTime, Date endTime) {
+		if(typeId==null||typeId.equals(""))
+		{
+			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.name = ?  and cao.placeDate>? and cao.placeDate<?";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			
+			query.setString(0, name);
+			
+			if(startTime!=null)
+				query.setDate(1, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(1, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(2, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(2, temDate);
+			}
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
+		}
+		else
+		{
+			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.name = ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			
+			query.setString(0, name);
+			Long tem1=Long.parseLong(typeId);
+			query.setLong(1,tem1);
+			
+			if(startTime!=null)
+				query.setDate(2, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(2, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(3, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(3, temDate);
+			}
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
+		}
+	}
+
+	@Override
+	public List<CustomizedArtworkOrder> getByOwnerName(String name, String typeId, Date startTime, Date endTime) {
+		if(typeId==null||typeId.equals(""))
+		{
+			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.owner.name = ?  and cao.placeDate>? and cao.placeDate<?";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			
+			query.setString(0, name);
+			
+			if(startTime!=null)
+				query.setDate(1, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(1, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(2, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(2, temDate);
+			}
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
+		}
+		else
+		{
+			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.owner.name = ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			
+			query.setString(0, name);
+			Long tem1=Long.parseLong(typeId);
+			query.setLong(1,tem1);
+			
+			if(startTime!=null)
+				query.setDate(2, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(2, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(3, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(3, temDate);
+			}
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
+		}
+	}
+
+	@Override
+	public List<CustomizedArtworkOrder> getByUserName(String name, String typeId, Date startTime, Date endTime) {
+		if(typeId==null||typeId.equals(""))
+		{
+			String hql = "from  CustomizedArtworkOrder cao where cao.user.name = ?  and cao.placeDate>? and cao.placeDate<?";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			
+			query.setString(0, name);
+			
+			if(startTime!=null)
+				query.setDate(1, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(1, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(2, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(2, temDate);
+			}
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
+		}
+		else
+		{
+			String hql = "from  CustomizedArtworkOrder cao where cao.user.name = ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			
+			query.setString(0, name);
+			Long tem1=Long.parseLong(typeId);
+			query.setLong(1,tem1);
+			
+			if(startTime!=null)
+				query.setDate(2, startTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2000,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(2, temDate);
+			}
+			if(endTime!=null)
+				query.setDate(3, endTime);
+			else
+			{
+				Calendar temCal=Calendar.getInstance();
+				temCal.set(2050,1,1);
+				
+				Date temDate=(Date) temCal.getTime();
+				query.setDate(3, temDate);
+			}
+			if(query.list()==null||query.list().size()==0) 
+				return null;
+			return query.list();
+		}
 	}
 	
 	

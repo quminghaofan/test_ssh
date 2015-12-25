@@ -62,8 +62,37 @@ public class CommodityArtworkServiceImpl implements CommodityArtworkService{
 		return commodityArtworkDao.getAllExhibitArtworks();
 	}
 	@Override
-	public List<CommodityArtwork> getCommodityArtworksByVagueArtworkNamePageNumber(Long artworkTypeId, String artName,
+	public List<CommodityArtwork> getCommodityArtworksByArtworkTypeIdVagueArtworkNamePageNumber(Long artworkTypeId, String artName,
 			int start, int num) {
-		return commodityArtworkDao.getCommodityArtworksByVagueArtworkNamePageNumber(artworkTypeId, artName, start, num);
+		return commodityArtworkDao.getCommodityArtworksByArtworkTypeIdVagueArtworkNamePageNumber(artworkTypeId, artName, start, num);
+	}
+	@Override
+	public List<CommodityArtwork> getExhibitArtworksByArtworkTypeIdVagueArtworkNamePageNumber(Long artworkTypeId,
+			String artName, int start, int num) {
+		return commodityArtworkDao.getExhibitArtworksByArtworkTypeIdVagueArtworkNamePageNumber(artworkTypeId, artName, start, num);
+	}
+	@Override
+	public List<CommodityArtwork> getExhibitArtworksByVagueArtNameAndPage(String artName, int start, int num) {
+		return commodityArtworkDao.getExhibitArtworksByVagueArtNameAndPage(artName, start, num);
+	}
+	@Override
+	public void setCommodityArtworkIsExistByArtworkId(long artworkId, boolean isExist) {
+		commodityArtworkDao.setCommodityArtworkIsExistByArtworkId(artworkId, isExist);
+		
+	}
+	@Override
+	public void deleteExhibitArtworkByArtworkId(long artworkId) {
+		commodityArtworkDao.deleteExhibitArtworkByArtworkId(artworkId);
+	}
+	@Override
+	public List<CommodityArtwork> getExhibitArtworksByOwnerId(long artistId) {
+		return commodityArtworkDao.getExhibitArtworksByOwnerId(artistId);
+	}
+	@Override
+	public List<CommodityArtwork> getByVagueArtworkNameOrOwnerName(String sign, String name,String typeId) {
+		if(sign.equals("0"))
+			return commodityArtworkDao.getByVagueArtworkName(name, typeId);
+		else
+			return commodityArtworkDao.getByVagueOwnerName(name, typeId);
 	}
 }

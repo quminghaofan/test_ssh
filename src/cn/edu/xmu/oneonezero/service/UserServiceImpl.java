@@ -44,11 +44,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 
-	@Override
-	public List<User> getUserByUserName(String userName) {
-		return userDao.getUserByUserName(userName);
-	}
-
+	
 
 	@Override
 	public List<User> getUsersByRole(String role) {
@@ -91,6 +87,25 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void setUserState(long userId,boolean state) {
 		userDao.setUserState(userId,state);
+	}
+
+
+
+
+	@Override
+	public List<User> getPreparativeUserByUserName(String userName) {
+		return userDao.getPreparativeUserByUserName(userName);
+	}
+
+
+
+
+	@Override
+	public List<User> getUserByUserName(String userName, String type) {
+		if(type.equals("0"))
+			return userDao.getAllUsers();
+		else
+			return userDao.getPreparativeUserByUserName(userName);
 	}
 
 }

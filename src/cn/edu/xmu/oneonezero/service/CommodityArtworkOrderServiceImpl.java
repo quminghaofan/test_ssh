@@ -96,6 +96,20 @@ public class CommodityArtworkOrderServiceImpl implements CommodityArtworkOrderSe
 	public void updateCommodityArtworkOrderState(long orderId, String state) {
 		commodityArtworkOrderDao.updateCommodityArtworkOrderState(orderId, state);
 	}
+
+
+	@Override
+	public List<CommodityArtworkOrder> getByOrderIdOrArtworkNameOrOwnerNameOrUserName(String sign, String name,
+			String typeId, Date startTime, Date endTime) {
+		if(sign.equals("1"))
+			return commodityArtworkOrderDao.getByOrderId(name, typeId, startTime, endTime);
+		else if(sign.equals("2"))
+			return commodityArtworkOrderDao.getByArtworkName(name, typeId, startTime, endTime);
+		else if(sign.equals("3"))
+			return commodityArtworkOrderDao.getByOwnerName(name, typeId, startTime, endTime);
+		else
+			return commodityArtworkOrderDao.getByUserName(name, typeId, startTime, endTime);
+	}
 	
 	
 }

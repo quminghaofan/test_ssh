@@ -3,6 +3,7 @@ package cn.edu.xmu.oneonezero.service;
 import java.util.Date;
 import java.util.List;
 
+import cn.edu.xmu.oneonezero.entity.CommodityArtworkOrder;
 import cn.edu.xmu.oneonezero.entity.CustomizedArtworkOrder;
 
 public interface CustomizedArtworkOrderService {
@@ -29,6 +30,8 @@ public interface CustomizedArtworkOrderService {
 
 	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByOwnerId(long ownerId);//根据卖家id 获得获得所有的定制艺术品订单
 	
+	public List<CustomizedArtworkOrder> getByOrderIdOrArtworkNameOrOwnerNameOrUserName(String sign, String name, String typeId,Date startTime,Date endTime);
+	//sign=1表根据订单编号查找，=2表艺术品名，=3表卖家用户名，=4表买家用户名  typeId:艺术品类型id，为空值时表示不做限制  startTime~endTime:表示订单的下单时间在这个时间段，可以为空，表不做限制
 
 	
 }

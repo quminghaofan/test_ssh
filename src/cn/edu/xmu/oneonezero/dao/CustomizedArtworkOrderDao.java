@@ -3,6 +3,7 @@ package cn.edu.xmu.oneonezero.dao;
 import java.util.Date;
 import java.util.List;
 
+import cn.edu.xmu.oneonezero.entity.CommodityArtworkOrder;
 import cn.edu.xmu.oneonezero.entity.CustomizedArtworkOrder;
 
 public interface CustomizedArtworkOrderDao {
@@ -29,5 +30,13 @@ public interface CustomizedArtworkOrderDao {
 	public CustomizedArtworkOrder getCustomedArtworkOrderByOrderId(long customizedArtworkOrderId);//根据订单id获取定制艺术品订单	
 
 	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByOwnerId(long ownerId);//根据卖家id 获得获得所有的定制艺术品订单
+	
+	public List<CustomizedArtworkOrder> getByOrderId(String name,String typeId, Date startTime,Date endTime);//name表示OrderId
+	
+	public List<CustomizedArtworkOrder> getByArtworkName(String name,String typeId, Date startTime,Date endTime);//name表示ArtworkName
+	
+	public List<CustomizedArtworkOrder> getByOwnerName(String name,String typeId, Date startTime,Date endTime);//name表示OwnerNama
+	
+	public List<CustomizedArtworkOrder> getByUserName(String name,String typeId, Date startTime,Date endTime);//name表示UserName
 	
 }
