@@ -32,5 +32,9 @@ public interface CustomizedArtworkOrderService {
 	public List<CustomizedArtworkOrder> getByOrderIdOrArtworkNameOrOwnerNameOrUserName(String sign, String name, String typeId,Date startTime,Date endTime);
 	//sign=1表根据订单编号查找，=2表艺术品名，=3表卖家用户名，=4表买家用户名  typeId:艺术品类型id，为空值时表示不做限制  startTime~endTime:表示订单的下单时间在这个时间段，可以为空，表不做限制
 
+	public void updateCustomizedArtworkOrderStage(long orderId,String stage);//根据定制订单id更新stage属性
+	
+	public void updateCustomizedArtworkOrderState(long orderId,String state);//根据定制订单id更新state属性
+	
 	
 }

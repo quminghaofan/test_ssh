@@ -498,6 +498,19 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 			return query.list();
 		}
 	}
+
+	@Override
+	public void updateCustomizedArtworkOrderStage(long orderId, String stage) {
+		CustomizedArtworkOrder customizedArtworkOrder=getCustomedArtworkOrderByOrderId(orderId);
+		customizedArtworkOrder.setStage(stage);
+	}
+
+	@Override
+	public void updateCustomizedArtworkOrderState(long orderId, String state) {
+		CustomizedArtworkOrder customizedArtworkOrder=getCustomedArtworkOrderByOrderId(orderId);
+		customizedArtworkOrder.setState(state);
+		
+	}
 	
 	
 	

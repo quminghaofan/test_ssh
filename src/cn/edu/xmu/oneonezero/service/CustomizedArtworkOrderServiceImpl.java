@@ -102,6 +102,19 @@ public class CustomizedArtworkOrderServiceImpl implements CustomizedArtworkOrder
 		else
 			return customizedArtworkOrderDao.getByUserName(name, typeId, startTime, endTime);
 	}
+
+
+	@Override
+	public void updateCustomizedArtworkOrderStage(long orderId, String stage) {
+		customizedArtworkOrderDao.updateCustomizedArtworkOrderStage(orderId, stage);
+	}
+
+
+	@Override
+	public void updateCustomizedArtworkOrderState(long orderId, String state) {
+		customizedArtworkOrderDao.updateCustomizedArtworkOrderState(orderId, state);
+		
+	}
 	
 	
 }

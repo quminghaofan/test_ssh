@@ -39,4 +39,10 @@ public interface CustomizedArtworkOrderDao {
 	
 	public List<CustomizedArtworkOrder> getByUserName(String name,String typeId, Date startTime,Date endTime);//name表示UserName
 	
+	public void updateCustomizedArtworkOrderStage(long orderId,String stage);//根据定制订单id更新stage属性
+	
+	public void updateCustomizedArtworkOrderState(long orderId,String state);//根据定制订单id更新state属性
+	
+	
+	
 }
