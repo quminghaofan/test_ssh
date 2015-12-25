@@ -166,6 +166,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<div class="men">
 		<div class="container">
+		<div style="display: none;" id="price" align="center">
+<div id="masklayer" ></div>
+<input type="hidden" id="orderid" name="orderid">
+<div style="z-index:10;position:absolute;left:30%;background-color:white;width:30%;height:35%" >
+<h3>价格</h3>
+<form class="form-inline definewidth m20" action="" method="post" id="priceform">
+    <label>第一期价格</label><input type="text" name="price1"  class="abc input-default" placeholder="" value="">
+    <label>第二期价格</label><input type="text" name="price2"  class="abc input-default" placeholder="" value="">
+    <label>第三期价格</label><input type="text" name="price3"  class="abc input-default" placeholder="" value="">
+    <button type="submit" class="btn btn-primary" onclick="editprice()">确定</button>
+</form>
+</div>
+</div>
 			<div align="center">
 				<a class="acount-btn" href="/test_ssh/artist/myArt">我的艺术品</a> <a
 					class="acount-btn" href="/test_ssh/artist/mySale"
@@ -194,10 +207,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<td>${order.user.address}</td>
 										<td>${order.mobil}</td>
 										<td><c:if test="${order.isAccept==null}">
-												<input type="submit" value="接受"
-													onClick="/test_ssh/artist/isAccept?orderId=${order.id}&type=0">
-												<input type="button" value="拒绝"
-													onClick="/test_ssh/artist/isAccept?orderId=${order.id}&type=1">
+													<a href="javascript:accept(${order.id})">接受</a>
+													<a href="/test_ssh/artist/isAccept?orderId=${order.id}&type=1">拒绝</a>
 											</c:if> <c:if test="${order.isAccept}">
 
 												<c:if test="${(order.state).equals('已支付未发货')}">
@@ -222,6 +233,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<div class="pagination" id="page"></div>
 
+
+
 	<div class="footer">
 		<div class="container">
 			<img src="../images/pay.png" class="img-responsive" alt="" />
@@ -245,3 +258,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<input hidden value="${max_page}" id="max">
 </body>
 </html>
+<script>
+    function accept(orderid){
+        document.getElementById("price").style.display="block";
+        document.getElementById("orderid").value=orderid;
+        }
+function editprice(){
+	var orderid=document.getElementById("orderid").value;
+	var price=document.getElementById("priceform");
+	price.action="/test_ssh/artist/isAccept?orderId="+orderid+"&type=0";
+	price.submit();
+}
+</script>
