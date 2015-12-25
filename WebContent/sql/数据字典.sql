@@ -5,7 +5,7 @@ insert into datadictionary(name,number) values('主编','0103');
 insert into datadictionary(name,number) values('采编','0104');
 insert into datadictionary(name,number) values('艺术家','0105');
 insert into datadictionary(name,number) values('预备艺术家','0106');
-insert into datadictionary(name,number) values('普通用户','0101');
+insert into datadictionary(name,number) values('普通用户','0107');
 insert into datadictionary(name,number) values('角色','01');
 insert into datadictionary(name,number) values('产品类别','02');
 insert into datadictionary(name,number) values('油画','0201');
