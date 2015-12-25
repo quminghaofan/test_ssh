@@ -188,7 +188,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</tr>  
 						<c:forEach items="${commodityArtworkList}" var="item">
 							<tr>
-							<td><span><img id="image" src="${item.picUrl}"/></span></td>
+							<td style="width: 15%;height:15%"><span><img id="image" src="${item.picUrl}" class="img-responsive" style="width: 100%;height:100%"/></span></td>
 								<td scope="row" class="spec">${item.name}</td>
 								<td>${item.type.name}</td>
 								<td>
