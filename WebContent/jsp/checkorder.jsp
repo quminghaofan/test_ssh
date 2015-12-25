@@ -162,12 +162,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
+<div class="men">
+<div class="container">
+<div align="center">
+    <div style="width: 90%;">
+        <div style="padding: 6%" align="left">
+ 
+<div class="orderdiv" style="margin-top:2%">
+                <c:forEach items="${orderlist}" var="order">
+                    <div style="width:20%;" class="left-grid"><img class="img-responsive" src="${order.picUrl}"></div>
+                
+                <div class="info" align="left">
+                    <div style="font-size: large" class="infomargin">
+                        <label>${order.name}</label>
+                    </div>
+                    <div align="right">
+                    <label>类别:&nbsp;${order.type.name}</label>&nbsp;&nbsp;
+                        <label>价格:&nbsp;¥&nbsp;${order.price}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            </c:forEach>
+            
+            <div class="breakline"></div>
 
-	<div class="men">
-		<div class="container">
-			<div align="center">
-				<div style="width: 90%;">
-					<div style="padding: 6%" align="left">
+            <div align="right" style="font-weight: bolder">
+                <lable>总价&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</lable>
+                <lable id="total" name="total">¥ ${total}</lable>
+            </div>
 
 						<div class="orderdiv" style="margin-top: 2%">
 							<c:forEach items="${orderlist}" var="order">

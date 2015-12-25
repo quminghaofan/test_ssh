@@ -230,7 +230,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									if (session.getAttribute("user") != null) {
 								%>
 							<li class="list2_left"><span class="m_1">
-									<a class="link" id="add2Cart" onclick="add2Cart(${item.id},this)">加入购物篮</a> 
+									<a class="link" id="add2Cart" onclick="add2Cart(${item.id},this,event)">加入购物篮</a> 
 								<li class="list2_right"><span class="m_2"><a
 										href="/test_ssh/mall/settleOne?itemId=${item.id}" class="link1">立即购买</a></span></li>
 								<%

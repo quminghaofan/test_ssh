@@ -40,9 +40,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		$(".megamenu").megamenu();
 	});
 </script>
-
+<link href='../css/totop.css' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../js/addcart.js"></script>
+<script src="../js/responsiveslides.min.js"></script>
 </head>
 <body>
+<div id="updown">
+		<%if (session.getAttribute("user") != null) {
+					%>
+		<a href="/test_ssh/cart/showCart"><span id="end" class="cart"></span></a>
+		<%
+						}
+					%>
+
+		<span class="up"></span><span class="down"></span>
+	</div>
 	<div class="header_top">
 		<div class="container">
 			<div class="header_top-box">
@@ -52,16 +64,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="cssmenu">
 					<ul>
 						<%
-							if (session.getAttribute("user") == null) {
+						    User user=(User)session.getAttribute("user");
+							if (user == null) {
 						%>
-						<li><a href="jsp/login.jsp">登录/注册</a></li>
+						<li><a
+							href="/test_ssh/init/goToLogin?backUrl='/test_ssh/init/home'">登录/注册</a></li>
+						<%
+							} else {
+								if (!(user.getRole()).getName() .equals("艺术家") 
+										&&!(user.getRole()).getName().equals("预备艺术家")) {//角色判断
+						%>
+						<li><a href="/test_ssh/jsp/artist_apply.jsp">我的店铺</a></li>
+						<%
+							} else if ((user.getRole()).getName().equals("预备艺术家")) {
+						%>
+						<li>成为艺术家的申请正在审核...</li>
 						<%
 							} else {
 						%>
-						<li><a href="">申请成为艺术家</a></li>
-						<li><a href=""> <%=((User) session.getAttribute("user")).getName()%></a></li>
-						<li><a href="">我的订单</a></li>
-						<li><a href="">登出</a></li>
+						<li><a href="/test_ssh/artist/myArt">我的店铺</a></li>
+						<%
+							}
+						%>
+						<li><a href=""> <%=user.getName()%></a></li>
+						<li><a href="/test_ssh/user/myOrder">我的订单</a></li>
+						<li><a
+							href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
 						<%
 							}
 						%>
@@ -76,7 +104,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header_bottom-box">
 				<div class="header_bottom_left">
 					<div class="logo">
-						<a href="index.html"><img src="../images/logo_ooz.png"
+						<a href="/test_ssh/init/home"><img src="../images/logo_ooz.png"
 							alt="首页" /></a>
 					</div>
 
@@ -93,7 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					%>
 					<ul class="bag">
 						<a href="#"><i class="bag_left"> </i></a>
-						<a href="#"><li class="bag_right"><p>购物篮</p></li></a>
+						<a href="/test_ssh/cart/showCart"><li class="bag_right"><p>购物篮</p></li></a>
 						<div class="clearfix"></div>
 					</ul>
 					<%
@@ -111,52 +139,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="menu_box">
 				<ul class="megamenu skyblue">
-					<li><a class="color2" href="index.jsp">首页</a></li>
-					<li><a class="color4" href="">定制</a>
-						<div class="megapanel">
-							<div class="row">
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<li><a href="">全部</a></li>
-											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
-											</c:forEach>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div></li>
-					<li><a class="color10" href="#">商城</a>
-						<div class="megapanel">
-							<div class="row">
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<li><a href="">全部</a></li>
-											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
-											</c:forEach>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div></li>
-					<li><a class="color7" href="#">拍卖</a>
-						<div class="megapanel">
-							<div class="row">
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<li><a href="">全部</a></li>
-											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
-											</c:forEach>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div></li>
+					<li class="active grid"><a class="color2"
+						href="/test_ssh/init/home">首页</a></li>
+					<li><a class="color7" href="/test_ssh/mall/enterMall?go=0">定制</a>
+						</li>
+					<li><a class="color10" href="/test_ssh/mall/enterMall?go=1">商城</a>
+						</li>
 					<li><a class="color8" href="">联系我们</a></li>
 					<div class="clearfix"></div>
 				</ul>
@@ -252,8 +240,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</p>
 		</div>
 	</div>
-
-	<input hidden value="${current_page}" id="current">
-	<input hidden value="${max_page}" id="max">
 </body>
 </html>
