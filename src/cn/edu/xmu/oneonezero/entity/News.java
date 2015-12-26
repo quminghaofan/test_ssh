@@ -1,6 +1,6 @@
 package cn.edu.xmu.oneonezero.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,8 +38,8 @@ public class News {
 		this.name = "";
 		this.content = "";
 		this.picUrl = "..\\images\\nopic.jpg";
-		this.onShowTime = new Date();
-		this.offShowTime = new Date();
+		this.onShowTime = new Date(new java.util.Date().getTime());
+		this.offShowTime = new Date(new java.util.Date().getTime());
 		this.rank = "";
 		this.state = "未审核";
 		this.price = 0;
@@ -71,14 +71,12 @@ public class News {
 	public void setPicUrl(String picUrl) {
 		this.picUrl = picUrl;
 	}
-	@Temporal(TemporalType.DATE)
 	public Date getOnShowTime() {
 		return onShowTime;
 	}
 	public void setOnShowTime(Date onShowTime) {
 		this.onShowTime = onShowTime;
 	}
-	@Temporal(TemporalType.DATE)
 	public Date getOffShowTime() {
 		return offShowTime;
 	}

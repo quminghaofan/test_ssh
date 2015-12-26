@@ -1,6 +1,6 @@
 package cn.edu.xmu.oneonezero.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -46,7 +46,7 @@ public class ArtworkOrder {
 	
 	public ArtworkOrder() {
 		this.orderId = "";
-		this.placeDate = new Date();
+		this.placeDate = new Date(new java.util.Date().getTime());
 		this.state = "未支付";
 		this.mobile = "";
 		this.address = "";

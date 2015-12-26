@@ -30,11 +30,14 @@ public class ArtworkOrderDaoImpl implements ArtworkOrderDao{
 	
 	@Override
 	public List<ArtworkOrder> getOrdersByOrderIdAndTimespace(String orderId, Date startTime, Date endTime) {
-		String hql = "from  ArtworkOrder a where a.orderId like ? and a.placeDate>? and a.placeDate<?";
+		String hql = "from  ArtworkOrder a where a.orderId like ? and a.placeDate>=? and a.placeDate<?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, orderId);
 		if(startTime!=null)
-			query.setDate(1, startTime);
+		{
+			java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());
+			query.setDate(1, sqlStartTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -44,7 +47,10 @@ public class ArtworkOrderDaoImpl implements ArtworkOrderDao{
 			query.setDate(1, temDate);
 		}
 		if(endTime!=null)
-			query.setDate(2, endTime);
+		{
+			java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+			query.setDate(2, sqlEndTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -58,21 +64,11 @@ public class ArtworkOrderDaoImpl implements ArtworkOrderDao{
 		return query.list();
 	}
 
-	@Override
-	public List<ArtworkOrder> getOrdersByVagueArtworkNameAndTimespace(String artworkName, Date startTime,
-			Date endTime) {
-		return null;
-	}
 
-	@Override
-	public List<ArtworkOrder> getOrdersByArtworkTypeAndTimespace(String artworkType, Date startTime, Date endTime) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<ArtworkOrder> getOrdersByUserNameAndTimespace(String userName, Date startTime, Date endTime) {
-		String hql = "from  ArtworkOrder a where a.user.name like ? and a.placeDate>? and a.placeDate<?";
+		String hql = "from  ArtworkOrder a where a.user.name like ? and a.placeDate>=? and a.placeDate<?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, userName);
 		if(startTime!=null)
@@ -100,17 +96,6 @@ public class ArtworkOrderDaoImpl implements ArtworkOrderDao{
 		return query.list();
 	}
 
-	@Override
-	public List<ArtworkOrder> getOrdersByArtistNameAndTimespace(String artistName, Date startTime, Date endTime) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ArtworkOrder> getOrdersByArtistId(long artistId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 	
