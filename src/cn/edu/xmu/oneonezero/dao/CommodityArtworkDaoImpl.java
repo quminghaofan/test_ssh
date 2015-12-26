@@ -202,7 +202,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 
 	@Override
 	public List<CommodityArtwork> getByVagueArtworkName(String name, String typeId) {
-		if(typeId==null)
+		if(typeId.equals("0"))
 		{
 			String hql = "from CommodityArtwork a where a.isExist=true and a.name like ?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -228,7 +228,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 
 	@Override
 	public List<CommodityArtwork> getByVagueOwnerName(String name, String typeId) {
-		if(typeId==null)
+		if(typeId.equals("0"))
 		{
 			String hql = "from CommodityArtwork a where a.isExist=true and a.owner.name like ?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
