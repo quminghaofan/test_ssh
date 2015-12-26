@@ -98,7 +98,7 @@ body {
 </head>
 <body>
 <form class="form-inline definewidth m20"
-		action="/test_ssh/chiefEditor/search?type=1" method="post">
+		action="/test_ssh/chiefEditor/search?type=2" method="post">
 		<font color="blue">软文类型: </font><select id="newsType" name="category" class="category">
 			<option selected></option>
 			<option value="广告">广告</option>

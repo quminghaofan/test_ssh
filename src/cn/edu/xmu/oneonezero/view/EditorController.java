@@ -41,7 +41,7 @@ public class EditorController {
 		news.setContent(request.getParameter("content"));
 		// System.out.println("newstype"+request.getParameter("category"));
 
-		news.setPicUrl("..\\attached\\" + PicUpload.saveFile(filedata, path));
+		news.setPicUrl(PicUpload.saveFile(filedata, path));
 
 		news.setOnShowTime(format.parse(request.getParameter("txtDate time1")));
 		news.setOffShowTime(format.parse(request.getParameter("txtDate time2")));

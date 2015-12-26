@@ -259,7 +259,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</br>
 	</br>
 	<a href="#"><font color="black">返回顶部</font></a>
-	<!--<p id="manu">您要<a href="/test_ssh/jsp/customizeArt" id="make">申请定制</a>吗？</p>-->
 
 	<div class="footer">
 		<div class="container">

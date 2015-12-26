@@ -113,7 +113,7 @@ body {
         </tr>
         <tr>
             <td class="tableleft">图片</td>
-            <td><span><img id="image" src="${news.picUrl}"></span>
+            <td><span><img id="image" src="${news.picUrl}" width="30%" height="30%""></span>
         </tr>
         <tr>
             <td width="10%" class="tableleft">上架时间</td>
@@ -121,7 +121,7 @@ body {
 		<input name="txtDate time1" id="txtDate time1"
 					class="Wdate" type="text"
 					onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})"
-					onchange="price_count()" />
+					onchange="price_count()" value="${news.onShowTime}"/>
 		
 			</td>
         </tr>
@@ -131,8 +131,7 @@ body {
 		<input name="txtDate time2" id="txtDate time2"
 					class="Wdate" type="text"
 					onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})"
-					onchange="price_count()" /> <span id="time_err"
-					style="display: none"><font color="red">下架时间不能小于上架时间</font></span>	
+					onchange="price_count()" value="${news.offShowTime}"/> 	
 						
 			</td>
         </tr>
@@ -152,14 +151,17 @@ body {
 		<tr>
             <td class="tableleft"></td>
             <td>
-             <input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="submit1()" value="通过">				 &nbsp;&nbsp;<input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="submit2()" value="不通过">				 &nbsp;&nbsp;<input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/chiefEditor/goback?type=${typeExamine}'" value="返回列表"> </td>
+             <input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="submit1()" value="通过">				 &nbsp;&nbsp;
+             <input class="btn btn-primary" type="submit"  name="btnid" id="btnid" onclick="submit2()" value="不通过">				 &nbsp;&nbsp;
+             <input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/chiefEditor/goback?type=${typeExamine}'" value="返回列表"> </td>
         </tr>
   </table>
 </form>
+<input type="hidden" id="typeExamine" value="${typeExamine}">
 </body>
 </html>
 
-<script>
+
 
 <script type="text/javascript">  
 $(function(){  
@@ -199,13 +201,15 @@ function price_count(){
 }
 function submit1(){
 	var myform=document.getElementById("myform");
-	myform.action="/test_ssh/chiefEditor/examineNews?type=1&typeExamine=${typeExamine}";
+	var typeExamine=document.getElementById("typeExamine").value;
+	myform.action="/test_ssh/chiefEditor/examineNews?type=1&typeExamine="+typeExamine;
 	myform.submit();
 	//return true;
 }
 function submit2(){
 	var myform=document.getElementById("myform");
-	myform.action="/test_ssh/chiefEditor/examineNews?type=0&typeExamine=${typeExamine}";
+	var typeExamine=document.getElementById("typeExamine").value;
+	myform.action="/test_ssh/chiefEditor/examineNews?type=0&typeExamine="+typeExamine;
 	myform.submit();
 }
 

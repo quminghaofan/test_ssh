@@ -452,7 +452,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 	public List<CommodityArtworkOrder> getByUserName(String name, String typeId, Date startTime, Date endTime) {
 		if(typeId==null||typeId.equals(""))
 		{
-			String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.user.name like ?  and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CommodityArtworkOrder cao where cao.user.name like ?  and cao.placeDate>? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
@@ -483,7 +483,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 		}
 		else
 		{
-			String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.user.name like ? and cao.commodityArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CommodityArtworkOrder cao where cao.user.name like ? and cao.commodityArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
