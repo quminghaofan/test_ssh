@@ -37,6 +37,7 @@ Smartusername Compatible web template, free webdesigns for Nokia, Samsung, LG, S
 <script type="text/javascript" src="../js/megamenu.js"></script>
 <script type="text/javascript" src="../js/username_repeat.js"></script>
 <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+<script type="text/javascript" src="../js/pictureload.js"></script>
 <style type="text/css">
 #headPhotoValue{
 position:absolute:
@@ -168,20 +169,23 @@ top:400px;
 	<div class="men">
 		<div class="container">
 			<div class="register">
-				<div class="col-md-6 login-left">
-					<h2 style="color: red">我的个人信息</h2>
-				</div>
+				
 				<div class="col-md-6 login-right">
 					<!--<p>
 						如果您已有账号，请直接 <a href="/test_ssh/jsp/login"><font
 							color="blue">登录</font></a>
 					</p>-->
-					<h3 style="color: blue" align="center-left">您可以对个人信息进行编辑</h3></br>
+					<h3 style="color: blue" align="center-left">我的个人信息</h3></br>
 					<form id="registerform" method="post" onsubmit="return before_register()" action="/test_ssh/user/changeInfo" enctype="multipart/form-data">
+						
 						<div>
-							<span>头像 <label>*</label></span>
-							<img id="headPhotoValue" src="<%=user.getHeadPhoto()%>"/>
-						</div></br>
+				<span>头像<label>*</label></span>
+				<div id="preview">
+						<span><img id="headPhotoValue" src="<%=user.getHeadPhoto()%>"/></span>
+					</div> <span><input id="img" name="img" type="file"
+						accept="images/*" onchange="previewImage(this,'preview','headPhotoValue')"/></span>
+
+</div>
 						<div>
 							<span> 昵称 <label>*</label></span> 
 							<input type="text"
@@ -224,10 +228,7 @@ top:400px;
 <!--<p id="password" value="${user.password}" readonly="true"></p>
 <input id="changePassword" type="button" value="修改密码" onclick="changePassword()"/>-->
 	
-						<a class="news-letter" href="#"> <label class="checkbox">
-								<input type="checkbox" name="confirm" id="cb"
-								checked="checked" /><i> </i>我同意该网站修改协定
-						</label></a>
+						
 						<input type="submit" value="完成" class="btn" id="tj" onClick="registerform.onsubmit()"> 
 					</form>
 				</div>
@@ -261,41 +262,33 @@ top:400px;
 function before_register(){
 	var flag=0;
 	var tel=document.getElementById("mobile").value;
-	if(document.getElementById("username").value==""){
+	/*if(document.getElementById("username").value==""){
 		document.getElementById("username_blank").style.display="block";
 		$("#username_blank").text("您的昵称是空的~"); 
 		flag=1;
-	}	
+	}	*/
 	if(!(/^1\d{10}$/.test(tel)))
 	{ 
 		document.getElementById("username_blank").style.display="block";
 		$("#username_blank").text("您输入的手机号不正确");
 		flag=1; 
 	}
-	if(document.getElementById("address").value==""){
+	/*if(document.getElementById("address").value==""){
 		document.getElementById("address_blank").style.display="block";
 		$("#address_blank").text("地址不能为空");
         flag=1;
-	}
-	if(document.getElementById("card").value==""){
+	}*/
+	if(document.getElementById("card").value==""||document.getElementById("card").value==null){
 		document.getElementById("card_blank").style.display="block";
 		$("#card_blank").text("银行卡号不能为空");
 		flag=1;
 	}	
-	if(document.getElementById("description").value=="")
+	/*if(document.getElementById("description").value=="")
 	{
 		document.getElementById("psw_blank1").style.display="block";
 		$("#description_blank").text("您不打算设置个性签名吗？");
 	}
-	if(document.getElementById('cb').checked)
-    {
-		document.getElementById('tj').disabled=false;
-	}      
-	else
-    {
-		document.getElementById('tj').disabled='disabled';  
-		flag=1;
-	}
+	*/
 	
 	if(flag==1)
 		return false;
