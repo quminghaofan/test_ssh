@@ -19,7 +19,7 @@ public class CustomizedArtworkOrder extends ArtworkOrder{
 	
 	private String demoPic;//样品图片属性
 	private String needDescription;//需求描述
-	private boolean isCancelled;//是否被取消了 true被取消了，false未被取消，默认false；
+
 	
 	
 	
@@ -39,12 +39,6 @@ public class CustomizedArtworkOrder extends ArtworkOrder{
 		this.demoPic = demoPic;
 	}
 	
-	public boolean isCancelled() {
-		return isCancelled;
-	}
-	public void setCancelled(boolean isCancelled) {
-		this.isCancelled = isCancelled;
-	}
 	@OneToOne
 	public CustomizedArtwork getCustomizedArtwork() {
 		return customizedArtwork;

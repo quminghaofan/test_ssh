@@ -38,6 +38,14 @@ public class ArtworkOrder {
 	protected String address;//发货地址
 	protected boolean isAccept;//是否接受订单
 	
+	private boolean isCancelled;//是否被取消了 true被取消了，false未被取消，默认false；
+	
+	public boolean getIsCancelled() {
+		return isCancelled;
+	}
+	public void setIsCancelled(boolean isCancelled) {
+		this.isCancelled = isCancelled;
+	}
 	protected Account payAccount;//支付账号
 	
 	

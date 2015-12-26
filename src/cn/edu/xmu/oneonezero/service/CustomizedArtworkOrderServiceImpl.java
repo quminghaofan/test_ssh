@@ -117,10 +117,6 @@ public class CustomizedArtworkOrderServiceImpl implements CustomizedArtworkOrder
 	}
 
 
-	@Override
-	public void cancelCustomizedArtworkOrder(long id) {
-		customizedArtworkOrderDao.cancelCustomizedArtworkOrder(id);
-	}
 
 
 	@Override

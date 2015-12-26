@@ -26,6 +26,7 @@ public interface ArtworkOrderService {
 	
 	public void setArtworkOrderIsAccept(long id, boolean isAccept);//根据id修改订单属性isAccept
 	
-	
+	public void cancelArtworkOrder(long id);//取消定制订单
+
 	
 }

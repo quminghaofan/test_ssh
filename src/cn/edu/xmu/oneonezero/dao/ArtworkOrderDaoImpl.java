@@ -130,4 +130,9 @@ public class ArtworkOrderDaoImpl implements ArtworkOrderDao{
 		aOrder.setIsAccept(isAccept);
 	}
 
+	@Override
+	public void cancelArtworkOrder(long id) {
+		ArtworkOrder artworkOrder=getOrderByOrderId(id);
+	}
+
 }

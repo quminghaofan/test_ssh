@@ -512,11 +512,6 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 		
 	}
 
-	@Override
-	public void cancelCustomizedArtworkOrder(long id) {
-		CustomizedArtworkOrder customizedArtworkOrder=getCustomedArtworkOrderByOrderId(id);
-		customizedArtworkOrder.setCancelled(true);
-	}
 
 	@Override
 	public void updateCustomizedArtworkOrder(CustomizedArtworkOrder customizedArtworkOrder) {

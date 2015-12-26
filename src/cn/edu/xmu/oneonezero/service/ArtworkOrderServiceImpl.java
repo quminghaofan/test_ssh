@@ -58,6 +58,11 @@ public class ArtworkOrderServiceImpl implements ArtworkOrderService{
 	public void setArtworkOrderIsAccept(long id, boolean isAccept) {
 		artworkOrderDao.setArtworkOrderIsAccept(id, isAccept);
 	}
+
+	@Override
+	public void cancelArtworkOrder(long id) {
+		artworkOrderDao.cancelArtworkOrder(id);
+	}
 	
 	
 }
