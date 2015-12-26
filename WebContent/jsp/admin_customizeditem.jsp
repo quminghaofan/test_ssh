@@ -69,9 +69,9 @@ body {
 		<c:if test="${ITEMLIST!=null}">
 			<c:forEach items="${ITEMLIST}" var="item">
 				<tr>
-					<td><img id="image1" src="${item.startImg}" /></td>
-					<td><img id="image2" src="${item.midImg}" /></td>
-					<td><img id="image3" src="${item.endImg}" /></td>
+					<td style="width: 15%;"><img id="image1" src="${item.startImg}" style="width: 100%;"/></td>
+					<td style="width: 15%;"><img id="image2" src="${item.midImg}" style="width: 100%;"/></td>
+					<td style="width: 15%;"><img id="image3" src="${item.endImg}" style="width: 100%;"/></td>
 					<td>${item.name}</td>
 					<td>${item.type.name}</td>
 					<td>${item.owner.name}</td>
