@@ -194,7 +194,7 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 
 	@Override
 	public void insertCustomizedArtworkOrder(CustomizedArtworkOrder customizedArtworkOrder) {
-		sessionFactory.getCurrentSession().saveOrUpdate(customizedArtworkOrder);
+		sessionFactory.getCurrentSession().merge(customizedArtworkOrder);
 		sessionFactory.getCurrentSession().flush();
 	}
 
