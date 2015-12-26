@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -36,6 +37,9 @@ public class ArtworkOrder {
 	protected String mobile;//联系方式
 	protected String address;//发货地址
 	protected boolean isAccept;//是否接受订单
+	
+	protected Account payAccount;//支付账号
+	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -89,6 +93,13 @@ public class ArtworkOrder {
 	}
 	public void setIsAccept(boolean isAccept) {
 		this.isAccept = isAccept;
+	}
+	@OneToOne
+	public Account getPayAccount() {
+		return payAccount;
+	}
+	public void setPayAccount(Account payAccount) {
+		this.payAccount = payAccount;
 	}
 	
 
