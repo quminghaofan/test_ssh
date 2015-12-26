@@ -164,13 +164,13 @@ public class EditorController {
     	String newsType=request.getParameter("category");
     	String startTime=request.getParameter("onShowTime");
     	
-    	if(startTime.equals("")){
+    	if(startTime==null){
     		start=null;
     	}else {
 			start=format.parse(startTime);
 		}
     	String endTime=request.getParameter("offShowTime");
-    	if(endTime.equals("")){
+    	if(endTime==null){
     		end=null;
     	}else {
     		end=format.parse(endTime);

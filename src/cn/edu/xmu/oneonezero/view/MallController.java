@@ -56,7 +56,6 @@ public class MallController {
 		int pageTimes;
 		request.setAttribute("currentPage", curentPage);
 		request.setAttribute("typeId", typeId);
-		System.out.println("购物：" + go);
 		if (go.equals("1")) {
 			pageTimes = commodityArtworkService.getPageTotalByVagueName(
 					itemname, 30);
@@ -153,10 +152,9 @@ public class MallController {
 				commodityArtworkOrder.setPlaceDate(new Date(System
 						.currentTimeMillis()));
 				commodityArtworkOrder.setState("未支付");
+				commodityArtworkOrderService.insertCommodityArtworkOrder(commodityArtworkOrder);
 				commodityArtworkOrders.add(commodityArtworkOrder);
 			}
-			commodityArtworkOrderService
-					.insertSomeCommodityArtworkOrders(commodityArtworkOrders);
 			CommonMethod.cleanCookie(request, response);
 		} else {
 			CommodityArtwork commodityArtwork = commodityArtworkService
@@ -171,9 +169,8 @@ public class MallController {
 			commodityArtworkOrder.setPlaceDate(new Date(System
 					.currentTimeMillis()));
 			commodityArtworkOrder.setState("未支付");
-			commodityArtworkOrders.add(commodityArtworkOrder);
-			 System.out.println("添加一个");
 			commodityArtworkOrderService.insertCommodityArtworkOrder(commodityArtworkOrder);
+			commodityArtworkOrders.add(commodityArtworkOrder);
 		}
 		request.getSession().setAttribute("commodityArtworkOrders",
 				commodityArtworkOrders);
@@ -193,7 +190,7 @@ public class MallController {
 			List<CommodityArtworkOrder> commodityArtworkOrders = (List<CommodityArtworkOrder>) request.getSession().getAttribute("commodityArtworkOrders");
 			System.out.println("comOrder-size:"+commodityArtworkOrders.size());
 				for (CommodityArtworkOrder commodityArtworkOrder : commodityArtworkOrders) {
-					// System.out.println("commodityArtworkOrderId:"+commodityArtworkOrder.getId());
+					 System.out.println("添加-commodityArtworkOrderId:"+commodityArtworkOrder.getId());
 					commodityArtworkOrderService
 							.updateCommodityArtworkOrderState(
 									commodityArtworkOrder.getId(), "已支付未发货");
