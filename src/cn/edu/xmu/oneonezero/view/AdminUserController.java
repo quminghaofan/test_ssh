@@ -95,6 +95,7 @@ public class AdminUserController {
 		String typeId=request.getParameter("typeId");
 		String startTime=request.getParameter("txtDate time1");
 		String endTime=request.getParameter("txtDate time2");
+		request.setAttribute("TYPELIST", dataDictionaryService.getAllArtworkTypes());
 		Date start,end;
 		if(startTime==null||startTime.equals("")){
     		start=null;
@@ -106,7 +107,7 @@ public class AdminUserController {
     	}else {
     		end=format.parse(endTime);
 		}
-    	System.out.println("typeId"+type);
+    	System.out.println("type"+type);
 		if(type.equals("0")){
 			request.setAttribute("ORDERLIST",customizedArtworkOrderService.getByOrderIdOrArtworkNameOrOwnerNameOrUserName(sign, name, typeId, start, end));
 			return "admin_customizedArtworkorderlist";
