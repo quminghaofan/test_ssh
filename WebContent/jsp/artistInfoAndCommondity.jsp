@@ -244,15 +244,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="span_3">
 		<c:forEach items="${artCommodList}" var="artWork">
 			<div class="col-sm-3 grid_1">
-				<img id="artart" src="../images/poster.jpg" class="img-responsive" alt="" />
+				<img id="artart" src="${artWork.picUrl}" class="img-responsive" alt="" />
 				<h3>${artWork.type.name}</h3>
 				<h4>${artWork.name}</h4>
 			</div>
-						<div class="col-sm-3 grid_1">
+						<!--<div class="col-sm-3 grid_1">
 				<img id="artart" src="../images/poster.jpg" class="img-responsive" alt="" />
 				<h3>${artWork.type.name}</h3>
 				<h4>${artWork.name}</h4>
-			</div>
+			</div>-->
 		</c:forEach>
 		<div class="clearfix"></div>
 	   </div>
