@@ -503,12 +503,14 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	public void updateCustomizedArtworkOrderStage(long orderId, String stage) {
 		CustomizedArtworkOrder customizedArtworkOrder=getCustomedArtworkOrderByOrderId(orderId);
 		customizedArtworkOrder.setStage(stage);
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	@Override
 	public void updateCustomizedArtworkOrderState(long orderId, String state) {
 		CustomizedArtworkOrder customizedArtworkOrder=getCustomedArtworkOrderByOrderId(orderId);
 		customizedArtworkOrder.setState(state);
+		sessionFactory.getCurrentSession().flush();
 		
 	}
 
@@ -516,6 +518,7 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	@Override
 	public void updateCustomizedArtworkOrder(CustomizedArtworkOrder customizedArtworkOrder) {
 		sessionFactory.getCurrentSession().saveOrUpdate(customizedArtworkOrder);
+		sessionFactory.getCurrentSession().flush();
 	}
 	
 	

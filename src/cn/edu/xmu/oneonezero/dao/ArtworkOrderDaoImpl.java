@@ -128,12 +128,14 @@ public class ArtworkOrderDaoImpl implements ArtworkOrderDao{
 	public void setArtworkOrderIsAccept(long id, boolean isAccept) {
 		ArtworkOrder aOrder=getOrderByOrderId(id);
 		aOrder.setIsAccept(isAccept);
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	@Override
 	public void cancelArtworkOrder(long id) {
 		ArtworkOrder artworkOrder=getOrderByOrderId(id);
 		artworkOrder.setIsCancelled(true);
+		sessionFactory.getCurrentSession().flush();
 	}
 
 }

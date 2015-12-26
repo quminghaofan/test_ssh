@@ -239,6 +239,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 	public void updateCommodityArtworkOrderState(long orderId, String state) {
 		CommodityArtworkOrder tempCAO=getCommodityArtworkOrderByOrderId(orderId);
 		tempCAO.setState(state);
+		sessionFactory.getCurrentSession().flush();
 		
 	}
 
@@ -525,6 +526,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 				sessionFactory.getCurrentSession().flush();
 			}
 		}
+		sessionFactory.getCurrentSession().flush();
 	}
 	
 	

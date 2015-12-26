@@ -97,6 +97,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 	@Override
 	public void insertCommodityArtwork(CommodityArtwork commodityArtwork) {
 		sessionFactory.getCurrentSession().saveOrUpdate(commodityArtwork);
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	@Override
@@ -112,6 +113,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 	@Override
 	public void updateCommodityArtwork(CommodityArtwork commodityArtwork) {
 		sessionFactory.getCurrentSession().saveOrUpdate(commodityArtwork);
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	@Override
@@ -126,6 +128,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 	public void prohibitCommodityArtwork(long commodityArtworkId) {
 		CommodityArtwork temCommodityArtwork=getCommodityArtworkById(commodityArtworkId);
 		temCommodityArtwork.setIsExist(false);
+		sessionFactory.getCurrentSession().flush();
 		
 	}
 
@@ -177,6 +180,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 	public void setCommodityArtworkIsExistByArtworkId(long artworkId, boolean isExist) {
 		CommodityArtwork commodityArtwork=getCommodityArtworkById(artworkId);
 		commodityArtwork.setIsExist(isExist);
+		sessionFactory.getCurrentSession().flush();
 		
 	}
 

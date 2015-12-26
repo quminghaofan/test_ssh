@@ -57,6 +57,7 @@ public class DataDictionaryDaoImpl implements DataDictionaryDao{
 		artworkTypeDataDictionary.setNumber(temString);
 		
 		sessionFactory.getCurrentSession().saveOrUpdate(artworkTypeDataDictionary);
+		sessionFactory.getCurrentSession().flush();
 	}
 	//设置编号（自增）
 

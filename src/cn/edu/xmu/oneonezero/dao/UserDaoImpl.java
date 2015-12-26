@@ -41,12 +41,14 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void insertUser(User user) {
 		sessionFactory.getCurrentSession().save(user);
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	@Override
 	public void updateUser(User user) {
 		
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
+		sessionFactory.getCurrentSession().flush();
 	
 	}
 
@@ -175,6 +177,7 @@ public class UserDaoImpl implements UserDao {
 	public void updatePasswordByUserId(long userId, String psw) {
 		User u=getUser(userId);
 		u.setPassword(psw);
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	@Override

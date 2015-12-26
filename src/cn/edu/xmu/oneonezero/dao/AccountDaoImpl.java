@@ -30,11 +30,13 @@ public class AccountDaoImpl implements AccountDao{
 	@Override
 	public void insertAccount(Account account) {
 		sessionFactory.getCurrentSession().saveOrUpdate(account);
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	@Override
 	public void updateAccount(Account account) {
 		sessionFactory.getCurrentSession().saveOrUpdate(account);	
+		sessionFactory.getCurrentSession().flush();
 	}
 
 
