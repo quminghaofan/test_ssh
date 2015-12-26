@@ -172,14 +172,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         	      String address=(String)session.getAttribute("address");
         	      String mobile=(String)session.getAttribute("mobile");
                %>
-				<form method="get"  action="/test_ssh/mall/editOrder?address=<%=address %>&mobile=<%=mobile%>&type=${type}&wh=1" class="artworkform">
+				<form method="post"  action="/test_ssh/mall/editOrder?type=${type}&wh=1" class="artworkform">
 				  <div>
 					<span>地址</span>
-					<input type="text" value="<%=address %>"> 
+					<input type="text" value="<%=address %>" id="adre" name="addre"> 
 				  </div>
 				   <div>
 					<span>电话</span>
-					<input type="text" value="<%=mobile %>"> 
+					<input type="text" value="<%=mobile %>" id="phone" name="phone"> 
 				  </div>
 				  <input type="submit" value="确认">
 				  <input type="button" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/mall/goBack?type=${type}'" value="返回">

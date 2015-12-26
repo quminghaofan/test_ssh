@@ -12,7 +12,9 @@
 	content="Gifty Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 </script>
 <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -36,8 +38,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="../js/responsiveslides.min.js"></script>
 <script type="text/javascript" src="../js/addcart.js"></script>
 <script src="../ogLaVp_data/requestAnimationFrame.js"></script>
-<script src="../ogLaVp_data/jquery_002.js"></script> 
-<script src="../ogLaVp_data/stopExecutionOnTimeout-6c99970ade81e43be51fa877be0f7600.js"></script>
+<script src="../ogLaVp_data/jquery_002.js"></script>
+<script
+	src="../ogLaVp_data/stopExecutionOnTimeout-6c99970ade81e43be51fa877be0f7600.js"></script>
 <link href='../css/totop.css' rel='stylesheet' type='text/css'>
 <script>
 	$(document).ready(function() {
@@ -50,15 +53,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 </head>
 <body>
-<div id="updown">
-	<%if (session.getAttribute("user") != null) {
-					%>
-					<a href="/test_ssh/cart/showCart"><span id="end" class="cart"></span></a>
-					<%
-						}
-					%>
-	
-	<span class="up"></span><span class="down"></span>
+	<div id="updown">
+		<%
+			if (session.getAttribute("user") != null) {
+		%>
+		<a href="/test_ssh/cart/showCart"><span id="end" class="cart"></span></a>
+		<%
+			}
+		%>
+
+		<span class="up"></span><span class="down"></span>
 	</div>
 	<div class="header_top">
 		<div class="container">
@@ -71,14 +75,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<%
 							if (session.getAttribute("user") == null) {
 						%>
-						<li><a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'">登录/注册</a></li>
+						<li><a
+							href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'">登录/注册</a></li>
 						<%
 							} else {
 						%>
 						<li><a href="">申请成为艺术家</a></li>
-						<li><a href=""> <%=((User)session.getAttribute("user")).getName()%></a></li>
+						<li><a href=""> <%=((User) session.getAttribute("user")).getName()%></a></li>
 						<li><a href="">我的订单</a></li>
-						<li><a href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
+						<li><a
+							href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
 						<%
 							}
 						%>
@@ -93,8 +99,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header_bottom-box">
 				<div class="header_bottom_left">
 					<div class="logo">
-						<a href="/test_ssh/init/home"><img src="../images/logo_ooz.png"
-							alt="首页" /></a>
+						<a href="/test_ssh/init/home"><img
+							src="../images/logo_ooz.png" alt="首页" /></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -139,7 +145,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</div>
 						</div></li>
-					<li class="active grid"><a class="color10" href="/test_ssh/mall/enterMall">商城</a>
+					<li class="active grid"><a class="color10"
+						href="/test_ssh/mall/enterMall">商城</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
@@ -213,20 +220,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h4 style="margin-top: 2em">${item.price}</h4>
 						<p style="margin-top: 2em">${item.artworkDescription}</p>
 						<div style="margin-top: 3em">
-							<%
-										if (session.getAttribute("user") != null) {
-							%>
+							<%if (session.getAttribute("user") != null) {%>
 							<a class="acount-btn" <%-- href="/test_ssh/cart/add2Cart?itemId=${item.id}&backUrl=/test_ssh/init/home" --%>
 											class="link" id="add2Cart">加入购物篮</a>
 							<a class="acount-btn" href="/test_ssh/mall/settleOne?itemId=${item.id}" style="margin-top: 2em">立即购买</a>
-							<%
-										} else {
-							%>
+							<%} else {%>
 							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'">加入购物篮</a>
 							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'" style="margin-top: 2em">立即购买</a>
-							<%
-										}
-							%>
+							<%}%>
 						</div>
 					</div>
 					<div class="clearfix"></div>
@@ -237,45 +238,51 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 -->
-<div style="float:left;width:5%">
-	<a href=""><img src="../images/back.png" alt="返回" class="img-responsive"/>
-	</a>
+	<div style="float: left; width: 5%">
+		<a href="/test_ssh/mall/enterMall?go=1"><img src="../images/back.png" alt="返回"
+			class="img-responsive" /> </a>
+	</div>
+	<div class="men">
+		<div class="container">
+			<div class="single_top">
+				<div class="col-md-9 single_right">
+					<div class="grid images_3_of_2">
+						<a href="/test_ssh/mall/seeMore?itemId=${item.id}"><img src="${item.picUrl}" class="img-responsive" /></a>
+						<div class="clearfix"></div>
 					</div>
-<div class="men">
-	<div class="container">
-	  <div class="single_top">
-	       <div class="col-md-9 single_right">
-	   	       <div class="grid images_3_of_2">
-									<img src="${item.picUrl}" class="img-responsive" />		
-						 <div class="clearfix"></div>		
-				  </div> 
-				  <div class="desc1 span_3_of_2">
-				    <h1>${item.name}</h1>
-				    <p class="m_5">${item.type} </p>
-				    <p class="m_5">${item.price} </p>
-				    <div class="btn_form">
-						<%
-										if (session.getAttribute("user") != null) {
-							%>
-							<a class="acount-btn" class="link" id="add2Cart" onclick="add2Cart(${item.id},this,event)">加入购物篮</a>
-							<a class="acount-btn" href="/test_ssh/mall/settleOne?itemId=${item.id}" style="margin-top: 2em">立即购买</a>
+					<div class="desc1 span_3_of_2">
+						<h1>${item.name}</h1>
+						<p class="m_5">${item.type.name}</p>
+						<p class="m_5">${item.price}</p>
+						<div class="btn_form">
 							<%
-										} else {
+								if (session.getAttribute("user") != null) {
 							%>
-							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'">加入购物篮</a>
-							<a class="acount-btn" href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'" style="margin-top: 2em">立即购买</a>
+							<a class="acount-btn" class="link" id="add2Cart"
+								onclick="add2Cart(${item.id},this,event)">加入购物篮</a> <a
+								class="acount-btn"
+								href="/test_ssh/mall/settleOne?itemId=${item.id}"
+								style="margin-top: 2em">立即购买</a>
 							<%
-										}
+								} else {
 							%>
-					 <p class="m_text2">${item.artworkDescription}</p>
-				  </div>
-				  <div class="clearfix"></div>	
-       </div>
- 
-     </div>
-      </div>
-</div>
-</div>
+							<a class="acount-btn"
+								href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'">加入购物篮</a>
+							<a class="acount-btn"
+								href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/seeMore?itemId=${item.id}'"
+								style="margin-top: 2em">立即购买</a>
+							<%
+								}
+							%>
+							<p class="m_text2">${item.artworkDescription}</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 	<div class="footer">

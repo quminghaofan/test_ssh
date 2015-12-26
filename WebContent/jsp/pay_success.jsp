@@ -42,7 +42,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		$(".megamenu").megamenu();
 	});
 </script>
-<meta http-equiv="refresh" content="5;URl=index(real).jsp">
+<meta http-equiv="refresh" content="5;URl=/test_ssh/init/home">
 </head>
 <body>
 	<div class="header_top">

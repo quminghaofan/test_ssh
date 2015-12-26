@@ -116,7 +116,7 @@ public class InitController {
 		User user = new User();
 		user.setName(userNameString);
 		user.setPassword(psw);
-		user.setRole(dataDictionaryService.getDataDictionaryByName("预备艺术家"));
+		user.setRole(dataDictionaryService.getDataDictionaryByName("普通用户"));
 		userService.insertUser(user);
 		return "login";
 	}
