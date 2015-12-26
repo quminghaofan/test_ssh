@@ -47,10 +47,10 @@ public class InitController {
 
 	@RequestMapping(value = "/home")
 	public String home(HttpServletRequest request) {
-		request.setAttribute("RRlist",newsService.getNewsToday(new Date(System.currentTimeMillis())));
+		request.setAttribute("RRlist",newsService.getNewsToday(new Date()));
 		request.setAttribute("commodityArtworkList",commodityArtworkService.commodityArtworksToDisplay());
 		request.setAttribute("TYPELIST", dataDictionaryService.getAllArtworkTypes());
-		request.setAttribute("adlist",newsService.getAdvertisementToday(new Date(System.currentTimeMillis())));
+		request.setAttribute("adlist",newsService.getAdvertisementToday(new Date()));
 		request.setAttribute("customizedlist", customizedArtworkService.getAllCustomizedArtworks());
 		return "index";
 	}

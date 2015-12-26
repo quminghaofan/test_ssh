@@ -163,12 +163,12 @@ public class MallController {
 			commodityArtworkOrder.setOrderId(Long.toString(System
 					.currentTimeMillis()));
 			commodityArtworkOrder.setCommodityArtwork(commodityArtwork);
-//			commodityArtworkOrder.setUser(user);
+			commodityArtworkOrder.setUser(user);
 			commodityArtworkOrder.setAddress(user.getAddress());
 			commodityArtworkOrder.setMobile(user.getMobile());
-			commodityArtworkOrder.setPlaceDate(new Date(System
-					.currentTimeMillis()));
+			commodityArtworkOrder.setPlaceDate(new Date());
 			commodityArtworkOrder.setState("未支付");
+			System.out.println((new Date()).toString());
 			commodityArtworkOrderService.insertCommodityArtworkOrder(commodityArtworkOrder);
 			commodityArtworkOrders.add(commodityArtworkOrder);
 		}
