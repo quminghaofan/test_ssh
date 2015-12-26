@@ -1,5 +1,5 @@
 <%@page import="java.util.Date"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -39,41 +39,49 @@ body {
 	height: 50px;
 }
 
-		date{display:block;}
-	
-        body {
-            padding-bottom: 40px;
-        }
-        .sidebar-nav {
-            padding: 9px 0;
-        }
+date {
+	display: block;
+}
 
-        @media (max-width: 980px) {
-            /* Enable use of floated navbar text */
-            .navbar-text.pull-right {
-                float: none;
-                padding-left: 5px;
-                padding-right: 5px;
-            }
-        }
-		#type{
-			width:115px;		
-		}
-		#newType{
-		  height:30px;
-		  width:115px;
-		}
-		#onShowTime{
-			width:140px;
-			height:25px;
-		}
-		#offShowTime{
-			width:140px;
-			height:25px;
-		}
-		#RRname{
-			height:25px;
-		}
+body {
+	padding-bottom: 40px;
+}
+
+.sidebar-nav {
+	padding: 9px 0;
+}
+
+@media ( max-width : 980px) {
+	/* Enable use of floated navbar text */
+	.navbar-text.pull-right {
+		float: none;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+}
+
+#type {
+	width: 115px;
+}
+
+#newType {
+	height: 30px;
+	width: 115px;
+}
+
+#onShowTime {
+	width: 140px;
+	height: 25px;
+}
+
+#offShowTime {
+	width: 140px;
+	height: 25px;
+}
+
+#RRname {
+	height: 25px;
+}
 </style>
 
 <link rel="stylesheet" href="../texteditor/themes/default/default.css" />
@@ -105,22 +113,15 @@ body {
 			<option selected></option>
 			<option value="广告">广告</option>
 			<option value="资讯">资讯</option>
-		</select> <font color="blue">开始时间: </font>
-		<input name="txtDate time1" id="txtDate time1"
-					class="Wdate" type="text"
-					onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})"
-					onchange="price_count()" />
-				<font color="blue">结束时间: </font>
-
-		<input name="txtDate time2" id="txtDate time2"
-					class="Wdate" type="text"
-					onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})"
-					onchange="price_count()" /> <span id="time_err"
-					style="display: none"><font color="red">下架时间不能小于上架时间</font></span>	
-
-			
-			<input type="text"
-			name="RRname" id="RRname" class="abc input-default"
+		</select> <font color="blue">开始时间: </font> <input name="txtDate time1"
+			id="txtDate time1" class="Wdate" type="text"
+			onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})"
+			onchange="price_count()" /> <font color="blue">结束时间: </font> <input
+			name="txtDate time2" id="txtDate time2" class="Wdate" type="text"
+			onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})"
+			onchange="price_count()" /> <span id="time_err"
+			style="display: none"><font color="red">下架时间不能小于上架时间</font></span> <input
+			type="text" name="RRname" id="RRname" class="abc input-default"
 			placeholder="请输入软文名称关键字......" value="">&nbsp;&nbsp;
 		<button type="submit" class="btn btn-primary" id="search"
 			name="search">搜索</button>
@@ -146,18 +147,8 @@ body {
 					<td>${rr.offShowTime}</td>
 					<td>${rr.rank}</td>
 					<td>${rr.newsType}</td>
-					<%
-						Date now = new Date(System.currentTimeMillis());
-					%>
-					<td>
-					<c:if test="${(rr.onShowTime).getTime()>now.getTime()}">
-						<a href="/test_ssh/news/showNews?newsId=${rr.id}&type=6">查看</a>&nbsp;&nbsp;<a
-							href="/test_ssh/editor/withdraw?newsId=${rr.id}&type=2">撤回</a>
-					</c:if>
-
-					<c:if test="${(rr.onShowTime).getTime()<=now.getTime()}">
-						<a href="/test_ssh/news/showNews?newsId=${rr.id}&type=6">查看</a>
-					</c:if>
+					<td><a href="/test_ssh/news/showNews?newsId=${rr.id}&type=6">查看</a>
+						&nbsp;&nbsp;<a href="javascript:time(${rr.id},${rr.onShowTime})">撤回</a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -187,5 +178,13 @@ function price_count(){
 	  document.getElementById("price").value=price;
 	  }
 	}
+}
+
+function time(id,time){alert("a");
+	var current=new Date();
+	if(time.getTime()>current.getTime())
+		window.location.href="/test_ssh/editor/withdraw?newsId="+id+"&type=2";
+	else
+		alert("已上架，不能撤回!");
 }
 </script>
