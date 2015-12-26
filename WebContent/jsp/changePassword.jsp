@@ -61,6 +61,9 @@ top:400px;
 #check_blank{
 	color:red;
 }
+#pic{
+	width:40px;
+}
 </style>
 </head>
 <body>
@@ -164,16 +167,21 @@ top:400px;
 	  </div>
 </div>
 </div>
+	<div style="float: left; width: 5%">
+		<a href="/test_ssh/WebContent/jsp/personInfoChange?go=1"><img id="pic" src="../images/back.png" alt="返回"
+			class="img-responsive" /> </a>
+	</div>
+
 	<div class="men">
 		<div class="container">
 			<div class="register">
 				<div class="col-md-6 login-left">
-					<h2 style="color: red"></h2>
+					<h2 style="color: red">欢迎来到艺术品网站</h2>
 				</div>
 				<div class="col-md-6 login-right">
 <%User user=(User)session.getAttribute("user"); %>
 					<form id="changeform" method="post" onsubmit="return before_register()" action="/test_ssh/super/changePsw?userId=<%=user.getId() %>">
-					<h2 style="color: blue" align="center-left">我的密码修改</h2></br>
+					<h2 style="color: black" align="center-left">我的密码修改</h2></br>
 						<!--<div>
 							<span> 新密码 <label>*</label></span> 
 							<input name="password"
@@ -195,7 +203,8 @@ top:400px;
 							<span style="display: none"
 								id="psw_blank1"><font color="red"></font></span>
 						</div>
-						<input type="submit" value="完成" class="btn" id="tj" onClick="registerform.onsubmit()"> 
+						<input type="submit" value="完成" class="btn" id="tj" onClick="registerform.onsubmit()">
+						<!--<input type="submit" value="返回" class="btn" id="fh" onClick="">-->
 					</form>
 				</div>
 				<div class="clearfix"></div>
