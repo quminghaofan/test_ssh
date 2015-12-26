@@ -164,39 +164,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-	<div class="men">
-		<div class="container">
-			<div align="center">
-				<div style="width: 90%;">
-					<div style="padding: 6%" align="left">
+	<div class="container">
+		<div align="center">
+			<div style="width: 90%;">
+				<div style="padding: 6%" align="left">
 
-						<div class="orderdiv" style="margin-top: 2%">
-							<c:forEach items="${orderlist}" var="order">
-								<div style="width: 20%;" class="left-grid">
-									<img class="img-responsive" src="${order.picUrl}">
-								</div>
-
-								<div class="info" align="left">
-									<div style="font-size: large" class="infomargin">
-										<label>${order.name}</label>
-									</div>
-									<div align="right">
-										<label>类别:&nbsp;${order.type.name}</label>&nbsp;&nbsp; <label>价格:&nbsp;¥&nbsp;${order.price}</label>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</c:forEach>
-
-							<div class="breakline"></div>
-
-							<div align="right" style="font-weight: bolder">
-								<label>总价&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</label> <label
-									id="total">¥ ${total}</label>
+					<div class="orderdiv" style="margin-top: 2%">
+						<c:forEach items="${orderlist}" var="order">
+							<div style="width: 20%;" class="left-grid">
+								<img class="img-responsive" src="${order.picUrl}">
 							</div>
 
+							<div class="info" align="left">
+								<div style="font-size: large" class="infomargin">
+									<label>${order.name}</label>
+								</div>
+								<div align="right">
+									<label>类别:&nbsp;${order.type.name}</label>&nbsp;&nbsp; <label>价格:&nbsp;¥&nbsp;${order.price}</label>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</c:forEach>
 
-							<div style="margin-top: 3%; text-align: left">
-								<%
+						<div class="breakline"></div>
+
+						<div align="right" style="font-weight: bolder">
+							<label>总价&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</label> <label
+								id="total">¥ ${total}</label>
+						</div>
+
+
+						<div style="margin-top: 3%; text-align: left">
+							<%
+							request.setCharacterEncoding("UTF-8");
 									User user = (User) session.getAttribute("user");
 									String address;
 									String mobile;
@@ -206,59 +206,60 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									} else {
 										address = (String) session.getAttribute("address");
 										mobile = (String) session.getAttribute("mobile");
-									}
+									}/* 
+									System.out.println("jsp:"+address); */
 								%>
-								<div style="margin-bottom: 2%;">
-									<label>用户名:&nbsp;&nbsp;</label> <label
-										style="font-weight: bold"><%=user.getName()%></label>
-								</div>
-								<div style="margin-bottom: 2%;">
-									<label>地址:&nbsp;&nbsp;&nbsp;&nbsp;</label> <label class="txt1"
-										style="vertical-align: bottom" id="modi_address"><%=address%></label>
-								</div>
-								<div>
-									<label>电话:&nbsp;&nbsp;&nbsp;&nbsp;</label> <label class="txt2"
-										style="vertical-align: bottom" id="modi_phone"><%=mobile%></label>
-								</div>
-								<input type="button"
-									style="display: inline; vertical-align: bottom" value="编辑"
-									id="edit" class="btn4" onclick="window.location.href = '/test_ssh/mall/editOrder?address=<%=address%>&mobile=<%=mobile%>&type=${type}&wh=0'" />
+							<div style="margin-bottom: 2%;">
+								<label>用户名:&nbsp;&nbsp;</label> <label style="font-weight: bold"><%=user.getName()%></label>
 							</div>
+							<div style="margin-bottom: 2%;">
+								<label>地址:&nbsp;&nbsp;&nbsp;&nbsp;</label> <label class="txt1"
+									style="vertical-align: bottom" id="modi_address"><%=address%></label>
+							</div>
+							<div>
+								<label>电话:&nbsp;&nbsp;&nbsp;&nbsp;</label> <label class="txt2"
+									style="vertical-align: bottom" id="modi_phone"><%=mobile%></label>
+							</div>
+							<input type="button"
+								style="display: inline; vertical-align: bottom" value="编辑"
+								id="edit" class="btn4"
+								onclick="window.location.href = '/test_ssh/mall/editOrder?address=<%=address%>&mobile=<%=mobile%>&type=${type}&wh=0'" />
+						</div>
 
 
-							<div align="right" style="margin-top: 3%;">
-								<a href="/test_ssh/cart/showCart"><input type="button"
-									class="orderbutton" style="margin-right: 1.5%" value="返回购物篮" /></a>
-								<a href="/test_ssh/mall/goToPay?type=${type}&total=${total}"><input
-									type="button" class="orderbutton" value="确认支付" /></a>
-							</div>
+						<div align="right" style="margin-top: 3%;">
+							<a href="/test_ssh/cart/showCart"><input type="button"
+								class="orderbutton" style="margin-right: 1.5%" value="返回购物篮" /></a>
+							<a href="/test_ssh/mall/goToPay?type=${type}&total=${total}"><input
+								type="button" class="orderbutton" value="确认支付" /></a>
 						</div>
 					</div>
-
 				</div>
+
 			</div>
 		</div>
+	</div>
 
 
 
-		<div class="footer">
-			<div class="container">
-				<img src="../images/pay.png" class="img-responsive" alt="" />
-				<ul class="footer_nav">
-					<li><a href="#">首页</a></li>
-					<li><a href="#">定制</a></li>
-					<li><a href="#">商城</a></li>
-					<li><a href="#">拍卖</a></li>
-					<li><a href="#">关于我们</a></li>
-					<li><a href="">联系我们</a></li>
-				</ul>
-				<p class="copy">
-					Copyright &copy; 2015.厦门大学软件学院OneoneZero All rights reserved. More
-					Information <a href="" target="_blank" title="OneoneZero">OneoneZero</a>
-					- Made by <a href="" title="OneoneZero" target="_blank">OneoneZero</a>
-				</p>
-			</div>
+	<div class="footer">
+		<div class="container">
+			<img src="../images/pay.png" class="img-responsive" alt="" />
+			<ul class="footer_nav">
+				<li><a href="#">首页</a></li>
+				<li><a href="#">定制</a></li>
+				<li><a href="#">商城</a></li>
+				<li><a href="#">拍卖</a></li>
+				<li><a href="#">关于我们</a></li>
+				<li><a href="">联系我们</a></li>
+			</ul>
+			<p class="copy">
+				Copyright &copy; 2015.厦门大学软件学院OneoneZero All rights reserved. More
+				Information <a href="" target="_blank" title="OneoneZero">OneoneZero</a>
+				- Made by <a href="" title="OneoneZero" target="_blank">OneoneZero</a>
+			</p>
 		</div>
+	</div>
 </body>
 </html>
 
