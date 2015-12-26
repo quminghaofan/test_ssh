@@ -248,20 +248,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="clearfix"></div>
 		</div>
 	</form>
-	<p id="manu">
-		您要
+
+	<!--<p id="manu">您要<a href="/test_ssh/jsp/customizeArt" id="make">申请定制</a>吗？</p>-->	
+	
 	<%if(user!=null){%>
-		<a href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}"><img
-			src="../images/customize.jpg" alt="申请定制" class="img-responsive" /></a>
+		<a href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}">申请定制</a>
 	<%}else{ %>
-	<a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'"><img
-			src="../images/customize.jpg" alt="申请定制" class="img-responsive" /></a>
-	<%} %>吗？
-	</p>
+	<a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'">申请定制</a>
+	<%} %>
+	
 	</br>
 	</br>
 	<a href="#"><font color="black">返回顶部</font></a>
-	<!--<p id="manu">您要<a href="/test_ssh/jsp/customizeArt" id="make">申请定制</a>吗？</p>-->
 
 	<div class="footer">
 		<div class="container">
