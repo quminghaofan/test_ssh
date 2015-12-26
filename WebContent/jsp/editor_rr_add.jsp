@@ -67,7 +67,7 @@ body {
 				<td width="10%" class="tableleft">软文类型</td>
 				<td><select id="newsType" name="category" class="category">
 						<option value="广告">广告</option>
-						<option value="新闻">新闻</option></td>
+						<option value="资讯">资讯</option></td>
 			</tr>
 			<tr>
 				<td width="10%" class="tableleft">软文标题</td>

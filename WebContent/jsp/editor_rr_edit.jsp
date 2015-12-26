@@ -53,7 +53,7 @@
             <td width="10%" class="tableleft">软文类型</td>
             <td><select id="newsType" name="category" class="category">
 			<option value="广告" ${status eq '1' ? 'selected': ''}>广告</option>
-			<option value="新闻" ${status eq '2' ? 'selected': ''}>新闻</option></select></td>
+			<option value="资讯" ${status eq '2' ? 'selected': ''}>资讯</option></select></td>
      </tr>
     <tr>
             <td width="10%" class="tableleft">软文标题</td>
@@ -84,7 +84,7 @@
     <tr>
             <td class="tableleft"></td>
             <td>
-               <input style="display:none" id="type" name="type"/>
+              
                <input class="btn btn-primary" type="submit"  name="savebtnid" id="savebtnid" onclick="submit1()" value="保存">				 &nbsp;&nbsp; 
                <input class="btn btn-primary" type="submit"  name="savebtnid" id="savebtnid" onclick="submit2()" value="发送">				 &nbsp;&nbsp;
                <input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/editor/getDraft'" value="返回列表"></td>

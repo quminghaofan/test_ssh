@@ -92,21 +92,21 @@ public class AdminUserController {
 	public String getOrder(String type,HttpServletRequest request) throws ParseException{//type:0:定制 1：制成
 		String sign=request.getParameter("sign");//1:订单编号 2：艺术品名 3：卖家用户名 4：买家用户名
 		String name=request.getParameter("username");
-		String typeId=request.getParameter("type");
+		String typeId=request.getParameter("typeId");
 		String startTime=request.getParameter("txtDate time1");
 		String endTime=request.getParameter("txtDate time2");
 		Date start,end;
-		if(startTime==null){
+		if(startTime==null||startTime.equals("")){
     		start=null;
     	}else {
 			start=format.parse(startTime);
 		}
-    	if(endTime==null){
+    	if(endTime==null||endTime.equals("")){
     		end=null;
     	}else {
     		end=format.parse(endTime);
 		}
-    	
+    	System.out.println("typeId"+type);
 		if(type.equals("0")){
 			request.setAttribute("ORDERLIST",customizedArtworkOrderService.getByOrderIdOrArtworkNameOrOwnerNameOrUserName(sign, name, typeId, start, end));
 			return "admin_customizedArtworkorderlist";
