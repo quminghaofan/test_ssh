@@ -176,6 +176,14 @@ public class UserDaoImpl implements UserDao {
 		User u=getUser(userId);
 		u.setPassword(psw);
 	}
+
+	@Override
+	public List<User> getManagersByUserName(String userName) {
+		String hql = "from User u where u.state=true and u.role='管理员' and u.name like ?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, "%"+userName+"%");
+		return query.list();
+	}
 	
 	
 

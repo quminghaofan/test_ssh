@@ -20,6 +20,9 @@ public interface UserDao {
 	public List<User> getUserByUserName(String userName);//根据姓名获取用户
 	
 	public List<User> getPreparativeUserByUserName(String userName);//根据姓名获取预备艺术家
+	
+	public List<User> getManagersByUserName(String userName);//根据姓名获取预备艺术家
+
 
 	public List<User> getUsersByRole(String role);//得到所有该角色的用户
 

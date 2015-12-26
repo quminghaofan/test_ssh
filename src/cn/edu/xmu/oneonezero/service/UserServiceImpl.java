@@ -103,7 +103,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> getUserByUserName(String userName, String type) {
 		if(type.equals("0"))
-			return userDao.getAllUsers();
+			return userDao.getManagersByUserName(userName);
 		else if(type.equals("1"))
 			return userDao.getPreparativeUserByUserName(userName);
 		else
@@ -115,8 +115,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void updatePasswordByUserId(long userId, String psw) {
-		// TODO Auto-generated method stub
-		
+		userDao.updatePasswordByUserId(userId, psw);
 	}
 
 }
