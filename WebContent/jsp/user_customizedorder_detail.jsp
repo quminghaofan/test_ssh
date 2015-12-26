@@ -176,11 +176,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								value="${order.user.name}">
 						</div>
 						<div style="border: solid 1px">
-							<span>模板</span> <img id="image" src="" width="30%" height="30%" />
+							<span>模板</span> <img id="image" src="${order.demoPic}" width="30%" height="30%" />
 						</div>
 						<div>
 							<span>需求</span> <input type="text" readonly="readonly"
-								value="${order.customizedArtwork.remarks}">
+								value="${order.needDescription}">
 						</div>
 						<div>
 							<span>第一期价格</span> <input type="text" readonly="readonly" value="${order.startPrice}">

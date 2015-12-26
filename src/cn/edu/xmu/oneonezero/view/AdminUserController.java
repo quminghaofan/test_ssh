@@ -96,12 +96,12 @@ public class AdminUserController {
 		String startTime=request.getParameter("txtDate time1");
 		String endTime=request.getParameter("txtDate time2");
 		Date start,end;
-		if(startTime.equals("")){
+		if(startTime==null){
     		start=null;
     	}else {
 			start=format.parse(startTime);
 		}
-    	if(endTime.equals("")){
+    	if(endTime==null){
     		end=null;
     	}else {
     		end=format.parse(endTime);

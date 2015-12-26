@@ -1,7 +1,7 @@
 package cn.edu.xmu.oneonezero.view;
 
 import java.io.UnsupportedEncodingException;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -165,7 +165,7 @@ public class MallController {
 			commodityArtworkOrder.setOrderId(Long.toString(System
 					.currentTimeMillis()));
 			commodityArtworkOrder.setCommodityArtwork(commodityArtwork);
-			commodityArtworkOrder.setUser(user);
+//			commodityArtworkOrder.setUser(user);
 			commodityArtworkOrder.setAddress(user.getAddress());
 			commodityArtworkOrder.setMobile(user.getMobile());
 			commodityArtworkOrder.setPlaceDate(new Date(System

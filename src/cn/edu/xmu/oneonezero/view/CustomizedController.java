@@ -1,6 +1,6 @@
 package cn.edu.xmu.oneonezero.view;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -59,15 +59,14 @@ public class CustomizedController {
 	public String customizationApplying(@RequestParam(value = "img", required = false) MultipartFile filedata,Long artistId,HttpServletRequest request){
 		User artist=userService.getUser(artistId);
 		User user=(User)request.getSession().getAttribute("user");
+
+		String path = request.getSession().getServletContext().getRealPath("\\attached");
+		String picurl=PicUpload.saveFile(filedata,path);
 		
 		CustomizedArtwork customizedArtwork=new CustomizedArtwork();
 		DataDictionary dataDictionary=dataDictionaryService.getDataDictionaryByName(request.getParameter("arttype"));
 		customizedArtwork.setType(dataDictionary);
 		customizedArtwork.setName(request.getParameter("artname"));
-		customizedArtwork.setRemarks(request.getParameter("intro"));//TODO
-		String path = request.getSession().getServletContext().getRealPath("\\attached");
-		String picurl=PicUpload.saveFile(filedata,path);
-		customizedArtwork.setPicUrl(picurl);
 		customizedArtwork.setOwner(artist);
 		customizedArtworkService.insertCustomizedArtwork(customizedArtwork);
 		
@@ -76,9 +75,11 @@ public class CustomizedController {
 		customizedArtworkOrder.setAddress(request.getParameter("address"));
 		customizedArtworkOrder.setOrderId(Long.toString(System.currentTimeMillis()));
 		customizedArtworkOrder.setCustomizedArtwork(customizedArtwork);
-		customizedArtworkOrder.setPlaceDate(new Date(System.currentTimeMillis()));
+		customizedArtworkOrder.setPlaceDate(new Date());
 		customizedArtworkOrder.setUser(user);
 		customizedArtworkOrder.setState("未支付");
+		customizedArtworkOrder.setNeedDescription(request.getParameter("intro"));
+		customizedArtworkOrder.setDemoPic(picurl);
 		customizedArtworkOrderService.insertCustomizedArtworkOrder(customizedArtworkOrder);
 		return "redirect:/mall/enterMall?go=0";
 	}

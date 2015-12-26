@@ -91,13 +91,13 @@ public class ChiefEditorController {
 //    	System.out.println(startTime);
     	String newsName=request.getParameter("RRname");
     	
-    	if(startTime.equals("")){
+    	if(startTime==null){
     		start=null;
     	}else {
 			start=format.parse(startTime);
 		}
     	String endTime=request.getParameter("offShowTime");
-    	if(endTime.equals("")){
+    	if(endTime==null){
     		end=null;
     	}else {
     		end=format.parse(endTime);
