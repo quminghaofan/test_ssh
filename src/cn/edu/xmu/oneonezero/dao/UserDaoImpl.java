@@ -170,6 +170,12 @@ public class UserDaoImpl implements UserDao {
 		query.setString(0, "%"+userName+"%");
 		return query.list();
 	}
+
+	@Override
+	public void updatePasswordByUserId(long userId, String psw) {
+		User u=getUser(userId);
+		u.setPassword(psw);
+	}
 	
 	
 

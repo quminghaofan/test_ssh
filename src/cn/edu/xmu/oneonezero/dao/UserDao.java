@@ -37,7 +37,7 @@ public interface UserDao {
 	
 	public List<User> getCommonUsersAndArtistByUserName(String userName);//在所有普通用户和艺术家中根据用户名查找
 
-
+	public void updatePasswordByUserId(long userId,String psw);//根据用户id修改用户密码
 
 
 }

@@ -110,4 +110,13 @@ public class UserServiceImpl implements UserService {
 			return userDao.getCommonUsersAndArtistByUserName(userName);
 	}
 
+
+
+
+	@Override
+	public void updatePasswordByUserId(long userId, String psw) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -37,7 +37,8 @@ public interface UserService {
 	
 	public void setUserState(long userId,boolean state);//根据userId更改user状态,true为启用，false为禁用
 	
-	
+	public void updatePasswordByUserId(long userId,String psw);//根据用户id修改用户密码
+
 	
 
 	
