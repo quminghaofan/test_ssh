@@ -12,7 +12,7 @@ public interface CommodityArtworkService {
 
 	public List<CommodityArtwork> getCommodityArtworksByPositionAndVagueName(String artName,int start,int num);//按位置和模糊名称获取一系列艺术品商品
 	
-	public int getPageTotalByVagueName(String artName,int num);//根据模糊名字和每页数量获得总页数
+	public int getPageTotalByVagueName(String artName,int num);//根据模糊名字和每页数量获得商品总页数
 	
 	public JSONObject getCommodityArtworkWithJSONTypeById(long id);//根据id获取jsonObject类型艺术品商品
 
@@ -48,6 +48,7 @@ public interface CommodityArtworkService {
 	
 	public List<CommodityArtwork> getByVagueArtworkNameOrOwnerName(String sign,String name, String typeId);//sign=0,表根据艺术品名称搜索 sign=1，表根据卖家用户名搜索 艺术品商品包括展品
 	
+	public int getExhibitPageTotalByVagueName(String artName,int num);//根据模糊名字和每页数量获得展品总页数
 	
 
 	

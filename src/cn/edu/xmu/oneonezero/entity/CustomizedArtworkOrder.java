@@ -17,6 +17,34 @@ public class CustomizedArtworkOrder extends ArtworkOrder{
 	private double endPrice;//
 	private String stage;//订制所处阶段 第一阶段已付款、第二阶段已付款、第三阶段已付款
 	
+	private String demoPic;//样品图片属性
+	private String needDescription;//需求描述
+	private boolean isCancelled;//是否被取消了 true被取消了，false未被取消，默认false；
+	
+	
+	
+	
+	
+	
+	public String getNeedDescription() {
+		return needDescription;
+	}
+	public void setNeedDescription(String needDescription) {
+		this.needDescription = needDescription;
+	}
+	public String getDemoPic() {
+		return demoPic;
+	}
+	public void setDemoPic(String demoPic) {
+		this.demoPic = demoPic;
+	}
+	
+	public boolean isCancelled() {
+		return isCancelled;
+	}
+	public void setCancelled(boolean isCancelled) {
+		this.isCancelled = isCancelled;
+	}
 	@OneToOne
 	public CustomizedArtwork getCustomizedArtwork() {
 		return customizedArtwork;

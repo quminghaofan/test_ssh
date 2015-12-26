@@ -22,7 +22,10 @@ public interface ArtworkOrderService {
 	
 	public List<ArtworkOrder> getOrdersByUserNameAndTimespace(String userName,Date startTime,Date endTime);//4.根据买家用户名查找一段时间的订单
 	
-	public List<ArtworkOrder> getOrderByOrderId(long artworkOrderId);//根据订单id获取订单	
+	public ArtworkOrder getOrderByOrderId(long artworkOrderId);//根据订单id获取订单	
+	
+	public void setArtworkOrderIsAccept(long id, boolean isAccept);//根据id修改订单属性isAccept
+	
 	
 	
 }

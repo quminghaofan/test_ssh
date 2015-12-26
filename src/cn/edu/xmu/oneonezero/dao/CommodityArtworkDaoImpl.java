@@ -250,6 +250,16 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 		}
 	}
 
+	@Override
+	public int getExhibitPageTotalByVagueName(String artName, int num) {
+		String hql = "select count(*) from CommodityArtwork a where a.isExist=true and a.canSell=false and a.name like ?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, "%"+artName+"%");
+		int number=(int)Math.ceil(((Long)query.uniqueResult())/((double)num));
+		if(number==0)return 1;
+		return number;
+	}
+
 	
 
 	

@@ -43,6 +43,6 @@ public interface CustomizedArtworkOrderDao {
 	
 	public void updateCustomizedArtworkOrderState(long orderId,String state);//根据定制订单id更新state属性
 	
-	
+	public void cancelCustomizedArtworkOrder(long id);//取消定制订单
 	
 }

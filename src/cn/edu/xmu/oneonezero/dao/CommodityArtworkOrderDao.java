@@ -41,4 +41,8 @@ public interface CommodityArtworkOrderDao {
 	
 	public List<CommodityArtworkOrder> getByUserName(String name,String typeId, Date startTime,Date endTime);//name表示UserName
 	
+	public void insertSomeCommodityArtworkOrders(List<CommodityArtworkOrder> aList);//批量插入成品订单
+	
+	
+	
 }

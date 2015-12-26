@@ -513,6 +513,18 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			return query.list();
 		}
 	}
+
+	@Override
+	public void insertSomeCommodityArtworkOrders(List<CommodityArtworkOrder> aList) {
+		for(int i=0; i<aList.size(); i++)
+		{
+			sessionFactory.getCurrentSession().saveOrUpdate(aList.get(i));
+			if(i%20==0)
+			{
+				sessionFactory.getCurrentSession().flush();
+			}
+		}
+	}
 	
 	
 }
