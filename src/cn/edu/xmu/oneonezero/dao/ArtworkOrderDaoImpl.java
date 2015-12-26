@@ -133,6 +133,7 @@ public class ArtworkOrderDaoImpl implements ArtworkOrderDao{
 	@Override
 	public void cancelArtworkOrder(long id) {
 		ArtworkOrder artworkOrder=getOrderByOrderId(id);
+		artworkOrder.setIsCancelled(true);
 	}
 
 }

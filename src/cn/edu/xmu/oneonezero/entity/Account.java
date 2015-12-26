@@ -14,6 +14,12 @@ public class Account {
 	private String password;
 	private double balance;//余额
 	
+	
+	
+	public Account() {
+		password="";
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
