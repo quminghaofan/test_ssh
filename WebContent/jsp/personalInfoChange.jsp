@@ -171,10 +171,10 @@ top:400px;
 			<div class="register">
 				
 				<div class="col-md-6 login-right">
-					<!--<p>
-						如果您已有账号，请直接 <a href="/test_ssh/jsp/login"><font
-							color="blue">登录</font></a>
-					</p>-->
+					<p>
+						如果您要修改密码，请点击 <a href="/test_ssh/jsp/changePassword"><font
+							color="blue">修改密码</font></a>
+					</p>
 					<h3 style="color: blue" align="center-left">我的个人信息</h3></br>
 					<form id="registerform" method="post" onsubmit="return before_register()" action="/test_ssh/user/changeInfo" enctype="multipart/form-data">
 						
