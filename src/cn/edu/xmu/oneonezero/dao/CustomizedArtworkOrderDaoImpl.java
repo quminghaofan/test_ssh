@@ -517,6 +517,11 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 		CustomizedArtworkOrder customizedArtworkOrder=getCustomedArtworkOrderByOrderId(id);
 		customizedArtworkOrder.setCancelled(true);
 	}
+
+	@Override
+	public void updateCustomizedArtworkOrder(CustomizedArtworkOrder customizedArtworkOrder) {
+		sessionFactory.getCurrentSession().saveOrUpdate(customizedArtworkOrder);
+	}
 	
 	
 	

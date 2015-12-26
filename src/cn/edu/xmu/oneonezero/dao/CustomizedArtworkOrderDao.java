@@ -45,4 +45,7 @@ public interface CustomizedArtworkOrderDao {
 	
 	public void cancelCustomizedArtworkOrder(long id);//取消定制订单
 	
+	public void updateCustomizedArtworkOrder(CustomizedArtworkOrder customizedArtworkOrder);//更新定制订单
+
+	
 }
