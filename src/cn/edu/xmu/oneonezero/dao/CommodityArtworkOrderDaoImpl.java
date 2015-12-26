@@ -202,7 +202,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 
 	@Override
 	public void insertCommodityArtworkOrder(CommodityArtworkOrder commodityArtworkOrder) {
-		sessionFactory.getCurrentSession().saveOrUpdate(commodityArtworkOrder);
+		sessionFactory.getCurrentSession().merge(commodityArtworkOrder);
 	}
 
 	@Override
