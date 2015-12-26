@@ -185,7 +185,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 
 	<div style="float: left; width: 8%">
-		<a href=""><img src="../images/back.png" alt="返回"
+		<a href="/test_ssh/mall/enterMall?go=0"><img src="../images/back.png" alt="返回"
 			class="img-responsive" /></a>
 	</div>
 	<div style="float: right; width: 20%; height: 35%">
@@ -248,14 +248,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="clearfix"></div>
 		</div>
 	</form>
-	<p id="manu">
+	<p >
 		您要
 	<%if(user!=null){%>
-		<a href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}"><img
-			src="../images/customize.jpg" alt="申请定制" class="img-responsive" /></a>
+		<a href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}"><font color="blue">申请定制</font></a>
 	<%}else{ %>
-	<a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'"><img
-			src="../images/customize.jpg" alt="申请定制" class="img-responsive" /></a>
+	<a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'"><font color="blue">申请定制</font></a>
 	<%} %>吗？
 	</p>
 	</br>

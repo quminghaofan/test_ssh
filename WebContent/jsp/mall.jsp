@@ -220,8 +220,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="span_2">
 					<c:forEach items="${itemlist}" var="item">
 						<div class="col_1_of_single1 span_1_of_single1" align="left">
-							<a href="single.html"> <img src="${item.picUrl}"
-								class="img-responsive" alt="" href="/test_ssh/mall/seeMore?itemId=${item.id}" />
+							<a href="/test_ssh/mall/seeMore?itemId=${item.id}"> <img src="${item.picUrl}"
+								class="img-responsive" alt=""/>
 								<h3>${item.name}</h3>
 								<h4>${item.price}</h4>
 							</a>
@@ -229,8 +229,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<%
 									if (session.getAttribute("user") != null) {
 								%>
-							<li class="list2_left"><span class="m_1">
-									<a class="link" id="add2Cart" onclick="add2Cart(${item.id},this,event)">加入购物篮</a> 
+							<li class="list2_left">
+							<span class="m_1">
+									<a class="link" id="add2Cart" onclick="add2Cart(${item.id},this,event)">加入购物篮</a></span></li> 
 								<li class="list2_right"><span class="m_2"><a
 										href="/test_ssh/mall/settleOne?itemId=${item.id}" class="link1">立即购买</a></span></li>
 								<%

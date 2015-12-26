@@ -72,6 +72,7 @@ public class MallController {
 								.getCommodityArtworksByArtworkTypeIdVagueArtworkNamePageNumber(
 										typeId, itemname, curentPage - 1, 30));
 			}
+			request.setAttribute("backUrl", "/test_ssh/mall/enterMall?go=1");
 			return "mall";
 		} else {
 			pageTimes = commodityArtworkService.getExhibitPageTotalByVagueName(
@@ -89,6 +90,7 @@ public class MallController {
 								.getExhibitArtworksByArtworkTypeIdVagueArtworkNamePageNumber(
 										typeId, itemname, curentPage - 1, 30));
 			}
+			request.setAttribute("backUrl", "/test_ssh/mall/enterMall?go=0");
 			return "customized";
 		}
 	}

@@ -13,7 +13,9 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
 	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 
 </script>
 <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -32,13 +34,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start menu -->
 <link href="../css/megamenu.css" rel="stylesheet" type="text/css"
 	media="all" />
-	
+
 <script type="text/javascript" src="../js/megamenu.js"></script>
 <script src="../js/responsiveslides.min.js"></script>
 <script type="text/javascript" src="../js/addcart.js"></script>
 <script src="../ogLaVp_data/requestAnimationFrame.js"></script>
-<script src="../ogLaVp_data/jquery_002.js"></script> 
-<script src="../ogLaVp_data/stopExecutionOnTimeout-6c99970ade81e43be51fa877be0f7600.js"></script>
+<script src="../ogLaVp_data/jquery_002.js"></script>
+<script
+	src="../ogLaVp_data/stopExecutionOnTimeout-6c99970ade81e43be51fa877be0f7600.js"></script>
 <link href='../css/totop.css' rel='stylesheet' type='text/css'>
 <script>
 	$(document).ready(function() {
@@ -49,13 +52,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 	<div id="updown">
-	<%if (session.getAttribute("user") != null) {
-					%>
-					<a href="/test_ssh/cart/showCart"><span id="end" class="cart"></span></a>
-					<%
-						}
-					%>
-<span class="up"></span><span class="down"></span>
+		<%
+			if (session.getAttribute("user") != null) {
+		%>
+		<a href="/test_ssh/cart/showCart"><span id="end" class="cart"></span></a>
+		<%
+			}
+		%>
+		<span class="up"></span><span class="down"></span>
 	</div>
 	<div class="header_top">
 		<div class="container">
@@ -99,9 +103,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="header_bottom_right">
 					<div class="search">
-						<form action="/test_ssh/mall/enterMall?typeId=${typeId}&go=0" method="post">
-							<input id="itemname" name="itemname" type="text" value="${itemname}"
-								onFocus="this.value = '';"
+						<form action="/test_ssh/mall/enterMall?typeId=${typeId}&go=0"
+							method="post">
+							<input id="itemname" name="itemname" type="text"
+								value="${itemname}" onFocus="this.value = '';"
 								onBlur="if (this.value == '') {this.value = '商品名称';}"> <input
 								type="submit" value="">
 						</form>
@@ -145,8 +150,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</div>
 						</div></li>
-					<li><a class="color10"
-						href="/test_ssh/mall/enterMall&go=0">商城</a>
+					<li><a class="color10" href="/test_ssh/mall/enterMall?go=0">商城</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
@@ -187,34 +191,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<div class="col-md-9">
 				<div class="mens-toolbar">
-					
+
 					<div class="clearfix"></div>
 				</div>
 				<div class="span_2">
 					<c:forEach items="${itemlist}" var="item">
 						<div class="col_1_of_single1 span_1_of_single1">
-							<a href=""> <img src="${item.picUrl}"
-								class="img-responsive" alt="" href="/test_ssh/customized/seeMore?artistId=${item.owner.id}" />
+							<a href="/test_ssh/customized/seeMore?artistId=${item.owner.id}">
+								<img src="${item.picUrl}" class="img-responsive" alt="" />
 								<h3>${item.name}</h3>
-								<h4>${item.type}</h4>
+								<h4>${item.type.name}</h4>
 								<h4>${item.owner.realName}</h4>
 							</a>
 							<ul class="list2">
 								<%
 									if (session.getAttribute("user") != null) {
 								%>
-							<li class="list2_left"><span class="m_1">
-									<a class="link"  onclick="/test_ssh/customized/goToCustomizationApplying?artistId=${item.owner.id}">申请定制</a> 
+								<li class="list2_left"><span class="m_1"> <a
+										class="link"
+										href="/test_ssh/customized/goToCustomizationApplying?artistId=${item.owner.id}">申请定制</a></span></li>
 								<%
 									} else {
 								%>
-								<li class="list2_left"><span class="m_1"><a href="/test_ssh/init/goToLogin?backUrl=${backUrl}"
+								<li class="list2_left"><span class="m_1"><a
+										href="/test_ssh/init/goToLogin?backUrl=${backUrl}"
 										class="link">申请定制</a></span></li>
 								<%
 									}
 								%>
 								<li class="list2_right"><span class="m_2"><a
-										href="/test_ssh/customized/seeMore?artist=${item.author.id}" class="link1">查看艺术家</a></span></li>
+										href="/test_ssh/customized/seeMore?artistId=${item.owner.id}"
+										class="link1">查看艺术家</a></span></li>
+
 							</ul>
 						</div>
 					</c:forEach>
@@ -234,7 +242,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<c:if test="${currentPage != 1}">
 
-				<a href="/test_ssh/mall/enterMall?page=${currentPage-1}&typeId=${typeId}&go=0">&lt;&lt;
+				<a
+					href="/test_ssh/mall/enterMall?page=${currentPage-1}&typeId=${typeId}&go=0">&lt;&lt;
 					前一页</a>
 
 			</c:if>
@@ -269,7 +278,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<c:if test="${currentPage != page}">
 
-				<a href="/test_ssh/mall/enterMall?page=<%=i + 1%>&typeId=${typeId}&go=0"><%=i + 1%>/${totalpage}</a>
+				<a
+					href="/test_ssh/mall/enterMall?page=<%=i + 1%>&typeId=${typeId}&go=0"><%=i + 1%>/${totalpage}</a>
 
 			</c:if>
 
@@ -287,7 +297,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<c:if test="${currentPage != pageTimes}">
 
-				<a href="/test_ssh/mall/enterMall?page=${currentPage+1}&typeId=${typeId}&go=0">后一页
+				<a
+					href="/test_ssh/mall/enterMall?page=${currentPage+1}&typeId=${typeId}&go=0">后一页
 					&gt;&gt;</a>
 
 			</c:if>
