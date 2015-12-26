@@ -67,7 +67,7 @@ public class UserDaoImpl implements UserDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getAllUsers() {
-		String hql = "from User where u.state=true";
+		String hql = "from User u where u.state=true";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		return query.list();
