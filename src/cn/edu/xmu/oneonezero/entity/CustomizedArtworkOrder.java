@@ -26,6 +26,15 @@ public class CustomizedArtworkOrder extends ArtworkOrder{
 	
 	
 	
+	public CustomizedArtworkOrder() {
+		super();
+		this.startPrice =0;
+		this.midPrice = 0;
+		this.endPrice = 0;
+		this.stage = "";
+		this.demoPic = "..\\images\\nopic.jpg";
+		this.needDescription = "";
+	}
 	public String getNeedDescription() {
 		return needDescription;
 	}

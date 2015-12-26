@@ -17,7 +17,9 @@ public class Account {
 	
 	
 	public Account() {
+		accountNumber="";
 		password="";
+		balance=0;
 	}
 	
 	@Id

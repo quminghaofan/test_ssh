@@ -30,6 +30,21 @@ public class User {
 	private String noPassReason;//艺术家审核不通过的原因
 	
 	
+	public User() {
+		super();
+		this.name = "";
+		this.nickName = "";
+		this.realName = "";
+		this.password = "";
+		this.mobile = "";
+		this.headPhoto = "..\\images\\nopic.jpg";
+		this.address = "";
+		this.bankCardAccount = "";
+		this.description = "";
+		this.state = true;
+		this.idPhoto = "..\\images\\nopic.jpg";
+		this.noPassReason = "";
+	}
 	public 
 	String getIdPhoto() {
 		return idPhoto;

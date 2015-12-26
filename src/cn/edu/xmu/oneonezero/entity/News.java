@@ -29,6 +29,20 @@ public class News {
 	private double price;//软文的价格
 	private String newsType;//资讯、广告
 	
+	
+	
+	public News() {
+		super();
+		this.name = "";
+		this.content = "";
+		this.picUrl = "..\\images\\nopic.jpg";
+		this.onShowTime = new Date();
+		this.offShowTime = new Date();
+		this.rank = "";
+		this.state = "未审核";
+		this.price = 0;
+		this.newsType = "资讯";
+	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {

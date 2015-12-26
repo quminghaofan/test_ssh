@@ -11,6 +11,13 @@ public class DataDictionary {
 	private String number;
 	private String name;
 	
+	
+	
+	public DataDictionary() {
+		super();
+		this.number = "";
+		this.name = "";
+	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {

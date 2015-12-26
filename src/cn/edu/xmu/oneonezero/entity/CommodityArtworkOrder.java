@@ -13,6 +13,13 @@ public class CommodityArtworkOrder extends ArtworkOrder{
 
 	private CommodityArtwork commodityArtwork;//订单中包含的艺术品
 	
+	
+	
+	public CommodityArtworkOrder(CommodityArtwork commodityArtwork) {
+		super();
+	}
+	
+	
 	@OneToOne
 	public CommodityArtwork getCommodityArtwork() {
 		return commodityArtwork;

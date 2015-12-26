@@ -13,6 +13,17 @@ public class CustomizedArtwork extends Artwork{
 	private String endImg;//
 	
 	private String remarks;//备注
+	
+	
+	
+
+	public CustomizedArtwork() {
+		super();
+		this.startImg = "..\\images\\nopic.jpg";
+		this.midImg = "..\\images\\nopic.jpg";
+		this.endImg = "..\\images\\nopic.jpg";
+		this.remarks = "";
+	}
 
 	public String getStartImg() {
 		return startImg;

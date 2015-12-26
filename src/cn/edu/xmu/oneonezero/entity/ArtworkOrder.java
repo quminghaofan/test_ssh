@@ -40,13 +40,25 @@ public class ArtworkOrder {
 	
 	private boolean isCancelled;//是否被取消了 true被取消了，false未被取消，默认false；
 	
+	protected Account payAccount;//支付账号
+	
+	
+	
+	public ArtworkOrder() {
+		this.orderId = "";
+		this.placeDate = new Date();
+		this.state = "未支付";
+		this.mobile = "";
+		this.address = "";
+		this.isAccept = false;
+		this.isCancelled = false;
+	}
 	public boolean getIsCancelled() {
 		return isCancelled;
 	}
 	public void setIsCancelled(boolean isCancelled) {
 		this.isCancelled = isCancelled;
 	}
-	protected Account payAccount;//支付账号
 	
 	
 	@Id

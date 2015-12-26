@@ -27,9 +27,19 @@ public class Artwork {
 	protected String picUrl;//图片路径
 	protected String artworkDescription;//描述
 	protected DataDictionary type;//类别
-	protected boolean isExist;//用于判断该商品是否被删除
+	protected boolean isExist;//用于判断该商品是否存在
+	
 	
 
+	public Artwork() {
+		this.name = "";
+		this.author = "";
+		this.owner=null;
+		this.picUrl = "..\\images\\nopic.jpg";
+		this.artworkDescription = "";
+		this.type = null;
+		this.isExist = true;
+	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {

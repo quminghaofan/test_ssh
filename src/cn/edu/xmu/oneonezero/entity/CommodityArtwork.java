@@ -11,8 +11,16 @@ import javax.persistence.Table;
 public class CommodityArtwork extends Artwork{
 	private double price;//价格
 	private boolean sellState;//卖出否：true：没卖出
-	private boolean canSell;//是否可卖
+	private boolean canSell;//是否可卖 
 	
+	
+	
+	public CommodityArtwork() {
+		super();
+		this.price = 0;
+		this.sellState = true;
+		this.canSell = true;
+	}
 	public double getPrice() {
 		return price;
 	}
