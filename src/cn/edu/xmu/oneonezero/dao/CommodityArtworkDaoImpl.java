@@ -161,6 +161,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 
 	@Override
 	public List<CommodityArtwork> getExhibitArtworksByVagueArtNameAndPage(String artName, int start, int num) {
+		if(artName==null) artName="";
 		String hql = "from CommodityArtwork a where a.canSell=false and a.name like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, "%"+artName+"%");

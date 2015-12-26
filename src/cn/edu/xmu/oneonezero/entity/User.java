@@ -7,9 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.crypto.Data;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+
+import cn.edu.xmu.oneonezero.dao.DataDictionaryDao;
 
 @Entity
 @Table(name="User")
@@ -28,6 +31,8 @@ public class User {
 	private boolean state;//是否被禁用,0是被禁用
 	private String idPhoto;//审核照片
 	private String noPassReason;//艺术家审核不通过的原因
+	private String qqId;//
+	
 	
 	
 	public User() {
@@ -36,7 +41,7 @@ public class User {
 		this.nickName = "";
 		this.realName = "";
 		this.password = "";
-		this.mobile = "";
+		
 		this.headPhoto = "..\\images\\nopic.jpg";
 		this.address = "";
 		this.bankCardAccount = "";
@@ -44,9 +49,27 @@ public class User {
 		this.state = true;
 		this.idPhoto = "..\\images\\nopic.jpg";
 		this.noPassReason = "";
+		this.qqId="";
 	}
-	public 
-	String getIdPhoto() {
+	
+	
+	
+	
+	
+
+
+
+
+	public String getQqId() {
+		return qqId;
+	}
+
+	public void setQqId(String qqId) {
+		this.qqId = qqId;
+	}
+
+
+	public String getIdPhoto() {
 		return idPhoto;
 	}
 	public void setIdPhoto(String idPhoto) {

@@ -33,7 +33,7 @@ public class CommodityArtwork extends Artwork{
 	public void setSellState(Boolean sellState) {
 		this.sellState = sellState;
 	}
-	public boolean isCanSell() {
+	public boolean getCanSell() {
 		return canSell;
 	}
 	public void setCanSell(boolean canSell) {
