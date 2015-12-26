@@ -80,6 +80,7 @@ public class CommonMethod {
 	}
 	
 	public static String getPicUrl(HttpServletRequest request) {
+//		System.out.println(request.getSession().getServletContext().getRealPath("\\attached"));
 		return request.getSession().getServletContext().getRealPath("\\attached");
 	}
 }

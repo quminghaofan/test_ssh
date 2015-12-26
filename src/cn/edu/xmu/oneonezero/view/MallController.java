@@ -188,9 +188,9 @@ public class MallController {
 		int pay = accountService.payMoney(name, psw, Double.parseDouble(total));
 		if (pay == 1) {
 			List<CommodityArtworkOrder> commodityArtworkOrders = (List<CommodityArtworkOrder>) request.getSession().getAttribute("commodityArtworkOrders");
-			System.out.println("comOrder-size:"+commodityArtworkOrders.size());
+//			System.out.println("comOrder-size:"+commodityArtworkOrders.size());
 				for (CommodityArtworkOrder commodityArtworkOrder : commodityArtworkOrders) {
-					 System.out.println("添加-commodityArtworkOrderId:"+commodityArtworkOrder.getId());
+//					 System.out.println("添加-commodityArtworkOrderId:"+commodityArtworkOrder.getId());
 					commodityArtworkOrderService
 							.updateCommodityArtworkOrderState(
 									commodityArtworkOrder.getId(), "已支付未发货");

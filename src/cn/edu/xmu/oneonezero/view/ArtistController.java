@@ -27,95 +27,110 @@ import cn.edu.xmu.oneonezero.service.UserService;
 public class ArtistController {
 	@Resource(name = "userService")
 	private UserService userService;
-	
-	@Resource(name="dataDictionaryService")
+
+	@Resource(name = "dataDictionaryService")
 	private DataDictionaryService dataDictionaryService;
-	
-	@Resource(name="commodityArtworkService")
+
+	@Resource(name = "commodityArtworkService")
 	private CommodityArtworkService commodityArtworkService;
-	
-	@Resource(name="commodityArtworkOrderService")
+
+	@Resource(name = "commodityArtworkOrderService")
 	private CommodityArtworkOrderService commodityArtworkOrderService;
-	
-	@Resource(name="customizedArtworkOrderService")
+
+	@Resource(name = "customizedArtworkOrderService")
 	private CustomizedArtworkOrderService customizedArtworkOrderService;
-	
-	@Resource(name="artworkOrderService")
+
+	@Resource(name = "artworkOrderService")
 	private ArtworkOrderService artworkOrderService;
-	
+
 	@RequestMapping("/artistApply")
-	public String artistApply(@RequestParam(value = "img", required = false) MultipartFile filedata,HttpServletRequest request){
+	public String artistApply(
+			@RequestParam(value = "img", required = false) MultipartFile filedata,
+			HttpServletRequest request) {
 		String path = CommonMethod.getPicUrl(request);
-		User user=(User)request.getSession().getAttribute("user");
+		User user = (User) request.getSession().getAttribute("user");
 		user.setBankCardAccount(request.getParameter("account"));
-		DataDictionary dataDictionary=dataDictionaryService.getDataDictionaryByName("预备艺术家");
+		DataDictionary dataDictionary = dataDictionaryService
+				.getDataDictionaryByName("预备艺术家");
 		user.setRole(dataDictionary);
 		user.setRealName(request.getParameter("realname"));
 		user.setDescription(request.getParameter("intro"));
-		
-		String picurl=PicUpload.saveFile(filedata,path);
-    	user.setIdPhoto(picurl);
-    	
+
+		String picurl = PicUpload.saveFile(filedata, path);
+		user.setIdPhoto(picurl);
+
 		userService.updateUser(user);
 		request.getSession().setAttribute("user", user);
 		return "redirect:/init/home";
 	}
-	
+
 	@RequestMapping("/myArt")
-	public String myArtWork(HttpServletRequest request){
-		User user=(User)request.getSession().getAttribute("user");
-		request.setAttribute("commodityArtworkList",commodityArtworkService.getCommodityArtworksByArtistId(user.getId()));
+	public String myArtWork(HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
+		request.setAttribute("commodityArtworkList", commodityArtworkService
+				.getCommodityArtworksByArtistId(user.getId()));
 		return "artist_shop";
 	}
-	
+
 	@RequestMapping("/mySale")
-	public String mySale(HttpServletRequest request){
-		User user=(User)request.getSession().getAttribute("user");
-		request.setAttribute("orderList",commodityArtworkOrderService.getCommodityArtworkOrdersByArtistId(user.getId()));
+	public String mySale(HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
+		request.setAttribute("orderList", commodityArtworkOrderService
+				.getCommodityArtworkOrdersByArtistId(user.getId()));
 		return "artist_saleorder";
 	}
-	
+
 	@RequestMapping("myCustomized")
-	public String myCustomized(HttpServletRequest request){
-		User user=(User)request.getSession().getAttribute("user");
-		request.setAttribute("orderList",customizedArtworkOrderService.getCustomizedArtworkOrdersByOwnerId(user.getId()));
+	public String myCustomized(HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
+		request.setAttribute("orderList", customizedArtworkOrderService
+				.getCustomizedArtworkOrdersByOwnerId(user.getId()));
 		return "artist_customizedorder";
 	}
+
 	@RequestMapping("/goToEditOrAdd")
-	public String goToEdit(Long itemId,HttpServletRequest request){
-		if(itemId!=null){
-		CommodityArtwork commodityArtwork=commodityArtworkService.getCommodityArtworkById(itemId);
-		request.setAttribute("item", commodityArtwork);
+	public String goToEdit(Long itemId, HttpServletRequest request) {
+		if (itemId != null) {
+			CommodityArtwork commodityArtwork = commodityArtworkService
+					.getCommodityArtworkById(itemId);
+			request.setAttribute("item", commodityArtwork);
 		}
-		request.setAttribute("TYPELIST",dataDictionaryService.getAllArtworkTypes());
+		request.setAttribute("TYPELIST",
+				dataDictionaryService.getAllArtworkTypes());
 		return "artwork_edit";
 	}
-	
+
 	@RequestMapping("customizedorderDetail")
-	public String customizedorderDetail(Long orderId,HttpServletRequest request){
-		request.setAttribute("order",customizedArtworkOrderService.getCustomedArtworkOrderByOrderId(orderId));
+	public String customizedorderDetail(Long orderId, HttpServletRequest request) {
+		request.setAttribute("order", customizedArtworkOrderService
+				.getCustomedArtworkOrderByOrderId(orderId));
 		return "artist_customizedorder_detail";
 	}
-	
+
 	@RequestMapping("/editOrAddArtwork")
-	public String editOrAddArtwork(@RequestParam(value = "img", required = false) MultipartFile filedata,Long itemId,HttpServletRequest request){
-		User user=(User)request.getSession().getAttribute("user");
-		String path =CommonMethod.getPicUrl(request);
-		String picUrl=PicUpload.saveFile(filedata,path);
-		String name=request.getParameter("name");
-		String type=request.getParameter("type");
-		DataDictionary dataDictionary=dataDictionaryService.getDataDictionaryByName(type);
-		String model=request.getParameter("select2");
+	public String editOrAddArtwork(
+			@RequestParam(value = "img", required = false) MultipartFile filedata,
+			Long itemId, HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
+		String path = CommonMethod.getPicUrl(request);
+		String picUrl = PicUpload.saveFile(filedata, path);
+		String name = request.getParameter("name");
+		String type = request.getParameter("type");
+		DataDictionary dataDictionary = dataDictionaryService
+				.getDataDictionaryByName(type);
+		String model = request.getParameter("select2");
 		boolean canSell;
-		if(model.equals("1"))canSell=false;
+		if (model.equals("1"))
+			canSell = false;
 		else {
-			canSell=true;
+			canSell = true;
 		}
-		String price=request.getParameter("price");
-		if(price==null||price.equals(""))price="0";
-		String description=request.getParameter("description");
-		if(itemId==null){
-			CommodityArtwork commodityArtwork=new CommodityArtwork();
+		String price = request.getParameter("price");
+		if (price == null || price.equals(""))
+			price = "0";
+		String description = request.getParameter("description");
+		if (itemId == null) {
+			CommodityArtwork commodityArtwork = new CommodityArtwork();
 			commodityArtwork.setPicUrl(picUrl);
 			commodityArtwork.setName(name);
 			commodityArtwork.setType(dataDictionary);
@@ -126,91 +141,104 @@ public class ArtistController {
 			commodityArtwork.setSellState(true);
 			commodityArtwork.setOwner(user);
 			commodityArtworkService.insertCommodityArtwork(commodityArtwork);
-		}
-		else {
-			CommodityArtwork commodityArtwork=commodityArtworkService.getCommodityArtworkById(itemId);
+		} else {
+			CommodityArtwork commodityArtwork = commodityArtworkService
+					.getCommodityArtworkById(itemId);
+
+			if (filedata != null) {
+				if (commodityArtwork.getPicUrl() != null) {
+					String temp = (commodityArtwork.getPicUrl()).replaceAll(
+							"..\\\\attached", "");
+					PicUpload.deleteFile(temp, path);
+				}
+
+				commodityArtwork.setPicUrl(picUrl);
+			}
 			
-			if(commodityArtwork.getPicUrl()!=null){
-	    		String temp=(commodityArtwork.getPicUrl()).replaceAll("..\\\\attached", "");
-	    		PicUpload.deleteFile(temp,path);
-	    	}
-			
-			commodityArtwork.setPicUrl(picUrl);
 			commodityArtwork.setName(name);
 			commodityArtwork.setType(dataDictionary);
 			commodityArtwork.setCanSell(canSell);
 			commodityArtwork.setPrice(Double.parseDouble(price));
 			commodityArtwork.setArtworkDescription(description);
 			commodityArtworkService.updateCommodityArtwork(commodityArtwork);
-			System.out.println("测试编辑："+name);
+			System.out.println("测试编辑：" + picUrl);
 		}
 		return "redirect:/artist/myArt";
 	}
-	
+
 	@RequestMapping("delArtwork")
-	public String delArtwork(Long itemId,HttpServletRequest request){
-		commodityArtworkService.setCommodityArtworkIsExistByArtworkId(itemId, false);
+	public String delArtwork(Long itemId, HttpServletRequest request) {
+		System.out.println("commodityArtworkOrderService=" + itemId);
+		commodityArtworkService.setCommodityArtworkIsExistByArtworkId(itemId,
+				false);
 		return "redirect:/artist/myArt";
 	}
-	
+
 	@RequestMapping("deliverGoods")
-	public String deliverGoods(Long orderId,HttpServletRequest request){
-		commodityArtworkOrderService.updateCommodityArtworkOrderState(orderId, "已支付已发货");
+	public String deliverGoods(Long orderId, HttpServletRequest request) {
+		commodityArtworkOrderService.updateCommodityArtworkOrderState(orderId,
+				"已支付已发货");
 		return "redirect:/artist/mySale";
 	}
-	
+
 	@RequestMapping("isAccept")
-	public String isAccept(Long orderId,String type,HttpServletRequest request){
-		if(type.equals("0")){//接受
-			CustomizedArtworkOrder customizedArtworkOrder=customizedArtworkOrderService.getCustomedArtworkOrderByOrderId(orderId);
-			String start=request.getParameter("price1");
-			String mid=request.getParameter("price2");
-			String end=request.getParameter("price3");
-			if(start!=null){
-			customizedArtworkOrder.setStartPrice(Double.parseDouble(start));
+	public String isAccept(Long orderId, String type, HttpServletRequest request) {
+		if (type.equals("0")) {// 接受
+			CustomizedArtworkOrder customizedArtworkOrder = customizedArtworkOrderService
+					.getCustomedArtworkOrderByOrderId(orderId);
+			String start = request.getParameter("price1");
+			String mid = request.getParameter("price2");
+			String end = request.getParameter("price3");
+			if (start != null) {
+				customizedArtworkOrder.setStartPrice(Double.parseDouble(start));
 			}
-			if(mid!=null){
+			if (mid != null) {
 				customizedArtworkOrder.setMidPrice(Double.parseDouble(mid));
 			}
-			if(end!=null){
+			if (end != null) {
 				customizedArtworkOrder.setEndPrice(Double.parseDouble(end));
 			}
 			customizedArtworkOrder.setIsAccept(true);
-			customizedArtworkOrderService.updateCustomizedArtworkOrder(customizedArtworkOrder);
+			customizedArtworkOrderService
+					.updateCustomizedArtworkOrder(customizedArtworkOrder);
 			request.setAttribute("order", customizedArtworkOrder);
 			return "customizedorderDetail";
-		}
-		else {//拒绝
+		} else {// 拒绝
 			artworkOrderService.setArtworkOrderIsAccept(orderId, false);
 			return "redirect:/artist/myCustomized";
 		}
 	}
-	
+
 	@RequestMapping("goToPicUp")
-	public String goToPicUp(Long orderId,HttpServletRequest request){
+	public String goToPicUp(Long orderId, HttpServletRequest request) {
 		request.setAttribute("orderId", orderId);
 		return "customized_picupload";
 	}
-	
+
 	@RequestMapping("picUpload")
-	public String picUpload(@RequestParam(value = "img", required = false) MultipartFile filedata,Long orderId,HttpServletRequest request){
-		CustomizedArtworkOrder customizedArtworkOrder=customizedArtworkOrderService.getCustomedArtworkOrderByOrderId(orderId);
-		CustomizedArtwork customizedArtwork=customizedArtworkOrder.getCustomizedArtwork();
-		
+	public String picUpload(
+			@RequestParam(value = "img", required = false) MultipartFile filedata,
+			Long orderId, HttpServletRequest request) {
+		CustomizedArtworkOrder customizedArtworkOrder = customizedArtworkOrderService
+				.getCustomedArtworkOrderByOrderId(orderId);
+		CustomizedArtwork customizedArtwork = customizedArtworkOrder
+				.getCustomizedArtwork();
+
 		String path = CommonMethod.getPicUrl(request);
-		String picurl=PicUpload.saveFile(filedata,path);
-    	
-		String period=request.getParameter("period");
-		if(period.equals("1")){
+		String picurl = PicUpload.saveFile(filedata, path);
+
+		String period = request.getParameter("period");
+		if (period.equals("1")) {
 			customizedArtwork.setStartImg(picurl);
-		}else if (period.equals("2")) {
+		} else if (period.equals("2")) {
 			customizedArtwork.setMidImg(picurl);
-		}else {
+		} else {
 			customizedArtwork.setEndImg(picurl);
 		}
 		customizedArtworkOrder.setCustomizedArtwork(customizedArtwork);
-		customizedArtworkOrderService.updateCustomizedArtworkOrder(customizedArtworkOrder);
-		request.setAttribute("order",customizedArtworkOrder);
+		customizedArtworkOrderService
+				.updateCustomizedArtworkOrder(customizedArtworkOrder);
+		request.setAttribute("order", customizedArtworkOrder);
 		return "customizedorderDetail";
 	}
 }

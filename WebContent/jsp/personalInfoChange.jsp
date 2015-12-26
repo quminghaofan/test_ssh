@@ -269,8 +269,8 @@ function before_register(){
 	}	*/
 	if(!(/^1\d{10}$/.test(tel)))
 	{ 
-		document.getElementById("username_blank").style.display="block";
-		$("#username_blank").text("您输入的手机号不正确");
+		document.getElementById("mobile_blank").style.display="block";
+		$("#mobile_blank").text("您输入的手机号不正确");
 		flag=1; 
 	}
 	/*if(document.getElementById("address").value==""){

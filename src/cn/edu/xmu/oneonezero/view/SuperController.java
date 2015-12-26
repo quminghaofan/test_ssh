@@ -103,9 +103,14 @@ public class SuperController {
 	}
 	
 	@RequestMapping("/changePsw")
-	public String changePsw(Long userId,HttpServletRequest request){
+	public String changePsw(Long userId,String type,HttpServletRequest request){
 		userService.updatePasswordByUserId(userId,request.getParameter("password"));
-		return "admin_info";
+		if(type.equals("1")){
+			return "personalInfoChange";
+		}
+		else {
+			return "admin_info";
+		}
 	}
 
 }

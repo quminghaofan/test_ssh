@@ -68,6 +68,7 @@ public class EditorController {
     	news.setName(request.getParameter("RRname"));
     	news.setContent(request.getParameter("content"));
     	
+    	if(filedata!=null){
     	if(news.getPicUrl()!=null){
     		String temp=(news.getPicUrl()).replaceAll("..\\\\attached", "");
     		PicUpload.deleteFile(temp,path);
@@ -75,19 +76,20 @@ public class EditorController {
 
 		String picurl=PicUpload.saveFile(filedata,path);
     	news.setPicUrl(picurl);
+    	}
     	
     	news.setOnShowTime(format.parse(request.getParameter("txtDate time1")));
     	news.setOffShowTime(format.parse(request.getParameter("txtDate time2")));
 //    	System.out.println(request.getParameter("price"));
     	news.setPrice(Double.parseDouble(request.getParameter("price")));
     	
-    	System.out.println("editNews-type:"+type);
+//    	System.out.println("editNews-type:"+type);
     	
     	if(type.equals("1")){//保存
-    		System.out.print("草稿");
+//    		System.out.print("草稿");
     		news.setState("草稿");
     	}else{//发送
-    		System.out.print("发送");
+//    		System.out.print("发送");
 			news.setState("未审核");
 		}
         newsService.updateNews(news);

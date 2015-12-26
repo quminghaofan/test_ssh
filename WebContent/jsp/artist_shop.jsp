@@ -186,7 +186,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</td>
 								<td>${item.price}</td>
 								<td><a href="/test_ssh/artist/goToEditOrAdd?itemId=${item.id}">编辑</a>
-								<a href="/test_ssh/artist/delArtwork?itemId=${itemid}">删除</a></td>
+								<a href="/test_ssh/artist/delArtwork?itemId=${item.id}">删除</a></td>
 							</tr>
 							</c:forEach>
 					</table>

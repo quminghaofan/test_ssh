@@ -66,8 +66,7 @@
         <tr>
             <td class="tableleft">图片</td>
             <td><div id="preview"><span><img id="image" src="${news.picUrl}" width="30%" height="30%"/></span></div>
-            <input type="hidden" id="hiddenimg" name="hiddenimg" value="${news.picUrl}">
-            <span><input id="img" name="img" type="file" accept="image/*" onchange="previewImage(this,'preview','image');hiddenimg.value=this.value;alert(hiddenimg.value)" value="${news.picUrl}"/></span></td> </tr>
+            <span><input id="img" name="img" type="file" accept="image/*" onchange="previewImage(this,'preview','image')" value="${news.picUrl}"/></span></td> </tr>
 
         <tr>
             <td width="10%" class="tableleft">上架时间</td>

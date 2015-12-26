@@ -174,8 +174,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div id="preview" style="border:solid 1px">
 						<span><img id="image" src="${item.picUrl}" width="30%"
 							height="30%" /></span>
-					</div> <span><input id="img" name="img" type="file"
-						accept="images/*" onchange="previewImage(this,'preview','image')" style="width: 60%" value="${item.picUrl}"/></span>
+					</div> <span>
+            <span><input id="img" name="img" type="file" accept="image/*" onchange="previewImage(this,'preview','image')"/></span></span>
 
 </div>
 				  <div>
