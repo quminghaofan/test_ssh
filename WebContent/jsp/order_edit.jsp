@@ -169,6 +169,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <div class="register">
 			   <div class="col-md-6 login-right">
 			   <%
+				request.setCharacterEncoding("UTF-8");
         	      String address=(String)session.getAttribute("address");
         	      String mobile=(String)session.getAttribute("mobile");
                %>

@@ -208,12 +208,14 @@ public class MallController {
 
 	@RequestMapping("/editOrder")
 	public String editOrder(String wh, Long type, String address,
-			String mobile, HttpServletRequest request) {
+			String mobile, HttpServletRequest request) throws UnsupportedEncodingException {
 		System.out.println("editorder:wh=" + wh + ",type=" + type + ",address="
 				+ address + ",mobil=" + mobile);
 		request.setAttribute("type", type);
 		HttpSession session = request.getSession();
 		if (wh.equals("0")) {
+			address=new String(address.getBytes("ISO-8859-1"),"UTF-8");
+			mobile=new String(mobile.getBytes("ISO-8859-1"),"UTF-8");
 			session.setAttribute("address", address);
 			session.setAttribute("mobile", mobile);
 			return "order_edit";

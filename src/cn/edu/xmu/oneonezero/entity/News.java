@@ -1,6 +1,6 @@
 package cn.edu.xmu.oneonezero.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -36,8 +38,8 @@ public class News {
 		this.name = "";
 		this.content = "";
 		this.picUrl = "..\\images\\nopic.jpg";
-		this.onShowTime = new Date();
-		this.offShowTime = new Date();
+		this.onShowTime = new Date(new java.util.Date().getTime());
+		this.offShowTime = new Date(new java.util.Date().getTime());
 		this.rank = "";
 		this.state = "未审核";
 		this.price = 0;
@@ -69,7 +71,6 @@ public class News {
 	public void setPicUrl(String picUrl) {
 		this.picUrl = picUrl;
 	}
-
 	public Date getOnShowTime() {
 		return onShowTime;
 	}

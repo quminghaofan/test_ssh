@@ -37,7 +37,7 @@ public class NewsDaoImpl implements NewsDao {
 
 	@Override
 	public void insertNews(News news) {
-		sessionFactory.getCurrentSession().saveOrUpdate(news);
+		sessionFactory.getCurrentSession().merge(news);
 		sessionFactory.getCurrentSession().flush();
 	}
 
@@ -263,7 +263,7 @@ public class NewsDaoImpl implements NewsDao {
 
 	@Override
 	public List<News> getNewsToday(Date today) {
-		String hql = "from News n where n.newsType='资讯' and n.onShowTime<? and n.offShowTime>? order by n.rank desc";
+		String hql = "from News n where n.newsType='资讯' and n.state='审核通过' and n.onShowTime<? and n.offShowTime>? order by n.rank desc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setDate(0, today);
 		query.setDate(1, today);
@@ -278,7 +278,7 @@ public class NewsDaoImpl implements NewsDao {
 			newsName="";
 		if(newsType==null||newsType.equals(""))
 		{
-			String hql = "from  News n where n.editor.id=? and n.onShowTime>? "
+			String hql = "from  News n where n.editor.id=? and n.onShowTime>=? "
 					+ "and n.offShowTime<? and n.name like ? and n.state = ?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			query.setLong(0, editorId);
@@ -312,7 +312,7 @@ public class NewsDaoImpl implements NewsDao {
 		}
 		else
 		{
-			String hql = "from  News n where n.editor.id=? and n.newsType=? and n.onShowTime>? "
+			String hql = "from  News n where n.editor.id=? and n.newsType=? and n.onShowTime>=? "
 					+ "and n.offShowTime<? and n.name like ? and n.state = ?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			query.setLong(0, editorId);
@@ -353,7 +353,7 @@ public class NewsDaoImpl implements NewsDao {
 			newsName="";
 		if(newsType==null||newsType.equals(""))
 		{
-			String hql = "from  News n where n.onShowTime>? "
+			String hql = "from  News n where n.onShowTime>=? "
 					+ "and n.offShowTime<? and n.name like ? and (n.state = '审核通过' or n.state= '审核不通过')";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			if(startTime!=null)
@@ -384,7 +384,7 @@ public class NewsDaoImpl implements NewsDao {
 		}
 		else
 		{
-			String hql = "from  News n where n.newsType=? and n.onShowTime>? "
+			String hql = "from  News n where n.newsType=? and n.onShowTime>=? "
 					+ "and n.offShowTime<? and n.name like ? and (n.state = '审核通过' or n.state= '审核不通过')";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			query.setString(0, newsType);
@@ -454,7 +454,7 @@ public class NewsDaoImpl implements NewsDao {
 		}
 		else
 		{
-			String hql = "from  News n where n.newsType=? and n.onShowTime>? "
+			String hql = "from  News n where n.newsType=? and n.onShowTime>=? "
 					+ "and n.offShowTime<? and n.name like ? and n.state = '未审核' ";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			query.setString(0, newsType);
@@ -488,7 +488,7 @@ public class NewsDaoImpl implements NewsDao {
 
 	@Override
 	public List<News> getAdvertisementToday(Date today) {
-		String hql = "from News n where n.newsType='广告' and n.onShowTime<? and n.offShowTime>? order by n.rank desc";
+		String hql = "from News n where n.newsType='广告' and n.state='审核通过' and n.onShowTime<? and n.offShowTime>=? order by n.rank desc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setDate(0, today);
 		query.setDate(1, today);

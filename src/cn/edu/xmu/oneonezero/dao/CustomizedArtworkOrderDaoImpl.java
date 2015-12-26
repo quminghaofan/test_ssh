@@ -30,11 +30,14 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	@Override
 	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByOrderIdAndTimespace(String orderId, Date startTime,
 			Date endTime) {
-		String hql = "from  CustomizedArtworkOrder cao where cao.orderId like ? and a.placeDate>? and a.placeDate<?";
+		String hql = "from  CustomizedArtworkOrder cao where cao.orderId like ? and a.placeDate>=? and a.placeDate<?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, orderId);
 		if(startTime!=null)
-			query.setDate(1, startTime);
+		{
+			java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());			
+			query.setDate(1, sqlStartTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -44,7 +47,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 			query.setDate(1, temDate);
 		}
 		if(endTime!=null)
-			query.setDate(2, endTime);
+		{
+			java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+			query.setDate(2, sqlEndTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -61,11 +67,14 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	@Override
 	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByVagueArtworkNameAndTimespace(String artworkName,
 			Date startTime, Date endTime) {
-		String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.name like ? and a.placeDate>? and a.placeDate<?";
+		String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.name like ? and a.placeDate>=? and a.placeDate<?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, artworkName);
 		if(startTime!=null)
-			query.setDate(1, startTime);
+		{
+			java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());			
+			query.setDate(1, sqlStartTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -75,7 +84,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 			query.setDate(1, temDate);
 		}
 		if(endTime!=null)
-			query.setDate(2, endTime);
+		{
+			java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+			query.setDate(2, sqlEndTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -92,11 +104,14 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	@Override
 	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByArtworkTypeAndTimespace(String artworkType,
 			Date startTime, Date endTime) {
-		String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.type.name like ? and a.placeDate>? and a.placeDate<?";
+		String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.type.name like ? and a.placeDate>=? and a.placeDate<?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, artworkType);
 		if(startTime!=null)
-			query.setDate(1, startTime);
+		{
+			java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());
+			query.setDate(1, sqlStartTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -106,7 +121,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 			query.setDate(1, temDate);
 		}
 		if(endTime!=null)
-			query.setDate(2, endTime);
+		{
+			java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+			query.setDate(2, sqlEndTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -123,11 +141,14 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	@Override
 	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByUserNameAndTimespace(String userName,
 			Date startTime, Date endTime) {
-		String hql = "from  CustomizedArtworkOrder cao where cao.user.name like ? and a.placeDate>? and a.placeDate<?";
+		String hql = "from  CustomizedArtworkOrder cao where cao.user.name like ? and a.placeDate>=? and a.placeDate<?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, "%"+userName+"%");
 		if(startTime!=null)
-			query.setDate(1, startTime);
+		{
+			java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());			
+			query.setDate(1, sqlStartTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -137,7 +158,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 			query.setDate(1, temDate);
 		}
 		if(endTime!=null)
-			query.setDate(2, endTime);
+		{
+			java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+			query.setDate(2, sqlEndTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -154,11 +178,14 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	@Override
 	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByArtistNameAndTimespace(String artistName,
 			Date startTime, Date endTime) {
-		String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.owner.name like ? and a.placeDate>? and a.placeDate<?";
+		String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.owner.name like ? and a.placeDate>=? and a.placeDate<?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, "%"+artistName+"%");
 		if(startTime!=null)
-			query.setDate(1, startTime);
+		{
+			java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());			
+			query.setDate(1, sqlStartTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -168,8 +195,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 			query.setDate(1, temDate);
 		}
 		if(endTime!=null)
-			query.setDate(2, endTime);
-		else
+		{
+			java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+			query.setDate(2, sqlEndTime);
+		}
 		{
 			Calendar temCal=Calendar.getInstance();
 			temCal.set(2050,1,1);
@@ -231,13 +260,16 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	public List<CustomizedArtworkOrder> getByOrderId(String name, String typeId, Date startTime, Date endTime) {
 		if(typeId==null||typeId.equals(""))
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.orderId like ?  and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.orderId like ?  and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
 			
 			if(startTime!=null)
-				query.setDate(1, startTime);
+			{
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());				
+				query.setDate(1, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -247,7 +279,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 				query.setDate(1, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(2, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+				query.setDate(2, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -262,7 +297,7 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 		}
 		else
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.orderId like ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.orderId like ? and cao.customizedArtwork.type.id=? and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
@@ -270,7 +305,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 			query.setLong(1,tem1);
 			
 			if(startTime!=null)
-				query.setDate(2, startTime);
+			{
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());				
+				query.setDate(2, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -280,7 +318,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 				query.setDate(2, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(3, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+				query.setDate(3, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -299,13 +340,16 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	public List<CustomizedArtworkOrder> getByArtworkName(String name, String typeId, Date startTime, Date endTime) {
 		if(typeId==null||typeId.equals(""))
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.name like ?  and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.name like ?  and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
 			
 			if(startTime!=null)
-				query.setDate(1, startTime);
+			{
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());				
+				query.setDate(1, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -315,7 +359,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 				query.setDate(1, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(2, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+				query.setDate(2, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -330,7 +377,7 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 		}
 		else
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.name like ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.name like ? and cao.customizedArtwork.type.id=? and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
@@ -338,7 +385,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 			query.setLong(1,tem1);
 			
 			if(startTime!=null)
-				query.setDate(2, startTime);
+			{
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());				
+				query.setDate(2, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -348,7 +398,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 				query.setDate(2, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(3, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+				query.setDate(3, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -367,13 +420,16 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	public List<CustomizedArtworkOrder> getByOwnerName(String name, String typeId, Date startTime, Date endTime) {
 		if(typeId==null||typeId.equals(""))
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.owner.name like ?  and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.owner.name like ?  and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
 			
 			if(startTime!=null)
-				query.setDate(1, startTime);
+			{
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());				
+				query.setDate(1, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -383,7 +439,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 				query.setDate(1, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(2, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+				query.setDate(2, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -398,7 +457,7 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 		}
 		else
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.owner.name like ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.owner.name like ? and cao.customizedArtwork.type.id=? and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
@@ -406,7 +465,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 			query.setLong(1,tem1);
 			
 			if(startTime!=null)
-				query.setDate(2, startTime);
+			{
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());				
+				query.setDate(2, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -416,7 +478,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 				query.setDate(2, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(3, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+				query.setDate(3, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -435,13 +500,16 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	public List<CustomizedArtworkOrder> getByUserName(String name, String typeId, Date startTime, Date endTime) {
 		if(typeId==null||typeId.equals(""))
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.user.name like ?  and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.user.name like ?  and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
 			
 			if(startTime!=null)
-				query.setDate(1, startTime);
+			{
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());				
+				query.setDate(1, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -451,7 +519,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 				query.setDate(1, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(2, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+				query.setDate(2, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -466,7 +537,7 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 		}
 		else
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.user.name like ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.user.name like ? and cao.customizedArtwork.type.id=? and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
@@ -474,7 +545,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 			query.setLong(1,tem1);
 			
 			if(startTime!=null)
-				query.setDate(2, startTime);
+			{
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());
+				query.setDate(2, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -484,7 +558,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 				query.setDate(2, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(3, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+				query.setDate(3, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();

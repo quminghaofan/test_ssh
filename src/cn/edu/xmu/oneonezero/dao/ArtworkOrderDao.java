@@ -8,11 +8,7 @@ import cn.edu.xmu.oneonezero.entity.ArtworkOrder;
 public interface ArtworkOrderDao {
 	
 	
-	public List<ArtworkOrder> getOrdersByVagueArtworkNameAndTimespace(String artworkName,Date startTime,Date endTime);//2.根据艺术品名模糊查找一段时间订单
-	public List<ArtworkOrder> getOrdersByArtworkTypeAndTimespace(String artworkType,Date startTime,Date endTime);//3.根据艺术品类型查找一段时间的订单
-	public List<ArtworkOrder> getOrdersByArtistNameAndTimespace(String artistName,Date startTime,Date endTime);//5.根据卖家用户名查找一段时间的订单
 
-	public List<ArtworkOrder> getOrdersByArtistId(long artistId);//获取艺术家的所有订单
 	
 	
 	

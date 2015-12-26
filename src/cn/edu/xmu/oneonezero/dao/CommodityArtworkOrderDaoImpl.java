@@ -19,11 +19,13 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 	@Override
 	public List<CommodityArtworkOrder> getCommodityArtworkOrdersByOrderIdAndTimespace(String orderId, Date startTime,
 			Date endTime) {
-		String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.canSell=true and cao.orderId like ? and a.placeDate>? and a.placeDate<?";
+		String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.canSell=true and cao.orderId like ? and a.placeDate>=? and a.placeDate<?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, orderId);
-		if(startTime!=null)
-			query.setDate(1, startTime);
+		if(startTime!=null){
+			java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());
+			query.setDate(1, sqlStartTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -33,7 +35,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			query.setDate(1, temDate);
 		}
 		if(endTime!=null)
-			query.setDate(2, endTime);
+		{
+			java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+			query.setDate(2, sqlEndTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -50,11 +55,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 	@Override
 	public List<CommodityArtworkOrder> getCommodityArtworkOrdersByVagueArtworkNameAndTimespace(String artworkName,
 			Date startTime, Date endTime) {
-		String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.canSell=true and cao.commodityArtwork.name like ? and a.placeDate>? and a.placeDate<?";
+		String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.canSell=true and cao.commodityArtwork.name like ? and a.placeDate>=? and a.placeDate<?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, artworkName);
 		if(startTime!=null)
-			query.setDate(1, startTime);
+		{
+			java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());
+			query.setDate(1, sqlStartTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -64,7 +72,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			query.setDate(1, temDate);
 		}
 		if(endTime!=null)
-			query.setDate(2, endTime);
+		{
+			java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+			query.setDate(2, sqlEndTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -81,11 +92,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 	@Override
 	public List<CommodityArtworkOrder> getCommodityArtworkOrdersByArtworkTypeAndTimespace(String artworkType,
 			Date startTime, Date endTime) {
-		String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.canSell=true and cao.commodityArtwork.type.name like ? and a.placeDate>? and a.placeDate<?";
+		String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.canSell=true and cao.commodityArtwork.type.name like ? and a.placeDate>=? and a.placeDate<?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, artworkType);
 		if(startTime!=null)
-			query.setDate(1, startTime);
+		{
+			java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());
+			query.setDate(1, sqlStartTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -95,7 +109,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			query.setDate(1, temDate);
 		}
 		if(endTime!=null)
-			query.setDate(2, endTime);
+		{
+			java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+			query.setDate(2, sqlEndTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -112,11 +129,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 	@Override
 	public List<CommodityArtworkOrder> getCommodityArtworkOrdersByUserNameAndTimespace(String userName, Date startTime,
 			Date endTime) {
-		String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.canSell=true and cao.user.name like ? and a.placeDate>? and a.placeDate<?";
+		String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.canSell=true and cao.user.name like ? and a.placeDate>=? and a.placeDate<?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, "%"+userName+"%");
 		if(startTime!=null)
-			query.setDate(1, startTime);
+		{
+			java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());
+			query.setDate(1, sqlStartTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -126,7 +146,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			query.setDate(1, temDate);
 		}
 		if(endTime!=null)
-			query.setDate(2, endTime);
+		{
+			java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+			query.setDate(2, sqlEndTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -143,11 +166,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 	@Override
 	public List<CommodityArtworkOrder> getCommodityArtworkOrdersByArtistNameAndTimespace(String artistName,
 			Date startTime, Date endTime) {
-		String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.canSell=true and cao.commodityArtwork.owner.name like ? and a.placeDate>? and a.placeDate<?";
+		String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.canSell=true and cao.commodityArtwork.owner.name like ? and a.placeDate>=? and a.placeDate<?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, "%"+artistName+"%");
 		if(startTime!=null)
-			query.setDate(1, startTime);
+		{
+			java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());			
+			query.setDate(1, sqlStartTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -157,7 +183,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			query.setDate(1, temDate);
 		}
 		if(endTime!=null)
-			query.setDate(2, endTime);
+		{
+			java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());			
+			query.setDate(2, sqlEndTime);
+		}
 		else
 		{
 			Calendar temCal=Calendar.getInstance();
@@ -247,13 +276,16 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 	public List<CommodityArtworkOrder> getByOrderId(String name, String typeId, Date startTime, Date endTime) {
 		if(typeId==null||typeId.equals(""))
 		{
-			String hql = "from  CommodityArtworkOrder cao where cao.orderId like ?  and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CommodityArtworkOrder cao where cao.orderId like ?  and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
 			
 			if(startTime!=null)
-				query.setDate(1, startTime);
+			{
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());				
+				query.setDate(1, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -263,7 +295,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 				query.setDate(1, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(2, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+				query.setDate(2, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -278,7 +313,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 		}
 		else
 		{
-			String hql = "from  CommodityArtworkOrder cao where cao.orderId like ? and cao.commodityArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CommodityArtworkOrder cao where cao.orderId like ? and cao.commodityArtwork.type.id=? and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
@@ -286,7 +321,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			query.setLong(1,tem1);
 			
 			if(startTime!=null)
-				query.setDate(2, startTime);
+			{
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());
+				query.setDate(2, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -296,7 +334,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 				query.setDate(2, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(3, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());
+				query.setDate(3, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -316,13 +357,16 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 	public List<CommodityArtworkOrder> getByArtworkName(String name, String typeId, Date startTime, Date endTime) {
 		if(typeId==null||typeId.equals(""))
 		{
-			String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.name like ?  and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.name like ?  and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
 			
 			if(startTime!=null)
-				query.setDate(1, startTime);
+			{
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());
+				query.setDate(1, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -332,7 +376,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 				query.setDate(1, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(2, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());				
+				query.setDate(2, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -347,7 +394,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 		}
 		else
 		{
-			String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.name like ? and cao.commodityArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.name like ? and cao.commodityArtwork.type.id=? and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
@@ -355,7 +402,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			query.setLong(1,tem1);
 			
 			if(startTime!=null)
-				query.setDate(2, startTime);
+			{	
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());
+				query.setDate(2, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -365,7 +415,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 				query.setDate(2, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(3, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());				
+				query.setDate(3, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -384,13 +437,16 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 	public List<CommodityArtworkOrder> getByOwnerName(String name, String typeId, Date startTime, Date endTime) {
 		if(typeId==null||typeId.equals(""))
 		{
-			String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.owner.name like ?  and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.owner.name like ?  and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
 			
 			if(startTime!=null)
-				query.setDate(1, startTime);
+			{
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());
+				query.setDate(1, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -400,7 +456,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 				query.setDate(1, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(2, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());				
+				query.setDate(2, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -415,7 +474,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 		}
 		else
 		{
-			String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.owner.name like ? and cao.commodityArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CommodityArtworkOrder cao where cao.commodityArtwork.owner.name like ? and cao.commodityArtwork.type.id=? and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
@@ -423,7 +482,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			query.setLong(1,tem1);
 			
 			if(startTime!=null)
-				query.setDate(2, startTime);
+			{
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());
+				query.setDate(2, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -433,7 +495,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 				query.setDate(2, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(3, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());				
+				query.setDate(3, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -452,13 +517,16 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 	public List<CommodityArtworkOrder> getByUserName(String name, String typeId, Date startTime, Date endTime) {
 		if(typeId==null||typeId.equals(""))
 		{
-			String hql = "from  CommodityArtworkOrder cao where cao.user.name like ?  and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CommodityArtworkOrder cao where cao.user.name like ?  and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
 			
 			if(startTime!=null)
-				query.setDate(1, startTime);
+			{
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());
+				query.setDate(1, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -468,7 +536,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 				query.setDate(1, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(2, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());				
+				query.setDate(2, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -483,7 +554,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 		}
 		else
 		{
-			String hql = "from  CommodityArtworkOrder cao where cao.user.name like ? and cao.commodityArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CommodityArtworkOrder cao where cao.user.name like ? and cao.commodityArtwork.type.id=? and cao.placeDate>=? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			query.setString(0, "%"+name+"%");
@@ -491,7 +562,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			query.setLong(1,tem1);
 			
 			if(startTime!=null)
-				query.setDate(2, startTime);
+			{
+				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());
+				query.setDate(2, sqlStartTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
@@ -501,7 +575,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 				query.setDate(2, temDate);
 			}
 			if(endTime!=null)
-				query.setDate(3, endTime);
+			{
+				java.sql.Date sqlEndTime=new java.sql.Date(endTime.getTime());				
+				query.setDate(3, sqlEndTime);
+			}
 			else
 			{
 				Calendar temCal=Calendar.getInstance();
