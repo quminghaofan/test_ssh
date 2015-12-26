@@ -20,6 +20,7 @@ public class PicUpload {
 	public static String saveFile(MultipartFile filedata, String saveFilePath) {
 		// 保存相对路径到数据库 图片写入服务器
 		if (filedata != null && !filedata.isEmpty()) {
+//			System.out.println("测试测试");
 			// 获取图片的文件名
 			String fileName = filedata.getOriginalFilename();
 			// 获取图片的扩展名

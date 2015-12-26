@@ -123,9 +123,9 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	@Override
 	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByUserNameAndTimespace(String userName,
 			Date startTime, Date endTime) {
-		String hql = "from  CustomizedArtworkOrder cao where cao.user.name = ? and a.placeDate>? and a.placeDate<?";
+		String hql = "from  CustomizedArtworkOrder cao where cao.user.name like ? and a.placeDate>? and a.placeDate<?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setString(0, userName);
+		query.setString(0, "%"+userName+"%");
 		if(startTime!=null)
 			query.setDate(1, startTime);
 		else
@@ -154,9 +154,9 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	@Override
 	public List<CustomizedArtworkOrder> getCustomizedArtworkOrdersByArtistNameAndTimespace(String artistName,
 			Date startTime, Date endTime) {
-		String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.owner.name = ? and a.placeDate>? and a.placeDate<?";
+		String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.owner.name like ? and a.placeDate>? and a.placeDate<?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setString(0, artistName);
+		query.setString(0, "%"+artistName+"%");
 		if(startTime!=null)
 			query.setDate(1, startTime);
 		else
@@ -231,10 +231,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	public List<CustomizedArtworkOrder> getByOrderId(String name, String typeId, Date startTime, Date endTime) {
 		if(typeId==null||typeId.equals(""))
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.orderId = ?  and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.orderId like ?  and cao.placeDate>? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
-			query.setString(0, name);
+			query.setString(0, "%"+name+"%");
 			
 			if(startTime!=null)
 				query.setDate(1, startTime);
@@ -262,10 +262,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 		}
 		else
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.orderId = ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.orderId like ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
-			query.setString(0, name);
+			query.setString(0, "%"+name+"%");
 			Long tem1=Long.parseLong(typeId);
 			query.setLong(1,tem1);
 			
@@ -299,10 +299,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	public List<CustomizedArtworkOrder> getByArtworkName(String name, String typeId, Date startTime, Date endTime) {
 		if(typeId==null||typeId.equals(""))
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.name = ?  and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.name like ?  and cao.placeDate>? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
-			query.setString(0, name);
+			query.setString(0, "%"+name+"%");
 			
 			if(startTime!=null)
 				query.setDate(1, startTime);
@@ -330,10 +330,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 		}
 		else
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.name = ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.name like ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
-			query.setString(0, name);
+			query.setString(0, "%"+name+"%");
 			Long tem1=Long.parseLong(typeId);
 			query.setLong(1,tem1);
 			
@@ -367,10 +367,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	public List<CustomizedArtworkOrder> getByOwnerName(String name, String typeId, Date startTime, Date endTime) {
 		if(typeId==null||typeId.equals(""))
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.owner.name = ?  and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.owner.name like ?  and cao.placeDate>? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
-			query.setString(0, name);
+			query.setString(0, "%"+name+"%");
 			
 			if(startTime!=null)
 				query.setDate(1, startTime);
@@ -398,10 +398,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 		}
 		else
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.owner.name = ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.customizedArtwork.owner.name like ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
-			query.setString(0, name);
+			query.setString(0, "%"+name+"%");
 			Long tem1=Long.parseLong(typeId);
 			query.setLong(1,tem1);
 			
@@ -435,10 +435,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 	public List<CustomizedArtworkOrder> getByUserName(String name, String typeId, Date startTime, Date endTime) {
 		if(typeId==null||typeId.equals(""))
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.user.name = ?  and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.user.name like ?  and cao.placeDate>? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
-			query.setString(0, name);
+			query.setString(0, "%"+name+"%");
 			
 			if(startTime!=null)
 				query.setDate(1, startTime);
@@ -466,10 +466,10 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 		}
 		else
 		{
-			String hql = "from  CustomizedArtworkOrder cao where cao.user.name = ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
+			String hql = "from  CustomizedArtworkOrder cao where cao.user.name like ? and cao.customizedArtwork.type.id=? and cao.placeDate>? and cao.placeDate<?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
-			query.setString(0, name);
+			query.setString(0, "%"+name+"%");
 			Long tem1=Long.parseLong(typeId);
 			query.setLong(1,tem1);
 			

@@ -56,6 +56,7 @@ public class CommodityArtworkServiceImpl implements CommodityArtworkService{
 	@Override
 	public void updateCommodityArtwork(CommodityArtwork commodityArtwork) {
 		commodityArtworkDao.updateCommodityArtwork(commodityArtwork);
+		
 	}
 	@Override
 	public List<CommodityArtwork> getAllExhibitArtworks() {

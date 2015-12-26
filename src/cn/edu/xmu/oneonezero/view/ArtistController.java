@@ -113,7 +113,6 @@ public class ArtistController {
 			Long itemId, HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
 		String path = CommonMethod.getPicUrl(request);
-		String picUrl = PicUpload.saveFile(filedata, path);
 		String name = request.getParameter("name");
 		String type = request.getParameter("type");
 		DataDictionary dataDictionary = dataDictionaryService
@@ -131,6 +130,7 @@ public class ArtistController {
 		String description = request.getParameter("description");
 		if (itemId == null) {
 			CommodityArtwork commodityArtwork = new CommodityArtwork();
+			String picUrl = PicUpload.saveFile(filedata, path);
 			commodityArtwork.setPicUrl(picUrl);
 			commodityArtwork.setName(name);
 			commodityArtwork.setType(dataDictionary);
@@ -145,13 +145,14 @@ public class ArtistController {
 			CommodityArtwork commodityArtwork = commodityArtworkService
 					.getCommodityArtworkById(itemId);
 
-			if (filedata != null) {
+			if (filedata != null&& !filedata.isEmpty()) {
+				String picUrl = PicUpload.saveFile(filedata, path);
+				System.out.println("测试编辑：" + picUrl);
 				if (commodityArtwork.getPicUrl() != null) {
 					String temp = (commodityArtwork.getPicUrl()).replaceAll(
 							"..\\\\attached", "");
 					PicUpload.deleteFile(temp, path);
 				}
-
 				commodityArtwork.setPicUrl(picUrl);
 			}
 			
@@ -161,7 +162,7 @@ public class ArtistController {
 			commodityArtwork.setPrice(Double.parseDouble(price));
 			commodityArtwork.setArtworkDescription(description);
 			commodityArtworkService.updateCommodityArtwork(commodityArtwork);
-			System.out.println("测试编辑：" + picUrl);
+//			System.out.println("测试编辑：" + picUrl);
 		}
 		return "redirect:/artist/myArt";
 	}
