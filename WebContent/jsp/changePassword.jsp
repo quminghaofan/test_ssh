@@ -180,13 +180,8 @@ top:400px;
 				</div>
 				<div class="col-md-6 login-right">
 <%User user=(User)session.getAttribute("user"); %>
-<<<<<<< HEAD
-					<form id="changeform" method="post" onsubmit="return before_register()" action="/test_ssh/super/changePsw?userId=<%=user.getId() %>&type=1">
-					<h2 style="color: blue" align="center-left">我的密码修改</h2></br>
-=======
 					<form id="changeform" method="post" onsubmit="return before_register()" action="/test_ssh/super/changePsw?userId=<%=user.getId() %>">
 					<h2 style="color: black" align="center-left">我的密码修改</h2></br>
->>>>>>> origin/master
 						<!--<div>
 							<span> 新密码 <label>*</label></span> 
 							<input name="password"
