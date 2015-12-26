@@ -39,14 +39,14 @@ body {
 <body>
 
 	<form class="form-inline definewidth m20"
-		action="/test_ssh/admin_user/getArtwork" method="post">
+		action="/test_ssh/admin_user/getArtwork?type=1" method="post">
 		根据<select style="width: auto" name="sign" id="sign">
 			<option value="0">艺术品名</option>
 			<option value="1">卖家用户名</option>
 		</select>搜索 <input type="text" name="username" id="username"
 			class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
-		<select name="type" id="type">
-			<option selected="selected" value="全部">全部</option>
+		<select name="typeId" id="typeId">
+			<option selected="selected" value="0">全部</option>
 			<c:forEach items="${TYPELIST}" var="type">
 				<option value="${type.id}">${type.name}</option>
 			</c:forEach>
@@ -69,11 +69,18 @@ body {
 		<c:if test="${ITEMLIST!=null}">
 			<c:forEach items="${ITEMLIST}" var="item">
 				<tr>
-					<td><img id="image" src="${item.picUrl}" /></td>
+					<td style="width: 15%;"><img id="image" src="${item.picUrl}" style="width: 100%;"/></td>
 					<td>${item.name}</td>
 					<td>${item.type.name}</td>
 					<td>${item.owner.name}</td>
+<c:if test="${item.canSell}">
+						<td>商品</td>
+					</c:if>
 
+					<c:if test="${!(item.canSell)}">
+						<td>展品</td>
+					</c:if>
+					
 					<c:if test="${item.isExist}">
 						<td>存在</td>
 					</c:if>
@@ -82,15 +89,10 @@ body {
 						<td>已删除</td>
 					</c:if>
 
-					<c:if test="${item.canSell}">
-						<td>商品</td>
-					</c:if>
-
-					<c:if test="${!(item.canSell)}">
-						<td>展品</td>
+					<c:if test="${item.isExist}">
+						<td>有效</td>
 					</c:if>
 					
-					<td>${item.sellState}</td>
 					
 				</tr>
 			</c:forEach>

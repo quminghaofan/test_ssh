@@ -45,8 +45,8 @@ body {
 			<option value="1">卖家用户名</option>
 		</select>搜索 <input type="text" name="username" id="username"
 			class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
-		<select name="type" id="type">
-			<option selected="selected" value="全部">全部</option>
+		<select name="typeId" id="typeId">
+			<option selected="selected" value="0">全部</option>
 			<c:forEach items="${TYPELIST}" var="type">
 				<option value="${type.id}">${type.name}</option>
 			</c:forEach>

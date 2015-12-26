@@ -80,7 +80,7 @@
                 <td>${user.realName}</td>
                 <td>${user.bankCardAccount}</td>
                  <td>${user.description}</td>
-                 <td><img id="image" src="${user.idPhoto}"/></td>
+                 <td style="width: 15%;"><img id="image" src="${user.idPhoto}" style="width: 100%;"/></td>
                  <td><a href="/test_ssh/admin_user/exmineArtist?userId=${user.id}&type=1">通过</a>&nbsp;&nbsp;<a href="javascript:showreason(${user.id})">不通过</a></td>
             </tr>
     </c:forEach>
