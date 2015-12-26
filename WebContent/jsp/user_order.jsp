@@ -196,6 +196,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<td>${order.state}</td>
 										<td>
 											<div class="btn" style="float: right">
+											<c:if test="${order.isCancelled}"><a>订单已取消</a></c:if>
+											<c:if test="${!(order.isCancelled)}">
 												<c:if test="${(order.state).equals('未支付')}">
 												<a class="acount-btn" class="link" onclick="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=1">支付</a>
                                                 <a class="acount-btn" class="link" onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=1">取消订单</a>
@@ -210,6 +212,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<c:if test="${(order.state).equals('已支付已收货')}">
 												<a class="acount-btn" class="link">已收货</a>
 												</c:if>
+											</c:if>
 											</div>
 										</td>
 									</tr>

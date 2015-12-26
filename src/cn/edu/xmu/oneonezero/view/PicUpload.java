@@ -45,9 +45,9 @@ public class PicUpload {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return newFileName;
+			return "..\\attached\\"+newFileName;
 		}
-		return "nopic.jpg";
+		return "..\\images\\nopic.jpg";
 	}
 
 	/**
@@ -55,13 +55,11 @@ public class PicUpload {
 	 * 功能描述：删除图片
 	 */
 	public static void deleteFile(String picName, String picUrl) {
-		if (!picName.equals("/nopic.jpg")) {
 			File fileDir = new File(picUrl + picName);
 			if (fileDir.exists()) {
 				// 把修改之前的图片删除 以免太多没用的图片占据空间
 				fileDir.delete();
 			}
-		}
 
 	}
 }

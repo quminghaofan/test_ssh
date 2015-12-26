@@ -162,15 +162,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <div class="register">
 			   
 			   <div class="col-md-6 login-right">
-				<form id="myform" method="post">
+				<form id="myform" method="post" action="/test_ssh/artist/picUpload?orderId=${orderId}" enctype="multipart/form-data">
+				  上传第<select name="period" id="period">
+				  <option value="1" selected="selected">1</option>
+				  <option value="2">2</option>
+				  <option value="3">3</option>
+				  </select>期样品
 				  <div id="preview" style="border:solid 1px">
 						<span><img id="image" src="" width="30%"
 							height="30%" /></span>
 					</div> <span><input id="img" name="img" type="file"
 						accept="images/*" onchange="previewImage(this,'preview','image')" /></span>
 								
-				  <input type="submit" value="接受" onClick="">
-				  <input type="button" value="返回" onClick="">
+				  <input type="submit" value="上传" onclick="">
+				  <input type="button" value="返回" onclick="/test_ssh/artist/myCustomized">
 			    </form>
 			   </div>	
 		</div>

@@ -1,4 +1,5 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@page import="cn.edu.xmu.oneonezero.entity.User"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -170,12 +171,9 @@ top:400px;
 					<h2 style="color: red"></h2>
 				</div>
 				<div class="col-md-6 login-right">
-
-					<form id="changeform" method="post" action="#">
+<%User user=(User)session.getAttribute("user"); %>
+					<form id="changeform" method="post" onsubmit="return before_register()" action="/test_ssh/super/changePsw?userId=<%=user.getId() %>">
 					<h2 style="color: blue" align="center-left">我的密码修改</h2></br>
-					<form id="registerform" method="post"
-						onsubmit="return before_register()"
-						action="/test_ssh/init/register">
 						<!--<div>
 							<span> 新密码 <label>*</label></span> 
 							<input name="password"

@@ -44,7 +44,7 @@ public class CustomizedController {
 	public String seeMore(Long artistId,HttpServletRequest request){
 		request.setAttribute("artist",userService.getUser(artistId));
 		request.setAttribute("artCommodList",
-				commodityArtworkService.getCommodityArtworksByArtistId(artistId));//TODO 根据艺术家id获取艺术家展品
+				commodityArtworkService.getExhibitArtworksByOwnerId(artistId));
 		return "artistInfoAndCommondity";
 	}
 	
@@ -67,10 +67,6 @@ public class CustomizedController {
 		customizedArtwork.setRemarks(request.getParameter("intro"));//TODO
 		String path = request.getSession().getServletContext().getRealPath("\\attached");
 		String picurl=PicUpload.saveFile(filedata,path);
-		if(picurl.equals(""))picurl=null;
-		else {
-			picurl="..\\attached\\"+picurl;
-		}
 		customizedArtwork.setPicUrl(picurl);
 		customizedArtwork.setOwner(artist);
 		customizedArtworkService.insertCustomizedArtwork(customizedArtwork);
@@ -82,7 +78,7 @@ public class CustomizedController {
 		customizedArtworkOrder.setCustomizedArtwork(customizedArtwork);
 		customizedArtworkOrder.setPlaceDate(new Date(System.currentTimeMillis()));
 		customizedArtworkOrder.setUser(user);
-		customizedArtworkOrder.setState("未支付");//添加属性：支付到第几期
+		customizedArtworkOrder.setState("未支付");
 		customizedArtworkOrderService.insertCustomizedArtworkOrder(customizedArtworkOrder);
 		return "redirect:/mall/enterMall?go=0";
 	}

@@ -104,9 +104,7 @@ public class SuperController {
 	
 	@RequestMapping("/changePsw")
 	public String changePsw(Long userId,HttpServletRequest request){
-		//TODO 修改密码
-		System.out.println(userId);
-		System.out.println(request.getParameter("password"));
+		userService.updatePasswordByUserId(userId,request.getParameter("password"));
 		return "admin_info";
 	}
 

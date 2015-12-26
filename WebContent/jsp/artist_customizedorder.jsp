@@ -12,7 +12,9 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
 	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 
 </script>
 <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -166,19 +168,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<div class="men">
 		<div class="container">
-		<div style="display: none;" id="price" align="center">
-<div id="masklayer" ></div>
-<input type="hidden" id="orderid" name="orderid">
-<div style="z-index:10;position:absolute;left:30%;background-color:white;width:30%;height:35%" >
-<h3>价格</h3>
-<form class="form-inline definewidth m20" action="" method="post" id="priceform">
-    <label>第一期价格</label><input type="text" name="price1"  class="abc input-default" placeholder="" value="">
-    <label>第二期价格</label><input type="text" name="price2"  class="abc input-default" placeholder="" value="">
-    <label>第三期价格</label><input type="text" name="price3"  class="abc input-default" placeholder="" value="">
-    <button type="submit" class="btn btn-primary" onclick="editprice()">确定</button>
-</form>
-</div>
-</div>
+			<div style="display: none;" id="price" align="center">
+				<div id="masklayer"></div>
+				<input type="hidden" id="orderid" name="orderid">
+				<div
+					style="z-index: 10; position: absolute; left: 30%; background-color: white; width: 30%; height: 35%">
+					<h3>价格</h3>
+					<form class="form-inline definewidth m20" action="" method="post"
+						id="priceform">
+						<label>第一期价格</label><input type="text" name="price1"
+							class="abc input-default" placeholder="" value=""> <label>第二期价格</label><input
+							type="text" name="price2" class="abc input-default"
+							placeholder="" value=""> <label>第三期价格</label><input
+							type="text" name="price3" class="abc input-default"
+							placeholder="" value="">
+						<button type="submit" class="btn btn-primary"
+							onclick="editprice()">确定</button>
+					</form>
+				</div>
+			</div>
 			<div align="center">
 				<a class="acount-btn" href="/test_ssh/artist/myArt">我的艺术品</a> <a
 					class="acount-btn" href="/test_ssh/artist/mySale"
@@ -201,24 +209,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</tr>
 								<c:forEach items="${orderList}" var="order">
 									<tr>
-										<td scope="row" class="spec">${order.}</td>
 										<td>${order.commodityArtwor.name}</td>
 										<td>${order.user.name}</td>
 										<td>${order.user.address}</td>
 										<td>${order.mobil}</td>
-										<td><c:if test="${order.isAccept==null}">
+										<td>
+										<c:if test="${order.isCancelled}">
+											<a>订单已取消</a>
+										</c:if>
+										<c:if test="${!(order.isCancelled)}">
+											<c:if test="${order.isAccept==null}">
 													<a href="javascript:accept(${order.id})">接受</a>
-													<a href="/test_ssh/artist/isAccept?orderId=${order.id}&type=1">拒绝</a>
-											</c:if> <c:if test="${order.isAccept}">
-
-												<c:if test="${(order.state).equals('已支付未发货')}">
-													<a href="/test_ssh/artist/deliverGoods?orderId=${order.id}">发货</a>
+													<a
+														href="/test_ssh/artist/isAccept?orderId=${order.id}&type=1">拒绝</a>
+												</c:if> <c:if test="${!(order.isAccept)}">已拒绝</c:if> <c:if
+													test="${order.isAccept}">
+													<a href="/test_ssh/artist/goToPicUp?orderId=${order.id}">上传小样</a>
+													<c:if test="${(order.state).equals('已支付未发货')}">
+														<a
+															href="/test_ssh/artist/deliverGoods?orderId=${order.id}">发货</a>
+													</c:if>
+													<c:if test="${(order.state).equals('已支付已发货')}">
+														<a>已发货</a>
+													</c:if>
 												</c:if>
-												<c:if test="${(order.state).equals('已支付已发货')}">
-													<a>已发货</a>
-												</c:if>
-											</c:if> <c:if test="${!(order.isAccept)}">已拒绝</c:if> <a
-											href="/test_ssh/artist/customizedorderDetail?orderId=${order.id}">详情</a>
+										</c:if>
+										<a href="/test_ssh/artist/customizedorderDetail?orderId=${order.id}">详情</a>
 										</td>
 									</tr>
 								</c:forEach>
@@ -259,14 +275,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </body>
 </html>
 <script>
-    function accept(orderid){
-        document.getElementById("price").style.display="block";
-        document.getElementById("orderid").value=orderid;
-        }
-function editprice(){
-	var orderid=document.getElementById("orderid").value;
-	var price=document.getElementById("priceform");
-	price.action="/test_ssh/artist/isAccept?orderId="+orderid+"&type=0";
-	price.submit();
-}
+	function accept(orderid) {
+		document.getElementById("price").style.display = "block";
+		document.getElementById("orderid").value = orderid;
+	}
+	function editprice() {
+		var orderid = document.getElementById("orderid").value;
+		var price = document.getElementById("priceform");
+		price.action = "/test_ssh/artist/isAccept?orderId=" + orderid
+				+ "&type=0";
+		price.submit();
+	}
 </script>

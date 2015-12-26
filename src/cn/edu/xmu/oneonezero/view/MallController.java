@@ -70,9 +70,9 @@ public class MallController {
 			}
 			return "mall";
 		} else {
-//			pageTimes = commodityArtworkService.get获取展品的页数
-//			request.setAttribute("totalpage", pageTimes);
-//			request.getSession().setAttribute("pageTimes", pageTimes);
+			pageTimes = commodityArtworkService.getExhibitPageTotalByVagueName(itemname, 30);
+			request.setAttribute("totalpage", pageTimes);
+			request.getSession().setAttribute("pageTimes", pageTimes);
 			if (typeId == null) {
 			 request.setAttribute("itemlist",commodityArtworkService.getExhibitArtworksByVagueArtNameAndPage(itemname, curentPage-1, 30));
 			} else {
@@ -142,7 +142,7 @@ public class MallController {
 				commodityArtworkOrder.setState("未支付");
 				commodityArtworkOrders.add(commodityArtworkOrder);
 			}
-			// TODO 添加
+			commodityArtworkOrderService.insertSomeCommodityArtworkOrders(commodityArtworkOrders);
 			CommonMethod.cleanCookie(request, response);
 		} else {
 			CommodityArtwork commodityArtwork = commodityArtworkService.getCommodityArtworkById(type);

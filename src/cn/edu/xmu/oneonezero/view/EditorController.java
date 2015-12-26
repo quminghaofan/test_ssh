@@ -74,10 +74,6 @@ public class EditorController {
     	}
 
 		String picurl=PicUpload.saveFile(filedata,path);
-		if(picurl.equals(""))picurl=null;
-		else {
-			picurl="..\\attached\\"+picurl;
-		}
     	news.setPicUrl(picurl);
     	
     	news.setOnShowTime(format.parse(request.getParameter("txtDate time1")));

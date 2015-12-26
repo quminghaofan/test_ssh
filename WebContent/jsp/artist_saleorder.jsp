@@ -182,8 +182,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<td>${order.user.name}</td>
 										<td>${order.user.address}</td>
 										<td>${order.mobil}</td>
-										<td><c:if test="${(order.state).equals('未支付')}">
-												<a>未支付</a>
+										<td><c:if test="${order.isCancelled}">
+												<a>订单已取消</a>
+											</c:if> <c:if test="${!(order.isCancelled)}">
+												<c:if test="${(order.state).equals('未支付')}">
+													<a>未支付</a>
 												</c:if>
 												<c:if test="${(order.state).equals('已支付未发货')}">
 													<a href="/test_ssh/artist/deliverGoods?orderId=${order.id}">发货</a>
@@ -191,7 +194,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<c:if test="${(order.state).equals('已支付已发货')}">
 													<a>已发货</a>
 												</c:if>
-											</td>
+											</c:if></td>
 
 									</tr>
 								</c:forEach>

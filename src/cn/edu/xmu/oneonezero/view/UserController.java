@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import cn.edu.xmu.oneonezero.entity.CustomizedArtwork;
+import cn.edu.xmu.oneonezero.entity.CustomizedArtworkOrder;
 import cn.edu.xmu.oneonezero.entity.User;
 import cn.edu.xmu.oneonezero.service.AccountService;
 import cn.edu.xmu.oneonezero.service.CommodityArtworkOrderService;
 import cn.edu.xmu.oneonezero.service.CustomizedArtworkOrderService;
+import cn.edu.xmu.oneonezero.service.UserService;
 
 @Controller
 @RequestMapping("/user")
@@ -23,7 +26,8 @@ public class UserController {
 	private CustomizedArtworkOrderService customizedArtworkOrderService;
 	@Resource(name="accountService")
 	private AccountService accountService;
-	
+	@Resource(name="userService")
+	private UserService userService;
 	@RequestMapping("/myOrder")
 	public String myOrder(HttpServletRequest request){
 		User user=(User)request.getSession().getAttribute("user");
@@ -73,11 +77,11 @@ public class UserController {
 	@RequestMapping("/cancelOrder")
 	public String cancelOrder(Long orderId,String type,HttpServletRequest request){
 		if(type.equals("1")){
-			//TODO 删除成品
+			commodityArtworkOrderService.deleteCommodityArtworkOrder(orderId);
 		    return "redirect:/user/myOrder";
 		}
 		else {
-			//TODO 删除订制品
+			customizedArtworkOrderService.deleteCustomizedArtworkOrder(orderId);
 			return "redirect:/user/myCustomized";
 		}
 	}
@@ -97,7 +101,22 @@ public class UserController {
 	@RequestMapping("changeInfo")
 	public String changeInfo(@RequestParam(value = "img", required = false) MultipartFile filedata,HttpServletRequest request){
 		User user=(User)request.getSession().getAttribute("user");
-		user.setNickName(request.getParameter(""));
+		String path = CommonMethod.getPicUrl(request);
+		
+		if(user.getHeadPhoto()!=null){
+    		String temp=(user.getHeadPhoto()).replaceAll("..\\\\attached", "");
+    		PicUpload.deleteFile(temp,path);
+    	}
+
+		String picurl=PicUpload.saveFile(filedata,path);
+		user.setHeadPhoto(picurl);
+    	
+		user.setNickName(request.getParameter("username"));
+		user.setAddress(request.getParameter("address"));
+		user.setMobile(request.getParameter("mobile"));
+		user.setBankCardAccount(request.getParameter("card"));
+		user.setDescription(request.getParameter("description"));
+		userService.updateUser(user);
 		return "redirect:/init/home";
 	}
 }

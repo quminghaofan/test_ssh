@@ -1,5 +1,6 @@
 package cn.edu.xmu.oneonezero.view;
 
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -94,12 +95,24 @@ public class AdminUserController {
 		String typeId=request.getParameter("type");
 		String startTime=request.getParameter("txtDate time1");
 		String endTime=request.getParameter("txtDate time2");
+		Date start,end;
+		if(startTime.equals("")){
+    		start=null;
+    	}else {
+			start=format.parse(startTime);
+		}
+    	if(endTime.equals("")){
+    		end=null;
+    	}else {
+    		end=format.parse(endTime);
+		}
+    	
 		if(type.equals("0")){
-//			request.setAttribute("ORDERLIST",customizedArtworkOrderService.getByOrderIdOrArtworkNameOrOwnerNameOrUserName(sign, name, typeId, startTime, endTime));
+			request.setAttribute("ORDERLIST",customizedArtworkOrderService.getByOrderIdOrArtworkNameOrOwnerNameOrUserName(sign, name, typeId, start, end));
 			return "admin_customizedArtworkorderlist";
 		}
 		else {
-			request.setAttribute("ORDERLIST",commodityArtworkOrderService.getByOrderIdOrArtworkNameOrOwnerNameOrUserName(sign, name, typeId,format.parse(startTime), format.parse(endTime)));
+			request.setAttribute("ORDERLIST",commodityArtworkOrderService.getByOrderIdOrArtworkNameOrOwnerNameOrUserName(sign, name, typeId,start, end));
 			return "admin_commodityArtworkorderlist";
 		}
 	}

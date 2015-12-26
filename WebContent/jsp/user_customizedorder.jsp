@@ -14,7 +14,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript">
 	
 	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 
 
 </script>
@@ -198,9 +200,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<c:forEach items="${orderlist}" var="order">
 				<div class="a-top">
 					<div class="left-grid">
-						<img src="${order.customizedArtwork.startImg}" class="img-responsive" />
-						<img src="${order.customizedArtwork.midImg}" class="img-responsive" />
-						<img src="${order.customizedArtwork.endImg}" class="img-responsive" />
+						<img src="${order.customizedArtwork.startImg}"
+							class="img-responsive" /> <img
+							src="${order.customizedArtwork.midImg}" class="img-responsive" />
+						<img src="${order.customizedArtwork.endImg}"
+							class="img-responsive" />
 					</div>
 					<div class="right-grid">
 						<h4>订单编号：${order.orderId}</h4>
@@ -211,35 +215,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<p>第三阶段费用： ${order.endPrice}</p>
 						<!-- 价格 -->
 						<div class="btn" style="float: right">
-							<c:if test="${(order.state).equals('未支付')}">
-								<a class="acount-btn" class="link"
-									onclick="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=0&stage=第一阶段已付款">第一阶段支付</a>
-								<a class="acount-btn" class="link"
-									onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
+							<c:if test="${order.isCancelled}">
+								<a>订单已取消</a>
 							</c:if>
-							<c:if test="${(order.stage).equals('第一阶段已付款')}">
-								<a class="acount-btn" class="link"
-									onclick="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=0&stage=第二阶段已付款">第二阶段支付</a>
-								<a class="acount-btn" class="link"
-									onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
-							</c:if>
-							<c:if test="${(order.stage).equals('第二阶段已付款')}">
-								<a class="acount-btn" class="link"
-									onclick="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=0&stage=第三阶段已付款">第三阶段支付</a>
-								<a class="acount-btn" class="link"
-									onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
-							</c:if>
-							<c:if test="${(order.stage).equals('第三阶段已付款')}">
-								<a class="acount-btn" class="link">未发货</a>
-								<a class="acount-btn" class="link"
-									onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
-							</c:if>
-							<c:if test="${(order.state).equals('已支付未收货')}">
-								<a class="acount-btn" class="link"
-									onclick="/test_ssh/user/getItem?orderId=${order.id}&type=0">收货</a>
-							</c:if>
-							<c:if test="${(order.state).equals('已支付已收货')}">
-								<a class="acount-btn" class="link">已收货</a>
+							<c:if test="${!(order.isCancelled)}">
+								<c:if test="${(order.state).equals('未支付')}">
+									<a class="acount-btn" class="link"
+										onclick="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=0&stage=第一阶段已付款">第一阶段支付</a>
+									<a class="acount-btn" class="link"
+										onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
+								</c:if>
+								<c:if test="${(order.stage).equals('第一阶段已付款')}">
+									<a class="acount-btn" class="link"
+										onclick="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=0&stage=第二阶段已付款">第二阶段支付</a>
+									<a class="acount-btn" class="link"
+										onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
+								</c:if>
+								<c:if test="${(order.stage).equals('第二阶段已付款')}">
+									<a class="acount-btn" class="link"
+										onclick="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=0&stage=第三阶段已付款">第三阶段支付</a>
+									<a class="acount-btn" class="link"
+										onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
+								</c:if>
+								<c:if test="${(order.stage).equals('第三阶段已付款')}">
+									<a class="acount-btn" class="link">未发货</a>
+									<a class="acount-btn" class="link"
+										onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
+								</c:if>
+								<c:if test="${(order.state).equals('已支付未收货')}">
+									<a class="acount-btn" class="link"
+										onclick="/test_ssh/user/getItem?orderId=${order.id}&type=0">收货</a>
+								</c:if>
+								<c:if test="${(order.state).equals('已支付已收货')}">
+									<a class="acount-btn" class="link">已收货</a>
+								</c:if>
 							</c:if>
 						</div>
 					</div>

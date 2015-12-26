@@ -172,7 +172,7 @@ top:400px;
 				
 				<div class="col-md-6 login-right">
 					<p>
-						如果您要修改密码，请点击 <a href="/test_ssh/jsp/changePassword"><font
+						如果您要修改密码，请点击 <a href="/test_ssh/jsp/changePassword.jsp"><font
 							color="blue">修改密码</font></a>
 					</p>
 					<h3 style="color: blue" align="center-left">我的个人信息</h3></br>
