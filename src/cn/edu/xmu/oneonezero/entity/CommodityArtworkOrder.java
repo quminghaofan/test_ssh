@@ -15,7 +15,7 @@ public class CommodityArtworkOrder extends ArtworkOrder{
 	
 	
 	
-	public CommodityArtworkOrder(CommodityArtwork commodityArtwork) {
+	public CommodityArtworkOrder() {
 		super();
 	}
 	
