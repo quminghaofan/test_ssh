@@ -157,7 +157,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> getPreparativeUserByUserName(String userName) {
-		String hql = "from User u where u.state=true and u.role='预备艺术家' and u.name like ?";
+		String hql = "from User u where u.state=true and u.role.name='预备艺术家' and u.name like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, "%"+userName+"%");
 		return query.list();
@@ -179,11 +179,13 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> getManagersByUserName(String userName) {
-		String hql = "from User u where u.state=true and u.role='普通管理员' and u.name like ?";
+		String hql = "from User u where u.state=true and u.role.name='普通管理员' and u.name like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, "%"+userName+"%");
 		return query.list();
 	}
+	
+	
 	
 	
 
