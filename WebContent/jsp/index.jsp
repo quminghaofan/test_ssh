@@ -194,7 +194,7 @@ $(document).ready(function() {
 				<ul class="rslides" id="slider">
 					<c:forEach items="${adlist}" var="ad">
 					<c:if test="${ad.picUrl!=null}">
-						<li><img src="${ad.picUrl}" class="img-responsive" alt="" href="/test_ssh/news/showNews?newsId=${ad.id}&type=1" /></li>
+						<li><a  href="/test_ssh/news/showNews?newsId=${ad.id}&type=1"><img src="${ad.picUrl}" class="img-responsive" alt="" /></a></li>
 					</c:if>
 					</c:forEach>
 				</ul>

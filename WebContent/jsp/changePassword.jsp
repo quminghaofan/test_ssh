@@ -172,7 +172,7 @@ top:400px;
 				</div>
 				<div class="col-md-6 login-right">
 <%User user=(User)session.getAttribute("user"); %>
-					<form id="changeform" method="post" onsubmit="return before_register()" action="/test_ssh/super/changePsw?userId=<%=user.getId() %>">
+					<form id="changeform" method="post" onsubmit="return before_register()" action="/test_ssh/super/changePsw?userId=<%=user.getId() %>&type=1">
 					<h2 style="color: blue" align="center-left">我的密码修改</h2></br>
 						<!--<div>
 							<span> 新密码 <label>*</label></span> 

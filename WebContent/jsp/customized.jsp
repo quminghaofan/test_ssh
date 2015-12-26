@@ -250,13 +250,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<c:if test="${currentPage == 1}">
 
-				<span class="current">1/${totalpage}</span>
+				<span class="current">1</span>
 
 			</c:if>
 
 			<c:if test="${currentPage != 1}">
 
-				<a href="/test_ssh/mall/enterMall?page=1&typeId=${typeId}&go=0">1/${totalpage}</a>
+				<a href="/test_ssh/mall/enterMall?page=1&typeId=${typeId}&go=0">1</a>
 
 			</c:if>
 
@@ -272,14 +272,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<c:if test="${currentPage == page}">
 
-				<span class="current"><%=i + 1%>/${totalpage}</span>
+				<span class="current"><%=i + 1%></span>
 
 			</c:if>
 
 			<c:if test="${currentPage != page}">
 
 				<a
-					href="/test_ssh/mall/enterMall?page=<%=i + 1%>&typeId=${typeId}&go=0"><%=i + 1%>/${totalpage}</a>
+					href="/test_ssh/mall/enterMall?page=<%=i + 1%>&typeId=${typeId}&go=0"><%=i + 1%></a>
 
 			</c:if>
 
