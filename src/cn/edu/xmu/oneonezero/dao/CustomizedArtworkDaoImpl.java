@@ -68,7 +68,7 @@ public class CustomizedArtworkDaoImpl implements CustomizedArtworkDao {
 
 	@Override
 	public List<CustomizedArtwork> getByVagueArtworkName(String name, String typeId) {
-		if(typeId==null)
+		if(typeId.equals("0"))
 		{
 			String hql = "from CustomizedArtwork a where a.isExist=true and a.name like ?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -94,7 +94,7 @@ public class CustomizedArtworkDaoImpl implements CustomizedArtworkDao {
 
 	@Override
 	public List<CustomizedArtwork> getByVagueOwnerName(String name, String typeId) {
-		if(typeId==null)
+		if(typeId.equals("0"))
 		{
 			String hql = "from CustomizedArtwork a where a.isExist=true and a.owner.name like ?";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
