@@ -104,17 +104,25 @@ public class Test {
 		
 		Calendar cal1=Calendar.getInstance();
 		Calendar cal2=Calendar.getInstance();
-		cal1.set(2017,1,1);
+		cal1.set(2015,12,1);
 		cal2.set(2016,1,1);
 		
 		Date d1=cal1.getTime();
 		Date d2=cal2.getTime();
 		
-		java.sql.Date dateSql=new java.sql.Date(d1.getTime());
-		java.sql.Date dateSql1=new java.sql.Date(d1.getTime());
-		java.sql.Date dateSql2=new java.sql.Date(d2.getTime());
+		java.sql.Date dd1=new java.sql.Date(d1.getTime());
 		
-		System.out.println(commodityArtworkOrderDao.getByOrderId("", "", dateSql1, null).size());
+		
+		System.out.println("shuliang"+d1.getTime());
+		System.out.println("1:"+d1.toString()+"2:"+dd1.toString());
+		
+//		java.sql.Date dateSql2=commodityArtworkOrderDao.getCommodityArtworkOrderByOrderId(1).getPlaceDate();
+//		java.sql.Date dateSql1=new java.sql.Date(d1.getTime());
+//		System.out.println(dateSql2.toString());
+//		java.sql.Date dateSql1=new java.sql.Date(d1.getTime());
+//		java.sql.Date dateSql2=new java.sql.Date(d2.getTime());
+//		
+//		System.out.println(commodityArtworkOrderDao.getByOrderId("", "", dateSql1, null).size());
 //		System.out.println(newsDao.getNewsByEditorIdAndTimespace(1, null, dateSql1, dateSql2, "", "未审核").size());
 	}
 

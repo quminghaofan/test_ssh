@@ -285,6 +285,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			{
 				java.sql.Date sqlStartTime=new java.sql.Date(startTime.getTime());				
 				query.setDate(1, sqlStartTime);
+				System.out.println("sqlStartTime:"+sqlStartTime.toString());
 			}
 			else
 			{
@@ -306,6 +307,7 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 				
 				Date temDate=(Date) temCal.getTime();
 				query.setDate(2, temDate);
+				System.out.println(temDate.toString());
 			}
 			if(query.list()==null||query.list().size()==0) 
 				return null;
