@@ -37,7 +37,7 @@ public class NewsDaoImpl implements NewsDao {
 
 	@Override
 	public void insertNews(News news) {
-		sessionFactory.getCurrentSession().saveOrUpdate(news);
+		sessionFactory.getCurrentSession().merge(news);
 		sessionFactory.getCurrentSession().flush();
 	}
 
@@ -263,7 +263,7 @@ public class NewsDaoImpl implements NewsDao {
 
 	@Override
 	public List<News> getNewsToday(Date today) {
-		String hql = "from News n where n.newsType='资讯' and n.onShowTime<? and n.offShowTime>? order by n.rank desc";
+		String hql = "from News n where n.newsType='资讯' and n.state='审核通过' and n.onShowTime<? and n.offShowTime>? order by n.rank desc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setDate(0, today);
 		query.setDate(1, today);
@@ -488,7 +488,7 @@ public class NewsDaoImpl implements NewsDao {
 
 	@Override
 	public List<News> getAdvertisementToday(Date today) {
-		String hql = "from News n where n.newsType='广告' and n.onShowTime<? and n.offShowTime>? order by n.rank desc";
+		String hql = "from News n where n.newsType='广告' and n.state='审核通过' and n.onShowTime<? and n.offShowTime>? order by n.rank desc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setDate(0, today);
 		query.setDate(1, today);
