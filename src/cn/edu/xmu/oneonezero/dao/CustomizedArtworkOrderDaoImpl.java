@@ -184,7 +184,7 @@ public class CustomizedArtworkOrderDaoImpl implements CustomizedArtworkOrderDao{
 
 	@Override
 	public List<CustomizedArtworkOrder> getAllCustomizedArtworkOrders() {
-		String hql = "from  CustomizedArtworkOrder cao where cao.user.id=? ";
+		String hql = "from  CustomizedArtworkOrder cao  ";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		if(query.list()==null||query.list().size()==0) 
 			return null;
