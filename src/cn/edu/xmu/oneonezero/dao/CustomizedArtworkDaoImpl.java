@@ -44,6 +44,7 @@ public class CustomizedArtworkDaoImpl implements CustomizedArtworkDao {
 	@Override
 	public void insertCustomizedArtwork(CustomizedArtwork customizedArtwork) {
 		sessionFactory.getCurrentSession().saveOrUpdate(customizedArtwork);
+		sessionFactory.getCurrentSession().flush();
 	}
 
 
@@ -51,6 +52,7 @@ public class CustomizedArtworkDaoImpl implements CustomizedArtworkDao {
 	public void setCustomizedArtworkIsExistByArtworkId(long artworkId, boolean isExist) {
 		CustomizedArtwork customizedArtwork=getCustomizedArtworkById(artworkId);
 		customizedArtwork.setIsExist(isExist);
+		sessionFactory.getCurrentSession().flush();
 	}
 
 

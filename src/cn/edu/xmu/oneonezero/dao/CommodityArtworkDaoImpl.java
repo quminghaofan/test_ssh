@@ -133,7 +133,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 	}
 
 	@Override
-	public List<CommodityArtwork> getCommodityArtworksByArtworkTypeIdVagueArtworkNamePageNumber(Long artworkTypeId, String artName,
+	public List<CommodityArtwork> getCommodityArtworksByArtworkTypeIdVagueArtworkNamePageNumber(long artworkTypeId, String artName,
 			int start, int num) {
 		String hql = "from CommodityArtwork a where a.isExist=true and a.type.id=? and a.canSell=true and a.name like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -148,7 +148,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 	}
 
 	@Override
-	public List<CommodityArtwork> getExhibitArtworksByArtworkTypeIdVagueArtworkNamePageNumber(Long artworkTypeId,
+	public List<CommodityArtwork> getExhibitArtworksByArtworkTypeIdVagueArtworkNamePageNumber(long artworkTypeId,
 			String artName, int start, int num) {
 		String hql = "from CommodityArtwork a where a.isExist=true and a.type.id=? and a.canSell=false and a.name like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);

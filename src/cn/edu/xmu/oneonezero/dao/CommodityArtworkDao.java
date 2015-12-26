@@ -32,9 +32,9 @@ public interface CommodityArtworkDao {
 	
 	public List<CommodityArtwork> getAllExhibitArtworks();//获取所有艺术品展品
 	
-	public List<CommodityArtwork> getCommodityArtworksByArtworkTypeIdVagueArtworkNamePageNumber(Long artworkTypeId, String artName, int start,int num);//根据艺术品类型id，模糊艺术品名称，页码，每页数量 分页获取商品艺术品，返回list
+	public List<CommodityArtwork> getCommodityArtworksByArtworkTypeIdVagueArtworkNamePageNumber(long artworkTypeId, String artName, int start,int num);//根据艺术品类型id，模糊艺术品名称，页码，每页数量 分页获取商品艺术品，返回list
 
-	public List<CommodityArtwork> getExhibitArtworksByArtworkTypeIdVagueArtworkNamePageNumber(Long artworkTypeId, String artName, int start,int num);//根据艺术品类型id，模糊艺术品名称，页码，每页数量 分页获取艺术品展品，返回list
+	public List<CommodityArtwork> getExhibitArtworksByArtworkTypeIdVagueArtworkNamePageNumber(long artworkTypeId, String artName, int start,int num);//根据艺术品类型id，模糊艺术品名称，页码，每页数量 分页获取艺术品展品，返回list
 
 	public List<CommodityArtwork> getExhibitArtworksByVagueArtNameAndPage(String artName, int start,int num);//根据模糊艺术品名称，页码，每页数量 分页获取艺术品展品，返回list
 
