@@ -63,6 +63,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	color: blue;
 	text-decoration: underline;
 }
+#artart{
+	width:150px;
+	height:200px;
+}
 </style>
 </head>
 <body>
@@ -185,7 +189,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 
 	<div style="float: left; width: 8%">
-		<a href="/test_ssh/mall/enterMall?go=0"><img src="../images/back.png" alt="返回"
+		<a href=""><img src="../images/back.png" alt="返回"
 			class="img-responsive" /></a>
 	</div>
 	<div style="float: right; width: 20%; height: 35%">
@@ -226,7 +230,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="row">
 					<label id="description">艺术家描述:</label> <label id="desValue">${artist.description}</label>
 				</div>
-				<p>--------------------------------------------------------------------------------------------</p>
 
 			</div>
 	</form>
@@ -236,26 +239,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</h1>
 	</div>
 	</br>
+		
 	<form action="" method="get">
 		<div class="span_3">
 		<c:forEach items="${artCommodList}" var="artWork">
 			<div class="col-sm-3 grid_1">
-				<img src="${artWork.picUrl}" class="img-responsive" alt="" />
+				<img id="artart" src="../images/poster.jpg" class="img-responsive" alt="" />
+				<h3>${artWork.type.name}</h3>
+				<h4>${artWork.name}</h4>
+			</div>
+						<div class="col-sm-3 grid_1">
+				<img id="artart" src="../images/poster.jpg" class="img-responsive" alt="" />
 				<h3>${artWork.type.name}</h3>
 				<h4>${artWork.name}</h4>
 			</div>
 		</c:forEach>
 		<div class="clearfix"></div>
-		</div>
+	   </div>
 	</form>
-	<p >
-		您要
+
+	<!--<p id="manu">您要<a href="/test_ssh/jsp/customizeArt" id="make">申请定制</a>吗？</p>-->	
+	
 	<%if(user!=null){%>
-		<a href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}"><font color="blue">申请定制</font></a>
+		<a href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}">申请定制</a>
 	<%}else{ %>
-	<a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'"><font color="blue">申请定制</font></a>
-	<%} %>吗？
-	</p>
+	<a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'">申请定制</a>
+	<%} %>
+	
 	</br>
 	</br>
 	<a href="#"><font color="black">返回顶部</font></a>
