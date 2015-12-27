@@ -184,7 +184,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="right-grid">
 							<h4>艺术品名：${order.commodityArtwork.name}</h4>
-							<p>拥有者姓名：${order.commodityArtwork.owner.name}</p>
+							<p>艺术家姓名：${order.commodityArtwork.owner.name}</p>
 							<!-- 艺术家 -->
 							<p>价格：${order.commodityArtwork.price}</p>
 							<p>订单状态：${order.state}</p>
@@ -198,17 +198,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<a class="acount-btn"
 											href="/test_ssh/user/cancelOrder?orderId=${order.id}&type=1">取消订单</a>
 									</c:if>
-									<c:if test="${(order.state).equals('已支付未发货')}">
-										未发货
-										<a class="acount-btn"
-											href="/test_ssh/user/cancelOrder?orderId=${order.id}&type=1">取消订单</a>
-									</c:if>
 									<c:if test="${(order.state).equals('已支付未收货')}">
 										<a class="acount-btn" href="/test_ssh/user/getItem?orderId=${order.id}&type=1">收货</a>
 									</c:if>
-									<c:if test="${(order.state).equals('已支付已收货')}">
-												已收货
-												</c:if>
 								</c:if>
 							</div>
 						</div>

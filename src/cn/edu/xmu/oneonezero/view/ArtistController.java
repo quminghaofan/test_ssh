@@ -182,7 +182,7 @@ public class ArtistController {
 	@RequestMapping("deliverGoods")
 	public String deliverGoods(Long orderId, HttpServletRequest request) {
 		commodityArtworkOrderService.updateCommodityArtworkOrderState(orderId,
-				"已支付已发货");
+				"已支付未收货");
 		return "redirect:/artist/mySale";
 	}
 

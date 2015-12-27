@@ -1,5 +1,7 @@
 package cn.edu.xmu.oneonezero.view;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -50,16 +52,16 @@ public class UserController {
 
 	@RequestMapping("/goToOrderPay")
 	public String goToOrderPay(Long orderId, String type, String stage,String total,
-			HttpServletRequest request) {
+			HttpServletRequest request) throws UnsupportedEncodingException {
 		request.setAttribute("total",total);
 		request.setAttribute("picUrl", "/test_ssh/user/myOrderPayment?orderId="
-				+ orderId + "&type=" + type + "&stage=" + stage);
+				+ orderId + "&type=" + type + "&stage=" + new String(stage.getBytes("ISO-8859-1"),"UTF-8"));
 		return "payment_login";
 	}
 
 	@RequestMapping("/myOrderPayment")
 	public String myOrderPayment(Long orderId, String type, String stage,
-			HttpServletRequest request) {
+			HttpServletRequest request) throws UnsupportedEncodingException {
 		String total = request.getParameter("price");
 		String name = request.getParameter("username");
 		String psw = request.getParameter("psw");
@@ -69,11 +71,11 @@ public class UserController {
 				commodityArtworkOrderService.updateCommodityArtworkOrderState(
 						orderId, "已支付未发货");
 			} else {
-				System.out.println("!null:" + stage);
+				System.out.println("!null:" + new String(stage.getBytes("ISO-8859-1"),"UTF-8"));
 				if (stage != null) {
 					System.out.println("null:" + stage);
 					customizedArtworkOrderService
-							.updateCustomizedArtworkOrderStage(orderId, stage);
+							.updateCustomizedArtworkOrderStage(orderId, new String(stage.getBytes("ISO-8859-1"),"UTF-8"));
 				}
 			}
 			return "pay_success";
@@ -82,7 +84,7 @@ public class UserController {
 			request.setAttribute("total", request.getParameter("total"));
 			request.setAttribute("picUrl",
 					"/test_ssh/user/myOrderPayment?orderId=" + orderId
-							+ "&type=" + type + "&stage=" + stage);
+							+ "&type=" + type + "&stage=" + new String(stage.getBytes("ISO-8859-1"),"UTF-8"));
 			return "payment_login";
 		}
 	}
@@ -101,13 +103,10 @@ public class UserController {
 
 	@RequestMapping("/getItem")
 	public String getItem(Long orderId, String type, HttpServletRequest request) {
+		artworkOrderService.updateArtworkOrderState(orderId, "已支付已收货");
 		if (type.equals("1")) {
-			commodityArtworkOrderService.updateCommodityArtworkOrderState(
-					orderId, "已发货已支付");
 			return "redirect:/user/myOrder";
 		} else {
-			customizedArtworkOrderService.updateCustomizedArtworkOrderState(
-					orderId, "已支付已收货");
 			return "redirect:/user/myCustomized";
 		}
 	}

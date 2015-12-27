@@ -254,7 +254,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<c:if test="${(order.isAccept).equals('0')}">
 									</c:if>
 									<c:if test="${(order.isAccept).equals('1')}">
-										<c:if test="${(order.state).equals('未支付')}">
+										<c:if test="${(order.state).equals('未支付')&&!(order.stage).contains('已付款')}">
 											<a class="acount-btn"
 												href="/test_ssh/user/goToOrderPay?orderId=${order.id}&total=${order.startPrice}&type=0&stage=第一阶段已付款">第一阶段支付</a>
 											<a class="acount-btn"
