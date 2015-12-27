@@ -180,10 +180,13 @@ public class ArtistController {
 	}
 
 	@RequestMapping("deliverGoods")
-	public String deliverGoods(Long orderId, HttpServletRequest request) {
-		commodityArtworkOrderService.updateCommodityArtworkOrderState(orderId,
+	public String deliverGoods(Long orderId,String type, HttpServletRequest request) {
+		artworkOrderService.updateArtworkOrderState(orderId,
 				"已支付未收货");
+		if(type.equals("1"))
 		return "redirect:/artist/mySale";
+		else
+		return "redirect:/artist/myCustomized";
 	}
 
 	@RequestMapping("isAccept")
