@@ -70,17 +70,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="cssmenu">
 					<ul>
 						<%
-							if (session.getAttribute("user") == null) {
+						    User user=(User)session.getAttribute("user");
+							if (user == null) {
 						%>
 						<li><a
-							href="/test_ssh/jsp/login?backUrl=/test_ssh/mall/enterMall">登录/注册</a></li>
+							href="/test_ssh/init/goToLogin?backUrl='/test_ssh/mall/enterMall?go=0'">登录/注册</a></li>
+						<%
+							} else {
+								if (!(user.getRole()).getName() .equals("艺术家") 
+										&&!(user.getRole()).getName().equals("预备艺术家")) {//角色判断
+						%>
+						<li><a href="/test_ssh/jsp/artist_apply.jsp">我的店铺</a></li>
+						<%
+							} else if ((user.getRole()).getName().equals("预备艺术家")) {
+						%>
+						<li><a>成为艺术家的申请正在审核...</a></li>
 						<%
 							} else {
 						%>
-						<li><a href="">申请成为艺术家</a></li>
-						<li><a href=""> <%=((User) session.getAttribute("user")).getName()%></a></li>
-						<li><a href="">我的订单</a></li>
-						<li><a href="">登出</a></li>
+						<li><a href="/test_ssh/artist/myArt">我的店铺</a></li>
+						<%
+							}
+								if(user.getNickName()==null){
+						%>
+						<li><a href="/test_ssh/jsp/personalInfoChange.jsp"> <%=user.getName()%></a></li>
+						<% }else{%>
+						<li><a href="/test_ssh/jsp/personalInfoChange.jsp"> <%=user.getNickName()%></a></li>
+						<%} %>
+						<li><a href="/test_ssh/user/myOrder">我的订单</a></li>
+						<li><a
+							href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
 						<%
 							}
 						%>
@@ -311,9 +330,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<img src="../images/pay.png" class="img-responsive" alt="" />
 			<ul class="footer_nav">
-				<li><a href="#">首页</a></li>
-				<li><a href="#">定制</a></li>
-				<li><a href="#">商城</a></li>
+				<li><a href="/test_ssh/init/home">首页</a></li>
+				<li><a href="/test_ssh/mall/enterMall?go=0">定制</a></li>
+				<li><a href="/test_ssh/mall/enterMall?go=1">商城</a></li>
 				<li><a href="#">拍卖</a></li>
 				<li><a href="#">关于我们</a></li>
 				<li><a href="">联系我们</a></li>
