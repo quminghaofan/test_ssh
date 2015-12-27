@@ -1236,7 +1236,7 @@ ul.dc_pagination li a {
 	font-weight: 500;
 }
 .span_1_of_single1 {
-	width: 30.7%;
+	width: 45%;
 	border: 1px solid #fff;
 	text-align: center;
 	padding: 0 0 1em 0;
@@ -1247,7 +1247,7 @@ ul.dc_pagination li a {
 .col_1_of_single1 {
 	display: block;
 	float: left;
-	margin: 1% 2% 1% 0;
+	margin: 1% 5% 1% 0;
 }
 .col_1_of_single1:first-child {
 	margin-left: 0;

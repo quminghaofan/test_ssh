@@ -168,10 +168,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div align="center">
 			<div style="width: 90%;">
 				<div style="padding: 6%" align="left">
-
 					<div class="orderdiv" style="margin-top: 2%">
 						<c:forEach items="${orderlist}" var="order">
-							<div style="width: 20%;" class="left-grid">
+						<div style="width:100%;border:dashed 1px">
+							<div class="left-grid" style="width: 90px">
 								<img class="img-responsive" src="${order.picUrl}">
 							</div>
 
@@ -183,7 +183,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<label>类别:&nbsp;${order.type.name}</label>&nbsp;&nbsp; <label>价格:&nbsp;¥&nbsp;${order.price}</label>
 								</div>
 							</div>
+							</div>
 							<div class="clearfix"></div>
+							<br>
 						</c:forEach>
 
 						<div class="breakline"></div>
