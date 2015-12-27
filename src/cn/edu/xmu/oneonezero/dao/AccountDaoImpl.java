@@ -1,13 +1,16 @@
 package cn.edu.xmu.oneonezero.dao;
 
+import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import cn.edu.xmu.oneonezero.entity.Account;
 
 public class AccountDaoImpl implements AccountDao{
 	private SessionFactory sessionFactory;//创建一个会话工厂实例
-
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
@@ -16,11 +19,11 @@ public class AccountDaoImpl implements AccountDao{
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
+	
 
 	@Override
 	public Account getAccount(long id) {
-		String hql = "from Account a where a.id=?";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		Query query = sessionFactory.getCurrentSession().getNamedQuery("getAccountById");
 		query.setLong(0, id);
 		
 		return (Account)query.uniqueResult();
@@ -43,8 +46,7 @@ public class AccountDaoImpl implements AccountDao{
 
 	@Override
 	public Account getAccountByAccountNumber(String accountNumber) {
-		String hql = "from Account a where a.accountNumber=?";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		Query query = sessionFactory.getCurrentSession().getNamedQuery("getAccountByAccountNumber");
 		query.setString(0, accountNumber);
 		
 		return (Account)query.uniqueResult();
@@ -78,7 +80,7 @@ public class AccountDaoImpl implements AccountDao{
 				}
 			}
 	}
-	
+
 	
 	
 }
