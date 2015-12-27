@@ -46,6 +46,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	#return{
 	float:center;
 	margin:0 auto;
+	width:200px;
+	}
+	#chief{
+	float:center;
+	margin:0 auto;
+		width:400px;
+		height:400px;
+	}
+	#editor{
+	
+	}
+
+	
+	#picture{
+	
 	}
 	</style>
 	<body>
@@ -53,20 +68,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div style="float:left;width:5%">
 	<a href="/test_ssh/news/goback?type=${type}"><img src="../images/back.png" alt="返回" class="img-responsive"/>
 	</a>
-</div>			<div class="content">
-				<!---start-get-download-link---->
-				<div class="get-download get-download1">
-					</br>
-					<p>${news.name}</p>
-					</br>
-					<p><font color="gray" size="2px">主编/<input value="${news.chiefEditor.name}"  style="border: none"/></font></p>
-					<p><font  color="gray" size="2px">采编/<input value="${news.editor.name}"  style="border: none"/></font></p>
-				</div>
-
+</div>		
+				<div class="content">
+					<!---start-get-download-link---->
+					<div class="get-download get-download1">
+						</br>
+						<p>${news.name}</p>
+						</br>
+						<p id="chief">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="gray" size="2px">主编/<input value="${news.chiefEditor.name}"  style="border: none"/></font></p>
+						<p id="editor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font  color="gray" size="2px">采编/<input value="${news.editor.name}"  style="border: none"/></font></p>
+					</div>
 				</div>
 				<!---//End-get-download-link---->
 				<!----start-divice-features---->
-				<div class="single-page">
+				<div class="get-download get-download1">
 					<div class="box1">
 						<div class="wrap">
 							<div class="box1-info">
@@ -77,12 +92,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						readonly="readonly" />
 								</p>
 								</c:if>
-								<p>
+								<p id="content">
 									${news.content}
 								</p>
-							</div>
-							<div class="box1-demo">
-								
 							</div>
 							<div class="clear"> </div>
 						</div>
@@ -90,8 +102,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<!----//End-divice-features---->
 				<!---start-footer---->
-				<a href="#" id="return"><font color="blue">返回顶部</font></a>
-
+				</br>
+				<div class="get-download get-download1">
+					<a href="#" id="return"><font color="blue">返回顶部</font></a>
+				</div>
 				<div class="wrap">
 				<div class="footer">
 						<div class="footer-left">
