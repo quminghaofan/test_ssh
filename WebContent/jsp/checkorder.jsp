@@ -58,17 +58,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="cssmenu">
 					<ul>
 						<%
-							if (session.getAttribute("user") == null) {
+						    User user=(User)session.getAttribute("user");
+							if (user == null) {
 						%>
-						<li><a href="jsp/login.jsp">登录/注册</a></li>
+						<li><a
+							href="/test_ssh/init/goToLogin?backUrl='/test_ssh/init/home'">登录/注册</a></li>
 						<%
 							} else {
-								User user = (User) session.getAttribute("user");
+								if (!(user.getRole()).getName() .equals("艺术家") 
+										&&!(user.getRole()).getName().equals("预备艺术家")) {//角色判断
 						%>
-						<li><a href="">申请成为艺术家</a></li>
-						<li><a href=""><%=user.getName()%></a></li>
-						<li><a href="">我的订单</a></li>
-						<li><a href="">登出</a></li>
+						<li><a href="/test_ssh/jsp/artist_apply.jsp">我的店铺</a></li>
+						<%
+							} else if ((user.getRole()).getName().equals("预备艺术家")) {
+						%>
+						<li><a>成为艺术家的申请正在审核...</a></li>
+						<%
+							} else {
+						%>
+						<li><a href="/test_ssh/artist/myArt">我的店铺</a></li>
+						<%
+							}
+								if(user.getNickName()==null){
+						%>
+						<li><a href="/test_ssh/jsp/personalInfoChange.jsp"> <%=user.getName()%></a></li>
+						<% }else{%>
+						<li><a href="/test_ssh/jsp/personalInfoChange.jsp"> <%=user.getNickName()%></a></li>
+						<%} %>
+						<li><a href="/test_ssh/user/myOrder">我的订单</a></li>
+						<li><a
+							href="/test_ssh/init/logout?backUrl=/test_ssh/init/home">登出</a></li>
 						<%
 							}
 						%>
@@ -115,49 +134,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="menu_box">
 				<ul class="megamenu skyblue">
 					<li><a class="color2" href="/test_ssh/init/home">首页</a></li>
-					<li><a class="color4" href="">定制</a>
-						<div class="megapanel">
-							<div class="row">
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
-											</c:forEach>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div></li>
+					<li><a class="color4" href="/test_ssh/mall/enterMall?go=0">定制</a></li>
 					<li class="active grid"><a class="color10"
-						href="/test_ssh/mall/enterMall">商城</a>
-						<div class="megapanel">
-							<div class="row">
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
-											</c:forEach>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div></li>
-					<li><a class="color7" href="#">拍卖</a>
-						<div class="megapanel">
-							<div class="row">
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
-											</c:forEach>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div></li>
+						href="/test_ssh/mall/enterMall?go=1">商城</a></li>
+					<li><a class="color7" href="#">拍卖</a></li>
 					<li><a class="color8" href="">联系我们</a></li>
 					<div class="clearfix"></div>
 				</ul>
@@ -199,7 +179,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div style="margin-top: 3%; text-align: left">
 							<%
 							request.setCharacterEncoding("UTF-8");
-									User user = (User) session.getAttribute("user");
 									String address;
 									String mobile;
 									if (session.getAttribute("address") == null) {
@@ -248,9 +227,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<img src="../images/pay.png" class="img-responsive" alt="" />
 			<ul class="footer_nav">
-				<li><a href="#">首页</a></li>
-				<li><a href="#">定制</a></li>
-				<li><a href="#">商城</a></li>
+				<li><a href="/test_ssh/init/home">首页</a></li>
+				<li><a href="/test_ssh/mall/enterMall?go=0">定制</a></li>
+				<li><a href="/test_ssh/mall/enterMall?go=1">商城</a></li>
 				<li><a href="#">拍卖</a></li>
 				<li><a href="#">关于我们</a></li>
 				<li><a href="">联系我们</a></li>
