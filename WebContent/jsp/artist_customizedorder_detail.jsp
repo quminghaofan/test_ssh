@@ -165,7 +165,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<form id="myform" method="post">
 						<div>
 							<span>艺术品名</span> <input type="text" readonly="readonly"
-								value="${order.commodityArtwork.name}">
+								value="${order.customizedArtwork.name}">
 						</div>
 						<div>
 							<span>类别</span> <input type="text" readonly="readonly"
@@ -206,7 +206,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span>第三期样品</span> <span><img id="image"
 								src="${order.customizedArtwork.endImg}" width="30%" height="30%" /></span>
 						</div>
-						<input type="button" value="返回列表" onclick="/test_ssh/artist/myCustomized">
+						<input type="button" value="返回列表" onclick="window.location.href='/test_ssh/artist/myCustomized'">
 					</form>
 				</div>
 			</div>
