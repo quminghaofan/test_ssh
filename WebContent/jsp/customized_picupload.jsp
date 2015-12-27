@@ -175,7 +175,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						accept="images/*" onchange="previewImage(this,'preview','image')" /></span>
 								
 				  <input type="submit" value="上传" onclick="">
-				  <input type="button" value="返回" onclick="/test_ssh/artist/myCustomized">
+				  <input type="button" value="返回" onclick="window.location.href='/test_ssh/artist/myCustomized'">
 			    </form>
 			   </div>	
 		</div>

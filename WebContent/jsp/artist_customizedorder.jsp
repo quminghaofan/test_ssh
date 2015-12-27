@@ -41,7 +41,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		$(".megamenu").megamenu();
 	});
 </script>
-
+<style type="text/css">
+#masklayer{
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.7);
+    z-index: 9;
+}
+</style>
 </head>
 <body>
 	<div class="header_top">
@@ -177,11 +188,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<form class="form-inline definewidth m20" action="" method="post"
 						id="priceform">
 						<label>第一期价格</label><input type="text" name="price1"
-							class="abc input-default" placeholder="" value=""> <label>第二期价格</label><input
-							type="text" name="price2" class="abc input-default"
-							placeholder="" value=""> <label>第三期价格</label><input
+							class="abc input-default" placeholder="" value=""> <br>
+							<label>第二期价格</label><input type="text" name="price2" class="abc input-default"
+							placeholder="" value=""> <br>
+							<label>第三期价格</label><input
 							type="text" name="price3" class="abc input-default"
-							placeholder="" value="">
+							placeholder="" value=""><br>
 						<button type="submit" class="btn btn-primary"
 							onclick="editprice()">确定</button>
 					</form>
@@ -211,7 +223,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<tr>
 										<td>${order.customizedArtwork.name}</td>
 										<td>${order.user.name}</td>
-										<td>${order.user.address}</td>
+										<td>${order.address}</td>
 										<td>${order.mobile}</td>
 										<td>
 										<c:if test="${order.isCancelled}">

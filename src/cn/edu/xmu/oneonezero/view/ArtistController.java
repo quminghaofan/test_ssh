@@ -244,6 +244,6 @@ public class ArtistController {
 		customizedArtworkOrderService
 				.updateCustomizedArtworkOrder(customizedArtworkOrder);
 		request.setAttribute("order", customizedArtworkOrder);
-		return "customizedorderDetail";
+		return "artist_customizedorder_detail";
 	}
 }

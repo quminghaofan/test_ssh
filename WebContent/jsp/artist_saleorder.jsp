@@ -180,7 +180,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										
 										<td>${order.commodityArtwork.name}</td>
 										<td>${order.user.name}</td>
-										<td>${order.user.address}</td>
+										<td>${order.address}</td>
 										<td>${order.mobile}</td>
 										<td><c:if test="${order.isCancelled}">
 												<a>订单已取消</a>
