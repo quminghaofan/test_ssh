@@ -189,9 +189,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													未支付
 												</c:if>
 												<c:if test="${(order.state).equals('已支付未发货')}">
-													<a href="/test_ssh/artist/deliverGoods?orderId=${order.id}">发货</a>
+													<a href="/test_ssh/artist/deliverGoods?orderId=${order.id}&type=1">发货</a>
 												</c:if>
-												<c:if test="${(order.state).equals('已支付已发货')}">
+												<c:if test="${(order.state).equals('已支付未收货')}">
 													已发货
 												</c:if>
 											</c:if></td>

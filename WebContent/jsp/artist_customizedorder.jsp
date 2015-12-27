@@ -42,15 +42,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	});
 </script>
 <style type="text/css">
-#masklayer{
-    
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,.7);
-    z-index: 9;
+#masklayer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, .7);
+	z-index: 9;
 }
 </style>
 </head>
@@ -189,11 +188,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						id="priceform">
 						<label>第一期价格</label><input type="text" name="price1"
 							class="abc input-default" placeholder="" value=""> <br>
-							<label>第二期价格</label><input type="text" name="price2" class="abc input-default"
-							placeholder="" value=""> <br>
-							<label>第三期价格</label><input
-							type="text" name="price3" class="abc input-default"
-							placeholder="" value=""><br>
+						<label>第二期价格</label><input type="text" name="price2"
+							class="abc input-default" placeholder="" value=""> <br>
+						<label>第三期价格</label><input type="text" name="price3"
+							class="abc input-default" placeholder="" value=""><br>
 						<button type="submit" class="btn btn-primary"
 							onclick="editprice()">确定</button>
 					</form>
@@ -225,27 +223,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<td>${order.user.name}</td>
 										<td>${order.address}</td>
 										<td>${order.mobile}</td>
-										<td>
-										<c:if test="${order.isCancelled}">
-											<a>订单已取消</a>
-										</c:if>
-										<c:if test="${!(order.isCancelled)}">
-											<c:if test="${(order.isAccept).equals('2')}">
+										<td><c:if test="${order.isCancelled}">
+												<a>订单已取消</a>
+											</c:if> <c:if test="${!(order.isCancelled)}">
+												<c:if test="${(order.isAccept).equals('2')}">
 													<a href="javascript:accept(${order.id})">接受</a>
-													<a href="/test_ssh/artist/isAccept?orderId=${order.id}&type=1">拒绝</a>
-												</c:if> <c:if test="${(order.isAccept).equals('0')}">已拒绝</c:if> <c:if
-													test="${(order.isAccept).equals('1')}">
-													<a href="/test_ssh/artist/goToPicUp?orderId=${order.id}">上传小样</a>
-													<c:if test="${(order.state).equals('已支付未发货')}">
-														<a
-															href="/test_ssh/artist/deliverGoods?orderId=${order.id}">发货</a>
-													</c:if>
-													<c:if test="${(order.state).equals('已支付已发货')}">
-														<a>已发货</a>
-													</c:if>
+													<a
+														href="/test_ssh/artist/isAccept?orderId=${order.id}&type=1">拒绝</a>
 												</c:if>
-										</c:if>
-										<a href="/test_ssh/artist/customizedorderDetail?orderId=${order.id}&type=1">详情</a>
+												<c:if test="${(order.isAccept).equals('0')}">已拒绝</c:if>
+												<c:if test="${(order.isAccept).equals('1')}">
+												
+													<c:if test="${(order.state).equals('已支付未发货')}">
+													<a href="/test_ssh/artist/goToPicUp?orderId=${order.id}">上传小样</a>
+														<a
+															href="/test_ssh/artist/deliverGoods?orderId=${order.id}&type=0">发货</a>
+													</c:if>
+													<c:if test="${(order.state).equals('已支付未收货')}">
+														已发货
+													</c:if>
+													<c:if test="${(order.state).equals('已支付已收货') }">已收货</c:if>
+												</c:if>
+											</c:if> <a
+											href="/test_ssh/artist/customizedorderDetail?orderId=${order.id}&type=1">详情</a>
 										</td>
 									</tr>
 								</c:forEach>
