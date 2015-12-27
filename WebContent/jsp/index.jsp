@@ -305,7 +305,7 @@ $(document).ready(function() {
 				<li><img src="${cus.picUrl}" class="img-responsive" />
 					<div class="grid-flex">
 						<h4>${cus.name}</h4>
-						<p>${cus.type.name}</p>
+						<p>${cus.type.name}</p><br>
 						<p>${cus.owner.realName}</p>
 						<div class="m_3">
 							<a href="/test_ssh/customized/seeMore?artistId=${cus.owner.id}" class="link2">详情</a>

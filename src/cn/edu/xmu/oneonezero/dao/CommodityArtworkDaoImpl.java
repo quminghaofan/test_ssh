@@ -31,7 +31,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 		String hql = "from CommodityArtwork a where a.isExist=true and a.canSell=true and a.name like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, "%"+artName+"%");
-		query.setFirstResult(start);
+		query.setFirstResult(start*num);
 		query.setMaxResults(num);
 		
 		if(query.list()==null||query.list().size()==0)return null;
@@ -139,7 +139,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, artworkTypeId);
 		query.setString(1, "%"+artName+"%");
-		query.setFirstResult(start);
+		query.setFirstResult(start*num);
 		query.setMaxResults(num);
 		
 		if(query.list()==null||query.list().size()==0)return null;
@@ -154,7 +154,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, artworkTypeId);
 		query.setString(1, "%"+artName+"%");
-		query.setFirstResult(start);
+		query.setFirstResult(start*num);
 		query.setMaxResults(num);
 		
 		if(query.list()==null||query.list().size()==0)return null;
@@ -168,7 +168,7 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 		String hql = "from CommodityArtwork a where a.canSell=false and a.name like ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, "%"+artName+"%");
-		query.setFirstResult(start);
+		query.setFirstResult(start*num);
 		query.setMaxResults(num);
 		
 		if(query.list()==null||query.list().size()==0)return null;

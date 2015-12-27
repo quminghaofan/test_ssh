@@ -32,7 +32,7 @@ public class CustomizedArtworkDaoImpl implements CustomizedArtworkDao {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setLong(0, artworkTypeId);
 		query.setString(1, "%"+artName+"%");
-		query.setFirstResult(start);
+		query.setFirstResult(start*num);
 		query.setMaxResults(num);
 		
 		if(query.list()==null||query.list().size()==0)return null;
