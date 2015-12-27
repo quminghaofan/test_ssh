@@ -120,6 +120,8 @@ public class CommodityArtworkDaoImpl implements CommodityArtworkDao {
 	public List<CommodityArtwork> getAllExhibitArtworks() {
 		String hql = "from CommodityArtwork a where a.isExist=true and a.canSell=false";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setFirstResult(0);
+		query.setMaxResults(6);
 		
 		return query.list();
 	}
