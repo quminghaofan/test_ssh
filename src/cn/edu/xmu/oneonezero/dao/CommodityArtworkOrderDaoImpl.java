@@ -1,5 +1,7 @@
 package cn.edu.xmu.oneonezero.dao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -28,11 +30,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 		}
 		else
 		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2015,1,1);
-			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(1, temDate);
+			SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			try {
+				Date temDate=format.parse("2000-01-01 12:00:00");
+				query.setDate(1, new java.sql.Date(temDate.getTime()));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if(endTime!=null)
 		{
@@ -41,11 +46,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 		}
 		else
 		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2050,1,1);
-			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(2, temDate);
+			SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			try {
+				Date temDate=format.parse("3000-01-01 12:00:00");
+				query.setDate(2, new java.sql.Date(temDate.getTime()));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if(query.list()==null||query.list().size()==0) 
 			return null;
@@ -65,11 +73,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 		}
 		else
 		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2015,1,1);
-			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(1, temDate);
+			SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			try {
+				Date temDate=format.parse("2000-01-01 12:00:00");
+				query.setDate(1, new java.sql.Date(temDate.getTime()));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if(endTime!=null)
 		{
@@ -78,11 +89,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 		}
 		else
 		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2050,1,1);
-			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(2, temDate);
+			SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			try {
+				Date temDate=format.parse("3000-01-01 12:00:00");
+				query.setDate(2, new java.sql.Date(temDate.getTime()));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if(query.list()==null||query.list().size()==0) 
 			return null;
@@ -102,11 +116,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 		}
 		else
 		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2015,1,1);
-			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(1, temDate);
+			SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			try {
+				Date temDate=format.parse("2000-01-01 12:00:00");
+				query.setDate(1, new java.sql.Date(temDate.getTime()));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if(endTime!=null)
 		{
@@ -115,11 +132,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 		}
 		else
 		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2050,1,1);
-			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(2, temDate);
+			SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			try {
+				Date temDate=format.parse("3000-01-01 12:00:00");
+				query.setDate(2, new java.sql.Date(temDate.getTime()));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if(query.list()==null||query.list().size()==0) 
 			return null;
@@ -139,11 +159,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 		}
 		else
 		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2015,1,1);
-			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(1, temDate);
+			SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			try {
+				Date temDate=format.parse("2000-01-01 12:00:00");
+				query.setDate(1, new java.sql.Date(temDate.getTime()));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if(endTime!=null)
 		{
@@ -152,11 +175,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 		}
 		else
 		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2050,1,1);
-			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(2, temDate);
+			SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			try {
+				Date temDate=format.parse("3000-01-01 12:00:00");
+				query.setDate(2, new java.sql.Date(temDate.getTime()));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if(query.list()==null||query.list().size()==0) 
 			return null;
@@ -176,11 +202,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 		}
 		else
 		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2015,1,1);
-			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(1, temDate);
+			SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			try {
+				Date temDate=format.parse("2000-01-01 12:00:00");
+				query.setDate(1, new java.sql.Date(temDate.getTime()));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if(endTime!=null)
 		{
@@ -189,11 +218,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 		}
 		else
 		{
-			Calendar temCal=Calendar.getInstance();
-			temCal.set(2050,1,1);
-			
-			Date temDate=(Date) temCal.getTime();
-			query.setDate(2, temDate);
+			SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			try {
+				Date temDate=format.parse("3000-01-01 12:00:00");
+				query.setDate(2, new java.sql.Date(temDate.getTime()));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if(query.list()==null||query.list().size()==0) 
 			return null;
@@ -289,11 +321,16 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2000,1,1);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("2000-01-01 12:00:00");
+					query.setDate(1, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(1, temDate);
+				
 			}
 			if(endTime!=null)
 			{
@@ -302,12 +339,15 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2050,1,1);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("3000-01-01 12:00:00");
+					query.setDate(2, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(2, temDate);
-				System.out.println(temDate.toString());
 			}
 			if(query.list()==null||query.list().size()==0) 
 				return null;
@@ -329,11 +369,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2000,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(2, temDate);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("2000-01-01 12:00:00");
+					query.setDate(2, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(endTime!=null)
 			{
@@ -342,11 +385,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2050,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(3, temDate);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("3000-01-01 12:00:00");
+					query.setDate(3, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(query.list()==null||query.list().size()==0) 
 				return null;
@@ -371,11 +417,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2000,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(1, temDate);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("2000-01-01 12:00:00");
+					query.setDate(1, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(endTime!=null)
 			{
@@ -384,11 +433,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2050,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(2, temDate);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("3000-01-01 12:00:00");
+					query.setDate(2, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(query.list()==null||query.list().size()==0) 
 				return null;
@@ -410,11 +462,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2000,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(2, temDate);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("2000-01-01 12:00:00");
+					query.setDate(2, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(endTime!=null)
 			{
@@ -423,11 +478,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2050,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(3, temDate);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("3000-01-01 12:00:00");
+					query.setDate(3, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(query.list()==null||query.list().size()==0) 
 				return null;
@@ -451,11 +509,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2000,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(1, temDate);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("2000-01-01 12:00:00");
+					query.setDate(1, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(endTime!=null)
 			{
@@ -464,11 +525,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2050,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(2, temDate);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("3000-01-01 12:00:00");
+					query.setDate(2, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(query.list()==null||query.list().size()==0) 
 				return null;
@@ -490,11 +554,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2000,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(2, temDate);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("2000-01-01 12:00:00");
+					query.setDate(2, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(endTime!=null)
 			{
@@ -503,11 +570,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2050,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(3, temDate);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("3000-01-01 12:00:00");
+					query.setDate(3, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(query.list()==null||query.list().size()==0) 
 				return null;
@@ -531,11 +601,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2000,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(1, temDate);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("2000-01-01 12:00:00");
+					query.setDate(1, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(endTime!=null)
 			{
@@ -544,11 +617,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2050,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(2, temDate);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("3000-01-01 12:00:00");
+					query.setDate(2, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(query.list()==null||query.list().size()==0) 
 				return null;
@@ -570,11 +646,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2000,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(2, temDate);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("2000-01-01 12:00:00");
+					query.setDate(2, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(endTime!=null)
 			{
@@ -583,11 +662,14 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 			}
 			else
 			{
-				Calendar temCal=Calendar.getInstance();
-				temCal.set(2050,1,1);
-				
-				Date temDate=(Date) temCal.getTime();
-				query.setDate(3, temDate);
+				SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				try {
+					Date temDate=format.parse("3000-01-01 12:00:00");
+					query.setDate(3, new java.sql.Date(temDate.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(query.list()==null||query.list().size()==0) 
 				return null;
