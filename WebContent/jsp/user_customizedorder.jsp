@@ -185,6 +185,7 @@ $(document).ready(function() {
 					</div>
 					<div class="right-grid">
 						<h4>订单编号：${order.orderId}</h4>
+						<p>艺术品名称：${order.customizedArtwork.name}</p>
 						<p>艺术家姓名：${order.customizedArtwork.owner.realName}</p>
 						<!-- 艺术家 -->
 						<p>第一阶段费用：${order.startPrice}</p>
