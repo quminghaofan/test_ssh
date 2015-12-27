@@ -179,7 +179,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				  </div>
 				   <div id="price">
 					<span>价格</span>
-					<input type="text" value="${item.price}" id="price" name="price"> 
+					<input type="text" value="${item.price}" id="price" name="price" onblur="before_submit()" onfocus="pp.style.display=none">
+					<font color="red"><span id="pp" style="display: none">价格不正确</span></font>
 				  </div>
 				   <div id="description">
 					<span>介绍</span>
@@ -224,5 +225,13 @@ function select2_change(){
 		document.getElementById("price").style.display="none";
 	else
 		document.getElementById("price").style.display="block";
+}
+function before_submit(){
+	var price=document.getElementById("price").value;
+	var flag=0;
+	if(price==""||!price.match(/^[0-9]+\.{0,1}[0-9]{0,2}$/g)){
+		document.getElementById("select2").style.display="block";
+		flag=1;
+			}
 }
 </script>
