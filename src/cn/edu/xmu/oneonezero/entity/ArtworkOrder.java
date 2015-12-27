@@ -50,7 +50,6 @@ public class ArtworkOrder {
 		this.state = "未支付";
 		this.mobile = "";
 		this.address = "";
-		this.isAccept = false;
 		this.isCancelled = false;
 	}
 	public boolean getIsCancelled() {
