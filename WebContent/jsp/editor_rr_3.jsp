@@ -143,12 +143,12 @@ body {
 				<tr>
 					<td>${rr.name}</td>
 					<td>${rr.chiefEditor.name}</td>
-					<td>${rr.onShowTime}</td>
+					<td>${rr.onShowTime}<input type="hidden" value="${rr.onShowTime}" id="ontime${rr.id}"></td>
 					<td>${rr.offShowTime}</td>
 					<td>${rr.rank}</td>
 					<td>${rr.newsType}</td>
 					<td><a href="/test_ssh/news/showNews?newsId=${rr.id}&type=6">查看</a>
-						&nbsp;&nbsp;<a href="javascript:time(${rr.id},${rr.onShowTime})">撤回</a>
+						&nbsp;&nbsp;<a href="javascript:istime(${rr.id})">撤回</a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -180,10 +180,18 @@ function price_count(){
 	}
 }
 
-function time(id,time){alert("a");
+function istime(id){
 	var current=new Date();
-	if(time.getTime()>current.getTime())
+	
+	var t=document.getElementById("ontime"+id).value;
+	 a  =  t.split("-")  ;
+     t1  =  new  Date()  ; 
+     t1.setFullYear(a[0], a[1]-1, a[2]);
+     
+	if(t1>current){
+		alert("c");
 		window.location.href="/test_ssh/editor/withdraw?newsId="+id+"&type=2";
+	}
 	else
 		alert("已上架，不能撤回!");
 }
