@@ -14,7 +14,17 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Type;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
+
+@NamedQueries({
+	@NamedQuery(name="getArtworksByType",query="from  Artwork a where a.isExist=true and a.type.name like ? "),
+	@NamedQuery(name="getArtworksByTypeAndArtworkName",query="from Artwork a where a.isExist=true and a.type.name= ? and a.name like ? "),
+	@NamedQuery(name="getArtworksByAuthorName",query="from  Artwork a where a.isExist=true and a.author like ? "),
+	@NamedQuery(name="getArtworkByArtworkId",query="from  Artwork a where a.isExist=true and a.id = ? ")
+	
+})
 @Entity
 @DiscriminatorColumn(name="artworkType",discriminatorType=DiscriminatorType.STRING)
 @DiscriminatorValue("普通艺术品")

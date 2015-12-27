@@ -4,17 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedNativeQueries;
-import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-
+@NamedQueries({
+	@NamedQuery(name="getAccountById",query="from Account a where a.id=?"),
+	@NamedQuery(name="getAccountByAccountNumber",query="from Account a where a.accountNumber=?")
+})
 @Entity
 @Table(name="Account")
-//@NamedNativeQueries({
-//	@NamedNativeQuery(name="getAccountById",query="from Account a where a.id=?"),
-//	@NamedNativeQuery(name="getAccountByAccountNumber",query="from Account a where a.accountNumber=?")
-//})
 public class Account {
 	private long id;
 	private String accountNumber;

@@ -45,6 +45,11 @@ public class ArtworkOrderServiceImpl implements ArtworkOrderService{
 	public void cancelArtworkOrder(long id) {
 		artworkOrderDao.cancelArtworkOrder(id);
 	}
+
+	@Override
+	public void updateArtworkOrderState(long orderId, String state) {
+		artworkOrderDao.updateArtworkOrderState(orderId, state);
+	}
 	
 	
 }

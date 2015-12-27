@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
 import cn.edu.xmu.oneonezero.entity.ArtworkOrder;
+import cn.edu.xmu.oneonezero.entity.CommodityArtworkOrder;
 
 public class ArtworkOrderDaoImpl implements ArtworkOrderDao{
 
@@ -120,6 +121,13 @@ public class ArtworkOrderDaoImpl implements ArtworkOrderDao{
 	public void cancelArtworkOrder(long id) {
 		ArtworkOrder artworkOrder=getOrderByOrderId(id);
 		artworkOrder.setIsCancelled(true);
+		sessionFactory.getCurrentSession().flush();
+	}
+
+	@Override
+	public void updateArtworkOrderState(long orderId, String state) {
+		ArtworkOrder tempAO=getOrderByOrderId(orderId);
+		tempAO.setState(state);
 		sessionFactory.getCurrentSession().flush();
 	}
 

@@ -26,6 +26,9 @@ public interface ArtworkOrderDao {
 	public void setArtworkOrderIsAccept(long id, String isAccept);//根据id修改订单属性isAccept
 	
 	public void cancelArtworkOrder(long id);//取消定制订单
+	
+	public void updateArtworkOrderState(long orderId,String state );//根据订单id和state更新订单状态
+
 
 	
 	
