@@ -209,10 +209,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</tr>
 								<c:forEach items="${orderList}" var="order">
 									<tr>
-										<td>${order.commodityArtwor.name}</td>
+										<td>${order.customizedArtwork.name}</td>
 										<td>${order.user.name}</td>
 										<td>${order.user.address}</td>
-										<td>${order.mobil}</td>
+										<td>${order.mobile}</td>
 										<td>
 										<c:if test="${order.isCancelled}">
 											<a>订单已取消</a>
