@@ -23,7 +23,7 @@ public interface ArtworkOrderDao {
 	public ArtworkOrder getOrderByOrderId(long artworkOrderId);//根据订单id获取订单	
 	
 	//
-	public void setArtworkOrderIsAccept(long id, boolean isAccept);//根据id修改订单属性isAccept
+	public void setArtworkOrderIsAccept(long id, String isAccept);//根据id修改订单属性isAccept
 	
 	public void cancelArtworkOrder(long id);//取消定制订单
 

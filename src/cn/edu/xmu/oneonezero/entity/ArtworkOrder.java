@@ -2,6 +2,7 @@ package cn.edu.xmu.oneonezero.entity;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
@@ -36,7 +37,7 @@ public class ArtworkOrder {
 	protected String state;//未支付、已支付未发货、已支付未收货、已支付已收货
 	protected String mobile;//联系方式
 	protected String address;//发货地址
-	protected boolean isAccept;//是否接受订单
+	protected String isAccept;//是否接受订单 接受为1，拒绝为0，未审核默认为2
 	
 	private boolean isCancelled;//是否被取消了 true被取消了，false未被取消，默认false；
 	
@@ -50,14 +51,10 @@ public class ArtworkOrder {
 		this.state = "未支付";
 		this.mobile = "";
 		this.address = "";
+		this.isAccept="2";
 		this.isCancelled = false;
 	}
-	public boolean getIsCancelled() {
-		return isCancelled;
-	}
-	public void setIsCancelled(boolean isCancelled) {
-		this.isCancelled = isCancelled;
-	}
+	
 	
 	
 	@Id
@@ -107,10 +104,10 @@ public class ArtworkOrder {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public boolean getIsAccept() {
+	public String getIsAccept() {
 		return isAccept;
 	}
-	public void setIsAccept(boolean isAccept) {
+	public void setIsAccept(String isAccept) {
 		this.isAccept = isAccept;
 	}
 	@OneToOne
@@ -119,6 +116,12 @@ public class ArtworkOrder {
 	}
 	public void setPayAccount(Account payAccount) {
 		this.payAccount = payAccount;
+	}
+	public boolean getIsCancelled() {
+		return isCancelled;
+	}
+	public void setIsCancelled(boolean isCancelled) {
+		this.isCancelled = isCancelled;
 	}
 	
 
