@@ -233,7 +233,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													</c:if>
 												</c:if>
 										</c:if>
-										<a href="/test_ssh/artist/customizedorderDetail?orderId=${order.id}">详情</a>
+										<a href="/test_ssh/artist/customizedorderDetail?orderId=${order.id}&type=1">详情</a>
 										</td>
 									</tr>
 								</c:forEach>

@@ -165,11 +165,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form id="myform" method="post">
 				  <div>
 						<span>艺术品名</span> <input type="text" readonly="readonly"
-								value="${order.commodityArtwor.name}">
+								value="${order.customizedArtwork.name}">
 						</div>
 						<div>
 							<span>类别</span> <input type="text" readonly="readonly"
-								value="${order.type.name}">
+								value="${order.customizedArtwork.type.name}">
 						</div>
 						<div>
 							<span>买家</span> <input type="text" readonly="readonly"
@@ -193,15 +193,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div id="preview" style="border: solid 1px">
 							<span>第一期样品</span> <span><img id="image"
-								src="${order.startImg}" width="30%" height="30%" /></span>
+								src="${order.customizedArtwork.startImg}" width="30%" height="30%" /></span>
 						</div>
 						<div id="preview" style="border: solid 1px">
 							<span>第二期样品</span> <span><img id="image"
-								src="${order.midImg}" width="30%" height="30%" /></span>
+								src="${order.customizedArtwork.midImg}" width="30%" height="30%" /></span>
 						</div>
 						<div id="preview" style="border: solid 1px">
 							<span>第三期样品</span> <span><img id="image"
-								src="${order.endImg}" width="30%" height="30%" /></span>
+								src="${order.customizedArtwork.endImg}" width="30%" height="30%" /></span>
 						</div>
 				  <input type="button" value="返回列表" onclick="/test_ssh/user/myCustomized">
 								

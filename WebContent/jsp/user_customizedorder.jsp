@@ -269,7 +269,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<c:if test="${(order.state).equals('已支付已收货')}">
 									<a class="acount-btn" class="link">已收货</a>
 								</c:if>
-								<a href="">详情</a>
+								<a href="/test_ssh/artist/customizedorderDetail?orderId=${order.id}&type=0">详情</a>
 							</c:if>
 							</c:if>
 						</div>
