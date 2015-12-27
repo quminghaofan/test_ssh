@@ -166,10 +166,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span>定制品类别<label>*</label></span>
 					<!--<input type="text" name="type" id="type" onfocus="type_blank.style.display='none'">--> 
 
-					<select type="text" name="arttype" id="arttype">
+					<select name="arttype" id="arttype">
 						<option>----------请选择----------</option>
 						<c:forEach items="${TYPELIST}" var="type">
-						<option value="${type.id}">${type.name}</option>
+						<option value="${type.name}">${type.name}</option>
 						</c:forEach>
 					</select> 
 					<span id="type_blank" style="display:none"><font color="red">请选择您要定制的艺术品类别</font></span>

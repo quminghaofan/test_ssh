@@ -50,7 +50,7 @@ body {
 		 艺术品类型<select style="width: auto" id="typeId" name="typeId">
 		 <option value="">全部</option>
 			<c:forEach items="${TYPELIST}" var="type">
-				<li><option value="${type.id}">${type.name}</option></li>
+				<li><option value="${type.name}">${type.name}</option></li>
 			</c:forEach>
 		</select>
 		起始时间 <input name="txtDate time1" id="txtDate time1" class="Wdate"

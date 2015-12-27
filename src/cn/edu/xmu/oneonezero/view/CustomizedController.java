@@ -69,7 +69,7 @@ public class CustomizedController {
 		customizedArtwork.setName(request.getParameter("artname"));
 		customizedArtwork.setOwner(artist);
 		customizedArtworkService.insertCustomizedArtwork(customizedArtwork);
-		System.out.println("定制-添加艺术品："+customizedArtwork.getId());
+		System.out.println("定制-添加艺术品："+path+":"+dataDictionary.getName());
 		CustomizedArtworkOrder customizedArtworkOrder=new CustomizedArtworkOrder();
 		customizedArtworkOrder.setMobile(request.getParameter("telephone"));
 		customizedArtworkOrder.setAddress(request.getParameter("address"));

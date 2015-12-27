@@ -51,12 +51,7 @@ public class UserController {
 	@RequestMapping("/goToOrderPay")
 	public String goToOrderPay(Long orderId, String type, String stage,String total,
 			HttpServletRequest request) {
-		if(total==null){
-		request.setAttribute("total", request.getParameter("total"));
-		}
-		else {
-			request.setAttribute("total",total);
-		}
+		request.setAttribute("total",total);
 		request.setAttribute("picUrl", "/test_ssh/user/myOrderPayment?orderId="
 				+ orderId + "&type=" + type + "&stage=" + stage);
 		return "payment_login";

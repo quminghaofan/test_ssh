@@ -48,7 +48,7 @@ body {
 		<select name="typeId" id="typeId">
 			<option selected="selected" value="0">全部</option>
 			<c:forEach items="${TYPELIST}" var="type">
-				<option value="${type.id}">${type.name}</option>
+				<option value="${type.name}">${type.name}</option>
 			</c:forEach>
 		</select>
 		<button type="submit" class="btn btn-primary" id="search"

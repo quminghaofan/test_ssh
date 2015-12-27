@@ -126,19 +126,6 @@ $(document).ready(function() {
 
 					<div class="clearfix"></div>
 				</div>
-				<div class="header_bottom_right">
-					<%
-						if (session.getAttribute("user") != null) {
-					%>
-					<ul class="bag">
-						<a href="#"><i class="bag_left"> </i></a>
-						<a href="/test_ssh/cart/showCart"><li class="bag_right"><p>购物篮</p></li></a>
-						<div class="clearfix"></div>
-					</ul>
-					<%
-						}
-					%>
-				</div>
 				<div class="clearfix"></div>
 			</div>
 		</div>

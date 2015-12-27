@@ -193,18 +193,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<c:if test="${order.isCancelled}">订单已取消</c:if>
 								<c:if test="${!(order.isCancelled)}">
 									<c:if test="${(order.state).equals('未支付')}">
-										<a
+										<a class="acount-btn"
 											href="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=1&total=${order.commodityArtwork.price}">支付</a>
-										<a
+										<a class="acount-btn"
 											href="/test_ssh/user/cancelOrder?orderId=${order.id}&type=1">取消订单</a>
 									</c:if>
 									<c:if test="${(order.state).equals('已支付未发货')}">
-										<a>未发货</a>
-										<a
+										未发货
+										<a class="acount-btn"
 											href="/test_ssh/user/cancelOrder?orderId=${order.id}&type=1">取消订单</a>
 									</c:if>
 									<c:if test="${(order.state).equals('已支付未收货')}">
-										<a href="/test_ssh/user/getItem?orderId=${order.id}&type=1">收货</a>
+										<a class="acount-btn" href="/test_ssh/user/getItem?orderId=${order.id}&type=1">收货</a>
 									</c:if>
 									<c:if test="${(order.state).equals('已支付已收货')}">
 												已收货
