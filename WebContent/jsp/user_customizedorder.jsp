@@ -15,7 +15,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	
 	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 
 
 
@@ -200,11 +202,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<c:forEach items="${orderlist}" var="order">
 				<div class="a-top">
 					<div class="left-grid">
-						<img src="${order.customizedArtwork.startImg}"
-							class="img-responsive" /> <img
-							src="${order.customizedArtwork.midImg}" class="img-responsive" />
-						<img src="${order.customizedArtwork.endImg}"
-							class="img-responsive" />
+						<c:if
+							test="${!(order.customizedArtwork.endImg).equals('..\\images\\nopic.jpg')}">
+							<img src="${order.customizedArtwork.endImg}"
+								class="img-responsive" />
+						</c:if>
+						<c:if
+							test="${(order.customizedArtwork.endImg).equals('..\\images\\nopic.jpg')}">
+							<c:if
+								test="${!(order.customizedArtwork.midImg).equals('..\\images\\nopic.jpg')}">
+								<img src="${order.customizedArtwork.midImg}"
+									class="img-responsive" />
+							</c:if>
+							<c:if
+								test="${(order.customizedArtwork.midImg).equals('..\\images\\nopic.jpg')}">
+								<img src="${order.customizedArtwork.startImg}"
+									class="img-responsive" />
+							</c:if>
+						</c:if>
+
 					</div>
 					<div class="right-grid">
 						<h4>订单编号：${order.orderId}</h4>
@@ -212,43 +228,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<!-- 艺术家 -->
 						<p>第一阶段费用：${order.startPrice}</p>
 						<p>第二阶段费用：${order.midPrice}</p>
-						<p>第三阶段费用： ${order.endPrice}</p>
+						<p>第三阶段费用：${order.endPrice}</p>
 						<!-- 价格 -->
 						<div class="btn" style="float: right">
 							<c:if test="${order.isCancelled}">
 								<a>订单已取消</a>
 							</c:if>
 							<c:if test="${!(order.isCancelled)}">
+							<c:if test="${(order.isAccept).equals('0')}">
+							
+							</c:if>
+							<c:if test="${(order.isAccept).equals('1')||(order.isAccept).equals('2')}">
 								<c:if test="${(order.state).equals('未支付')}">
-									<a class="acount-btn" class="link"
-										onclick="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=0&stage=第一阶段已付款">第一阶段支付</a>
-									<a class="acount-btn" class="link"
-										onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
+									<a class="acount-btn" 
+										href="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=0&stage=第一阶段已付款">第一阶段支付</a>
+									<a class="acount-btn" 
+										href="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
 								</c:if>
 								<c:if test="${(order.stage).equals('第一阶段已付款')}">
 									<a class="acount-btn" class="link"
-										onclick="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=0&stage=第二阶段已付款">第二阶段支付</a>
+										href="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=0&stage=第二阶段已付款">第二阶段支付</a>
 									<a class="acount-btn" class="link"
-										onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
+										href="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
 								</c:if>
 								<c:if test="${(order.stage).equals('第二阶段已付款')}">
 									<a class="acount-btn" class="link"
-										onclick="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=0&stage=第三阶段已付款">第三阶段支付</a>
+										href="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=0&stage=第三阶段已付款">第三阶段支付</a>
 									<a class="acount-btn" class="link"
-										onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
+										href="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
 								</c:if>
 								<c:if test="${(order.stage).equals('第三阶段已付款')}">
 									<a class="acount-btn" class="link">未发货</a>
 									<a class="acount-btn" class="link"
-										onclick="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
+										href="/test_ssh/user/cancelOrder?orderId=${order.id}&type=0">取消订单</a>
 								</c:if>
 								<c:if test="${(order.state).equals('已支付未收货')}">
 									<a class="acount-btn" class="link"
-										onclick="/test_ssh/user/getItem?orderId=${order.id}&type=0">收货</a>
+										href="/test_ssh/user/getItem?orderId=${order.id}&type=0">收货</a>
 								</c:if>
 								<c:if test="${(order.state).equals('已支付已收货')}">
 									<a class="acount-btn" class="link">已收货</a>
 								</c:if>
+								<a href="">详情</a>
+							</c:if>
 							</c:if>
 						</div>
 					</div>

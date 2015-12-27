@@ -20,6 +20,7 @@ import cn.edu.xmu.oneonezero.service.AccountService;
 import cn.edu.xmu.oneonezero.service.CommodityArtworkOrderService;
 import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
 import cn.edu.xmu.oneonezero.service.CustomizedArtworkService;
+import cn.edu.xmu.oneonezero.service.DataDictionaryService;
 
 @Controller
 @RequestMapping("/mall")
@@ -35,11 +36,15 @@ public class MallController {
 
 	@Resource(name = "accountService")
 	private AccountService accountService;
+	
+	@Resource(name="dataDictionaryService")
+	private DataDictionaryService dataDictionaryService;
 
 	@RequestMapping(value = "/enterMall")
 	public String enterMall(String page, String go, Long typeId,
 			HttpServletRequest request) {
 		String itemname = request.getParameter("itemname");
+		request.setAttribute("TYPELIST",dataDictionaryService.getAllArtworkTypes());
 //		System.out.println("itemname:" + itemname);
 		if (itemname != null && !itemname.equals("商品名称")) {
 			request.setAttribute("itemname", itemname);

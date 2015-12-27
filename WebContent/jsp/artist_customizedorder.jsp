@@ -218,12 +218,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<a>订单已取消</a>
 										</c:if>
 										<c:if test="${!(order.isCancelled)}">
-											<c:if test="${order.isAccept==null}">
+											<c:if test="${(order.isAccept).equals('2')}">
 													<a href="javascript:accept(${order.id})">接受</a>
-													<a
-														href="/test_ssh/artist/isAccept?orderId=${order.id}&type=1">拒绝</a>
-												</c:if> <c:if test="${!(order.isAccept)}">已拒绝</c:if> <c:if
-													test="${order.isAccept}">
+													<a href="/test_ssh/artist/isAccept?orderId=${order.id}&type=1">拒绝</a>
+												</c:if> <c:if test="${(order.isAccept).equals('0')}">已拒绝</c:if> <c:if
+													test="${(order.isAccept).equals('1')}">
 													<a href="/test_ssh/artist/goToPicUp?orderId=${order.id}">上传小样</a>
 													<c:if test="${(order.state).equals('已支付未发货')}">
 														<a

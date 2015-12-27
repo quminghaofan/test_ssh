@@ -199,13 +199,13 @@ public class ArtistController {
 			if (end != null) {
 				customizedArtworkOrder.setEndPrice(Double.parseDouble(end));
 			}
-			customizedArtworkOrder.setIsAccept(true);
+			customizedArtworkOrder.setIsAccept("1");
 			customizedArtworkOrderService
 					.updateCustomizedArtworkOrder(customizedArtworkOrder);
 			request.setAttribute("order", customizedArtworkOrder);
 			return "customizedorderDetail";
 		} else {// 拒绝
-			artworkOrderService.setArtworkOrderIsAccept(orderId, false);
+			artworkOrderService.setArtworkOrderIsAccept(orderId,"0");
 			return "redirect:/artist/myCustomized";
 		}
 	}
