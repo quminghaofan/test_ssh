@@ -57,7 +57,6 @@ public class EditorController {
 		news.setOnShowTime(new java.sql.Date(start.getTime()));
 		news.setOffShowTime(new java.sql.Date(end.getTime()));
 		news.setPrice(Double.parseDouble(request.getParameter("price")));
-		System.out.println("type:" + type);
 		if (type.equals("1")) {
 			news.setState("草稿");
 		} else {
@@ -192,18 +191,16 @@ public class EditorController {
 		User user = (User) request.getSession().getAttribute("user");
 		String newsType = request.getParameter("category");
 		
-		String startTime = request.getParameter("onShowTime");
+		String startTime = request.getParameter("txtDate time1");
 		if(startTime==null||startTime.equals(""))start=null;
 		else {
 			start=format.parse(startTime);
 		}
-		String endTime=request.getParameter("offShowTime");
+		String endTime=request.getParameter("txtDate time2");
 		if(endTime==null||endTime.equals(""))end=null;
 		else {
 			end=format.parse(endTime);
 		}
-		System.out.println("********startTime******"+startTime);
-		System.out.println("********endTime******"+endTime);
 		
 		String newsName = request.getParameter("RRname");
 		if (type.equals("1")) {

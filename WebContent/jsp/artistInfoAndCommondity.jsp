@@ -12,10 +12,12 @@
 	content="Gifty Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
 		
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 
-	</script>
+	
+</script>
 <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!-- Custom Theme files -->
@@ -36,22 +38,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="../js/megamenu.js"></script>
 <link href="../css/table.css" rel='stylesheet' type='text/css' />
 <script>
-			$(document).ready(function() {
-				$(".megamenu").megamenu();
-			});
-		</script>
+	$(document).ready(function() {
+		$(".megamenu").megamenu();
+	});
+</script>
 <style type="text/css">
-
 #headPhotoValue {
 	width: 100px;
 	height: 100px;
 	border-radius: 100px;
-	
-
-	
-	margin-left:77px;
-	padding:0px;text-align:center;
-	
+	margin-left: 77px;
+	padding: 0px;
+	text-align: center;
 }
 
 #nick {
@@ -63,9 +61,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	color: blue;
 	text-decoration: underline;
 }
-#artart{
-	width:150px;
-	height:200px;
+
+#artart {
+	width: 150px;
+	height: 200px;
 }
 </style>
 </head>
@@ -189,49 +188,58 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 
 	<div style="float: left; width: 8%">
-		<a href=""><img src="../images/back.png" alt="返回"
+		<a href="/test_ssh/mall/enterMall?go=0"><img src="../images/back.png" alt="返回"
 			class="img-responsive" /></a>
 	</div>
 	<div style="float: right; width: 20%; height: 35%">
-	<%User user=(User)session.getAttribute("user");
-	if(user!=null){%>
-		<a href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}"><img
+		<%
+			User user = (User) session.getAttribute("user");
+			if (user != null) {
+		%>
+		<a
+			href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}"><img
 			src="../images/customize.jpg" alt="申请定制" class="img-responsive" /></a>
-	<%}else{ %>
-	<a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'"><img
+		<%
+			} else {
+		%>
+		<a
+			href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'"><img
 			src="../images/customize.jpg" alt="申请定制" class="img-responsive" /></a>
-	<%} %>
+		<%
+			}
+		%>
 	</div>
 	</br>
 	</br>
 	<form action="" method="post">
-			<div id="logo">
-				<img id="headPhotoValue" src="${artist.headPhoto}"/>
-			</div>
-			<div id="header">
+		<div id="logo">
+			<img id="headPhotoValue" src="${artist.headPhoto}" />
+		</div>
+		<div id="header">
 
-				<h1 id="title">
-					<font color="">艺术家简介</font>
-				</h1>
-			</div> </br>
-			<div id="general">
-				<div class="row">
-					<label id="nickname">昵称:</label> <label id="nicknameValue">${artist.realName}</label>
-				</div>
-				<div class="row">
-					<label id="realname">真实姓名:</label> <label id="realnameValue">${artist.realName}</label>
-				</div>
-				<div class="row">
-					<label id="phone">手机号:</label> <label id="phoneValue">${artist.mobile}</label>
-				</div>
-				<div class="row">
-					<label id="address">联系地址:</label> <label id="addressValue">${artist.address}</label>
-				</div>
-				<div class="row">
-					<label id="description">艺术家描述:</label> <label id="desValue">${artist.description}</label>
-				</div>
-
+			<h1 id="title">
+				<font color="">艺术家简介</font>
+			</h1>
+		</div>
+		</br>
+		<div id="general">
+			<div class="row">
+				<label id="nickname">昵称:</label> <label id="nicknameValue">${artist.realName}</label>
 			</div>
+			<div class="row">
+				<label id="realname">真实姓名:</label> <label id="realnameValue">${artist.realName}</label>
+			</div>
+			<div class="row">
+				<label id="phone">手机号:</label> <label id="phoneValue">${artist.mobile}</label>
+			</div>
+			<div class="row">
+				<label id="address">联系地址:</label> <label id="addressValue">${artist.address}</label>
+			</div>
+			<div class="row">
+				<label id="description">艺术家描述:</label> <label id="desValue">${artist.description}</label>
+			</div>
+
+		</div>
 	</form>
 	<div id="header1">
 		<h1 id="title1">
@@ -239,36 +247,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</h1>
 	</div>
 	</br>
-		
+
 	<form action="" method="get">
 		<div class="span_3">
-		<c:forEach items="${artCommodList}" var="artWork">
-			<div class="col-sm-3 grid_1">
-				<img id="artart" src="${artWork.picUrl}" class="img-responsive" alt="" />
-				<h3>${artWork.type.name}</h3>
-				<h4>${artWork.name}</h4>
-			</div>
-						<!--<div class="col-sm-3 grid_1">
+			<c:forEach items="${artCommodList}" var="artWork">
+				<div class="col-sm-3 grid_1">
+					<img id="artart" src="${artWork.picUrl}" class="img-responsive"
+						alt="" />
+					<h3>${artWork.type.name}</h3>
+					<h4>${artWork.name}</h4>
+				</div>
+				<!--<div class="col-sm-3 grid_1">
 				<img id="artart" src="../images/poster.jpg" class="img-responsive" alt="" />
 				<h3>${artWork.type.name}</h3>
 				<h4>${artWork.name}</h4>
 			</div>-->
-		</c:forEach>
-		<div class="clearfix"></div>
-	   </div>
+			</c:forEach>
+			<div class="clearfix"></div>
+		</div>
 	</form>
 
-	<!--<p id="manu">您要<a href="/test_ssh/jsp/customizeArt" id="make">申请定制</a>吗？</p>-->	
-	
-	<%if(user!=null){%>
-		<a href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}">申请定制</a>
-	<%}else{ %>
+	<!--<p id="manu">您要<a href="/test_ssh/jsp/customizeArt" id="make">申请定制</a>吗？</p>-->
+
+	<%
+		if (user != null) {
+	%>
+	<a	href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}">申请定制</a>
+	<%
+		} else {
+	%>
 	<a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'">申请定制</a>
-	<%} %>
-	
+	<%
+		}
+	%>
+
 	</br>
 	</br>
-	<a href="#"><font color="black">返回顶部</font></a>
+	<a href="">返回顶部</a>
 
 	<div class="footer">
 		<div class="container">

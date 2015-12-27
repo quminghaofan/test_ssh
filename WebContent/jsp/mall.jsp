@@ -130,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="menu_box">
 				<ul class="megamenu skyblue">
 					<li><a class="color2" href="/test_ssh/init/home">首页</a></li>
-					<li><a class="color4" href="">定制</a>
+					<li><a class="color4" href="/test_ssh/mall/enterMall&go=0">定制</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">

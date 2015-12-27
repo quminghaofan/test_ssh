@@ -87,7 +87,7 @@ public class ChiefEditorController {
     public String search(String type,HttpServletRequest request) throws ParseException{
     	Date start,end;
     	String newsType=request.getParameter("category");
-    	String startTime=request.getParameter("onShowTime");
+    	String startTime=request.getParameter("txtDate time1");
 //    	System.out.println(startTime);
     	String newsName=request.getParameter("RRname");
     	
@@ -97,17 +97,13 @@ public class ChiefEditorController {
 			start=format.parse(startTime);
 		}
     	
-    	String endTime=request.getParameter("offShowTime");
+    	String endTime=request.getParameter("txtDate time2");
     	if(endTime==null||endTime.equals("")){
     		end=null;
     	}else {
     		end=format.parse(endTime);
 
 		}
-    	System.out.println("******startTime******"+startTime);
-    	System.out.println("******startTime******"+endTime);
-//    	System.out.println("******start******"+start.getTime());
-//    	System.out.println("******end******"+end.getTime());
 //    	System.out.println("搜索："+newsService.getNewsByTimespace(newsType,start, end, newsName,type).size());
     	request.setAttribute("RRLIST",newsService.getNewsByTimespace(newsType,start, end, newsName,type));
     	if(type.equals("1")){

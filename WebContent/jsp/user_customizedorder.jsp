@@ -208,7 +208,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="right-grid">
 						<h4>订单编号：${order.orderId}</h4>
-						<p>艺术家姓名：${order.customizedArtwork.realName}</p>
+						<p>艺术家姓名：${order.customizedArtwork.owner.realName}</p>
 						<!-- 艺术家 -->
 						<p>第一阶段费用：${order.startPrice}</p>
 						<p>第二阶段费用：${order.midPrice}</p>

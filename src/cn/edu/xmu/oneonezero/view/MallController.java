@@ -40,7 +40,7 @@ public class MallController {
 	public String enterMall(String page, String go, Long typeId,
 			HttpServletRequest request) {
 		String itemname = request.getParameter("itemname");
-		System.out.println("itemname:" + itemname);
+//		System.out.println("itemname:" + itemname);
 		if (itemname != null && !itemname.equals("商品名称")) {
 			request.setAttribute("itemname", itemname);
 		} else {
@@ -58,19 +58,19 @@ public class MallController {
 		request.setAttribute("typeId", typeId);
 		if (go.equals("1")) {
 			pageTimes = commodityArtworkService.getPageTotalByVagueName(
-					itemname, 30);
+					itemname, 12);
 			request.setAttribute("totalpage", pageTimes);
 			request.getSession().setAttribute("pageTimes", pageTimes);
 			if (typeId == null) {
 				request.setAttribute("itemlist", commodityArtworkService
 						.getCommodityArtworksByPositionAndVagueName(itemname,
-								curentPage - 1, 30));
+								curentPage - 1, 12));
 			} else {
 				request.setAttribute(
 						"itemlist",
 						commodityArtworkService
 								.getCommodityArtworksByArtworkTypeIdVagueArtworkNamePageNumber(
-										typeId, itemname, curentPage - 1, 30));
+										typeId, itemname, curentPage - 1,12));
 			}
 			request.setAttribute("backUrl", "/test_ssh/mall/enterMall?go=1");
 			return "mall";
@@ -82,13 +82,13 @@ public class MallController {
 			if (typeId == null) {
 				request.setAttribute("itemlist", commodityArtworkService
 						.getExhibitArtworksByVagueArtNameAndPage(itemname,
-								curentPage - 1, 30));
+								curentPage - 1,12));
 			} else {
 				request.setAttribute(
 						"itemlist",
 						commodityArtworkService
 								.getExhibitArtworksByArtworkTypeIdVagueArtworkNamePageNumber(
-										typeId, itemname, curentPage - 1, 30));
+										typeId, itemname, curentPage - 1,12));
 			}
 			request.setAttribute("backUrl", "/test_ssh/mall/enterMall?go=0");
 			return "customized";

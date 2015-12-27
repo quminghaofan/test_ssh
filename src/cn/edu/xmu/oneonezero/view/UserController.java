@@ -13,6 +13,7 @@ import cn.edu.xmu.oneonezero.entity.CustomizedArtwork;
 import cn.edu.xmu.oneonezero.entity.CustomizedArtworkOrder;
 import cn.edu.xmu.oneonezero.entity.User;
 import cn.edu.xmu.oneonezero.service.AccountService;
+import cn.edu.xmu.oneonezero.service.ArtworkOrderService;
 import cn.edu.xmu.oneonezero.service.CommodityArtworkOrderService;
 import cn.edu.xmu.oneonezero.service.CustomizedArtworkOrderService;
 import cn.edu.xmu.oneonezero.service.UserService;
@@ -28,6 +29,8 @@ public class UserController {
 	private AccountService accountService;
 	@Resource(name = "userService")
 	private UserService userService;
+	@Resource(name="artworkOrderService")
+	private ArtworkOrderService artworkOrderService;
 
 	@RequestMapping("/myOrder")
 	public String myOrder(HttpServletRequest request) {
@@ -46,9 +49,14 @@ public class UserController {
 	}
 
 	@RequestMapping("/goToOrderPay")
-	public String goToOrderPay(Long orderId, String type, String stage,
+	public String goToOrderPay(Long orderId, String type, String stage,String total,
 			HttpServletRequest request) {
+		if(total==null){
 		request.setAttribute("total", request.getParameter("total"));
+		}
+		else {
+			request.setAttribute("total",total);
+		}
 		request.setAttribute("picUrl", "/test_ssh/user/myOrderPayment?orderId="
 				+ orderId + "&type=" + type + "&stage=" + stage);
 		return "payment_login";
@@ -87,11 +95,11 @@ public class UserController {
 	@RequestMapping("/cancelOrder")
 	public String cancelOrder(Long orderId, String type,
 			HttpServletRequest request) {
+		System.out.println("取消订单"+orderId);
+		artworkOrderService.cancelArtworkOrder(orderId);
 		if (type.equals("1")) {
-			commodityArtworkOrderService.deleteCommodityArtworkOrder(orderId);
 			return "redirect:/user/myOrder";
 		} else {
-			customizedArtworkOrderService.deleteCustomizedArtworkOrder(orderId);
 			return "redirect:/user/myCustomized";
 		}
 	}

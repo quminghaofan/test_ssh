@@ -202,7 +202,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							height="30%" /></span>
 					</div> 
 				</div>
-				  <input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/customized/goBack?artistId=${artistId}'" value="返回"></a>
+				  <input type="button" class="btn btn-success" name="backid" id="backid" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/mall/enterMall?go=0'" value="返回"></a>
 				  <input type="submit" value="提交" align="center-right" onClick="customizeform.onsubmit()">
 				  
 			    </form>
