@@ -172,7 +172,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div align="center">
 					<div style="background-color: white; width: 100%">
 						<a class="acount-btn" href="/test_ssh/user/myOrder">我的订单</a> <a
-							class="acount-btn" style="margin-top: 2em">我的定制</a>
+							class="acount-btn" style="margin-top: 2em"  href="/test_ssh/user/myCustomized">我的定制</a>
 					</div>
 				</div>
 				<br> <br> <br>

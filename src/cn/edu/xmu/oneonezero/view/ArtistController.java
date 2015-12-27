@@ -101,10 +101,14 @@ public class ArtistController {
 	}
 
 	@RequestMapping("customizedorderDetail")
-	public String customizedorderDetail(Long orderId, HttpServletRequest request) {
+	public String customizedorderDetail(String type,Long orderId, HttpServletRequest request) {
 		request.setAttribute("order", customizedArtworkOrderService
 				.getCustomedArtworkOrderByOrderId(orderId));
+		if(type.equals("1"))
 		return "artist_customizedorder_detail";
+		else {
+			return "user_customizedorder_detail";
+		}
 	}
 
 	@RequestMapping("/editOrAddArtwork")
