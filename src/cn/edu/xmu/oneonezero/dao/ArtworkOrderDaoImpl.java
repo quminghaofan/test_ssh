@@ -110,7 +110,7 @@ public class ArtworkOrderDaoImpl implements ArtworkOrderDao{
 	}
 
 	@Override
-	public void setArtworkOrderIsAccept(long id, boolean isAccept) {
+	public void setArtworkOrderIsAccept(long id, String isAccept) {
 		ArtworkOrder aOrder=getOrderByOrderId(id);
 		aOrder.setIsAccept(isAccept);
 		sessionFactory.getCurrentSession().flush();

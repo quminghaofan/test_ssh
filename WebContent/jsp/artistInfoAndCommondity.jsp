@@ -12,12 +12,10 @@
 	content="Gifty Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
-	
 		
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 
-	
-</script>
+	</script>
 <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!-- Custom Theme files -->
@@ -38,18 +36,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="../js/megamenu.js"></script>
 <link href="../css/table.css" rel='stylesheet' type='text/css' />
 <script>
-	$(document).ready(function() {
-		$(".megamenu").megamenu();
-	});
-</script>
+			$(document).ready(function() {
+				$(".megamenu").megamenu();
+			});
+		</script>
 <style type="text/css">
+
 #headPhotoValue {
 	width: 100px;
 	height: 100px;
 	border-radius: 100px;
-	margin-left: 77px;
-	padding: 0px;
-	text-align: center;
+	
+
+	
+	margin-left:50px;
+	padding:0px;text-align:center;
+	
 }
 
 #nick {
@@ -57,233 +59,200 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 }
 
 #make {
-	width: 100px;
+	width: 120px;
 	color: blue;
 	text-decoration: underline;
 }
-
-#artart {
-	width: 150px;
-	height: 200px;
+#artart{
+	width:150px;
+	height:200px;
 }
 </style>
 </head>
 <body>
-	<div class="header_top">
-		<div class="container">
-			<div class="header_top-box">
-				<div class="header-top-left">
-					<div class="clearfix"></div>
-				</div>
-				<div class="cssmenu">
-					<ul>
-						<%
-							if (session.getAttribute("username") == null) {
-						%>
-						<li><a href="jsp/login.jsp">登录/注册</a></li>
-						<%
-							} else {
-						%>
-						<li><a href="">申请成为艺术家</a></li>
-						<li><a href=""> <%=session.getAttribute("username")%></a></li>
-						<li><a href="">我的订单</a></li>
-						<li><a href="">登出</a></li>
-						<%
-							}
-						%>
-					</ul>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
 
-	<div class="header_bottom">
-		<div class="container">
-			<div class="header_bottom-box">
-				<div class="header_bottom_left">
-					<div class="logo">
-						<a href="index.html"><img src="../images/logo_ooz.png"
-							alt="首页" /></a>
-					</div>
-
-					<div class="clearfix"></div>
-				</div>
-				<div class="header_bottom_right">
-
+<div class="header_top">
+  <div class="container">
+  	<div class="header_top-box">
+     <div class="header-top-left">
+			  
+   				    <div class="clearfix"></div>
+   			 </div>
+			 <div class="cssmenu">
+				<ul>
+					 <%
+                	if(session.getAttribute("username")==null){
+                %>
+					<li><a href="jsp/login.jsp">登录/注册</a></li> 
 					<%
-						if (session.getAttribute("username") != null) {
-					%>
-					<ul class="bag">
-						<a href="#"><i class="bag_left"> </i></a>
-						<a href="#"><li class="bag_right"><p>购物篮</p></li></a>
-						<div class="clearfix"></div>
-					</ul>
-					<%
-						}
-					%>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div class="copyrights">
-		Collect from <a href="">OneoneZero</a>
-	</div>
-	<div class="menu">
-		<div class="container">
-			<div class="menu_box">
-				<ul class="megamenu skyblue">
-					<li><a class="color2" href="index.jsp">首页</a></li>
-					<li><a class="color4" href="">定制</a>
-						<div class="megapanel">
-							<div class="row">
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<li><a href="">全部</a></li>
-											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
-											</c:forEach>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div></li>
-					<li><a class="color10" href="#">商城</a>
-						<div class="megapanel">
-							<div class="row">
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<li><a href="">全部</a></li>
-											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
-											</c:forEach>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div></li>
-					<li><a class="color7" href="#">拍卖</a>
-						<div class="megapanel">
-							<div class="row">
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<li><a href="">全部</a></li>
-											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="">${type.}</a></li>
-											</c:forEach>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div></li>
-					<li><a class="color8" href="">联系我们</a></li>
-					<div class="clearfix"></div>
+                    }else{
+                    %>
+                    <li><a href="">申请成为艺术家</a></li> 
+                    <li><a href=""> <%=session.getAttribute("username")%></a></li>
+                    <li><a href="">订单</a></li>
+                    <li><a href="">购物车</a></li>
+                    <li><a href="">退出</a></li> 
+                    <%} %>
 				</ul>
 			</div>
+			<div class="clearfix"></div>
+   </div>
+</div>
+</div>
+<div class="header_bottom">
+	<div class="container">
+	 <div class="header_bottom-box">
+		<div class="header_bottom_left">
+			<div class="logo">
+				<a href="index.html"><img src="../images/logo_ooz.png" alt=""/></a>
+			</div>
+			
+			<div class="clearfix"> </div>
 		</div>
+		
+		<div class="clearfix"> </div>
 	</div>
+</div>
+</div>
+<div class="copyrights">Collect from <a href="" >OneoneZero</a></div>
+<div class="menu">
+	<div class="container">
+		<div class="menu_box">
+	     <ul class="megamenu skyblue">
+			<li class="active grid"><a class="color2" href="/test_ssh/init/home">首页</a></li>
+			<li><a class="color4" href="">定制</a>
+			<div class="megapanel">
+					<div class="row">
+						<div class="col1">
+							<div class="h_nav">
+								<ul>
+								<c:forEach items="${TYPELIST}" var="type">
+									<li><a href="">${type.}</a></li>
+								</c:forEach>	
+								</ul>	
+							</div>							
+						</div>
+					  </div>
+					</div>
+			</li>				
+			<li><a class="color10" href="/test_ssh/mall/enterMall">商城</a>
+				<div class="megapanel">
+					<div class="row">
+						<div class="col1">
+							<div class="h_nav">
+								<ul>
+								<c:forEach items="${TYPELIST}" var="type">
+									<li><a href="">${type.}</a></li>
+								</c:forEach>	
+								</ul>	
+							</div>							
+						</div>
+					  </div>
+					</div>
+			</li>
+			<li><a class="color7" href="#">拍卖</a>
+				<div class="megapanel">
+					<div class="row">
+						<div class="col1">
+							<div class="h_nav">
+								<ul>
+								<c:forEach items="${TYPELIST}" var="type">
+									<li><a href="">${type.}</a></li>
+								</c:forEach>	
+								</ul>	
+							</div>							
+						</div>
+					  </div>
+					</div>
+			</li>
+			<li><a class="color8" href="">联系我们</a></li>
+			<div class="clearfix"> </div>
+		 </ul>
+	  </div>
+</div>
+</div>
 
 	<div style="float: left; width: 8%">
-		<a href="/test_ssh/mall/enterMall?go=0"><img src="../images/back.png" alt="返回"
+		<a href=""><img src="../images/back.png" alt="返回"
 			class="img-responsive" /></a>
 	</div>
+
+	
 	<div style="float: right; width: 20%; height: 35%">
-		<%
-			User user = (User) session.getAttribute("user");
-			if (user != null) {
-		%>
-		<a
-			href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}"><img
+	<%User user=(User)session.getAttribute("user");
+	if(user!=null){%>
+		<a href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}"><img
 			src="../images/customize.jpg" alt="申请定制" class="img-responsive" /></a>
-		<%
-			} else {
-		%>
-		<a
-			href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'"><img
+	<%}else{ %>
+	<a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'"><img
 			src="../images/customize.jpg" alt="申请定制" class="img-responsive" /></a>
-		<%
-			}
-		%>
-	</div>
+	<%} %>
+	</div>	
+	
 	</br>
 	</br>
 	<form action="" method="post">
-		<div id="logo">
-			<img id="headPhotoValue" src="${artist.headPhoto}" />
-		</div>
-		<div id="header">
+			<div id="logo">
+				<img id="headPhotoValue" src="${artist.headPhoto}"/>
+			</div>
+			<div>
+				<h1>
+					<font color="red">艺术家简介</font>
+				</h1>
+			</div> </br>
+			<div>
+				<div>
+					<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label id="nickname">昵称:</label> <label id="nicknameValue">${artist.realName}</label></p>
+				</div>
+				<div>
+					<p> &nbsp;<label id="realname">真实姓名:</label>&nbsp;&nbsp;<label id="realnameValue">${artist.realName}</label></p>
+				</div>
+				<div>
+					<p> &nbsp;&nbsp;<label id="phone">手机号:</label> <label id="phoneValue">${artist.mobile}</label></p>
+				</div>
+				<div>
+					<p><label id="address">联系地址:</label> <label id="addressValue">${artist.address}</label></p>
+				</div>
+				<div>
+					<p>&nbsp;&nbsp;<label id="description">艺术家描述:</label> <label id="desValue">${artist.description}</label></p>
+				</div>
 
-			<h1 id="title">
-				<font color="">艺术家简介</font>
-			</h1>
-		</div>
-		</br>
-		<div id="general">
-			<div class="row">
-				<label id="nickname">昵称:</label> <label id="nicknameValue">${artist.realName}</label>
 			</div>
-			<div class="row">
-				<label id="realname">真实姓名:</label> <label id="realnameValue">${artist.realName}</label>
-			</div>
-			<div class="row">
-				<label id="phone">手机号:</label> <label id="phoneValue">${artist.mobile}</label>
-			</div>
-			<div class="row">
-				<label id="address">联系地址:</label> <label id="addressValue">${artist.address}</label>
-			</div>
-			<div class="row">
-				<label id="description">艺术家描述:</label> <label id="desValue">${artist.description}</label>
-			</div>
-
-		</div>
-	</form>
-	<div id="header1">
-		<h1 id="title1">
-			<font color="">艺术家成就展示</font>
+	</form></br></br>
+	<div>
+		<h1 id="showart">
+			<font color="red">艺术家成就展示</font>
 		</h1>
 	</div>
 	</br>
-
+		
 	<form action="" method="get">
 		<div class="span_3">
-			<c:forEach items="${artCommodList}" var="artWork">
-				<div class="col-sm-3 grid_1">
-					<img id="artart" src="${artWork.picUrl}" class="img-responsive"
-						alt="" />
-					<h3>${artWork.type.name}</h3>
-					<h4>${artWork.name}</h4>
-				</div>
-				<!--<div class="col-sm-3 grid_1">
-				<img id="artart" src="../images/poster.jpg" class="img-responsive" alt="" />
+		<c:forEach items="${artCommodList}" var="artWork">
+			<div class="col-sm-3 grid_1">
+				<img id="artart" src="${artWork.picUrl}" class="img-responsive" alt="" />
 				<h3>${artWork.type.name}</h3>
 				<h4>${artWork.name}</h4>
-			</div>-->
-			</c:forEach>
-			<div class="clearfix"></div>
-		</div>
+			</div>
+		</c:forEach>
+		<div class="clearfix"></div>
+	   </div>
 	</form>
 
 	<!--<p id="manu">您要<a href="/test_ssh/jsp/customizeArt" id="make">申请定制</a>吗？</p>-->
+	
 
-	<%
-		if (user != null) {
-	%>
-	<a	href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}">申请定制</a>
-	<%
-		} else {
-	%>
+	<%if(user!=null){%>
+		<a href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}">申请定制</a>
+	<%}else{ %>
 	<a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'">申请定制</a>
-	<%
-		}
-	%>
+	<%} %>
 
+
+	
 	</br>
 	</br>
-	<a href="">返回顶部</a>
+	<a href="#"><font color="black">返回顶部</font></a>
 
 	<div class="footer">
 		<div class="container">
