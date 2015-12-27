@@ -49,8 +49,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 
 	
-	margin-left:50px;
-	padding:0px;text-align:center;
+	margin-left:3px;
+	padding:0,0,0,40%;
+	
 	
 }
 
@@ -66,6 +67,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 #artart{
 	width:150px;
 	height:200px;
+}
+#goto{
+float:right;
+width:70px;
+height:28px;
+
 }
 </style>
 </head>
@@ -176,25 +183,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<a href=""><img src="../images/back.png" alt="返回"
 			class="img-responsive" /></a>
 	</div>
-
 	
+
 	<div style="float: right; width: 20%; height: 35%">
 	<%User user=(User)session.getAttribute("user");
 	if(user!=null){%>
-		<a href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}"><img
+		<a href="/test_ssh/customized/goToCustomizationApplying?artistId=${artist.id}"><img id="goto"
 			src="../images/customize.jpg" alt="申请定制" class="img-responsive" /></a>
 	<%}else{ %>
-	<a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'"><img
+	<a href="/test_ssh/init/goToLogin?backUrl='/test_ssh/customized/seeMore?artistId=${artist.id}'"><img id="goto"
 			src="../images/customize.jpg" alt="申请定制" class="img-responsive" /></a>
 	<%} %>
 	</div>	
+	
+	
+	
 	
 	</br>
 	</br>
 	<form action="" method="post">
 			<div id="logo">
 				<img id="headPhotoValue" src="${artist.headPhoto}"/>
-			</div>
+			</div></br></br>
 			<div>
 				<h1>
 					<font color="red">艺术家简介</font>
@@ -205,7 +215,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label id="nickname">昵称:</label> <label id="nicknameValue">${artist.realName}</label></p>
 				</div>
 				<div>
-					<p> &nbsp;<label id="realname">真实姓名:</label>&nbsp;&nbsp;<label id="realnameValue">${artist.realName}</label></p>
+					<p>&nbsp; &nbsp;<label id="realname">真实姓名:</label>&nbsp;<label id="realnameValue">${artist.realName}</label></p>
 				</div>
 				<div>
 					<p> &nbsp;&nbsp;<label id="phone">手机号:</label> <label id="phoneValue">${artist.mobile}</label></p>
