@@ -63,14 +63,14 @@ public class ChiefEditorController {
     	return "redirect:/chiefEditor/getExamined";
     }
     
-    @RequestMapping(value="/setNews")
-    public String setNews(HttpServletRequest request) throws ParseException{
-    	News news=(News) request.getSession().getAttribute("news");
-        news.setRank(request.getParameter("rank"));
-        news.setOnShowTime(format.parse(request.getParameter("txtDate")));
-        newsService.updateNews(news);
-        return "redirect:/chiefEditor/getUnexamined";
-    }
+//    @RequestMapping(value="/setNews")
+//    public String setNews(HttpServletRequest request) throws ParseException{
+//    	News news=(News) request.getSession().getAttribute("news");
+//        news.setRank(request.getParameter("rank"));
+//        news.setOnShowTime(format.parse(request.getParameter("txtDate")));
+//        newsService.updateNews(news);
+//        return "redirect:/chiefEditor/getUnexamined";
+//    }
 
     @RequestMapping(value="/getExamined")
     public String getExamined(HttpServletRequest request){
@@ -91,13 +91,13 @@ public class ChiefEditorController {
 //    	System.out.println(startTime);
     	String newsName=request.getParameter("RRname");
     	
-    	if(startTime==null){
+    	if(startTime==null||startTime.equals("")){
     		start=null;
     	}else {
 			start=format.parse(startTime);
 		}
     	String endTime=request.getParameter("offShowTime");
-    	if(endTime==null){
+    	if(endTime==null||endTime.equals("")){
     		end=null;
     	}else {
     		end=format.parse(endTime);

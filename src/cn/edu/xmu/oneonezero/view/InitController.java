@@ -38,20 +38,24 @@ public class InitController {
 
 	@Resource(name = "commodityArtworkService")
 	private CommodityArtworkService commodityArtworkService;
-	
+
 	@Resource(name = "dataDictionaryService")
 	private DataDictionaryService dataDictionaryService;
-	
-	@Resource(name="customizedArtworkService")
+
+	@Resource(name = "customizedArtworkService")
 	private CustomizedArtworkService customizedArtworkService;
 
 	@RequestMapping(value = "/home")
 	public String home(HttpServletRequest request) {
-		request.setAttribute("RRlist",newsService.getNewsToday(new Date()));
-		request.setAttribute("commodityArtworkList",commodityArtworkService.commodityArtworksToDisplay());
-		request.setAttribute("TYPELIST", dataDictionaryService.getAllArtworkTypes());
-		request.setAttribute("adlist",newsService.getAdvertisementToday(new Date()));
-		request.setAttribute("customizedlist", commodityArtworkService.getAllExhibitArtworks());
+		request.setAttribute("RRlist", newsService.getNewsToday(new Date()));
+		request.setAttribute("commodityArtworkList",
+				commodityArtworkService.commodityArtworksToDisplay());
+		request.setAttribute("TYPELIST",
+				dataDictionaryService.getAllArtworkTypes());
+		request.setAttribute("adlist",
+				newsService.getAdvertisementToday(new Date()));
+		request.setAttribute("customizedlist",
+				commodityArtworkService.getAllExhibitArtworks());
 		return "index";
 	}
 
@@ -70,28 +74,27 @@ public class InitController {
 		User user = userService.getUserByUserNameAndPassword(userName, psw);
 		if (user != null) {
 			request.getSession().setAttribute("user", user);
-			System.out.println("backurl1:"+backUrl);
-			if (backUrl == null) {
-				String roleName=user.getRole().getName();
-				if(roleName.equals("超级管理员"))return "super_index";
-				else if(roleName.equals("普通管理员"))return "admin_index";
-				else if(roleName.equals("主编"))return "chiefEditor_index";
-				else if(roleName.equals("采编"))return "editor_index";
-				else {
-					request.setAttribute("result", "fail");
-					return "login";
-				}
-//				return "editor_index";
-			} else {
+//			System.out.println("backurl1:" + backUrl);
+			String roleName = user.getRole().getName();
+			if (roleName.equals("超级管理员"))
+				return "super_index";
+			else if (roleName.equals("普通管理员"))
+				return "admin_index";
+			else if (roleName.equals("主编"))
+				return "chiefEditor_index";
+			else if (roleName.equals("采编"))
+				return "editor_index";
+			else {
 				backUrl = backUrl.replaceAll("'", "");
-				System.out.println("backur2:"+backUrl);
+//				System.out.println("backur2:" + backUrl);
+				response.sendRedirect(backUrl);
+				return null;
 			}
+			// return "editor_index";
 		} else {
 			request.setAttribute("result", "fail");
 			return "login";
 		}
-		response.sendRedirect(backUrl);
-		return null;
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -102,7 +105,7 @@ public class InitController {
 		if (session != null) {
 			session.removeAttribute("user");
 		}
-		if(backUrl==null){
+		if (backUrl == null) {
 			return "login";
 		}
 		response.sendRedirect(backUrl);
@@ -120,11 +123,11 @@ public class InitController {
 		userService.insertUser(user);
 		return "login";
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/judgeUserName")
-	public String judgeUserName(String username){
-		if(!userService.isNameExist(username)){
+	@RequestMapping(value = "/judgeUserName")
+	public String judgeUserName(String username) {
+		if (!userService.isNameExist(username)) {
 			return "success";
 		}
 		return "error";

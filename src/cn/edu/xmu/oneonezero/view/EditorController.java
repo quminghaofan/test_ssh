@@ -42,9 +42,20 @@ public class EditorController {
 		// System.out.println("newstype"+request.getParameter("category"));
 
 		news.setPicUrl(PicUpload.saveFile(filedata, path));
-
-		news.setOnShowTime(format.parse(request.getParameter("txtDate time1")));
-		news.setOffShowTime(format.parse(request.getParameter("txtDate time2")));
+		Date start,end;
+		String startTime=request.getParameter("txtDate time1");
+		if(startTime==null||startTime.equals(""))start=null;
+		else {
+			start=format.parse(startTime);
+		}
+		String endTime=request.getParameter("txtDate time2");
+		if(endTime==null||endTime.equals(""))end=null;
+		else {
+			end=format.parse(endTime);
+		}
+		
+		news.setOnShowTime(start);
+		news.setOffShowTime(end);
 		news.setPrice(Double.parseDouble(request.getParameter("price")));
 		System.out.println("type:" + type);
 		if (type.equals("1")) {
@@ -79,9 +90,20 @@ public class EditorController {
 			String picurl = PicUpload.saveFile(filedata, path);
 			news.setPicUrl(picurl);
 		}
-
-		news.setOnShowTime(format.parse(request.getParameter("txtDate time1")));
-		news.setOffShowTime(format.parse(request.getParameter("txtDate time2")));
+		
+		Date start,end;
+		String startTime=request.getParameter("txtDate time1");
+		if(startTime==null||startTime.equals(""))start=null;
+		else {
+			start=format.parse(startTime);
+		}
+		String endTime=request.getParameter("txtDate time2");
+		if(endTime==null||endTime.equals(""))end=null;
+		else {
+			end=format.parse(endTime);
+		}
+		news.setOnShowTime(start);
+		news.setOffShowTime(end);
 		// System.out.println(request.getParameter("price"));
 		news.setPrice(Double.parseDouble(request.getParameter("price")));
 
@@ -169,19 +191,18 @@ public class EditorController {
 		Date start, end;
 		User user = (User) request.getSession().getAttribute("user");
 		String newsType = request.getParameter("category");
+		
 		String startTime = request.getParameter("onShowTime");
-
-		if (startTime == null) {
-			start = null;
-		} else {
-			start = format.parse(startTime);
+		if(startTime==null||startTime.equals(""))start=null;
+		else {
+			start=format.parse(startTime);
 		}
-		String endTime = request.getParameter("offShowTime");
-		if (endTime == null) {
-			end = null;
-		} else {
-			end = format.parse(endTime);
+		String endTime=request.getParameter("offShowTime");
+		if(endTime==null||endTime.equals(""))end=null;
+		else {
+			end=format.parse(endTime);
 		}
+		
 		String newsName = request.getParameter("RRname");
 		if (type.equals("1")) {
 			request.setAttribute("RRLIST", newsService

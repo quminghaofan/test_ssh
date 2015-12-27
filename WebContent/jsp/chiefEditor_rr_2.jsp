@@ -168,11 +168,11 @@ function price_count(){
 	var sDate2=document.getElementById("txtDate time2").value;
 	document.getElementById("time_err").style.display="none";
 	if(sDate1!=""&&sDate2!=""){
-	  var  aDate,  oDate1,  oDate2,  iDays  
-      aDate  =  sDate1.split("-")  
-      oDate1  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0])    //转换为12-18-2002格式  
-      aDate  =  sDate2.split("-")  
-      oDate2  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0]) 
+	  var  aDate,  oDate1,  oDate2,  iDays;  
+      aDate  =  sDate1.split("-");  
+      oDate1  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0]) ;   //转换为12-18-2002格式  
+      aDate  =  sDate2.split("-") ; 
+      oDate2  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0]) ;
 	  if(oDate1>oDate2)
 		  document.getElementById("time_err").style.display="block";
 	  else{
@@ -182,3 +182,4 @@ function price_count(){
 	  }
 	}
 }
+</script>
