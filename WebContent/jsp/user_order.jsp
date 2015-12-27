@@ -168,32 +168,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="men">
 		<div class="container">
 			<div align="center">
+				
+					<div align="center">
 				<div style="background-color: white; width: 100%">
-					<a class="acount-btn">我的订单</a> <a class="acount-btn"
-						href="/test_ssh/user/myCustomized" style="margin-top: 2em">我的定制</a>
-					<div style="padding: 5%">
-						<div class="menuhead1">
-							<h3>我的订单</h3>
-						</div>
-						<div style="">
-							<table class="table1" cellspacing="0">
-								<tr>
-									<th scope="col">图片</th>
-									<th scope="col">艺术品名</th>
-									<th scope="col">店铺</th>
-									<th scope="col">价格</th>
-									<th scope="col">订单状态</th>
-									<th scope="col">操作</th>
-								</tr>
-								<c:forEach items="${orderList}" var="order">
-									<tr>
-										<td scope="row" class="spec"><img id="image" src="${order.commodityArtwork.picUrl}" class="img-responsive" style="width: 100%;max-height:100%;"/></td>
-										<td>${order.commodityArtwork.name}</td>
-										<td>${order.commodityArtwork.owner.name}</td>
-										<td>${order.commodityArtwork.price}</td>
-										<td>${order.state}</td>
-										<td>
-											<div class="btn" style="float: right">
+					<a class="acount-btn" href="/test_ssh/user/myOrder">我的订单</a> <a
+						class="acount-btn" style="margin-top: 2em">我的定制</a>
+				</div>
+			</div>
+<br> <br> <br>
+			<c:forEach items="${orderList}" var="order">
+				<div class="a-top">
+					<div class="left-grid">
+						<img src="${order.commodityArtwork.picUrl}"
+							class="img-responsive" /> 
+					</div>
+					<div class="right-grid">
+						<h4>艺术品名：${order.commodityArtwork.name}</h4>
+						<p>拥有者姓名：${order.commodityArtwork.owner.name}</p>
+						<!-- 艺术家 -->
+						<p>价格：${order.commodityArtwork.price}</p>
+						<p>订单状态：${order.state}</p>
+						<!-- 价格 -->
+						<div class="btn" style="float: right">
 											<c:if test="${order.isCancelled}">订单已取消</c:if>
 											<c:if test="${!(order.isCancelled)}">
 												<c:if test="${(order.state).equals('未支付')}">
@@ -212,15 +208,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												</c:if>
 											</c:if>
 											</div>
-										</td>
-									</tr>
-								</c:forEach>
-							</table>
-
-						</div>
 					</div>
+
+					<div class="clearfix"></div>
 				</div>
-			</div>
+			</c:forEach>
+
 
 		</div>
 	</div>
