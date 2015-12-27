@@ -151,8 +151,7 @@ public class MallController {
 				commodityArtworkOrder.setUser(user);
 				commodityArtworkOrder.setAddress(user.getAddress());
 				commodityArtworkOrder.setMobile(user.getMobile());
-				commodityArtworkOrder.setPlaceDate(new Date(System
-						.currentTimeMillis()));
+				commodityArtworkOrder.setPlaceDate(new java.sql.Date(new Date().getTime()));
 				commodityArtworkOrder.setState("未支付");
 				commodityArtworkOrderService.insertCommodityArtworkOrder(commodityArtworkOrder);
 				commodityArtworkOrders.add(commodityArtworkOrder);
@@ -168,7 +167,7 @@ public class MallController {
 			commodityArtworkOrder.setUser(user);
 			commodityArtworkOrder.setAddress(user.getAddress());
 			commodityArtworkOrder.setMobile(user.getMobile());
-			commodityArtworkOrder.setPlaceDate(new Date());
+			commodityArtworkOrder.setPlaceDate(new java.sql.Date(new Date().getTime()));
 			commodityArtworkOrder.setState("未支付");
 			System.out.println((new Date()).toString());
 			commodityArtworkOrderService.insertCommodityArtworkOrder(commodityArtworkOrder);

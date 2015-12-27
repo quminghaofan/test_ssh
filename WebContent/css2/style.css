@@ -226,9 +226,9 @@ body{
 }
 /*----//End-wrap-----*/
 .box1-info{
-	float:left;
+	float:center;
 	width: 70%;
-	margin: 18% 0 0 0;
+	margin: 2% 0 0 17%;
 }
 .box1-demo{
 	float:right;
@@ -256,6 +256,8 @@ body{
 	color: #383e48;
 	font-size: 0.875em;
 	line-height: 1.8em;
+	width:70%;
+	margin: 2% 0 0 17%;
 }
 .box2-demo{
 	float:left;

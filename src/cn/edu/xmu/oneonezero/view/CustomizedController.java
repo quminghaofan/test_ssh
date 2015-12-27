@@ -75,7 +75,7 @@ public class CustomizedController {
 		customizedArtworkOrder.setAddress(request.getParameter("address"));
 		customizedArtworkOrder.setOrderId(Long.toString(System.currentTimeMillis()));
 		customizedArtworkOrder.setCustomizedArtwork(customizedArtwork);
-		customizedArtworkOrder.setPlaceDate(new Date());
+		customizedArtworkOrder.setPlaceDate(new java.sql.Date(new Date().getTime()));
 		customizedArtworkOrder.setUser(user);
 		customizedArtworkOrder.setState("未支付");
 		customizedArtworkOrder.setNeedDescription(request.getParameter("intro"));

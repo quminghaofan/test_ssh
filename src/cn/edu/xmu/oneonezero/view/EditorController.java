@@ -54,8 +54,8 @@ public class EditorController {
 			end=format.parse(endTime);
 		}
 		
-		news.setOnShowTime(start);
-		news.setOffShowTime(end);
+		news.setOnShowTime(new java.sql.Date(start.getTime()));
+		news.setOffShowTime(new java.sql.Date(end.getTime()));
 		news.setPrice(Double.parseDouble(request.getParameter("price")));
 		System.out.println("type:" + type);
 		if (type.equals("1")) {
@@ -102,8 +102,8 @@ public class EditorController {
 		else {
 			end=format.parse(endTime);
 		}
-		news.setOnShowTime(start);
-		news.setOffShowTime(end);
+		news.setOnShowTime(new java.sql.Date(start.getTime()));
+		news.setOffShowTime(new java.sql.Date(end.getTime()));
 		// System.out.println(request.getParameter("price"));
 		news.setPrice(Double.parseDouble(request.getParameter("price")));
 
@@ -202,6 +202,8 @@ public class EditorController {
 		else {
 			end=format.parse(endTime);
 		}
+		System.out.println("********startTime******"+startTime);
+		System.out.println("********endTime******"+endTime);
 		
 		String newsName = request.getParameter("RRname");
 		if (type.equals("1")) {
