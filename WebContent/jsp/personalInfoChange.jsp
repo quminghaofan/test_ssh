@@ -53,15 +53,17 @@ top:400px;
 #username_blank{
 	color:red;
 }
-#psw_blank{
+#address_blank{
 	color:red;
 }
-#psw_blank1{
+#mobile_blank{
 	color:red;
 }
 #check_blank{
 	color:red;
 }
+#card_blank{color:red;}
+
 </style>
 </head>
 <body>
@@ -301,7 +303,7 @@ function display2(){
 	document.getElementById("mobile_blank").style.display="none";
 }
 function display3(){
-	document.getElementById("address_blank1").style.display="none";
+	document.getElementById("address_blank").style.display="none";
 }
 function display4(){
 	document.getElementById("card_blank").style.display="none";
