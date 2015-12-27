@@ -27,107 +27,57 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 <div class="header_top">
-  <div class="container">
-  	<div class="header_top-box">
-     <div class="header-top-left">
-		<div class="clearfix"></div>
-   			 </div>
-			 <div class="cssmenu">
-				<ul>
-					 <%
-                	if(session.getAttribute("username")==null){
-                %>
-					<li><a href="jsp/login.jsp">登录/注册</a></li> 
-					<%
-                    }else{
-                    %>
-                    <li><a href="">申请成为艺术家</a></li> 
-                    <li><a href=""> <%=session.getAttribute("username")%></a></li>
-                    <li><a href="">订单</a></li>
-                    <li><a href="">购物车</a></li>
-                    <li><a href="">登出</a></li> 
-                    <%} %>
+		<div class="container">
+			<div class="header_top-box">
+				<div class="header-top-left">
+
+					<div class="clearfix"></div>
+				</div>
+				<div class="cssmenu">
+					<ul>
+						
+						<li><a
+							href="/test_ssh/init/goToLogin?backUrl='/test_ssh/init/home'">登录/注册</a></li>
+						
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<div class="header_bottom">
+		<div class="container">
+			<div class="header_bottom-box">
+				<div class="header_bottom_left">
+					<div class="logo">
+						<a href="/test_ssh/init/home"><img src="../images/logo_ooz.png" alt="首页" /></a>
+					</div>
+
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<div class="copyrights">
+		Collect from <a href="">OneoneZero</a>
+	</div>
+	<div class="menu">
+		<div class="container">
+			<div class="menu_box">
+				<ul class="megamenu skyblue">
+					<li><a class="color2"
+						href="/test_ssh/init/home">首页</a></li>
+					<li><a class="color7" href="/test_ssh/mall/enterMall?go=0">定制</a>
+						</li>
+					<li><a class="color10" href="/test_ssh/mall/enterMall?go=1">商城</a>
+						</li>
+					<li><a class="color8" href="">联系我们</a></li>
+					<div class="clearfix"></div>
 				</ul>
 			</div>
-			<div class="clearfix"></div>
-   </div>
-</div>
-</div>
-<div class="header_bottom">
-	<div class="container">
-	 <div class="header_bottom-box">
-		<div class="header_bottom_left">
-			<div class="logo">
-				<a href="index.html"><img src="../images/logo_ooz.png" alt=""/></a>
-			</div>
-			
-			<div class="clearfix"> </div>
 		</div>
-		
-		<div class="clearfix"> </div>
 	</div>
-</div>
-</div>
-<div class="copyrights">Collect from <a href="" >OneoneZero</a></div>
-<div class="menu">
-	<div class="container">
-		<div class="menu_box">
-	     <ul class="megamenu skyblue">
-			<li class="active grid"><a class="color2" href="index.jsp">首页</a></li>
-			<li><a class="color4" href="">定制</a>
-			<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								<ul>
-								<li><a href="">全部</a></li>
-								<c:forEach items="${TYPELIST}" var="type">
-									<li><a href="">${type.}</a></li>
-								</c:forEach>	
-								</ul>	
-							</div>							
-						</div>
-					  </div>
-					</div>
-			</li>				
-			<li><a class="color10" href="#">商城</a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								<ul>
-								<li><a href="">全部</a></li>
-								<c:forEach items="${TYPELIST}" var="type">
-									<li><a href="">${type.}</a></li>
-								</c:forEach>	
-								</ul>	
-							</div>							
-						</div>
-					  </div>
-					</div>
-			</li>
-			<li><a class="color7" href="#">拍卖</a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								<ul>
-								<li><a href="">全部</a></li>
-								<c:forEach items="${TYPELIST}" var="type">
-									<li><a href="">${type.}</a></li>
-								</c:forEach>	
-								</ul>	
-							</div>							
-						</div>
-					  </div>
-					</div>
-			</li>
-			<li><a class="color8" href="">联系我们</a></li>
-			<div class="clearfix"> </div>
-		 </ul>
-	  </div>
-</div>
-</div>
 <div class="men">
 	<div class="container">
 	    <div class="register">
@@ -165,12 +115,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<img src="../images/pay.png" class="img-responsive" alt=""/>
 		<ul class="footer_nav">
-		  <li><a href="#">首页</a></li>
-		  <li><a href="#">定制</a></li>
-		  <li><a href="#">商城</a></li>
-		  <li><a href="#">拍卖</a></li>
-		  <li><a href="#">关于我们</a></li>
-		  <li><a href="">联系我们</a></li>
+		  <li><a href="/test_ssh/init/home">首页</a></li>
+					<li><a href="/test_ssh/mall/enterMall?go=0">定制</a></li>
+					<li><a href="/test_ssh/mall/enterMall?go=1">商城</a></li>
+					<li><a href="">联系我们</a></li>
 		</ul>
 		<p class="copy">Copyright &copy; 2015.厦门大学软件学院OneoneZero All rights reserved. More Information <a href="" target="_blank" title="OneoneZero">OneoneZero</a> - Made by <a href="" title="OneoneZero" target="_blank">OneoneZero</a></p>
 	</div>

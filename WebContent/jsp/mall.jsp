@@ -106,17 +106,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								type="submit" value="">
 						</form>
 					</div>
-					<%
-						if (session.getAttribute("user") != null) {
-					%>
-					<ul class="bag">
-						<a href="#"><i class="bag_left"> </i></a>
-						<a href="/test_ssh/cart/showCart"><li class="bag_right"><p>购物篮</p></li></a>
-						<div class="clearfix"></div>
-					</ul>
-					<%
-						}
-					%>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -160,21 +149,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</div>
 						</div></li>
-					<li><a class="color7" href="#">拍卖</a>
-						<div class="megapanel">
-							<div class="row">
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<li><a href="">全部</a></li>
-											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="${type.id}">${type.name}</a></li>
-											</c:forEach>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div></li>
+				
 					<li><a class="color8" href="">联系我们</a></li>
 					<div class="clearfix"></div>
 				</ul>
