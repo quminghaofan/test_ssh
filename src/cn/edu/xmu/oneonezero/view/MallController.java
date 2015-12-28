@@ -174,9 +174,10 @@ public class MallController {
 			commodityArtworkOrder.setMobile(user.getMobile());
 			commodityArtworkOrder.setPlaceDate(new java.sql.Date(new Date().getTime()));
 			commodityArtworkOrder.setState("未支付");
-			System.out.println((new Date()).toString());
+//			System.out.println((new Date()).toString());
 			commodityArtworkOrderService.insertCommodityArtworkOrder(commodityArtworkOrder);
 			commodityArtworkOrders.add(commodityArtworkOrder);
+//			System.out.println("添加1-commodityArtworkOrderId:"+commodityArtworkOrder.getId());
 		}
 		request.getSession().setAttribute("commodityArtworkOrders",
 				commodityArtworkOrders);
@@ -194,7 +195,7 @@ public class MallController {
 		int pay = accountService.payMoney(name, psw, Double.parseDouble(total));
 		if (pay == 1) {
 			List<CommodityArtworkOrder> commodityArtworkOrders = (List<CommodityArtworkOrder>) request.getSession().getAttribute("commodityArtworkOrders");
-//			System.out.println("comOrder-size:"+commodityArtworkOrders.size());
+			System.out.println("comOrder-size:"+commodityArtworkOrders.size());
 				for (CommodityArtworkOrder commodityArtworkOrder : commodityArtworkOrders) {
 					 System.out.println("添加-commodityArtworkOrderId:"+commodityArtworkOrder.getId());
 					commodityArtworkOrderService
