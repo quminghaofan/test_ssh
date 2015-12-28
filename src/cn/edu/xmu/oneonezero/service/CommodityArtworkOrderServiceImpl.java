@@ -69,8 +69,8 @@ public class CommodityArtworkOrderServiceImpl implements CommodityArtworkOrderSe
 
 
 	@Override
-	public void insertCommodityArtworkOrder(CommodityArtworkOrder commodityArtworkOrder) {
-		commodityArtworkOrderDao.insertCommodityArtworkOrder(commodityArtworkOrder);
+	public long insertCommodityArtworkOrder(CommodityArtworkOrder commodityArtworkOrder) {
+		return commodityArtworkOrderDao.insertCommodityArtworkOrder(commodityArtworkOrder);
 	}
 
 

@@ -263,11 +263,29 @@ public class NewsDaoImpl implements NewsDao {
 
 	@Override
 	public List<News> getNewsToday(Date today) {
-		String hql = "from News n where n.newsType='资讯' and n.state='审核通过' and n.onShowTime<? and n.offShowTime>? order by n.rank desc";
+		String hql = "from News n where n.newsType='资讯' and n.state='审核通过' and n.onShowTime<=? and n.offShowTime>? order by n.rank desc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setDate(0, today);
 		query.setDate(1, today);
 		
+		
+		if(query.list()==null||query.list().size()==0) 
+			return null;
+		else if(query.list().size()<4)
+		{
+			String hql2 = "from News n where n.newsType='资讯' and n.state='审核通过' and n.onShowTime<=? and n.offShowTime>? order by n.rank desc";
+			Calendar temCal=Calendar.getInstance();
+			temCal.set(2000,1,1);
+			
+			Date temDate=(Date) temCal.getTime();
+			query.setDate(0, temDate);
+			query.setDate(1, temDate);
+			query.setFirstResult(0);
+			query.setMaxResults(4);
+			
+			Query query2 = sessionFactory.getCurrentSession().createQuery(hql2);
+			
+		}
 		return query.list();
 	}
 

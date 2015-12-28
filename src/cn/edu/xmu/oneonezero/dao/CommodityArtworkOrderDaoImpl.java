@@ -262,9 +262,10 @@ public class CommodityArtworkOrderDaoImpl implements CommodityArtworkOrderDao{
 	}
 
 	@Override
-	public void insertCommodityArtworkOrder(CommodityArtworkOrder commodityArtworkOrder) {
+	public long insertCommodityArtworkOrder(CommodityArtworkOrder commodityArtworkOrder) {
 		sessionFactory.getCurrentSession().merge(commodityArtworkOrder);
 		sessionFactory.getCurrentSession().flush();
+		return (Long) sessionFactory.getCurrentSession().createQuery("select max(cao.id) from CommodityArtworkOrder cao").uniqueResult();
 	}
 
 	@Override
