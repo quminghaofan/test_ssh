@@ -187,7 +187,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<td>${order.address}</td>
 										<td>${order.mobile}</td>
 										<td><c:if test="${order.isCancelled}">
-												<a>订单已取消</a>
+												订单已取消
 											</c:if> <c:if test="${!(order.isCancelled)}">
 												<c:if test="${(order.state).equals('未支付')}">
 													未支付

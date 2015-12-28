@@ -210,7 +210,7 @@ public class ArtistController {
 			customizedArtworkOrderService
 					.updateCustomizedArtworkOrder(customizedArtworkOrder);
 			request.setAttribute("order", customizedArtworkOrder);
-			return "customizedorderDetail";
+			return "artist_customizedorder_detail";
 		} else {// 拒绝
 			artworkOrderService.setArtworkOrderIsAccept(orderId,"0");
 			return "redirect:/artist/myCustomized";

@@ -213,7 +213,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<c:if test="${(order.isAccept).equals('0')}">已拒绝</c:if>
 												<c:if test="${(order.isAccept).equals('1')}">
 												
-													<c:if test="${(order.state).equals('已支付未发货')}">
+													<c:if test="${(order.state).equals('未支付')}">
 													<a href="/test_ssh/artist/goToPicUp?orderId=${order.id}">上传小样</a>
 														<a
 															href="/test_ssh/artist/deliverGoods?orderId=${order.id}&type=0">发货</a>
