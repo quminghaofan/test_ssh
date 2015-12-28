@@ -164,19 +164,19 @@ $(document).ready(function() {
 				<div class="a-top">
 					<div class="left-grid">
 						<c:if
-							test="${!(order.customizedArtwork.endImg).equals('..\\images\\nopic.jpg')}">
+							test="${!order.customizedArtwork.endImg.equals('../images/nopic.jpg')}">
 							<img src="${order.customizedArtwork.endImg}"
 								class="img-responsive" />
 						</c:if>
 						<c:if
-							test="${(order.customizedArtwork.endImg).equals('..\\images\\nopic.jpg')}">
+							test="${(order.customizedArtwork.endImg).equals('../images/nopic.jpg')}">
 							<c:if
-								test="${!(order.customizedArtwork.midImg).equals('..\\images\\nopic.jpg')}">
+								test="${!(order.customizedArtwork.midImg).equals('../images/nopic.jpg')}">
 								<img src="${order.customizedArtwork.midImg}"
 									class="img-responsive" />
 							</c:if>
 							<c:if
-								test="${(order.customizedArtwork.midImg).equals('..\\images\\nopic.jpg')}">
+								test="${(order.customizedArtwork.midImg).equals('../images/nopic.jpg')}">
 								<img src="${order.customizedArtwork.startImg}"
 									class="img-responsive" />
 							</c:if>

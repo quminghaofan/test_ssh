@@ -147,7 +147,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
   <div class="register">
 			   <div class="col-md-6 login-right">
-				<form method="post"  action="/test_ssh/artist/editOrAddArtwork?itemId=${item.id}" class="artworkform" enctype="multipart/form-data">
+				<form method="post"  action="/test_ssh/artist/editOrAddArtwork?itemId=${item.id}" onsubmit="return before_submit()" class="artworkform" enctype="multipart/form-data">
 				<div>
 				<span>图片<label>*</label></span>
 				<div id="preview" style="border:solid 1px">
@@ -179,7 +179,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				  </div>
 				   <div id="price">
 					<span>价格</span>
-					<input type="text" value="${item.price}" id="price" name="price" onblur="before_submit()" onfocus="pp.style.display=none">
+					<input type="text" value="${item.price}" id="price" name="price" onfocus="pp.style.display=none">
 					<font color="red"><span id="pp" style="display: none">价格不正确</span></font>
 				  </div>
 				   <div id="description">
@@ -232,5 +232,7 @@ function before_submit(){
 		document.getElementById("select2").style.display="block";
 		flag=1;
 			}
+	if(flag==1)
+		return false;
 }
 </script>
