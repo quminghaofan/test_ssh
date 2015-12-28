@@ -2,9 +2,12 @@ package cn.edu.xmu.oneonezero.service;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import cn.edu.xmu.oneonezero.dao.CustomizedArtworkDao;
 import cn.edu.xmu.oneonezero.entity.CustomizedArtwork;
 
+@Transactional
 public class CustomizedArtworkServiceImpl implements CustomizedArtworkService{
 	private CustomizedArtworkDao customizedArtworkDao;
 

@@ -2,9 +2,12 @@ package cn.edu.xmu.oneonezero.service;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import cn.edu.xmu.oneonezero.dao.UserDao;
 import cn.edu.xmu.oneonezero.entity.User;
 
+@Transactional
 public class UserServiceImpl implements UserService {
 
 	private UserDao userDao; //创建一个UserDao实例

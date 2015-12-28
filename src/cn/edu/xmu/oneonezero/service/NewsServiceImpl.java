@@ -3,9 +3,12 @@ package cn.edu.xmu.oneonezero.service;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import cn.edu.xmu.oneonezero.dao.NewsDao;
 import cn.edu.xmu.oneonezero.entity.News;
 
+@Transactional
 public class NewsServiceImpl implements NewsService {
 
 	private NewsDao newsDao; //创建一个UserDao实例
