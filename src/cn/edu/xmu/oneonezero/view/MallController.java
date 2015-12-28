@@ -158,7 +158,7 @@ public class MallController {
 				commodityArtworkOrder.setMobile(user.getMobile());
 				commodityArtworkOrder.setPlaceDate(new java.sql.Date(new Date().getTime()));
 				commodityArtworkOrder.setState("未支付");
-				commodityArtworkOrderService.insertCommodityArtworkOrder(commodityArtworkOrder);
+				commodityArtworkOrder.setId(commodityArtworkOrderService.insertCommodityArtworkOrder(commodityArtworkOrder));
 				commodityArtworkOrders.add(commodityArtworkOrder);
 			}
 			CommonMethod.cleanCookie(request, response);
@@ -176,6 +176,7 @@ public class MallController {
 			commodityArtworkOrder.setState("未支付");
 //			System.out.println((new Date()).toString());
 			commodityArtworkOrderService.insertCommodityArtworkOrder(commodityArtworkOrder);
+			commodityArtworkOrder.setId(commodityArtworkOrderService.insertCommodityArtworkOrder(commodityArtworkOrder));
 			commodityArtworkOrders.add(commodityArtworkOrder);
 //			System.out.println("添加1-commodityArtworkOrderId:"+commodityArtworkOrder.getId());
 		}

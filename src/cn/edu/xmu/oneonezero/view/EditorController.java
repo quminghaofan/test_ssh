@@ -81,7 +81,7 @@ public class EditorController {
 
 		if (filedata != null&& !filedata.isEmpty()) {
 			if (news.getPicUrl() != null) {
-				String temp = (news.getPicUrl()).replaceAll("..\\\\attached",
+				String temp = (news.getPicUrl()).replaceAll("../attached",
 						"");
 				PicUpload.deleteFile(temp, path);
 			}
