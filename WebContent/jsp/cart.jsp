@@ -178,8 +178,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="/test_ssh/init/home">首页</a></li>
 						<li><a href="/test_ssh/mall/enterMall?go=0">定制</a></li>
 						<li><a href="/test_ssh/mall/enterMall?go=1">商城</a></li>
-						<li><a href="#">拍卖</a></li>
-						<li><a href="#">关于我们</a></li>
+						
 						<li><a href="">联系我们</a></li>
 					</ul>
 					<p class="copy">

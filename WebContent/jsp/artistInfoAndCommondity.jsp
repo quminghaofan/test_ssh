@@ -202,6 +202,8 @@ height:28px;
 				<div>
 					<p><label id="address">联系地址:</label> <label id="addressValue">${artist.address}</label></p>
 				</div>
+				<a target=blank href=tencent://message/?uin=523331232&Site=你的留言网站&Menu=yes>
+<img border="0" SRC=http://wpa.qq.com/pa?p=1:523331232:9 alt="你的留言"></a>
 				<div>
 					<p>&nbsp;&nbsp;<label id="description">艺术家描述:</label> <label id="desValue">${artist.description}</label></p>
 				</div>
@@ -250,8 +252,7 @@ height:28px;
 				<li><a href="/test_ssh/init/home">首页</a></li>
 				<li><a href="/test_ssh/mall/enterMall?go=0">定制</a></li>
 				<li><a href="/test_ssh/mall/enterMall?go=1">商城</a></li>
-				<li><a href="#">拍卖</a></li>
-				<li><a href="#">关于我们</a></li>
+				
 				<li><a href="">联系我们</a></li>
 			</ul>
 			<p class="copy">

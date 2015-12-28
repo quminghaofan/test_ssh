@@ -127,7 +127,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<ul>
 											<li><a href="/test_ssh/mall/enterMall?go=0">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="${type.id}">${type.name}</a></li>
+												<li><a href="/test_ssh/mall/enterMall?typeId=${type.id}&go=0">${type.name}</a></li>
 											</c:forEach>
 										</ul>
 									</div>
@@ -142,7 +142,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<ul>
 											<li><a href="/test_ssh/mall/enterMall?go=1">全部</a></li>
 											<c:forEach items="${TYPELIST}" var="type">
-												<li><a href="${type.id}">${type.name}</a></li>
+												<li><a href="/test_ssh/mall/enterMall?typeId=${type.id}&go=1">${type.name}</a></li>
 											</c:forEach>
 										</ul>
 									</div>
@@ -303,12 +303,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<img src="../images/pay.png" class="img-responsive" alt="" />
 			<ul class="footer_nav">
-				<li><a href="#">首页</a></li>
-				<li><a href="#">定制</a></li>
-				<li><a href="#">商城</a></li>
-				<li><a href="#">拍卖</a></li>
-				<li><a href="#">关于我们</a></li>
-				<li><a href="">联系我们</a></li>
+				<li><a href="/test_ssh/init/home">首页</a></li>
+					<li><a href="/test_ssh/mall/enterMall?go=0">定制</a></li>
+					<li><a href="/test_ssh/mall/enterMall?go=1">商城</a></li>
+					<li><a href="">联系我们</a></li>
 			</ul>
 			<p class="copy">
 				Copyright &copy; 2015.厦门大学软件学院OneoneZero All rights reserved. More
