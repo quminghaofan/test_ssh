@@ -37,7 +37,7 @@ public class PicUpload {
 			}
 
 			try {
-				FileOutputStream out = new FileOutputStream(saveFilePath + "\\"
+				FileOutputStream out = new FileOutputStream(saveFilePath + "/"
 						+ newFileName);
 				// 写入文件
 				out.write(filedata.getBytes());
@@ -46,9 +46,9 @@ public class PicUpload {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return "..\\attached\\"+newFileName;
+			return "../attached/"+newFileName;
 		}
-		return "..\\images\\nopic.jpg";
+		return "../images/nopic.jpg";
 	}
 
 	/**

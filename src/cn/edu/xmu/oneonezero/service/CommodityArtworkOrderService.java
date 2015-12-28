@@ -22,7 +22,7 @@ public interface CommodityArtworkOrderService {
 
 	public List<CommodityArtworkOrder> getCommodityArtworkOrdersByUserId(long userId);//根据用户id获取所有艺术品商品订单
 
-	public void insertCommodityArtworkOrder(CommodityArtworkOrder commodityArtworkOrder);//添加艺术品商品订单
+	public long insertCommodityArtworkOrder(CommodityArtworkOrder commodityArtworkOrder);//添加艺术品商品订单,返回其id
 
 	public boolean deleteCommodityArtworkOrder(long commodityArtworkId);//根据id删除艺术品商品订单
 

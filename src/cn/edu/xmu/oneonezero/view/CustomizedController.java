@@ -60,7 +60,7 @@ public class CustomizedController {
 		User artist=userService.getUser(artistId);
 		User user=(User)request.getSession().getAttribute("user");
 
-		String path = request.getSession().getServletContext().getRealPath("\\attached");
+		String path = CommonMethod.getPicUrl(request);
 		String picurl=PicUpload.saveFile(filedata,path);
 		
 		CustomizedArtwork customizedArtwork=new CustomizedArtwork();
