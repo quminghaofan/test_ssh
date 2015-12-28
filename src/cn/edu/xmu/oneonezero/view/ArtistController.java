@@ -154,7 +154,7 @@ public class ArtistController {
 				System.out.println("测试编辑：" + picUrl);
 				if (commodityArtwork.getPicUrl() != null) {
 					String temp = (commodityArtwork.getPicUrl()).replaceAll(
-							"..\\\\attached", "");
+							"../attached", "");
 					PicUpload.deleteFile(temp, path);
 				}
 				commodityArtwork.setPicUrl(picUrl);

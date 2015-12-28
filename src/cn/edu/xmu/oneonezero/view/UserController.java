@@ -121,7 +121,7 @@ public class UserController {
 		if (filedata != null&& !filedata.isEmpty()) {
 			if (user.getHeadPhoto() != null) {
 				String temp = (user.getHeadPhoto()).replaceAll(
-						"..\\\\attached", "");
+						"../attached", "");
 				PicUpload.deleteFile(temp, path);
 			}
 
