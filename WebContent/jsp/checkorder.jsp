@@ -187,13 +187,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									} else {
 										address = (String) session.getAttribute("address");
 										mobile = (String) session.getAttribute("mobile");
-									}/* 
+									}
+									if(address==null)address="";
+									if(mobile==null)mobile="";/* 
 									System.out.println("jsp:"+address); */
 								%>
 							<div style="margin-bottom: 2%;">
 								<label>用户名:&nbsp;&nbsp;</label> <label style="font-weight: bold"><%=user.getName()%></label>
 							</div>
 							<div style="margin-bottom: 2%;">
+							
 								<label>地址:&nbsp;&nbsp;&nbsp;&nbsp;</label> <label class="txt1"
 									style="vertical-align: bottom" id="modi_address"><%=address%></label>
 							</div>

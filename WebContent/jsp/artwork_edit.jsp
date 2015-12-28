@@ -177,7 +177,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               <option value="0" selected="selected">商品</option>
             </select>
 				  </div>
-				   <div id="price">
+				   <div id="pdiv">
 					<span>价格</span>
 					<input type="text" value="${item.price}" id="price" name="price" onfocus="pp.style.display=none">
 					<font color="red"><span id="pp" style="display: none">价格不正确</span></font>
@@ -220,16 +220,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script>
 function select2_change(){
 	var select2=document.getElementById("select2").value;
-	if(select2=="展品")
-		document.getElementById("pp").style.display="none";
+	if(select2=="1"){}
+		document.getElementById("price").value="0";
 	else
-		document.getElementById("pp").style.display="block";
+		document.getElementById("pdiv").style.display="block";
 }
 function before_submit(){
 	var price=document.getElementById("price").value;
 	var flag=0;
 	if(price==""||!price.match(/^[0-9]+\.{0,1}[0-9]{0,2}$/g)){
-		document.getElementById("select2").style.display="block";
+		document.getElementById("pp").style.display="block";
 		flag=1;
 			}
 	if(flag==1)

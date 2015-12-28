@@ -161,16 +161,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div id="masklayer"></div>
 				<input type="hidden" id="orderid" name="orderid">
 				<div
-					style="z-index: 10; position: absolute; left: 30%; background-color: white; width: 30%; height: 35%">
+					style="z-index: 10; position: absolute; left: 30%; background-color: white; width: 30%; height: 50%">
 					<h3>价格</h3>
 					<form class="form-inline definewidth m20" action="" method="post"
 						id="priceform">
 						<label>第一期价格</label><input type="text" name="price1"
-							class="abc input-default" placeholder="" value=""> <br>
+							class="abc input-default" placeholder="" value="" style="width:50%"> <br>
 						<label>第二期价格</label><input type="text" name="price2"
-							class="abc input-default" placeholder="" value=""> <br>
+							class="abc input-default" placeholder="" value="" style="width:50%"> <br>
 						<label>第三期价格</label><input type="text" name="price3"
-							class="abc input-default" placeholder="" value=""><br>
+							class="abc input-default" placeholder="" value="" style="width:50%"><br>
 						<button type="submit" class="btn btn-primary"
 							onclick="editprice()">确定</button>
 					</form>

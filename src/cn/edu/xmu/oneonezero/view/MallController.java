@@ -81,7 +81,7 @@ public class MallController {
 			return "mall";
 		} else {
 			pageTimes = commodityArtworkService.getExhibitPageTotalByVagueName(
-					itemname, 30);
+					itemname, 12);
 			request.setAttribute("totalpage", pageTimes);
 			request.getSession().setAttribute("pageTimes", pageTimes);
 			if (typeId == null) {
@@ -175,7 +175,7 @@ public class MallController {
 			commodityArtworkOrder.setPlaceDate(new java.sql.Date(new Date().getTime()));
 			commodityArtworkOrder.setState("未支付");
 //			System.out.println((new Date()).toString());
-			commodityArtworkOrderService.insertCommodityArtworkOrder(commodityArtworkOrder);
+//			commodityArtworkOrderService.insertCommodityArtworkOrder(commodityArtworkOrder);
 			commodityArtworkOrder.setId(commodityArtworkOrderService.insertCommodityArtworkOrder(commodityArtworkOrder));
 			commodityArtworkOrders.add(commodityArtworkOrder);
 //			System.out.println("添加1-commodityArtworkOrderId:"+commodityArtworkOrder.getId());
