@@ -20,6 +20,11 @@ import cn.edu.xmu.oneonezero.service.CommodityArtworkOrderService;
 import cn.edu.xmu.oneonezero.service.CustomizedArtworkOrderService;
 import cn.edu.xmu.oneonezero.service.UserService;
 
+/**
+ * 普通用户
+ * @author DELL
+ *
+ */
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -34,6 +39,11 @@ public class UserController {
 	@Resource(name="artworkOrderService")
 	private ArtworkOrderService artworkOrderService;
 
+	/**
+	 * 我的制成品订单
+	 * @param request 
+	 * @return String
+	 */
 	@RequestMapping("/myOrder")
 	public String myOrder(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
@@ -42,6 +52,11 @@ public class UserController {
 		return "user_order";
 	}
 
+	/**
+	 * 我的定制订单
+	 * @param request 
+	 * @return String
+	 */
 	@RequestMapping("/myCustomized")
 	public String myCustomized(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
@@ -50,6 +65,16 @@ public class UserController {
 		return "user_customizedorder";
 	}
 
+	/**
+	 * 进入订单支付界面
+	 * @param orderId 订单id
+	 * @param type 1：制成品支付 0：订制品支付
+	 * @param stage 订单状态
+	 * @param total 订单总价
+	 * @param request 
+	 * @return String
+	 * @throws UnsupportedEncodingException 编码异常
+	 */
 	@RequestMapping("/goToOrderPay")
 	public String goToOrderPay(Long orderId, String type, String stage,String total,
 			HttpServletRequest request) throws UnsupportedEncodingException {
@@ -59,6 +84,15 @@ public class UserController {
 		return "payment_login";
 	}
 
+	/**
+	 * 订单支付
+	 * @param orderId 订单id
+	 * @param type 1：制成品支付 0：订制品支付
+	 * @param stage 订单状态
+	 * @param request 
+	 * @return String
+	 * @throws UnsupportedEncodingException 编码异常
+	 */
 	@RequestMapping("/myOrderPayment")
 	public String myOrderPayment(Long orderId, String type, String stage,
 			HttpServletRequest request) throws UnsupportedEncodingException {
@@ -71,9 +105,9 @@ public class UserController {
 				commodityArtworkOrderService.updateCommodityArtworkOrderState(
 						orderId, "已支付未发货");
 			} else {
-				System.out.println("!null:" + new String(stage.getBytes("ISO-8859-1"),"UTF-8"));
+//				System.out.println("!null:" + new String(stage.getBytes("ISO-8859-1"),"UTF-8"));
 				if (stage != null) {
-					System.out.println("null:" + stage);
+//					System.out.println("null:" + stage);
 					customizedArtworkOrderService
 							.updateCustomizedArtworkOrderStage(orderId, new String(stage.getBytes("ISO-8859-1"),"UTF-8"));
 				}
@@ -89,6 +123,13 @@ public class UserController {
 		}
 	}
 
+	/**
+	 * 取消订单
+	 * @param orderId 订单id
+	 * @param type 1：进入我的制成品订单界面 0：进入我的订制品订单界面
+	 * @param request 
+	 * @return String
+	 */
 	@RequestMapping("/cancelOrder")
 	public String cancelOrder(Long orderId, String type,
 			HttpServletRequest request) {
@@ -101,6 +142,13 @@ public class UserController {
 		}
 	}
 
+	/**
+	 * 收货
+	 * @param orderId 订单id
+	 * @param type 1：进入我的制成品订单界面 0：进入我的订制品订单界面
+	 * @param request 
+	 * @return String
+	 */
 	@RequestMapping("/getItem")
 	public String getItem(Long orderId, String type, HttpServletRequest request) {
 		artworkOrderService.updateArtworkOrderState(orderId, "已支付已收货");
@@ -111,6 +159,12 @@ public class UserController {
 		}
 	}
 
+	/**
+	 * 修改个人信息
+	 * @param filedata 文件数据
+	 * @param request 
+	 * @return String
+	 */
 	@RequestMapping("changeInfo")
 	public String changeInfo(
 			@RequestParam(value = "img", required = false) MultipartFile filedata,

@@ -15,7 +15,11 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-
+/**
+ * 软文实体
+ * @author DELL
+ *
+ */
 @Entity
 @Table(name="News")
 public class News {

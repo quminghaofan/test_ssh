@@ -3,7 +3,11 @@ package cn.edu.xmu.oneonezero.entity;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-
+/**
+ * 定制艺术品实体
+ * @author DELL
+ *
+ */
 @Entity
 @DiscriminatorValue("定制艺术品")
 @Table(name="CustomizedArtwork")

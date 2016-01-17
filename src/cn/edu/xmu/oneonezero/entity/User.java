@@ -14,6 +14,11 @@ import org.hibernate.annotations.CascadeType;
 
 import cn.edu.xmu.oneonezero.dao.DataDictionaryDao;
 
+/**
+ * 用户实体
+ * @author DELL
+ *
+ */
 @Entity
 @Table(name="User")
 public class User {

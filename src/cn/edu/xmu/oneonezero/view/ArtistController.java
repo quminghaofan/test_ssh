@@ -21,7 +21,11 @@ import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
 import cn.edu.xmu.oneonezero.service.CustomizedArtworkOrderService;
 import cn.edu.xmu.oneonezero.service.DataDictionaryService;
 import cn.edu.xmu.oneonezero.service.UserService;
-
+/**
+ * 艺术家
+ * @author DELL
+ *
+ */
 @Controller
 @RequestMapping("artist")
 public class ArtistController {
@@ -43,6 +47,12 @@ public class ArtistController {
 	@Resource(name = "artworkOrderService")
 	private ArtworkOrderService artworkOrderService;
 
+	/**
+	 * 申请成为艺术家
+	 * @param filedata
+	 * @param request
+	 * @return String
+	 */
 	@RequestMapping("/artistApply")
 	public String artistApply(
 			@RequestParam(value = "img", required = false) MultipartFile filedata,
@@ -64,6 +74,11 @@ public class ArtistController {
 		return "redirect:/init/home";
 	}
 
+	/**
+	 * 我的艺术品
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/myArt")
 	public String myArtWork(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
@@ -72,6 +87,11 @@ public class ArtistController {
 		return "artist_shop";
 	}
 
+	/**
+	 * 我的成品订单
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/mySale")
 	public String mySale(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
@@ -80,6 +100,11 @@ public class ArtistController {
 		return "artist_saleorder";
 	}
 
+	/**
+	 * 我的订制品订单
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("myCustomized")
 	public String myCustomized(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
@@ -88,6 +113,12 @@ public class ArtistController {
 		return "artist_customizedorder";
 	}
 
+	/**
+	 * 进入编辑或添加艺术品界面
+	 * @param itemId 艺术品id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/goToEditOrAdd")
 	public String goToEdit(Long itemId, HttpServletRequest request) {
 		if (itemId != null) {
@@ -100,6 +131,13 @@ public class ArtistController {
 		return "artwork_edit";
 	}
 
+	/**
+	 * 订制品订单详情
+	 * @param type 1：艺术家查看订制品订单详情 0：用户查看订制品订单详情
+	 * @param orderId 订单id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("customizedorderDetail")
 	public String customizedorderDetail(String type,Long orderId, HttpServletRequest request) {
 		request.setAttribute("order", customizedArtworkOrderService
@@ -111,6 +149,13 @@ public class ArtistController {
 		}
 	}
 
+	/**
+	 * 编辑或添加艺术品
+	 * @param filedata 文件数据
+	 * @param itemId 艺术品id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/editOrAddArtwork")
 	public String editOrAddArtwork(
 			@RequestParam(value = "img", required = false) MultipartFile filedata,
@@ -171,6 +216,12 @@ public class ArtistController {
 		return "redirect:/artist/myArt";
 	}
 
+	/**
+	 * 删除艺术品
+	 * @param itemId 艺术品id 
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("delArtwork")
 	public String delArtwork(Long itemId, HttpServletRequest request) {
 		System.out.println("commodityArtworkOrderService=" + itemId);
@@ -179,6 +230,13 @@ public class ArtistController {
 		return "redirect:/artist/myArt";
 	}
 
+	/**
+	 * 发货
+	 * @param orderId 订单id
+	 * @param type 1：进入订制品订单界面 0：进入制成品订单界面
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("deliverGoods")
 	public String deliverGoods(Long orderId,String type, HttpServletRequest request) {
 		artworkOrderService.updateArtworkOrderState(orderId,
@@ -189,6 +247,13 @@ public class ArtistController {
 		return "redirect:/artist/myCustomized";
 	}
 
+	/**
+	 * 艺术家接受订单
+	 * @param orderId 订单id
+	 * @param type 0：接受 1：拒绝
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("isAccept")
 	public String isAccept(Long orderId, String type, HttpServletRequest request) {
 		if (type.equals("0")) {// 接受
@@ -217,12 +282,25 @@ public class ArtistController {
 		}
 	}
 
+	/**
+	 * 进入上传订制品小样界面
+	 * @param orderId 订单id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("goToPicUp")
 	public String goToPicUp(Long orderId, HttpServletRequest request) {
 		request.setAttribute("orderId", orderId);
 		return "customized_picupload";
 	}
 
+	/**
+	 * 订制品小样上传
+	 * @param filedata 文件数据
+	 * @param orderId 订单id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("picUpload")
 	public String picUpload(
 			@RequestParam(value = "img", required = false) MultipartFile filedata,

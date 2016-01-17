@@ -4,7 +4,11 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-
+/**
+ * 艺术品商品实体
+ * @author DELL
+ *
+ */
 @Entity
 @DiscriminatorValue("艺术品商品")
 @Table(name="CommodityArtwork")

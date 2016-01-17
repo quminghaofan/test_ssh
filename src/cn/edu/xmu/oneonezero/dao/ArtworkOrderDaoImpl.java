@@ -9,7 +9,11 @@ import org.hibernate.SessionFactory;
 
 import cn.edu.xmu.oneonezero.entity.ArtworkOrder;
 import cn.edu.xmu.oneonezero.entity.CommodityArtworkOrder;
-
+/**
+ * 艺术品订单基类接口的实现
+ * @author DELL
+ *
+ */
 public class ArtworkOrderDaoImpl implements ArtworkOrderDao{
 
 	private SessionFactory sessionFactory;//创建一个会话工厂实例

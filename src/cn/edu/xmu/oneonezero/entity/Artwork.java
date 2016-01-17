@@ -19,7 +19,11 @@ import org.hibernate.annotations.Type;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-
+/**
+ * 艺术品基类实体
+ * @author DELL
+ *
+ */
 @NamedQueries({
 	@NamedQuery(name="getArtworksByType",query="from  Artwork a where a.isExist=true and a.type.name like ? "),
 	@NamedQuery(name="getArtworksByTypeAndArtworkName",query="from Artwork a where a.isExist=true and a.type.name= ? and a.name like ? "),

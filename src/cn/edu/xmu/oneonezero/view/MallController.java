@@ -22,6 +22,11 @@ import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
 import cn.edu.xmu.oneonezero.service.CustomizedArtworkService;
 import cn.edu.xmu.oneonezero.service.DataDictionaryService;
 
+/**
+ * 商城
+ * @author DELL
+ *
+ */
 @Controller
 @RequestMapping("/mall")
 public class MallController {
@@ -40,6 +45,14 @@ public class MallController {
 	@Resource(name="dataDictionaryService")
 	private DataDictionaryService dataDictionaryService;
 
+	/**
+	 * 进入商城或定制首页
+	 * @param page 页码
+	 * @param go 1：商城 0：定制
+	 * @param typeId 艺术品id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping(value = "/enterMall")
 	public String enterMall(String page, String go, Long typeId,
 			HttpServletRequest request) {
@@ -100,6 +113,13 @@ public class MallController {
 		}
 	}
 
+	/**
+	 * 结算
+	 * @param request 请求
+	 * @param response 应答
+	 * @return String
+	 * @throws UnsupportedEncodingException 编码异常
+	 */
 	@RequestMapping("/settle")
 	public String settle(HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException {
@@ -116,6 +136,14 @@ public class MallController {
 		return "checkorder";
 	}
 
+	/**
+	 * 立即购买
+	 * @param itemId 艺术品id
+	 * @param response 应答
+	 * @param request 请求
+	 * @return String
+	 * @throws UnsupportedEncodingException 编码异常
+	 */
 	@RequestMapping("/settleOne")
 	public String settleOne(Long itemId, HttpServletResponse response,
 			HttpServletRequest request) throws UnsupportedEncodingException {
@@ -132,6 +160,12 @@ public class MallController {
 		return "checkorder";
 	}
 
+	/**
+	 * 查看详情
+	 * @param itemId 艺术品id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/seeMore")
 	public String seeMore(long itemId, HttpServletRequest request) {
 		request.setAttribute("item", commodityArtworkService
@@ -139,6 +173,15 @@ public class MallController {
 		return "item";
 	}
 
+	/**
+	 * 进入支付界面
+	 * @param type 0：购物车物品支付 1：立即购买支付
+	 * @param total 订单总价
+	 * @param request 请求
+	 * @param response 应答
+	 * @return String
+	 * @throws UnsupportedEncodingException 编码异常
+	 */
 	@RequestMapping("/goToPay")
 	public String goToPay(Long type, String total, HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException {
@@ -188,6 +231,12 @@ public class MallController {
 		return "payment_login";
 	}
 
+	/**
+	 * 支付
+	 * @param request 请求
+	 * @param response 应答
+	 * @return String
+	 */
 	@RequestMapping("/pay")
 	public String pay(HttpServletRequest request, HttpServletResponse response) {
 		String total = request.getParameter("price");
@@ -212,6 +261,16 @@ public class MallController {
 		}
 	}
 
+	/**
+	 * 编辑订单的联系电话和地址
+	 * @param wh 0：编辑订单的联系电话和地址 1：返回
+	 * @param type 艺术品id
+	 * @param address 地址
+	 * @param mobile 电话
+	 * @param request 请求
+	 * @return String
+	 * @throws UnsupportedEncodingException 编码错误
+	 */
 	@RequestMapping("/editOrder")
 	public String editOrder(String wh, Long type, String address,
 			String mobile, HttpServletRequest request) throws UnsupportedEncodingException {
@@ -232,6 +291,12 @@ public class MallController {
 		}
 	}
 
+	/**
+	 * 返回
+	 * @param type 0：结算
+	 * @param request 1：立即购买
+	 * @return
+	 */
 	@RequestMapping("/goBack")
 	public String goBack(Long type, HttpServletRequest request) {
 		System.out.println("goback-type:" + type);

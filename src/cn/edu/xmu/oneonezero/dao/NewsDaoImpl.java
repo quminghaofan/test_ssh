@@ -12,7 +12,11 @@ import org.hibernate.SessionFactory;
 
 import cn.edu.xmu.oneonezero.entity.News;
 
-
+/**
+ * 软文接口的实现
+ * @author DELL
+ *
+ */
 public class NewsDaoImpl implements NewsDao {
 
 	private SessionFactory sessionFactory;//创建一个会话工厂实例

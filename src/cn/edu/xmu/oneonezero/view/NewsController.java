@@ -11,12 +11,24 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 import cn.edu.xmu.oneonezero.entity.News;
 import cn.edu.xmu.oneonezero.service.NewsService;
 
+/**
+ * 软文
+ * @author DELL
+ *
+ */
 @Controller
 @RequestMapping("news")
 public class NewsController {
 	@Resource(name="newsService")
 	public NewsService newsService;
 	
+	/**
+	 * 进入查看软文界面
+	 * @param newsId 软文id
+	 * @param type 
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/showNews")
 	public String showNews(long newsId,String type,HttpServletRequest request){
 		News news=newsService.getNews(newsId);
@@ -26,6 +38,12 @@ public class NewsController {
 		return "showNews";
 	}
 	
+	/**
+	 * 返回
+	 * @param type 
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping(value="/goback")
 	public String goback(String type,HttpServletRequest request){
 		System.out.println("goback");

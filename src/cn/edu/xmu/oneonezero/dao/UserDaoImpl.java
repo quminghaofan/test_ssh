@@ -10,7 +10,11 @@ import org.hibernate.SessionFactory;
 import cn.edu.xmu.oneonezero.entity.User;
 
 
-
+/**
+ * 用户接口的实现
+ * @author DELL
+ *
+ */
 public class UserDaoImpl implements UserDao {
 
 	private SessionFactory sessionFactory;//创建一个会话工厂实例
@@ -91,7 +95,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> getUsersByRole(String role) {
-		String hql="from User u where u.state=true and u.role = ?";
+		String hql="from User u where u.state=true and u.role.name = ?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, role);
 		

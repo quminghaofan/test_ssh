@@ -25,7 +25,11 @@ import cn.edu.xmu.oneonezero.service.CustomizedArtworkOrderService;
 import cn.edu.xmu.oneonezero.service.CustomizedArtworkService;
 import cn.edu.xmu.oneonezero.service.DataDictionaryService;
 import cn.edu.xmu.oneonezero.service.UserService;
-
+/**
+ * 普通管理员
+ * @author DELL
+ *
+ */
 @Controller
 @RequestMapping("/admin_user")
 public class AdminUserController {
@@ -55,14 +59,26 @@ public class AdminUserController {
 	private ArtworkService  artworkService;
 
 	private SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+	
+	/**
+	 * 获取所有用户
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/getAllUser")
 	public String getAllUser(HttpServletRequest request){
 		request.setAttribute("USERLIST", userService.getAllCommonUsersAndArtist());
 		return "admin_userlist";
 	}
 	
+	/**
+	 * 获取所有订单
+	 * @param type 0:定制 1：制成
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping(value="/getAllOrder")
-	public String getAllOrder(String type,HttpServletRequest request){//type:0:定制 1：制成
+	public String getAllOrder(String type,HttpServletRequest request){
 		request.setAttribute("TYPELIST", dataDictionaryService.getAllArtworkTypes());
 		if(type.equals("0")){
 		request.setAttribute("ORDERLIST",customizedArtworkOrderService.getAllCustomizedArtworkOrders());
@@ -74,22 +90,40 @@ public class AdminUserController {
 		}
 	}
 	
+	/**
+	 * 获取所有预备艺术家
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/getAllPreparatoryArtist")
 	public String getAllPreparatoryArtist(HttpServletRequest request){
 		request.setAttribute("USERLIST", userService.getAllPreparativeArtist());
 		return "admin_artistapply";
 	}
 	
+	/**
+	 * 搜索用户
+	 * @param type 1:预备艺术家 2：艺术家和普通用户
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping(value="/getUser")
-	public String getUser(String type,HttpServletRequest request){//1:预备艺术家 2：艺术家和普通用户
+	public String getUser(String type,HttpServletRequest request){
 		request.setAttribute("USERLIST", userService.getUserByUserName(request.getParameter("username"),type));
 		if(type.equals("2")){
 		return "admin_userlist";
 		}
 		else return "admin_artistapply";
 	}
+	/**
+	 * 搜索订单
+	 * @param type 0:定制 1：制成
+	 * @param request 请求
+	 * @return String
+	 * @throws ParseException 时间转换出错
+	 */
 	@RequestMapping(value="/getOrder")
-	public String getOrder(String type,HttpServletRequest request) throws ParseException{//type:0:定制 1：制成
+	public String getOrder(String type,HttpServletRequest request) throws ParseException{
 		String sign=request.getParameter("sign");//1:订单编号 2：艺术品名 3：卖家用户名 4：买家用户名
 		String name=request.getParameter("username");
 		String typeId=request.getParameter("typeId");
@@ -118,6 +152,12 @@ public class AdminUserController {
 		}
 	}
 	
+	/**
+	 * 获取所有艺术品
+	 * @param type 0:定制 1：制成
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/getAllArtwork")
 	public String getAllCommodityArtwork(String type,HttpServletRequest request){
 		request.setAttribute("TYPELIST",dataDictionaryService.getAllArtworkTypes());
@@ -130,7 +170,12 @@ public class AdminUserController {
 			return "admin_customizeditem";
 		}
 	}
-	
+	/**
+	 * 搜索艺术品
+	 * @param type 0:定制 1：制成
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/getArtwork")
 	public String getCommodityArtwork(String type,HttpServletRequest request){
 		String sign=request.getParameter("sign");//0：根据艺术品名称，1：根据卖家用户名
@@ -148,18 +193,37 @@ public class AdminUserController {
 		}
 	}
 	
+	/**
+	 * 删除用户
+	 * @param userId 用户id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/delUser")
 	public String delUser(Long userId,HttpServletRequest request){
 		userService.setUserState(userId,false);
 		return "redirect:/admin_user/getAllUser";
 	}
 	
+	/**
+	 * 开启用户
+	 * @param userId 用户id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/startUsing")
 	public String startUsing(Long userId,HttpServletRequest request){
 		userService.setUserState(userId,true);
 		return "redirect:/admin_user/getAllUser";
 	}
 	
+	/**
+	 * 审核艺术家
+	 * @param userId 用户id
+	 * @param type 1：艺术家 0：普通用户
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping(value="/exmineArtist")
 	public String exmineArtist(Long userId,String type,HttpServletRequest request){
 		System.out.println("审核："+type);

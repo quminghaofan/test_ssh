@@ -7,7 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-
+/**
+ * 账户实体
+ * @author DELL
+ *
+ */
 @NamedQueries({
 	@NamedQuery(name="getAccountById",query="from Account a where a.id=?"),
 	@NamedQuery(name="getAccountByAccountNumber",query="from Account a where a.accountNumber=?")

@@ -14,12 +14,17 @@ import net.sf.json.JSONObject;
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 import cn.edu.xmu.oneonezero.entity.User;
 
+/**
+ * 公共方法
+ * @author DELL
+ *
+ */
 public class CommonMethod {
 	/**
 	 * 从cookie中获取json，转换成CommodityArtwork类型
-	 * @param request
-	 * @return
-	 * @throws UnsupportedEncodingException 
+	 * @param request 请求
+	 * @return String
+	 * @throws UnsupportedEncodingException  编码异常
 	 */
 	public static List<CommodityArtwork> jsonToCommodityArtwork(HttpServletRequest request) throws UnsupportedEncodingException{
 		Cookie[] cookies=request.getCookies();
@@ -49,8 +54,8 @@ public class CommonMethod {
 	}
 	/**
 	 * 清除cookie
-	 * @param request
-	 * @param response
+	 * @param request 请求
+	 * @param response 应答
 	 */
 	public static void cleanCookie(HttpServletRequest request,
 			HttpServletResponse response) {
@@ -68,6 +73,14 @@ public class CommonMethod {
 		}
 	}
 	
+	/**
+	 * 添加到cookie
+	 * @param itemId 艺术品id
+	 * @param value 值
+	 * @param request 请求
+	 * @param response 应答
+	 * @throws UnsupportedEncodingException 编码异常
+	 */
 	public static void addCookie(Long itemId,String value,HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
 //		System.out.println("commodityArtworkJson:"+commodityArtworkJson);
 		User user=(User)request.getSession().getAttribute("user");
@@ -79,8 +92,13 @@ public class CommonMethod {
 		
 	}
 	
+	/**
+	 * 获取图片保存路径
+	 * @param request 请求
+	 * @return String
+	 */
 	public static String getPicUrl(HttpServletRequest request) {
-		System.out.println("路径："+request.getSession().getServletContext().getRealPath("/attached"));
+//		System.out.println("路径："+request.getSession().getServletContext().getRealPath("/attached"));
 		return request.getSession().getServletContext().getRealPath("/attached");
 		
 	}

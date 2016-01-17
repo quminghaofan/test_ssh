@@ -6,7 +6,11 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
 import cn.edu.xmu.oneonezero.entity.DataDictionary;
-
+/**
+ * 数据字典接口的实现
+ * @author DELL
+ *
+ */
 public class DataDictionaryDaoImpl implements DataDictionaryDao{
 
 	private SessionFactory sessionFactory;//创建一个会话工厂实例

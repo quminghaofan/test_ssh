@@ -17,7 +17,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 采编 Created by Fernando on 2015/12/1.
+ * 采编
+ * @author DELL
+ *
  */
 @Controller
 @RequestMapping("/editor")
@@ -28,6 +30,14 @@ public class EditorController {
 
 	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
+	/**
+	 * 添加软文
+	 * @param filedata 文件数据
+	 * @param type 1：草稿 0：未审核
+	 * @param request 请求
+	 * @return String
+	 * @throws ParseException 时间转换异常
+	 */
 	@RequestMapping(value = "/addNews")
 	public String addNews(
 			@RequestParam(value = "img", required = false) MultipartFile filedata,
@@ -66,6 +76,14 @@ public class EditorController {
 		return "redirect:/editor/getDraft";
 	}
 
+	/**
+	 * 编辑软文
+	 * @param filedata 文件数据
+	 * @param type 1：草稿 0：未审核
+	 * @param request 请求
+	 * @return String
+	 * @throws ParseException 时间转换异常
+	 */
 	@RequestMapping(value = "/editNews")
 	public String editNews(
 			@RequestParam(value = "img", required = false) MultipartFile filedata,
@@ -119,6 +137,12 @@ public class EditorController {
 		return "redirect:/editor/getDraft";
 	}
 
+	/**
+	 * 进入软文编辑界面
+	 * @param newsId 软文id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/getNewsToEdit")
 	public String getNewsToEdit(Long newsId, HttpServletRequest request) {
 		// System.out.println("getNewsToEdit-newsId:"+newsId);
@@ -127,6 +151,13 @@ public class EditorController {
 		return "editor_rr_edit";
 	}
 
+	/**
+	 * 删除软文
+	 * @param type 1：进入未通过界面 0：进入草稿界面
+	 * @param newsId 软文id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/delNews")
 	public String delNews(String type, Long newsId, HttpServletRequest request) {
 		newsService.delNews(newsId);
@@ -136,7 +167,11 @@ public class EditorController {
 			return "redirect:/editor/getDraft";
 	}
 
-	// 获取所有未审核
+	/**
+	 *  获取所有未审核
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/getUnexamined")
 	public String getUnexamined(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
@@ -145,7 +180,11 @@ public class EditorController {
 		return "editor_rr_1";
 	}
 
-	// 不通过
+	/**
+	 * 获取不通过的软文
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/getUnPassed")
 	public String getUnPassed(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
@@ -154,7 +193,11 @@ public class EditorController {
 		return "editor_rr_2";
 	}
 
-	// 已通过
+	/**
+	 * 获取已通过的软文
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/getPassed")
 	public String getPassed(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
@@ -163,6 +206,11 @@ public class EditorController {
 		return "editor_rr_3";
 	}
 
+	/**
+	 * 获取草稿
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping(value = "getDraft")
 	public String getDraft(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
@@ -171,7 +219,13 @@ public class EditorController {
 		return "editor_rr_4";
 	}
 
-	// 撤回
+	/**
+	 * 撤回
+	 * @param type 0：进入未审核界面 1：进入未通过界面 2：进入已通过界面
+	 * @param newsId 软文id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("withdraw")
 	public String withdraw(String type, long newsId, HttpServletRequest request) {
 		newsService.updateStateToDraft(newsId);
@@ -184,6 +238,13 @@ public class EditorController {
 		}
 	}
 
+	/**
+	 * 搜索
+	 * @param type 搜索软文的状态
+	 * @param request 请求
+	 * @return String
+	 * @throws ParseException 时间转换异常
+	 */
 	@RequestMapping("/search")
 	public String search(String type, HttpServletRequest request)
 			throws ParseException {

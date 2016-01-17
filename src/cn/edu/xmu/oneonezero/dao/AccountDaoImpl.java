@@ -9,6 +9,11 @@ import org.hibernate.SessionFactory;
 
 import cn.edu.xmu.oneonezero.entity.Account;
 
+/**
+ * 账户接口的实现
+ * @author DELL
+ *
+ */
 public class AccountDaoImpl implements AccountDao{
 	private SessionFactory sessionFactory;//创建一个会话工厂实例
 

@@ -7,7 +7,11 @@ import org.hibernate.SessionFactory;
 
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 import cn.edu.xmu.oneonezero.entity.CustomizedArtwork;
-
+/**
+ * 订制品接口的实现
+ * @author DELL
+ *
+ */
 public class CustomizedArtworkDaoImpl implements CustomizedArtworkDao {
 	private SessionFactory sessionFactory;//创建一个会话工厂实例
 

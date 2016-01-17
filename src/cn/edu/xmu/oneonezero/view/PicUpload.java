@@ -6,16 +6,21 @@ import java.io.FileOutputStream;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.multipart.MultipartFile;
-
+/**
+ * 图片上传
+ * @author DELL
+ *
+ */
 public class PicUpload {
 	/**
 	 * 
-	 * 功能描述 保存图片
+	 * 保存图片
 	 * 
-	 * @param newFileName
-	 *            上传照片文件名
+	 * @param saveFilePath
+	 *            图片保存路径
 	 * @param filedata
 	 *            文件数据
+	 * @return String
 	 */
 	public static String saveFile(MultipartFile filedata, String saveFilePath) {
 		// 保存相对路径到数据库 图片写入服务器
@@ -50,10 +55,11 @@ public class PicUpload {
 		}
 		return "../images/nopic.jpg";
 	}
-
+	
 	/**
-	 * 
-	 * 功能描述：删除图片
+	 * 删除图片
+	 * @param picName 图片名称
+	 * @param picUrl 图片路径
 	 */
 	public static void deleteFile(String picName, String picUrl) {
 			File fileDir = new File(picUrl + picName);

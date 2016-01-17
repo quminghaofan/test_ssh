@@ -22,6 +22,11 @@ import cn.edu.xmu.oneonezero.service.CustomizedArtworkService;
 import cn.edu.xmu.oneonezero.service.DataDictionaryService;
 import cn.edu.xmu.oneonezero.service.UserService;
 
+/**
+ * 定制
+ * @author DELL
+ *
+ */
 @Controller
 @RequestMapping("/customized")
 public class CustomizedController {
@@ -40,6 +45,12 @@ public class CustomizedController {
 	@Resource(name="commodityArtworkService")
 	private CommodityArtworkService commodityArtworkService;
 	
+	/**
+	 * 查看详情
+	 * @param artistId 艺术家id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("seeMore")
 	public String seeMore(Long artistId,HttpServletRequest request){
 		request.setAttribute("artist",userService.getUser(artistId));
@@ -48,6 +59,12 @@ public class CustomizedController {
 		return "artistInfoAndCommondity";
 	}
 	
+	/**
+	 * 进入订制品申请界面
+	 * @param artistId 艺术家id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/goToCustomizationApplying")
 	public String goToCustomizationApplying(Long artistId,HttpServletRequest request){
 		request.setAttribute("TYPELIST", dataDictionaryService.getAllArtworkTypes());
@@ -55,6 +72,13 @@ public class CustomizedController {
 		return "customizeArt";
 	}
 	
+	/**
+	 * 订制品申请
+	 * @param filedata 文件数据
+	 * @param artistId 艺术家id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/customizationApplying")
 	public String customizationApplying(@RequestParam(value = "img", required = false) MultipartFile filedata,Long artistId,HttpServletRequest request){
 		User artist=userService.getUser(artistId);
@@ -84,6 +108,12 @@ public class CustomizedController {
 		return "redirect:/mall/enterMall?go=0";
 	}
 	
+	/**
+	 * 返回
+	 * @param artistId 艺术家id
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping("/goBack")
 	public String goBack(Long artistId,HttpServletRequest request){
 		if(artistId==null){

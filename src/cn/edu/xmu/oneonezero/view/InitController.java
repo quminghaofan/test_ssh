@@ -26,6 +26,11 @@ import cn.edu.xmu.oneonezero.service.DataDictionaryService;
 import cn.edu.xmu.oneonezero.service.NewsService;
 import cn.edu.xmu.oneonezero.service.UserService;
 
+/**
+ * 初始化
+ * @author DELL
+ *
+ */
 @Controller
 @RequestMapping("/init")
 public class InitController {
@@ -45,6 +50,11 @@ public class InitController {
 	@Resource(name = "customizedArtworkService")
 	private CustomizedArtworkService customizedArtworkService;
 
+	/**
+	 * 首页
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping(value = "/home")
 	public String home(HttpServletRequest request) {
 		request.setAttribute("RRlist", newsService.getNewsToday(new Date()));
@@ -59,12 +69,25 @@ public class InitController {
 		return "index";
 	}
 
+	/**
+	 * 进入登陆界面
+	 * @param backUrl 上一个页面的路径
+	 * @param request 请求
+	 * @return String
+	 */
 	@RequestMapping(value = "/goToLogin", method = RequestMethod.GET)
 	public String goToLogin(String backUrl, HttpServletRequest request) {
 		request.getSession().setAttribute("backUrl", backUrl);
 		return "login";
 	}
 
+	/**
+	 * 登陆
+	 * @param request 请求
+	 * @param response 应答
+	 * @return String
+	 * @throws IOException 读入异常
+	 */
 	@RequestMapping(value = "/login")
 	public String login(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
@@ -97,6 +120,14 @@ public class InitController {
 		}
 	}
 
+	/**
+	 * 登出
+	 * @param backUrl 上一个页面的路径
+	 * @param request 请求
+	 * @param response 应答
+	 * @return String
+	 * @throws IOException 读入异常
+	 */
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(String backUrl, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
@@ -124,6 +155,11 @@ public class InitController {
 		return "login";
 	}
 
+	/**
+	 * 判断用户名是否存在
+	 * @param username 用户名
+	 * @return String
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/judgeUserName")
 	public String judgeUserName(String username) {

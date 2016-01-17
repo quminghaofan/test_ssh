@@ -24,12 +24,24 @@ import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
 import cn.edu.xmu.oneonezero.entity.User;
 import cn.edu.xmu.oneonezero.service.CommodityArtworkService;
 
+/**
+ * 购物车
+ * @author DELL
+ *
+ */
 @Controller
 @RequestMapping("/cart")
 public class CartController {
 	@Resource(name = "commodityArtworkService")
 	private CommodityArtworkService commodityArtworkService;
 
+	/**
+	 * 添加到购物车
+	 * @param itemId 艺术品id
+	 * @param response 应答
+	 * @param request 请求
+	 * @throws IOException 读入异常
+	 */
 	@RequestMapping(value = "/add2Cart")
 	@ResponseBody
 	public void add2Cart(String itemId,
@@ -44,6 +56,12 @@ public class CartController {
 		}
 	}
 
+	/**
+	 * 进入购物车
+	 * @param request 请求
+	 * @return String
+	 * @throws UnsupportedEncodingException 编码异常
+	 */
 	@RequestMapping("/showCart")
 	public String showCart(HttpServletRequest request)
 			throws UnsupportedEncodingException {
@@ -52,6 +70,13 @@ public class CartController {
 		return "cart";
 	}
 
+	/**
+	 * 删除购物车里的商品
+	 * @param itemId 艺术品id
+	 * @param request 请求
+	 * @param response 应答
+	 * @return String
+	 */
 	@RequestMapping("/delCart")
 	public String delCart(long itemId, HttpServletRequest request,
 			HttpServletResponse response) {
@@ -71,6 +96,12 @@ public class CartController {
 		return "redirect:/cart/showCart";
 	}
 
+	/**
+	 * 清空购物车
+	 * @param request 请求
+	 * @param response 应答
+	 * @return String
+	 */
 	@RequestMapping("/cleanCart")
 	public String cleanCart(HttpServletRequest request,
 			HttpServletResponse response) {

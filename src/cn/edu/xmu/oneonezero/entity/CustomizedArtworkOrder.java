@@ -6,7 +6,11 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
+/**
+ * 定制艺术品订单实体
+ * @author DELL
+ *
+ */
 @Entity
 @DiscriminatorValue("定制艺术品订单")
 @Table(name="CustomizedArtworkOrder")

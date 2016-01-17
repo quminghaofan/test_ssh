@@ -4,7 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+/**
+ * 时间真的实体
+ * @author DELL
+ *
+ */
 @Entity
 public class DataDictionary {
 	private long id;

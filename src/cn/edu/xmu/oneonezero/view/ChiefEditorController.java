@@ -25,7 +25,13 @@ public class ChiefEditorController {
     private NewsService newsService;
 
     private SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
-    
+    /**
+     * 进入审核软文界面
+     * @param type 1：审核通过 0：审核不通过
+     * @param newsId 软文id
+     * @param request 请求
+     * @return String
+     */
     @RequestMapping("/getNews")
     public String getNews(String type,long newsId,HttpServletRequest request){
         request.getSession().setAttribute("news",newsService.getNews(newsId));
@@ -33,6 +39,13 @@ public class ChiefEditorController {
         return "chiefEditor_checks";
     }
 
+    /**
+     * 审核软文
+     * @param type 1：审核通过 0：审核不通过
+     * @param typeExamine 1：进入未审核界面 0：进入已审核界面
+     * @param request 请求
+     * @return String
+     */
     @RequestMapping(value="/examineNews")
     public String examineNews(String type,String typeExamine,HttpServletRequest request){
         News news=(News)request.getSession().getAttribute("news");
@@ -54,6 +67,12 @@ public class ChiefEditorController {
         }
     }
     
+    /**
+     * 返回列表
+     * @param type 1：进入未审核界面 0：进入已审核界面
+     * @param request 请求
+     * @return String
+     */
     @RequestMapping("/goback")
     public String goback(String type,HttpServletRequest request){
     	System.out.println("go:"+type);
@@ -62,27 +81,36 @@ public class ChiefEditorController {
     	}
     	return "redirect:/chiefEditor/getExamined";
     }
-    
-//    @RequestMapping(value="/setNews")
-//    public String setNews(HttpServletRequest request) throws ParseException{
-//    	News news=(News) request.getSession().getAttribute("news");
-//        news.setRank(request.getParameter("rank"));
-//        news.setOnShowTime(format.parse(request.getParameter("txtDate")));
-//        newsService.updateNews(news);
-//        return "redirect:/chiefEditor/getUnexamined";
-//    }
 
+    /**
+     * 获取所有已审核的软文
+     * @param request 请求
+     * @return String
+     */
     @RequestMapping(value="/getExamined")
     public String getExamined(HttpServletRequest request){
         request.setAttribute("RRLIST", newsService.getExaminedNews());
         return "chiefEditor_rr_2";
     }
 
+    /**
+     * 获取所有未审核的软文
+     * @param request 请求
+     * @return String
+     */
     @RequestMapping(value="/getUnexamined")
     public String getUnexamined(HttpServletRequest request){
         request.setAttribute("RRLIST",newsService.getUnexaminedNews());
         return "chiefEditor_rr_1";
     }
+    
+    /**
+     *搜索软文 
+     * @param type 1：进入未审核界面 0：进入已审核界面
+     * @param request 请求
+     * @return String
+     * @throws ParseException 时间转换异常
+     */
     @RequestMapping("/search")
     public String search(String type,HttpServletRequest request) throws ParseException{
     	Date start,end;

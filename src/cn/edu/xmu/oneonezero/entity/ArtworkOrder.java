@@ -20,7 +20,11 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-
+/**
+ * 艺术品订单基类实体
+ * @author DELL
+ *
+ */
 @Entity
 @DiscriminatorColumn(name="orderType",discriminatorType=DiscriminatorType.STRING)
 @DiscriminatorValue("订单")
