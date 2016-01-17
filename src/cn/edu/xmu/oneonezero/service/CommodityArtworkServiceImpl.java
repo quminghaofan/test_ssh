@@ -2,10 +2,12 @@ package cn.edu.xmu.oneonezero.service;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import net.sf.json.JSONObject;
 import cn.edu.xmu.oneonezero.dao.CommodityArtworkDao;
 import cn.edu.xmu.oneonezero.entity.CommodityArtwork;
-
+@Transactional
 public class CommodityArtworkServiceImpl implements CommodityArtworkService{
 
 	private CommodityArtworkDao commodityArtworkDao;

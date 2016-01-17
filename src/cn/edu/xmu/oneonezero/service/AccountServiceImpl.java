@@ -1,8 +1,11 @@
 package cn.edu.xmu.oneonezero.service;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import cn.edu.xmu.oneonezero.dao.AccountDao;
 import cn.edu.xmu.oneonezero.entity.Account;
 
+@Transactional
 public class AccountServiceImpl implements AccountService{
 	private AccountDao accountDao;
 

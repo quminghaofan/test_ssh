@@ -4,6 +4,7 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Type;
+
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
@@ -71,7 +73,7 @@ public class Artwork {
 		this.author = author;
 	}
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="ownerId")
 	@Cascade(CascadeType.ALL)
 	public User getOwner() {
@@ -94,7 +96,7 @@ public class Artwork {
 		this.artworkDescription = artworkDescription;
 	}
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="typeId")
 	@Cascade(CascadeType.ALL)
 	public DataDictionary getType() {

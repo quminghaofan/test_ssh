@@ -3,9 +3,11 @@ package cn.edu.xmu.oneonezero.service;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import cn.edu.xmu.oneonezero.dao.CustomizedArtworkOrderDao;
 import cn.edu.xmu.oneonezero.entity.CustomizedArtworkOrder;
-
+@Transactional
 public class CustomizedArtworkOrderServiceImpl implements CustomizedArtworkOrderService{
 	private CustomizedArtworkOrderDao customizedArtworkOrderDao;
 

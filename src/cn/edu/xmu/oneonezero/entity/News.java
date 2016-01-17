@@ -3,6 +3,7 @@ package cn.edu.xmu.oneonezero.entity;
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -90,7 +91,7 @@ public class News {
 		this.rank = rank;
 	}
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="editorId")
 	@Cascade(CascadeType.ALL)
 	public User getEditor() {
@@ -99,7 +100,7 @@ public class News {
 	public void setEditor(User editor) {
 		this.editor = editor;
 	}
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="chiefEditorId")
 	@Cascade(CascadeType.ALL)
 	public User getChiefEditor() {
