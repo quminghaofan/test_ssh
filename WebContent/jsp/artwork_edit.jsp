@@ -147,7 +147,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
   <div class="register">
 			   <div class="col-md-6 login-right">
-				<form method="post"  action="/test_ssh/artist/editOrAddArtwork?itemId=${item.id}" onsubmit="return before_submit()" class="artworkform" enctype="multipart/form-data">
+				<form method="post"  action="/test_ssh/artist/editOrAddArtwork?itemId=${item.id}" id="myform" onsubmit="return before_submit()" class="artworkform" enctype="multipart/form-data">
 				<div>
 				<span>图片<label>*</label></span>
 				<div id="preview" style="border:solid 1px">
@@ -177,7 +177,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               <option value="0" selected="selected">商品</option>
             </select>
 				  </div>
-				   <div id="price">
+				   <div id="pdiv">
 					<span>价格</span>
 					<input type="text" value="${item.price}" id="price" name="price" onfocus="pp.style.display=none">
 					<font color="red"><span id="pp" style="display: none">价格不正确</span></font>
@@ -186,7 +186,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span>介绍</span>
 					<textarea id="description" name="description">${item.artworkDescription}</textarea> 
 				  </div>
-				  <input type="submit" value="确认">
+				  <input type="submit" value="确认" onclick="myform.onsubmit()">
 				  <input type="button" onclick="if(window.confirm('确定返回吗？未保存的内容可能丢失')) window.location.href='/test_ssh/artist//myArt'" value="返回">
 			    </form>
 			   </div>	
@@ -220,16 +220,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script>
 function select2_change(){
 	var select2=document.getElementById("select2").value;
-	if(select2=="展品")
-		document.getElementById("price").style.display="none";
+	if(select2=="1"){}
+		document.getElementById("price").value="0";
 	else
-		document.getElementById("price").style.display="block";
+		document.getElementById("pdiv").style.display="block";
 }
 function before_submit(){
 	var price=document.getElementById("price").value;
 	var flag=0;
 	if(price==""||!price.match(/^[0-9]+\.{0,1}[0-9]{0,2}$/g)){
-		document.getElementById("select2").style.display="block";
+		document.getElementById("pp").style.display="block";
 		flag=1;
 			}
 	if(flag==1)

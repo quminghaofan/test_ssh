@@ -139,7 +139,7 @@ $(document).ready(function() {
 				<ul class="megamenu skyblue">
 					<li class="active grid"><a class="color2"
 						href="/test_ssh/init/home">首页</a></li>
-					<li><a class="color7" href="/test_ssh/mall/enterMall?go=0">定制</a>
+					<li><a class="color7" href="#">定制</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
@@ -154,7 +154,7 @@ $(document).ready(function() {
 								</div>
 							</div>
 						</div></li>
-					<li><a class="color10" href="/test_ssh/mall/enterMall?go=1">商城</a>
+					<li><a class="color10" href="#">商城</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
@@ -245,7 +245,7 @@ $(document).ready(function() {
 				<c:forEach items="${commodityArtworkList}" var="item">
 					<div class="col-md-3 span_6">
 						<div class="box_inner">
-							<img src="${item.picUrl}" class="img-responsive" alt="" />
+							<a href="/test_ssh/mall/seeMore?itemId=${item.id}"><img src="${item.picUrl}" class="img-responsive" alt="" /></a>
 							<div class="sale-box"></div>
 							<div class="desc">
 								<h3>${item.name}</h3>

@@ -180,7 +180,7 @@ $(document).ready(function() {
 								<c:if test="${!(order.isCancelled)}">
 									<c:if test="${(order.state).equals('未支付')}">
 										<a class="acount-btn"
-											href="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=1&total=${order.commodityArtwork.price}">支付</a>
+											href="/test_ssh/user/goToOrderPay?orderId=${order.id}&type=1&total=${order.commodityArtwork.price}&stage='已支付未发货'">支付</a>
 										<a class="acount-btn"
 											href="/test_ssh/user/cancelOrder?orderId=${order.id}&type=1">取消订单</a>
 									</c:if>

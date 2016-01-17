@@ -2,8 +2,11 @@ package cn.edu.xmu.oneonezero.service;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import cn.edu.xmu.oneonezero.entity.CustomizedArtwork;
 
+@Transactional
 public interface CustomizedArtworkService {
 
 	public List<CustomizedArtwork> getAllCustomizedArtworks();//获取所有定制艺术品
